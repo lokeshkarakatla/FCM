@@ -30,9 +30,9 @@ export class MeetingComponent implements OnInit {
     {
       referenceNo: "FC/2026/04/05",
       date: "10-10-2024",
-      time: "10 AM",
+      time: "10:00 AM",
       duration: "55 min",
-      meetingRef: "(Meet/2025/10/02)",
+      meetingRef: "MEET-2025/10/02",
       capa: 2,
       actionPoints: 2,
       attendance: "5/7",
@@ -44,7 +44,7 @@ export class MeetingComponent implements OnInit {
       date: "11-10-2024",
       time: "11:30 AM",
       duration: "45 min",
-      meetingRef: "(Meet/2025/10/03)",
+      meetingRef: "MEET-2025/10/03",
       capa: 2,
       actionPoints: 1,
       attendance: "5/7",
@@ -56,7 +56,7 @@ export class MeetingComponent implements OnInit {
       date: "24-10-2024",
       time: "02:00 PM",
       duration: "60 min",
-      meetingRef: "(Meet/2025/10/04)",
+      meetingRef: "MEET-2025/10/04",
       capa: 2,
       actionPoints: 3,
       attendance: "5/7",
@@ -68,7 +68,7 @@ export class MeetingComponent implements OnInit {
       date: "23-10-2024",
       time: "03:30 PM",
       duration: "40 min",
-      meetingRef: "(Meet/2025/10/05)",
+      meetingRef: "MEET-2025/10/05",
       capa: 2,
       actionPoints: 2,
       attendance: "5/7",
@@ -80,7 +80,7 @@ export class MeetingComponent implements OnInit {
       date: "23-10-2024",
       time: "10:30 AM",
       duration: "50 min",
-      meetingRef: "(Meet/2025/10/06)",
+      meetingRef: "MEET-2025/10/06",
       capa: 2,
       actionPoints: 1,
       attendance: "5/7",
@@ -92,7 +92,7 @@ export class MeetingComponent implements OnInit {
       date: "29-10-2024",
       time: "04:00 PM",
       duration: "45 min",
-      meetingRef: "(Meet/2025/10/07)",
+      meetingRef: "MEET-2025/10/07",
       capa: 2,
       actionPoints: 2,
       attendance: "5/7",
@@ -104,7 +104,7 @@ export class MeetingComponent implements OnInit {
       date: "30-10-2024",
       time: "11:00 AM",
       duration: "60 min",
-      meetingRef: "(Meet/2025/10/08)",
+      meetingRef: "MEET-2025/10/08",
       capa: 2,
       actionPoints: 2,
       attendance: "6/7",
@@ -116,7 +116,7 @@ export class MeetingComponent implements OnInit {
       date: "02-11-2024",
       time: "02:30 PM",
       duration: "35 min",
-      meetingRef: "(Meet/2025/11/01)",
+      meetingRef: "MEET-2025/11/01",
       capa: 2,
       actionPoints: 1,
       attendance: "5/7",
@@ -128,15 +128,26 @@ export class MeetingComponent implements OnInit {
   public gotoMeeting(id: any) {
     this.router.navigate(['/app/complaints/meeting/add']);
   }
+
+  public openMeetingInnerScreen(item: any, tab: string = 'observations') {
+    this.router.navigate(['/app/complaints/meetings/detail'], {
+      queryParams: {
+        meetingRef: item.meetingRef,
+        date: item.date,
+        time: item.time,
+        duration: item.duration,
+        attendance: item.attendance,
+        tab: tab
+      }
+    });
+  }
+
   Attendancecount() {
     this.dialog.open(AddattendanceComponent, {
       height: '300px',
       width: '600px' 
     });
   }
-
-
-
 
   deleteConfirmation() {
     let dialogRef = this.dialog.open(ConfirmationDialogComponent, {
@@ -151,11 +162,8 @@ export class MeetingComponent implements OnInit {
     );
   }
 
-    openMeetingDialog(item: any) {
-    this.dialog.open(MeetingrefComponent, {
-      width: '900px',
-      data: item
-    });
+  openMeetingDialog(item: any) {
+    this.openMeetingInnerScreen(item);
   }
 
   openAgendaDialog(item: any) {

@@ -1,0 +1,61 @@
+<div style="overflow-y: hidden; overflow-x: hidden;">
+  <div class="NewHeader">
+    <h1 style="color: white; font-size: 18px; margin: 0; font-weight: 500;" mat-dialog-title>
+      <span *ngIf="!data">Add</span><span *ngIf="data">Edit</span> Comments
+    </h1>
+  </div>
+
+  <div mat-dialog-content style="overflow: auto; max-height: 70vh; padding-bottom: 0px; margin-top: -15px;">
+    <form class="form-horizontal">
+
+      <!-- Row: Auditee & Auditor Sections Side by Side -->
+      <div class="row mb-3">
+
+        <!-- Auditee Section -->
+        <div class="col-sm-6 divider-right">
+          <div class="row align-items-center mb-3">
+            <label class="col-sm-6 control-label">
+              <b>Auditee Response Date : <span class="text-danger">*</span></b>
+            </label>
+            <div class="col-sm-6">
+              <input type="date" class="form-control" [(ngModel)]="auditeeResponseDate" name="auditeeResponseDate" />
+            </div>
+          </div>
+
+          <b class="d-block mb-1">Auditee Description</b>
+          <textarea class="form-control" style="height: 220px; resize: none;"
+                    placeholder="Enter auditee remarks..." [(ngModel)]="auditeeNarration" name="auditeeNarration">
+          </textarea>
+        </div>
+
+        <!-- Auditor Section -->
+        <div class="col-sm-6">
+          <div class="row align-items-center mb-3">
+            <label class="col-sm-6 control-label">
+              <b>Auditor Remarks Date : <span class="text-danger">*</span></b>
+            </label>
+            <div class="col-sm-6">
+              <input type="date" class="form-control" [(ngModel)]="auditorRemarksDate" name="auditorRemarksDate" />
+            </div>
+          </div>
+
+          <b class="d-block mb-1">Auditor Remarks Description</b>
+          <textarea class="form-control" style="height: 220px; resize: none;"
+                    placeholder="Enter auditor remarks..." [(ngModel)]="auditorDescription" name="auditorDescription">
+          </textarea>
+        </div>
+
+      </div>
+
+    </form>
+  </div>
+
+  <mat-dialog-actions align="end" style="margin-top: 15px; padding: 10px 0 0 0;">
+    <button mat-raised-button class="btn-default me-2" (click)="close()">
+      <mat-icon>cancel</mat-icon> Cancel
+    </button>
+    <button mat-raised-button color="primary" (click)="save()">
+      <mat-icon>save</mat-icon> Save
+    </button>
+  </mat-dialog-actions>
+</div>

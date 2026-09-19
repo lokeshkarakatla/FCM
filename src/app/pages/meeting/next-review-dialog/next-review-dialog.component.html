@@ -1,0 +1,65 @@
+<div class="next-review-modal-container">
+
+  <!-- Header & Date display -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <div class="d-flex align-items-center gap-3">
+      <h4 class="modal-title mb-0">Next Review</h4>
+      <div class="review-date-box">
+        <input type="date" class="form-control review-date-input" [(ngModel)]="nextReviewDate" />
+      </div>
+    </div>
+    <button mat-icon-button class="close-btn" (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <p class="ref-subtext" *ngIf="data?.ref">
+    Complaint: <b>{{ data.ref }}</b> — {{ data.subject }}
+  </p>
+
+  <!-- 10 Timeframe Pills (2 columns x 5 rows as per wireframe) -->
+  <div class="pills-grid-wrapper mt-3">
+    <div class="row g-3">
+
+      <!-- Column 1 (5 items) -->
+      <div class="col-6">
+        <div class="d-flex flex-column gap-2">
+          <button type="button"
+                  *ngFor="let opt of timeframeOptions[0]"
+                  class="timeframe-pill-btn"
+                  [class.active]="selectedOption === opt.label"
+                  (click)="selectOption(opt)">
+            {{ opt.label }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Column 2 (5 items) -->
+      <div class="col-6">
+        <div class="d-flex flex-column gap-2">
+          <button type="button"
+                  *ngFor="let opt of timeframeOptions[1]"
+                  class="timeframe-pill-btn"
+                  [class.active]="selectedOption === opt.label"
+                  (click)="selectOption(opt)">
+            {{ opt.label }}
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Custom Date input when Custom is selected -->
+  <div class="mt-3 p-2 custom-date-section" *ngIf="isCustom">
+    <label class="form-label mb-1"><b>Select Custom Review Date:</b></label>
+    <input type="date" class="form-control" [(ngModel)]="nextReviewDate">
+  </div>
+
+  <!-- Actions -->
+  <div class="d-flex justify-content-end align-items-center gap-2 mt-4">
+    <button mat-button (click)="close()" class="cancel-btn">Cancel</button>
+    <button mat-raised-button class="save-btn" (click)="save()">SAVE</button>
+  </div>
+
+</div>

@@ -29,6 +29,7 @@ import { CapaComponent } from './pages/capa/capa.component';
 import { AttendanceComponent } from './pages/attendance/attendance.component';
 import { MeetingComponent } from './pages/meeting/meeting.component';
 import { AddMeetingPageComponent } from './pages/meeting/add-meeting-page/add-meeting-page.component';
+import { MeetingDashboardComponent } from './pages/meeting/meeting-dashboard/meeting-dashboard.component';
 import { ReferenceNumberComponent } from './pages/reference-number/reference-number.component';
 import { TestdashboardComponent } from './pages/dashboard/testdashboard/testdashboard.component';
 import { SetupsComponent } from './pages/setups/setups.component';
@@ -106,6 +107,7 @@ const routes: Routes = [
                     { path: 'capa', component: CapaComponent, data: { breadcrumb: 'CAPA' } },
                     { path: 'kanban', component: KanbanComponent, data: { breadcrumb: 'Kanban' } },
                     { path: 'meetings', component: MeetingComponent, data: { breadcrumb: 'Meetings' } },
+                    { path: 'meetings/detail', component: MeetingDashboardComponent, data: { breadcrumb: 'Meeting Execution' } },
                     { path: 'meeting', redirectTo: 'meetings', pathMatch: 'full' },
                     { path: 'complaintsdashboard', redirectTo: 'radar', pathMatch: 'full' },
                     { path: 'add-complaints', component: AddComplaintComponent, data: { breadcrumb: 'Add Complaints' } },

@@ -1,0 +1,84 @@
+<div style="overflow-y: hidden; overflow-x: hidden;">
+  <div class="NewHeader">
+    <h1 style="color: white; font-size: 18px; margin: 0; font-weight: 500;" mat-dialog-title>
+      Observation Notes
+    </h1>
+  </div>
+
+  <div mat-dialog-content style="overflow: auto; max-height: 65vh; padding-bottom: 0px; margin-top: -15px;">
+    <form class="form-horizontal">
+
+      <div class="row align-items-center mb-3 mt-3">
+        <label class="col-sm-4 control-label">
+          <b style="color: black; font-weight: 650;">Date & Time : <span class="text-danger">*</span></b>
+        </label>
+        <div class="col-sm-8">
+          <input type="datetime-local" class="form-control" style="border-radius: 4px;"
+                 [(ngModel)]="dateTime" name="dateTime" />
+        </div>
+      </div>
+
+      <div class="row align-items-center mb-3">
+        <label class="col-sm-4 control-label">
+          <b style="color: black; font-weight: 650;">Posted by : <span class="text-danger">*</span></b>
+        </label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" style="border-radius: 4px;"
+                 [(ngModel)]="postedBy" name="postedBy" placeholder="Enter name" />
+        </div>
+      </div>
+
+      <div class="row align-items-center mb-3">
+        <label class="col-sm-4 control-label">
+          <b style="color: black; font-weight: 650;">Note : <span class="text-danger">*</span></b>
+        </label>
+        <div class="col-sm-8">
+          <textarea class="form-control" rows="3" style="border-radius: 4px; height: auto;"
+                    placeholder="Enter Note details..." [(ngModel)]="noteText" name="noteText">
+          </textarea>
+        </div>
+      </div>
+
+    </form>
+
+    <div class="d-flex justify-content-end mb-3">
+      <button mat-raised-button color="primary" (click)="addNote()">
+        <mat-icon>add</mat-icon> Add Note
+      </button>
+    </div>
+
+    <!-- Historical Notes Table -->
+    <div class="table-responsive mt-3">
+      <table class="table table-bordered table-hover table-striped align-middle">
+        <thead class="table-dark">
+          <tr>
+            <th class="text-center" width="140">Date & Time</th>
+            <th width="150">Posted by</th>
+            <th>Note</th>
+            <th class="text-center" width="80">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of notesHistory">
+            <td class="text-center">{{ item.createdDate | date:'dd-MM-yyyy HH:mm' }}</td>
+            <td>{{ item.auditor }}</td>
+            <td>{{ item.notes }}</td>
+            <td class="text-center">
+              <i class="fa fa-trash text-danger pointer" (click)="deleteNote(item)"></i>
+            </td>
+          </tr>
+          <tr *ngIf="notesHistory.length === 0">
+            <td colspan="4" class="text-center text-muted py-2">No notes recorded yet.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <mat-dialog-actions align="end" style="margin-top: 15px; padding: 10px 0 0 0;">
+    <button mat-raised-button class="btn-default" (click)="close()">
+      <mat-icon>cancel</mat-icon> Close
+    </button>
+  </mat-dialog-actions>
+</div>

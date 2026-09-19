@@ -1,0 +1,89 @@
+.next-review-modal-container {
+  padding: 10px 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a202c;
+}
+
+.review-date-box {
+  .review-date-input {
+    background-color: #00557a;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    height: 38px;
+    min-width: 170px;
+
+    &::-webkit-calendar-picker-indicator {
+      filter: invert(1);
+    }
+  }
+}
+
+.ref-subtext {
+  font-size: 13px;
+  color: #4a5568;
+  margin: 4px 0 12px 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.timeframe-pill-btn {
+  background-color: #ffffff;
+  border: 2px solid #2e7d32;
+  border-radius: 4px;
+  color: #1b5e20;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+
+  &:hover {
+    background-color: #e8f5e9;
+    border-color: #1b5e20;
+  }
+
+  &.active {
+    background-color: #2e7d32;
+    color: #ffffff;
+    border-color: #1b5e20;
+    box-shadow: 0 2px 5px rgba(46, 125, 50, 0.3);
+  }
+}
+
+.custom-date-section {
+  background: #f7fafc;
+  border: 1px dashed #cbd5e0;
+  border-radius: 6px;
+}
+
+.save-btn {
+  background-color: #00557a !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  padding: 6px 28px !important;
+  border-radius: 4px !important;
+  min-width: 100px;
+}
+
+.cancel-btn {
+  color: #718096;
+}
+
+.close-btn {
+  color: #a0aec0;
+  &:hover {
+    color: #4a5568;
+  }
+}

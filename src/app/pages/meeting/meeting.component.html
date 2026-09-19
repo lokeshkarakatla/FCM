@@ -15,52 +15,42 @@
 
   <div class="col-sm-12" style="margin-top: 10px;margin-left: -6px;">
     <div class="table-responsive" id="grid-table-container">
-      <table class="table table-bordered table-hover">
+      <table class="table table-bordered table-hover align-middle">
         <thead class="tbl-head">
           <tr>
-            <th style="white-space: nowrap">Referance No</th>
+            <th class="text-center" style="white-space: nowrap">Meeting Ref</th>
             <th style="white-space: nowrap">Date</th>
             <th style="white-space: nowrap">Time</th>
             <th style="white-space: nowrap">Duration</th>
-            <th class="text-center">Meeting Ref</th>
             <th class="text-center">CAPA</th>
             <th class="text-center">Attendance</th>
             <th class="text-center">Agenda</th>
-            <!-- <th class="text-center">Late Attendance</th> -->
             <th class="text-center">Action</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of data">
 
-            <td>{{item.referenceNo}}</td>
-
-
+            <!-- Meeting Ref (Blue clickable link to Meeting Execution Inner Screen) -->
+            <td class="text-center">
+              <a (click)="openMeetingInnerScreen(item)"
+                 style="color: #0284c7; cursor: pointer; font-weight: 700; text-decoration: underline;">
+                {{ item.meetingRef }}
+              </a>
+            </td>
 
             <td>{{ item.date }}</td>
             <td>{{ item.time }}</td>
             <td>{{ item.duration }}</td>
-           <td class="text-center">
-  <span style="color: blue; cursor: pointer;"
-        (click)="openMeetingDialog(item)">
-    {{ item.meetingRef }}
-  </span>
-</td>
-            <!-- <td class="text-center">
-              <a
-                [routerLink]="['/app/capa']"
-                style="color: blue; text-decoration: none"
-                >2</a
-              >
-            </td> -->
+
             <td class="text-center">
-              <a [routerLink]="['/app/complaints/capa']" [queryParams]="{ from: 'meeting' }"
-                style="color: blue; text-decoration: none">
+              <a (click)="openMeetingInnerScreen(item, 'capa')"
+                 style="color: #0284c7; cursor: pointer; text-decoration: none; font-weight: 600;">
                 {{ item.capa }}
               </a>
             </td>
 
-            <td class="text-center" style="color: blue; cursor: pointer" (click)="Attendancecount()">
+            <td class="text-center" style="color: #0284c7; cursor: pointer" (click)="Attendancecount()">
               {{ item.attendance }}
             </td>
 
@@ -69,10 +59,13 @@
             </td>
 
             <td class="text-center">
-              <a matTooltip="Edit Meeting" (click)="gotoMeeting(null)">
+              <a matTooltip="Open Meeting Workspace" (click)="openMeetingInnerScreen(item)" style="cursor: pointer; margin-right: 8px; color: #0284c7;">
+                <mat-icon style="font-size: 18px; height: 18px; width: 18px; vertical-align: middle;">launch</mat-icon>
+              </a>
+              <a matTooltip="Edit Meeting" (click)="gotoMeeting(null)" style="cursor: pointer; margin-right: 8px;">
                 <i class="fa fa-edit"></i>
               </a>
-              <a matTooltip="Delete Meeting" (click)="deleteConfirmation()">
+              <a matTooltip="Delete Meeting" (click)="deleteConfirmation()" style="cursor: pointer;">
                 <i class="fa fa-trash red"></i>
               </a>
             </td>

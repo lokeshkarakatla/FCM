@@ -60,8 +60,17 @@ export class AddMeetingPageComponent implements OnDestroy {
   }
 
   save(): void {
-    // wire to service when ready
-    this.router.navigate(['/app/complaints/meeting']);
+    const today = new Date();
+    const newRef = `MEET-${today.getFullYear()}/${String(today.getMonth() + 1).padStart(2, '0')}/${String(today.getDate()).padStart(2, '0')}`;
+    this.router.navigate(['/app/complaints/meetings/detail'], {
+      queryParams: {
+        meetingRef: newRef,
+        date: this.meetingDate || '10-10-2024',
+        time: this.meetingTime || '10:00 AM',
+        duration: this.duration || '45 min',
+        attendance: `${this.presentCount}/${this.attendees.length}`
+      }
+    });
   }
 
   trackByIndex(index: number, item: any) {

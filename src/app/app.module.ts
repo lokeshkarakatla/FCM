@@ -83,6 +83,14 @@ import { AttendanceComponent } from './pages/attendance/attendance.component';
 import { MeetingComponent } from './pages/meeting/meeting.component';
 
 import { AddMeetingPageComponent } from './pages/meeting/add-meeting-page/add-meeting-page.component';
+import { MeetingDashboardComponent } from './pages/meeting/meeting-dashboard/meeting-dashboard.component';
+import { NextReviewDialogComponent } from './pages/meeting/next-review-dialog/next-review-dialog.component';
+import { AddAgendaDialogComponent } from './pages/meeting/dialogs/add-agenda-dialog/add-agenda-dialog.component';
+import { AddObservationDialogComponent } from './pages/meeting/dialogs/add-observation-dialog/add-observation-dialog.component';
+import { MeetingNotesDialogComponent } from './pages/meeting/dialogs/meeting-notes-dialog/meeting-notes-dialog.component';
+import { MeetingRemarksDialogComponent } from './pages/meeting/dialogs/meeting-remarks-dialog/meeting-remarks-dialog.component';
+import { OpenCapaDialogComponent } from './pages/meeting/dialogs/open-capa-dialog/open-capa-dialog.component';
+import { AddItemCapaDialogComponent } from './pages/meeting/dialogs/add-item-capa-dialog/add-item-capa-dialog.component';
 import { ReferenceNumberComponent } from './pages/reference-number/reference-number.component';
 import { AddtractorsComponent } from './addtractors/addtractors.component';
 import { AddtestsComponent } from './addtests/addtests.component';
@@ -199,8 +207,15 @@ DragulaModule.forRoot()
     AddCapaComponent,
     AttendanceComponent,
     MeetingComponent,
-
     AddMeetingPageComponent,
+    MeetingDashboardComponent,
+    NextReviewDialogComponent,
+    AddAgendaDialogComponent,
+    AddObservationDialogComponent,
+    MeetingNotesDialogComponent,
+    MeetingRemarksDialogComponent,
+    OpenCapaDialogComponent,
+    AddItemCapaDialogComponent,
     ReferenceNumberComponent,
     AddtractorsComponent,
     AddtestsComponent,
