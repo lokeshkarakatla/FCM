@@ -1,69 +1,138 @@
-<!-- 
-<div style="width: 90%;">
+<div class="section-wrapper mt-4">
+  <div class="container-fluid px-4">
 
-<div class="col-sm-12" style="margin-top:50px">
-    <div class="row col-md-10">
-        <div class="mb-3">
-            <label><b>Root Cause Analysis :</b></label>
+    <!-- Section Title Bar -->
+    <div class="section-title-bar d-flex justify-content-between align-items-center">
+      <div>
+        <h3><mat-icon class="title-icon">summarize</mat-icon> Overall Summary</h3>
+        <p class="section-subtitle">Set review schedule, priority, and define root cause and corrective action strategies.</p>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <span class="review-status-pill">
+          <mat-icon class="pill-icon">event</mat-icon> Next Review: <b>{{ reviewDate | date:'mediumDate' }}</b>
+        </span>
+      </div>
+    </div>
 
-            <textarea class="form-control mt-3"  rows="3" formControlName="problemStatement"
-                placeholder="Enter Root Cause Analysis"></textarea>
+    <!-- Top Key Metrics & Schedule Section (Added at the top per CEO specification) -->
+    <div class="summary-top-card mt-3">
+      <div class="row g-3 align-items-center">
+
+        <!-- Review Date -->
+        <div class="col-md-3 col-sm-6">
+          <div class="meta-field">
+            <label class="meta-label">
+              <mat-icon class="meta-icon">event_repeat</mat-icon>
+              <b>Review Date:</b>
+            </label>
+            <input type="date" class="form-control meta-input" [(ngModel)]="reviewDate">
+            <small class="text-muted">CFT review milestone</small>
+          </div>
         </div>
-    </div>
-    <div class="row col-md-10 mt-2">
-        <div class="mb-3">
-            <label><b>Interim Corrective Action :</b></label>
 
-            <textarea class="form-control mt-3" rows="3" formControlName="problemStatement"
-                placeholder="Enter Interim Corrective Action"></textarea>
+        <!-- Due Date -->
+        <div class="col-md-3 col-sm-6">
+          <div class="meta-field">
+            <label class="meta-label">
+              <mat-icon class="meta-icon">alarm</mat-icon>
+              <b>Due Date:</b>
+            </label>
+            <input type="date" class="form-control meta-input" [(ngModel)]="dueDate">
+            <small class="text-muted">Target closure deadline</small>
+          </div>
         </div>
-    </div>
-    <div class="row col-md-10 mt-2">
-        <div class="mb-3">
-            <label><b>Permanent Corrective Action:</b></label>
 
-            <textarea class="form-control mt-3" rows="3" formControlName="problemStatement"
-                placeholder="Enter Permanent Corrective Action"></textarea>
+        <!-- ETA -->
+        <div class="col-md-3 col-sm-6">
+          <div class="meta-field">
+            <label class="meta-label">
+              <mat-icon class="meta-icon">schedule</mat-icon>
+              <b>Estimated ETA:</b>
+            </label>
+            <input type="date" class="form-control meta-input" [(ngModel)]="eta">
+            <small class="text-muted">Expected resolution date</small>
+          </div>
         </div>
-    </div>
 
-    <div class="text-end mt-3 col-md-10" style="margin-left: -15px;">
-        <button mat-raised-button color="primary" [mat-dialog-close]="'test'">
-            <i class="fas fa-save"></i> <span class="ms-2">Submit</span>
-        </button>
-    </div>
-</div>
-
-</div> -->
-
-
-
-<div class="col-sm-12" style="margin-top:60px">
-    <div class="row col-md-12">
-        <div class="mb-3">
-            <label><b>Root Cause Analysis :</b></label>
-            <textarea class="form-control mt-3 w-100" rows="3" formControlName="problemStatement"
-                placeholder="Enter Root Cause Analysis"></textarea>
+        <!-- Priority / Severity -->
+        <div class="col-md-3 col-sm-6">
+          <div class="meta-field">
+            <label class="meta-label">
+              <mat-icon class="meta-icon">flag</mat-icon>
+              <b>Priority:</b>
+            </label>
+            <mat-select placeholder="Select Priority" class="form-control meta-input" [(ngModel)]="priority">
+              <mat-option *ngFor="let p of priorities" [value]="p.value">
+                <span class="priority-dot" [style.background-color]="p.color"></span>
+                {{ p.label }}
+              </mat-option>
+            </mat-select>
+            <small class="text-muted">Automotive defect classification</small>
+          </div>
         </div>
-    </div>
-    <div class="row col-md-12 mt-2">
-        <div class="mb-3">
-            <label><b>Interim Corrective Action :</b></label>
-            <textarea class="form-control mt-3 w-100" rows="3" formControlName="problemStatement"
-                placeholder="Enter Interim Corrective Action"></textarea>
-        </div>
-    </div>
-    <div class="row col-md-12 mt-2">
-        <div class="mb-3">
-            <label><b>Permanent Corrective Action:</b></label>
-            <textarea class="form-control mt-3 w-100" rows="3" formControlName="problemStatement"
-                placeholder="Enter Permanent Corrective Action"></textarea>
-        </div>
+
+      </div>
     </div>
 
-    <div class="text-end  mt-3  col-md-12" >
-        <button mat-raised-button color="primary" class="me-3" [mat-dialog-close]="'test'">
-            <i class="fas fa-save"></i> <span class="ms-2 ">Submit</span>
-        </button>
+    <!-- Alert / Toast on save -->
+    <div class="alert alert-success mt-3 py-2 d-flex align-items-center gap-2" *ngIf="savedSuccessfully">
+      <mat-icon>check_circle</mat-icon>
+      <span>Summary details saved successfully!</span>
     </div>
+
+    <!-- Core Analysis Sections -->
+    <div class="row g-4 mt-1">
+
+      <!-- Root Cause Analysis -->
+      <div class="col-12">
+        <div class="form-card">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <mat-icon class="card-icon text-danger">psychology</mat-icon>
+            <h5 class="card-section-title mb-0">Root Cause Analysis (RCA)</h5>
+          </div>
+          <p class="field-hint">Identify and document the underlying failure mechanism, 5-Why findings, or Ishikawa root causes.</p>
+          <textarea class="form-control analysis-textarea" rows="4" [(ngModel)]="rootCause"
+            placeholder="Enter comprehensive root cause analysis..."></textarea>
+        </div>
+      </div>
+
+      <!-- Interim Corrective Action -->
+      <div class="col-12">
+        <div class="form-card">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <mat-icon class="card-icon text-warning">shield</mat-icon>
+            <h5 class="card-section-title mb-0">Interim Corrective Action (ICA)</h5>
+          </div>
+          <p class="field-hint">Immediate containment or short-term workarounds to mitigate customer impact until permanent resolution.</p>
+          <textarea class="form-control analysis-textarea" rows="3" [(ngModel)]="interimAction"
+            placeholder="Enter interim corrective action..."></textarea>
+        </div>
+      </div>
+
+      <!-- Permanent Corrective Action -->
+      <div class="col-12">
+        <div class="form-card">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <mat-icon class="card-icon text-success">verified</mat-icon>
+            <h5 class="card-section-title mb-0">Permanent Corrective Action (PCA)</h5>
+          </div>
+          <p class="field-hint">Definitive engineering, manufacturing, or design modifications to permanently prevent reoccurrence.</p>
+          <textarea class="form-control analysis-textarea" rows="3" [(ngModel)]="permanentAction"
+            placeholder="Enter permanent corrective action..."></textarea>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Action Buttons -->
+    <div class="d-flex justify-content-end align-items-center gap-3 mt-4 mb-4">
+      <button mat-stroked-button color="primary" (click)="saveSummary()">
+        <mat-icon>save</mat-icon> Save Summary
+      </button>
+      <button mat-raised-button color="primary" (click)="saveAndNext()">
+        Save & Next <mat-icon>arrow_forward</mat-icon>
+      </button>
+    </div>
+
+  </div>
 </div>

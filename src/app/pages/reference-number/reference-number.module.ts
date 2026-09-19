@@ -25,50 +25,35 @@ import { TimelineComponent } from './timeline/timeline.component';
 
 import { NoteComponent } from '../prts/note/note.component';
 
-
+// New 8D Process components
+import { InvestigationComponent } from './investigation/investigation.component';
+import { WarrantyClaimComponent } from './warranty-claim/warranty-claim.component';
+import { FieldDispatchComponent } from './field-dispatch/field-dispatch.component';
+import { TechnicalReviewComponent } from './technical-review/technical-review.component';
+import { ContainmentComponent } from './containment/containment.component';
+import { SupplierActionComponent } from './supplier-action/supplier-action.component';
+import { ImplementationComponent } from './implementation/implementation.component';
+import { VerificationComponent } from './verification/verification.component';
+import { MonitoringComponent } from './monitoring/monitoring.component';
+import { PreventionComponent } from './prevention/prevention.component';
+import { RecognitionComponent } from './recognition/recognition.component';
+import { ClosureComponent } from './closure/closure.component';
 
 
 
 const routes: Routes = [
   { path: "", redirectTo: "base-info", pathMatch: "full" },
 
-
   {
     path: "base-info",
     component: BaseInfoComponent,
     pathMatch: "full",
-    data: { breadcrum: 'Base-info()' }
+    data: { breadcrumb: 'Base Info' }
   },
   {
     path: "summary",
     component: SummaryComponent,
-
-    data: { breadcrumb: 'Summary', }
-  },
-  {
-    path: "updates",
-    component: UpdatesComponent,
-
-    data: { breadcrumb: 'Updates', }
-  },
-  {
-    path: "capaa",
-    component: CapaaaComponent,
-
-    data: { breadcrumb: 'CAPA' }
-  },
-  {
-    path: "documnets",
-    component: DocumentsComponent,
-    pathMatch: "full",
-    data: { breadcrumb: 'Documents', description: "Grid-View", }
-  },
-  {
-    path: "notes",
-    component: NotesComponent,
-    pathMatch: "full",
-    data: { breadcrumb: 'Notes' }
-
+    data: { breadcrumb: 'Summary' }
   },
   {
     path: "timeline",
@@ -76,16 +61,117 @@ const routes: Routes = [
     pathMatch: "full",
     data: { breadcrumb: 'Timeline', description: "Alerts", }
   },
-
+  {
+    path: "investigation",
+    component: InvestigationComponent,
+    pathMatch: "full",
+    data: { breadcrumb: 'Investigation' }
+  },
+  {
+    path: "warranty-claim",
+    component: WarrantyClaimComponent,
+    pathMatch: "full",
+    data: { breadcrumb: 'Warranty Claim' }
+  },
+  {
+    path: "field-dispatch",
+    component: FieldDispatchComponent,
+    pathMatch: "full",
+    data: { breadcrumb: 'Field Dispatch' }
+  },
+  {
+    path: "technical-review",
+    component: TechnicalReviewComponent,
+    pathMatch: "full",
+    data: { breadcrumb: 'Technical Review' }
+  },
+  {
+    path: "containment",
+    component: ContainmentComponent,
+    pathMatch: "full",
+    data: { breadcrumb: 'Containment' }
+  },
+  {
+    path: "supplier-action",
+    component: SupplierActionComponent,
+    pathMatch: "full",
+    data: { breadcrumb: 'Supplier Action' }
+  },
+  {
+    path: "capa",
+    component: CapaaaComponent,
+    data: { breadcrumb: 'CAPA' }
+  },
+  // Keep old route for backwards compatibility
+  {
+    path: "capaa",
+    redirectTo: "capa",
+    pathMatch: "full"
+  },
+  {
+    path: "implementation",
+    component: ImplementationComponent,
+    pathMatch: "full",
+    data: { breadcrumb: 'Implementation' }
+  },
+  {
+    path: "verification",
+    component: VerificationComponent,
+    pathMatch: "full",
+    data: { breadcrumb: 'Verification' }
+  },
+  {
+    path: "monitoring",
+    component: MonitoringComponent,
+    pathMatch: "full",
+    data: { breadcrumb: 'Monitoring' }
+  },
+  {
+    path: "prevention",
+    component: PreventionComponent,
+    pathMatch: "full",
+    data: { breadcrumb: 'Prevention' }
+  },
+  {
+    path: "recognition",
+    component: RecognitionComponent,
+    pathMatch: "full",
+    data: { breadcrumb: 'Recognition' }
+  },
+  {
+    path: "closure",
+    component: ClosureComponent,
+    pathMatch: "full",
+    data: { breadcrumb: 'Closure' }
+  },
+  {
+    path: "documents",
+    component: DocumentsComponent,
+    pathMatch: "full",
+    data: { breadcrumb: 'Documents', description: "Grid-View", }
+  },
+  // Keep old route for backwards compatibility
+  {
+    path: "documnets",
+    redirectTo: "documents",
+    pathMatch: "full"
+  },
+  {
+    path: "notes",
+    component: NotesComponent,
+    pathMatch: "full",
+    data: { breadcrumb: 'Notes' }
+  },
+  {
+    path: "updates",
+    component: UpdatesComponent,
+    data: { breadcrumb: 'Updates', }
+  },
 ]
 
 
 @NgModule({
   declarations: [
-
-
-
-
     BaseInfoComponent,
     SummaryComponent,
     UpdatesComponent,
@@ -94,7 +180,20 @@ const routes: Routes = [
     AddNotesComponent,
     AddDocumentComponent,
     NotesComponent,
-    TimelineComponent
+    TimelineComponent,
+    // New 8D Process components
+    InvestigationComponent,
+    WarrantyClaimComponent,
+    FieldDispatchComponent,
+    TechnicalReviewComponent,
+    ContainmentComponent,
+    SupplierActionComponent,
+    ImplementationComponent,
+    VerificationComponent,
+    MonitoringComponent,
+    PreventionComponent,
+    RecognitionComponent,
+    ClosureComponent,
   ],
   imports: [
     CommonModule,

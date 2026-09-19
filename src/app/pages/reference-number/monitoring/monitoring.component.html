@@ -1,0 +1,78 @@
+<div class="section-wrapper mt-4">
+  <div class="container-fluid px-4">
+    <div class="section-title-bar">
+      <h3><mat-icon class="title-icon">monitoring</mat-icon> Monitoring</h3>
+      <p class="section-subtitle">Observe and hold the gains. Demonstrate the problem remains in control over time.</p>
+    </div>
+
+    <div class="row g-4 mt-2">
+      <div class="col-md-3">
+        <label class="form-label"><b>Monitoring Period:</b></label>
+        <mat-select placeholder="Select Period" class="form-control" [(ngModel)]="monitoringPeriod">
+          <mat-option value="1week">1 Week</mat-option>
+          <mat-option value="2weeks">2 Weeks</mat-option>
+          <mat-option value="1month">1 Month</mat-option>
+          <mat-option value="3months">3 Months</mat-option>
+        </mat-select>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label"><b>Start Date:</b></label>
+        <input type="date" class="form-control" [(ngModel)]="startDate">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label"><b>End Date:</b></label>
+        <input type="date" class="form-control" [(ngModel)]="endDate">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label"><b>Monitored By:</b></label>
+        <input type="text" class="form-control" placeholder="Person responsible" [(ngModel)]="monitoredBy">
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h5 class="table-title">Monitoring Records</h5>
+        <button mat-raised-button color="primary" class="btn-sm"><mat-icon>add</mat-icon> Add Record</button>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead class="tbl-head">
+            <tr>
+              <th class="text-center">Date</th>
+              <th>Metric</th>
+              <th class="text-center">Value</th>
+              <th class="text-center">Target</th>
+              <th class="text-center">Status</th>
+              <th class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let r of records">
+              <td class="text-center">{{ r.date }}</td>
+              <td>{{ r.metric }}</td>
+              <td class="text-center">{{ r.value }}</td>
+              <td class="text-center">{{ r.target }}</td>
+              <td class="text-center">
+                <span class="status-badge badge-success">{{ r.status }}</span>
+              </td>
+              <td class="text-center">
+                <a matTooltip="Edit"><i class="fa fa-edit"></i></a>
+                <a matTooltip="Delete"><i class="fa fa-trash red"></i></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-8">
+        <label class="form-label"><b>Monitoring Observations:</b></label>
+        <textarea rows="3" class="form-control" placeholder="Observations..." [(ngModel)]="remarks"></textarea>
+      </div>
+      <div class="col-md-4 d-flex align-items-end justify-content-end">
+        <button mat-raised-button color="primary"><mat-icon>save</mat-icon> Save & Next</button>
+      </div>
+    </div>
+  </div>
+</div>

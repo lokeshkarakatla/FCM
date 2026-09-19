@@ -1,0 +1,73 @@
+<div class="section-wrapper mt-4">
+  <div class="container-fluid px-4">
+    <div class="section-title-bar">
+      <h3><mat-icon class="title-icon">factory</mat-icon> Supplier Action</h3>
+      <p class="section-subtitle">Track corrective actions with the supplier for faulty components.</p>
+    </div>
+
+    <div class="row g-4 mt-2">
+      <div class="col-md-3">
+        <label class="form-label"><b>Supplier Name:</b></label>
+        <input type="text" class="form-control" placeholder="Enter Supplier" [(ngModel)]="supplierName">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label"><b>Component / Part No:</b></label>
+        <input type="text" class="form-control" placeholder="Part number" [(ngModel)]="componentPartNo">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label"><b>Notification Date:</b></label>
+        <input type="date" class="form-control" [(ngModel)]="notificationDate">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label"><b>Response Deadline:</b></label>
+        <input type="date" class="form-control" [(ngModel)]="responseDeadline">
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h5 class="table-title">Supplier Corrective Actions</h5>
+        <button mat-raised-button color="primary" class="btn-sm"><mat-icon>add</mat-icon> Add Action</button>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead class="tbl-head">
+            <tr>
+              <th>#</th>
+              <th>Action Required</th>
+              <th>Supplier</th>
+              <th class="text-center">Deadline</th>
+              <th class="text-center">Status</th>
+              <th class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let a of actions">
+              <td>{{ a.id }}</td>
+              <td>{{ a.action }}</td>
+              <td>{{ a.supplier }}</td>
+              <td class="text-center">{{ a.deadline }}</td>
+              <td class="text-center">
+                <span class="status-badge" [ngClass]="a.status === 'Completed' ? 'badge-success' : 'badge-open'">{{ a.status }}</span>
+              </td>
+              <td class="text-center">
+                <a matTooltip="Edit"><i class="fa fa-edit"></i></a>
+                <a matTooltip="Delete"><i class="fa fa-trash red"></i></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-8">
+        <label class="form-label"><b>Remarks:</b></label>
+        <textarea rows="3" class="form-control" placeholder="Supplier action remarks..." [(ngModel)]="remarks"></textarea>
+      </div>
+      <div class="col-md-4 d-flex align-items-end justify-content-end">
+        <button mat-raised-button color="primary"><mat-icon>save</mat-icon> Save & Next</button>
+      </div>
+    </div>
+  </div>
+</div>

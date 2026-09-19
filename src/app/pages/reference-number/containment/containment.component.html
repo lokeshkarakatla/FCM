@@ -1,0 +1,78 @@
+<div class="section-wrapper mt-4">
+  <div class="container-fluid px-4">
+    <div class="section-title-bar">
+      <h3><mat-icon class="title-icon">shield</mat-icon> Containment</h3>
+      <p class="section-subtitle">Immediate actions to contain the problem and prevent spread to other products.</p>
+    </div>
+
+    <div class="row g-4 mt-2">
+      <div class="col-md-3">
+        <label class="form-label"><b>Containment Date:</b></label>
+        <input type="date" class="form-control" [(ngModel)]="containmentDate">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label"><b>Containment By:</b></label>
+        <input type="text" class="form-control" placeholder="Person responsible" [(ngModel)]="containmentBy">
+      </div>
+      <div class="col-md-3">
+        <div class="toggle-row mt-4">
+          <label class="form-label"><b>Recall Required?</b></label>
+          <div class="switchToggle">
+            <input type="checkbox" id="recallToggle" [(ngModel)]="recallRequired">
+            <label for="recallToggle"></label>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label"><b>Affected Products/Batches:</b></label>
+        <input type="text" class="form-control" placeholder="Batch numbers, product IDs" [(ngModel)]="affectedProducts">
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h5 class="table-title">Containment Actions</h5>
+        <button mat-raised-button color="primary" class="btn-sm"><mat-icon>add</mat-icon> Add Action</button>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead class="tbl-head">
+            <tr>
+              <th>#</th>
+              <th>Action</th>
+              <th>Responsible</th>
+              <th class="text-center">Target Date</th>
+              <th class="text-center">Status</th>
+              <th class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let a of actions">
+              <td>{{ a.id }}</td>
+              <td>{{ a.action }}</td>
+              <td>{{ a.responsible }}</td>
+              <td class="text-center">{{ a.targetDate }}</td>
+              <td class="text-center">
+                <span class="status-badge" [ngClass]="a.status === 'Completed' ? 'badge-success' : 'badge-warning'">{{ a.status }}</span>
+              </td>
+              <td class="text-center">
+                <a matTooltip="Edit"><i class="fa fa-edit"></i></a>
+                <a matTooltip="Delete"><i class="fa fa-trash red"></i></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-8">
+        <label class="form-label"><b>Remarks:</b></label>
+        <textarea rows="3" class="form-control" placeholder="Containment remarks..." [(ngModel)]="remarks"></textarea>
+      </div>
+      <div class="col-md-4 d-flex align-items-end justify-content-end">
+        <button mat-raised-button color="primary"><mat-icon>save</mat-icon> Save & Next</button>
+      </div>
+    </div>
+  </div>
+</div>

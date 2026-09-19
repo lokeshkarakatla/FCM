@@ -123,7 +123,7 @@ const routes: Routes = [
             {
                 path: 'complaints/reference-number', component: ReferenceNumberComponent,
                 loadChildren: () => import("./pages/reference-number/reference-number.module").then((m) => m.ReferenceModule),
-                data: { breadcrumb: 'Base info' }
+                data: { breadcrumb: 'Reference Number', hideBreadcrumb: true }
             },
 
 

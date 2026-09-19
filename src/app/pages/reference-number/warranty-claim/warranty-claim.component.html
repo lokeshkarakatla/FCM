@@ -1,0 +1,125 @@
+<div class="section-wrapper mt-4">
+  <div class="container-fluid px-4">
+
+    <div class="section-title-bar">
+      <h3><mat-icon class="title-icon">receipt_long</mat-icon> Warranty Claim</h3>
+      <p class="section-subtitle">Manage warranty claims, FOC spare replacements, and services provided.</p>
+    </div>
+
+    <!-- Warranty Details -->
+    <div class="row g-4 mt-2">
+      <div class="col-md-4">
+        <div class="mb-3">
+          <label class="form-label"><b>Warranty Reference:</b></label>
+          <input type="text" class="form-control" placeholder="Enter Warranty Ref" [(ngModel)]="warrantyRef">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mb-3">
+          <label class="form-label"><b>Claim Date:</b></label>
+          <input type="date" class="form-control" [(ngModel)]="claimDate">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mb-3">
+          <label class="form-label"><b>Warranty Expiry:</b></label>
+          <input type="date" class="form-control" [(ngModel)]="warrantyExpiry">
+        </div>
+      </div>
+    </div>
+
+    <!-- FOC Spares Table -->
+    <div class="mt-4">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h5 class="table-title">Free of Cost (FOC) Spare Replacements</h5>
+        <button mat-raised-button color="primary" class="btn-sm">
+          <mat-icon>add</mat-icon> Add Spare
+        </button>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead class="tbl-head">
+            <tr>
+              <th>Part No</th>
+              <th>Part Name</th>
+              <th class="text-center">Qty</th>
+              <th class="text-center">Cost (₹)</th>
+              <th class="text-center">Status</th>
+              <th class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let spare of spares">
+              <td>{{ spare.partNo }}</td>
+              <td>{{ spare.partName }}</td>
+              <td class="text-center">{{ spare.qty }}</td>
+              <td class="text-center">{{ spare.cost }}</td>
+              <td class="text-center">
+                <span class="status-badge" [ngClass]="spare.status === 'Replaced' ? 'badge-success' : 'badge-warning'">
+                  {{ spare.status }}
+                </span>
+              </td>
+              <td class="text-center">
+                <a matTooltip="Edit"><i class="fa fa-edit"></i></a>
+                <a matTooltip="Delete"><i class="fa fa-trash red"></i></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Services Table -->
+    <div class="mt-4">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h5 class="table-title">Services Provided</h5>
+        <button mat-raised-button color="primary" class="btn-sm">
+          <mat-icon>add</mat-icon> Add Service
+        </button>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead class="tbl-head">
+            <tr>
+              <th>Service ID</th>
+              <th>Description</th>
+              <th class="text-center">Date</th>
+              <th>Technician</th>
+              <th class="text-center">Status</th>
+              <th class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let svc of services">
+              <td>{{ svc.serviceId }}</td>
+              <td>{{ svc.description }}</td>
+              <td class="text-center">{{ svc.date }}</td>
+              <td>{{ svc.technician }}</td>
+              <td class="text-center">
+                <span class="status-badge badge-success">{{ svc.status }}</span>
+              </td>
+              <td class="text-center">
+                <a matTooltip="Edit"><i class="fa fa-edit"></i></a>
+                <a matTooltip="Delete"><i class="fa fa-trash red"></i></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Remarks -->
+    <div class="row mt-4">
+      <div class="col-md-8">
+        <label class="form-label"><b>Remarks:</b></label>
+        <textarea rows="3" class="form-control" placeholder="Warranty claim remarks..." [(ngModel)]="remarks"></textarea>
+      </div>
+      <div class="col-md-4 d-flex align-items-end justify-content-end">
+        <button mat-raised-button color="primary">
+          <mat-icon>save</mat-icon> Save & Next
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>

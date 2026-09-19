@@ -1,118 +1,171 @@
-/* Back button pulled up to sit alongside the breadcrumb title */
+/* ===== Complaint Reference Header ===== */
+.complaint-ref-header {
+  padding: 8px 20px;
+  background: #fafafa;
+  border-bottom: 1px solid #e0e0e0;
 
-
-.back-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  min-height: 36px;
-}
-
-/* Main container */
-.custom-nav {
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;      /* 🔥 IMPORTANT (single line) */
-  gap: 5px;
-  padding: 10px 15px;
-  margin: 0;
-  list-style: none;
-  overflow-x: auto;       /* ✅ prevents breaking, adds scroll if needed */
-}
-/* Tabs (equal size buttons) */
-
-
-/* Active tab */
-.active a {
-  background-color: #3f51b5;
-  color: #fff;
-}
-
-/* Spacer to push right items */
-
-
-/* Form items (Priority, Date, ETA) */
-.form-item {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  height: 40px;              /* ✅ same height as buttons */
-}
-
-/* Labels */
-.form-item label {
-  margin: 0;
-  font-size: 14px;
-  
-}
-
-/* Checkbox */
-.custom-checkbox {
-  width: 18px;
-  height: 18px;
-  cursor: pointer;
-  margin-left: 3px;
-}
-
-/* Date inputs */
-.form-input {
-  height: 36px;              /* align with button */
-  padding: 4px 8px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
-
-/* Back button */
-// .back-btn {
-//   height: 40px;              /* ✅ same height */
-//   min-width: 100px;
-//   background-color: #808080;
-//   color: white;
-//   display: flex;
-//   align-items: center;
-//   gap: 5px;
-//   padding: 0 12px;
-// }
-
-/* Fix li spacing */
-.custom-nav li {
-  display: flex;
-  align-items: center;
-}
-
-.btn-col{
-    background-color: #808080 !important;
-}
-
-.wrapped-checkbox {
-  width: 18px;
-  height: 18px;
-  padding: 4px; /* creates inner space effect */
-  box-sizing: content-box;
-}
-
-.active a {
-  background-color: #3f51b5;
-  color: #fff;
-}
-
-
-
-
-.active-tab {
-  background-color: #3f51b5;
-  color: #fff;
-}
-
-
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-.back-btn {
-    margin-left: auto; // extra safety to push right
-    white-space: nowrap; // prevents button text wrapping
+  p {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
   }
 
+  .ref-label {
+    font-weight: 700;
+    margin-right: 6px;
+  }
+
+  .ref-value {
+    margin-right: 16px;
+    color: #555;
+  }
+}
+
+/* ===== Main Container: Content + Right Sidenav ===== */
+.complaint-container {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 130px);
+  overflow: hidden;
+}
+
+/* ===== Content Area (Left) ===== */
+.complaint-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+  min-width: 0;
+}
+
+/* ===== Right Side Navigation ===== */
+.complaint-sidenav {
+  width: 210px;
+  min-width: 210px;
+  background: #ffffff;
+  border-left: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  transition: width 0.25s ease, min-width 0.25s ease;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+  }
+}
+
+/* ===== Sidenav Header (Toggle) ===== */
+.sidenav-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 12px 6px;
+  border-bottom: 1px solid #eeeeee;
+
+  .sidenav-toggle {
+    cursor: pointer;
+    color: #666;
+    font-size: 22px;
+    width: 22px;
+    height: 22px;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #3f51b5;
+    }
+  }
+}
+
+/* ===== Sidenav List ===== */
+.sidenav-list {
+  list-style: none;
+  margin: 0;
+  padding: 6px 0;
+}
+
+/* ===== Sidenav Item ===== */
+.sidenav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 16px;
+  cursor: pointer;
+  color: #555;
+  font-size: 13px;
+  font-weight: 500;
+  border-left: 3px solid transparent;
+  transition: all 0.2s ease;
+  user-select: none;
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover {
+    background: #f5f5f5;
+    color: #333;
+    border-left-color: #ccc;
+  }
+
+  &.active {
+    background: #e8eaf6;
+    color: #3f51b5;
+    border-left-color: #3f51b5;
+    font-weight: 600;
+
+    .sidenav-icon {
+      color: #3f51b5 !important;
+    }
+  }
+
+  /* Collapsed state */
+  &.collapsed {
+    justify-content: center;
+    padding: 10px 8px;
+  }
+}
+
+/* ===== Sidenav Icon ===== */
+.sidenav-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: #757575;
+  transition: color 0.2s;
+}
+
+/* ===== Sidenav Label ===== */
+.sidenav-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ===== Sidenav Badge ===== */
+.sidenav-badge {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+
+  &.Optional {
+    background: #fff3e0;
+    color: #e65100;
+  }
+
+  &.Next {
+    background: #e3f2fd;
+    color: #1565c0;
+  }
+}
+
+/* ===== Collapsed Sidenav Width ===== */
+:host-context(.sidenav-collapsed) .complaint-sidenav,
+.complaint-sidenav.collapsed-nav {
+  width: 52px;
+  min-width: 52px;
 }

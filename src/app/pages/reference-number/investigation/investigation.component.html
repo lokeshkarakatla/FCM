@@ -1,0 +1,97 @@
+<div class="section-wrapper mt-4">
+  <div class="container-fluid px-4">
+
+    <div class="section-title-bar">
+      <h3><mat-icon class="title-icon">search</mat-icon> Investigation</h3>
+      <p class="section-subtitle">Determine the nature of the complaint and decide routing.</p>
+    </div>
+
+    <div class="row g-4 mt-2">
+      <!-- Left Column -->
+      <div class="col-md-6">
+
+        <div class="form-card">
+          <h5 class="card-section-title">Complaint Classification</h5>
+
+          <div class="mb-3">
+            <label class="form-label"><b>Complaint Type:</b></label>
+            <mat-select placeholder="Select Complaint Type" class="form-control" [(ngModel)]="complaintType">
+              <mat-option value="commercial">Commercial</mat-option>
+              <mat-option value="warranty">Warranty</mat-option>
+              <mat-option value="technical">Technical</mat-option>
+            </mat-select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label"><b>Investigated By:</b></label>
+            <input type="text" class="form-control" placeholder="Enter Investigator Name" [(ngModel)]="investigatedBy">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label"><b>Investigation Date:</b></label>
+            <input type="date" class="form-control" [(ngModel)]="investigationDate">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label"><b>Initial Findings:</b></label>
+            <textarea rows="4" class="form-control" placeholder="Describe the initial findings..."
+              [(ngModel)]="initialFindings"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="col-md-6">
+
+        <div class="form-card">
+          <h5 class="card-section-title">Routing Decision</h5>
+
+          <div class="mb-3 toggle-row">
+            <label class="form-label"><b>Goes to Factory Level?</b></label>
+            <div class="switchToggle">
+              <input type="checkbox" id="factoryToggle" [(ngModel)]="goesToFactory">
+              <label for="factoryToggle"></label>
+            </div>
+          </div>
+
+          <div class="mb-3 toggle-row">
+            <label class="form-label"><b>Warranty Claim Required?</b></label>
+            <div class="switchToggle">
+              <input type="checkbox" id="warrantyToggle" [(ngModel)]="warrantyRequired">
+              <label for="warrantyToggle"></label>
+            </div>
+          </div>
+
+          <div class="mb-3 toggle-row">
+            <label class="form-label"><b>Field Dispatch Required?</b></label>
+            <div class="switchToggle">
+              <input type="checkbox" id="dispatchToggle" [(ngModel)]="fieldDispatchRequired">
+              <label for="dispatchToggle"></label>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label"><b>Routing Decision:</b></label>
+            <mat-select placeholder="Select Routing" class="form-control" [(ngModel)]="routingDecision">
+              <mat-option value="closed-at-dealer">Closed at Dealer Level</mat-option>
+              <mat-option value="escalated-to-factory">Escalated to Factory</mat-option>
+              <mat-option value="requires-further-analysis">Requires Further Analysis</mat-option>
+            </mat-select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label"><b>Remarks:</b></label>
+            <textarea rows="3" class="form-control" placeholder="Additional remarks..."
+              [(ngModel)]="remarks"></textarea>
+          </div>
+        </div>
+
+        <div class="text-end mt-3">
+          <button mat-raised-button color="primary">
+            <mat-icon>save</mat-icon> Save & Next
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

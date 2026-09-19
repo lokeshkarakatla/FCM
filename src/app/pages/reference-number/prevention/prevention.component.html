@@ -1,0 +1,56 @@
+<div class="section-wrapper mt-4">
+  <div class="container-fluid px-4">
+    <div class="section-title-bar">
+      <h3><mat-icon class="title-icon">security</mat-icon> Prevention</h3>
+      <p class="section-subtitle">Define preventive measures to ensure this problem does not recur in the future.</p>
+    </div>
+
+    <div class="mt-3">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h5 class="table-title">Preventive Measures</h5>
+        <button mat-raised-button color="primary" class="btn-sm"><mat-icon>add</mat-icon> Add Measure</button>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead class="tbl-head">
+            <tr>
+              <th>#</th>
+              <th>Preventive Measure</th>
+              <th>Type</th>
+              <th>Owner</th>
+              <th class="text-center">Target Date</th>
+              <th class="text-center">Status</th>
+              <th class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let m of measures">
+              <td>{{ m.id }}</td>
+              <td>{{ m.measure }}</td>
+              <td>{{ m.type }}</td>
+              <td>{{ m.owner }}</td>
+              <td class="text-center">{{ m.targetDate }}</td>
+              <td class="text-center">
+                <span class="status-badge badge-default">{{ m.status }}</span>
+              </td>
+              <td class="text-center">
+                <a matTooltip="Edit"><i class="fa fa-edit"></i></a>
+                <a matTooltip="Delete"><i class="fa fa-trash red"></i></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-8">
+        <label class="form-label"><b>Prevention Notes:</b></label>
+        <textarea rows="3" class="form-control" placeholder="Notes on systemic improvements..." [(ngModel)]="remarks"></textarea>
+      </div>
+      <div class="col-md-4 d-flex align-items-end justify-content-end">
+        <button mat-raised-button color="primary"><mat-icon>save</mat-icon> Save & Next</button>
+      </div>
+    </div>
+  </div>
+</div>

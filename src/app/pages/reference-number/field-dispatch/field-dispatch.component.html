@@ -1,0 +1,64 @@
+<div class="section-wrapper mt-4">
+  <div class="container-fluid px-4">
+
+    <div class="section-title-bar">
+      <h3><mat-icon class="title-icon">local_shipping</mat-icon> Field Dispatch</h3>
+      <p class="section-subtitle">Track parts being returned from dealer/field to the factory for analysis.</p>
+    </div>
+
+    <!-- Dispatch Table -->
+    <div class="mt-3">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h5 class="table-title">Dispatched Parts</h5>
+        <button mat-raised-button color="primary" class="btn-sm">
+          <mat-icon>add</mat-icon> Add Dispatch
+        </button>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead class="tbl-head">
+            <tr>
+              <th>Part No</th>
+              <th>Part Name</th>
+              <th class="text-center">Dispatch Date</th>
+              <th>Tracking No</th>
+              <th>From (Dealer)</th>
+              <th>To (Factory)</th>
+              <th class="text-center">Status</th>
+              <th class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let d of dispatches">
+              <td>{{ d.partNo }}</td>
+              <td>{{ d.partName }}</td>
+              <td class="text-center">{{ d.dispatchDate }}</td>
+              <td>{{ d.trackingNo }}</td>
+              <td>{{ d.fromDealer }}</td>
+              <td>{{ d.toFactory }}</td>
+              <td class="text-center">
+                <span class="status-badge" [ngClass]="d.status === 'Received' ? 'badge-success' : 'badge-info'">
+                  {{ d.status }}
+                </span>
+              </td>
+              <td class="text-center">
+                <a matTooltip="Edit"><i class="fa fa-edit"></i></a>
+                <a matTooltip="Delete"><i class="fa fa-trash red"></i></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-md-8">
+        <label class="form-label"><b>Dispatch Remarks:</b></label>
+        <textarea rows="3" class="form-control" placeholder="Additional dispatch notes..." [(ngModel)]="remarks"></textarea>
+      </div>
+      <div class="col-md-4 d-flex align-items-end justify-content-end">
+        <button mat-raised-button color="primary"><mat-icon>save</mat-icon> Save & Next</button>
+      </div>
+    </div>
+  </div>
+</div>

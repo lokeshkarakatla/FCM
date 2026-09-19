@@ -1,0 +1,93 @@
+<div class="section-wrapper mt-4">
+  <div class="container-fluid px-4">
+    <div class="section-title-bar">
+      <h3><mat-icon class="title-icon">task_alt</mat-icon> Closure</h3>
+      <p class="section-subtitle">Close the complaint with final remarks and generate the closure report.</p>
+    </div>
+
+    <div class="row g-4 mt-2">
+      <div class="col-md-6">
+        <div class="form-card">
+          <h5 class="card-section-title">Closure Details</h5>
+          <div class="mb-3">
+            <label class="form-label"><b>Closure Date:</b></label>
+            <input type="date" class="form-control" [(ngModel)]="closureDate">
+          </div>
+          <div class="mb-3">
+            <label class="form-label"><b>Closed By:</b></label>
+            <input type="text" class="form-control" placeholder="Name" [(ngModel)]="closedBy">
+          </div>
+          <div class="mb-3">
+            <label class="form-label"><b>Closure Type:</b></label>
+            <mat-select placeholder="Select Closure Type" class="form-control" [(ngModel)]="closureType">
+              <mat-option value="resolved">Resolved — Issue Fixed</mat-option>
+              <mat-option value="no-fault">No Fault Found</mat-option>
+              <mat-option value="withdrawn">Complaint Withdrawn</mat-option>
+              <mat-option value="duplicate">Duplicate Complaint</mat-option>
+            </mat-select>
+          </div>
+          <div class="mb-3 toggle-row">
+            <label class="form-label"><b>Customer Satisfied?</b></label>
+            <div class="switchToggle">
+              <input type="checkbox" id="satisfiedToggle" [(ngModel)]="customerSatisfied">
+              <label for="satisfiedToggle"></label>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label"><b>Closure Remarks:</b></label>
+            <textarea rows="4" class="form-control" placeholder="Final remarks..."
+              [(ngModel)]="closureRemarks"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-card">
+          <h5 class="card-section-title">Closure Documents</h5>
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead class="tbl-head">
+                <tr>
+                  <th>Document</th>
+                  <th>Uploaded By</th>
+                  <th class="text-center">Date</th>
+                  <th class="text-center">Size</th>
+                  <th class="text-center">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let doc of closureDocs">
+                  <td><mat-icon class="doc-icon">description</mat-icon> {{ doc.name }}</td>
+                  <td>{{ doc.uploadedBy }}</td>
+                  <td class="text-center">{{ doc.date }}</td>
+                  <td class="text-center">{{ doc.size }}</td>
+                  <td class="text-center">
+                    <a matTooltip="Download"><i class="fa fa-download"></i></a>
+                    <a matTooltip="Delete"><i class="fa fa-trash red"></i></a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <button mat-stroked-button color="primary" class="mt-2">
+            <mat-icon>upload_file</mat-icon> Upload Document
+          </button>
+        </div>
+
+        <div class="form-card mt-3">
+          <h5 class="card-section-title">Auto-Generated Report</h5>
+          <p class="report-desc">Generate a comprehensive 8D closure report combining all sections (Investigation through Recognition).</p>
+          <button mat-raised-button color="accent">
+            <mat-icon>picture_as_pdf</mat-icon> Generate 8D Report
+          </button>
+        </div>
+
+        <div class="text-end mt-3">
+          <button mat-raised-button color="warn">
+            <mat-icon>lock</mat-icon> Close Complaint
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

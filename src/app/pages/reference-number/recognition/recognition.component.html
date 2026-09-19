@@ -1,0 +1,63 @@
+<div class="section-wrapper mt-4">
+  <div class="container-fluid px-4">
+    <div class="section-title-bar">
+      <h3><mat-icon class="title-icon">emoji_events</mat-icon> Recognition</h3>
+      <p class="section-subtitle">Acknowledge and appreciate team members who contributed to resolving the complaint.</p>
+    </div>
+
+    <div class="row g-4 mt-2">
+      <div class="col-md-4">
+        <label class="form-label"><b>Team Lead:</b></label>
+        <input type="text" class="form-control" placeholder="Team lead name" [(ngModel)]="teamLead">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label"><b>Recognition Date:</b></label>
+        <input type="date" class="form-control" [(ngModel)]="recognitionDate">
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h5 class="table-title">Team Contributions</h5>
+        <button mat-raised-button color="primary" class="btn-sm"><mat-icon>add</mat-icon> Add Member</button>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead class="tbl-head">
+            <tr>
+              <th>Name</th>
+              <th>Role</th>
+              <th>Contribution</th>
+              <th class="text-center">Award</th>
+              <th class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let m of teamMembers">
+              <td>{{ m.name }}</td>
+              <td>{{ m.role }}</td>
+              <td>{{ m.contribution }}</td>
+              <td class="text-center">
+                <span class="award-badge">🏆 {{ m.award }}</span>
+              </td>
+              <td class="text-center">
+                <a matTooltip="Edit"><i class="fa fa-edit"></i></a>
+                <a matTooltip="Delete"><i class="fa fa-trash red"></i></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-8">
+        <label class="form-label"><b>Recognition Remarks:</b></label>
+        <textarea rows="3" class="form-control" placeholder="Team appreciation note..." [(ngModel)]="remarks"></textarea>
+      </div>
+      <div class="col-md-4 d-flex align-items-end justify-content-end">
+        <button mat-raised-button color="primary"><mat-icon>save</mat-icon> Save & Next</button>
+      </div>
+    </div>
+  </div>
+</div>
