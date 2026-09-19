@@ -1,0 +1,158 @@
+<div fxLayout="row wrap">
+    <div class="w-100">
+        <div class="flex-p">
+            <div class="row wrap">
+                <div class="col-sm-6">
+                    <div class="pills w-100 flex-p">
+                        <ul class="nav nav-pills ">
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="w-100 flex-p">
+                        <button mat-raised-button color="primary" class="pull-right mt-3"
+                            (click)="filterToggle = !filterToggle">
+                            <mat-icon>filter_list</mat-icon> Filter
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div fxLayout="row wrap" *ngIf="filterToggle">
+            <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p w-100 margins">
+                <mat-card class="filter">
+                    <mat-card-content>
+                        <div class="row col-sm-12">
+                            <div class="col-sm-4">
+                                <div class="col-sm-4 newMarginClass">
+                                    Search by Year:
+                                </div>
+                                <div class="col-sm-8">
+                                    <mat-select color="primary" class="form-control" placeholder="--Search by Year --"
+                                        [(ngModel)]="meetings_filter">
+                                        <mat-option *ngFor="let year of years" [value]="year.value">
+                                            {{year.value}}</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="col-sm-4 newMarginClass">
+                                    Search by Month:
+                                </div>
+                                <div class="col-sm-8">
+                                    <mat-select color="primary" class="form-control" placeholder="--Search by Month --"
+                                        [(ngModel)]="meetings_filters">
+                                        <mat-option *ngFor="let month of months" [value]="month.id">
+                                            {{month.value}}</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="col-sm-4 newMarginClass">
+
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="col-lg-1" style="margin-left:55px !important;">
+                                        <button type="button" class="add-hover btn btn-success  pull-right"
+                                            (click)="filterLeads('search');">Search</button>
+                                    </div>
+                                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="margin-left: -18px;">
+                                        <button class="btn filter-hover"
+                                            style="background-color:#37474f; color:#fff !important"
+                                            (click)="clearFilter()">Clear</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+
+
+        <br />
+
+        <div class="row">
+            <div class="NewHeader" style="margin-left:2px ;">
+                <h1 mat-dialog-title>
+                    <span>26 September</span>
+                    <div class="row text-center">
+                        <div class="col-sm-12" style="margin-top:-39px ; margin-left: -46%;">
+                            <div class="btn-group">
+                                <div style="color:white ;" class="btn" mwlCalendarPreviousView [view]="view"
+                                    [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">
+                                    <mat-icon>keyboard_arrow_left</mat-icon>
+                                </div>
+
+                                <div style="color:white ;" class="btn" mwlCalendarNextView [view]="view"
+                                    [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">
+                                    <mat-icon>keyboard_arrow_right</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-4">
+
+                        </div>
+                    </div>
+                </h1>
+
+            </div>
+            <div class="col-sm-12">
+                <div [ngSwitch]="view">
+                    <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events"
+                        [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)"
+                        (eventClicked)="handleEvent('Clicked', $event.event)"
+                        (eventTimesChanged)="eventTimesChanged($event)">
+                    </mwl-calendar-month-view>
+                    <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events"
+                        [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)"
+                        (eventTimesChanged)="eventTimesChanged($event)">
+                    </mwl-calendar-week-view>
+                    <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="events"
+                        [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)"
+                        (eventTimesChanged)="eventTimesChanged($event)">
+                    </mwl-calendar-day-view>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Everything you see below is just for the demo, you don't need to include it in your app -->
+
+        <br /><br /><br />
+
+
+
+        <ng-template #modalContent let-close="close">
+            <div class="modal-header">
+                <h5 class="modal-title">Event action occurred</h5>
+                <button type="button" class="close" (click)="close()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    Action:
+                    <pre>{{ modalData?.action }}</pre>
+                </div>
+                <div>
+                    Event:
+                    <pre>{{ modalData?.event | json }}</pre>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" (click)="close()">
+                    OK
+                </button>
+            </div>
+        </ng-template>
+    </div>
+
+
+</div>

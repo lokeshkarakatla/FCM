@@ -1,0 +1,97 @@
+<div class="action-header">
+<button mat-raised-button class="back-btn" [routerLink]="['../']">
+    <mat-icon style="vertical-align: middle;">arrow_back</mat-icon> Back
+</button>
+</div>
+
+<div class="col-lg-12" style="font-size: large; font-weight: 300; display: flex; justify-content: flex-start; align-items: center; margin-left: 10px;">Feasibility</div>
+<div class="dashboard-container">
+<div class="sidebar" style="margin-top: 50px;">
+  <div class="accordion-item" *ngFor="let menu of sidebarMenus; let i = index">
+    <button class="accordion-header" [class.active-menu]="menu.isOpen" (click)="selectMenu(i)">
+      <span class="chevron" >&#8250;</span>
+      {{ menu.name }} ({{ menu.count }})
+    </button>
+    
+    <div class="accordion-content" [class.open]="menu.isOpen">
+      <ul>
+        <li *ngFor="let item of menu.subItems">{{ item }}</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+  <div class="main-content">
+    
+   <div class="button-container" style="display: flex; justify-content: flex-end; margin-bottom: -5px; align-items: center; width: 100%;">
+    <button  mat-raised-button color="primary" class="top-btn" style="display: flex; justify-content: flex-end; margin-bottom: 15px;  margin-right: 10px;"  (click)="addModule()">
+    <mat-icon style="vertical-align: middle;">add</mat-icon>Add Module
+    </button>
+
+    <button  mat-raised-button color="primary" class="top-btn" style="display: flex; justify-content: flex-end; margin-bottom: 15px; "  (click)="addTask()">
+    <mat-icon style="vertical-align: middle;">add</mat-icon>Add Task
+    </button>
+   </div>
+
+    <div class="table-responsive" #tableContainer>
+      <table>
+        <thead>
+          <tr>
+            <th>Actions</th>
+            <th>Task</th>
+            <th>Task Code</th>
+            <th>Job Code</th>
+            <th>Effort (Hours)</th>
+            <th>Duration (Days)</th>
+            <th>Description</th>
+            <th>Procedure</th>
+             
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of paginatedData">
+            
+            <td class="text-center">
+              <div style="display: flex; justify-content: center; gap: 12px; align-items: center;">
+                <mat-icon style="cursor: pointer; color: #3b82f6; font-size: 20px; width: 20px; height: 20px;" title="Edit">edit</mat-icon>
+                <mat-icon style="cursor: pointer; color: #ef4444; font-size: 20px; width: 20px; height: 20px;" title="Delete">delete</mat-icon>
+              </div>
+            </td>
+            <td>{{ row.task }}</td>
+            <td>{{ row.taskCode }}</td>
+            <td>{{ row.jobCode }}</td>
+            <td>{{ row.effort }}</td>
+            <td>{{ row.duration }}</td>
+            <td>{{ row.description }}</td>
+           <td class="text-center">
+  <mat-icon style="color: #1b85ca; cursor: pointer;" matTooltip="View Procedure" (click)="openfilepop()">
+    visibility
+  </mat-icon>
+</td>
+           
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-footer">
+     <mat-paginator 
+      [length]="totalItems"
+      [pageSize]="pageSize"
+      [pageIndex]="pageIndex"
+      [pageSizeOptions]="[5, 10, 20]"
+      (page)="onPageChange($event)"
+      showFirstLastButtons>
+     </mat-paginator>
+    </div>
+  </div>
+</div>
+
+<div style="display: flex; justify-content: flex-end; margin-bottom: 15px; margin-right: 25px;" id="scoll-buttons">
+  <button class="mine" mat-fab style="margin-right: 10px !important" (click)="scrollLeft()">
+    <mat-icon style="color: #37474f">fast_rewind</mat-icon>
+  </button>
+  <button class="mine" mat-fab (click)="scrollRight()">
+    <mat-icon style="color: #37474f">fast_forward</mat-icon>
+  </button>
+</div>

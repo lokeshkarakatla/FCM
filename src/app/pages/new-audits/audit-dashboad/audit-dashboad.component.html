@@ -1,0 +1,267 @@
+<div class="col-lg" style="margin: bottom 10px;">
+    <div class="col-lg-12 col-sm-12 margin mt-5">
+        <!-- <mat-card> -->
+        <div class="col-lg-12 col-sm-12 ">
+            <div class="flex d-flex col">
+                <div class="flex d-flex row">
+                    <span class=" table-bordered col-sm-2 text-center"
+                        style="background-color:black;color: rgb(247, 249, 248);margin-left: 1%;height:40px;width:127px;padding:1% ;"
+                        (click)="piechartpop(null)">
+                        <h3 style="margin-top: 4px;">Hector</h3>
+                    </span>
+                    <div class="flex d-flex col " style="    margin-bottom: 9px;    margin-left: -5px;">
+                        <div style="margin-right: 3px;">
+                            <button style="background-color: lightgray;">
+                                <mat-icon style="width:59px;">keyboard_arrow_left</mat-icon>
+                            </button>
+                        </div>
+                        <div>
+                            <button style="background-color: lightgray;">
+                                <mat-icon style="width:58px;">keyboard_arrow_right</mat-icon>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="s d table-bordered hover col-sm-2" style="background-color: #50C878;    margin-left: -45px;"
+                    (click)="piechartpop(null)">
+                    <div class="s1">
+                        <h3>PQA : 90/90(A)</h3>
+                        <h3>AVG : 85/90</h3>
+                        <h4 style="text-align:end;" matTooltip="Subjective Audit">(SUB)</h4>
+                    </div>
+                </div>
+                <div class="s d table-bordered hover1 col-sm-2" style="background-color:#FF3131 ;"
+                    (click)="piechartpop(null)">
+                    <div class="s1">
+                        <h3>Body : 95/90(A)</h3>
+                        <h3>AVG : 45/60</h3>
+                        <h4 style="text-align:end;" matTooltip="Subjective Audit">(SUB)</h4>
+                    </div>
+                </div>
+                <div class="s d table-bordered hover2 col-sm-2" style="background-color:#FF3131 ;"
+                    (click)="piechartpop(null)">
+                    <div class="s1">
+                        <h3>Paint : 98/95(A,B)</h3>
+                        <h3>AVG : 80/100</h3>
+                        <h4 style="text-align:end;" matTooltip="Subjective Audit">(SUB)</h4>
+                    </div>
+                </div>
+                <div class="s d table-bordered hover3 col-sm-2" style="background-color:#FF3131 ;"
+                    (click)="piechartpop(null)">
+                    <div class="s1">
+                        <h3>C-Rating : 90/95(A)</h3>
+                        <h3>AVG : 35/50</h3>
+                        <h4 style="text-align:end;" matTooltip="Objective Audit">(OBJ)</h4>
+                    </div>
+                </div>
+                <div class="s d table-bordered hover4 col-sm-2" style="background-color: #50C878;"
+                    (click)="piechartpop(null)">
+                    <div class="s1">
+                        <h3>D-Rating : 95/93(B)</h3>
+                        <h3>AVG : 85/100</h3>
+                        <h4 style="text-align:end;" matTooltip="Objective Audit">(OBJ)</h4>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <!-- </mat-card> -->
+    </div>
+    <div class="col-lg-12 col-sm-12 margin mt-3">
+        <!-- <mat-card> -->
+        <div class="col-lg-12 col-sm-12">
+            <div class="flex d-flex col">
+                <div class="flex d-flex row">
+                    <span class=" table-bordered col-sm-2 text-center"
+                        style="background-color:black;color: rgb(247, 249, 248);margin-left: 1%;height:40px;width:127px;padding:1% ;"
+                        (click)="piechartpop(null)">
+                        <h3 style="margin-top: 4px;">ZEVS</h3>
+                    </span>
+                    <div class="flex d-flex col " style="    margin-bottom: 9px;    margin-left: -5px;">
+                        <div style="margin-right: 3px;">
+                            <button style="background-color: lightgray;">
+                                <mat-icon style="width:59px;">keyboard_arrow_left</mat-icon>
+                            </button>
+                        </div>
+                        <div>
+                            <button style="background-color: lightgray;">
+                                <mat-icon style="width:58px;">keyboard_arrow_right</mat-icon>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="s d table-bordered hover1" style="background-color:#FF3131 ; margin-left: -45px;"
+                    (click)="piechartpop(null)">
+                    <div class="s1">
+                        <h3>PQA : 95/90(A)</h3>
+                        <h3>AVG : 85/90</h3>
+                        <h4 style="text-align:end;">(SUB)</h4>
+                    </div>
+                </div>
+                <div class="s d table-bordered hover2" style="background-color:#FF3131 ;" (click)="piechartpop(null)">
+                    <div class="s1">
+                        <h3>Body : 98/95(A,B)</h3>
+                        <h3>AVG : 45/60</h3>
+                        <h4 style="text-align:end;">(SUB)</h4>
+                    </div>
+                </div>
+                <div class="s d table-bordered hover" style="background-color: #50C878;" (click)="piechartpop(null)">
+                    <div class="s1">
+                        <h3>Paint : 95/95(A)</h3>
+                        <h3>AVG : 80/100</h3>
+                        <h4 style="text-align:end;">(SUB)</h4>
+                    </div>
+                </div>
+                <div class="s d table-bordered hover4" style="background-color:#FF3131 ;" (click)="piechartpop(null)">
+                    <div class="s1">
+                        <h3>C-Rating : 95/98(A)</h3>
+                        <h3>AVG : 35/50</h3>
+                        <h4 style="text-align:end;">(OBJ)</h4>
+                    </div>
+                </div>
+                <div class="s d table-bordered hover3" style="background-color: #50C878;;" (click)="piechartpop(null)">
+                    <div class="s1">
+                        <h3>D-Rating : 92/85(B)</h3>
+                        <h3>AVG : 85/100</h3>
+                        <h4 style="text-align:end;">(OBJ)</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-lg-12 col-sm-12 margin mt-3">
+        <!-- <mat-card> -->
+        <div class="col-lg-12 col-sm-12">
+            <div class="flex d-flex col">
+                <div class="flex d-flex row">
+                    <span class=" table-bordered col-sm-2 text-center"
+                        style="background-color:black;color: rgb(247, 249, 248);margin-left: 1%;height:40px;width:127px;padding:1% ;"
+                        (click)="piechartpop(null)">
+                        <h3 style="margin-top: 4px;">Gloster</h3>
+                    </span>
+                    <div class="flex d-flex col " style="    margin-bottom: 9px;    margin-left: -5px;">
+                        <div style="margin-right: 3px;">
+                            <button style="background-color: lightgray;">
+                                <mat-icon style="width:59px;">keyboard_arrow_left</mat-icon>
+                            </button>
+                        </div>
+                        <div>
+                            <button style="background-color: lightgray;">
+                                <mat-icon style="width:58px;">keyboard_arrow_right</mat-icon>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="s d table-bordered hover4" style="background-color: #50C878; margin-left: -45px;"
+                    (click)="piechartpop(null)">
+                    <div class="s1">
+                        <h3>PQA : 80/90(A)</h3>
+                        <h3>AVG : 85/90</h3>
+                        <h4 style="text-align:end;">(SUB)</h4>
+                    </div>
+                </div>
+                <div class="s d table-bordered hover" style="background-color: #50C878;" (click)="piechartpop(null)">
+                    <div class="s1">
+                        <h3>Body : 90/90(A)</h3>
+                        <h3>AVG : 45/60</h3>
+                        <h4 style="text-align:end;">(SUB)</h4>
+                    </div>
+                </div>
+                <div class="s d table-bordered hover3" style="background-color:#FF3131 ;" (click)="piechartpop(null)">
+                    <div class="s1">
+                        <h3>Paint : 80/70(A,B)</h3>
+                        <h3>AVG : 80/100</h3>
+                        <h4 style="text-align:end;">(SUB)</h4>
+                    </div>
+                </div>
+                <div class="s d table-bordered hover1" style="background-color: #50C878;" (click)="piechartpop(null)">
+                    <div class="s1">
+                        <h3>C-Rating : 88/85(B)</h3>
+                        <h3>AVG : 35/50</h3>
+                        <h4 style="text-align:end;">(OBJ)</h4>
+                    </div>
+                </div>
+                <div class="s d table-bordered hover2" style="background-color:#FF3131 ;" (click)="piechartpop(null)">
+                    <div class="s1">
+                        <h3>D-Rating : 90/95(A)</h3>
+                        <h3>AVG : 35/50</h3>
+                        <h4 style="text-align:end;">(OBJ)</h4>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="col-lg-12 col-sm-12 margin mt-3 ">
+        <!-- <mat-card> -->
+        <div class="col-lg-12 col-sm-12 ">
+            <div class="flex d-flex col">
+                <div class="flex d-flex row">
+                    <span class=" table-bordered col-sm-2 text-center"
+                        style="background-color:black;color: rgb(247, 249, 248);margin-left: 1%;height:40px;width:127px;padding:1% ;"
+                        (click)="piechartpop(null)">
+                        <h3 style="margin-top: 4px;">Astor</h3>
+                    </span>
+                    <div class="flex d-flex col " style="    margin-bottom: 9px;    margin-left: -5px;">
+                        <div style="margin-right: 3px;">
+                            <button style="background-color: lightgray;">
+                                <mat-icon style="width:59px;">keyboard_arrow_left</mat-icon>
+                            </button>
+                        </div>
+                        <div>
+                            <button style="background-color: lightgray;">
+                                <mat-icon style="width:58px;">keyboard_arrow_right</mat-icon>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="s d table-bordered hover2" style="background-color:#FF3131 ; margin-left: -45px;"
+                    (click)="piechartpop(null)">
+                    <div class="s1">
+                        <h3>PQA : 98/90(A)</h3>
+                        <h3>AVG : 85/90</h3>
+                        <h4 style="text-align:end;">(SUB)</h4>
+                    </div>
+                </div>
+                <div class="s d table-bordered hover1" style="background-color: #50C878;" (click)="piechartpop(null)">
+                    <div class="s1">
+                        <h3>Body : 50/60(A)</h3>
+                        <h3>AVG : 45/60</h3>
+                        <h4 style="text-align:end;">(SUB)</h4>
+                    </div>
+                </div>
+                <div class="s d table-bordered hover" style="background-color: #50C878;" (click)="piechartpop(null)">
+                    <div class="s1">
+                        <h3>Paint : 90/90(A,B)</h3>
+                        <h3>AVG : 80/100</h3>
+                        <h4 style="text-align:end;">(SUB)</h4>
+                    </div>
+                </div>
+                <div class="s d table-bordered hover3" style="background-color:#FF3131 ;" (click)="piechartpop(null)">
+                    <div class="s1">
+                        <h3>C-Rating : 80/85(B)</h3>
+                        <h3>AVG : 35/50</h3>
+                        <h4 style="text-align:end;">(OBJ)</h4>
+                    </div>
+                </div>
+                <div class="s d table-bordered hover4" style="background-color:#FF3131 ;" (click)="piechartpop(null)">
+                    <div class="s1">
+                        <h3>D-Rating : 90/98(A)</h3>
+                        <h3>AVG : 35/50</h3>
+                        <h4 style="text-align:end;">(OBJ)</h4>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

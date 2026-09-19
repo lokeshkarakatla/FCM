@@ -1,0 +1,36 @@
+<button mat-raised-button class="pull-right btn-default " (click)="goback()" style="margin-top:20px ; margin-right: 10px; margin-bottom:15px ;">
+    <mat-icon>arrow_back_ios</mat-icon> Back
+</button>
+
+
+    <div class="col-sm-12 margin-top-10" style="padding-left: 20px; padding-right: 10px;">
+      <div class="table-responsive">
+          <table  class="table table-bordered table-hover">
+              <thead class="tbl-head">
+                  <tr class="tr-grid-header">
+                    <th class="text-left" style="width: 150px !important">Item Name</th>
+                    <th class="text-left" style="width: 150px !important" >Item Code</th>
+                    <th class="text-left" style="width: 150px;">Brand</th>
+                    <th class="text-center"  style="width: 150px !important" >Order Quantity</th>
+                    <th class="text-center" style="width: 150px !important">Quantity Received</th>
+                    <th class="text-center" style="width: 150px !important">Qty In Transit</th>
+                    <th class="text-center" style="width: 150px !important">Last Received Date</th>
+             
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let item of items">
+    
+                    <td class="text-left">{{item.name}}</td>
+                    <td class="text-left">{{item.no}}</td>
+                    <td class="text-left">{{item.make}}</td>
+                    <td class="text-center">{{item.orderqnty}}</td>
+                    <td class="text-center">{{item.qntyrecv}}</td>
+                    <td class="text-center">{{item.qntytransit}}</td>
+                    <td class="text-center">{{item.lastdate}}</td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+    </div>
+    

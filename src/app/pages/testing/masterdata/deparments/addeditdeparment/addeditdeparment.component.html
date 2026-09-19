@@ -1,0 +1,40 @@
+<div class="NewHeader">
+    <h1 mat-dialog-title style="color:white;">
+        {{ data ? 'Update' : 'Add'}} Department
+    </h1>
+</div>
+
+<div mat-dialog-content>
+    <div class="col-sm-12" style="margin-bottom: 10px;">
+        <form [formGroup]="myGroup">
+            <div class="row" style="margin-bottom: 12px;">
+                <div class="col-sm-3">
+                    <label class="add-member-label  mt5 required imli" style="margin-top:5px; ">Department
+                        :</label>
+                </div>
+                <div class="col-sm-9">
+                    <input class="form-control name" formControlName="DepartmentName" maxlength="50"
+                        placeholder="Enter Department Name " type="text" value="">
+                    <div *ngIf="isSubmitting && f.DepartmentName.errors" class="error-text">
+                        <div *ngIf="f.DepartmentName.errors.required">{{'Department Required'}}</div>
+                    </div>
+                    <div *ngIf="f.DepartmentName.errors" class="error-text">
+                        <div *ngIf="f.DepartmentName.errors.pattern">{{'Invalid'}}</div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <div class="pull-right">
+                    <button mat-raised-button type="submit" class="save" color="primary" style="margin-right: 5px;"
+                        (click)="upsertDepartment()">
+                        <mat-icon>save</mat-icon> Save
+                    </button>
+                    <button mat-raised-button class="cancel" (click)="close()"
+                        style=" background-color:  #e4e4e6!important; color: rgb(6, 6, 6);">
+                        <mat-icon>cancel</mat-icon>Cancel
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

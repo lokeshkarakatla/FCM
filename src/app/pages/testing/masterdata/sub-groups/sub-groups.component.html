@@ -1,0 +1,166 @@
+<!-- Add Filter Tabs -->
+<div style="margin-bottom: 50px;"></div>
+<div class="container-fluid w-50 mt-3 mb-3">
+  <div class="w-50">
+    <div class="flex-p">
+      <div class="row">
+        <div class="col-sm-12 no-padding">
+          <div class="row">
+            <div class="col-xs-12"  style="margin-left: 134%; margin-bottom: -15px;">
+              <div>
+                <button mat-raised-button
+                        color="primary"matTooltip="Add Sub Group"
+                        class="pull-right btn-primary mt-3"
+                        style="margin-left:10px;"
+                        (click)="openEditDialog(null)">
+                  <mat-icon>add</mat-icon> Add Sub Group
+                </button>
+ 
+                <button mat-raised-button
+                        style="background-color:black;color:white"
+                        class="pull-right filters-hover mt-3"  matTooltip="Filter"
+                        (click)="filterToggle = !filterToggle">
+                  <mat-icon>filter_list</mat-icon> Filter
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- Filter UI -->
+<div fxLayout="row wrap" *ngIf="filterToggle" style=" margin-bottom: 0px;">
+    <div fxFlex="50" class="flex-p w-50" style="width: 81% !important;margin-left: 25px;">
+        <form [formGroup]="filterForm">
+            <mat-card class="filter">
+                <mat-card-content>
+                    <div class="row col-sm-12">
+                        <div class="col-sm-4 row me-2">
+                            <div class="col-sm-3 newMarginClass " style="margin-top: 4px;">
+                                <b>Keyword:</b>
+                            </div>
+                            <div class="col-sm-9">
+                                <input type="text" formControlName="Keyword" class="form-control"
+                                    placeholder="Search Sub Group">
+                            </div>
+                        </div>
+                       
+                        <div class="col-sm-4 row me-2">
+                            <div class="col-sm-3 newMarginClass">
+                                <b>Status:</b>
+                            </div>
+                            <div class="col-sm-8">
+                                <mat-select placeholder="Select Status" class="form-control" formControlName="Status">
+                                    <mat-option [value]=true>
+                                        Active
+                                    </mat-option>
+                                    <mat-option [value]=false>
+                                        InActive
+                                    </mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+ 
+                        <div class="col-sm-4 row me-2">
+                            <div class="col-sm-3 newMarginClass">
+                                <b>Responsible Section:</b>
+                            </div>
+                            <div class="col-sm-8">
+                                <mat-select style="margin-left: 14px;" placeholder="Select Responsible Section
+" class="form-control" formControlName="Status">
+                                    <mat-option [value]=true>
+                                        Engine Design
+ 
+                                    </mat-option>
+                                    <mat-option [value]=false>
+                                        Testing
+                                    </mat-option>
+                                     <mat-option [value]=false>
+                                        Quality
+                                    </mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 pull-right mt-5"  style="margin-left: 64%;">
+                            <a (click)="filterToggle = !filterToggle" class="pull-right"
+                                style="font-size: 25px; cursor: pointer; margin-left: 5px">
+                                <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                            </a>
+                            <button mat-raised-button color="primary" class="pull-right" (click)="getSubGroups()">
+                                Search
+                            </button>
+                            <button mat-raised-button class="pull-right btn-default margin-right-10"
+                                (click)="filterForm.reset();formInit();getSubGroups();">
+                                Clear
+                            </button>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </div>
+</div>
+ 
+<!-- Table -->
+<div class="col-sm-10" style="margin-left: 10px;">
+    <div>
+        <div class="flex-p  ">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="grid-table-container" class="table-responsive">
+                        <table matSort id="example2" class="table table-bordered table-hover"
+                            >
+                            <thead class="tbl-head">
+                                <tr>
+                                    <th class="text-center">Actions</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Sub Group</th>
+                                    <th class="text-center">Responsible Section</th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of tableList">
+                                    <td class="text-center editDel">
+                                        <a style="cursor: pointer;margin-right:10px;" matTooltip="Edit"
+                                            [ngClass]="{'disable-custom' : !canUpdate}" (click)="openEditDialog(item)">
+                                            <i class="fa fa-edit" style="color: cornflowerblue"></i>
+                                        </a>
+                                        <a [ngClass]="{'disable-custom' : !canDelete}"><i class="fa fa-trash red"
+                                                matTooltip="Delete" style="cursor: pointer;"
+                                                (click)="deleteConfirmation(item)"></i></a>
+                                    </td>
+                                    <td style="text-align: center !important;" class="text-center">
+                                        <a [ngStyle]="{'color' : item.IsActive ? 'blue' : 'red'}"
+                                            [ngClass]="{'disable-custom' : !canUpdate}">
+                                            <span *ngIf="!item.IsActive" (click)="Confirmation(item)"
+                                                style="color:red">Inactive</span>
+                                            <span *ngIf=" item.IsActive" (click)="Confirmation(item)"
+                                                style="color:blue;">Active</span>
+                                        </a>
+                                    </td>
+                                    <td class="text-center">{{item.SubGroupName}}</td>
+                                    <td class="text-center">{{item.respSectionName}}</td>
+                                   
+                                   
+                                </tr>
+                            </tbody>
+                            <tr *ngIf="tableList == null || tableList.length == 0">
+                                <td colspan="12" class="text-center">No records found</td>
+                            </tr>
+                        </table>
+                        <mat-paginator class="col-sm-12" [length]="totalSize" [pageIndex]="currentPage"
+                            [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20, 50, 100]" (page)="fnHandlePage($event)"
+                            showFirstLastButtons>
+                        </mat-paginator>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 

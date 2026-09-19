@@ -1,0 +1,72 @@
+<div class="NewHeader" style="background-color: #f5f5f5; padding: 10px 20px; border-bottom: 1px solid #ddd; margin-bottom: 20px;">
+    <h1 *ngIf="!data" style="margin: 0; font-weight: 400;">Add Batch Record</h1>
+    <h3 *ngIf="data" style="margin: 0; font-weight: 500;">Edit Batch Record</h3>
+</div>
+
+<div style="padding: 0 25px 15px 25px;">
+    <form>
+        <div class="row" style="margin-bottom: 15px; align-items: center;">
+            <div class="col-sm-4">
+                <label class="add-member-label required" style="font-weight: 500;">Select Part Family:</label>
+            </div>
+            <div class="col-sm-8">
+                <mat-select placeholder="Select Part Family" class="form-control" style="height: 48px; padding-top: 10px;">
+                    <mat-option value="Family A">Family A</mat-option>
+                    <mat-option value="Family B">Family B</mat-option>
+                </mat-select>
+            </div>
+        </div>
+
+        <div class="row" style="margin-bottom: 15px; align-items: center;">
+            <div class="col-sm-4">
+                <label class="add-member-label required" style="font-weight: 500;">Select Part Number:</label>
+            </div>
+            <div class="col-sm-8">
+                <mat-select placeholder="Select Part Number" class="form-control" style="height: 48px; padding-top: 10px;">
+                    <mat-option value="PN001">PN-001</mat-option>
+                    <mat-option value="PN002">PN-002</mat-option>
+                </mat-select>
+            </div>
+        </div>
+
+        <div class="row" style="margin-bottom: 15px; align-items: center;">
+            <div class="col-sm-4">
+                <label class="add-member-label required" style="font-weight: 500;">Batch Number:</label>
+            </div>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" style="height: 48px;" placeholder="Enter Batch Number">
+            </div>
+        </div>
+
+        <div class="row" style="margin-bottom: 15px; align-items: center;">
+            <div class="col-sm-4">
+                <label class="add-member-label required" style="font-weight: 500;">Batch Date:</label>
+            </div>
+            <div class="col-sm-8">
+                <mat-form-field appearance="outline" class="w-100" style="margin-bottom: -1.25em;">
+                    <input matInput [matDatepicker]="picker" placeholder="Choose batch date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row" style="margin-bottom: 15px;">
+            <div class="col-sm-4">
+                <label class="add-member-label mt-1" style="font-weight: 500;">Remarks:</label>
+            </div>
+            <div class="col-sm-8">
+                <textarea rows="3" class="form-control" placeholder="Enter Remarks"></textarea>
+            </div>
+        </div>
+    </form>
+
+    <mat-dialog-actions align="end" style="margin-top: 20px;">
+        <button mat-raised-button class="ms-2 add-dark-hover btn-default" (click)="close()" style="background-color: lightgray; color: red; margin-right: 10px;">
+            <mat-icon>cancel</mat-icon> Cancel
+        </button>
+        <button mat-raised-button type="submit" class="save" color="primary" (click)="close()">
+            <mat-icon>save</mat-icon> Save
+        </button>
+    </mat-dialog-actions>
+</div>

@@ -1,0 +1,249 @@
+<div class="col-lg-12" style="overflow: hidden; margin-top: 40px;margin-left: -10px;">
+  <div class="col-sm-12" style="margin-top: 10px">
+    
+    <div class="button-container" style="display: flex; justify-content: flex-end; margin-bottom: 15px; align-items: center; width: 100%;">
+      
+      <button mat-raised-button class="top-btn" style="display: flex; align-items: center; background-color: black; color: white; margin-right: 10px;" (click)="toggleFilter()">
+        <mat-icon style="vertical-align: middle; margin-right: 4px;">filter_list</mat-icon>Filter
+      </button>
+
+      <button mat-raised-button color="primary" class="top-btn" style="display: flex; align-items: center; background-color: black; color: white; margin-right: 10px;" (click)="toggleView()">
+        <mat-icon style="vertical-align: middle;">{{ isKanbanView ? 'grid_on' : 'view_kanban' }}</mat-icon> 
+        {{ isKanbanView ? 'Grid View' : 'Kanban View' }}
+      </button>
+
+      <button mat-raised-button class="top-btn" style="display: flex; align-items: center; background-color: black; color: white; margin-right: 10px;" (click)="toggleCalendarView()">
+        <mat-icon style="vertical-align: middle; margin-right: 4px;" [matTooltip]="isCalendarView ? 'Grid View' : 'Calendar View'">
+          {{ isCalendarView ? 'grid_on' : 'calendar_today' }}
+        </mat-icon>
+        {{ isCalendarView ? 'Grid View' : 'Calendar' }}
+      </button>
+
+      <button *ngIf="isCalendarView" mat-raised-button class="top-btn"
+        style="display: flex; align-items: center; background-color: black; color: white;"
+        (click)="toggleWeekend()">
+        <mat-icon style="vertical-align: middle; margin-right: 4px;">
+          {{ showWeekend ? 'view_week' : 'weekend' }}
+        </mat-icon>
+        {{ showWeekend ? 'Show Weekdays' : 'Show Weekend' }}
+      </button>
+      
+    </div>
+
+    <div *ngIf="showFilter" style="width:100%; margin-left: 6px;">
+      <div fxFlex="100" class="flex-p w-100" style="margin-top: 10px;">
+        <form>
+          <mat-card class="filter">
+            <mat-card-content>
+              <div class="row col-lg-12 col-sm-12">
+                <div class="col-sm-4 row me-2 mt-3">
+                  <div class="col-sm-4 newMarginClass"><b>Select Project:</b></div>
+                  <div class="col-sm-8">
+                    <mat-select class="form-control" placeholder="Select Project">
+                      <mat-option value="Pending">Project 1</mat-option>
+                      <mat-option value="Allocation">Project 2</mat-option>
+                      <mat-option value="Progress">Project 3</mat-option>
+                    </mat-select>
+                  </div>
+                </div>
+
+                <div class="col-sm-4 row me-2 mt-3">
+                  <div class="col-sm-4 newMarginClass"><b>Select Stage:</b></div>
+                  <div class="col-sm-8">
+                    <mat-select class="form-control" placeholder="Select Stage">
+                      <mat-option value="High">Stage 1</mat-option>
+                      <mat-option value="Medium">Stage 2</mat-option>
+                      <mat-option value="Low">Stage 3</mat-option>
+                    </mat-select>
+                  </div>
+                </div>
+
+                <div class="col-sm-4 row me-2 mt-3">
+                  <div class="col-sm-4 newMarginClass"><b>Select Sprint:</b></div>
+                  <div class="col-sm-8">
+                    <mat-select class="form-control" placeholder="Select Sprint">
+                      <mat-option value="High">Sprint 1</mat-option>
+                      <mat-option value="Medium">Sprint 2</mat-option>
+                      <mat-option value="Low">Sprint 3</mat-option>
+                    </mat-select>
+                  </div>
+                </div>
+
+                <div class="col-sm-12 pull-right mt-3" style="margin-left: -15px;">
+                  <a (click)="toggleFilter()" class="pull-right" style="font-size: 25px; cursor: pointer; margin-left: 5px; color: #333;" matTooltip="Close Filter">
+                    <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                  </a>
+                  <button mat-raised-button class="pull-right btn-default margin-right-10">
+                    <mat-icon>settings_backup_restore</mat-icon> Clear
+                  </button>
+                  <button mat-raised-button style="margin-right: 10px;" color="primary" class="pull-right">
+                    <mat-icon>search</mat-icon> Search
+                  </button>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </form>
+      </div>
+    </div>
+
+
+    <div *ngIf="isKanbanView && !isCalendarView" class="kanban-board" cdkDropListGroup>
+      <div *ngFor="let list of lists" class="kanban-list">
+        <div style="background-color: rgb(64, 64, 64); color: white" class="kanban-list-header">
+          <div style="display: flex; align-items: center; gap: 10px">
+            <span [style.background-color]="getColor(list)" class="status-dot"></span>
+            <h3 style="margin: 0">{{ list }}</h3>
+          </div>
+          <span style="background-color: white; color: black; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 4px;">
+              {{ cards[list]?.length || 0 }}
+          </span>
+        </div>
+
+        <div cdkDropList [id]="list" [cdkDropListData]="cards[list]" (cdkDropListDropped)="drop($event, list)" class="drop-container">
+          <div *ngFor="let card of cards[list]; trackBy: trackByCard" cdkDrag class="kanban-card" [ngClass]="getCardClass(list)">
+            <div class="fs-4 fw-semibold d-flex align-items-center justify-content-between">
+              <span>{{ card.subject }}</span>
+              <span class="material-symbols-outlined icon" style="padding: 5px; cursor: pointer" (click)="toggleCard(card)">
+                  {{ card.expanded ? "remove" : "add" }}
+              </span>
+            </div>
+            <div class="card-info">
+              <p class="info-item">
+                <mat-icon>business</mat-icon>
+                <span>{{ card.LawFirm }}</span>
+              </p>
+              <p class="info-item">
+                <mat-icon>calendar_today</mat-icon>
+                <span>{{ card.createdDate }}</span>
+              </p>
+            </div>
+            <div class="card-info">
+              <p class="info-item">
+                <mat-icon class="status-icon">schedule</mat-icon>
+                <span>{{ card.status }}</span>
+              </p>
+            </div>
+            <hr />
+            <div style="display: inline-flex; justify-content: center; align-items: center; gap: 4px; border: 1px solid gray; color: gray; padding: 2px 6px; border-radius: 6px; margin: 2px;">
+              <mat-icon style="font-size: 14px; width: 14px; height: 14px; line-height: 14px; display: inline-flex; align-items: center; vertical-align: middle;">alarm</mat-icon>
+              <span style="font-size: 10px; line-height: 1; vertical-align: middle">ETA {{ card.dueDate | date: "dd MMM" }}</span>
+            </div>
+            <div *ngIf="card.expanded" class="card-expanded-details">
+              <p><strong>Created By:</strong> {{ card.createdBy }}</p>
+              <p><strong>Assigned To:</strong> {{ card.assignedTo }}</p>
+              <p><strong>Expedite:</strong> {{ card.expedite ? "Yes" : "No" }}</p>
+              <div *ngIf="card.notes.length > 0">
+                <strong>Notes:</strong>
+                <ul class="notes-list">
+                  <li *ngFor="let note of card.notes">{{ note.text }} — {{ note.author }}, {{ note.date }}</li>
+                </ul>
+              </div>
+              <p *ngIf="card.notes.length === 0" style="color: gray; font-size: 12px">No notes added.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div *ngIf="isCalendarView" class="calendar-container" style="margin-top: 10px; overflow-x: auto;">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th style="min-width: 80px; background-color: black; color: white;">Time</th>
+            <th style="background-color: black; color: white; min-width: 160px;">Monday</th>
+            <th style="background-color: black; color: white; min-width: 160px;">Tuesday</th>
+            <th style="background-color: black; color: white; min-width: 160px;">Wednesday</th>
+            <th style="background-color: black; color: white; min-width: 160px;">Thursday</th>
+            <th style="background-color: black; color: white; min-width: 160px;">Friday</th>
+            <th *ngIf="showWeekend" style="background-color: black; color: white; min-width: 160px;">Saturday</th>
+            <th *ngIf="showWeekend" style="background-color: black; color: white; min-width: 160px;">Sunday</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let hour of hoursList">
+            <td style="font-weight: bold; font-size: 12px; white-space: nowrap; background: #f5f5f5;">
+              {{ hour }}
+            </td>
+            <td *ngFor="let day of displayDays" style="vertical-align: top; padding: 4px;">
+              <ng-container *ngFor="let card of calendarCards">
+                <div *ngIf="card.hour === hour && card.dayPlacement === day"
+                  [style.background-color]="card.color"
+                  style="border-radius: 6px; padding: 6px 8px; margin-bottom: 4px; font-size: 12px; border-left: 4px solid #555;">
+                  <div style="font-weight: bold;">{{ card.pInitials }} — {{ card.taskName }}</div>
+                  <div style="color: #444;">{{ card.projectName }}</div>
+                  <div style="color: #666;">
+                    <mat-icon style="font-size: 12px; vertical-align: middle;">person</mat-icon>
+                    {{ card.user }}
+                  </div>
+                  <div>
+                    <span style="font-size: 11px; background: rgba(0,0,0,0.1); border-radius: 3px; padding: 1px 5px;">
+                      {{ card.status }}
+                    </span>
+                  </div>
+                </div>
+              </ng-container>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div> 
+
+
+    <div *ngIf="!isKanbanView && !isCalendarView">
+      <div class="table-responsive" id="grid-table-container" #tableContainer style="overflow-x: auto; white-space: nowrap;">
+        <table matSort id="example2" mat-table class="table table-bordered table-hover" style="width: 100%;">
+          <thead class="tbl-head">
+            <tr>
+              <th class="text-center">Action</th>
+              <th class="text-center">Status</th>
+              <th class="text-center">Subject</th>
+              <th class="text-center">Comments</th>
+              <th class="text-center">Due Date</th>
+              <th class="text-center">Completion Date</th>
+              <th class="text-center">Responsibility</th>
+              <th class="text-center">Project Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of mockdata">
+              <td class="text-center">
+                <a matTooltip="Edit Task" style="margin-right: 8px; cursor: pointer;" (click)="openEditDialog(item)">
+                  <i class="fa fa-edit" style="color: cornflowerblue;"></i>
+                </a>
+                <a matTooltip="Delete Task" style="cursor: pointer;" (click)="deleteConfirmation(item)">
+                  <i class="fa fa-trash" style="color: red;"></i>
+                </a>
+              </td>
+              <td class="text-center" style="cursor: pointer;">
+                <span *ngIf="!item.IsActive" (click)="Confirmation(item)" style="color: red;">Inactive</span>
+                <span *ngIf="item.IsActive" (click)="Confirmation(item)" style="color: blue;">Active</span>
+              </td>
+              <td class="text-center">{{ item.Subject }}</td>
+              <td class="text-center">{{ item.Comments }}</td>
+              <td class="text-center">{{ item.DueDate | date: 'mediumDate' }}</td>
+              <td class="text-center">{{ item.CompletionDate ? (item.CompletionDate | date: 'mediumDate') : 'N/A' }}</td>
+              <td class="text-center">{{ item.Responsibility }}</td>
+              <td class="text-center">{{ item.ProjectName }}</td>
+            </tr>
+            <tr *ngIf="!mockdata || mockdata.length === 0">
+              <td colspan="8" class="text-center">No records found</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <div style="position: fixed; bottom: 10px; right: 50px; z-index: 999; display: flex; gap: 10px;">
+          <!-- <button class="mine" mat-fab (click)="scrollLeft()">
+            <mat-icon style="color: #37474f;">fast_rewind</mat-icon>
+          </button>
+          <button class="mine" mat-fab (click)="scrollRight()">
+            <mat-icon style="color: #37474f;">fast_forward</mat-icon>
+          </button> -->
+        </div>
+      </div>
+      <mat-paginator [length]="totalSize" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+    </div>
+
+  </div>
+</div>

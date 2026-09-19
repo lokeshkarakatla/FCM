@@ -1,0 +1,78 @@
+<div class="ms-3 " style="width: 58%; margin-top: 50px;">
+
+  <div class="container-fluid mt-3">
+
+    <form id="step-3" class="content">
+
+      <!-- Top Bar -->
+      <div class="d-flex justify-content-end mb-3">
+        <button mat-raised-button color="primary" (click)="openNotes(null)">
+          <mat-icon>person_add</mat-icon> Add Notes
+        </button>
+      </div>
+
+      <!-- Table Wrapper -->
+      <div class="table-wrapper">
+
+        <table class="table table-bordered table-hover mb-0">
+
+          <!-- Header -->
+          <thead class="tbl-head">
+            <tr>
+              <th>Date</th>
+              <th>Notes</th>
+              <th class="text-center">Status</th>
+              <th class="text-center">Actions</th>
+            </tr>
+          </thead>
+
+          <!-- Body -->
+          <tbody>
+
+            <tr *ngFor="let applicant of notes; trackBy: trackById">
+              <td>{{ applicant.date }}</td>
+              <td>{{ applicant.description }}</td>
+
+              <td class="text-center">
+                <mat-chip
+                  class="status-chip"
+                  [ngClass]="applicant.status === 'Active' ? 'active-chip' : 'inactive-chip'"
+                  (click)="Confirmation(applicant)">
+                  {{ applicant.status }}
+                </mat-chip>
+              </td>
+
+              <td class="text-center action-icons">
+                <a matTooltip="Edit Note" (click)="openNotes(applicant)">
+                  <i class="fa fa-edit"></i>
+                </a>
+
+                <a matTooltip="Delete Note" (click)="deleteConfirmation(applicant)">
+                  <i class="fa fa-trash red"></i>
+                </a>
+              </td>
+            </tr>
+
+            <!-- Empty -->
+            <tr *ngIf="notes.length === 0">
+              <td colspan="4" class="text-center">No notes available</td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+        <!-- Paginator -->
+        <mat-paginator
+          [length]="totalSize"
+          [pageSize]="5"
+          [pageSizeOptions]="[5, 10, 25, 50, 100]"
+          showFirstLastButtons>
+        </mat-paginator>
+
+      </div>
+
+    </form>
+
+  </div>
+</div>

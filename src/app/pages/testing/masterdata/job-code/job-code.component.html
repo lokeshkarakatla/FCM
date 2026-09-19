@@ -1,0 +1,141 @@
+<div style="margin-bottom: 20px;"></div>
+<div class="container-fluid mt-3 mb-3">
+  <div class="w-100">
+    <div class="flex-p">
+      <div class="row">
+        <div class="col-sm-12 no-padding">
+          <div class="row">
+            <div class="col-xs-12" style="display: flex; justify-content: flex-end; padding-right: 25px;">
+              <div>
+                <!-- <button mat-raised-button
+                        color="primary"
+                        class="pull-right btn-primary mt-3"
+                        style="margin-left:10px;" matTooltip="Add Job Code"
+                        (click)="openEditDialog(null)">
+                  <mat-icon>add</mat-icon> Add Job Code
+                </button> -->
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div fxLayout="row wrap" *ngIf="filterToggle" style="margin-bottom: 20px;">
+    <div fxFlex="100" class="flex-p w-100" style="padding: 0 25px;">
+        <form [formGroup]="filterForm">
+            <mat-card class="filter">
+                <mat-card-content>
+                    <div class="row col-sm-12">
+                        <div class="col-sm-4 row me-2">
+                            <div class="col-sm-3 newMarginClass">
+                                <b>Keyword:</b>
+                            </div>
+                            <div class="col-sm-9">
+                                <input type="text" formControlName="Keyword" class="form-control"
+                                    placeholder="Search Job Code">
+                            </div>
+                        </div>
+                        <div class="col-sm-4 row me-2">
+                            <div class="col-sm-3 newMarginClass">
+                                <b>Status:</b>
+                            </div>
+                            <div class="col-sm-8">
+                                <mat-select placeholder="Select Status" class="form-control" formControlName="Status">
+                                    <mat-option [value]="true">Active</mat-option>
+                                    <mat-option [value]="false">InActive</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <a (click)="filterToggle = !filterToggle" class="pull-right"
+                                style="font-size: 25px; cursor: pointer; margin-left: 5px">
+                                <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                            </a>
+                            
+                            <button mat-raised-button class="pull-right btn-default margin-right-10"
+                                (click)="filterForm.reset();formInit();getCategory();">
+                               <mat-icon>settings_backup_restore</mat-icon> Clear
+                            </button>
+                            <button mat-raised-button color="primary" style="margin-right: 10px;" class="pull-right" (click)="getCategory()">
+                                <mat-icon>search</mat-icon> Search
+                            </button>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </div>
+</div>
+
+<div class="container-fluid mt-4 mb-3">
+  <div class="row" style="padding: 0 25px;">
+    
+    <div style="width: 70%;">
+      
+      <div style="display: flex; justify-content: flex-end; margin-bottom: 15px;">
+        <button mat-raised-button
+                color="primary"
+                class="btn-primary"
+                matTooltip="Add Job Code"
+                (click)="openEditDialog(null)">
+          <mat-icon>add</mat-icon> Add Job Code
+        </button>
+      </div>
+
+      <div id="grid-table-container" class="table-responsive">
+        <table matSort id="example2" class="table table-bordered table-hover" style="width: 100%;">
+          <thead class="tbl-head">
+            <tr>
+              <th class="text-center">Actions</th>
+              <th>Job Code</th>
+              <th>Job Code Title</th>
+              <th>Job Code Category</th>
+              <th class="text-center">Hourly Rate ($)</th>
+              <th class="text-center">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="tableList == null || tableList.length == 0">
+              <td colspan="6" class="text-center">No records found</td>
+            </tr>
+            <tr *ngFor="let item of tableList">
+              <td class="text-center editDel">
+                <a style="cursor: pointer; margin-right: 15px;"
+                   [ngClass]="{'disable-custom' : !canUpdate}" matTooltip="Edit"
+                   (click)="openEditDialog(item)">
+                  <mat-icon style="color: #1b85ca; font-size: 20px;">edit</mat-icon>
+                </a>
+                <a style="cursor: pointer;" matTooltip="Delete"
+                   [ngClass]="{'disable-custom' : !canDelete}"
+                   (click)="deleteConfirmation(item)">
+                  <mat-icon style="color: #e00d0d; font-size: 20px;">delete</mat-icon>
+                </a>
+              </td>
+              <td>{{ item.jobCode }}</td>
+              <td>{{ item.jobCodeTitle }}</td>
+              <td>{{ item.jobCodeCategory }}</td>
+              <td class="text-center">{{ item.chargeoutRate }}</td>
+              <td class="text-center">
+                <a [ngStyle]="{'color' : item.isActive ? '#0056b3' : 'red'}"
+                   style="text-decoration: underline; cursor: pointer;"
+                   [ngClass]="{'disable-custom' : !canUpdate}"
+                   (click)="Confirmation(item)">
+                  {{ item.isActive ? 'Active' : 'Inactive' }}
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <mat-paginator class="col-sm-12" [length]="totalSize" [pageIndex]="currentPage"
+                       [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20, 50, 100]" (page)="fnHandlePage($event)"
+                       showFirstLastButtons>
+        </mat-paginator>
+      </div>
+
+    </div>
+  </div>
+</div>

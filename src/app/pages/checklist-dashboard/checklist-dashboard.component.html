@@ -1,0 +1,26 @@
+<div class="col-xs-12 ">
+  <div class="pills margin">
+    <ul class="nav nav-pills">
+      <li routerLinkActive="active" routerLink="issuelog">
+        <a mat-raised-button class="navtabWidth">
+          Issue Log
+        </a>
+      </li>
+      <li routerLinkActive="active" routerLink="metricckeck">
+        <a mat-raised-button class="navtabWidth">
+          Metrics
+        </a>
+      </li>
+      <li routerLinkActive="active" routerLink="notes">
+        <a mat-raised-button class="navtabWidth">
+          Notes
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-sm-12 mt-5">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

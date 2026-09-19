@@ -1,0 +1,28 @@
+/* Your existing class */
+.back {
+  background-color: #fefec4;
+}
+
+/* This class applies the error styles (red border, white background) */
+.is-invalid {
+  border: 1px solid red !important;
+  background-color: white !important;
+}
+
+/* This styles the placeholder text for <input> and <textarea> fields */
+.is-invalid::placeholder {
+  color: red;
+  opacity: 0.8;
+}
+
+/* This styles the placeholder text for an invalid <mat-select> */
+.is-invalid .mat-select-placeholder {
+  color: red !important;
+  opacity: 0.8 !important;
+}
+
+/* This makes the selected value text red for an invalid <mat-select> */
+.is-invalid .mat-select-value-text {
+  color: red !important;
+  opacity: 0.8;
+}

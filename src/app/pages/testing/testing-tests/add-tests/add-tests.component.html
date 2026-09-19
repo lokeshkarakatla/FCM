@@ -1,0 +1,130 @@
+<div class="col-sm-12" style="
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  ">
+    <div class="NewHeader">
+        <h1 style="color: white; margin-top:5px" mat-dialog-title>
+            {{ data ? "Update" : "Add" }} Test
+        </h1>
+    </div>
+
+    <div class="container mt-3">
+        <div class="row mb-3">
+            <!-- Product Name -->
+            <label class="col-sm-3 col-form-label fw-bold">Test ID: <span class="text-danger">*</span></label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Enter Test ID">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <!-- Config -->
+            <label class="col-sm-3 col-form-label fw-bold">Product: <span class="text-danger">*</span></label>
+            <div class="col-sm-9">
+                <select style="font-size:15px; cursor:pointer" class="form-select">
+                    <option selected>Select Product</option>
+                    <option value="1">KIA</option>
+                    <option value="2">Test Product</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <!-- Serial Number -->
+            <label class="col-sm-3 col-form-label fw-bold">Project: <span class="text-danger">*</span></label>
+            <div class="col-sm-9">
+                <select style="font-size:15px; cursor:pointer" class="form-select">
+                    <option selected>Select Project</option>
+                    <option value="1">KIA</option>
+                    <option value="2">KIA Motors</option>
+                    <option value="3">Mahindra</option>
+                    <option value="4">Telsa</option>
+
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+
+            <label class="col-sm-3 col-form-label fw-bold">Subject:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Enter Subject">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+
+            <label class="col-sm-3 col-form-label fw-bold">Description:</label>
+            <div class="col-sm-9">
+                <textarea id="description" rows="4" cols="73" placeholder="Enter description..."></textarea>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label fw-bold">Document:</label>
+            <div class="col-sm-9">
+                <input type="file" class="form-control">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <!-- Serial Number -->
+            <label class="col-sm-3 col-form-label fw-bold">Department: <span class="text-danger">*</span></label>
+            <div class="col-sm-9">
+                <select style="font-size:15px; cursor:pointer" class="form-select">
+                    <option selected>Select Department</option>
+                    <option value="1">Developer</option>
+                    <option value="2">QA</option>
+                    <option value="3">Account</option>
+                    <option value="4">RnD</option>
+
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <!-- Serial Number -->
+            <label class="col-sm-3 col-form-label fw-bold">Section: <span class="text-danger">*</span></label>
+            <div class="col-sm-9">
+                <select style="font-size:15px; cursor:pointer" class="form-select">
+                    <option selected>Select Section</option>
+                    <option value="1">Chemical Manufacturing</option>
+                    <option value="2">Electronics Industry</option>
+                    <option value="3">Paper Manufacturing</option>
+
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <!-- Serial Number -->
+            <label class="col-sm-3 col-form-label fw-bold">Lead: <span class="text-danger">*</span></label>
+            <div class="col-sm-9">
+                <select style="font-size:15px; cursor:pointer" class="form-select">
+                    <option selected>Select Lead</option>
+                    <option value="1">Sharanya</option>
+                    <option value="2">Shailaja</option>
+                    <option value="3">Satya</option>
+
+                </select>
+            </div>
+        </div>
+
+
+        <!-- Buttons -->
+        <mat-dialog-actions align="end">
+            <div class="margin-bottom-10" style="margin-top: 30px; margin-right: 10px">
+                <button mat-raised-button color="primary" [mat-dialog-close]="'test'">
+                    <mat-icon>save</mat-icon> <span>{{ data ? "Update" : "Save" }}</span>
+                </button>
+                <button mat-raised-button style="background-color: lightgray; color: red"
+                    class="add-dark-hover btn-default" (click)="close()">
+                    <mat-icon>cancel</mat-icon>Close
+                </button>
+            </div>
+        </mat-dialog-actions>
+    </div>
+
+</div>

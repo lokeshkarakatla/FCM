@@ -1,0 +1,104 @@
+<div class="col-sm-10" style="margin-top: 15px; margin-left: -16px; margin-bottom: 30px;">
+    <div class="pills">
+        <ul class="nav nav-pills" style="margin-left: 10px;">
+           <li *ngIf="!disableOverview">
+    <a mat-raised-button
+       class="navtabWidth"
+       style="margin-top: 10px;"
+       [routerLink]="['../overview']"
+       routerLinkActive="active">
+        Overview
+    </a>
+</li>
+            <li>
+                <a mat-raised-button class="navtabWidth"
+                    style="margin-top: 10px;background-color: #50636d ;color: rgb(245, 241, 241); margin-left: 10px;"
+                    routerLinkActive="active" [routerLink]="['../check']">
+                    Checkpoints
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="col-lg-12" >
+    <div class="col-lg-4" style="margin-left: -10px">
+        <table style="margin-top: 7px;padding-left: 0px; padding-right: 0px;" matSort id="example2"
+            class="table table-bordered table-hover">
+            <tbody>
+                <tr>
+                    <td class="text-center"> 
+                        <div class="image-grid-container" style="width: 350px; height: 250px; margin-left: 20px  ; cursor: pointer;" (click)="imgpop(null)">
+                            <img class="overlay-image" [src]="Image" />
+
+                            <table class="grid-overlay">
+                                <tbody>
+                                    <tr *ngFor="let r of gridRows; let rowIndex = index" [style.height.%]="100 / gridRows.length">
+                                        <td *ngFor="let c of gridCols; let colIndex = index"
+                                            class="grid-cell"
+                                            [ngStyle]="{
+                                              'background-color': isPreHighlighted(rowIndex + 1, colIndex + 1) 
+                                                                  ? 'rgba(211, 211, 211, 0.7)'
+                                                                  : 'transparent'
+                                            }">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-lg-8">
+        <table style="margin-top: 7px;padding-left: 0px; padding-right: 0px;" matSort id="example2"
+            class="table table-bordered table-hover">
+            <thead class="tbl-head">
+                <tr>
+                    <th class="theadcolor">Serial</th>
+                    <th class="theadcolor text-center">Row</th>
+                    <th class="theadcolor text-center">column</th>
+                    <th class="theadcolor text-center">Checkpoints</th>
+                    <th class="theadcolor">Measure</th>
+                    <th class="theadcolor">LSL</th>
+                    <th class="theadcolor">USL</th>
+                    <th>Unit</th>
+                    <th class="theadcolor text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of values">
+                    <td>{{item.serial}}</td>
+                    <td class="text-center">{{item.row}}</td>
+                    <td class="text-center">{{item.col}}</td>
+                    <td class="text-center">{{item.checkpoints}}</td>
+                    <td>{{item.measure}}</td>
+                    <td>{{item.lsl}}</td>
+                    <td>{{item.usl}}</td>
+                    <td>{{item.unit}}</td>
+                    <td class="text-center editDel">
+                        <a style="cursor: pointer;margin-right:10px; " matTooltip="Edit" (click)="addcheckpoint(item)">
+                            <i class="fa fa-edit" style="color: cornflowerblue"></i>
+                        </a>
+                        <a><i class="fa fa-trash red" matTooltip="Delete" style="cursor: pointer;"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="col-lg-12">
+    <div class="col-sm-3.5 pull-right mt-5" style="margin-bottom:50px ;">
+        <button type="button" class="btn btn-outline-success" style="margin-right: 10px;">
+            <mat-icon>save</mat-icon>Save Draft</button>
+        <button mat-raised-button class="mr-2" type="button"
+            style="color: rgba(252, 253, 252, 0.926); background-color: #3262a8; margin-right: 10px;">
+            <mat-icon>save</mat-icon>Submit
+        </button>
+        <button mat-raised-button (click)="next()" class="mr-2" type="button"
+            style="color: rgb(7, 10, 7); background-color: #e0e0e0;">
+            <mat-icon>cancel</mat-icon> Close
+        </button>&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+</div>

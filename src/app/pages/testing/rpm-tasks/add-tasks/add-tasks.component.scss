@@ -1,0 +1,93 @@
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.upload-box {
+  flex: 1;
+  border: 2px dashed #ccc;
+  height: 140px;
+  padding: 25px;
+  text-align: center;
+  border-radius: 6px;
+  background: #fafafa;
+}
+.browse-btn {
+  background: #2f6fa5;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+// Stepper wrapper
+.bs-stepper {
+  .bs-stepper-header {
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    justify-content: flex-start;
+    gap: 10px;
+    max-width: 500px;
+  }
+}
+
+// Step circle
+.bs-stepper-circle {
+  background: #007bff;
+  color: white;
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+// Step label
+.bs-stepper-label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+// Step trigger button base
+.step-trigger {
+  display: inline-block;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: transparent;
+  color: inherit;
+  width: 100%;
+  text-align: left;
+  transition: background-color 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background-color: #5a6268 !important;
+    color: white !important;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &:active {
+    background-color: #4e555b !important;
+    color: white !important;
+  }
+}
+
+// Active step styles
+.step.active .step-trigger,
+.step-trigger.active,
+.active-step {
+  background-color: #6c757d !important;
+  color: white !important;
+}

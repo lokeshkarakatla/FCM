@@ -1,0 +1,97 @@
+<!-- ── Info bar: Date | Time | Duration + Save ── -->
+<div class="am-info-bar">
+    <div class="am-info-fields">
+
+        <div class="am-info-field">
+            <span class="am-info-label">DATE</span>
+            <input type="date" class="am-info-input" [(ngModel)]="meetingDate" />
+        </div>
+
+        <div class="am-info-divider"></div>
+
+        <div class="am-info-field">
+            <span class="am-info-label">TIME</span>
+            <input type="time" class="am-info-input" [(ngModel)]="meetingTime" />
+        </div>
+
+        <div class="am-info-divider"></div>
+
+        <div class="am-info-field">
+            <span class="am-info-label">DURATION</span>
+            <select class="am-info-input am-duration-select" [(ngModel)]="duration">
+                <option value="">Select</option>
+                <option value="30 min">30 min</option>
+                <option value="1 hr">1 hr</option>
+                <option value="1 hr 30 min">1 hr 30 min</option>
+                <option value="2 hr">2 hr</option>
+                <option value="2 hr 30 min">2 hr 30 min</option>
+                <option value="3 hr">3 hr</option>
+            </select>
+        </div>
+
+    </div>
+
+    <button mat-raised-button color="primary" class="am-save-btn" (click)="save()">
+        <mat-icon>save</mat-icon> Save
+    </button>
+</div>
+
+<!-- ── Main two-column layout ── -->
+<div class="am-main">
+
+    <!-- Left: Agenda -->
+    <div class="am-agenda-col">
+        <div class="am-section-header">
+            <h3 class="am-section-title">Agenda</h3>
+            <span class="am-count-badge">{{ agendaCount }} items</span>
+        </div>
+
+        <div class="am-agenda-list">
+            <div class="am-agenda-item" *ngFor="let item of agendaItems; let i = index; trackBy: trackByIndex">
+                <div class="am-agenda-num">{{ i + 1 }}</div>
+
+                <input type="text" class="am-agenda-input" placeholder="Enter agenda item..."
+                    [(ngModel)]="agendaItems[i]" />
+            </div>
+        </div>
+
+        <button class="am-add-item-btn" (click)="addAgendaItem()">
+            <mat-icon>add</mat-icon> <span class="btn-text">Add Agenda Item</span>
+        </button>
+    </div>
+
+    <!-- Column divider -->
+    <div class="am-col-divider"></div>
+
+    <!-- Right: Attendance -->
+    <div class="am-attendance-col">
+        <div class="am-section-header">
+            <h3 class="am-section-title">Attendance</h3>
+            <span class="am-count-badge">{{ presentCount }}/{{ attendees.length }}</span>
+            <button mat-button class="am-select-all-btn" (click)="toggleAll()">
+                <mat-icon>{{ allSelected ? 'remove_circle_outline' : 'check_circle_outline' }}</mat-icon>
+                {{ allSelected ? 'Deselect All' : 'Select All' }}
+            </button>
+        </div>
+
+        <div class="am-attendee-list">
+            <div class="am-attendee-card" *ngFor="let person of attendees" [class.am-attendee-present]="person.present"
+                (click)="person.present = !person.present">
+                <mat-checkbox [(ngModel)]="person.present" (click)="$event.stopPropagation()"
+                    class="am-checkbox"></mat-checkbox>
+
+                <div class="am-avatar" [style.background-color]="person.color">
+                    {{ person.initials }}
+                </div>
+
+                <div class="am-attendee-info">
+                    <span class="am-attendee-name">{{ person.name }}</span>
+                    <span class="am-attendee-role">{{ person.role }}</span>
+                </div>
+
+                <span *ngIf="person.present" class="am-present-badge">Present</span>
+            </div>
+        </div>
+    </div>
+
+</div>

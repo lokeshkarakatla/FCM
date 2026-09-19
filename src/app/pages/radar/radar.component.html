@@ -1,0 +1,237 @@
+<!-- 
+<div class="container-fluid no-padding">
+    <div class="w-100">
+      <div class="flex-p">
+  
+        <div class="row wrap">
+          <div class="col-sm-12 no-padding">
+  
+            <div class="row-wrap">
+              <div class="w-100">
+  
+                <div class="col-xs-12 no-padding" style="margin-top: 15px;">
+                  <div class="col-sm-3">
+                    <mat-card class=" pb-2"
+                      style="border-radius: 5px;    background-image: linear-gradient(to top, #f3f3f1 0%, #f5f4f0 1%, #ffffff 31%, #ffffff 75%, #f3f3f3 100%);">
+                      <div class="row">
+                        <div class="col-9">
+                          <div class="row">
+                            <div class="col-12">
+                              <h4> 1850</h4>
+                            </div>
+                            <div class="col-12">
+                              <h5 class="text-primary pt-1">Checklist Audits</h5>
+                            </div>
+                        
+                          </div>
+                        </div>
+                        <div class="col-2">
+                          <mat-icon style="font-size: 40px;margin-top: 10px; color: #007ad9;">check_circle</mat-icon>
+                        </div>
+                      </div>
+  
+                    </mat-card>
+                  </div>
+                  <div class="col-sm-3">
+                    <mat-card class=" pb-2"
+                      style="border-radius: 5px;    background-image: linear-gradient(to top, #f3f3f1 0%, #f5f4f0 1%, #ffffff 31%, #ffffff 75%, #f3f3f3 100%);">
+                      <div class="row">
+                        <div class="col-9">
+                          <div class="row">
+                            <div class="col-12">
+                              <h4>1375</h4>
+                            </div>
+                            <div class="col-12">
+                              <h5 class="text-warning pt-1">Parameter Audits</h5>
+                            </div>
+                         
+                          </div>
+                        </div>
+                        <div class="col-2">
+                          <mat-icon style="font-size: 37px;margin-top: 10px;" class="text-warning">fact_check</mat-icon>
+                        </div>
+                      </div>
+  
+                    </mat-card>
+                  </div>
+  
+                  <div class="col-sm-3">
+                    <mat-card class=" pb-2"
+                      style="border-radius: 5px;    background-image: linear-gradient(to top, #f3f3f1 0%, #f5f4f0 1%, #ffffff 31%, #ffffff 75%, #f3f3f3 100%);">
+                      <div class="row">
+                        <div class="col-9">
+                          <div class="row">
+                            <div class="col-12">
+                              <h4>750</h4>
+                            </div>
+                            <div class="col-13" style="margin-left:15px">
+                              <h5 class="text-success pt-1">Average Demerit</h5>
+                            </div>
+                          
+                          </div>
+                        </div>
+                        <div class="col-2">
+                          <mat-icon style="font-size: 40px;margin-top: 10px;" class="text-success">grading</mat-icon>
+                        </div>
+                      </div>
+  
+                    </mat-card>
+                  </div>
+                  <div class="col-sm-3">
+                    <mat-card class=" pb-2"
+                      style="border-radius: 5px;    background-image: linear-gradient(to top, #f3f3f1 0%, #f5f4f0 1%, #ffffff 31%, #ffffff 75%, #f3f3f3 100%);">
+                      <div class="row">
+                        <div class="col-9">
+                          <div class="row">
+                            <div class="col-12">
+                              <h4>1210</h4>
+                            </div>
+                            <div class="col-12">
+                              <h5 class=" pt-1" style="color: #6805c5;">Average Issues</h5>
+                            </div>
+                       
+                          </div>
+                        </div>
+                        <div class="col-2">
+                          <mat-icon style="font-size: 40px;margin-top: 10px;color:#6805c5">done</mat-icon>
+                        </div>
+                      </div>
+  
+                    </mat-card>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+<div class="col-sm-12" style="padding: 0 0 0 2px;margin-top: 6px;">
+  <div class="col-sm-4 no-padding">
+    <div class="col-sm-12" style="padding-left:9px !important">
+      <div class="col-sm-4 no-padding mr-2">
+        <div class="pills">
+          <ul class="nav nav-pills">
+            <li routerLinkActive="active" [routerLink]="['./radarchecklist']">
+              <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                Objective Audit
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-sm-4 no-padding">
+        <div class="pills">
+          <ul class="nav nav-pills">
+            <li routerLinkActive="active" [routerLink]="['./radarparameter']">
+              <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                Subjective Audit
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>
+<div class="col-sm-11">
+  <router-outlet></router-outlet>
+
+</div>
+<div class="col-sm-1">
+  <button mat-raised-button color="primary" class="pull-right filters-hover margin-right-10 mt-3"
+    style="margin-left: -13px;" (click)="filterToggle = !filterToggle">
+    <mat-icon>filter_list</mat-icon> Filter
+  </button>
+</div>
+
+<!-- Filter tab -->
+<div class="container-fluid" style="padding-right: 7px; padding-left: 1px;">
+  <div class="w-100">
+    <div class="flex-p">
+      <div class="row wrap">
+        <div class="col-sm-12 no-padding">
+          <div class="row-wrap">
+            <div class="w-100">
+              <div class="row">
+
+
+
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Filter UI -->
+<div fxLayout="row wrap" *ngIf="filterToggle">
+  <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p w-100 margins" style="margin-right: 7px;">
+    <mat-card class="filter">
+      <mat-card-content>
+        <div class="row">
+          <div class="col-sm-5">
+            <div class="col-sm-3">
+              <label class="pull-right" style="margin-top: 6px;">Audit:</label>
+            </div>
+            <div class="col-sm-6">
+              <mat-select class="form-control" placeholder="Select audit" required>
+                <mat-option [value]="0">Objective Audit</mat-option>
+                <mat-option [value]="1">Subjective Audit</mat-option>
+
+              </mat-select>
+            </div>
+          </div>
+
+
+          <div class="col-sm-5">
+            <div class="col-sm-3">
+              <label class="pull-right" style="margin-top: 6px;">Status:</label>
+            </div>
+            <div class="col-sm-6">
+              <mat-select class="form-control" placeholder="Select Status" required>
+                <mat-option *ngFor="let option of Status" [value]="option.value">
+                  {{option.name}}
+                </mat-option>
+
+              </mat-select>
+            </div>
+          </div>
+
+
+          <div class="col-sm-2">
+            <button mat-raised-button class="pull-right btn-primary" style="margin-left: 5px;">
+              <mat-icon>youtube_searched_for</mat-icon> Go&nbsp;&nbsp;&nbsp;&nbsp;
+            </button>
+            <button mat-raised-button style="background-color:#37474f; color:#fff !important;" class="pull-right">
+              <mat-icon>settings_backup_restore</mat-icon> Clear
+            </button>
+          </div>
+
+
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>
+
+<div class="col-sm-12 no-padding mt-4">
+
+</div>
+
+
+<!-- <div class="col-12">
+                                    <h4 class="mb-0 d-inline-block  pt-1">40</h4> &nbsp;
+                                     <mat-icon style="font-size: 16px;font-weight: bold;"class="text-success">arrow_upward</mat-icon>
+                                  </div> -->

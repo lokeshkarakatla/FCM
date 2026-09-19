@@ -1,0 +1,143 @@
+<div class="dashboard-wrapper">
+  <header class="dashboard-header">
+    <h1 class="page-title">System Dashboard</h1>
+    <div class="breadcrumbs">
+      <span class="link">Dashboard</span> &gt;&gt;
+      <span class="current">System Dashboard</span>
+    </div>
+  </header>
+
+  <div class="metrics-row">
+    <div class="metric-card">Process Audits - 62</div>
+    <div class="metric-card">Parts Audits - 51</div>
+    <div class="metric-card">Suppliers Covered - 75</div>
+    <div class="metric-card">CAPA Logged- 6</div>
+    <div class="metric-card">CAPA Solved - 5</div>
+  </div>
+
+  <div class="dashboard-grid">
+    
+    <div class="grid-column">
+      <div class="panel filter-panel card-filter" style="height: 260px;">
+  <div class="form-group">
+    <label>Commodity:</label>
+    <select>
+      <option>Casting</option>
+      <option>Forging</option>
+      <option>Machining</option>
+      <option>Fasteners</option>
+      <option>Non-Metallic</option>
+      <option>Sheet Metal</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Severity:</label>
+    <select>
+      <option>Important</option>
+      <option>Critical</option>
+      <option>Others</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Select Year:</label>
+    <select>
+      <option>FY 2021-2022</option>
+      <option>FY 2022-2023</option>
+      <option>FY 2023-2024</option>
+      <option>FY 2024-2025</option>
+    </select>
+  </div>
+  <div class="button-group">
+    <button class="btn-go"><span class="search-icon">&#9906;</span> Go</button>
+  </div>
+</div>
+
+      <div class="panel chart-panel card-parts" style="height: 270px;">
+        <div class="panel-header d-flex justify-content-between align-items-center mb-0" style="margin-top:-10px">
+          <h3 class="panel-title mb-0">Parts Audits</h3>
+          <mat-form-field appearance="outline" class="panel-dropdown">
+            <mat-label>Commodity</mat-label>
+            <mat-select>
+              <mat-option value="casting">Casting</mat-option>
+              <mat-option value="forging">Forging</mat-option>
+              <mat-option value="machining">Machining</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="chart-container"  style="margin-top:-30px">
+          <highcharts-chart 
+            [Highcharts]="Highcharts" 
+            [options]="partsAuditOptions" 
+            style="width: 100%; height: 100%; display: block;">
+          </highcharts-chart>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-column">
+      <div class="panel table-panel card-issue" style="height: 260px;">
+        <h3 class="panel-title">CAPA Distribution</h3>
+        <table class="data-table">
+          <thead>
+            <tr><th>Severity</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Important</td><td>10</td></tr>
+            <tr><td>Critical</td><td>18</td></tr>
+            <tr><td>Others</td><td>25</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel chart-panel card-trend" style="height: 270px;">
+        <h3 class="panel-title">Monthly Trend</h3>
+        <div class="chart-container">
+          <highcharts-chart 
+            [Highcharts]="Highcharts" 
+            [options]="monthlyTrendOptions" 
+            style="width: 100%; height: 100%; display: block;">
+          </highcharts-chart>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-column">
+      <div class="panel chart-panel card-process" style="height: 260px;">
+        <div class="panel-header d-flex justify-content-between align-items-center mb-0" style="margin-top:-10px">
+          <h3 class="panel-title mb-0" >Process Audits</h3>
+          <mat-form-field appearance="outline" class="panel-dropdown">
+            <mat-label>Commodity</mat-label>
+            <mat-select>
+              <mat-option value="casting">Casting</mat-option>
+              <mat-option value="forging">Forging</mat-option>
+              <mat-option value="machining">Machining</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="chart-container" style="margin-top:-30px">
+          <highcharts-chart 
+            [Highcharts]="Highcharts" 
+            [options]="processAuditOptions" 
+            style="width: 100%; height: 100%; display: block;">
+          </highcharts-chart>
+        </div>
+      </div>
+
+      <div class="panel table-panel card-ageing" style="height: 270px;">
+        <h3 class="panel-title">CAPA Ageing Analysis</h3>
+        <table class="data-table" style="height: 100px;">
+          <thead>
+            <tr><th>Days</th><th>Volume</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>0 - 10</td><td>10</td></tr>
+            <tr><td>10 - 40</td><td>15</td></tr>
+            <tr><td>40 - 80</td><td>10</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

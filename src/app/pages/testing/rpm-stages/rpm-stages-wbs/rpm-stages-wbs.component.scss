@@ -1,0 +1,271 @@
+/* Base Container Layout */
+.dashboard-container {
+  display: flex;
+  gap: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+  padding: 20px;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 150px;
+  flex-shrink: 0;
+}
+
+.accordion-item {
+  margin-bottom: 5px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
+
+.accordion-header {
+  width: 100%;
+  text-align: left;
+  padding: 12px 15px;
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+.accordion-header:hover {
+  background-color: #f1f1f1;
+}
+
+.chevron {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 18px;
+  transition: transform 0.3s;
+}
+
+.chevron.open {
+  transform: rotate(90deg);
+}
+
+.accordion-content {
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+  // padding: 10px 15px;
+  padding-left: 10px;
+}
+
+.accordion-content ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.accordion-content li {
+  padding: 8px 0;
+  font-size: 13px;
+  color: #666;
+  border-bottom: 1px solid #eee;
+}
+
+.accordion-content li:last-child {
+  border-bottom: none;
+}
+
+/* Main Content & Table Styles */
+.main-content {
+  flex-grow: 1;
+  min-width: 0; /* Prevents flexbox overflow */
+}
+
+.table-responsive {
+  overflow-x: auto;
+  border: 1px solid #ddd;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+th, td {
+  padding: 12px 10px;
+  text-align: left;
+  border: 1px solid #e0e0e0;
+}
+
+th {
+  background-color: #000000; /* Matches the blue header in your image */
+  color: white;
+  font-weight: normal;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Manage Icon (Green Circle with Arrow) */
+.manage-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background-color: white;
+  color: #28a745;
+  border: 2px solid #28a745;
+  border-radius: 50%;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* Footer & Pagination Styles */
+/* Update this block in your CSS file */
+.table-footer {
+  padding: 15px 0;
+  display: block;   /* Changed from flex to block so children take up full width */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Ensure the host element expands */
+mat-paginator, .mat-mdc-paginator {
+  width: 100% !important;
+  display: block;
+}
+
+/* Keep your existing deep rules below it */
+::ng-deep .mat-mdc-paginator-container {
+  justify-content: space-between !important; 
+  width: 100%;
+}
+
+::ng-deep .mat-paginator-container {
+  justify-content: space-between !important;
+  width: 100%;
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.pagination-controls select {
+  padding: 3px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.page-arrows {
+  display: flex;
+  gap: 5px;
+}
+
+.page-arrows button {
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+ 
+.action-header {
+  display: flex;
+  justify-content: flex-end;  
+  align-items: center;        
+  width: 100%;
+  padding: 10px 20px;        
+  box-sizing: border-box;
+   
+}
+
+ .back-btn {
+  
+  
+  background-color: #808080 !important;  
+   
+  color: #ffffff !important;  
+  padding: 0px 16px;
+//   border-radius: 7px;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px; 
+  margin-top: -80px;
+}
+
+// .back-btn:hover {
+//   background-color: #293e81 !important;
+// }
+th
+{
+  font-weight: bold;
+}
+
+
+.mine {
+  
+    background-color: #e6e6e6 !important;
+    // margin
+}
+
+
+#scoll-buttons
+{
+  position: fixed;
+    bottom: 40px;
+    right: 40px;
+}
+
+
+.dashboard-container {
+  display: flex;
+  align-items: flex-start; /* prevents height changes from affecting siblings */
+}
+
+.sidebar {
+  width: 220px;
+  min-width: 220px;  /* CRITICAL: locks width, prevents reflow */
+  flex-shrink: 0;
+}
+
+.main-content {
+  flex: 1;
+  min-width: 0;      /* CRITICAL: prevents grid from expanding into sidebar */
+  overflow: hidden;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+
+  &.open {
+    max-height: 600px;
+  }
+}
+
+/* Add this to your component's stylesheet */
+
+.accordion-header {
+  /* ... your existing accordion-header styles ... */
+  border: 1px solid transparent; /* Keeps the layout from shifting when the border is applied */
+  transition: all 0.2s ease-in-out;
+}
+
+/* The highlighted border class */
+.active-menu {
+  border: 1px solid #1976d2 !important; /* Adjust color to match your theme (Material primary blue) */
+  border-left: 5px solid #1976d2 !important; /* Thicker left border for emphasis */
+  background-color: #f0f4f8; /* Optional: Slight background highlight */
+  font-weight: 500; /* Optional: Make the active text slightly bolder */
+}

@@ -1,0 +1,56 @@
+<div class="NewHeader">
+  <h1 mat-dialog-title>Documents Types</h1>
+</div>
+
+<div class="col-12">
+  <div class="row">
+    <div mat-dialog-content>
+      <div class="form-group" *ngFor="let item of lookupControls; let i = index;">
+        <label class="col-sm-3 mt-3" *ngIf="i === 0">
+           Documents types:
+        </label>
+        <div class="col-sm-3 no-padding" *ngIf="i > 0"></div>
+
+        <ng-container>
+          <div class="col-sm-7 mt-2 no-padding">
+            <input type="text" class="form-control" placeholder="document type " [formControl]="item.get('LookupName')">
+          </div>
+
+          <div class="col-sm-2 mt-2 d-flex align-items-center">
+            <!-- First row: Eye, Trash, Plus -->
+            <ng-container *ngIf="i === 0">
+              <a (click)="viewDocument(i)" class="me-2">
+                <i class="fa fa-eye blue"></i>
+              </a>
+              <a (click)="removeInputField(i)" class="me-2">
+                <i class="fa fa-trash red"></i>
+              </a>
+              <a (click)="addNewInputField()">
+                <i class="fa fa-plus green"></i>
+              </a>
+            </ng-container>
+
+            <!-- Other rows: only Trash -->
+            <ng-container *ngIf="i > 0">
+              <a (click)="removeInputField(i)">
+                <i class="fa fa-trash red"></i>
+              </a>
+            </ng-container>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-8 pull-right mt-5">
+  <mat-dialog-actions align="end">
+    <button mat-raised-button (click)="close()" type="button" color="danger">
+      <mat-icon>cancel</mat-icon> Close
+    </button>
+    <button mat-raised-button class="btn-primary" color="primary" type="button" (click)="save()">
+      <mat-icon>save</mat-icon> <span>{{ data ? 'Update' : 'Save'}}</span>
+    </button>
+
+  </mat-dialog-actions>
+</div>

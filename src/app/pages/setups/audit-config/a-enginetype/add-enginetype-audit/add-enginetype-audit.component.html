@@ -1,0 +1,47 @@
+<div class="col-sm-12" style="
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  ">
+    <div class="NewHeader">
+        <h1 style="color: white; margin-top:5px" mat-dialog-title>
+            {{ data ? "Update" : "Add" }} Engine Type
+        </h1>
+    </div>
+    <div mat-dialog-content>
+        <form class="form-horizontal">
+            <!-- Complaint -->
+            <div class="form-group" style="margin-top: 20px">
+                <label class="control-label col-sm-4 "> Engine Type:
+                </label>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <input type="text" class="form-control" placeholder="Enter Engine Type" />
+                </div>
+            </div>
+            <!-- Role -->
+            <div class="form-group" style="margin-top: 20px">
+                <label class="control-label col-sm-4 ">Engine Type Code:
+                </label>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <input type="text" class="form-control" placeholder="Enter Engine Type Code" />
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+    <mat-dialog-actions align="end">
+        <div class="margin-bottom-10" style="margin-top: 30px;  margin-right: -4px;margin-bottom: 5px;">
+
+            <button mat-raised-button style="background-color: lightgray; color: red" class="add-dark-hover btn-default"
+                (click)="close()">
+                <mat-icon>cancel</mat-icon>Close
+            </button>
+            <button mat-raised-button color="primary" [mat-dialog-close]="'test'">
+                <mat-icon  style="font-size:20px" class="mt-1">save</mat-icon> <span style="margin-left: 5px;">{{ data ? "Update" : "Save" }}</span>
+            </button>
+            
+        </div>
+    </mat-dialog-actions>
+</div>

@@ -1,0 +1,90 @@
+<div class="pills">
+  <ul class="nav nav-pills" style="
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-left: 18px;
+  padding-bottom: 10px;
+  gap: 4px;
+  /* border: 2px solid red; */
+  width: 97%;
+">
+    <li routerLinkActive="active" #issuesTab="routerLinkActive" [routerLink]="['./test-dashboard']">
+      <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">Radar</a>
+    </li>
+
+    <li routerLinkActive="active" [routerLink]="['./projects']">
+      <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">Projects</a>
+    </li>
+
+    <li routerLinkActive="active" [routerLink]="['./stages']">
+      <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">Stages</a>
+    </li>
+
+
+
+    <li routerLinkActive="active" [routerLink]="['./gates']">
+      <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">Gates</a>
+    </li>
+
+    <!-- <li routerLinkActive="active" [routerLink]="['./projcts']">
+      <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">Teams</a>
+    </li> -->
+
+
+    <li routerLinkActive="active" [routerLink]="['./tasks']">
+      <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">Tasks</a>
+    </li>
+
+    <!-- <li routerLinkActive="active" [routerLink]="['./testing-kanban']">
+      <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">Kanban</a>
+    </li> -->
+
+    <li routerLinkActive="active" [routerLink]="['./issues']">
+      <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">Issues</a>
+    </li>
+
+    <li routerLinkActive="active" [routerLink]="['./todo']">
+      <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">To Do</a>
+    </li>
+
+
+
+    <li routerLinkActive="active" [routerLink]="['./testing-masterData']">
+      <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">Master Data</a>
+    </li>
+
+
+
+
+    <!-- ✅ Show only if Issues tab is active -->
+    <ng-container *ngIf="issuesTab.isActive">
+      <li style="margin-left: auto;">
+        <mat-select class="form-control" placeholder="Select Project Name" style="min-width: 200px;">
+          <mat-option [value]="1">Apollo</mat-option>
+          <mat-option [value]="2">Orion</mat-option>
+          <mat-option [value]="3">Titan</mat-option>
+          <mat-option [value]="4">Zephyr</mat-option>
+        </mat-select>
+      </li>
+    </ng-container>
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<router-outlet></router-outlet>

@@ -1,0 +1,46 @@
+<div class="tl-wrapper " style="margin-right:260px;margin-top:20px; padding: 0;">
+    <!-- 
+    <div class="tl-header">
+        <h2 class="tl-title">Timeline</h2>
+    </div> -->
+
+    <div class="tl-container">
+
+        <ng-container *ngFor="let item of stepData; let i = index; let isOdd = odd">
+
+            <!-- LEFT side card (odd rows) -->
+            <div class="tl-left">
+                <div *ngIf="isOdd && hasData(item)" class="tl-card">
+                    <div class="tl-card-meta">
+                        <mat-icon class="tl-card-icon">person</mat-icon>
+                        <span class="tl-card-name">{{ item.responsibility }}</span>
+                    </div>
+                    <p class="tl-card-date">Updated: {{ item.startDate }}</p>
+                    <p class="tl-card-desc">Start: {{ item.startDate }} &nbsp;|&nbsp; Finish: {{ item.finishDate }}
+                        &nbsp;|&nbsp; {{ item.days }} day(s)</p>
+                </div>
+            </div>
+
+            <!-- CENTER: number + vertical line -->
+            <div class="tl-center">
+                <div class="tl-circle" [ngClass]="circleClass(item)">{{ i + 1 }}</div>
+            </div>
+
+            <!-- RIGHT side: step label + card (even rows) -->
+            <div class="tl-right">
+                <div class="tl-step-label" [ngClass]="circleClass(item)">{{ item.step | uppercase }}</div>
+                <div *ngIf="!isOdd && hasData(item)" class="tl-card tl-card-right">
+                    <div class="tl-card-meta">
+                        <mat-icon class="tl-card-icon">person</mat-icon>
+                        <span class="tl-card-name">{{ item.responsibility }}</span>
+                    </div>
+                    <p class="tl-card-date">Updated: {{ item.startDate }}</p>
+                    <p class="tl-card-desc">Start: {{ item.startDate }} &nbsp;|&nbsp; Finish: {{ item.finishDate }}
+                        &nbsp;|&nbsp; {{ item.days }} day(s)</p>
+                </div>
+            </div>
+
+        </ng-container>
+
+    </div>
+</div>

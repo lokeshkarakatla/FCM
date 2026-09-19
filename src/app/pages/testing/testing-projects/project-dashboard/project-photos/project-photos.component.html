@@ -1,0 +1,64 @@
+
+
+  
+  <div class="back-btn-wrapper" style="display:flex; justify-content: end;">
+    <button mat-raised-button class="custom-btn" (click)="Addphoto(null)">
+      <mat-icon style="margin-top:0px">image</mat-icon> Add Photo 
+    </button>
+  </div>
+
+<div class="gallery-grid">
+  
+  
+
+
+
+
+
+
+
+  <!-- Card 1 -->
+  <mat-card class="photo-card">
+    <!-- Top Right Actions -->
+    <div class="card-header-actions">
+      <mat-icon class="action-icon edit-icon" matTooltip="Edit">edit</mat-icon>
+      <mat-icon class="action-icon delete-icon" matTooltip="Delete">delete</mat-icon>
+    </div>
+    
+    <!-- Image Area -->
+    <div class="img-container">
+      <!-- Manually put your image source here -->
+      <img src="/assets/Swift/Right_Fender.png" alt="X-ray report of Patient">
+    </div>
+    
+    <!-- Title -->
+    <div class="photo-title">Right Fender</div>
+  </mat-card>
+
+  <!-- Card 2 -->
+  <mat-card class="photo-card">
+    <div class="card-header-actions">
+      <mat-icon class="action-icon edit-icon" matTooltip="Edit">edit</mat-icon>
+      <mat-icon class="action-icon delete-icon" matTooltip="Delete">delete</mat-icon>
+    </div>
+    <div class="img-container">
+      <!-- Manually put your image source here -->
+      <img src="/assets/Swift/Roof.png "alt="Doctor Treating the Patient">
+    </div>
+    <div class="photo-title">Roof View</div>
+  </mat-card>
+
+  <!-- Card 3 -->
+  <mat-card class="photo-card">
+    <div class="card-header-actions">
+      <mat-icon class="action-icon edit-icon" matTooltip="Edit">edit</mat-icon>
+      <mat-icon class="action-icon delete-icon" matTooltip="Delete">delete</mat-icon>
+    </div>
+    <div class="img-container">
+      <!-- Manually put your image source here -->
+      <img src="/assets/Swift/Bonnet.png" alt="Patient Consultation">
+    </div>
+    <div class="photo-title">Bonnet  </div>
+  </mat-card>
+
+</div>

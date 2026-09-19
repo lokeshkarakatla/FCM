@@ -1,0 +1,42 @@
+form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+/* Inputs */
+.form-control {
+  background-color: white;
+}
+
+/* Highlight important fields */
+.important .form-control {
+  background-color: #fff9c4;
+  border: 2px solid #fdd835;
+}
+
+/* Optional: spacing fix */
+.mb-3 {
+  margin-bottom: 16px;
+}
+
+/* Label spacing */
+.add-member-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.base-info-wrapper {
+  max-width: 1180px;
+  margin-left: 20px;   /* aligns with Base Info button */
+  padding-right: 10px;
+}
+
+.form-control,
+.mat-mdc-select {
+  width: 100%;
+}
+
+textarea.form-control {
+  resize: none;
+}

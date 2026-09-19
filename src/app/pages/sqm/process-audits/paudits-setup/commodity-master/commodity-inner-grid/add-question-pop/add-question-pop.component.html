@@ -1,0 +1,68 @@
+<div style="background-color: #286ba5 ; color: #ffffff; padding: 10px; text-align: center; margin: -24px -24px 24px -24px;">
+  <h2 style="margin: 0; font-size: 24px; font-weight: 400; font-family: Roboto, sans-serif;">
+    {{ isEditMode ? 'Update Question' : 'Add Question' }}
+  </h2>
+</div>
+
+<mat-dialog-content style="padding: 20px; margin-bottom: 10px; overflow: hidden;">
+  <div style="display: flex; flex-direction: column; gap: 16px;">
+
+    <div style="display: flex; align-items: flex-start; gap: 20px;">
+      
+      <label style="width: 80px; font-weight: 600; color: #666; margin-top: 16px; font-family: Roboto, sans-serif;">
+        Question: <span style="color: #ef4444;">*</span>
+      </label>
+
+      <mat-form-field appearance="outline" style="flex: 1; width: 100%;">
+        <input  
+          matInput 
+          placeholder="Enter Question" 
+          [(ngModel)]="questionText" 
+          required>
+      </mat-form-field>
+      
+    </div>
+
+      <div style="display: flex; align-items: flex-start; gap: 20px;">
+      
+      <label style="width: 80px; font-weight: 600; color: #666; margin-top: 16px; font-family: Roboto, sans-serif;">
+      Guideline: <span style="color: #ef4444;">*</span>
+      </label>
+
+      <mat-form-field appearance="outline" style="flex: 1; width: 100%;">
+        <input  
+          matInput 
+          placeholder="Enter Guideline" 
+          [(ngModel)]="guidelineText" 
+          required>
+      </mat-form-field>
+      
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 20px;">
+      
+      <label style="width: 80px; font-weight: 600; color: #666; font-family: Roboto, sans-serif;">
+        Options:
+      </label>
+
+      <div style="display: flex; gap: 24px;">
+        <mat-checkbox [(ngModel)]="isMandatory" color="primary">Mandatory</mat-checkbox>
+        <mat-checkbox [(ngModel)]="isPriority" color="primary">Priority</mat-checkbox>
+      </div>
+
+    </div>
+
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end"
+                style="margin-top: 15px; display: flex; justify-content: flex-end;margin-right: -20px;">
+                <button mat-raised-button class="ms-2 add-dark-hover btn-default" (click)="onCancel()"
+                    style="background-color: lightgray; color: red;margin-right: 5px;">
+                    <mat-icon>cancel</mat-icon> Close
+                </button>
+                <button   (click)="onSave()" mat-raised-button type="submit" class="save" color="primary" style="margin-right: 17px;" [disabled]="!questionText.trim() || !guidelineText.trim()">
+                  <mat-icon>save</mat-icon>
+{{ isEditMode ? 'Update' : 'Save' }}
+                </button>
+            </mat-dialog-actions>

@@ -1,0 +1,25 @@
+.placeholder-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* Match the height of the working pages */
+  min-height: calc(100vh - 56px); 
+  width: 100%;
+  
+  background-color: #fafafa; /* Matches your overall app background */
+  
+  /* CRITICAL FIXES: Keep it constrained and below the side-nav */
+  position: relative;
+  z-index: 1; 
+  overflow: hidden; 
+  box-sizing: border-box;
+  padding: 24px;
+}
+
+img {
+  max-width: 100%;
+  max-height: 60vh; /* Prevents the image from forcing the container to stretch */
+  object-fit: contain;
+  opacity: 0.8; /* Optional: makes it look a bit more like a placeholder */
+}

@@ -1,0 +1,112 @@
+form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+// .form-control {
+//   background-color: #ebeb8f !important; /* Light blue color */
+// }
+  .mandatory-field {
+    background-color: #fff9c4 !important; /* Light yellow */
+  border: 2px solid #fdd835;  /* light lemon yellow */
+  }
+
+  .optional-field {
+    background-color: #ffffff; /* white */
+  }
+
+
+.bs-stepper .bs-stepper-header {
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    justify-content: flex-start !important;  /* Aligns steps to start */
+    gap: 10px;  /* Reduces the space between steps */
+    max-width: 500px;  /* Limits stepper width */
+    // margin: 0 auto;  /* Centers stepper */
+}
+.bs-stepper-circle {
+  background: #007bff;
+  color: white;
+  width: 30px; /* Increase circle size */
+  height: 30px; /* Increase circle size */
+  font-size: 18px; /* Increase number size */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.bs-stepper-label{
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.adc{
+  background:#1485cc;
+}
+
+
+.view-toggle-group button:first-child {
+  border-right: 1px solid #ccc;
+}
+
+.view-toggle-group button.active {
+  background-color: #333;
+  color: white;
+  font-weight: bold;
+}
+
+
+.step-trigger.active {
+  background-color: #6c757d;
+  color: white;
+}
+
+.step.active .step-trigger {
+  background-color: #6c757d;
+  color: white;
+}
+
+
+.active-btn {
+  background-color: #6c757d;
+  color: white;
+}
+
+
+.step-trigger {
+  display: inline-block;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: transparent;
+  color: inherit;
+  width: 100%;
+  text-align: left;
+  transition: background-color 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background-color: #5a6268 !important;
+    color: white !important;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &:active {
+    background-color: #4e555b !important;
+    color: white !important;
+  }
+}
+
+.step.active .step-trigger,
+.step-trigger.active {
+  background-color: #6c757d !important;
+  color: white !important;
+}

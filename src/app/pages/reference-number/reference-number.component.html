@@ -1,0 +1,141 @@
+<p style="margin-top: 5px;margin-left: 22px;"><span style="font-weight: bolder;">Ref No:</span> <span
+    style= "margin: 8px;">FIELD/2024/09/3</span> <span style="font-weight: bolder;">Subject:</span> <span style="padding: 4px;">Global fleet of
+  connected vehicles </span></p>
+
+
+
+
+
+<div class="header-container ">
+
+  <!-- Back Button -->
+
+
+  <!-- Tabs -->
+  <div class="pills">
+    <!-- <ul class="nav nav-pills custom-nav">
+
+   <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }">
+  
+   <a mat-raised-button
+    class="navtabWidth"
+    [routerLink]="['./base-info']"
+    routerLinkActive="active-tab"
+    [routerLinkActiveOptions]="{ exact: false }">
+    Base Info
+  </a>
+</li>
+
+      <li routerLinkActive="active" [routerLink]="['./summary']">
+        <a mat-raised-button class="navtabWidth">Summary</a>
+      </li>
+
+      <li routerLinkActive="active" [routerLink]="['./updates']">
+        <a mat-raised-button class="navtabWidth">Updates</a>
+      </li>
+
+      <li routerLinkActive="active" [routerLink]="['./capaa']">
+        <a mat-raised-button class="navtabWidth">CAPA</a>
+      </li>
+
+      <li routerLinkActive="active" [routerLink]="['./documnets']">
+        <a mat-raised-button class="navtabWidth">Documents</a>
+      </li>
+
+      <li routerLinkActive="active" [routerLink]="['./notes']">
+        <a mat-raised-button class="navtabWidth">Notes</a>
+      </li>
+
+      <li routerLinkActive="active" [routerLink]="['./timeline']">
+        <a mat-raised-button class="navtabWidth">Timeline</a>
+      </li>
+
+     
+      <li class="spacer"></li>
+
+      
+      <li class="form-item" *ngIf="isBaseInfoActive">
+        <label>Due Date:</label>
+        <input type="date" class="form-input m-1">
+      </li>
+
+      <li class="form-item" *ngIf="isBaseInfoActive">
+        <label>ETA:</label>
+        <input type="date" class="form-input m-1">
+      </li>
+
+      <li class="form-item" *ngIf="isBaseInfoActive">
+        <label>Priority:</label>
+        <input type="checkbox" class="form-input m-1 wrapped-checkbox">
+      </li>
+
+    </ul> -->
+
+ <ul class="nav nav-pills custom-nav">
+
+  <li routerLinkActive="active">
+    <a mat-raised-button class="navtabWidth" [routerLink]="['./base-info']" routerLinkActive="active-tab">
+      Base Info
+    </a>
+  </li>
+
+  <li routerLinkActive="active">
+    <a mat-raised-button class="navtabWidth" [routerLink]="['./summary']" routerLinkActive="active-tab">
+      Summary
+    </a>
+  </li>
+
+  <li routerLinkActive="active">
+    <a mat-raised-button class="navtabWidth" [routerLink]="['./updates']" routerLinkActive="active-tab">
+      Updates
+    </a>
+  </li>
+
+  <li routerLinkActive="active">
+    <a mat-raised-button class="navtabWidth" [routerLink]="['./capaa']" routerLinkActive="active-tab">
+      CAPA
+    </a>
+  </li>
+
+  <li routerLinkActive="active">
+    <a mat-raised-button class="navtabWidth" [routerLink]="['./documnets']" routerLinkActive="active-tab">
+      Documents
+    </a>
+  </li>
+
+  <li routerLinkActive="active">
+    <a mat-raised-button class="navtabWidth" [routerLink]="['./notes']" routerLinkActive="active-tab">
+      Notes
+    </a>
+  </li>
+
+  <li routerLinkActive="active">
+    <a mat-raised-button class="navtabWidth" [routerLink]="['./timeline']" routerLinkActive="active-tab">
+      Timeline
+    </a>
+  </li>
+
+  <li class="spacer"></li>
+
+  <li class="form-item" *ngIf="isBaseInfoActive">
+    <label>Due Date:</label>
+    <input type="date" class="form-input m-1">
+  </li>
+
+  <li class="form-item" *ngIf="isBaseInfoActive">
+    <label>ETA:</label>
+    <input type="date" class="form-input m-1">
+  </li>
+
+  <li class="form-item" *ngIf="isBaseInfoActive">
+    <label>Priority:</label>
+    <input type="checkbox" class="form-input m-1 wrapped-checkbox">
+  </li>
+
+</ul>
+
+  </div>
+</div>
+
+
+<router-outlet></router-outlet>

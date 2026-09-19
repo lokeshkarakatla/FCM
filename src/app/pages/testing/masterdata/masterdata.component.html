@@ -1,0 +1,109 @@
+<div class="nav-container" [ngClass]="{'nav-open': isNavOpen, 'nav-closed': !isNavOpen}">
+
+  <!-- Toggle Button -->
+  <button (click)="toggleNav()" class="toggle-button">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <nav class="nav-links">
+    <ul>
+
+      <li routerLinkActive="active">
+        <a [routerLink]="['category']">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Categories">category</mat-icon>
+          <span *ngIf="isNavOpen">Categories</span>
+        </a>
+      </li>
+
+      <li routerLinkActive="active">
+        <a [routerLink]="['detection']">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Detection">search</mat-icon>
+          <span *ngIf="isNavOpen">Detection</span>
+        </a>
+      </li>
+
+      <li routerLinkActive="active">
+        <a [routerLink]="['score-matrix']">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Score Matrix">assessment</mat-icon>
+          <span *ngIf="isNavOpen">Score Matrix</span>
+        </a>
+      </li>
+     <!-- Asset Master -->
+<li routerLinkActive="active">
+  <a [routerLink]="['asset-master']">
+    <mat-icon *ngIf="!isNavOpen" matTooltip="Asset Master">inventory_2</mat-icon>
+    <span *ngIf="isNavOpen">Asset Master</span>
+  </a>
+</li>
+
+<!-- Item Master -->
+<li routerLinkActive="active">
+  <a [routerLink]="['item-master']">
+    <mat-icon *ngIf="!isNavOpen" matTooltip="Item Master">list_alt</mat-icon>
+    <span *ngIf="isNavOpen">Item Master</span>
+  </a>
+</li>
+
+<!-- Item Category -->
+<li routerLinkActive="active">
+  <a [routerLink]="['item-category']">
+    <mat-icon *ngIf="!isNavOpen" matTooltip="Item Category">folder</mat-icon>
+    <span *ngIf="isNavOpen">Item Category</span>
+  </a>
+</li>
+
+<!-- Item Sub Category -->
+<li routerLinkActive="active">
+  <a [routerLink]="['item-sub-category']">
+    <mat-icon *ngIf="!isNavOpen" matTooltip="Item Sub Category">folder_open</mat-icon>
+    <span *ngIf="isNavOpen">Item Sub Category</span>
+  </a>
+</li>
+
+<!-- Resource Master -->
+<li routerLinkActive="active">
+  <a [routerLink]="['resource-master']">
+    <mat-icon *ngIf="!isNavOpen" matTooltip="Resource Master">manage_accounts</mat-icon>
+    <span *ngIf="isNavOpen">Resource Master</span>
+  </a>
+</li>
+
+<li routerLinkActive="active">
+  <a [routerLink]="['resource-master']">
+    <mat-icon *ngIf="!isNavOpen" matTooltip="Project Types">work_outline</mat-icon>
+    <span *ngIf="isNavOpen">Project Types</span>
+  </a>
+</li>
+
+
+<li routerLinkActive="active">
+  <a [routerLink]="['resource-master']">
+    <mat-icon *ngIf="!isNavOpen" matTooltip="Project Status">play_circle_outline</mat-icon>
+    <span *ngIf="isNavOpen">Project Status</span>
+  </a>
+</li>
+
+
+
+
+
+
+
+<li routerLinkActive="active">
+  <a [routerLink]="['job-code']">
+    <mat-icon *ngIf="!isNavOpen" matTooltip="Job Codes">play_circle_outline</mat-icon>
+    <span *ngIf="isNavOpen">Job Codes</span>
+  </a>
+</li>
+
+
+
+
+
+
+    </ul>
+  </nav>
+
+</div>
+
+<router-outlet></router-outlet>

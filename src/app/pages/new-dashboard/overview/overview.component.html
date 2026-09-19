@@ -1,0 +1,37 @@
+<!-- <img alt="logo" class="logo-default logo-img" style="height: 80px;width: 250px;margin-bottom: 20px;" src="../../assets/overview.png"> -->
+<!-- <div class="container-fluid" style="margin-top:10px">
+  <div class="row">
+    <img src="../../assets/overview.png" alt="puc" width="1500" height="500" style="margin-top: 15px;margin-left: 15px;">
+  </div>
+</div> -->
+<div class="row-wrap">
+    <div class="w-100">
+      <div class="col-xs-12 no-padding" style="margin-top: 7px;">
+        <div class="pills">
+            <ul class="nav nav-pills" style="margin-left: 10px;">
+                <li routerLinkActive="active" [routerLink]="['./astor']">
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                        Astor
+                    </a>
+                </li>
+                <li routerLinkActive="active" [routerLink]="['./hector']">
+                  <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                    Hector
+                  </a>
+                </li>
+                <li routerLinkActive="active" [routerLink]="['./gloster']">
+                  <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                    Gloster
+                  </a>
+                </li>    
+                <li routerLinkActive="active" [routerLink]="['./zsev']">
+                  <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                    ZSEV
+                  </a>
+                </li>    
+            </ul>
+        </div>
+      </div>
+    </div>
+    <router-outlet></router-outlet>
+  </div>

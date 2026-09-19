@@ -1,0 +1,224 @@
+/* --- Shared Action Menu Button --- */
+.action-menu-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: inherit;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+}
+
+/* Optional styling to make delete look like a destructive action */
+::ng-deep .mat-menu-item {
+  .delete-icon, .delete-text {
+    color: #ef4444; /* Red */
+  }
+}
+
+/* --- Rest of your existing CSS --- */
+
+/* Global Background and Fonts */
+.setup-container {
+  min-width: 1250px;
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+
+/* Header Text */
+.header-section {
+  margin-bottom: 24px;
+
+  h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 6px 0;
+  }
+
+  p {
+    font-size: 14px;
+    color: #6b7280;
+    margin: 0;
+  }
+}
+
+/* Three Column Grid Layout */
+.board-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+/* Individual Column Styling */
+.board-column {
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  height: 75vh;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+
+  h2 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+    padding: 20px 20px 16px 20px;
+    margin: 0;
+    border-bottom: 1px solid transparent;
+
+    .header-context {
+      font-weight: 400;
+      color: #6b7280;
+    }
+  }
+
+  .column-content {
+    padding: 0 20px 20px 20px;
+    overflow-y: auto;
+    flex-grow: 1;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+  }
+}
+
+/* --- List Items (Stages, Gates, Modules, Tasks) --- */
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+
+  .item-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .item-right {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #9ca3af;
+  }
+
+  .item-name {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .sm-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* --- Visual Variations based on Type --- */
+.is-stage {
+  background-color: #f0f7ff;
+  color: #2563eb;
+
+  &:hover:not(.is-active) {
+    background-color: #e0effe;
+  }
+}
+
+.is-gate, .is-module, .is-task {
+  background-color: #ffffff;
+  border-color: #e5e7eb;
+  color: #374151;
+
+  &:hover:not(.is-active) {
+    background-color: #f9fafb;
+    border-color: #d1d5db;
+  }
+}
+
+.is-active {
+  background-color: #dbeafe !important;
+  border-color: #93c5fd !important;
+  color: #1d4ed8 !important;
+
+  .item-right {
+    color: #60a5fa;
+  }
+}
+
+/* --- UI Elements --- */
+.custom-checkbox {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1.5px solid #cbd5e1;
+  background-color: white;
+}
+
+.is-active .custom-checkbox {
+  border-color: #93c5fd;
+  background-color: #eff6ff;
+}
+
+.dashed-add-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  margin-bottom: 16px;
+  border: 1px dashed #93c5fd;
+  border-radius: 8px;
+  background-color: #f8fafc;
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  .add-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+  }
+
+  &:hover {
+    background-color: #eff6ff;
+    border-color: #60a5fa;
+  }
+}
+
+.empty-state {
+  font-size: 13px;
+  color: #9ca3af;
+  text-align: center;
+  padding: 20px 0;
+  font-style: italic;
+}

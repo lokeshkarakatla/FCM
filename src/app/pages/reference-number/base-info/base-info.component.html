@@ -1,0 +1,170 @@
+<div class="base-info-wrapper mt-5" >
+
+  <form [formGroup]="baseInfoFormGroup">
+
+    <div class="row g-4">
+
+      <!-- Left Section -->
+      <div class="col-md-5">
+
+        <div class="mb-3 important">
+          <label class="add-member-label"><b>Reference:</b></label>
+          <input type="text" class="form-control" placeholder="Enter Reference"
+            formControlName="reference">
+        </div>
+
+        <div class="mb-3 important">
+          <label class="add-member-label"><b>Subject :</b></label>
+          <input type="text" class="form-control" placeholder="Enter subject"
+            formControlName="subject">
+        </div>
+
+        <div class="mb-3 important">
+          <label class="add-member-label"><b>Distributor:</b></label>
+
+          <mat-select placeholder="Select Distributor Name"
+            class="form-control bac"
+            formControlName="distributor">
+
+            <mat-option value="1">Global Distributors Pvt. Ltd</mat-option>
+            <mat-option value="2">Prime Trade & Supply</mat-option>
+            <mat-option value="3">Vertex Distribution Services</mat-option>
+
+          </mat-select>
+        </div>
+
+        <div class="mb-3">
+          <label><b>Serial No:</b></label>
+
+          <input type="text"
+            placeholder="Enter Serial No"
+            class="form-control"
+            formControlName="serialNo">
+        </div>
+
+        <div class="mb-3 important">
+          <label class="add-member-label"><b>Customer:</b></label>
+
+          <input type="text"
+            placeholder="Enter Customer"
+            formControlName="customer"
+            class="form-control bac">
+        </div>
+
+        <div class="mb-3 important">
+          <label class="add-member-label"><b>Description :</b></label>
+
+          <textarea rows="8"
+            class="form-control bac"
+            formControlName="description"></textarea>
+        </div>
+
+      </div>
+
+      <!-- Right Section -->
+      <div class="col-md-3">
+
+        <div class="mb-3">
+          <label><b>Country:</b></label>
+
+          <mat-select placeholder="Select Country"
+            class="form-control bac"
+            formControlName="country">
+
+            <mat-option value="1">Algeria</mat-option>
+            <mat-option value="2">Albania</mat-option>
+
+          </mat-select>
+        </div>
+
+        <div class="mb-3">
+          <label><b>City:</b></label>
+
+          <mat-select placeholder="Select City"
+            class="form-control bac"
+            formControlName="city">
+             <mat-option value="1">Algeria</mat-option>
+            <mat-option value="2">Albania</mat-option>
+          </mat-select>
+        </div>
+
+        <div class="mb-3">
+          <label><b>Model:</b></label>
+
+          <mat-select placeholder="Select Model Name"
+            class="form-control bac"
+            formControlName="model">
+             <mat-option value="1">890GD254</mat-option>
+            <mat-option value="2">	7965735</mat-option>
+            <mat-option value="3">	822NPV345</mat-option>
+          </mat-select>
+        </div>
+
+        <div class="mb-3">
+          <label><b>Select Department Head:</b></label>
+
+          <mat-select placeholder="Select Department Head"
+            class="form-control bac"
+            formControlName="departmentHead">
+              <mat-option value="1">Mr. John Doe</mat-option>
+            <mat-option value="2">	IT Department</mat-option>
+            <mat-option value="3">		Painting Departmen</mat-option>
+            
+          </mat-select>
+        </div>
+
+        <div class="mb-3">
+          <label><b>Failure Date:</b></label>
+
+          <input type="date"
+            formControlName="failureDate"
+            class="form-control bac">
+        </div>
+
+        <div class="mb-3">
+          <label><b>Complaint Date:</b></label>
+
+          <input type="date"
+            formControlName="complaintDate"
+            class="form-control bac">
+        </div>
+
+        <div class="mb-3">
+          <label><b>Due Date:</b></label>
+
+          <input type="date"
+            formControlName="dueDate"
+            class="form-control bac">
+        </div>
+
+        <div class="mb-3">
+          <label><b>Severity:</b></label>
+
+          <mat-select placeholder="Select Severity"
+            formControlName="severity"
+            class="form-control bac">
+
+            <mat-option value="1">High</mat-option>
+            <mat-option value="2">Medium</mat-option>
+            <mat-option value="3">Low</mat-option>
+
+          </mat-select>
+        </div>
+
+        <div class="text-end mt-4">
+          <button mat-raised-button
+            color="primary"
+            (click)="onSaveAndNext()">
+
+            <i class="fas fa-save"></i> Save & Next
+
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </form>
+
+</div>

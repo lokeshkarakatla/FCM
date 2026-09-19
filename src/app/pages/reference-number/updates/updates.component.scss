@@ -1,0 +1,59 @@
+/* Base toggle look */
+.switchToggle input[type=checkbox] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+  position: absolute;
+}
+
+.switchToggle label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 120px;   /* widened a bit for text fit */
+  height: 30px;
+  background: #d1d1d1;
+  display: block;
+  border-radius: 100px;
+  position: relative;
+}
+
+.switchToggle label:after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 26px;
+  height: 26px;
+  background: #fff;
+  border-radius: 90px;
+  transition: 0.3s;
+}
+
+/* Checked state: background blue */
+.switchToggle input:checked + label {
+  background: #3f51b5;
+}
+
+/* Default text (when unchecked) */
+.switchToggle input + label:before {
+  content: 'Mask ';
+  position: absolute;
+  top: 5px;
+  left: 35px;
+  text-indent: 0;
+  color: black;
+  transition: 0.3s;
+}
+
+/* Checked text (when active) */
+.switchToggle input:checked + label:before {
+  content: 'Masked';
+  color: #fff;
+  left: 40px;
+}
+
+/* Circle slides to the right */
+.switchToggle input:checked + label:after {
+  left: calc(100% - 2px);
+  transform: translateX(-100%);
+}

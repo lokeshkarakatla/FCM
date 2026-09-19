@@ -1,0 +1,753 @@
+<div class="page-header ms-5">
+
+  <!-- Left Content -->
+  <div class="header-content">
+    <h3 class="page-title mb-1">D7 (CFT)</h3>
+
+    <p class="header-info mb-0">
+      <span class="fw-bold">Ref No:</span>
+      PSR-24001
+
+      <span class="ms-3 fw-bold">Subject:</span>
+      Paint Defect
+    </p>
+  </div>
+
+  <!-- Back Button -->
+  <button class="btn btn-grey back-btn me-5" (click)="goBack()" style="
+          background-color: gray;
+          color: white;
+          display: flex;
+          align-items: center;
+          height: 40px;
+          margin-top: 5px;
+          margin-right: 3rem;
+        ">
+    <mat-icon class="me-1">arrow_back</mat-icon>
+    Back
+  </button>
+
+</div>
+
+
+
+<div style="display: flex; gap: 10px; padding: 30px;" class="mt-4">
+  <button style="font-weight: bold; border-radius: 5px" [ngClass]="{ 'active-tab': activeTab === 'overview' }"
+    (click)="setTab('overview')">
+    Overview
+  </button>
+
+  <button style="font-weight: bold; border-radius: 5px" [ngClass]="{ 'active-tab': activeTab === 'fishbone' }"
+    (click)="setTab('fishbone')">
+    Fish Bone Diagram
+  </button>
+  <button style="font-weight: bold; border-radius: 5px" [ngClass]="{ 'active-tab': activeTab === '5why' }"
+    (click)="setTab('5why')">
+    5 WHY
+  </button>
+
+  <button style="font-weight: bold; border-radius: 5px" [ngClass]="{ 'active-tab': activeTab === 'documents' }"
+    (click)="setTab('documents')">
+    Documents
+  </button>
+
+  <button style="font-weight: bold; border-radius: 5px" [ngClass]="{ 'active-tab': activeTab === 'update' }"
+    (click)="setTab('update')">
+    Updates
+  </button>
+
+
+  <button style="font-weight: bold; border-radius: 5px" [ngClass]="{ 'active-tab': activeTab === 'capa' }"
+    (click)="setTab('capa')">
+    CAPA
+  </button>
+
+</div>
+
+
+
+<!-- Overview  -->
+<div *ngIf="activeTab === 'overview'">
+  
+
+  <div class="col-lg-12 row">
+    <div class="col-lg-4 col-sm-4">
+      <div class="row">
+        <div class="form-group">
+          <label class="col-lg-12 control-label">Department : </label>
+          <div class="col-lg-12">
+            <input type="text" class="form-control" placeholder="Enter Department" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-12 control-label">Responsibility : </label>
+          <div class="col-lg-12">
+            <input type="text" class="form-control" placeholder="Enter Responsibility" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-lg-12 control-label">Notes : </label>
+          <div class="col-lg-12">
+            <textarea type="text" class="form-control" style="height: 230px" placeholder="Enter Notes"
+              required></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8 col-sm-8">
+      <table matSort id="example2" class="table table-bordered table-hover">
+        <thead class="tbl-head">
+          <tr>
+            <th class="theadcolor text-center">Yes / No</th>
+            <th class="theadcolor text-center">NA</th>
+            <th class="theadcolor text-center">Checklist</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of values">
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="item.isChecked" class="text-center"
+              style="margin-left: 14px">
+              <td>
+                <mat-radio-button [value]="'yes'" style="margin-top: 7px"></mat-radio-button>
+              </td>
+              <td>
+                <mat-radio-button [value]="'no'" style="margin-left: 10px; margin-top: 7px"></mat-radio-button>
+              </td>
+            </mat-radio-group>
+            <td>NA</td>
+            <td>{{ item.check }}</td>
+            <!-- <td class="text-center" *ngIf="item.isChecked == 'no'">
+              <mat-icon (click)="action()">label_important</mat-icon>
+            </td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <div class="col-sm-12 btn-footer-space clearfix mt-5" style="margin-right: 30px;">
+    <div class="d-flex justify-content-end gap-2 footer-actions mx-3">
+
+
+
+      <button mat-raised-button type="button" style="color: #fff; background-color: #3262a8;">
+        <mat-icon>save</mat-icon> Save
+      </button>
+
+      <button mat-raised-button type="button" style="color: #fff; background-color: #3262a8;">
+        <mat-icon>launch</mat-icon> Approve
+      </button>
+
+
+    </div>
+  </div>
+
+
+</div>
+
+
+<!-- Fishbone -->
+<div *ngIf="activeTab === 'fishbone'">
+  <div class="col-lg-12">
+    <div class="col-lg-3">
+      <div id="grid-table-container" class="table-responsive">
+        <table matSort id="example2" class="table table-bordered table-hover.">
+          <thead class="tbl-head">
+            <tr style="background-color: rgb(177, 177, 181); color: black">
+              <th class="text-center">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span>Man</span>
+                  <mat-icon style="cursor: pointer;" (click)="addchecklistaudit()">edit</mat-icon>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of man">
+              <td class="text-center">{{ item.issue }}</td>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div id="grid-table-container" class="table-responsive">
+        <table matSort id="example2" class="table table-bordered table-hover.">
+          <thead class="tbl-head">
+            <tr style="background-color: rgb(177, 177, 181); color: black">
+              <th class="text-center">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span>Material</span>
+                  <mat-icon style="cursor: pointer;" (click)="addchecklistaudit()">edit</mat-icon>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of material">
+              <td class="text-center">{{ item.issue }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div id="grid-table-container" class="table-responsive">
+        <table matSort id="example2" class="table table-bordered table-hover.">
+          <thead class="tbl-head">
+            <tr style="background-color: rgb(177, 177, 181); color: black">
+              <th class="text-center">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span>Machines</span>
+                  <mat-icon style="cursor: pointer;" (click)="addchecklistaudit()">edit</mat-icon>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of machines ">
+              <td class="text-center">{{ item.issue }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-11 col-md-11">
+    <div class="rectangle"></div>
+  </div>
+  <div class="col-lg-1 col-md-1" style="padding-left: 0px;">
+    <div class="triangle-right"></div>
+  </div>
+
+  <div class="col-lg-12">
+    <div class="col-lg-3">
+      <div id="grid-table-container" class="table-responsive">
+        <table matSort id="example2" class="table table-bordered table-hover.">
+          <thead class="tbl-head">
+            <tr style="background-color: rgb(177, 177, 181); color: black">
+              <th class="text-center">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span>Methods</span>
+                  <mat-icon style="cursor: pointer;" (click)="addchecklistaudit()">edit</mat-icon>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of methods ">
+              <td class="text-center">{{ item.issue }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div id="grid-table-container" class="table-responsive">
+        <table matSort id="example2" class="table table-bordered table-hover.">
+          <thead class="tbl-head">
+            <tr style="background-color: rgb(177, 177, 181); color: black">
+              <th class="text-center">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span>Environment</span>
+                  <mat-icon style="cursor: pointer;" (click)="addchecklistaudit()">edit</mat-icon>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of environment ">
+              <td class="text-center">{{ item.issue }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div id="grid-table-container" class="table-responsive">
+        <table matSort id="example2" class="table table-bordered table-hover.">
+          <thead class="tbl-head">
+            <tr style="background-color: rgb(177, 177, 181); color: black">
+              <th class="text-center">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span>Supply Exception</span>
+                  <mat-icon style="cursor: pointer;" (click)="addchecklistaudit()">edit</mat-icon>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of supply ">
+              <td class="text-center">{{ item.issue }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-12 margin-top:50px">
+    <div class="pull-right mt-5">
+
+      <button mat-raised-button class="me-3" type="button" style="
+          color: rgba(252, 253, 252, 0.926);
+          background-color: #3262a8;
+          margin-right: 10px;
+        ">
+        <mat-icon>save</mat-icon>Save
+      </button>
+
+
+    </div>
+  </div>
+</div>
+
+<!-- Why -->
+<div *ngIf="activeTab === '5why'" style="margin-left: 30px;">
+
+  <div class="row">
+
+    <!-- Left: WHY inputs -->
+    <div class="col-lg-8 col-sm-8">
+      <div class="row">
+
+        <div class="form-group row align-items-center"
+          *ngFor="let item of addLookupGroup.get('lookupNameDetails')['controls']; let i = index;">
+
+          <!-- Label -->
+          <label class="col-sm-3 col-form-label add-member-label" *ngIf="i === 0">
+            Cascading WHY Analysis :
+          </label>
+
+          <!-- Empty space for alignment -->
+          <div class="col-sm-3" *ngIf="i !== 0"></div>
+
+          <!-- Input -->
+          <div class="col-sm-5">
+            <input type="search" class="form-control" placeholder="Enter Checklist Items">
+          </div>
+
+          <!-- Icons -->
+          <div class="col-sm-1 d-flex align-items-center">
+            <a *ngIf="addLookupGroup.get('lookupNameDetails')['controls'].length > 1"
+              (click)="fnLookupDeleteItemModal(i)" style="cursor:pointer; margin-right:10px;">
+              <i class="fa fa-trash text-danger"></i>
+            </a>
+
+            <a *ngIf="i === 0" (click)="addNewInputField()" style="cursor:pointer;">
+              <i class="fa fa-plus"></i>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Root Cause textarea -->
+    <div class="col-lg-4 col-sm-4">
+      <div class="form-group">
+        <label class="col-lg-12 control-label">Root Cause Analysis :</label>
+        <div class="col-lg-11">
+          <textarea class="form-control" style="height: 180px;" placeholder="Enter Root Cause Analysis" required>
+          </textarea>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Save Button Row -->
+  <div class="row mt-4">
+    <div class="col-lg-12 d-flex justify-content-end">
+      <button mat-raised-button type="button" style="color: rgba(252, 253, 252, 0.926); background-color: #3262a8;">
+        <mat-icon>save</mat-icon> Save
+      </button>
+    </div>
+  </div>
+
+</div>
+
+
+
+<!-- Documents -->
+<div *ngIf="activeTab === 'documents'" class="documents-wrapper ms-5" style="width: 800px;">
+
+  <!-- Top Right Add Button -->
+  <div class="top-btn-section">
+    <button mat-raised-button color="primary" class="btn-primary" (click)="adddocument(null)">
+      <mat-icon>add</mat-icon>
+      Add Documents
+    </button>
+  </div>
+
+  <!-- Table -->
+  <table matSort id="example2" class="table table-bordered table-hover documents-table">
+
+    <thead class="tbl-head">
+      <tr>
+        <th style="width: 100px;">Date</th>
+        <th style="width: 80px;">Refer</th>
+        <th style="width: 60px;" class="text-center">Done</th>
+        <th style="width: 150px;" class="text-center">Document Type</th>
+        <th style="width: 60px;" class="text-center">View</th>
+        <th style="width: 80px;" class="text-center">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of documents">
+
+        <td>{{ item.date }}</td>
+
+        <td>{{ item.refer }}</td>
+
+        <td class="text-center">
+          <input type="checkbox">
+        </td>
+
+        <td class="text-center doc-link" (click)="adddocumenttype(item)">
+          Containment Log.pdf
+        </td>
+
+        <td class="text-center">
+          <mat-icon>library_books</mat-icon>
+        </td>
+
+        <td class="text-center editDel">
+          <a style="cursor:pointer; margin-right:10px;" matTooltip="Edit" (click)="adddocument(item)">
+            <i class="fa fa-edit" style="color: cornflowerblue;"></i>
+          </a>
+
+          <a matTooltip="Delete" (click)="deleteConfirmation(item)" style="cursor:pointer;">
+            <i class="fa fa-trash red"></i>
+          </a>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Bottom Right Buttons -->
+  <div class="bottom-btn-section ">
+
+    <!-- <button style="color: rgb(7, 10, 7); background-color: #e0e0e0; " mat-raised-button
+      (click)="back()" type="button" class="secondary-btn">
+
+      <mat-icon>fast_rewind</mat-icon>
+      Back
+
+    </button> -->
+
+    <button style="color: rgba(252, 253, 252, 0.926); background-color: #3262a8; " mat-raised-button type="button"
+      class="save-btn">
+
+      <mat-icon>save</mat-icon>
+      Save
+
+    </button>
+
+    <!-- <button style="color: rgb(7, 10, 7); background-color: #e0e0e0; " mat-raised-button
+      (click)="next()" type="button" class="secondary-btn">
+
+      Next
+      <mat-icon>fast_forward</mat-icon>
+
+    </button> -->
+
+  </div>
+
+</div>
+
+
+<!-- capa -->
+
+<div *ngIf="activeTab === 'capa'" class="col-sm-12" style="margin-top: 10px; margin-left:30px">
+  <button mat-raised-button color="primary" class="pull-right btn-primary mb-3 me-3"
+    style="margin-right: 5px;  font-size: 13px" (click)="addMeeting(null)">
+    <mat-icon style="font-size: 20px">add</mat-icon> Add CAPA
+  </button>
+  <div class="table-responsive" id="grid-table-container" style="width: 100%; margin-left: -7px;">
+    <table class="table table-bordered table-hover">
+      <thead class="tbl-head">
+        <tr>
+          <th>Actions</th>
+          <th>Status</th>
+          <th>Subject</th>
+          <th>Description</th>
+          <!-- <th>Complaint (Reference)</th>
+          <th>Meeting Ref</th> -->
+          <th>Role</th>
+          <th>Department</th>
+
+
+          <th>Due Date</th>
+          <th>ETA</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of dataList">
+          <td>
+            <a (click)="openCAPA(item)"><i class="fa fa-edit"></i></a>
+            <a (click)="deleteConfirmation(item)"><i class="fa fa-trash red"></i></a>
+          </td>
+          <td>
+            <select [(ngModel)]="item.status" class="form-select">
+              <option value="Open">Open</option>
+              <option value="Pending">Pending</option>
+              <option value="WIP">WIP</option>
+            </select>
+          </td>
+          <td>{{ item.issue }}</td>
+          <td>{{ item.details }}</td>
+          <td>{{ item.role }}</td>
+          <td>{{ item.department }}</td>
+          <td>{{ item.date }}</td>
+          <td>{{ item.eta }}</td>
+        </tr>
+      </tbody>
+
+    </table>
+    <mat-paginator [length]="totalSize" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons>
+    </mat-paginator>
+  </div>
+</div>
+
+
+<!-- update -->
+
+<div *ngIf="activeTab === 'update'" style="margin-left: 20px;">
+
+  <div class="row">
+    <div class="form-group">
+      <h2><label class="col-lg-12 control-label" style="font-size: 16px;"> Root Cause Analysis: </label></h2>
+      <div class="col-lg-12">
+        <textarea class="form-control" style="height: 131px; width: 27cm;" placeholder="Enter Root Cause Analysis"
+          required></textarea>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <h2><label class="col-lg-12 control-label" style="font-size: 16px;"> Interim Corrective Action: </label></h2>
+      <div class="col-lg-12">
+        <textarea class="form-control" style="height: 131px; width: 27cm;" placeholder="Enter Interim Corrective Action"
+          required></textarea>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <h2><label class="col-lg-12 control-label" style="font-size: 16px;"> Permanent Corrective Action: </label></h2>
+      <div class="col-lg-12">
+        <textarea class="form-control" style="height: 131px; width: 27cm;"
+          placeholder="Enter Permanent Corrective Action" required></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div align="end" style="margin-top: 30px; margin-bottom: 20px; margin-right: 10px;">
+
+    <!-- <button mat-raised-button class="pull-right vamshi"
+      style="color: white; background-color: rgb(10, 93, 182); margin-right: 160px;">
+      <mat-icon>save</mat-icon> Submit
+    </button> -->
+
+
+    <button mat-raised-button class="pull-right vamshi custom-btn"
+      style="color: white;background-color: rgb(10, 93, 182);">
+      <mat-icon>save</mat-icon> Submit
+    </button>
+
+    <button type="button" class="btn btn-outline-success" style="margin-right: 10px; height: 41px;">
+      Save Draft
+    </button>
+
+  </div>
+
+</div>
+
+
+
+
+
+
+<!-- Monitoring -->
+<!-- <div *ngIf="activeTab === 'monitoring'">
+  <button mat-raised-button color="primary" class="pull-right btn-primary mt-3 mb-3" (click)="addlog()">
+    <mat-icon>add</mat-icon> Log Audit Result
+  </button>
+
+  <table matSort id="example2" class="table table-bordered table-hover">
+    <thead class="tbl-head">
+      <tr>
+        <th class="theadcolor text-center">Date</th>
+        <th class="theadcolor text-center">Reference</th>
+        <th class="theadcolor text-center">Done By</th>
+        <th class="theadcolor text-center">Status</th>
+        <th class="theadcolor text-center">Notes</th>
+        <th class="theadcolor text-center">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of valyes">
+        <td class="text-center">{{ item.date }}</td>
+
+        <td class="text-center">{{ item.refer }}</td>
+
+        <td class="text-center">{{ item.Done }}</td>
+        <td class="text-center"><input type="radio" /></td>
+
+        <td class="text-center" (click)="note()"><mat-icon>info</mat-icon></td>
+        <td class="text-center editDel">
+          <a style="cursor: pointer; margin-right: 10px" matTooltip="Edit" (click)="addlog()">
+            <i class="fa fa-edit" style="color: cornflowerblue"></i>
+          </a>
+          <a>
+            <i class="fa fa-trash red" matTooltip="Delete" style="cursor: pointer"
+              (click)="deleteConfirmation(item)"></i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="col-lg-12 margin-top:50px">
+    <div class="pull-right mt-5">
+      <button mat-raised-button (click)="back()" class="mr-2" type="button" style="
+          color: rgb(7, 10, 7);
+          background-color: #e0e0e0;
+          margin-right: 10px;
+        ">
+        <mat-icon>fast_rewind</mat-icon> Back
+      </button>
+      <button mat-raised-button class="mr-2" type="button" style="
+          color: rgba(252, 253, 252, 0.926);
+          background-color: #3262a8;
+          margin-right: 10px;
+        ">
+        <mat-icon>save</mat-icon>Save
+      </button>
+
+      <button mat-raised-button class="mr-2" type="button" (click)="next()"
+        style="color: rgb(10, 10, 10); background-color: #eff0f3">
+        Next<mat-icon>fast_forward</mat-icon>
+      </button>
+    </div>
+  </div>
+</div> -->
+
+<!-- Deployment -->
+<!-- <div *ngIf="activeTab === 'deployment'" class="container-fluid">
+
+  
+  <div class="form-group row align-items-center mt-3">
+    <label class="col-md-4 col-form-label">Is Horizontal Deployment viable?</label>
+    <div class="col-md-8 d-flex align-items-center">
+
+      <div class="form-check d-flex align-items-center mr-5">
+        <input type="checkbox" class="form-check-input" id="checkYes"
+          [checked]="currentlyChecked === check_box_type.APPLY_FOR_JOB"
+          (click)="selectCheckBox(check_box_type.APPLY_FOR_JOB)" />
+        <label class="form-check-label ml-2 mb-0" for="checkYes">YES</label>
+      </div>
+
+      <div class="form-check d-flex align-items-center">
+        <input type="checkbox" class="form-check-input" id="checkNo"
+          [checked]="currentlyChecked === check_box_type.MODIFY_A_JOB"
+          (click)="selectCheckBox(check_box_type.MODIFY_A_JOB)" />
+        <label class="form-check-label ml-2 mb-0" for="checkNo">NO</label>
+      </div>
+
+    </div>
+  </div>
+
+ 
+  <div class="form-group row mt-4">
+    <label class="col-md-2 col-form-label">Remark:</label>
+    <div class="col-md-10">
+      <textarea class="form-control" style="height: 200px; width: 650px;" placeholder="Enter Remark"
+        required></textarea>
+    </div>
+  </div>
+
+  
+  <div class="form-group row mt-4">
+    <div class="col-md-12 text-right">
+      <button mat-raised-button type="button" (click)="back()" class="button-gap d-inline-flex align-items-center"
+        style="color: #070a07; background-color: #e0e0e0;">
+        <mat-icon class="mr-1">fast_rewind</mat-icon>
+        Back
+      </button>
+
+      <button mat-raised-button type="button" class="d-inline-flex align-items-center"
+        style="color: #f6f8fa; background-color: #3262a8;">
+        <mat-icon class="mr-1">save</mat-icon>
+        Submit
+      </button>
+    </div>
+  </div>
+
+</div> -->
+
+<!-- Diagnosis -->
+<!-- <div *ngIf="activeTab === 'diagnosis'" class="m-5">
+  <button mat-raised-button color="primary" class="pull-right btn-primary mt-3 mb-4" style="margin-right: -1px"
+    (click)="addchecklistaudit()">
+    <mat-icon>add</mat-icon> Add Cause
+  </button>
+  <table matSort id="example2" class="table table-bordered table-hover">
+    <thead class="tbl-head">
+      <tr>
+        <th class="theadcolor">Possible Cause</th>
+        <th class="theadcolor">Short Text</th>
+        <th class="theadcolor">Classification</th>
+        <th class="theadcolor text-center">Probable Cause</th>
+        <th class="theadcolor text-center">Actions</th>
+      </tr>
+    </thead>
+   <tbody>
+  <tr *ngFor="let item of valuess">
+    <td>{{ item.possible }}</td>
+    <td>{{ item.short }}</td>
+    <td>
+      <mat-select placeholder="Select Classification">
+        <mat-option value="Man">Man</mat-option>
+        <mat-option value="Machine">Machine</mat-option>
+        <mat-option value="Methods">Methods</mat-option>
+        <mat-option value="Material">Material</mat-option>
+        <mat-option value="Environment">Environment</mat-option>
+      </mat-select>
+    </td>
+    <td class="text-center"><mat-checkbox></mat-checkbox></td>
+  </tr>
+</tbody>
+
+  </table>
+
+  <div class="col-lg-12 m-5" >
+    <div class="pull-right mt-5">
+      <button mat-raised-button (click)="back()" class="mr-2" type="button" style="
+          color: rgb(7, 10, 7);
+          background-color: #e0e0e0;
+          margin-right: 10px;
+        ">
+        <mat-icon>fast_rewind</mat-icon> Back
+      </button>
+      <button mat-raised-button class="mr-2" type="button" style="
+          color: rgba(252, 253, 252, 0.926);
+          background-color: #3262a8;
+          margin-right: 10px;
+        ">
+        <mat-icon>save</mat-icon>Save
+      </button>
+
+      <button mat-raised-button class="mr-2" type="button" (click)="next()"
+        style="color: rgb(10, 10, 10); background-color: #eff0f3">
+        Next<mat-icon>fast_forward</mat-icon>
+      </button>
+    </div>
+  </div>
+
+</div> -->

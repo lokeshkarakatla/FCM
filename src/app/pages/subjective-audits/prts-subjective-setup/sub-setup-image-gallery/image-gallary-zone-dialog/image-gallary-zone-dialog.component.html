@@ -1,0 +1,46 @@
+<table style="margin-top: 7px; padding-left: 0px; padding-right: 0px" matSort id="example2"
+  class="table table-bordered table-hover">
+  <thead class="tbl-head">
+    <tr class="theadcolor text-center">
+      Sample Image
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <div class="upload-container">
+          <!-- <h3 class="title">
+    Upload Document (Provider : River Oaks Hospital and Clinics)
+  </h3> -->
+
+          <div style="display: flex; align-items: center; gap: 20px">
+            <!-- Drag & Drop Upload Zone -->
+            <div class="drop-zone" (dragover)="onDragOver($event)" (drop)="onDrop($event)">
+              <p>Drag and drop files here</p>
+              <input type="file" #fileInput hidden (change)="onFileSelected($event)" />
+              <button (click)="fileInput.click()">Browse Files</button>
+            </div>
+
+            <!-- Image Preview -->
+            <img style="height: 195px" [src]="Image" *ngIf="Image" />
+          </div>
+
+          <!-- <button class="save-button" (click)="save()">💾 Save</button> -->
+        </div>
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+<mat-dialog-actions align="end">
+  <button mat-raised-button class="ms-2" (click)="close()"
+    style="background-color: lightgray; color: red;margin-right: 2px;">
+    <mat-icon>cancel</mat-icon>
+    Close
+  </button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="'test'">
+    <mat-icon>save</mat-icon>
+    <span>{{ data ? 'Update' : 'Save' }}</span>
+  </button>
+
+</mat-dialog-actions>

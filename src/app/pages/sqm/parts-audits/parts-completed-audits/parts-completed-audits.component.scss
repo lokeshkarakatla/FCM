@@ -1,0 +1,151 @@
+.page-container {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+/* Charts Styling */
+.chart-header {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #666;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.chart-container {
+  height: 300px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Table Styling matching your image */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.custom-grid-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+
+  th, td {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    padding: 10px 12px;
+    border: 1px solid #dee2e6;
+    vertical-align: middle;
+  }
+ 
+
+  td {
+    color: #333;
+    text-align: left;
+
+    &.text-center {
+      text-align: center;
+    }
+  }
+
+  /* Striped rows */
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9; 
+  }
+  tbody tr:nth-child(odd) {
+    background-color: #ffffff; 
+  }
+  tbody tr:hover {
+    background-color: #f1f5f9;
+  }
+
+  /* Link Styling for numbers and refs */
+  .text-link {
+    color: blue !important;
+    cursor: pointer;
+    font-weight: 500;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* Make dropdown in the table fit perfectly */
+.custom-mat-select {
+  background-color: white !important;
+  height: 32px;
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+}
+
+td {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    padding: 10px 12px;
+    border: 1px solid #dee2e6;
+    vertical-align: middle;
+  }
+
+  th {
+  background-color: #3f3f3f;
+  color: white;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #e1e1e1;  /* already correct */
+}
+
+/* Add to bottom of parts-completed-audits.component.scss */
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  scroll-behavior: smooth; /* ADD THIS for smooth JS scrolling */
+}
+
+/* FAB Wrapper for Scroll Buttons */
+.fab-wrapper {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex !important;
+  gap: 16px !important;
+  z-index: 1000;
+}
+
+  .btn-dark {
+    background-color: #111 !important;
+    color: #fff !important;
+  }
+  .toolbar-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-bottom: 15px;
+
+  /* Overriding mat-raised-button colors */
+  .btn-dark {
+    background-color: #111 !important;
+    color: #fff !important;
+  }
+
+  .btn-blue {
+    background-color: #0d8add !important; /* Light blue from image */
+    color: #fff !important;
+  }
+  
+  /* Centers the icon properly with text inside a mat-button */
+  ::ng-deep .mdc-button__label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+}

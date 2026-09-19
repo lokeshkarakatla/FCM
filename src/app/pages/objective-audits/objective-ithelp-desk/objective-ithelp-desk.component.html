@@ -1,0 +1,59 @@
+<div class="NewHeader">
+  <h1 mat-dialog-title>Send Mail</h1>
+</div>
+
+<div mat-dialog-content>
+  <form class="form-horizontal" [formGroup]="itHelpDesk">
+    <!-- Subject -->
+    <div class="form-group">
+      <label class="control-label col-sm-3 ">Subject:</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" formControlName="Subject" placeholder="Enter Subject" />
+        <div *ngIf="isSubmitting && f.Subject.errors" class="error-text">
+          <div *ngIf="f.Subject.errors.required">Required</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="form-group mt-3">
+      <label class="control-label col-sm-3  ">Description:</label>
+      <div class="col-sm-9">
+        <textarea class="form-control" formControlName="Description" rows="4"
+          placeholder="Enter Description"></textarea>
+        <div *ngIf="isSubmitting && f.Description.errors" class="error-text">
+          <div *ngIf="f.Description.errors.required">Required</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Attach File (no red star) -->
+    <div class="form-group mt-3">
+      <!-- NOTE: custom class added to suppress red star -->
+      <label class="control-label col-sm-3 no-required-label">Attach File:</label>
+      <div class="col-sm-9">
+        <input type="file" (change)="onFileSelected($event)" class="form-control-file" />
+        <div *ngIf="selectedFile">
+          <p class="mt-2">Selected: {{ selectedFile.name }}</p>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="form-group">
+  <div class="col-sm-offset-3 col-sm-9">
+    <mat-dialog-actions style="display: flex; justify-content: flex-end; gap: 5px; transform: translateX(14px);margin-bottom: -13px;">
+      <button mat-raised-button class="ms-2 add-dark-hover btn-default" (click)="close()"
+        style="background-color: lightgray; color: red;margin-right: 2px;">
+        <mat-icon>cancel</mat-icon>
+        Close
+      </button>
+      <button mat-raised-button color="primary" type="button" (click)="Send()">
+        <mat-icon>save</mat-icon> Send
+      </button>
+
+
+    </mat-dialog-actions>
+  </div>
+</div>

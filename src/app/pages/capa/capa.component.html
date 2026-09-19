@@ -1,0 +1,172 @@
+<div class="col-lg-12 main-container">
+
+    <div class="top-bar">
+        <div class="switchToggle">
+            <input type="checkbox" id="maskInactiveSwitch" [(ngModel)]="maskInactive">
+            <label for="maskInactiveSwitch"></label>
+        </div>
+
+        <button mat-raised-button class="black-btn"
+            (click)="filterToggle = !filterToggle">
+            <mat-icon>filter_list</mat-icon> Filter
+        </button>
+
+        <button mat-raised-button color="primary" (click)="openCAPA(null)">
+            <mat-icon>person_add</mat-icon> Add CAPA
+        </button>
+    </div>
+
+    <div class="col-lg-12 filter-section" fxLayout="row wrap" *ngIf="filterToggle">
+        <div fxFlex="100" class="flex-p w-100">
+            <form>
+                <mat-card class="filter filter-card">
+                    <mat-card-content>
+                        <div class="row col-lg-12 col-sm-12">
+
+                            <div class="col-sm-4 row me-2 mt-3">
+                                <div class="col-sm-3 newMarginClass"><b>Keyword:</b></div>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" placeholder="Enter Keyword" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4 row me-2 mt-3">
+                                <div class="col-sm-3 newMarginClass"><b>Role:</b></div>
+                                <div class="col-sm-9">
+                                    <mat-select placeholder="Select Role" class="form-control">
+                                        <mat-option value="Albania">Shift Manage</mat-option>
+                                        <mat-option value="Algeria">Shift Manage</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4 row me-2 mt-3">
+                                <div class="col-sm-3 newMarginClass"><b>Department:</b></div>
+                                <div class="col-sm-9">
+                                    <mat-select placeholder="Select Department" class="form-control">
+                                        <mat-option value="Developer">Developer</mat-option>
+                                        <mat-option value="RnD">RnD</mat-option>
+                                        <mat-option value="QA">QA</mat-option>
+                                        <mat-option value="Account">Account</mat-option>
+                                        <mat-option value="Test">Test</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4 row me-2 mt-3">
+                                <div class="col-sm-3 newMarginClass"><b>Status:</b></div>
+                                <div class="col-sm-9">
+                                    <mat-select placeholder="Select Status" class="form-control">
+                                        <mat-option value="Opened">Opened</mat-option>
+                                        <mat-option value="WIP">WIP</mat-option>
+                                        <mat-option value="Pending">Pending</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4 row me-2 mt-3">
+                                <div class="col-sm-3 newMarginClass"><b>From Date:</b></div>
+                                <div class="col-sm-9">
+                                    <input type="date" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4 row me-2 mt-3">
+                                <div class="col-sm-3 newMarginClass"><b>To Date:</b></div>
+                                <div class="col-sm-9">
+                                    <input type="date" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 pull-right mt-3 filter-actions">
+                                <a (click)="filterToggle = !filterToggle" class="pull-right toggle-icon">
+                                    <i class="fa fa-angle-double-up"></i>
+                                </a>
+
+                                <button mat-raised-button class="pull-right btn-default margin-right-10"
+                                    (click)="clearFilter();getTests()">
+                                    <mat-icon>settings_backup_restore</mat-icon> Clear
+                                </button>
+
+                                <button mat-raised-button color="primary" class="pull-right margin-right-10"
+                                    (click)="getTests()">
+                                    <mat-icon>search</mat-icon> Search
+                                </button>
+                            </div>
+
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-sm-12 table-wrapper">
+        <div class="table-responsive" id="grid-table-container">
+            <table class="table table-bordered table-hover">
+
+                <thead class="tbl-head">
+                    <tr>
+                        <th>Actions</th>
+                        <th>Status</th>
+                        <th class="nowrap">Complaint (Reference)</th>
+                        <th class="nowrap">Meeting Ref</th>
+                        <th>Role</th>
+                        <th>Department</th>
+                        <th>Subject</th>
+                        <th>Description</th>
+                        <th class="nowrap">Due Date</th>
+                        <th class="nowrap">ETA</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let item of data">
+                        <td class="nowrap">
+                            <a matTooltip="Edit CAPA" (click)="openCAPA(null)">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a matTooltip="Delete CAPA" (click)="deleteConfirmation(applicant)">
+                                <i class="fa fa-trash red"></i>
+                            </a>
+                        </td>
+
+                        <td>
+                            <select class="form-select small-select">
+                                <option [selected]="item.status === 'Pending'">Pending</option>
+                                <option [selected]="item.status === 'Process'">Process</option>
+                                <option [selected]="item.status === 'Hold'">Hold</option>
+                                <option [selected]="item.status === 'Closed'">Closed</option>
+                            </select>
+                        </td>
+
+                        <td>
+                            <ng-container *ngFor="let word of item.title.split(' '); let i = index">
+                                <span [ngClass]="{'clickable': i === 0}"
+                                    (click)="i === 0 && goToAddComplaint()">
+                                    {{ word }}
+                                </span>
+                                &nbsp;
+                            </ng-container>
+                        </td>
+
+                        <td class="link">{{ item.meetingRef }}</td>
+                        <td>{{ item.role }}</td>
+                        <td>{{ item.department }}</td>
+                        <td>{{ item.issue }}</td>
+                        <td>{{ item.details }}</td>
+                      <td class="nowrap red-due-date">{{ item.date }}</td>
+<td class="nowrap">{{ item.eta }}</td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+            <mat-paginator [length]="totalSize" [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 25, 50, 100]"
+                showFirstLastButtons>
+            </mat-paginator>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,103 @@
+<div class="page-header ms-5">
+
+    <!-- Left Content -->
+    <div class="header-content">
+        <h3 class="page-title mb-1">Closure</h3>
+
+        <p class="header-info mb-0">
+            <span class="fw-bold">Ref No:</span>
+            PSR-24001
+
+            <span class="ms-3 fw-bold">Subject:</span>
+            Paint Defect
+        </p>
+    </div>
+
+    <!-- Back Button -->
+    <button
+        class="btn btn-grey back-btn me-5"
+        (click)="goBack()"
+        style="
+          background-color: gray;
+          color: white;
+          display: flex;
+          align-items: center;
+          height: 40px;
+          margin-top: 5px;
+          margin-right: 3rem;
+        "
+    >
+        <mat-icon class="me-1">arrow_back</mat-icon>
+        Back
+    </button>
+
+</div>
+
+
+<div class="top-section ms-5">
+
+    <!-- Tabs -->
+    <div class="pills">
+        <ul class="nav nav-pills">
+            <li>
+                <a mat-raised-button class="navtabWidth" [routerLink]="['../closure']">
+                    Documents
+                </a>
+            </li>
+            <li>
+                <a mat-raised-button class="navtabWidth active-tab" [routerLink]="['../closure-note']">
+                    Notes
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+
+ 
+
+
+ 
+<div class="editor-container" style=" padding: 20px;">
+
+
+  <div style="min-width: 65%; max-width: 70%; border-radius: 10px;">
+     <div class="quill-wrapper"  style=" border-radius: 10px;">
+  <quill-editor
+    [(ngModel)]="content"
+    [modules]="modules"
+    placeholder="Insert text here ...">
+  </quill-editor>
+</div>
+
+
+  </div>
+
+
+
+  <div  style ="display: flex; justify-content: flex-end; min-width: 65%; max-width: 70% ; margin-top: 20px;">
+    <button mat-raised-button color="primary" type="button" class="save-btn">
+  <mat-icon>save</mat-icon>
+  Save
+</button>
+  </div>
+  <!-- Rich Text Editor -->
+  <!-- <div class="editor-box">
+    <quill-editor [(ngModel)]="content" [modules]="modules" placeholder="Insert text here ...">
+    </quill-editor>
+  </div>
+
+</div> -->
+
+
+<!-- Save Button -->
+<!-- <div class="d-flex justify-content-end mt-3 save-box">
+  <button mat-raised-button type="button" class="save-btn">
+    <mat-icon>save</mat-icon>
+    Save
+  </button>
+</div> -->
+
+</div>
+ 

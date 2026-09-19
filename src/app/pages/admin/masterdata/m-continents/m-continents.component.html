@@ -1,0 +1,122 @@
+<!-- Add,filter -->
+<div class="col-sm-10 mt-5" style="margin-top: 90px;margin-left: -13px;">
+
+    <!-- Add, Filter Buttons Row -->
+    <div class="col-sm-12 mt-5" style="margin-top: 90px;">
+        <div class="row">
+            <div class="col-sm-12" style="text-align: right; padding-right: 232px;">
+                <button mat-raised-button style="background-color: gray; color: white;margin-left: 8px;"
+                    class="pull-right margin-right-5 mt-3" (click)="goBack()">
+                    <mat-icon>arrow_back</mat-icon> Back
+                </button>
+                <button [ngClass]="{ 'disable-custom': !canCreate }" mat-raised-button color="primary"
+                    class="pull-right btn-primary margin-right-5 mt-3" (click)="addmodule(null)">
+                    <mat-icon>add</mat-icon> Add Continent
+                </button>
+
+                <button mat-raised-button style="background-color: black; color: white;"
+                    class="pull-right  margin-right-10 mt-3" (click)="filterToggle = !filterToggle">
+                    <mat-icon>filter_list</mat-icon> Filter
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!--Filter Toggle-->
+    <div class="col-lg-12" fxLayout="row wrap" *ngIf="filterToggle" style="margin-bottom: 20px;">
+        <div fxFlex="100" class="flex-p w-100">
+            <form>
+                <mat-card class="filter" style="width: 79%; margin-left: -18px;margin-bottom: -27px;">
+                    <mat-card-content>
+                        <div class="row col-lg-12 col-sm-12 mt-3 d-flex">
+
+                            <!-- Keyword -->
+                            <div class="col-sm-4 d-flex align-items-center">
+                                <label class="col-sm-4 col-form-label"><b>Keyword:</b></label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" placeholder="Enter Keyword" />
+                                </div>
+                            </div>
+
+                            <!-- Status -->
+                            <div class="col-sm-4 d-flex align-items-center">
+                                <label class="col-sm-4 col-form-label"><b>Status:</b></label>
+                                <div class="col-sm-8">
+                                    <!-- <input type="text" class="form-control" placeholder="Enter Status" /> -->
+                                    <mat-select class="form-control" placeholder="Select Status " required>
+
+                                        <mat-option value="Maintenance">Active</mat-option>
+                                        <mat-option value="Engineering">Inactive</mat-option>
+
+                                    </mat-select>
+                                </div>
+                            </div>
+
+                            <!-- Buttons -->
+                            <div class="col-sm-4 d-flex justify-content-end align-items-center">
+
+                                <button mat-raised-button color="primary" class="margin-right-10" (click)="getTests()">
+                                    <mat-icon>search</mat-icon> Search
+                                </button>
+
+                                <button mat-raised-button class="btn-default margin-right-10"
+                                    (click)="clearFilter();getTests()">
+                                    <mat-icon>settings_backup_restore</mat-icon> Clear
+                                </button>
+
+                                <a (click)="filterToggle = !filterToggle"
+                                    style="font-size: 25px; cursor: pointer; margin-right: -32px;color: #0d6efd;">
+                                    <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                                </a>
+                            </div>
+
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </form>
+
+        </div>
+    </div>
+
+    <!-- Table -->
+    <div class="col-sm-12 mt-4" style="margin-left:-10px;">
+        <div id="grid-table-container" class="table-responsive">
+            <table style="width:auto" matSort id="example2" class="table table-bordered table-hover">
+                <thead class="tbl-head">
+                    <tr>
+                        <th style="width:250px">Continents Name</th>
+                        <th style="width:250px" class="text-center">Status</th>
+                        <th class="text-center" style="width: 250px!important;">Actions</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of tableList">
+                        <td>{{item.stageName}}</td>
+                        <td (click)="Confirmation()"
+                            [ngClass]="{'active-status': item.status, 'inactive-status': !item.status}"
+                            style="text-align: center !important; cursor:pointer">
+                            {{ item.status ? 'Active' : 'Inactive' }}
+                        </td>
+
+                        <td class="text-center editDel">
+                            <a [ngClass]="{'disable-custom' : !canUpdate}" style="cursor: pointer;margin-right:10px;"
+                                matTooltip="Edit" (click)="addmodule(item)">
+                                <i class="fa fa-edit" style="color: cornflowerblue"></i>
+                            </a>
+                            <a [ngClass]="{'disable-custom' : !canDelete || item.TotalUsed || item.Used}"><i
+                                    class="fa fa-trash red" matTooltip="Delete" style="cursor: pointer;"
+                                    (click)="deleteConfirmation(item)"></i></a>
+                        </td>
+                    </tr>
+                    <tr *ngIf="tableList ==null || tableList.length ==0">
+                        <td colspan="13" class="text-center">No data available</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- PAGINATION CONTENT  ------------------------------------------------------>
+            <mat-paginator class="col-sm-6 ms-2" [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+                style="width: 78%;" [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons>
+            </mat-paginator>
+        </div>
+    </div>

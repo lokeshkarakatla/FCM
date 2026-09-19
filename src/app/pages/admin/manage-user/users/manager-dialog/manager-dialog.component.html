@@ -1,0 +1,22 @@
+<div class="NewHeader">
+    <h1 mat-dialog-title>
+        <!-- <span>{{ data ? 'Update' : 'Add'}} Description</span> -->
+        <span>Managers</span>
+    </h1>
+</div>
+
+
+<div class="col-sm-12">
+    <div class="table-responsive">
+        <table id="example2" class="table table-bordered table-hover">
+            <thead class="tbl-head">
+                <tr class="tr-grid-header">
+                    <th class="text-center">Manager Name</th>
+                </tr>
+            </thead>
+            <tbody>         
+                <tr *ngFor="let item of managers">
+                    <td class="text-center">{{item.Manager}}</td>
+                </tr>
+            </tbody>
+        </table>

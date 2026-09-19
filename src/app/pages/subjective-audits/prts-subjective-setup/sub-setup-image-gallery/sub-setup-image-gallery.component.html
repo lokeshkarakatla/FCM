@@ -1,0 +1,277 @@
+<!-- <div class="col-sm-12 mt-4 mb-3">
+    <div class="" align="end">
+        <button style="margin-bottom: 7px" mat-raised-button color="primary"
+            class="pull-right  btn-primary margin-right-5 mt-3" (click)="addtarget(null)">
+            <mat-icon>add</mat-icon> Add Image
+        </button>
+        <button style="margin-bottom: 7px" mat-raised-button class="pull-right  btn-primary margin-right-10 mt-3"
+            (click)="openUploadCSV()">
+            <mat-icon>cloud_upload</mat-icon> Upload CSV
+        </button>
+        <button style="margin-bottom: 7px" mat-raised-button class="pull-right  btn-primary margin-right-10 mt-3"
+            (click)="downloadSampleExcel()">
+            <mat-icon>archive</mat-icon> Download Sample CSV
+        </button>
+        <button style="margin-bottom: 7px" mat-raised-button class="pull-right filters-hover margin-right-10 mt-3"
+            (click)="filterToggle = !filterToggle">
+            <mat-icon>filter_list</mat-icon> ZIP File Upload
+        </button>
+        <div class="col-sm-6 form-group pull-right ">
+            <label class="control-label col-sm-4 mt-4">Sort By:
+            </label>
+            <div class="col-sm-6 mt-4">
+                <mat-select class="form-control" placeholder="Select Fuel Type" required>
+                    <mat-option [value]="0">Petrol</mat-option>
+                    <mat-option [value]="1">Diesel</mat-option>
+                    <mat-option [value]="2">EV</mat-option>
+                </mat-select>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="col-sm-12 mt-4 mb-3">
+  <button
+    style="margin-bottom: 7px"
+    mat-raised-button
+    class="pull-right btn-primary margin-right-5 mt-3"
+    (click)="addtarget(null)" color="primary"
+  >
+    <mat-icon>add</mat-icon> Add Image
+  </button>
+  <button
+    mat-raised-button
+    style="background-color: black;
+    color: white;"
+    class="pull-right filters-hover margin-right-10 mt-3"
+    (click)="filterToggle = !filterToggle"
+  >
+    <mat-icon>filter_list</mat-icon> Filter
+  </button>
+  <button
+    style="margin-bottom: 7px"
+    mat-raised-button
+    class="pull-right btn-primary margin-right-10 mt-3" style="background-color: black;
+    color: white;"
+    (click)="openUploadCSV()"
+  >
+    <mat-icon>cloud_upload</mat-icon> Upload CSV
+  </button>
+  <button
+    style="margin-bottom: 7px"
+    mat-raised-button
+    class="pull-right btn-primary margin-right-10 mt-3" style="background-color: black;
+    color: white;"
+    (click)="downloadSampleExcel()"
+  >
+    <mat-icon>archive</mat-icon> Download Sample
+  </button>
+  <div
+    class="switchToggle pull-right"
+    style="margin-right: 10px !important; margin-top: 5px !important" 
+  >
+    <input type="checkbox" (click)="gridToggle = !gridToggle" id="switch" />
+    <label class="mt-3" style="background-color: #3e98d3" for="switch"
+      >Toggle</label
+    >
+  </div>
+  <label class="pull-right" style="margin-top: 18px; margin-right: 16px"
+    >Sort By :
+  </label>
+</div>
+<!-- <div fxLayout="row wrap" *ngIf="filterToggle">
+    <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p w-100 margins">
+      <mat-card class="filter">
+        <mat-card-content>
+          <div class="row">
+            <div class="col-sm-5">
+              <div class="col-sm-3">
+                <label class="pull-right" style="margin-top: 6px"
+                  >Module Name:</label
+                >
+              </div>
+              <div class="col-sm-6">
+                <input
+                  type="text"
+                  placeholder="Search Module Name"
+                  class="form-control"
+                />
+              </div>
+            </div>
+
+            <div class="col-sm-5">
+              <div class="col-sm-3">
+                <label class="pull-right" style="margin-top: 6px"
+                  >Status:</label
+                >
+              </div>
+              <div class="col-sm-6">
+                <mat-select
+                  class="form-control"
+                  placeholder="Select Status"
+                  required
+                >
+                  <mat-option
+                    *ngFor="let option of Status"
+                    [value]="option.value"
+                  >
+                    {{ option.name }}
+                  </mat-option>
+                </mat-select>
+              </div>
+            </div>
+
+            <div class="col-sm-2">
+              <button
+                mat-raised-button
+                class="pull-right btn-primary"
+                style="margin-left: 5px"
+              >
+                <mat-icon>youtube_searched_for</mat-icon>
+                Go&nbsp;&nbsp;&nbsp;&nbsp;
+              </button>
+              <button
+                mat-raised-button
+                style="background-color: #37474f; color: #fff !important"
+                class="pull-right"
+              >
+                <mat-icon>settings_backup_restore</mat-icon> Clear
+              </button>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div> -->
+
+<div *ngIf="filterToggle" style="visibility: visible">
+  <!-- add this to test -->
+  <mat-card
+    class="filter"
+    style="width: 96%; margin-left: 39px; margin-bottom: 13px"
+  >
+    <mat-card-content>
+      <div class="row">
+        <div class="col-sm-5">
+          <div class="col-sm-3">
+            <label class="pull-right" style="margin-top: 6px"
+              >Image Title:</label
+            >
+          </div>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              placeholder="Search Module Name"
+              class="form-control"
+            />
+          </div>
+        </div>
+
+        <div class="col-sm-5">
+          <div class="col-sm-3">
+            <label class="pull-right" style="margin-top: 6px">Status:</label>
+          </div>
+          <div class="col-sm-6">
+            <mat-select
+              class="form-control"
+              placeholder="Select Status"
+              required
+            >
+              <mat-option *ngFor="let option of Status" [value]="option.value">
+                {{ option.name }}
+              </mat-option>
+            </mat-select>
+          </div>
+        </div>
+
+         
+      </div>
+      
+        <div class="row">
+  <div class="col-12 d-flex justify-content-end align-items-center gap-3">
+    <!-- Toggle Icon -->
+   
+
+    <!-- Clear Button -->
+  
+
+    <!-- Search Button -->
+    <button mat-raised-button color="primary"
+            (click)="getTests()">
+      <mat-icon>search</mat-icon> Search
+    </button>
+
+      <button mat-raised-button class="btn-default"
+            (click)="clearFilter(); getTests()">
+      <mat-icon>settings_backup_restore</mat-icon> Clear
+    </button>
+     <a (click)="filterToggle = !filterToggle"  
+       style="font-size: 25px; cursor: pointer;">
+      <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+    </a>
+  </div>
+</div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div class="col-sm-12" style="margin-left: 6px;margin-top: -7px;">
+  <table matSort id="example2" class="table table-bordered table-hover">
+    <thead class="tbl-head">
+      <tr>
+                <th class="theadcolor text-center">Actions</th>
+
+        <th class="text-left">Image Title</th>
+        <th class="text-left">Audit Seq</th>
+        <th class="text-left">Dash Seq</th>
+        <th class="theadcolor">Audit Type</th>
+        <th class="theadcolor">Module Name</th>
+        <!-- <th class="theadcolor ">Module Name-new</th> -->
+        <th>Image</th>
+        <th class="text-center">Grid</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of values">
+        <td class="text-center editDel">
+          <a
+            style="cursor: pointer; margin-right: 10px"
+            matTooltip="Edit"
+            (click)="addtarget(item)"
+          >
+            <i class="fa fa-edit" style="color: cornflowerblue"></i>
+          </a>
+          <a [ngClass]="{ 'disable-custom': !canDelete || item.TotalUsed }">
+            <i
+              style="cursor: pointer"
+              matTooltip="Delete"
+              class="fa fa-trash red"
+              (click)="deleteConfirmation(item)"
+            ></i>
+          </a>
+        </td>
+        <td>{{ item.title }}</td>
+        <td>{{ item.audit }}</td>
+        <td>{{ item.audit }}</td>
+        <td class="">{{ item.Audit }}</td>
+        <td class="">{{ item.modulename }}</td>
+        <!-- <td class="" style="color: cornflowerblue" (click)="Modulecount()">2/5</td> -->
+        <td class="text-center">
+          <mat-icon style="cursor: pointer" (click)="imageSource1(item.image)"
+            >visibility
+          </mat-icon>
+        </td>
+        <td class="text-center">10X10</td>
+        
+      </tr>
+    </tbody>
+  </table>  
+  <mat-paginator
+
+    [length]="4"
+    [pageIndex]="0"
+    [pageSize]="4"
+    [pageSizeOptions]="[5, 10, 25, 50, 100]"
+    showFirstLastButtons
+  ></mat-paginator>
+</div>

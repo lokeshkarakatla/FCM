@@ -1,0 +1,47 @@
+<div class="col-sm-12" style="
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  ">
+    <div class="NewHeader">
+        <h1 style="color: white; margin-top:5px" mat-dialog-title>
+            Done
+        </h1>
+    </div>
+
+    <div mat-dialog-content>
+        <p style="font-size: 16px; margin: 20px 0;">
+          Do you want to mark this step as done , it can't  be  undone?
+        </p>
+
+       <div style="display: flex; justify-content: flex-end;">
+  <button mat-button (click)="close(false)" 
+          style="background-color: #e0e0e0; color: black; margin-right: 10px;">
+    No
+  </button>
+
+  <button mat-button (click)="close(true)" 
+          style="background-color: #1976d2; color: white;">
+    Yes
+  </button>
+</div>
+    </div>
+
+</div>
+
+<!-- <div style="width:100%;">
+
+  <h2 mat-dialog-title style="background:#1976d2; color:white; padding:10px; margin:0;">
+    Done
+  </h2>
+
+  <div mat-dialog-content style="padding:20px;">
+    Checkbox clicked successfully!
+  </div>
+
+  <div mat-dialog-actions align="end" style="padding:10px;">
+    <button mat-button (click)="close()">Close</button>
+  </div>
+
+</div> -->

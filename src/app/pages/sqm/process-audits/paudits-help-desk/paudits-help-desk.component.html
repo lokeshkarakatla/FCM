@@ -1,0 +1,60 @@
+<div class="NewHeader">
+    <h1 style="padding-top:0px; padding-left: 20px;">Send Mail</h1>
+</div>
+
+<div>
+    <div fxLayout="row wrap" class="col-sm-12">
+        <div class="col-sm-12" style="margin-top: 0px; padding-left: 10px; padding-right: 20px;">
+            <form>
+                <div>
+
+                    <div class="row" style="margin-bottom: 12px;">
+                        <div class="col-sm-4">
+                            <label class="add-member-label mt-3" style="margin-top:5px; font-weight: bold;">Subject :</label>
+                            
+                        </div>
+                        <div class="col-sm-8">
+                            <!-- <mat-select placeholder="Select Parts Family" class="form-control">
+                                <mat-option value="family1">Family 1</mat-option>
+                                <mat-option value="family2">Family 2</mat-option>
+                            </mat-select> -->
+                            
+                            <input type="text" class="form-control mt-2" placeholder="Enter Subject">
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-bottom: 12px;">
+                        <div class="col-sm-4">
+                            <label class="add-member-label mt-5" style="margin-top:5px; font-weight: bold;">Description :</label>
+                            
+                        </div>
+                        <div class="col-sm-8">
+                            
+                            
+                            <!-- <input type="text" class="form-control mt-2" placeholder="Enter Description"> -->
+                            <textarea class="form-control mt-2" rows="4" placeholder="Enter Description"></textarea>
+                        </div>
+                    </div>
+
+              
+
+                </div>
+            </form>
+
+
+            <mat-dialog-actions align="end"
+                style="margin-top: 15px; display: flex; justify-content: flex-end;margin-right: -20px;">
+                <button mat-raised-button class="ms-2 add-dark-hover btn-default" (click)="close()"
+                    style="background-color: lightgray; color: red;margin-right: 5px;">
+                    <mat-icon>cancel</mat-icon> Close
+                </button>
+                <button mat-raised-button type="submit" class="save" color="primary" style="margin-right: 17px;">
+                    <mat-icon>save</mat-icon>Save
+                </button>
+            </mat-dialog-actions>
+
+
+
+        </div>
+    </div>
+</div>

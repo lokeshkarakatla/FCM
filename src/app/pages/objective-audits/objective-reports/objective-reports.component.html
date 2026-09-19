@@ -1,0 +1,61 @@
+<div class="col-sm-12 mt-4 margin">
+    <div style="margin-top: 10px;">
+        <div class="pills">
+            <ul class="nav nav-pills">
+                <li routerLinkActive="active" routerLink="model">
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                        Model
+                    </a>
+                </li>
+                <li routerLinkActive="active" [routerLink]="['agency-type-trend']">
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                        Audit Type
+                    </a>
+                </li>
+                <li routerLinkActive="active" [routerLink]="['model-trend']">
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                        Model Distribution
+                    </a>
+                </li>
+                <li routerLinkActive="active" [routerLink]="['obj-scatter-graph']">
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                        Scatter
+                    </a>
+                </li>
+                <li routerLinkActive="active" [routerLink]="['obj-bellcurve-graph']">
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                        Bell Curve
+                    </a>
+                </li>
+                <!-- <li routerLinkActive="active" [routerLink]="['fragile']">
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                        Fragile
+                    </a>
+                </li> -->
+                <li routerLinkActive="active" [routerLink]="['pareto']">
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                        Pareto
+                    </a>
+                </li>
+                <li routerLinkActive="active" [routerLink]="['metrics']">
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                        Metrics
+                    </a>
+                </li>
+                <li routerLinkActive="active" [routerLink]="['checkpoints']">
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                        Check Points
+                    </a>
+                </li>
+                <li routerLinkActive="active" [routerLink]="['obj-module']">
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                        Modules
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="col-sm-12 no-padding mt-4">
+    <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,125 @@
+<!-- Add,filter -->
+<div class="col-sm-8 mt-4" style="margin-left: -4px;">
+    <button [ngClass]="{'disable-custom' : !canCreate}" mat-raised-button color="primary"
+        class="pull-right  margin-right-5 mt-3" (click)="addmodule(null)">
+        <mat-icon>add</mat-icon> Add Variant
+    </button>
+    <button mat-raised-button style="background-color: black; color: white;" class="pull-right margin-right-10 mt-3"
+        (click)="filterToggle = !filterToggle">
+        <mat-icon>filter_list</mat-icon> Filter
+    </button>
+    <button mat-raised-button style="background-color:black ; color:white;" class="pull-right  margin-right-10 mt-3">
+        <mat-icon>upload</mat-icon> Upload CSV
+    </button>
+    <button mat-raised-button style="background-color:black ; color:white;" class="pull-right  margin-right-10 mt-3">
+        <mat-icon>download</mat-icon> Download CSV
+    </button>
+</div>
+<!--Filter Toggle-->
+<!-- ✅ Guard added to ensure myGroup is initialized -->
+<div class="col-sm-8" fxLayout="row wrap" *ngIf="filterToggle && myGroup" style="margin-bottom: 10px">
+
+    <div fxFlex="100" class="flex-p w-100 margins">
+        <mat-card class="filter" style="width: 99%; margin-left: 14px;margin-bottom: -20px;">
+            <form [formGroup]="myGroup">
+                <mat-card-content>
+                    <div class="row" style="margin-right: -72px;">
+                        <div class="col-4 row">
+                            <div class="col-3 mt-1">
+                                <b>Keyword:</b>
+                            </div>
+                            <div class="col-8">
+                                <input class="form-control" formControlName="Keyword" placeholder="Enter Keyword">
+                            </div>
+                        </div>
+                        <div class="col-4 row">
+                            <div class="col-3 mt-1 ">
+                                <label style="margin-top: 6px;">Model:</label>
+                            </div>
+                            <div class="col-8">
+                                <mat-select style="margin-top: 4px;" class="form-control" formControlName="ModelName"
+                                    placeholder="Select Model Name" multiple>
+                                    <mat-option *ngFor="let option of modelss" [value]="option.ModelName">
+                                        {{ option.ModelName }}
+                                    </mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+
+                        <div class="col-4 row">
+                            <div class="col-3 mt-1 ">
+                                <b>Status:</b>
+                            </div>
+                            <div class="col-8">
+                                <mat-select formControlName="Status" placeholder="Select Status" class='form-control'>
+                                    <mat-option value="true">Active</mat-option>
+                                    <mat-option value="false">Inactive</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12" style="margin-top: 10px;">
+                        <a (click)="filterToggle = !filterToggle" class="pull-right"
+                            style="font-size: 25px; cursor: pointer; margin-left: 5px;">
+                            <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                        </a>
+                        <button mat-raised-button class="pull-right" (click)="myGroup.reset();formInit();fnGetModel();"
+                            style="background-color:#37474f; color:#fff !important; margin-left:10px ;">
+                            <mat-icon>settings_backup_restore</mat-icon> Clear
+                        </button>
+                        <button mat-raised-button color="primary" (click)="fnGetModel();" class="pull-right btn-primary"
+                            style="margin-left: 10px;">
+                            <mat-icon>search</mat-icon> Search
+                        </button>
+                    </div>
+                </mat-card-content>
+            </form>
+        </mat-card>
+    </div>
+</div>
+
+<!-- Table -->
+<div class="col-sm-8 mt-4" style="margin-left:-5px;">
+    <div id="grid-table-container" class="table-responsive" style="margin-left: 25px;">
+        <table matSort id="example2" class="table table-bordered table-hover">
+            <thead class="tbl-head">
+                <tr>
+                    <th>Variant Type</th>
+                    <th>Model Name</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center" style="width: 112px!important;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of tableList">
+                    <td>{{item.variantType}}</td>
+                    <td>{{item.modelName}}</td>
+                    <td class="text-center" style="text-align: center !important;">
+                        <a [ngStyle]="{'color':  item.IsActive? 'blue' : 'red','cursor':'pointer'}"
+                            [ngClass]="{'disable-custom' : !canUpdate}">
+                            <span *ngIf="!item.IsActive" (click)="Confirmation(item)" style="color:red">Inactive</span>
+                            <span *ngIf=" item.IsActive" (click)="Confirmation(item)" style="color:blue;">Active</span>
+                        </a>
+                    </td>
+
+                    <td class="text-center editDel">
+                        <a [ngClass]="{'disable-custom' : !canUpdate}" style="cursor: pointer;margin-right:10px;"
+                            matTooltip="Edit" (click)="addmodule(item)">
+                            <i class="fa fa-edit" style="color: cornflowerblue"></i>
+                        </a>
+                        <a [ngClass]="{'disable-custom' : !canDelete || item.TotalUsed || item.Used}"><i
+                                class="fa fa-trash red" matTooltip="Delete" style="cursor: pointer;"
+                                (click)="deleteConfirmation(item)"></i></a>
+                    </td>
+                </tr>
+                <tr *ngIf="tableList ==null || tableList.length ==0">
+                    <td colspan="13" class="text-center">No data available</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- PAGINATION CONTENT  ------------------------------------------------------>
+        <mat-paginator class="col-sm-12" [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+            [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons>
+        </mat-paginator>
+    </div>
+</div>

@@ -1,0 +1,116 @@
+<div class="NewHeader" style="background-color: #2865ab">
+    <h1 mat-dialog-title style="color:white;">
+        {{ data ? 'Update' : 'Add' }} Test
+    </h1>
+</div>
+
+<div class="container-fluid mt-3">
+    <form [formGroup]="document">
+        <div class="row">
+
+            <div class="col-sm-6">
+                <div class="row mb-3">
+                    <label class="col-sm-4 add-member-label required">Project:</label>
+                    <div class="col-sm-8">
+                        <mat-select class="form-control back" formControlName="ProjectId"
+                            [ngClass]="{ 'is-invalid': isSubmitting && document.controls.ProjectId.errors }"
+                            [placeholder]="isSubmitting && document.controls.ProjectId.errors ? 'Project is required' : 'Select Project'">
+                            <mat-option *ngFor="let project of projects" [value]="project.ProjectId">
+                                {{ project.Name }}
+                            </mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 add-member-label required"> Equipment Id:</label>
+                    <div class="col-sm-8">
+                        <mat-select class="form-control back" formControlName="ProductId"
+                            [ngClass]="{ 'is-invalid': isSubmitting && document.controls.ProductId.errors }"
+                            [placeholder]="isSubmitting && document.controls.ProductId.errors ? 'Equipment is required' : 'Select Equipment'">
+                            <mat-option *ngFor="let product of Products" [value]="product.ProductId">
+                                {{ product.Name }}
+                            </mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label required">Test Description:</label>
+                    <div class="col-sm-8">
+                        <textarea class="form-control" rows="3" formControlName="Description"
+                            [ngClass]="{ 'is-invalid': isSubmitting && document.controls.Description.errors }"
+                            [placeholder]="isSubmitting && document.controls.Description.errors ? 'Description is required' : 'Enter Description'"></textarea>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label required">Benchmark:</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" formControlName="Subject"
+                            [ngClass]="{ 'is-invalid': isSubmitting && document.controls.Subject.errors }"
+                            [placeholder]="isSubmitting && document.controls.Subject.errors ? 'Benchmark is required' : 'Enter Benchmark'" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label"> Actual Value:</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" formControlName="TestData" placeholder="Enter Actual Value" />
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Document:</label>
+                    <div class="col-sm-8">
+                        <input type="file" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 add-member-label required">concerned:</label>
+                    <div class="col-sm-8">
+                        <mat-select class="form-control back" formControlName="SectionId"
+                            [ngClass]="{ 'is-invalid': isSubmitting && document.controls.SectionId.errors }"
+                            [placeholder]="isSubmitting && document.controls.SectionId.errors ? 'Concerned is required' : 'Select concerned'">
+                            <mat-option *ngFor="let section of Sections" [value]="section.SectionId">
+                                {{ section.Name }}
+                            </mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label required">Section Lead:</label>
+                    <div class="col-sm-8">
+                        <mat-select class="form-control" formControlName="LeadId"
+                            [ngClass]="{ 'is-invalid': isSubmitting && document.controls.LeadId.errors }"
+                            [placeholder]="isSubmitting && document.controls.LeadId.errors ? 'Section Lead is required' : 'Select Section Lead'">
+                            <mat-option *ngFor="let lead of SectionLeads" [value]="lead.LeadId">
+                                {{ lead.Name }}
+                            </mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-end mt-3">
+
+            <button mat-raised-button class="ms-2 add-dark-hover btn-default" (click)="close()"
+                style="background-color: lightgray; color: red;margin-right: 8px;">
+                <mat-icon>cancel</mat-icon>
+                Close
+            </button>
+            <button mat-raised-button type="button" color="primary" (click)="upsertOnepagerDocument()"
+                style="margin-right: 10px;">
+                <mat-icon>save</mat-icon> Save
+            </button>
+            
+        </div>
+    </form>
+</div>

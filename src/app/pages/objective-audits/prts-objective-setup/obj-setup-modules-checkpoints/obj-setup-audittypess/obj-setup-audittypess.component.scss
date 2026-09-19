@@ -1,0 +1,17 @@
+.dialog-content {
+  max-height: 80vh;
+  padding: 0 24px;
+  overflow: hidden;
+}
+
+.dialog-actions {
+  padding: 10px 24px;
+}
+
+.cancel-btn {
+  background-color: rgb(237, 239, 239);
+}
+
+mat-dialog-content, mat-dialog-container {
+  max-width: 100%;
+}

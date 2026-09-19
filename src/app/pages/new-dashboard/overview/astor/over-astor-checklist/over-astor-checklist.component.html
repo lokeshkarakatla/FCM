@@ -1,0 +1,50 @@
+<div class="col-sm-12 no-padding">
+    <div class="col-sm-12 no-padding" style="margin-top: 15px;">
+      <div class="col-sm-2" style="padding-left:7px">
+        <div class="col-md-12 no-padding">
+          <div class="pills">
+            <ul class="nav nav-pills">
+              <li routerLinkActive="active"[routerLink]="['./astor-pqa']">
+                <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                  Product Quality Audit
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-12 no-padding">
+          <div class="pills">
+            <ul class="nav nav-pills">
+              <li routerLinkActive="active" [routerLink]="['./astor-body']">
+                <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                  Body Audit
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-12 no-padding">
+          <div class="pills">
+            <ul class="nav nav-pills">
+              <li routerLinkActive="active" [routerLink]="['./astor-paint']">
+                <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                  Paint Audit
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-10">
+        <router-outlet></router-outlet>
+  
+      </div>
+  
+    </div>
+  
+    <!-- <div class="col-sm-12">
+      <router-outlet></router-outlet>
+    </div> -->
+  
+  
+  </div>

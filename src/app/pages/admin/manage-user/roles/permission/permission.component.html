@@ -1,0 +1,120 @@
+<!-- Buttons Row -->
+<div fxLayout="row wrap" class="mb-3" style="width: 100%;">
+  <div class="col-12 d-flex justify-content-end" style="margin-left: -6px;    margin-bottom: -32px;">
+    <h3 style="margin-right: 19px;margin-top: 6px;">Role: Admin
+</h3>
+
+    <button mat-raised-button color="primary" class="margin-right-10" (click)="saveUserPermissions()">
+      <mat-icon>select_all</mat-icon> Toggle All
+    </button>
+
+    <button mat-raised-button color="primary" class="margin-right-10" (click)="saveUserPermissions()">
+      <mat-icon>save</mat-icon> Save
+    </button>
+    <button mat-raised-button class="btn-default margin-right-10" (click)="next()">
+      <mat-icon>arrow_forward</mat-icon> Next
+    </button>
+
+
+    <button mat-raised-button class="btn-default margin-right-10" (click)="previous()">
+      <mat-icon>arrow_back</mat-icon> Previous
+    </button>
+    <button mat-raised-button class="btn-default margin-right-10" (click)="goback()">
+      <mat-icon>arrow_back</mat-icon> Back
+    </button>
+
+
+
+
+  </div>
+</div>
+
+<!-- Full Width Container -->
+<div class="container-fluid">
+  <div class="row">
+    <!-- Left Column -->
+    <div class="col-md-3" style="margin-top: 16px;">
+      <div class="pills" style="width: 75%;">
+        <ul class="nav nav-pills flex-column" style="margin-top:12px; margin-left: 10px; margin-bottom:25px;">
+          <li *ngFor="let item of modules" class="nav-item" [ngClass]="{'active' : selectedModule.name === item.name}">
+            <a mat-raised-button class="navtabWidth btn btn-light" style="margin-top: 10px; text-align: left;"
+              (click)="selectedModule = item">
+              {{item.name}}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Right Column -->
+    <div class="col-md-9">
+      <div class="table-responsive flex-p" style="margin-top: 15px;">
+        <table id="example2" class="table table-bordered table-hover" style="margin-top: 15px;">
+          <thead class="tbl-head">
+            <tr class="tr-grid-header">
+              <th>Screen Permissions</th>
+              <th class="style">Create</th>
+              <th class="style">Read</th>
+              <th class="style">Update</th>
+              <th class="style">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of selectedModule?.screens">
+              <td>{{ item?.screenName }}</td>
+
+              <!-- <td class="style">
+                <mat-checkbox [(ngModel)]="item.create" color="primary"></mat-checkbox>
+              </td>
+              <td class="style">
+                <mat-checkbox [(ngModel)]="item.read" color="primary"></mat-checkbox>
+              </td>
+              <td class="style">
+                <mat-checkbox [(ngModel)]="item.update" color="primary"></mat-checkbox>
+              </td>
+              <td class="style">
+                <mat-checkbox [(ngModel)]="item.delete" color="primary"></mat-checkbox>
+              </td> -->
+              <td class="style">
+                <ng-container *ngIf="item.create !== '-' ; else noCreate">
+                  <mat-checkbox [(ngModel)]="item.create" color="primary"></mat-checkbox>
+                </ng-container>
+                <ng-template #noCreate>-</ng-template>
+              </td>
+
+              <td class="style">
+                <ng-container *ngIf="item.read !== '-' ; else noRead">
+                  <mat-checkbox [(ngModel)]="item.read" color="primary"></mat-checkbox>
+                </ng-container>
+                <ng-template #noRead>-</ng-template>
+              </td>
+
+              <td class="style">
+                <ng-container *ngIf="item.update !== '-' ; else noUpdate">
+                  <mat-checkbox [(ngModel)]="item.update" color="primary"></mat-checkbox>
+                </ng-container>
+                <ng-template #noUpdate>-</ng-template>
+              </td>
+
+              <td class="style">
+                <ng-container *ngIf="item.delete !== '-' ; else noDelete">
+                  <mat-checkbox [(ngModel)]="item.delete" color="primary"></mat-checkbox>
+                </ng-container>
+                <ng-template #noDelete>-</ng-template>
+              </td>
+
+
+              <!-- <td *ngIf="item?.screenName=='Radar' || item?.screenName=='PRTS'">
+                <mat-select class="form-control" placeholder="Select user" multiple>
+                  <mat-option *ngFor="let option of options" [value]="option.RoleId">
+                    {{ option?.RoleName }}
+                  </mat-option>
+                </mat-select>
+              </td> -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

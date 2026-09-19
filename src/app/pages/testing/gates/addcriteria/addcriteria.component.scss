@@ -1,0 +1,25 @@
+
+
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.upload-box {
+  flex: 1;
+  border: 2px dashed #ccc;
+  height: 140px;
+  padding: 25px;
+  text-align: center;
+  border-radius: 6px;
+  background: #fafafa;
+}
+.browse-btn {
+  background: #2f6fa5;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}

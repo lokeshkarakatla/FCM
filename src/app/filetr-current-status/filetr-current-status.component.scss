@@ -1,0 +1,4 @@
+::ng-deep .mat-dialog-content {
+  max-height: none !important; /* remove default scrolling */
+  overflow: hidden !important;  /* ensures full content visible */
+}

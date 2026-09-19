@@ -1,0 +1,228 @@
+ <div class="button-container" 
+      style="display: flex; justify-content:end; margin-bottom: 15px; align-items: center; width: 100%; gap: 10px;  ">
+      
+  
+
+      <button mat-raised-button class="top-btn" style="display: flex; align-items: center; background-color: black; color: white; margin-right: 10px;" (click)="toggleFilter()">
+        <mat-icon style="vertical-align: middle; margin-right: 4px;">filter_list</mat-icon>Filter
+      </button>
+
+     
+    </div>
+
+     <div *ngIf="showFilter" style="width:100%; margin-left: 6px;">
+  <div fxFlex="100" class="flex-p w-100" style="margin-top: 10px;">
+    <form>
+      <mat-card class="filter">
+        <mat-card-content>
+          <div class="row col-lg-12 col-sm-12">
+
+            
+ 
+
+            <div class="col-sm-4 row me-2 mt-3">
+              <div class="col-sm-4 newMarginClass"><b>Select Project:</b></div>
+              <div class="col-sm-8">
+                <mat-select class="form-control" placeholder="Select Project">
+                  <mat-option value="Pending">Project 1</mat-option>
+                  <mat-option value="Allocation">Project 2</mat-option>
+                  <mat-option value="Progress">Project 3</mat-option>
+                  <mat-option value="Hold">Project 4</mat-option>
+                  <mat-option value="Cancelled">Project 5</mat-option>
+                  <mat-option value="Completed">Project 6</mat-option>
+                </mat-select>
+              </div>
+            </div>
+
+            <div class="col-sm-4 row me-2 mt-3">
+              <div class="col-sm-4 newMarginClass"><b>Select Stage:</b></div>
+              <div class="col-sm-8">
+                <mat-select class="form-control" placeholder="Select Stage">
+                  <mat-option value="High">Stage 1</mat-option>
+                  <mat-option value="Medium">Stage 2</mat-option>
+                  <mat-option value="Low">Stage 3</mat-option>
+                </mat-select>
+              </div>
+            </div>
+
+            <div class="col-sm-4 row me-2 mt-3">
+              <div class="col-sm-4 newMarginClass"><b>Select Sprint:</b></div>
+              <div class="col-sm-8">
+                <mat-select class="form-control" placeholder="Select Sprint">
+                  <mat-option value="High">Sprint 1</mat-option>
+                  <mat-option value="Medium">Sprint 2</mat-option>
+                  <mat-option value="Low">Sprint 3</mat-option>
+                </mat-select>
+              </div>
+            </div>
+
+            <div class="col-sm-12 pull-right mt-3" style="margin-left: -15px;">
+
+              <a
+                (click)="toggleFilter()"
+                class="pull-right"
+                style="font-size: 25px; cursor: pointer; margin-left: 5px; color: #333;"
+                matTooltip="Close Filter">
+                <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+              </a>
+
+              <button
+                mat-raised-button
+                class="pull-right btn-default margin-right-10"
+               >
+                <mat-icon>settings_backup_restore</mat-icon>
+                Clear
+              </button>
+
+              <button
+                mat-raised-button
+                style="margin-right: 10px;"
+                color="primary"
+                class="pull-right"
+                 >
+                <mat-icon>search</mat-icon>
+                Search
+              </button>
+
+            </div>
+
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+<div class="kanban-board" id="grid-table-container" cdkDropListGroup>
+  <div *ngFor="let list of lists" class="kanban-list">
+    <!-- HEADER -->
+    <div
+      style="background-color: rgb(64, 64, 64); color: white"
+      class="kanban-list-header"
+    >
+      <div style="display: flex; align-items: center; gap: 10px">
+        <span [style.background-color]="getColor(list)" class="status-dot">
+        </span>
+        <h3 style="margin: 0">{{ list }}</h3>
+      </div>
+      <span
+        style="
+          background-color: white;
+          color: black;
+          width: 30px;
+          height: 30px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 4px;
+        "
+        >{{ cards[list]?.length || 0 }}</span
+      >
+    </div>
+
+    <!-- DROP AREA -->
+    <div
+      cdkDropList
+      [id]="list"
+      [cdkDropListData]="cards[list]"
+      (cdkDropListDropped)="drop($event, list)"
+      class="drop-container"
+    >
+      <!-- CARDS -->
+      <div
+        *ngFor="let card of cards[list]; trackBy: trackByCard"
+        cdkDrag
+        class="kanban-card"
+        [ngClass]="getCardClass(list)"
+      >
+        <div
+          class="fs-4 fw-semibold d-flex align-items-center justify-content-between"
+        >
+          <span>{{ card.subject }}</span>
+          <span
+            class="material-symbols-outlined icon"
+            style="padding: 5px; cursor: pointer"
+            (click)="toggleCard(card)"
+            >{{ card.expanded ? "remove" : "add" }}</span
+          >
+        </div>
+        <div class="card-info">
+          <p class="info-item">
+            <mat-icon>business</mat-icon>
+            <span>{{ card.LawFirm }}</span>
+          </p>
+
+          <p class="info-item">
+            <mat-icon>calendar_today</mat-icon>
+            <span>{{ card.createdDate }}</span>
+          </p>
+        </div>
+
+        <div class="card-info">
+          <p class="info-item">
+            <mat-icon class="status-icon">schedule</mat-icon>
+            <span>{{ card.status }}</span>
+          </p>
+        </div>
+        <hr />
+
+        <div
+          style="
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            border: 1px solid gray;
+            color: gray;
+            padding: 2px 6px;
+            border-radius: 6px;
+            margin: 2px;
+          "
+        >
+          <mat-icon
+            style="
+              font-size: 14px;
+              width: 14px;
+              height: 14px;
+              line-height: 14px;
+              display: inline-flex;
+              align-items: center;
+              vertical-align: middle;
+            "
+            >alarm</mat-icon
+          >
+          <span style="font-size: 10px; line-height: 1; vertical-align: middle">
+            ETA {{ card.dueDate | date: "dd MMM" }}
+          </span>
+        </div>
+
+        <!-- Expanded details -->
+        <div *ngIf="card.expanded" class="card-expanded-details">
+          <p><strong>Created By:</strong> {{ card.createdBy }}</p>
+          <p><strong>Assigned To:</strong> {{ card.assignedTo }}</p>
+          <!-- <p><strong>Status:</strong> {{ card.status }}</p> -->
+          <p><strong>Expedite:</strong> {{ card.expedite ? "Yes" : "No" }}</p>
+          <div *ngIf="card.notes.length > 0">
+            <strong>Notes:</strong>
+            <ul class="notes-list">
+              <li *ngFor="let note of card.notes">
+                {{ note.text }} — {{ note.author }}, {{ note.date }}
+              </li>
+            </ul>
+          </div>
+          <p
+            *ngIf="card.notes.length === 0"
+            style="color: gray; font-size: 12px"
+          >
+            No notes added.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```

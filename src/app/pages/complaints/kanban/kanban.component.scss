@@ -1,0 +1,252 @@
+/* Back button pulled up to sit alongside the breadcrumb title */
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 36px;
+    // Removed z-index workaround — root cause fixed in .kanban-board
+}
+
+/* Expanded card detail section */
+.card-expanded-details {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed #ccc;
+    font-size: 12px;
+    color: #444;
+
+    p {
+        margin: 3px 0;
+    }
+}
+
+.notes-list {
+    margin: 4px 0 0 16px;
+    padding: 0;
+    font-size: 11px;
+    color: #666;
+
+    li {
+        margin-bottom: 2px;
+    }
+}
+
+.list-0 .kanban-list-header { background-color: #f1f2f4; }
+.list-1 .kanban-list-header { background-color: #f1f2f4; }
+.list-2 .kanban-list-header { background-color: #f1f2f4; }
+.list-3 .kanban-list-header { background-color: #f1f2f4; }
+.list-4 .kanban-list-header { background-color: #f1f2f4; }
+.list-5 .kanban-list-header { background-color: #f1f2f4; }
+
+.kanban-board {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 10px;
+    white-space: nowrap;
+    align-items: stretch;
+    min-height: 70vh;
+    // FIXED: Removed `position: relative` + `z-index: 1` — these two together
+    // created a stacking context that buried the Back button. The Back button's
+    // z-index: 9999 was only competing inside that context, not against it.
+}
+
+.bac {
+    background-color: rgb(254, 254, 196);
+}
+
+.kanban-list {
+    min-width: 330px;
+    height: auto;
+    padding: 10px;
+    border-radius: 8px;
+    background: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+}
+
+.kanban-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 2px solid #ddd;
+}
+
+.drop-container {
+    padding: 5px;
+    background: #f1f2f4;
+    border-radius: 0 0 8px 8px;
+    flex-grow: 1;
+    min-height: 250px;
+}
+
+.kanban-card {
+    padding: 8px;
+    margin-bottom: 10px;
+    background: white;
+    border: 2px solid #87CEFA;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.card-header {
+    background-color: #ddeffa;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.card-subject {
+    padding: 10px;
+    font-size: 14px !important;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.card-subject1 {
+    padding: 10px;
+    font-size: 1.7rem !important;
+    font-weight: bolder !important;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.card-footer {
+    background-color: #d3d3d3;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.notes-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.archive-btn {
+    background-color: transparent;
+    border: none;
+    color: blue;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Status-based colors */
+.backlog-card { background-color: rgb(209, 231, 245); }
+.doing-card   { background-color: rgb(246, 246, 221); }
+.done-card    { background-color: rgb(222, 244, 222); }
+.default-card { background-color: lightgray; }
+
+/* Left-aligned List Title */
+.list-title {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+/* Right-aligned Card Count in a Box */
+.card-count {
+    background: #dcdee0;
+    color: rgb(17, 16, 16);
+    padding: 5px 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.expedite-indicator {
+    width: 40px;
+    height: 5px;
+    margin: 15px;
+    background-color: red;
+    margin-bottom: 5px;
+}
+
+.overdue-indicator {
+    width: 40px;
+    height: 5px;
+    margin: 15px;
+    background-color: rgb(11, 11, 11);
+    margin-bottom: 5px;
+}
+
+.indicators-row {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.mine {
+    position: fixed;
+    bottom: 80px;
+    right: 40px;
+    background-color: #e6e6e6 !important;
+}
+
+/* CDK Drag styles */
+.cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 5px;
+    background: white;
+    border: 2px solid #2196f3;
+}
+
+.cdk-drag-placeholder {
+    opacity: 0.3;
+}
+
+.cdk-drag {
+    cursor: move;
+}
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.icon {
+    font-size: 20px;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    cursor: pointer;
+}
+
+.card-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    margin: 0;
+    color: gray;
+    font-size: 12px;
+
+    mat-icon {
+        font-size: 18px;
+    }
+}
+
+::ng-deep .black-btn.mat-raised-button {
+    background-color: #808080 !important;
+    color: white !important;
+}
+
+.btn-col {
+    background-color: #808080 !important;
+}

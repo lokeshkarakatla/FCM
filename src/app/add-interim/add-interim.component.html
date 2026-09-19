@@ -1,0 +1,84 @@
+<div class="NewHeader" style="background-color: #2865ab">
+    <h1 mat-dialog-title style="color: white;" class="text-center">
+        <span>
+            Add Interim
+        </span>
+    </h1>
+</div>
+
+<div mat-dialog-content>
+    <div class="col-sm-12" style="overflow: hidden; margin-top: 20px; margin-bottom: 10px;">
+        <form [formGroup]="myGroup">
+            <div>
+                <div class="row">
+                    <div class="row" style="margin-top: 10px;padding-left:30px;">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ">
+                            <label class="control-label add-member-label mt-1">Interim Description
+                                : </label>
+                        </div>
+
+                        <div class="col-sm-8">
+                            <!-- <input type="file" maxlength="30" class="form-control bac"> -->
+                            <textarea placeholder="Enter Interim Description" class="form-control back" type="text"
+                                maxlength="150" style="height:50px;"></textarea>
+                            <div *ngIf="isSubmitting && f.InterimDescription.errors" class="error-text">
+                                <div *ngIf="f.InterimDescription.errors.required">{{'Required'}}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top: 10px;padding-left:30px;">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ">
+                            <label class="control-label mt-1">Interim Document
+                                : </label>
+                        </div>
+
+                        <div class="col-sm-8">
+                            <!-- <input type="file" maxlength="30" class="form-control bac"> -->
+                            <input type="file" id="customFile" name="myfiles" class="form-control"
+                                (change)="onFileSelect($event)" #UploadFileInput>
+
+                        </div>
+                    </div>
+
+
+                    <div class="row" style="margin-top: 10px;padding-left:30px;">
+                        <div class="col-lg-4 col-md- 4 col-sm-4 col-xs-4 ">
+                            <label class="control-label add-member-label mt-1">Interim Target Date
+                                : </label>
+                        </div>
+
+                        <div class="col-sm-8">
+                            <input formControlName="InterimTargetDate" type="date" maxlength="30"
+                                class="form-control bac">
+                            <div *ngIf="isSubmitting && f.InterimTargetDate.errors" class="error-text">
+                                <div *ngIf="f.InterimTargetDate.errors.required">{{'Required'}}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div style="padding-top:10px;margin-right: 16px;">
+                <div class="pull-right">
+
+                    <button mat-raised-button class="ms-2" (click)="close()"
+                        style="background-color: lightgray; color: red;margin-right: 8px;">
+                        <mat-icon>cancel</mat-icon>
+                        Close
+                    </button>
+                   <button
+            mat-raised-button
+            type="submit"
+            color="primary"
+            class="save"
+            (click)="fnAddInterim()"
+          >
+            <mat-icon >save</mat-icon> Save
+          </button>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

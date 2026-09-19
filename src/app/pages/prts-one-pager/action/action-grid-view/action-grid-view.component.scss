@@ -1,0 +1,117 @@
+td {
+  vertical-align: middle;
+}
+
+.due-red {
+  color: red;
+  font-weight: 600;
+}
+
+/* Page header styling */
+.page-header {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-title {
+  margin: 0;
+  font-size: 20px;
+}
+
+.header-info {
+  margin: 6px 0 0 0;
+  font-size: 15px;
+  color: #555;
+}
+
+.back-btn {
+  background-color: gray;
+  color: white;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  margin-top: 5px;
+}
+
+/* Table styling */
+.table {
+  min-width: 1000px;       /* ensures scroll bar appears */
+  table-layout: fixed;
+  width: 100%;
+}
+
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;        /* enables horizontal scroll */
+  -webkit-overflow-scrolling: touch; /* smooth scroll on mobile */
+}
+
+.table th,
+.table td {
+  white-space: nowrap;     /* prevent wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis; /* truncate long text */
+  vertical-align: middle;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+/* CAPA table specific */
+#capa-table-container {
+  width: 100%;
+  overflow-x: auto;        /* enables horizontal scroll */
+  -webkit-overflow-scrolling: touch;
+}
+
+#capaTable {
+  min-width: 1200px;       /* force table wider than container */
+  table-layout: fixed;
+  width: 100%;
+}
+
+#capaTable th,
+#capaTable td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+
+  .mine {
+    position: fixed;
+    bottom: 80px;
+    right: 40px;
+    background-color: #e6e6e6 !important;
+    z-index: 200;
+  }
+
+  #capa-table-container {
+  scroll-behavior: smooth; /* enables smooth scroll */
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-end; /* aligns buttons to the right */
+  margin-bottom: 20px;
+}
+
+/* Sticky action bar — always visible regardless of scroll position */
+.sticky-action-bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #fff;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 8px 4px;
+  border-bottom: 1px solid #dee2e6;
+  margin-bottom: 12px;
+}

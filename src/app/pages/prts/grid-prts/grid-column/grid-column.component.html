@@ -1,0 +1,38 @@
+<div class="NewHeader">
+    <h1 mat-dialog-title>Grid View Configuration </h1>
+</div>
+
+<div class="container" style="margin-left:40px;">
+    <h4 class="newMarginClass" style="color:brown;">**Please select the required columns in the grid, to view grid with
+        specific columns**</h4>
+    <div mat-dialog-content style="overflow:hidden!important;">
+
+        <!-- Grid Names -->
+        <form class="form-horizontal" novalidate style="margin-top:10px">
+            <mat-checkbox class="col-sm-4 newMarginClass">Author</mat-checkbox>
+            <mat-checkbox class="col-sm-4 newMarginClass">Subject</mat-checkbox>
+            <mat-checkbox class="col-sm-4 newMarginClass">Description</mat-checkbox>
+            <mat-checkbox class="col-sm-4 newMarginClass">Document</mat-checkbox>
+            <mat-checkbox class="col-sm-4 newMarginClass">Location</mat-checkbox>
+            <mat-checkbox class="col-sm-4 newMarginClass">Auditor</mat-checkbox>
+            <mat-checkbox class="col-sm-4 newMarginClass">Model</mat-checkbox>
+            <mat-checkbox class="col-sm-4 newMarginClass">Variant</mat-checkbox>
+            <mat-checkbox class="col-sm-4 newMarginClass">Intrior Trim</mat-checkbox>
+            <mat-checkbox class="col-sm-4 newMarginClass">Colour</mat-checkbox>
+            <mat-checkbox class="col-sm-4 newMarginClass">Transmission</mat-checkbox>
+            <mat-checkbox class="col-sm-4 newMarginClass">Fuel Type</mat-checkbox>
+            <mat-checkbox class="col-sm-4 newMarginClass">Date</mat-checkbox>
+            <mat-checkbox class="col-sm-4 newMarginClass">Stages</mat-checkbox>
+            <mat-checkbox class="col-sm-4 newMarginClass">Actions</mat-checkbox>
+        </form>
+    </div>
+</div>
+<!-- Button -->
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" (click)="close()">
+        <mat-icon>save</mat-icon>&nbsp;Configure
+    </button>
+    <button mat-raised-button style="background-color: rgb(237, 239, 239);" (click)="close()">
+        <mat-icon>cancel</mat-icon>Cancel
+    </button>
+</mat-dialog-actions>

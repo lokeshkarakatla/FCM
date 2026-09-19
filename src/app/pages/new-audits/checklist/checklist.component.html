@@ -1,0 +1,126 @@
+<div class="col-sm-12">
+
+
+
+
+  <div class="col-sm-2">
+    <div class="row-wrap mb-10">
+      <div class="w-100" style="margin-bottom:10px">
+        <div class="col-xs-3" style="margin-top: 15px;">
+          <div class="pills">
+            <ul class="nav nav-pills">
+              <li routerLinkActive="active" routerLink="./prtsdashboard">
+                <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                  Dash Board
+                </a>
+              </li>
+              <li routerLinkActive="active" routerLink="./prtsnewissue">
+                <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                  New Issue
+                </a>
+              </li>
+              <li routerLinkActive="active" routerLink="./grid1">
+                <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                  Issue Status
+                </a>
+              </li>
+              <li routerLinkActive="active" routerLink="./prtssetup">
+                <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                  Setup
+                </a>
+              </li>
+              <li routerLinkActive="active" routerLink="./new-alerts">
+                <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                  Alerts (3)
+                </a>
+              </li>
+              <li routerLinkActive="active" routerLink="./new-archive">
+                <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                  Archives
+                </a>
+              </li>
+              <li routerLinkActive="active" routerLink="checkpoint-master">
+                <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                  Reports
+                </a>
+              </li>
+              <li routerLinkActive="active" routerLink="checkpoint-master">
+                <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                  User Manual
+                </a>
+              </li>
+              <li routerLinkActive="active" routerLink="par-monthly-target">
+                <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                  IT Help Desk
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <!-- Table -->
+
+  <div class="col-sm-10">
+    <table matSort id="example2" class="table table-bordered table-hover">
+      <thead class="tbl-head">
+        <tr>
+          <th class="theadcolor">VIN</th>
+          <th class="theadcolor">Audit Type</th>
+          <th class="theadcolor">Checkpoints</th>
+          <th class="theadcolor">Defect Rate</th>
+          <th class="theadcolor">Location</th>
+          <th class="theadcolor">Auditor</th>
+          <th class="theadcolor">Model</th>
+          <!-- <th class="theadcolor">Variant</th> -->
+          <!-- <th class="theadcolor">Interior Trim</th> -->
+          <th class="theadcolor">Colour</th>
+          <th class="theadcolor">Transmission</th>
+          <th class="theadcolor text-center">Fuel Type</th>
+          <th class="theadcolor">Date</th>
+          <th class="theadcolor text-center">Status</th>
+          <th class="theadcolor text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of values">
+
+          <td>{{item.VIN}}</td>
+          <td>{{item.AuditType}}</td>
+          <td class="text-center">
+            <a (click)="opendashboard()" style="color: cornflowerblue;cursor: pointer;">{{item.Checkpoints}}</a>
+          </td>
+          <td class="text-center" style="color: red">{{item.Demerits}}</td>
+          <td>{{item.Location}}</td>
+          <td>{{item.Auditor}}</td>
+          <td>{{item.Model}}</td>
+          <!-- <td>{{item.Variant}}</td>
+            <td>{{item.Interior_Trim}}</td> -->
+          <td>{{item.Colour}}</td>
+          <td>{{item.Transmission}}</td>
+          <td>{{item.Fuel_Type}}</td>
+          <td>{{item.Date}}</td>
+          <td><a [ngStyle]="{'color': item.status?  'red':'blue','cursor':'pointer'}" placement="left"
+              (confirm)="saveStatus();item.status=!item.status" matTooltip="Click to Change Status">
+              {{item.status?'Inactive':'Active'}}
+            </a></td>
+          <td class="text-center editDel">
+            <a style="cursor: pointer;margin-right:10px; " matTooltip="Edit" (click)="addchecklistaudit(item)">
+              <i class="fa fa-edit" style="color: cornflowerblue"></i>
+            </a>
+            <a><i class="fa fa-trash red" matTooltip="Delete" style="cursor: pointer;"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- Pagination -->
+    <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+      [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>

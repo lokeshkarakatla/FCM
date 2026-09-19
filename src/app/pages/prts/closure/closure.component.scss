@@ -1,0 +1,182 @@
+// .table-wrapper table {
+//   width: 100%;
+//   border-collapse: collapse;
+// }
+
+// .table-wrapper th,
+// .table-wrapper td {
+//   padding: 6px 8px !important;   /* 🔥 reduce space */
+//   font-size: 13px;               /* optional smaller text */
+//   vertical-align: middle;
+// }
+
+// .table-wrapper tbody tr {
+//   height: 35px;
+// }
+
+// .table-wrapper {
+//   margin-top: 10px;
+//   margin-bottom: 10px;
+// }
+
+// .tbl-head th {
+//   padding: 8px !important;
+// }
+
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 15px 0;
+}
+
+.nav-pills {
+  display: flex;
+  gap: 10px;
+  padding-left: 0;
+}
+
+.navtabWidth {
+  background-color: #e0e0e0;
+}
+
+.active-tab {
+  background-color: #50636d !important;
+  color: white !important;
+}
+
+.add-btn {
+  height: 40px;
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto; /* Enables left-right scroll */
+}
+
+table {
+  min-width: 700px; /* Force horizontal scroll if needed */
+}
+
+.footer-section {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.submit-btn {
+  background-color: #3262a8;
+  color: white;
+}
+
+
+.subject-col {
+  width: 200px;        /* adjust as needed */
+  max-width: 200px;
+}
+
+.subject-cell {
+  width: 400px;
+  max-width: 400px;
+  white-space: nowrap;     /* prevent wrapping */
+  overflow: hidden;        /* hide extra text */
+  text-overflow: ellipsis; /* show ... */
+}
+table {
+  width: 100%;
+  table-layout: fixed; /* 🔥 IMPORTANT */
+}
+
+/* COLUMN WIDTHS */
+.col-date, .cell-date {
+  width: 120px;
+}
+
+.col-subject, .cell-subject {
+  width: 250px;
+}
+
+.col-view, .cell-view {
+  width: 50px;
+}
+
+.col-actions, .cell-actions {
+  width: 70px;
+}
+
+/* SUBJECT TEXT HANDLING */
+.cell-subject {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.header-info {
+  margin: 3px 0px 0px 0px;
+  font-size: 13px;
+  color: #555;
+}
+
+.page-header {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-title {
+  margin: 0 !important;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.header-info {
+  margin: 3px 0 0 0;
+  font-size: 13px;
+  color: #555;
+}
+
+.back-btn {
+  background-color: gray;
+  color: white;
+
+  display: flex;
+  align-items: center;
+
+  height: 40px;
+  margin-top: 5px;
+}
+
+/* Optional spacing replacements for Bootstrap classes */
+.ms-5 {
+  margin-left: 3rem;
+}
+
+.me-5 {
+  margin-right: 3rem;
+}
+
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.ms-3 {
+  margin-left: 1rem;
+}
+
+.fw-bold {
+  font-weight: 700;
+}

@@ -1,0 +1,64 @@
+<div class="NewHeader">
+    <h1 mat-dialog-title style="color:white;">
+        {{ data ? 'Update' : 'Add'}} Sub Group
+    </h1>
+</div>
+ 
+<div mat-dialog-content>
+    <div class="col-sm-12" style="margin-bottom: 10px;">
+        <form [formGroup]="myGroup">
+            <div class="row " style="margin-bottom: 12px;">
+                <div class="col-sm-4 ">
+                    <label class="add-member-label  mt5 required imli" style="margin-top:5px; ">Sub Group Name
+                        :</label>
+                </div>
+                <div class="col-sm-8">
+                    <div>
+                        <input class="form-control name back" formControlName="SubGroupName" maxlength="50"
+                            placeholder="Enter Sub Group Name" type="text" value="">
+                        <div *ngIf="isSubmitting && f.SubGroupName.errors" class="error-text">
+                            <div *ngIf="f.SubGroupName.errors.required">{{'Required'}}</div>
+                        </div>
+                        <div *ngIf="f.SubGroupName.errors" class="error-text">
+                            <div *ngIf="f.SubGroupName.errors.pattern">{{'Invalid'}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row " style="margin-bottom: 12px;">
+                <div class="col-sm-4 ">
+                    <label class="add-member-label  mt5 required " style="margin-top:5px;">Responsible Section
+                        :</label>
+                </div>
+                <div class="col-sm-8">
+                    <mat-select class="form-control back" formControlName="respSectionId"
+                        placeholder="Select Responsible Section">
+                        <ng-container *ngFor="let item of respSection">
+                            <mat-option [value]="item.respSectionId">
+                                {{item.respSectionName}}
+                            </mat-option>
+                        </ng-container>
+                    </mat-select>
+                    <div *ngIf="isSubmitting && f.respSectionId.errors" class="error-text">
+                        <div *ngIf="f.respSectionId.errors.required">{{'Required'}}</div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <div class="pull-right">
+                  
+                     <button mat-raised-button class="me-3" (click)="close()"
+     style="background-color: lightgray; color: red">
+      <mat-icon>cancel</mat-icon> Close
+    </button> 
+
+  <button mat-raised-button type="submit" class="save"  color="primary"
+                        (click)="upsertSubGroup()">
+                        <mat-icon>save</mat-icon> Save
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+ 
+</div>

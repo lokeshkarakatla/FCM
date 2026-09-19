@@ -1,0 +1,87 @@
+.page-header {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.header-info {
+  margin-top: 3px;
+  font-size: 13px;
+  color: #555;
+}
+
+.back-btn {
+  margin-left: auto;
+  margin-right: 3rem;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  margin-top: 5px;
+  background-color: gray;
+  color: white;
+}
+
+.top-section {
+  margin: 15px 0;
+}
+
+.nav-pills {
+  display: flex;
+  gap: 10px;
+  padding-left: 0;
+}
+
+.navtabWidth {
+  min-width: 120px;
+  text-align: center;
+  background-color: #e0e0e0;
+}
+
+.active-tab {
+  background-color: #50636d !important;
+  color: white !important;
+}
+
+ .quill-wrapper {
+  min-height: 200px;
+  height: 500px;
+  border: 1px solid #ccc;
+  position: relative;
+
+  resize: vertical;
+  overflow: hidden;
+}
+
+.quill-wrapper ::ng-deep .ql-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  background-color: #fafafa;
+  border-bottom: 1px solid #ccc;
+}
+
+.quill-wrapper ::ng-deep .ql-container {
+  height: calc(100% - 42px);
+  border: none !important;
+  overflow: hidden;
+}
+
+.quill-wrapper ::ng-deep .ql-editor {
+  height: 100%;
+  overflow-y: auto;
+  font-size: 14px;
+}

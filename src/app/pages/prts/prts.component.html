@@ -1,0 +1,165 @@
+<!-- <img style="margin-top: 2%; display: flex; margin-left: auto; margin-right: auto;" src="/assets/under-construction.png"
+    height="400px" alt="under-construction"> -->
+
+
+<!-- <div>
+    <div class="container-fluid" style="padding-right: 7px; padding-left: 1px;">
+        <div class="w-100">
+            <div class="flex-p">
+                <div class="row wrap">
+                    <div class="col-sm-12 no-padding">
+                        <div class="row-wrap">
+                            <div class="w-100">
+                                <div class="row">
+                                    <div class="col-xs-6"></div>
+                                    <div class="col-xs-6">
+                                        <div class="col-xs-6"></div>
+
+                                        <div class="col-xs-6" style="margin-left: -13px;">
+                                            <div class="">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+ <div class="col-sm-2 sidebar">
+
+  <a routerLink="base-info" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-item">
+    Base Info
+  </a>
+
+  <a routerLink="moniter" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-item">
+    7D Matrix
+  </a>
+
+  <a routerLink="mitigation" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-item">
+    Mitigation
+  </a>
+
+  <a routerLink="action-grid-calender" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-item">
+    CAPA (7)
+  </a>
+
+  <a routerLink="d1" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-item">D1</a>
+  <a routerLink="d2" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-item">D2</a>
+  <a routerLink="d3" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-item">D3a</a>
+  <a routerLink="d3-b" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-item">D3b</a>
+  <a routerLink="d4" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-item">D4a</a>
+  <a routerLink="d4-b" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-item">D4b</a>
+  <a routerLink="d5" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-item">D5</a>
+  <a routerLink="d6" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-item">D6</a>
+  <a routerLink="d7" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-item">D7</a>
+
+</div>
+
+<div class="col-sm-10">
+  <router-outlet></router-outlet>
+</div>
+
+
+
+</div> -->
+
+
+<div class="row no-margin">
+
+
+<div class="col-sm-2 sidebar no-padding"
+     [ngClass]="{'nav-open': isNavOpen, 'nav-closed': !isNavOpen}">
+
+  <!-- Toggle button -->
+  <button (click)="toggleNav()" class="toggle-button">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <!-- Direct nav items -->
+  <a routerLink="base-info" routerLinkActive="active" class="nav-item">
+    <mat-icon *ngIf="!isNavOpen" matTooltip="Base Info">info</mat-icon>
+    <span *ngIf="isNavOpen">Base Info</span>
+  </a>
+
+  <a routerLink="moniter" routerLinkActive="active" class="nav-item">
+    <mat-icon *ngIf="!isNavOpen" matTooltip="7D Matrix">dashboard</mat-icon>
+    <span *ngIf="isNavOpen">7D Matrix</span>
+  </a>
+
+  <a routerLink="mitigation" routerLinkActive="active" class="nav-item">
+    <mat-icon *ngIf="!isNavOpen" matTooltip="Mitigation">build</mat-icon>
+    <span *ngIf="isNavOpen">Mitigation</span>
+  </a>
+
+  <a routerLink="action-grid-calender/grid-meet" routerLinkActive="active" class="nav-item">
+    <mat-icon *ngIf="!isNavOpen" matTooltip="CAPA">assignment</mat-icon>
+    <span *ngIf="isNavOpen">CAPA <span style="padding-left: 0px;">(7)</span></span>
+  </a>
+
+  <a routerLink="d1" routerLinkActive="active" class="nav-item">
+    <mat-icon *ngIf="!isNavOpen">filter_1</mat-icon>
+    <span *ngIf="isNavOpen">D1 (Process)</span>
+  </a>
+
+  <a routerLink="d2" routerLinkActive="active" class="nav-item">
+    <mat-icon *ngIf="!isNavOpen">filter_2</mat-icon>
+    <span *ngIf="isNavOpen">D2 (Tools)</span>
+  </a>
+
+  <a routerLink="d3" routerLinkActive="active" class="nav-item">
+    <mat-icon *ngIf="!isNavOpen">filter_3</mat-icon>
+    <span *ngIf="isNavOpen">D3a (Production)</span>
+  </a>
+
+  <a routerLink="d3-b" routerLinkActive="active" class="nav-item">
+    <mat-icon *ngIf="!isNavOpen">filter_4</mat-icon>
+    <span *ngIf="isNavOpen">D3b (SQM)</span>
+  </a>
+
+  <a routerLink="d4" routerLinkActive="active" class="nav-item">
+    <mat-icon *ngIf="!isNavOpen">filter_5</mat-icon>
+    <span *ngIf="isNavOpen">D4a (Internal Quality)</span>
+  </a>
+
+  <a routerLink="d4-b" routerLinkActive="active" class="nav-item">
+    <mat-icon *ngIf="!isNavOpen">filter_6</mat-icon>
+    <span *ngIf="isNavOpen">D4b (Supplier Quality)</span>
+  </a>
+
+  <a routerLink="d5" routerLinkActive="active" class="nav-item">
+    <mat-icon *ngIf="!isNavOpen">filter_7</mat-icon>
+    <span *ngIf="isNavOpen">D5 (Process ENG)</span>
+  </a>
+
+  <a routerLink="d6" routerLinkActive="active" class="nav-item">
+    <mat-icon *ngIf="!isNavOpen">filter_8</mat-icon>
+    <span *ngIf="isNavOpen">D6 (Product ENG)</span>
+  </a>
+
+  <a routerLink="d7" routerLinkActive="active" class="nav-item">
+    <mat-icon *ngIf="!isNavOpen">filter_9</mat-icon>
+    <span *ngIf="isNavOpen">D7 (CFT)</span>
+  </a>
+
+  
+<a routerLink="closure" routerLinkActive="active" class="nav-item marg">
+  <mat-icon *ngIf="!isNavOpen">task_alt</mat-icon>
+  <span *ngIf="isNavOpen">Closure</span>
+</a>
+
+</div>
+
+
+<div class="col-sm-10 no-padding"
+     [ngClass]="{'content-expanded': !isNavOpen, 'content-shrink': isNavOpen}">
+  <router-outlet></router-outlet>
+</div>
+
+</div>

@@ -1,0 +1,41 @@
+<div class="NewHeader">
+  <h1 mat-dialog-title>
+    <span>{{ data ? 'Update' : 'Add'}} Audit Type</span>
+  </h1>
+</div>
+
+<form class="form-horizontal">
+  <div mat-dialog-content>
+
+    <div class="form-group">
+      <label class="control-label col-sm-4  ">Audit Type </label>
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+        <mat-select class="form-control" placeholder="Select Audit Type" required>
+          <mat-option [value]="0">Product Quality Audit</mat-option>
+          <mat-option [value]="1">Body Audit</mat-option>
+          <mat-option [value]="2">Paint Audit</mat-option>
+        </mat-select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4  ">Audit Code</label>
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+        <input type="text" class="form-control" placeholder="Enter Audit Code" required>
+      </div>
+    </div>
+
+  </div>
+  <mat-dialog-actions align="end"  style="margin-bottom: -16px;">
+    <button mat-raised-button class="ms-2" (click)="close()"
+      style="background-color: lightgray; color: red;margin-right: 2px;">
+      <mat-icon>cancel</mat-icon>
+      Close
+    </button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="'test'">
+      <mat-icon>save</mat-icon>
+      <span>{{ data ? 'Update' : 'Save' }}</span>
+    </button>
+
+  </mat-dialog-actions>
+
+</form>

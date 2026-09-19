@@ -1,0 +1,195 @@
+<!-- Add Filter Tabs -->
+<div class="row">
+  <div class="col-sm-12 d-flex justify-content-end align-items-start" style="gap: 10px; margin-bottom: 2px; padding-right: 30px;">
+    <button mat-raised-button style="background-color: black; color: white;"
+        class="filters-hover mt-3"  matTooltip="Filter"
+        (click)="filterToggle = !filterToggle">
+        <mat-icon>filter_list</mat-icon> Filter
+    </button>
+    <button mat-raised-button color="primary"  
+        class="btn-primary mt-3" matTooltip="Add Equipment"
+        [ngClass]="{'disable-custom' : !canCreate || (departmentName != 'Testing' )  && departmentName !='Protoshop'  && roleName != 'Admin'}"
+        (click)="addtractors(null)">
+        <mat-icon>add</mat-icon> Add Equipment
+    </button>
+  </div>
+</div>
+ 
+ 
+<!-- Filter UI -->
+<div fxLayout="row wrap" *ngIf="filterToggle" style=" margin-bottom: 0px;
+    width: 97.5%;
+    margin-left: 17px;">
+    <div fxFlex="100" class="flex-p w-100">
+        <form [formGroup]="filterForm">
+              <mat-card class="filter">
+      <mat-card-content>
+  <div class="row col-lg-12 col-sm-12">
+    <!-- Row 1 -->
+    <div class="col-sm-4 row me-2 mt-3">
+      <div class="col-sm-4 newMarginClass"><b>Keyword:</b></div>
+      <div class="col-sm-8">
+        <input
+          type="text"
+         
+          class="form-control"
+          placeholder="Search by keyword"
+        />
+      </div>
+    </div>
+ 
+    <!-- Status -->
+    <div class="col-sm-4 row me-2 mt-3">
+      <div class="col-sm-4 newMarginClass"><b>Status:</b></div>
+      <div class="col-sm-8">
+        <mat-select
+          class="form-control"
+           placeholder="Select Status"
+        >
+          <mat-option value="active">Active</mat-option>
+          <mat-option value="inactive">Inactive</mat-option>
+        </mat-select>
+      </div>
+    </div>
+ 
+    <!-- Equipment ID -->
+    <div class="col-sm-4 row me-2 mt-3">
+      <div class="col-sm-4 newMarginClass"><b>Equipment ID:</b></div>
+      <div class="col-sm-8">
+        <mat-select
+          class="form-control"
+           placeholder="Select Equipment ID"
+        >
+          <mat-option value="EQ-1001">EQ-1001</mat-option>
+          <mat-option value="EQ-1002">EQ-1002</mat-option>
+          <mat-option value="EQ-1003">EQ-1003</mat-option>
+          <mat-option value="EQ-1004">EQ-1004</mat-option>
+        </mat-select>
+      </div>
+    </div>
+ 
+    <!-- Row 2 -->
+    <div class="col-sm-4 row me-2 mt-3">
+      <div class="col-sm-4 newMarginClass"><b>Project Code:</b></div>
+      <div class="col-sm-8">
+        <mat-select
+          class="form-control"
+           placeholder="Select Project Code"
+        >
+          <mat-option value="PRJ-001">PRJ-001</mat-option>
+          <mat-option value="PRJ-002">PRJ-002</mat-option>
+          <mat-option value="PRJ-003">PRJ-003</mat-option>
+          <mat-option value="PRJ-004">PRJ-004</mat-option>
+        </mat-select>
+      </div>
+    </div>
+ 
+    <!-- Buttons -->
+    <div class="col-sm-12 pull-right mt-3" style="margin-left: -16px;">
+      <a
+        (click)="filterToggle = !filterToggle"
+        class="pull-right"
+        style="font-size: 25px; cursor: pointer; margin-left: 5px"
+      >
+        <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+      </a>
+      
+      <button
+        mat-raised-button
+        class="pull-right btn-default margin-right-10"
+        (click)="clearFilter()"
+      >
+       <mat-icon>settings_backup_restore</mat-icon> Clear
+      </button>
+      <button
+        mat-raised-button style="margin-right: 10px;"
+        color="primary"
+        class="pull-right"
+        (click)="go()"
+      >
+        <mat-icon>search</mat-icon>Search
+      </button>
+    </div>
+  </div>
+</mat-card-content>
+ 
+    </mat-card>
+        </form>
+    </div>
+</div>
+ 
+<!-- Table -->
+<div class="container-fluid" style="padding-right: 6px;
+    width: 99%;">
+    <div fxLayout="row wrap" #resizedDiv>
+        <div class="flex-p w-100 sizeAlign">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="grid-table-container" class="table-responsive">
+                        <table matSort id="example2" class="table table-bordered table-hover">
+                            <thead class="tbl-head">
+                                <tr>
+                                    <th class="text-center">Actions</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Equipment ID</th>
+                                    <th class="text-center" >Project Code</th>
+                                    <th class="text-center" >Config</th>
+                                    <th class="text-center" >Serial No </th>
+                                    <th class="text-center" >Model</th>
+                                    <th class="text-center" >Test Activity Planned
+                                    </th>
+                                    <th class="text-center">Planned Testing Hours
+                                    </th>
+                                    <th class="text-center">Actual Testing Hours/Cycles
+                                    </th>
+                                    <th class="text-center" >Remarks</th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of tableList">
+                                    <td class=" text-center">
+                                        <a matTooltip="Edit Equipment" [ngClass]="{'disable-custom' : !canUpdate || (departmentName != 'Testing' ) && departmentName !='Protoshop' && roleName != 'Admin'}"
+                                            style="margin-right: 10px; cursor: pointer; color: cornflowerblue;"
+                                            (click)="addtractors(item)">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a [ngClass]="{'disable-custom' : !canDelete  || item.TotalUsed}">
+                                            <i style="cursor: pointer;" matTooltip="Delete Equipment" class="fa fa-trash red"
+                                                (click)="deleteConfirmation(item)"></i>
+                                        </a>
+                                    </td>
+                                     <td class="text-center" style="text-align: center !important;">
+                                        <a [ngStyle]="{'color':  item.IsActive? 'blue' : 'red','cursor':'pointer'}" [ngClass]="{'disable-custom' : !canUpdate}">
+                                                <span *ngIf="!item.IsActive" (click)="Confirmation(item)"
+                                                style="color:red">Inactive</span>
+                                            <span *ngIf=" item.IsActive" (click)="Confirmation(item)"
+                                                style="color:blue;">Active</span>
+                                        </a>
+                                    </td>
+                                    <td class="text-center">{{item.TractorNumber}}</td>
+                                    <td class="text-center" >{{item.ProjectCode}}</td>
+                                    <td class="text-center" >{{item.Config}}</td>
+                                    <td class="text-center" >{{item.ChassisNo}}</td>
+                                    <td class="text-center" >{{item.EngineNo}}</td>
+                                    <td class="text-center"> {{item.TestActivityPlan}}</td>
+                                    <td class="text-center">{{item.TestingHours}}</td>
+                                    <td class="text-center">{{item.ActualTestingHours}}</td>
+                                    <td class="text-center">{{item.Remarks}}</td>
+                                </tr>
+                            </tbody>
+                            <tr *ngIf="tableList == null || tableList.length == 0">
+                                <td colspan="12" class="text-center">No records found</td>
+                            </tr>
+                        </table>
+                        <mat-paginator class="col-sm-12" [length]="totalSize" [pageIndex]="currentPage"
+                            [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20, 50, 100]" (page)="fnHandlePage($event)"
+                            showFirstLastButtons>
+                        </mat-paginator>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 

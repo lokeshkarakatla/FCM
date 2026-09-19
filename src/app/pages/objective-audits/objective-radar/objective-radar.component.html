@@ -1,0 +1,618 @@
+<div class="radar-container">
+  <!-- Top Filter Section -->
+  <div class="filter-header">
+    <div class="filter-controls">
+      <div class="filter-group">
+        <label>Select Year: </label>
+        <select class="form-control filter-select" [(ngModel)]="selectedYear">
+          <option>--Select Year--</option>
+          <option>2021</option>
+          <option>2022</option>
+          <option>2023</option>
+          <option>2024</option>
+          <option>2025</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label>Select Month: </label>
+        <select class="form-control filter-select" [(ngModel)]="selectedMonth">
+          <option>--Select Month--</option>
+          <option>January</option>
+          <option>February</option>
+          <option>March</option>
+          <option>April</option>
+          <option>May</option>
+          <option>June</option>
+          <option>July</option>
+          <option>August</option>
+          <option>September</option>
+          <option>October</option>
+          <option>November</option>
+          <option>December</option>
+        </select>
+      </div>
+
+      <button mat-raised-button color="primary" class="go-btn">
+        <mat-icon>east</mat-icon> Go
+      </button>
+    </div>
+  </div>
+
+  <!-- Models Dashboard Grid (Matching img1) -->
+  <div class="models-grid">
+
+    <!-- 1. Hector -->
+    <div class="model-row">
+      <div class="model-badge-col" (click)="piechartpop('Hector')">
+        <div class="model-badge">Hector</div>
+        <div class="model-nav-arrows">
+          <mat-icon class="arrow-icon">arrow_back</mat-icon>
+          <mat-icon class="arrow-icon">arrow_forward</mat-icon>
+        </div>
+      </div>
+
+      <div class="metrics-cards-group">
+        <!-- Card 1: (D)Met -->
+        <div class="metric-card" (click)="piechartpop('(D)Met')">
+          <div class="card-left">
+            <div class="metric-title">(D)Met</div>
+            <div class="metric-day-val text-green" matTooltip="Day Value">95%</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">93%</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view1"
+              [scheme]="colorScheme"
+              [results]="multi"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel"
+              [barPadding]="barPadding"
+              [roundEdges]="roundEdges">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 93% WDPV</div>
+        </div>
+
+        <!-- Card 2: (C)Met -->
+        <div class="metric-card" (click)="piechartpop('(C)Met')">
+          <div class="card-left">
+            <div class="metric-title">(C)Met</div>
+            <div class="metric-day-val text-yellow" matTooltip="Day Value">92%</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">93%</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view1"
+              [scheme]="colorScheme"
+              [results]="multi"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel"
+              [barPadding]="barPadding"
+              [roundEdges]="roundEdges">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 93% WDPV</div>
+        </div>
+
+        <!-- Card 3: (P)Met -->
+        <div class="metric-card" (click)="piechartpop('(P)Met')">
+          <div class="card-left">
+            <div class="metric-title">(P)Met</div>
+            <div class="metric-day-val text-green" matTooltip="Day Value">96%</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">94%</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view1"
+              [scheme]="colorScheme"
+              [results]="multi"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel"
+              [barPadding]="barPadding"
+              [roundEdges]="roundEdges">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 94% WDPV</div>
+        </div>
+
+        <!-- Card 4: (S)Met -->
+        <div class="metric-card" (click)="piechartpop('(S)Met')">
+          <div class="card-left">
+            <div class="metric-title">(S)Met</div>
+            <div class="metric-day-val text-red" matTooltip="Day Value">91%</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">92%</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view1"
+              [scheme]="colorScheme"
+              [results]="multi"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel"
+              [barPadding]="barPadding"
+              [roundEdges]="roundEdges">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 92% WDPV</div>
+        </div>
+
+        <!-- Card 5: (O)Met -->
+        <div class="metric-card" (click)="piechartpop('(O)Met')">
+          <div class="card-left">
+            <div class="metric-title">(O)Met</div>
+            <div class="metric-day-val text-green" matTooltip="Day Value">94%</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">93%</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view1"
+              [scheme]="colorScheme"
+              [results]="multi"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel"
+              [barPadding]="barPadding"
+              [roundEdges]="roundEdges">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 93% WDPV</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Astor -->
+    <div class="model-row">
+      <div class="model-badge-col" (click)="piechartpop('Astor')">
+        <div class="model-badge">Astor</div>
+        <div class="model-nav-arrows">
+          <mat-icon class="arrow-icon">arrow_back</mat-icon>
+          <mat-icon class="arrow-icon">arrow_forward</mat-icon>
+        </div>
+      </div>
+
+      <div class="metrics-cards-group">
+        <!-- Card 1: (D)Met -->
+        <div class="metric-card" (click)="piechartpop('(D)Met')">
+          <div class="card-left">
+            <div class="metric-title">(D)Met</div>
+            <div class="metric-day-val text-green" matTooltip="Day Value">95%</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">93%</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view1"
+              [scheme]="colorScheme"
+              [results]="multi"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel"
+              [barPadding]="barPadding"
+              [roundEdges]="roundEdges">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 93% WDPV</div>
+        </div>
+
+        <!-- Card 2: (C)Met -->
+        <div class="metric-card" (click)="piechartpop('(C)Met')">
+          <div class="card-left">
+            <div class="metric-title">(C)Met</div>
+            <div class="metric-day-val text-red" matTooltip="Day Value">92%</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">93%</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view1"
+              [scheme]="colorScheme"
+              [results]="multi"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel"
+              [barPadding]="barPadding"
+              [roundEdges]="roundEdges">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 93% WDPV</div>
+        </div>
+
+        <!-- Card 3: (P)Met -->
+        <div class="metric-card" (click)="piechartpop('(P)Met')">
+          <div class="card-left">
+            <div class="metric-title">(P)Met</div>
+            <div class="metric-day-val text-green" matTooltip="Day Value">96%</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">94%</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view1"
+              [scheme]="colorScheme"
+              [results]="multi"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel"
+              [barPadding]="barPadding"
+              [roundEdges]="roundEdges">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 94% WDPV</div>
+        </div>
+
+        <!-- Card 4: (S)Met -->
+        <div class="metric-card" (click)="piechartpop('(S)Met')">
+          <div class="card-left">
+            <div class="metric-title">(S)Met</div>
+            <div class="metric-day-val text-red" matTooltip="Day Value">91%</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">92%</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view1"
+              [scheme]="colorScheme"
+              [results]="multi"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel"
+              [barPadding]="barPadding"
+              [roundEdges]="roundEdges">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 92% WDPV</div>
+        </div>
+
+        <!-- Card 5: (O)Met -->
+        <div class="metric-card" (click)="piechartpop('(O)Met')">
+          <div class="card-left">
+            <div class="metric-title">(O)Met</div>
+            <div class="metric-day-val text-green" matTooltip="Day Value">94%</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">93%</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view1"
+              [scheme]="colorScheme"
+              [results]="multi"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel"
+              [barPadding]="barPadding"
+              [roundEdges]="roundEdges">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 93% WDPV</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Gloster -->
+    <div class="model-row">
+      <div class="model-badge-col" (click)="piechartpop('Gloster')">
+        <div class="model-badge">Gloster</div>
+        <div class="model-nav-arrows">
+          <mat-icon class="arrow-icon">arrow_back</mat-icon>
+          <mat-icon class="arrow-icon">arrow_forward</mat-icon>
+        </div>
+      </div>
+
+      <div class="metrics-cards-group">
+        <!-- Card 1: (D)Met -->
+        <div class="metric-card" (click)="piechartpop('(D)Met')">
+          <div class="card-left">
+            <div class="metric-title">(D)Met</div>
+            <div class="metric-day-val text-green" matTooltip="Day Value">95%</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">93%</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view1"
+              [scheme]="colorScheme"
+              [results]="multi"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel"
+              [barPadding]="barPadding"
+              [roundEdges]="roundEdges">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 93% WDPV</div>
+        </div>
+
+        <!-- Card 2: (C)Met -->
+        <div class="metric-card" (click)="piechartpop('(C)Met')">
+          <div class="card-left">
+            <div class="metric-title">(C)Met</div>
+            <div class="metric-day-val text-red" matTooltip="Day Value">92%</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">93%</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view1"
+              [scheme]="colorScheme"
+              [results]="multi"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel"
+              [barPadding]="barPadding"
+              [roundEdges]="roundEdges">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 93% WDPV</div>
+        </div>
+
+        <!-- Card 3: (P)Met -->
+        <div class="metric-card" (click)="piechartpop('(P)Met')">
+          <div class="card-left">
+            <div class="metric-title">(P)Met</div>
+            <div class="metric-day-val text-green" matTooltip="Day Value">96%</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">94%</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view1"
+              [scheme]="colorScheme"
+              [results]="multi"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel"
+              [barPadding]="barPadding"
+              [roundEdges]="roundEdges">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 94% WDPV</div>
+        </div>
+
+        <!-- Card 4: (S)Met -->
+        <div class="metric-card" (click)="piechartpop('(S)Met')">
+          <div class="card-left">
+            <div class="metric-title">(S)Met</div>
+            <div class="metric-day-val text-red" matTooltip="Day Value">91%</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">92%</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view1"
+              [scheme]="colorScheme"
+              [results]="multi"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel"
+              [barPadding]="barPadding"
+              [roundEdges]="roundEdges">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 92% WDPV</div>
+        </div>
+
+        <!-- Card 5: (O)Met -->
+        <div class="metric-card" (click)="piechartpop('(O)Met')">
+          <div class="card-left">
+            <div class="metric-title">(O)Met</div>
+            <div class="metric-day-val text-green" matTooltip="Day Value">94%</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">93%</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view1"
+              [scheme]="colorScheme"
+              [results]="multi"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel"
+              [barPadding]="barPadding"
+              [roundEdges]="roundEdges">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 93% WDPV</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. ZSEV -->
+    <div class="model-row">
+      <div class="model-badge-col" (click)="piechartpop('ZSEV')">
+        <div class="model-badge">ZSEV</div>
+        <div class="model-nav-arrows">
+          <mat-icon class="arrow-icon">arrow_back</mat-icon>
+          <mat-icon class="arrow-icon">arrow_forward</mat-icon>
+        </div>
+      </div>
+
+      <div class="metrics-cards-group">
+        <!-- Card 1: (D)Met -->
+        <div class="metric-card" (click)="piechartpop('(D)Met')">
+          <div class="card-left">
+            <div class="metric-title">(D)Met</div>
+            <div class="metric-day-val text-green" matTooltip="Day Value">95%</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">93%</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view1"
+              [scheme]="colorScheme"
+              [results]="multi"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel"
+              [barPadding]="barPadding"
+              [roundEdges]="roundEdges">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 93% WDPV</div>
+        </div>
+
+        <!-- Card 2: (C)Met -->
+        <div class="metric-card" (click)="piechartpop('(C)Met')">
+          <div class="card-left">
+            <div class="metric-title">(C)Met</div>
+            <div class="metric-day-val text-yellow" matTooltip="Day Value">92%</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">93%</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view1"
+              [scheme]="colorScheme"
+              [results]="multi"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel"
+              [barPadding]="barPadding"
+              [roundEdges]="roundEdges">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 93% WDPV</div>
+        </div>
+
+        <!-- Card 3: (P)Met -->
+        <div class="metric-card" (click)="piechartpop('(P)Met')">
+          <div class="card-left">
+            <div class="metric-title">(P)Met</div>
+            <div class="metric-day-val text-green" matTooltip="Day Value">96%</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">94%</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view1"
+              [scheme]="colorScheme"
+              [results]="multi"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel"
+              [barPadding]="barPadding"
+              [roundEdges]="roundEdges">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 94% WDPV</div>
+        </div>
+
+        <!-- Card 4: (S)Met -->
+        <div class="metric-card" (click)="piechartpop('(S)Met')">
+          <div class="card-left">
+            <div class="metric-title">(S)Met</div>
+            <div class="metric-day-val text-red" matTooltip="Day Value">91%</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">92%</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view1"
+              [scheme]="colorScheme"
+              [results]="multi"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel"
+              [barPadding]="barPadding"
+              [roundEdges]="roundEdges">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 92% WDPV</div>
+        </div>
+
+        <!-- Card 5: (O)Met -->
+        <div class="metric-card" (click)="piechartpop('(O)Met')">
+          <div class="card-left">
+            <div class="metric-title">(O)Met</div>
+            <div class="metric-day-val text-green" matTooltip="Day Value">94%</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">93%</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view1"
+              [scheme]="colorScheme"
+              [results]="multi"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel"
+              [barPadding]="barPadding"
+              [roundEdges]="roundEdges">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 93% WDPV</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,9 @@
+input.form-control {
+  &:focus {
+    border-color: inherit;
+    outline: none;
+    box-shadow: none;
+  }
+
+  transition: none !important;
+}

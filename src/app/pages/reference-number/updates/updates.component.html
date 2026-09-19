@@ -1,0 +1,183 @@
+<div class="col-sm-12" style="margin-top: 50px">
+  <div class="container-fluid px-1">
+    <div class="flex-p">
+      <div class="row wrap">
+        <div class="col-sm-12 no-padding">
+          <div class="row-wrap">
+            <div class="row justify-content-end">
+              <div class="d-flex justify-content-end align-items-center mt-3" style="width: 100%;margin-right: 6px;">
+                <!-- Filter Button -->
+                <h3 style="font-size: 16px; font-weight: 600; margin: -7px 10px 0 0;">Mask Inactive:</h3>
+                <div class="switchToggle ms-2" style="margin-right: 15px;">
+                  <input type="checkbox" id="maskInactiveSwitch" [(ngModel)]="maskInactive">
+                  <label for="maskInactiveSwitch"></label>
+                </div>
+                <button mat-raised-button class="filters-hover btn-primary  me-2"
+                  style="min-width: 70px; height: 40px;background-color: black; color:white; "
+                  (click)="filterToggle = !filterToggle">
+
+                  <mat-icon>filter_list</mat-icon> Filter
+                </button>
+
+
+                <!-- Add Update Button -->
+                <!-- <button mat-raised-button color="primary"
+                  class="btn  me-2 d-flex align-items-center justify-content-center" style="
+                    min-width: 70px;
+                    height: 40px;
+
+                    /* transform: translateY(3px); */
+                  " (click)="addupdate(null)">
+                  <span class="d-flex align-items-center justify-content-center" style="gap: 6px;">
+                    <mat-icon>add</mat-icon>
+                    <span>Add Update</span>
+                  </span>
+                </button> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div fxLayout="row wrap" *ngIf="filterToggle">
+    <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p w-100 margins">
+      <mat-card class="filter" style="    width: 99%;">
+        <mat-card-content>
+          <div class="row">
+            <!-- Keyword -->
+            <div class="col-sm-3">
+              <div class="col-sm-4">
+                <label class="pull-right" style="margin-top: 6px">Keyword:</label>
+              </div>
+              <div class="col-sm-8">
+                <input type="text" placeholder="Enter Keyword" class="form-control" />
+              </div>
+            </div>
+
+            <!-- Start Date -->
+            <div class="col-sm-3">
+              <div class="col-sm-4">
+                <label class="pull-right" style="margin-top: 6px">Start Date:</label>
+              </div>
+              <div class="col-sm-8">
+                <input type="date" class="form-control" />
+              </div>
+            </div>
+
+            <!-- Finish Date -->
+            <div class="col-sm-3">
+              <div class="col-sm-4">
+                <label class="pull-right" style="margin-top: 6px">Finish Date:</label>
+              </div>
+              <div class="col-sm-8">
+                <input type="date" class="form-control" />
+              </div>
+            </div>
+
+            <!-- Status -->
+            <div class="col-sm-3">
+              <!-- <div class="col-sm-4">
+                <label class="pull-right" style="margin-top: 6px">Status:</label>
+              </div>
+              <div class="col-sm-8">
+                <mat-select class="form-control" placeholder="Select Status">
+                  <mat-option *ngFor="let option of Status" [value]="option.value">
+                    {{ option.name }}
+                  </mat-option>
+                </mat-select>
+              </div> -->
+              <a (click)="filterToggle = !filterToggle" class="pull-right"
+                style="font-size: 25px; cursor: pointer; margin-left: 5px">
+                <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+              </a>
+
+              <button mat-raised-button class="pull-right btn-default margin-right-10"
+                (click)="clearFilter(); getTests()">
+                <mat-icon>settings_backup_restore</mat-icon> Clear
+              </button>
+
+              <button mat-raised-button color="primary" class="pull-right margin-right-10" (click)="getTests()">
+                <mat-icon>search</mat-icon> Search
+              </button>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <!-- <div class="col-sm-12 pull-right mt-3" style="margin-left: -21px">
+            <a (click)="filterToggle = !filterToggle" class="pull-right"
+              style="font-size: 25px; cursor: pointer; margin-left: 5px">
+              <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+            </a>
+
+            <button mat-raised-button class="pull-right btn-default margin-right-10"
+              (click)="clearFilter(); getTests()">
+              <mat-icon>settings_backup_restore</mat-icon> Clear
+            </button>
+
+            <button mat-raised-button color="primary" class="pull-right margin-right-10" (click)="getTests()">
+              <mat-icon>search</mat-icon> Search
+            </button>
+          </div> -->
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="table-responsive" id="grid-table-container" style="width: 98%; margin-left: 7px;">
+    <table class="table table-bordered table-hover">
+      <thead class="tbl-head">
+        <tr>
+          <th class="text-center">Actions</th>
+          <th class="text-center">Active</th>
+          <th>Steps</th>
+          
+          <th class="text-center">Start Date</th>
+          <th class="text-center">Due Date</th>
+          <th class="text-center">ETA</th>
+          <th class="text-center">Finish Date</th>
+          <th>Duration</th>
+          <th>Responsibility</th>
+          <th class="text-center">Done</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of stepData">
+          <td class="text-center">
+            <!-- <button
+              class="btn btn-sm btn-primary d-flex align-items-center justify-content-center mx-auto"
+            >
+              <mat-icon style="font-size: 22px">save</mat-icon>
+              <span class="ms-1">Save</span>
+            </button> -->
+            <a matTooltip="Edit " (click)="addupdate(null)">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a matTooltip="Delete " (click)="deleteConfirmation(applicant)">
+              <i class="fa fa-trash red"></i>
+            </a>
+          </td>
+          <td class="text-center" style="text-align: center !important">
+            <mat-checkbox [(ngModel)]="item.status"></mat-checkbox>
+          </td>
+
+          <td>{{ item.step }}</td>
+
+          <td class="text-center">{{ item.startDate }}</td>
+          <td class="text-center">{{ item.dueDate }}</td>
+          <td class="text-center">{{ item.eta }}</td>
+          <td class="text-center">{{ item.finishDate }}</td>
+          <td>{{ item.days }}</td>
+          <td>{{ item.responsibility }}</td>
+
+            <td class="text-center" style="text-align: center !important">
+            <mat-checkbox [(ngModel)]="item.done"></mat-checkbox>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

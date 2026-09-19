@@ -1,0 +1,164 @@
+// Container
+.col-lg-12 {
+  overflow: hidden;
+}
+
+// Action bar
+.action-bar {
+  margin: 30px 15px 30px 0;
+
+  button {
+    &.pull-right {
+      margin-right: 5px;
+    }
+
+    &.primary-btn mat-icon {
+      margin-right: 4px;
+    }
+
+    &.dark-btn {
+      background-color: black;
+      color: white;
+    }
+  }
+}
+
+// Filter section
+.filter-wrapper {
+  margin-bottom: -3px;
+
+  .filter-card {
+    width: 101.5%;
+    margin-left: -15px;
+  }
+
+  .newMarginClass {
+    white-space: nowrap;
+  }
+
+  .filter-actions {
+    margin-left: -21px;
+
+    .toggle-icon {
+      font-size: 25px;
+      cursor: pointer;
+      margin-left: 5px;
+    }
+  }
+}
+
+// Table styles
+.table-container {
+  margin-top: 10px;
+
+  #grid-table-container {
+    margin-left: -6px;
+  }
+
+  table {
+    th {
+      white-space: nowrap;
+      min-width: 80px;
+    }
+
+    td {
+      white-space: nowrap;
+      min-width: 80px;
+      vertical-align: middle;
+    }
+
+    td.problem-statement {
+      white-space: normal;
+      word-break: break-word;
+      max-width: 430px;
+    }
+
+    th.problem-statement-header {
+      min-width: 430px;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .switchToggle {
+      text-align: center;
+      color: blue;
+      cursor: pointer;
+    }
+  }
+}
+
+// Range input (progress)
+input[type="range"] {
+  width: 100%;
+  cursor: default;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+// Tooltip fix
+::ng-deep .custom-tooltip {
+  margin-bottom: 1px;
+}
+
+// Floating buttons
+.mine {
+  position: fixed;
+  bottom: 80px;
+  right: 40px;
+  background-color: #e6e6e6;
+  margin: 5px;
+
+  mat-icon {
+    color: #37474f;
+  }
+}
+
+// Left button adjustment
+.left-btn {
+  margin-right: 78px;
+}
+
+.link {
+  color: #1976d2; // Material blue
+  font-weight: 500;
+  cursor: pointer;
+
+  &:hover {
+    color: #0d47a1;
+   
+  }
+}
+
+
+/* Make Status column wider */
+/* Make Status column wider */
+.status-col {
+  width: 100px;       /* adjust as needed */
+  min-width: 100px;   /* prevents shrinking */
+}
+
+.status-select {
+  width: 100%;        /* dropdown fills the cell */
+  min-width: 100px;   /* ensures options are visible */
+}
+
+
+.status-select {
+  width: 100%;
+  min-width: 100px;
+  font-size: 15px;   // select box text size
+  
+
+  option {
+    font-size: 16px; // dropdown option text size
+  }
+}
+
+
+select.status-select option {
+  font-size: 14px;
+}

@@ -1,0 +1,178 @@
+<div class="NewHeader">
+    <h1 mat-dialog-title>
+        {{data ? 'Update' : 'Add'}} Line Item
+    </h1>
+</div>
+
+<div class="col-sm-2 pills pt-2 pr-0" style="padding-left: 0px !important;">
+    <ul class="nav col-12 flex-column pr-0 ">
+        <li [ngClass]=" addStep == 1 ? 'active nav-item': 'nav-item'" (click)="changeAddStep(1)" style="padding: 15px;">
+            <a mat-raised-button class="nav-link text-left py-2">Issue Details </a>
+        </li>
+        <li [ngClass]=" addStep == 2 ? 'active nav-item' : 'nav-item'" (click)="changeAddStep(2)"
+            style="padding: 15px;">
+            <a mat-raised-button class="nav-link text-left py-2">Description </a>
+        </li>
+    </ul>
+</div>
+
+<div *ngIf="addStep==1">
+    <div mat-dialog-content>
+        <form class="form-horizontal">
+            <div class="col-sm-12">
+                <div class="col-sm-6 margin-left">
+                    <div class="form-group">
+                        <label class="control-label col-sm-4 add-member-label" for="pwd"> Section: </label>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                            <p class="mt-1">Static</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4 add-member-label" for="pwd"> Module: </label>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                            <p class="mt-1">BSO</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4 add-member-label" for="pwd"> Position: </label>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                            <p class="mt-1">Col : 4 Row : 8</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4 add-member-label" for="pwd"> Part: </label>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                            <mat-select class="form-control" placeholder="Select Part" required>
+                                <mat-option [value]="0"> Door Outer Handle</mat-option>
+                                <mat-option [value]="1"> Door Inner Handle</mat-option>
+                                <mat-option [value]="2">Door Pull Handle</mat-option>
+                                <mat-option [value]="3"> Door Outer Belt</mat-option>
+                                <mat-option [value]="4">Door Inner Belt</mat-option>
+                                <mat-option [value]="3"> Door Inner Trim</mat-option>
+                                <mat-option [value]="4">Door Cladding</mat-option>
+                            </mat-select>
+                        </div>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label class="control-label col-sm-4 add-member-label" for="pwd"> Function: </label>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                            <mat-select class="form-control" placeholder="Select Function" required>
+                                <mat-option [value]="0"> Aesthetics</mat-option>
+                                <mat-option [value]="1"> Mutilation</mat-option>
+                            </mat-select>
+                        </div>
+                    </div> -->
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-4 add-member-label">Defect: </label>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                            <mat-select class="form-control" placeholder="Select Defect" required>
+                                <mat-option [value]="0"> Thin Paint</mat-option>
+                                <mat-option [value]="1"> Tool / Scuff Marks</mat-option>
+                                <mat-option [value]="2"> Scratch</mat-option>
+                                <mat-option [value]="3"> Sink / flow marks</mat-option>
+                                <mat-option [value]="4">Contamination</mat-option>
+                                <mat-option [value]="5"> Uneven/Excess Gap/ Flushness</mat-option>
+                                <mat-option [value]="6"> Improper assembly</mat-option>
+                                <mat-option [value]="7"> Dent/ Ding / Bump</mat-option>
+                                <mat-option [value]="8"> Color / Shade Mismatch</mat-option>
+                            </mat-select>
+                        </div>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label class="control-label col-sm-4 add-member-label" for="pwd"> Zone: </label>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                            <mat-select class="form-control" placeholder="Select Zone" required>
+                                <mat-option [value]="0">2x2</mat-option>
+                                <mat-option [value]="1">3x3</mat-option>
+                                <mat-option [value]="2">4x4</mat-option>
+                                <mat-option [value]="2">5x5</mat-option>
+                            </mat-select>
+                        </div>
+                    </div> -->
+                    <div class="form-group">
+                        <label class="control-label col-sm-4 add-member-label">Department: </label>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                            <mat-select class="form-control" placeholder="Select Department" required>
+                                <mat-option [value]="0">General Department</mat-option>
+                                <mat-option [value]="1">Paint</mat-option>
+                                <mat-option [value]="2">Body</mat-option>
+                                <mat-option [value]="3">SQE</mat-option>
+                            </mat-select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4 add-member-label">Demerit: </label>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                            <mat-select class="form-control" placeholder="Select demerit option" multiple>
+                                <mat-option [value]="0">1 - Minor</mat-option>
+                                <mat-option [value]="1">5 - Small</mat-option>
+                                <mat-option [value]="2">10 - Moderate</mat-option>
+                                <mat-option [value]="4">20 - Major</mat-option>
+                                <mat-option [value]="5">50 - Critical</mat-option>
+                            </mat-select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 " style="margin-right: 0px;">
+                    <div class="form-group" style="margin-left: 10px;">
+                        <label class="control-label col-sm-12 add-member-label">Guideline Image : </label>
+                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-8">
+                            <img style="height: 231px;;" src="/assets/door10.png" alt="Rear grill image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <mat-dialog-actions align="end">
+        
+        <button mat-raised-button class="add-dark-hover btn-default" (click)="close()">
+            <mat-icon>cancel</mat-icon> Close
+        </button>
+
+        <button mat-raised-button color="primary" class="add-dark-hover btn-default" (click)="changeAddStep(2)">
+            <mat-icon>save</mat-icon> Save & Continue
+        </button>
+    </mat-dialog-actions>
+</div>
+
+<div *ngIf="addStep==2">
+    <div mat-dialog-content>
+        <form class="form-horizontal">
+            <div class="col-sm-12">
+                <div class="col-sm-6 " style="margin-right: 0px;">
+                    <div class="form-group">
+                        <label class="control-label col-sm-12 add-member-label" style="padding:10px;">Select Issue:
+                        </label>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                            <mat-checkbox *ngFor="let item of issues" [value]="item.value"
+                                (change)="showOptions($event,item.value)">{{item.value}}
+                            </mat-checkbox><br><br><br><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label col-sm-12" style="padding:10px;">Notes: </label>
+                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-8">
+                            <textarea class="form-control" rows="4" cols="40" placeholder="Enter your description"
+                                style="width: 9cm;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <mat-dialog-actions align="end">
+        
+        <button mat-raised-button class="add-dark-hover btn-default" (click)="close()">
+            <mat-icon>cancel</mat-icon> Close
+        </button>
+
+        <button mat-raised-button color="primary" class="add-dark-hover btn-default" (click)="changeAddStep(1)">
+            <mat-icon>save</mat-icon> Save
+        </button>
+    </mat-dialog-actions>
+</div>

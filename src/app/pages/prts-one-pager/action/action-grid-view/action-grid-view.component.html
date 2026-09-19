@@ -1,0 +1,240 @@
+<div class="col-lg-12" style="margin-left:15px">
+
+
+    <!-- Action Buttons (sticky so they stay in viewport while scrolling) -->
+    <div class="sticky-action-bar" style="background-color: #fafafa;">
+        <button style="margin: 5px;" mat-raised-button color="primary" (click)="openCAPA(null)">
+            <mat-icon>person_add</mat-icon> Add CAPA
+        </button>
+
+        <button mat-raised-button style="background-color: black; color:white; margin: 5px;" class="filter-hover"
+            (click)="filterToggle = !filterToggle">
+            <mat-icon>filter_list</mat-icon> Filter
+        </button>
+    </div>
+    <!-- Filter Section -->
+     <div class="container-fluid" *ngIf="filterToggle" style="padding: 0px;">
+    <div fxLayout="row wrap">
+        <div fxFlex="100" class="flex-p w-100">
+
+            <form>
+                <mat-card class="filter" style="width: 100%; margin: 0;">
+                    <mat-card-content>
+
+                        <div class="row" style="margin: 0;">
+
+                            <!-- Keyword -->
+                            <div class="col-sm-4 row me-2 mt-3">
+                                <div class="col-sm-3 newMarginClass">
+                                    <b>Keyword:</b>
+                                </div>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" placeholder="Enter Keyword" />
+                                </div>
+                            </div>
+
+                            <!-- Role -->
+                            <div class="col-sm-4 row me-2 mt-3">
+                                <div class="col-sm-3 newMarginClass">
+                                    <b>Role:</b>
+                                </div>
+                                <div class="col-sm-9">
+                                    <mat-select placeholder="Select Role" class="form-control">
+                                        <mat-option value="Albania">
+                                            Shift Manage
+                                        </mat-option>
+                                        <mat-option value="Algeria">
+                                            Shift Manage
+                                        </mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+
+                            <!-- Department -->
+                            <div class="col-sm-4 row me-2 mt-3">
+                                <div class="col-sm-3 newMarginClass">
+                                    <b>Department:</b>
+                                </div>
+                                <div class="col-sm-9">
+                                    <mat-select placeholder="Select Department" class="form-control">
+
+                                        <mat-option value="Developer">
+                                            Developer
+                                        </mat-option>
+
+                                        <mat-option value="RnD">
+                                            RnD
+                                        </mat-option>
+
+                                        <mat-option value="QA">
+                                            QA
+                                        </mat-option>
+
+                                        <mat-option value="Account">
+                                            Account
+                                        </mat-option>
+
+                                        <mat-option value="Test">
+                                            Test
+                                        </mat-option>
+
+                                    </mat-select>
+                                </div>
+                            </div>
+
+                            <!-- Status -->
+                            <div class="col-sm-4 row me-2 mt-3">
+                                <div class="col-sm-3 newMarginClass" style="white-space: nowrap;">
+                                    <b>Status:</b>
+                                </div>
+
+                                <div class="col-sm-9">
+                                    <mat-select placeholder="Select Status" class="form-control">
+
+                                        <mat-option value="Opened">
+                                            Opened
+                                        </mat-option>
+
+                                        <mat-option value="WIP">
+                                            WIP
+                                        </mat-option>
+
+                                        <mat-option value="Pending">
+                                            Pending
+                                        </mat-option>
+
+                                    </mat-select>
+                                </div>
+                            </div>
+
+                            <!-- From Date -->
+                            <div class="col-sm-4 row me-2 mt-3">
+                                <div class="col-sm-3 newMarginClass">
+                                    <b>From Date:</b>
+                                </div>
+
+                                <div class="col-sm-9">
+                                    <input type="date" class="form-control" />
+                                </div>
+                            </div>
+
+                            <!-- To Date -->
+                            <div class="col-sm-4 row me-2 mt-3">
+                                <div class="col-sm-3 newMarginClass">
+                                    <b>To Date:</b>
+                                </div>
+
+                                <div class="col-sm-9">
+                                    <input type="date" class="form-control" />
+                                </div>
+                            </div>
+
+                            <!-- Buttons -->
+                            <div class="col-sm-12 mt-3 mb-2">
+
+                                <a (click)="filterToggle = !filterToggle" class="pull-right" style="font-size: 25px;
+                                           cursor: pointer;
+                                           margin-left: 5px">
+
+                                    <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                                </a>
+
+                                <button mat-raised-button class="pull-right btn-default margin-right-10"
+                                    (click)="clearFilter();getTests()">
+
+                                    <mat-icon>
+                                        settings_backup_restore
+                                    </mat-icon>
+
+                                    Clear
+                                </button>
+
+                                <button mat-raised-button color="primary" class="pull-right margin-right-10"
+                                    (click)="getTests()">
+
+                                    <mat-icon>search</mat-icon>
+
+                                    Search
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </mat-card-content>
+                </mat-card>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+    <!-- Table -->
+    <div id="capa-table-container" class="table-responsive">
+        <table id="capaTable" class="table table-bordered table-hover data-table" style="margin-top: 13px;">
+            <colgroup>
+                <col style="width: 70px"> <!-- Actions -->
+                <col style="width: 110px"> <!-- Status -->
+                <col style="width: 300px"> <!-- Complaint -->
+                <col style="width: 120px"> <!-- Role -->
+                <col style="width: 140px"> <!-- Department -->
+                <col style="width: 180px"> <!-- Subject -->
+                <col style="width: 250px"> <!-- Description -->
+                <col style="width: 120px"> <!-- Completion Date -->
+                <col style="width: 120px"> <!-- Due Date -->
+                <col style="width: 70px"> <!-- Done -->
+            </colgroup>
+
+            <thead class="tbl-head">
+                <tr>
+                    <th>Actions</th>
+                    <th class="text-center">Status</th>
+                    <th>Complaint (Reference)</th>
+                    <th>Role</th>
+                    <th>Department</th>
+                    <th>Subject</th>
+                    <th>Description</th>
+                    <th>Completion Date</th>
+                    <th>Due Date</th>
+                    <th>Done</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let item of data">
+                    <td style="white-space:nowrap">
+                        <a matTooltip="Edit CAPA" (click)="openCAPA(item)">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a matTooltip="Delete CAPA" (click)="deleteConfirmation(item)">
+                            <i class="fa fa-trash red"></i>
+                        </a>
+                    </td>
+                    <select style="font-size:14px" class="form-select">
+                        <option [selected]="item.status === 'Open'"> Open </option>
+                        <option [selected]="item.status === 'Pending'"> Pending </option>
+                        <option [selected]="item.status === 'WIP'"> WIP </option>
+                    </select>
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.role }}</td>
+                    <td>{{ item.department }}</td>
+                    <td>{{ item.issue }}</td>
+                    <td>{{ item.details }}</td>
+                    <td>{{ item.completion }}</td>
+                    <td [ngClass]="{ 'due-red': isDueGreater(item) }">{{ item.date }}</td>
+                    <td class="text-center"><input type="checkbox"></td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="mine" mat-fab (click)="scrollGrid('right')">
+            <mat-icon style="color: #37474f">fast_forward</mat-icon>
+        </button>
+        <button class="mine" mat-fab style="margin-right: 78px !important" (click)="scrollGrid('left')">
+            <mat-icon style="color: #37474f">fast_rewind</mat-icon>
+        </button>
+    </div>
+
+    <!-- Pagination -->
+    <mat-paginator [length]="totalSize" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons>
+    </mat-paginator>
+</div>

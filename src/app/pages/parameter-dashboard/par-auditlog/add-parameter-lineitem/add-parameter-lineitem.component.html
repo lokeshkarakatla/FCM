@@ -1,0 +1,106 @@
+<div class="NewHeader">
+    <h1 mat-dialog-title>
+        {{data ? 'Update' : 'Add'}} Line Item
+    </h1>
+</div>
+<div mat-dialog-content>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Category : </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <mat-select class="form-control" placeholder="Select Category" required>
+                    <mat-option [value]="0">Exterior</mat-option>
+                    <mat-option [value]="1">Interior</mat-option>
+                </mat-select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Checkpoint: </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <mat-select class="form-control" placeholder="Select Checkpoint" required>
+                    <mat-option [value]="0">1A - HOOD TO FRONT GRILL - GAP( a )</mat-option>
+                    <mat-option [value]="1">1 B - FRONT DASHBOARD TO LEATHER - GAP(a)</mat-option>
+                    <mat-option [value]="2"> 1 - TAILGATE TRIM TO DECORATIVE PANEL - GAP</mat-option>
+                    <mat-option [value]="3">LEATHER SEATS SIDE TRIM to LEATHER SEATS LOWER TRIM - FLUSH</mat-option>
+                    <mat-option [value]="4">TAILGATE TRIM to TAILGATE GLASS - PARALLELISM</mat-option>
+                </mat-select>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Add Image: </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <mat-select class="form-control" placeholder="Select Image" required>
+                    <mat-option [value]="0">Back Rear Grill</mat-option>
+                    <mat-option [value]="1">Front right head lamp</mat-option>
+                    <mat-option [value]="2">Back Rear tail lamp</mat-option>
+                    <mat-option [value]="3">Front Bumper section</mat-option>
+
+                </mat-select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Measure: </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <mat-select class="form-control" placeholder="Select Measure" required>
+                    <mat-option [value]="0"> GAP</mat-option>
+                    <mat-option [value]="1"> FLUSH</mat-option>
+                    <mat-option [value]="2"> PARALLELISM</mat-option>
+                </mat-select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">LSL: </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <mat-select class="form-control" placeholder="Select LSL" required>
+                    <mat-option [value]="0">1 </mat-option>
+
+                </mat-select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">USL: </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <mat-select class="form-control" placeholder="Select USL" required>
+                    <mat-option [value]="0">2</mat-option>
+                </mat-select>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Value: </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <mat-select class="form-control" placeholder="Select Face View" required>
+                    <mat-option [value]="0">1.8</mat-option>
+                    <mat-option [value]="1">1</mat-option>
+                    <mat-option [value]="2">1.9</mat-option>
+                    <mat-option [value]="3">1.5</mat-option>
+                    <mat-option [value]="4">2</mat-option>
+                </mat-select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Compilance: </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <mat-select class="form-control" placeholder="Select Compilance" required>
+                    <mat-option [value]="0">25%</mat-option>
+                    <mat-option [value]="1">68%</mat-option>
+                    <mat-option [value]="2">74%</mat-option>
+                    <mat-option [value]="3">69%</mat-option>
+                    <mat-option [value]="3">54%</mat-option>
+                </mat-select>
+
+            </div>
+        </div>
+
+    </form>
+</div>
+<mat-dialog-actions align="end">
+    <button mat-raised-button class="btn-primary" [mat-dialog-close]="'test'">
+        <mat-icon>save</mat-icon><span>{{data ? 'Update' : 'Save'}}</span>
+    </button>
+    <button mat-raised-button class="add-dark-hover btn-default" (click)="close()">
+        <mat-icon>cancel</mat-icon>Close
+    </button>
+</mat-dialog-actions>

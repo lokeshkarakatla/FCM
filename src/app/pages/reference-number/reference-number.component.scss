@@ -1,0 +1,118 @@
+/* Back button pulled up to sit alongside the breadcrumb title */
+
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+}
+
+/* Main container */
+.custom-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;      /* 🔥 IMPORTANT (single line) */
+  gap: 5px;
+  padding: 10px 15px;
+  margin: 0;
+  list-style: none;
+  overflow-x: auto;       /* ✅ prevents breaking, adds scroll if needed */
+}
+/* Tabs (equal size buttons) */
+
+
+/* Active tab */
+.active a {
+  background-color: #3f51b5;
+  color: #fff;
+}
+
+/* Spacer to push right items */
+
+
+/* Form items (Priority, Date, ETA) */
+.form-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 40px;              /* ✅ same height as buttons */
+}
+
+/* Labels */
+.form-item label {
+  margin: 0;
+  font-size: 14px;
+  
+}
+
+/* Checkbox */
+.custom-checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  margin-left: 3px;
+}
+
+/* Date inputs */
+.form-input {
+  height: 36px;              /* align with button */
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Back button */
+// .back-btn {
+//   height: 40px;              /* ✅ same height */
+//   min-width: 100px;
+//   background-color: #808080;
+//   color: white;
+//   display: flex;
+//   align-items: center;
+//   gap: 5px;
+//   padding: 0 12px;
+// }
+
+/* Fix li spacing */
+.custom-nav li {
+  display: flex;
+  align-items: center;
+}
+
+.btn-col{
+    background-color: #808080 !important;
+}
+
+.wrapped-checkbox {
+  width: 18px;
+  height: 18px;
+  padding: 4px; /* creates inner space effect */
+  box-sizing: content-box;
+}
+
+.active a {
+  background-color: #3f51b5;
+  color: #fff;
+}
+
+
+
+
+.active-tab {
+  background-color: #3f51b5;
+  color: #fff;
+}
+
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+.back-btn {
+    margin-left: auto; // extra safety to push right
+    white-space: nowrap; // prevents button text wrapping
+  }
+
+}

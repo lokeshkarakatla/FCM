@@ -1,0 +1,193 @@
+<div fxLayout="row wrap" #resizedDiv>
+    <div class="flex-p w-100">
+
+        <div class="row" style="margin-bottom:14px;">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="w-100 flex-p">
+                    <!-- <h2>Event Log</h2> -->
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="w-100 flex-p">
+                    <button mat-raised-button style="background-color: black; color:white;"
+                        class="pull-right filter-hover margin-right-10" (click)="filterToggle = !filterToggle">
+                        <mat-icon>filter_list</mat-icon> Filter
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container-fluid" style="padding: 0% !important;">
+            <div fxLayout="row wrap" *ngIf="filterToggle">
+                <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p">
+                    <form [formGroup]="filterForm">
+                        <mat-card class="filter" style="width: 99%;
+    margin-left: 8px;">
+                            <mat-card-content>
+                                <div class="row col-sm-12">
+                                    <div class="col-sm-4">
+                                        <div class="col-sm-3 newMarginClass">
+                                            Keyword:
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input type="text" formControlName="Keyword" onCopy="return false"
+                                                onPaste="return false" class="form-control"
+                                                placeholder="Search by Keyword">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <div class="col-sm-3 newMarginClass">
+                                            Event Type:
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <!-- <input type="text" formControlName="Keyword" onCopy="return false"
+                                                onPaste="return false" class="form-control"
+                                                placeholder="Search by Event Type"> -->
+                                                <mat-select class="form-control" formControlName="Keyword" multiple
+                                                placeholder="Search by Event Type">
+                                               
+                                                <mat-option value="READ">READ</mat-option>
+                                                <mat-option value="GET">GET</mat-option>
+                                                <mat-option value="POST">POST</mat-option>
+                                                <mat-option value="UPDATE">UPDATE</mat-option>
+                                                <mat-option value="DELETE">DELETE</mat-option>
+                                            </mat-select>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <div class="col-sm-3 newMarginClass">
+                                            Module:
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <!-- <input type="text" formControlName="Keyword" onCopy="return false"
+                                                onPaste="return false" class="form-control"
+                                                placeholder="Search by Module"> -->
+                                                 <mat-select class="form-control" formControlName="Keyword"
+                                                placeholder="Search by Module">
+                                               
+                                                <mat-option value="READ">Admin</mat-option>
+                                                <mat-option value="GET">Complaints</mat-option>
+                                                <mat-option value="READ">Testing</mat-option>
+                                                <mat-option value="READ">PRTS</mat-option>
+                                                <mat-option value="READ">SUB Audits</mat-option>
+                                                 <mat-option value="READ">OBJ Audits</mat-option>
+                                               
+                                            </mat-select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4" style="margin-top: 10px;">
+                                        <div class="col-sm-3 newMarginClass">
+                                            From Date:
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input type="date" formControlName="Keyword" onCopy="return false"
+                                                onPaste="return false" class="form-control"
+                                                placeholder="Enter From Date">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4" style="margin-top: 10px;">
+                                        <div class="col-sm-3 newMarginClass">
+                                            To Date:
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input type="date" formControlName="Keyword" onCopy="return false"
+                                                onPaste="return false" class="form-control" placeholder="Enter To Date">
+                                        </div>
+                                    </div>
+
+                                      <div class="col-sm-4 mt-3">
+                                        <div class="col-sm-3 newMarginClass">
+                                            Role:
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <!-- <input type="text" formControlName="Keyword" onCopy="return false"
+                                                onPaste="return false" class="form-control"
+                                                placeholder="Search by Module"> -->
+                                                 <mat-select class="form-control" formControlName="Keyword"
+                                                placeholder="Search by Role">
+                                               
+                                                <mat-option value="READ">Admin</mat-option>
+                                                <mat-option value="GET">Manager</mat-option>
+                                               
+                                               
+                                            </mat-select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4" style="margin-top: 10px;margin-left: 934px;;">
+                                        <a (click)="filterToggle = !filterToggle" class="pull-right"
+                                            style="font-size: 25px; cursor: pointer; margin-left: -7px">
+                                            <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                                        </a>
+                                        
+                                        <button mat-raised-button class="pull-right btn-default margin-right-10"
+                                            (click)="clearFilter()">
+                                           <mat-icon>settings_backup_restore</mat-icon> Clear
+
+                                        </button>
+                                        <button mat-raised-button color="primary" class="pull-right margin-right-10" (click)="filter()">
+                                           <mat-icon>search</mat-icon> Search
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="col-sm-12">
+            <div class="table-responsive">
+                <table id="example2" class="table table-bordered table-hover ">
+                    <thead class="tbl-head">
+                        <tr class="tr-grid-header">
+                            <th>Event Name</th>
+                              <th>Event Type</th>
+                            <th>Module</th>
+                             <th>Date & Time</th>
+                            <th>User Name</th>
+                            <th>User Role</th>
+                            <th>IP Address</th>
+                          
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf="eventDetails == null || eventDetails.length == 0">
+                            <td colspan="7" class="text-center">No records found</td>
+                        </tr>
+                        <tr *ngFor="let item of eventDetails">
+                            <td>{{item.Eventname}}</td>
+                              <td>{{item.eventtype}}</td>
+                             <td>{{item.Module}}</td>
+                             <td>{{item.createddate}}</td>
+                            <td>{{item.Username}}</td>
+                            <td>{{item.Userrole}}</td>
+                            <td>{{item.ip}}</td>
+                          
+
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+                [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons>
+            </mat-paginator>
+        </div>
+    </div>
+
+
+
+</div>

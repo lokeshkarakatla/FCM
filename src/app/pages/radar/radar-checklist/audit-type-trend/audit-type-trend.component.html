@@ -1,0 +1,57 @@
+<div class="container-fluid mb-4">
+    <div class="row mt-5">
+      <div class="col-sm-12">
+        <!-- Demerit Distribution by Agency table -->
+        <mat-card class="chart-header mb-4">
+          <h3 class="text-center" style="color: #212121;font-size:26;">Demerit Distribution by Audit Type
+          </h3>
+        </mat-card>
+        <div id="grid-table-container" class="table-responsive" >
+          <table matSort id="example2" class="table table-bordered table-hover">
+            <thead class="tbl-head">
+              <tr>
+                <th class="text-center">Audit Type</th>
+                <th class="text-center">Issues</th>
+                <th class="text-center">Demerit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of items">
+                <td class="text-center">{{item.model }}</td>
+                <td class="text-center">{{item.issues }}</td>
+                <td class="text-center">{{item.demerit }}</td>
+              </tr>
+              <tr>
+                <td class="text-center">Total</td>
+                <td class="text-center">51</td>
+                <td class="text-center">3341</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+        <!-- pie charts for table -->
+    <div class="row">
+      <div class="col-sm-6">
+        <mat-card>
+          <div class="chart-header">
+            <p class="text-center" style="font-size: 20px;margin-top:10px;">By Issues</p>
+          </div>
+          <ngx-charts-pie-chart [scheme]="colorScheme" [results]="first" [explodeSlices]="explodeSlices"
+            [labels]="showLabels" [doughnut]="doughnut" [legend]="showLegend" [gradient]="gradient">
+          </ngx-charts-pie-chart>
+        </mat-card>
+      </div>
+      <div class="col-sm-6">
+        <mat-card>
+          <div class="chart-header">
+            <p class="text-center" style="font-size: 20px;margin-top:10px;">By Demerits</p>
+          </div>
+          <ngx-charts-pie-chart [scheme]="colorScheme" [results]="three" [explodeSlices]="explodeSlices"
+            [labels]="showLabels" [doughnut]="doughnut" [legend]="showLegend" [gradient]="gradient">
+          </ngx-charts-pie-chart>
+        </mat-card>
+      </div>
+    </div>
+  </div>

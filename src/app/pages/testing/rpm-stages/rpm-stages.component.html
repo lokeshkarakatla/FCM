@@ -1,0 +1,71 @@
+<div class="mt-5" style="margin-left:20px">
+    
+    <div class="button-container"
+      style="display: flex; justify-content: flex-end; margin-bottom: -5px; align-items: center; width: 70%;">
+      <button mat-raised-button color="primary" class="top-btn"
+        style="display: flex; justify-content: flex-end; margin-bottom: 15px; " (click)="addstage()">
+        <mat-icon style="vertical-align: middle;">add</mat-icon>Add Stage
+      </button>
+    </div>
+    
+    <table matSort id="example2" class="table table-bordered table-hover" style="width: 70%;">
+        <thead class="tbl-head">
+            <tr>
+                <th class="text-center">Move</th>
+                <th class="text-center" style="width: 107px !important;">Actions</th>
+                <th class="text-center">Status</th>
+                 <th class="text-left">Stage Code</th>
+                <th class="text-left">Stage Name</th>
+                <th class="text-left">Gate Code</th>
+                <th class="text-left">Description</th>
+              
+
+                <th class="text-center">WBS</th>
+            </tr>
+        </thead>
+
+        <tbody dragula="STAGE_ROWS" [dragulaModel]="pagedData" (dragulaModelChange)="pagedData = $event">
+            <tr *ngFor="let item of pagedData">
+                <td class="text-center">
+                    <mat-icon style="color: #9e9e9e; cursor: grab;">drag_indicator</mat-icon>
+                </td>
+                <td class="text-center">
+                    <a matTooltip="Edit Project" [ngClass]="{'disable-custom' : !canUpdate}"
+                        style="margin-right: 10px; cursor: pointer; color: cornflowerblue;"
+                        (click)="openEditDialog(item)">
+                        <i class="fa fa-edit"></i>
+                    </a>
+                    <a [ngClass]="{'disable-custom' : !canDelete || item.TotalUsed}">
+                        <i style="cursor: pointer;" matTooltip="Delete Project" class="fa fa-trash red"
+                            (click)="deleteConfirmation(item)"></i>
+                    </a>
+                </td>
+
+                <td class="text-center" (click)="Confirmation(item)" style="cursor: pointer;"
+                    [style.color]="item.status === 'Active' ? 'blue' : (item.status === 'Inactive' ? 'red' : 'inherit')">
+                    {{ item.status }}
+                </td>
+
+                <td>{{ item.stageCode }}</td>
+                <td>{{ item.stageName }}</td>
+                <td>{{ item.gateCode }}</td>
+                <td>{{ item.stageDescription }}</td>
+
+                <td class="text-center">
+                    <a routerLinkActive="active" [routerLink]="['/app/testing/stages/wbs']">
+                        {{ item.tasks }}
+                    </a>
+                </td>
+
+            </tr>
+
+            <tr *ngIf="!pagedData || pagedData.length === 0" class="no-drag">
+                <td colspan="6" class="text-center">No records found</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <mat-paginator style="width: 70%;" [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+        [pageSizeOptions]="[5, 10, 20, 50, 100]" (page)="fnHandlePage($event)" showFirstLastButtons>
+    </mat-paginator>
+</div>

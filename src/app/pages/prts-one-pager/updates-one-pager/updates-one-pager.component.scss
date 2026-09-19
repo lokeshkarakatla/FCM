@@ -1,0 +1,82 @@
+ 
+
+/* FORM AREA */
+.form-group {
+  margin-bottom: 25px;
+}
+
+textarea.form-control {
+  width: 100%;
+  height: 131px;
+  resize: none;
+}
+
+/* BUTTONS */
+.button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 12px;
+
+  margin-top: 35px;
+  // margin-right: 15px;
+  margin-bottom: 20px;
+}
+
+.draft-btn {
+  height: 42px;
+  padding: 0 20px;
+  border: 1px solid #198754;
+  background: white;
+  color: #198754;
+  border-radius: 4px;
+}
+
+.submit-btn {
+  height: 42px;
+  padding: 0 20px;
+  background-color: rgb(10, 93, 182) !important;
+  color: white !important;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.custom-textarea {
+  width: 70% !important;
+}
+
+.page-header {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+ 
+.header-content {
+  display: flex;
+  flex-direction: column;
+}
+
+ 
+.page-title {
+  margin: 0 0 0 !important;
+  font-size: 20px;
+}
+
+ 
+.header-info {
+  margin: 3px 0px 0px 0px;
+  font-size: 13px;
+  color: #555;
+}
+
+ 
+.back-btn {
+  background-color: gray;
+  color: white;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  margin-top: 5px;
+}

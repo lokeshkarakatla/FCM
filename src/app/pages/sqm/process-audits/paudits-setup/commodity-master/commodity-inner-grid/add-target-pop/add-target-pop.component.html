@@ -1,0 +1,106 @@
+<div class="NewHeader">
+<h3 style="padding-top:0px; padding-left: 20px; font-weight: 400;font-size: 24px;">
+  {{ isEditMode ? 'Update Target' : 'Add Target' }}
+</h3>
+</div>
+
+<div>
+    <div fxLayout="row wrap" class="col-sm-12">
+        <div class="col-sm-12" style="margin-top: 0px; padding-left: 10px; padding-right: 20px;">
+            <form>
+                <div>
+
+                <div class="row" style="margin-bottom: 12px;">
+    <div class="col-sm-4">
+        <label class="add-member-label mt-2" style="margin-top:5px; font-weight: bold;">
+            Year :
+        </label>
+    </div>
+    <div class="col-sm-8">
+        <mat-form-field appearance="outline" class="w-100">
+            <input matInput [matDatepicker]="yearPicker" placeholder="Select Year">
+            <mat-datepicker-toggle matSuffix [for]="yearPicker"></mat-datepicker-toggle>
+            <mat-datepicker #yearPicker></mat-datepicker>
+        </mat-form-field>
+    </div>
+</div>
+
+<div class="row" style="margin-bottom: 12px;">
+    <div class="col-sm-4">
+        <label class="add-member-label mt-2" style="margin-top:5px; font-weight: bold;">
+            Q1 Target :
+        </label>
+    </div>
+    <div class="col-sm-8">
+        <mat-form-field appearance="outline" class="w-100">
+            <input matInput [matDatepicker]="q1Picker" placeholder="Select Q1 Target Date">
+            <mat-datepicker-toggle matSuffix [for]="q1Picker"></mat-datepicker-toggle>
+            <mat-datepicker #q1Picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+</div>
+
+<div class="row" style="margin-bottom: 12px;">
+    <div class="col-sm-4">
+        <label class="add-member-label mt-2" style="margin-top:5px; font-weight: bold;">
+            Q2 Target :
+        </label>
+    </div>
+    <div class="col-sm-8">
+        <mat-form-field appearance="outline" class="w-100">
+            <input matInput [matDatepicker]="q2Picker" placeholder="Select Q2 Target Date">
+            <mat-datepicker-toggle matSuffix [for]="q2Picker"></mat-datepicker-toggle>
+            <mat-datepicker #q2Picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+</div>
+
+<div class="row" style="margin-bottom: 12px;">
+    <div class="col-sm-4">
+        <label class="add-member-label mt-2" style="margin-top:5px; font-weight: bold;">
+            Q3 Target :
+        </label>
+    </div>
+    <div class="col-sm-8">
+        <mat-form-field appearance="outline" class="w-100">
+            <input matInput [matDatepicker]="q3Picker" placeholder="Select Q3 Target Date">
+            <mat-datepicker-toggle matSuffix [for]="q3Picker"></mat-datepicker-toggle>
+            <mat-datepicker #q3Picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+</div>
+
+<div class="row" style="margin-bottom: 12px;">
+    <div class="col-sm-4">
+        <label class="add-member-label mt-2" style="margin-top:5px; font-weight: bold;">
+            Q4 Target :
+        </label>
+    </div>
+    <div class="col-sm-8">
+        <mat-form-field appearance="outline" class="w-100">
+            <input matInput [matDatepicker]="q4Picker" placeholder="Select Q4 Target Date">
+            <mat-datepicker-toggle matSuffix [for]="q4Picker"></mat-datepicker-toggle>
+            <mat-datepicker #q4Picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+</div>
+                   
+
+                </div>
+            </form>
+
+            <mat-dialog-actions align="end"
+                style="margin-top: 15px; display: flex; justify-content: flex-end; margin-right: -20px;">
+                <button mat-raised-button class="ms-2 add-dark-hover btn-default" (click)="close()"
+                    style="background-color: lightgray; color: red; margin-right: 5px;">
+                    <mat-icon>cancel</mat-icon> Close
+                </button>
+                <button mat-raised-button type="submit" class="save" color="primary" style="margin-right: 17px;">
+                  <mat-icon>save</mat-icon>
+{{ isEditMode ? 'Update' : 'Save' }}
+                </button>
+            </mat-dialog-actions>
+
+        </div>
+    </div>
+</div>

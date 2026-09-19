@@ -1,0 +1,121 @@
+<div class="NewHeader">
+  <h2 style="padding-top:0px; padding-left: 20px; font-weight: 400;font-size: 24px;">
+  {{ isEditMode ? 'Update Part Master' : 'Add Part Master' }}
+</h2>
+</div>
+
+<div>
+    <div fxLayout="row wrap" class="col-sm-12">
+        <div class="col-sm-12" style="margin-top: 0px; padding-left: 10px; padding-right: 20px;">
+            <form>
+                <div>
+
+                    <div class="row" style="margin-bottom: 12px;">
+                        <div class="col-sm-4">
+                            <label class="add-member-label mt-2" style="margin-top:5px; font-weight: bold;">
+                                Part Family <span style="color: red;"></span>
+                            </label>
+                        </div>
+                        <div class="col-sm-8">
+                            <mat-select placeholder="Select Part Family Name" class="form-control mt-2">
+                                <mat-option value="family1">Engine Components</mat-option>
+                                <mat-option value="family2">Braking Systems</mat-option>
+                                <mat-option value="family3">Electrical Systems</mat-option>
+                            </mat-select>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-bottom: 12px;">
+                        <div class="col-sm-4">
+                            <label class="add-member-label mt-2" style="margin-top:5px; font-weight: bold;">
+                                Parts : <span style="color: red;"></span>
+                            </label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control mt-2" placeholder="Enter Parts Name">
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-bottom: 12px;">
+                        <div class="col-sm-4">
+                            <label class="add-member-label mt-2" style="margin-top:5px; font-weight: bold;">
+                                Parts Code : <span style="color: red;"></span>
+                            </label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control mt-2" placeholder="Enter Parts Code">
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-bottom: 12px;">
+                        <div class="col-sm-4">
+                            <label class="add-member-label mt-2" style="margin-top:5px; font-weight: bold;">
+                                Commodity <span style="color: red;"></span>
+                            </label>
+                        </div>
+                        <div class="col-sm-8">
+                            <mat-select placeholder="Select Commodity Name" class="form-control mt-2">
+                                <mat-option value="casting">Casting</mat-option>
+                                <mat-option value="forging">Forging</mat-option>
+                                <mat-option value="machining">Machining</mat-option>
+                            </mat-select>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-bottom: 12px;">
+                        <div class="col-sm-4">
+                            <label class="add-member-label mt-2" style="margin-top:5px; font-weight: bold;">
+                                Upload Parameter Template :
+                            </label>
+                        </div>
+                        <div class="col-sm-8">
+
+                            <input #fileInput type="file" style="display: none;" (change)="onFileSelected($event)">
+
+                            <div
+                                class="drag-drop-zone"
+                                [class.drag-over]="isDragOver"
+                                (click)="fileInput.click()"
+                                (dragover)="onDragOver($event)"
+                                (dragleave)="onDragLeave($event)"
+                                (drop)="onDrop($event)">
+
+                                <div class="upload-icon">
+                                    <mat-icon>upload</mat-icon>
+                                </div>
+
+                                <span class="drag-drop-text">
+                                    {{ selectedFileName ? selectedFileName : 'Drag and drop files here' }}
+                                </span>
+
+                                <button
+                                    mat-raised-button
+                                    class="browse-btn"
+                                    type="button"
+                                    color="primary"
+                                    (click)="$event.stopPropagation(); fileInput.click()">
+                                    Browse Files
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+
+            <mat-dialog-actions align="end"
+                style="margin-top: 15px; display: flex; justify-content: flex-end; margin-right: -20px;">
+                <button mat-raised-button class="ms-2 add-dark-hover btn-default" (click)="close()"
+                    style="background-color: lightgray; color: red; margin-right: 5px;">
+                    <mat-icon>cancel</mat-icon> Close
+                </button>
+                <button mat-raised-button type="submit" class="save" color="primary" style="margin-right: 17px;">
+                    <mat-icon>save</mat-icon>
+{{ isEditMode ? 'Update' : 'Save' }}
+                </button>
+            </mat-dialog-actions>
+
+        </div>
+    </div>
+</div>

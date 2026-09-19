@@ -1,0 +1,103 @@
+<div class="col-sm-6 mt-4" style="padding-left: 15px; padding-right: 15px; position: fixed">
+
+    <div class="table-position-control">
+
+        <div class="row mb-3">
+            <div class="col-sm-12 d-flex justify-content-end align-items-center" style="gap: 10px;">
+                <button mat-raised-button style="background-color: black; color: white;" 
+                    (click)="filterToggle = !filterToggle">
+                    <mat-icon>filter_list</mat-icon> Filter
+                </button>
+
+                <button [ngClass]="{ 'disable-custom': !canCreate }" mat-raised-button color="primary"
+                    (click)="addmodule(null)">
+                    <mat-icon>add</mat-icon> Add Status
+                </button>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="filterToggle" style="margin-bottom: 20px;">
+            <div class="col-sm-12">
+                <mat-card class="filter">
+                    <mat-card-content>
+                        <div class="row align-items-center">
+                            <div class="col-sm-4 row align-items-center mt-2">
+                                <div class="col-sm-3"><b>Keyword:</b></div>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" placeholder="Enter Keyword">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4 row align-items-center mt-2">
+                                <div class="col-sm-3"><b>Status:</b></div>
+                                <div class="col-sm-9">
+                                    <mat-select class="form-control" placeholder="Select Status" required>
+                                        <mat-option value="Maintenance">Active</mat-option>
+                                        <mat-option value="Engineering">Inactive</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4 mt-2 d-flex justify-content-end align-items-center" style="gap: 10px;">
+                                <button mat-raised-button class="btn-default" (click)="clearFilter();getTests()">
+                                    <mat-icon>settings_backup_restore</mat-icon> Clear
+                                </button>
+                                <button mat-raised-button color="primary" (click)="getTests()">
+                                    <mat-icon>search</mat-icon> Search
+                                </button>
+                                <a (click)="filterToggle = !filterToggle" style="font-size: 25px; cursor: pointer; color: #333;">
+                                    <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="grid-table-container" class="table-responsive">
+                    <table matSort id="example2" class="table table-bordered table-hover w-100" sty>
+                        <thead class="tbl-head">
+                            <tr>
+                                <th style="width: 150px;"  class="text-center">Status Master</th>
+                                <th class="text-center" style="width: 80px;">Status</th>
+                                <th class="text-center" style="width: 150px;" >Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of tableList">
+                                <td  class="text-center">{{item.stageName}}</td>
+                                <td (click)="Confirmation()"
+                                    [ngClass]="{'active-status': item.status, 'inactive-status': !item.status}"
+                                    style="text-align: center !important; cursor:pointer">
+                                    {{ item.status ? 'Active' : 'Inactive' }}
+                                </td>
+                                <td class="text-center editDel">
+                                    <a [ngClass]="{'disable-custom' : !canUpdate}" style="cursor: pointer;margin-right:10px;"
+                                        matTooltip="Edit" (click)="addmodule(item)">
+                                        <i class="fa fa-edit" style="color: cornflowerblue"></i>
+                                    </a>
+                                    <a [ngClass]="{'disable-custom' : !canDelete || item.TotalUsed || item.Used}">
+                                        <i class="fa fa-trash red" matTooltip="Delete" style="cursor: pointer;"
+                                        (click)="deleteConfirmation(item)"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr *ngIf="tableList == null || tableList.length == 0">
+                                <td colspan="3" class="text-center">No data available</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <mat-paginator class="w-100" [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+                        [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons>
+                    </mat-paginator>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

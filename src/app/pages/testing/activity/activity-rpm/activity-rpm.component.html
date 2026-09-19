@@ -1,0 +1,66 @@
+<div class="nav-container" [ngClass]="{'nav-open': isNavOpen, 'nav-closed': !isNavOpen}">
+
+    <!-- Toggle Button -->
+    <button (click)="toggleNav()" class="toggle-button">
+        <mat-icon>menu</mat-icon>
+    </button>
+
+    <nav class="nav-links">
+        <ul>
+
+            <li routerLinkActive="active">
+                <a [routerLink]="['category']">
+                    <span *ngIf="isNavOpen">Discovery</span>
+                    <mat-icon *ngIf="!isNavOpen">travel_explore</mat-icon>
+                </a>
+            </li>
+
+            <li routerLinkActive="active">
+                <a [routerLink]="['detection']">
+                    <span *ngIf="isNavOpen">Detection</span>
+                    <mat-icon *ngIf="!isNavOpen">search</mat-icon>
+                </a>
+            </li>
+
+            <li routerLinkActive="active">
+                <a [routerLink]="['score-matrix']">
+                    <span *ngIf="isNavOpen">Design</span>
+                    <mat-icon *ngIf="!isNavOpen">design_services</mat-icon>
+                </a>
+            </li>
+
+            <li routerLinkActive="active">
+                <a [routerLink]="['prototyping']">
+                    <span *ngIf="isNavOpen">Prototyping</span>
+                    <mat-icon *ngIf="!isNavOpen">precision_manufacturing</mat-icon>
+                </a>
+            </li>
+
+            <li routerLinkActive="active">
+                <a [routerLink]="['testing']">
+                    <span *ngIf="isNavOpen">Testing</span>
+                    <mat-icon *ngIf="!isNavOpen">science</mat-icon>
+                </a>
+            </li>
+
+            <li routerLinkActive="active">
+                <a [routerLink]="['validation']">
+                    <span *ngIf="isNavOpen">Validation</span>
+                    <mat-icon *ngIf="!isNavOpen">verified</mat-icon>
+                </a>
+            </li>
+
+            <li routerLinkActive="active">
+                <a [routerLink]="['launch']">
+                    <span *ngIf="isNavOpen">Launch</span>
+                    <mat-icon *ngIf="!isNavOpen">rocket_launch</mat-icon>
+                </a>
+            </li>
+
+           
+
+        </ul>
+    </nav>
+</div>
+
+<router-outlet></router-outlet>

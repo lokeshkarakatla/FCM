@@ -1,0 +1,178 @@
+.page-container {
+  padding: 24px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #fafafa;
+  min-height: 100vh;
+}
+
+/* Add Note Card */
+.add-note-card {
+  margin-bottom: 32px;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+
+  mat-card-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #202124;
+    padding-top: 8px;
+    padding-bottom: 16px;
+  }
+
+  .form-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+
+    .tag-select {
+      width: 220px;
+    }
+
+    .text-input {
+      flex: 1; /* Takes up remaining space */
+    }
+
+    /* Target Material's internal bottom margin to align perfectly */
+    ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+      display: none; 
+    }
+
+    .action-buttons {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-left: 8px;
+
+      button[mat-icon-button] mat-icon {
+        color: #5f6368;
+      }
+
+      .custom-fab {
+        box-shadow: none;
+        background-color: #e0e0e0; /* Gray background from image */
+        color: #202124;
+
+        &.refresh-btn {
+          background-color: #d5d5d5;
+        }
+
+        &.send-btn {
+          background-color: #e0e0e0;
+          color: #757575;
+        }
+      }
+    }
+  }
+}
+
+/* AI Overview Header */
+.ai-overview-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-left: 8px;
+
+  .sparkle-icon {
+    color: #4285f4; /* Google blue for the sparkle */
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: #202124;
+  }
+}
+
+/* Table Styling */
+.table-container {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+
+  table {
+    width: 100%;
+
+    th.mat-header-cell {
+      background-color: #546e7a; /* Dark slate header color */
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+      text-align: center;
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+
+    td.mat-cell {
+      text-align: center;
+      border-right: 1px solid #e0e0e0;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+
+    .empty-state-cell {
+      text-align: center;
+      padding: 24px;
+      color: #5f6368;
+      font-size: 14px;
+      background-color: #ffffff;
+    }
+  }
+}
+
+
+
+
+
+.page-container {
+  padding: 24px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #fafafa;
+  min-height: 100vh;
+  /* Removed the width: 105% hack, usually better to handle layout issues via padding/margins */
+}
+
+/* --- Back Button Overlap Fix --- */
+.back-btn-wrapper {
+  margin-right: -20px;
+  margin-top: -76px;         /* Pulls the row up into the parent header area */
+  margin-bottom: 36px;       /* Adds space below it so the card doesn't touch it */
+  display: flex;
+  justify-content: flex-end; 
+  
+  /* MAGIC FIX: Let all mouse clicks pass through this invisible wrapper */
+  pointer-events: none;      
+}
+
+.custom-back-btn {
+  /* MAGIC FIX: Turn mouse clicks back on ONLY for the button */
+  pointer-events: auto;      
+  
+  background-color: #808080 !important; /* Force grey color */
+  color: white !important;
+  height: 40px;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: #202124 !important; /* Matches your image's flat look */
+
+  mat-icon {
+    margin-right: 4px;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+  }
+}
+
+.content-wrapper {
+  margin-top: 50px;
+}

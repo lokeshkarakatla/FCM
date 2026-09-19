@@ -1,0 +1,43 @@
+<div class="NewHeader">
+    <h1 mat-dialog-title>
+        <span>{{ data ? 'Update' : 'Add'}} Steps</span>
+    </h1>
+</div>
+
+<form class="form-horizontal">
+    <div mat-dialog-content>
+
+        <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Step Name: </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <input type="text" class="form-control" placeholder="Enter step name">
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Step Code: </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <input type="text" readonly class="form-control" placeholder="Enter step code">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Description: </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <textarea type="text" class="form-control" placeholder="Enter description"></textarea>
+            </div>
+        </div>
+
+    </div>
+    <mat-dialog-actions align="end" style="margin-right: -15px;">
+        <button mat-raised-button type="button" class="save" color="primary" style="margin-right: 5px;"  >
+                        <mat-icon>save</mat-icon> Save
+                    </button>
+        <button mat-raised-button class="ms-2 add-dark-hover btn-default" (click)="close()" style="background-color: lightgray; color: red;margin-right: 8px;">
+                        <mat-icon>cancel</mat-icon>
+                        Close
+                    </button>
+
+    </mat-dialog-actions>
+</form>

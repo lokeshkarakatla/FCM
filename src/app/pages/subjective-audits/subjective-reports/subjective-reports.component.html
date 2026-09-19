@@ -1,0 +1,71 @@
+<div class="col-sm-12 mt-4 margin">
+    <div style="margin-top: 10px;">
+        <div class="pills">
+            <ul class="nav nav-pills">
+                <li routerLinkActive="active" routerLink="dashboard-model">
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                        Model
+                    </a>
+                </li>
+                <li routerLinkActive="active" routerLink="dashboard-agency">
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                        Departments
+                    </a>
+                </li>
+                <li routerLinkActive="active" [routerLink]="['sub-audit-type-trend']">
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                        Audit Type
+                    </a>
+                </li>
+                <li routerLinkActive="active" [routerLink]="['sub-model-trend']">
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                        Model Trend
+                    </a>
+                </li>
+                <li routerLinkActive="active" [routerLink]="['sub-category-type-trend']">
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                        Section
+                    </a>
+                </li>
+                <li routerLinkActive="active" [routerLink]="['sub-scatter-graph']">
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                        Scatter
+                    </a>
+                </li>
+                <li routerLinkActive="active" [routerLink]="['sub-bellcurve-graph']">
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                        Bell Curve
+                    </a>
+                </li>
+                <!-- <li routerLinkActive="active" [routerLink]="['fragile-system']">
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                        Fragile
+                    </a>
+                </li> -->
+                <li routerLinkActive="active" [routerLink]="['pareto']">
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                        Pareto
+                    </a>
+                </li>
+                <li routerLinkActive="active" [routerLink]="['metrics']">
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                        Metrics
+                    </a>
+                </li>
+                 <li routerLinkActive="active" [routerLink]="['issues']">
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                        Modules
+                    </a>
+                </li>
+                <!-- <li routerLinkActive="active" [routerLink]="['sub-image']">
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                        Images
+                    </a>
+                </li>  -->
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="col-sm-12 no-padding mt-4">
+    <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,86 @@
+// Import your variables if you have them, e.g., @import "../../../../theme/styles/variables";
+
+.chat {
+    .chat-actions {
+        padding: 12px;
+        width: 100%;
+    }
+}
+
+.word-wrap {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.tag-button {
+    color: white;
+    min-width: 120px;
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+::ng-deep .mat-menu-panel {
+    max-height: 250px !important;
+}
+
+::ng-deep .scrollable-menu {
+    max-height: 200px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.table-scrollable {
+    overflow-x: auto;
+    border: 1px solid #ddd;
+}
+
+.sticky-header {
+    position: sticky;
+    top: 0;
+    background-color: gray !important;
+    color: white !important;
+    z-index: 1000;
+    text-align: left;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.btn-link {
+    padding: 0 !important;
+    margin: 0 !important;
+    vertical-align: baseline;
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.pull-right {
+    float: right;
+}
+
+.mt-3 {
+    margin-top: 1rem !important;
+}
+
+/* ✅ Center all header and cell text in the mat-table */
+table.mat-table th.mat-header-cell,
+table.mat-table td.mat-cell {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+/* Optional: make sure header and row content aligns nicely */
+table.mat-table th.mat-header-cell {
+  font-weight: 600;
+}

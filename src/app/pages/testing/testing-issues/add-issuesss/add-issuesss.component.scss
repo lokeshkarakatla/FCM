@@ -1,0 +1,38 @@
+.text-end button {
+    padding: 8px 20px; /* Adjust padding as needed */
+    margin-left: 10px; /* Adds spacing between buttons */
+}
+mat-form-field {
+  display: block;
+}
+.custom-form {
+ 
+ 
+  .form-row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+ 
+    label {
+      width: 200px;
+      text-align: right;
+      padding-right: 15px;
+      font-weight: 500;
+      padding-top: 10px;
+    }
+ 
+    mat-form-field {
+      flex: 1;
+    }
+ 
+    input[type="file"] {
+      flex: 1;
+      margin-top: 6px;
+    }
+  }
+ 
+}
+ 
+.back{
+    background-color: #fefec4;
+}

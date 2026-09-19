@@ -1,0 +1,78 @@
+<div class="NewHeader">
+  <h1 mat-dialog-title>
+    {{data ? 'Update' : 'Add'}} Monthly Target
+  </h1>
+</div>
+<div mat-dialog-content>
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Audit Type </label>
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+        <mat-select class="form-control" placeholder="Select Audit Type" required>
+          <mat-option [value]="0">Product Quality Audit</mat-option>
+          <mat-option [value]="1">Body Audit</mat-option>
+          <mat-option [value]="2">Paint Audit</mat-option>
+
+        </mat-select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Target Demerit: </label>
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+        <input type="text" class="form-control" placeholder="Enter Target Demerit">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Year: </label>
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+        <mat-select class="form-control" placeholder="Select Year" required>
+          <mat-option [value]="0">2022</mat-option>
+          <mat-option [value]="1">2021</mat-option>
+          <mat-option [value]="2">2020</mat-option>
+          <mat-option [value]="3">2019</mat-option>
+          <mat-option [value]="3">2018</mat-option>
+        </mat-select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Month: </label>
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+        <mat-select class="form-control" placeholder="Select Month" required>
+          <mat-option [value]="0">Jan</mat-option>
+          <mat-option [value]="1">Feb</mat-option>
+          <mat-option [value]="2">March</mat-option>
+          <mat-option [value]="3">April</mat-option>
+          <mat-option [value]="3">May</mat-option>
+          <mat-option [value]="0">June</mat-option>
+          <mat-option [value]="1">July</mat-option>
+          <mat-option [value]="2">August</mat-option>
+          <mat-option [value]="3">September</mat-option>
+          <mat-option [value]="3">October</mat-option>
+          <mat-option [value]="3">November</mat-option>
+          <mat-option [value]="3">December</mat-option>
+        </mat-select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Model: </label>
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+        <mat-select class="form-control" placeholder="Select Model" required>
+          <mat-option [value]="0">Astor</mat-option>
+          <mat-option [value]="1">Hector</mat-option>
+          <mat-option [value]="2">Hector Plus</mat-option>
+        </mat-select>
+      </div>
+    </div>
+
+
+  </form>
+</div>
+<mat-dialog-actions align="end">
+  <button mat-raised-button class="btn-primary" [mat-dialog-close]="'test'">
+    <mat-icon>save</mat-icon><span>{{ data ? ' Update' : ' Save'}}</span>
+  </button>
+  <button mat-raised-button class="add-dark-hover btn-default" (click)="close()">
+    <mat-icon>cancel</mat-icon>Close
+  </button>
+</mat-dialog-actions>

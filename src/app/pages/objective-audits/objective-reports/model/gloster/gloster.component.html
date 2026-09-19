@@ -1,0 +1,161 @@
+<div style="margin-left: -31px;">
+    <!-- <button mat-raised-button style="    background-color: black;
+    color: white;
+    margin-left: 88.35%;
+    margin-bottom: -15px;" class=" filters-hover margin-right-10 mt-3" (click)="filterToggle = !filterToggle">
+        <mat-icon>filter_list</mat-icon> Filter
+    </button> -->
+
+    <div style="margin-bottom: -5px" *ngIf="filterToggle">
+        <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p w-100 margins">
+            <mat-card class="filter" style="margin-top: 16px;
+    width: 94%;
+    margin-left: 34px;">
+                <mat-card-content>
+                    <div class="row">
+                        <!-- Select Period -->
+                        <div class="col-sm-4">
+                            <div class="col-sm-4 newMarginClass">Select Period:</div>
+                            <div class="col-sm-8">
+                                <mat-select class="form-control" placeholder="Select Period"
+                                    (selectionChange)="fnYearChange($event)" required>
+                                    <mat-option [value]="0">Last 2 Years</mat-option>
+                                    <mat-option [value]="1">Last 3 Years</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+
+                        <!-- Audit Type -->
+                        <div class="col-sm-4">
+                            <div class="col-sm-4 newMarginClass">Audit Type:</div>
+                            <div class="col-sm-8">
+                                <mat-select class="form-control" placeholder="Select Audit Type" required>
+                                    <mat-option [value]="0">Product Quality Audit</mat-option>
+                                    <mat-option [value]="1">Body Audit</mat-option>
+                                    <mat-option [value]="2">Paint Audit</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+
+                        <!-- Category -->
+                        <div class="col-sm-4">
+                            <div class="col-sm-4 newMarginClass">Category:</div>
+                            <div class="col-sm-8">
+                                <mat-select class="form-control" placeholder="Select Category">
+                                    <mat-option [value]="0">PQA</mat-option>
+                                    <mat-option [value]="1">Body Audit</mat-option>
+                                    <mat-option [value]="2">Paint Audit</mat-option>
+                                    <mat-option [value]="3">Process Audit</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+
+                        <!-- From Date -->
+                        <div class="col-sm-4 mt-2">
+                            <div class="col-sm-4 newMarginClass">From Date:</div>
+                            <div class="col-sm-8">
+                                <input type="date" class="form-control">
+                            </div>
+                        </div>
+
+                        <!-- To Date -->
+                        <div class="col-sm-4 mt-2">
+                            <div class="col-sm-4 newMarginClass">To Date:</div>
+                            <div class="col-sm-8">
+                                <input type="date" class="form-control">
+                            </div>
+                        </div>
+
+                        <!-- GO Button -->
+                        <div class="row" style="padding-top:10px ;margin-left:-3px !important">
+                            <div>
+                                <a (click)="filterToggle = !filterToggle" class="pull-right"
+                                    style="font-size: 25px; cursor: pointer; margin-left: 5px">
+                                    <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                                </a>
+                                <button mat-raised-button class="pull-right btn-default margin-right-10"
+                                    (click)="clearFilter();getTests()">
+                                    <mat-icon>settings_backup_restore</mat-icon> Clear
+                                </button>
+                                <button mat-raised-button color="primary" class="pull-right margin-right-10"
+                                    (click)="getTests()">
+                                    <mat-icon>search</mat-icon> Search
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+
+    <div class="col-lg-12 col-xm-12 mb-5">
+        <div class="col-lg-12 col-xm-12 mt-3">
+            <div class="flex-p row-wrap">
+                <mat-card style="height:400px; display: grid; margin:10px 15px 7px 0px !important;">
+                    <mat-card-header style="font-size: 20px;margin-top:10px;">
+                        Audit Score Over Time Series Table
+                    </mat-card-header>
+                    <mat-card-content style="padding-bottom: 0px">
+                        <ngx-charts-bar-vertical [scheme]="colorScheme1" [results]="single" [gradient]="gradient1"
+                            [xAxis]="showXAxis1" [yAxis]="showYAxis1" [showXAxisLabel]="showXAxisLabel1"
+                            [showYAxisLabel]="showYAxisLabel1" [xAxisLabel]="xAxisLabel1" [yAxisLabel]="yAxisLabel1"
+                            [barPadding]="barPadding" (select)="onSelect($event)">
+                        </ngx-charts-bar-vertical>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+
+        </div>
+
+        <div class="col-lg-12 col-xm-12 mt-3">
+            <div class="col-lg-6 col-xm-6 ">
+                <div class="flex-p row-wrap">
+                    <mat-card style="margin-left: -16px;">
+                        <mat-card-header class="mb-3" style="font-size: 20px;">
+                            Rating Distribution by Measurement
+                        </mat-card-header>
+                        <mat-card-content style="padding-bottom: 0px">
+                            <table style="padding-left: 0px; padding-right: 0px;" matSort id="example2"
+                                class="table table-bordered table-hover">
+                                <thead class="tbl-head">
+                                    <tr>
+                                        <th class="theadcolor">Measurement Name</th>
+                                        <th class="theadcolor">Percentage</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of values">
+                                        <td>{{item.measurement}}</td>
+                                        <td>{{item.value}}</td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-6">
+                <mat-card style="height: 295px; display: flex; flex-direction: column;">
+
+                    <mat-card-header style="font-size: 1.2rem; font-weight: 500;">
+                        Rating Distribution by Measurement
+                    </mat-card-header>
+
+                    <mat-card-content style="flex: 1; display: flex; justify-content: center; align-items: center;">
+
+                        <ngx-charts-bar-vertical [scheme]="colorScheme" [results]="three" [view]="[470, 200]"
+                            [xAxis]="true" [yAxis]="true" [showXAxisLabel]="true" [showYAxisLabel]="true"
+                            [xAxisLabel]="'Measurement'" [yAxisLabel]="'Rating'" [gradient]="gradient"
+                            [rotateXAxisTicks]="false" [trimXAxisTicks]="true" [maxXAxisTickLength]="8">
+                        </ngx-charts-bar-vertical>
+
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+
+    </div>
+</div>

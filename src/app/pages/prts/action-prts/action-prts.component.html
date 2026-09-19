@@ -1,0 +1,40 @@
+<button mat-raised-button class="" type="button" (click)="next()"
+    style="color: rgb(7, 10, 7); background-color: #e0e0e0; margin-left: 27cm;">
+    Back
+</button>
+<div class="row-wrap">
+    <div class="w-100">
+        <!-- Master Data Tabs -->
+        <div class="col-xs-12" style="margin-top: 15px; margin-left: -16px;">
+            <div class="pills">
+                <ul class="nav nav-pills" style="margin-left: 10px;">
+
+                    <li>
+                        <a mat-raised-button class="navtabWidth" style="margin-top: 10px;" routerLinkActive="active"
+                            [routerLink]="['../why']">
+                            5-why
+                        </a>
+                    </li>
+                    <li>
+                        <a mat-raised-button class="navtabWidth" style="margin-top: 10px;" routerLinkActive="active"
+                            [routerLink]="['../actionmoniter']">
+                            Monitoring
+                        </a>
+                    </li>
+                    <li>
+                        <a mat-raised-button class="navtabWidth" style="margin-top: 10px;" routerLinkActive="active"
+                            [routerLink]="['../deploy']">
+                            Deployment
+                        </a>
+                    </li>
+                    <li>
+                        <a mat-raised-button class="navtabWidth" style="margin-top: 10px;" routerLinkActive="active"
+                            [routerLink]="['../actiondocument']">
+                            Documents
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

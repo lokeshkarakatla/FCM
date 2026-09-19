@@ -1,0 +1,134 @@
+<!--Add Module and Filter Buttons-->
+
+<div class="container-fluid" style="padding-right: 1px; padding-left: 0px;">
+  <div class="w-100">
+    <div class="flex-p">
+      <div class="row wrap">
+        <div class="col-sm-12 no-padding">
+          <div class="row-wrap">
+            <div class="w-100">
+              <div class="row">
+                <div class="col-xs-6"></div>
+                <div class="col-xs-6">
+                  <div class="col-xs-6"></div>
+
+                  <div class="col-xs-6" style="margin-left: -13px;">
+                    <div class="">
+
+                      <button mat-raised-button class="pull-right  btn-primary margin-right-5 mt-3"
+                        (click)="addmodule(null)">
+                        <mat-icon>add</mat-icon> Add Module
+                      </button>
+                      <button mat-raised-button color="primary" class="pull-right filters-hover margin-right-10 mt-3"
+                        (click)="filterToggle = !filterToggle">
+                        <mat-icon>filter_list</mat-icon> Filter
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--Filter Toggle-->
+<div fxLayout="row wrap" *ngIf="filterToggle">
+  <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p w-100 margins">
+    <mat-card class="filter">
+      <mat-card-content>
+        <div class="row">
+          <div class="col-sm-5">
+            <div class="col-sm-3">
+              <label class="pull-right" style="margin-top: 6px;">Module Name:</label>
+            </div>
+            <div class="col-sm-6">
+              <input type="text" placeholder="Search Module Name" class="form-control">
+            </div>
+          </div>
+
+
+          <div class="col-sm-5">
+            <div class="col-sm-3">
+              <label class="pull-right" style="margin-top: 6px;">Status:</label>
+            </div>
+            <div class="col-sm-6">
+              <mat-select class="form-control" placeholder="Select Status" required>
+                <mat-option *ngFor="let option of Status" [value]="option.value">
+                  {{option.name}}
+                </mat-option>
+
+              </mat-select>
+            </div>
+          </div>
+
+
+          <!--Go and Clear Buttons-->
+          <div class="col-sm-2">
+            <button mat-raised-button class="pull-right btn-primary" style="margin-left: 5px;">
+              <mat-icon>youtube_searched_for</mat-icon> Go&nbsp;&nbsp;&nbsp;&nbsp;
+            </button>
+            <button mat-raised-button style="background-color:#37474f; color:#fff !important;" class="pull-right">
+              <mat-icon>settings_backup_restore</mat-icon> Clear
+            </button>
+          </div>
+
+
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>
+
+
+<!--table -->
+<div class="container-fluid" style="padding-right: 1px; padding-left: 0px;">
+  <div fxLayout="row wrap" #resizedDiv>
+    <div class="flex-p w-100 sizeAlign">
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="grid-table-container" class="table-responsive">
+            <table matSort id="example2" class="table table-bordered table-hover">
+              <thead class="tbl-head">
+                <tr>
+                  <th class="theadcolor ">Audit Type</th>
+                  <th>Module Name</th>
+                  <th class="text-center">Status</th>
+                  <th class="text-center" style="width: 112px!important;">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of values">
+                  <td class="">{{item.Audit}}</td>
+                  <td>{{item.modulename}}</td>
+                  <td style="text-align: center !important;">
+                    <a [ngStyle]="{'color': item.status? 'blue' : 'red','cursor':'pointer'}" placement="left"
+                      (confirm)="saveStatus();item.status=!item.status" matTooltip="Click to Change Status">
+                      {{item.status?'Active':'Inactive'}}
+                    </a>
+                  </td>
+
+                  <td class="text-center editDel">
+                    <a style="cursor: pointer;margin-right:0px;margin-left: -5px; " matTooltip="Edit"
+                      (click)="addmodule(item)">
+                      <i class="fa fa-edit" style="color: cornflowerblue"></i>
+                    </a>
+                    <a><i class="fa fa-trash red" matTooltip="Delete" style="cursor: pointer;"></i></a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <!--Pagination-->
+            <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+              [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

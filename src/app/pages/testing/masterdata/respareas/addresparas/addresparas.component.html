@@ -1,0 +1,83 @@
+<div class="NewHeader">
+    <h1 mat-dialog-title style="color:white;">
+        {{ data ? 'Update' : 'Add'}}  Section
+    </h1>
+</div>
+
+<div mat-dialog-content>
+    <div class="col-sm-12" style="margin-bottom: 10px;">
+        <form [formGroup]="myGroup">
+           <!-- Department -->
+<div class="row mb-3">
+  <div class="col-sm-4">
+    <label class="add-member-label mt-2 required imli">Departments:</label>
+  </div>
+  <div class="col-sm-8">
+    <mat-select class="form-control back" formControlName="department" placeholder="Select Department">
+      <mat-option value="1">Research Development</mat-option>
+      <mat-option value="2">Maintenance</mat-option>
+      <mat-option value="3">Quality Assurance</mat-option>
+      <mat-option value="4">Inspection</mat-option>
+    </mat-select>
+    <div *ngIf="isSubmitting && f.respSectionName.errors" class="error-text">
+Departments Required   </div>
+  </div>
+</div>
+
+<!-- Section -->
+<div class="row mb-3">
+  <div class="col-sm-4">
+    <label class="add-member-label mt-2 required imli">Section:</label>
+  </div>
+  <div class="col-sm-8">
+    <input class="form-control name back" formControlName="respSectionName"
+      placeholder="Enter Responsible Section" type="text" />
+    <div *ngIf="isSubmitting && f.respSectionName.errors" class="error-text">
+      <div *ngIf="f.respSectionName.errors.required">Section Required</div>
+    </div>
+    <div *ngIf="f.respSectionName.errors" class="error-text">
+      <div *ngIf="f.respSectionName.errors.pattern">Invalid</div>
+    </div>
+  </div>
+</div>
+
+<!-- Section Lead -->
+<div class="row mb-3">
+  <div class="col-sm-4">
+    <label class="add-member-label mt-2 required">Section Lead:</label>
+  </div>
+  <div class="col-sm-8">
+    <mat-select class="form-control back" formControlName="respLeads" placeholder="Select Responsible Section Lead">
+      <mat-option value="1">John Doe</mat-option>
+      <mat-option value="2">Jane Smith</mat-option>
+      <mat-option value="3">Michael Johnson</mat-option>
+      <mat-option value="4">Emily Davis</mat-option>
+    </mat-select>
+
+    <!-- Validation error -->
+    <div *ngIf="isSubmitting && f.respLeads.errors" class="error-text">
+      <div *ngIf="f.respLeads.errors.required">Section Lead Required</div>
+    </div>
+  </div>
+</div>
+
+<!-- Buttons -->
+<div class="row">
+  <div class="col-sm-12 text-end" style="margin-bottom: -29px;">
+
+       <button mat-raised-button class="me-3" (click)="close()"
+     style="background-color: lightgray; color: red">
+      <mat-icon>cancel</mat-icon> Close
+    </button> 
+    <button mat-raised-button type="submit" class="save " color="primary"
+      (click)="upsertRespSection()">
+      <mat-icon>save</mat-icon> Save
+    </button>
+ 
+  </div>
+</div>
+`
+
+        </form>
+    </div>
+</div>

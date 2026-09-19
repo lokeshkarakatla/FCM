@@ -1,0 +1,211 @@
+<div class="page-wrapper">
+  <div class="dashboard-controls">
+    <div class="dash-btn-group">
+      <button *ngFor="let dash of dashboards" class="dash-btn" [class.active]="activeDashboard === dash.key"
+        [style.background-color]="activeDashboard === dash.key ? dash.color : null"
+        (click)="setActiveDashboard(dash.key)">
+        {{ dash.title }}
+      </button>
+    </div>
+  </div>
+
+  <div class="dashboard-content">
+
+    <div class="chart-filters" *ngIf="currentView === 'graph'"
+      style="display: flex; justify-content: flex-end; gap: 10px; margin-bottom: 15px; margin-right:30px">
+      <div *ngIf="activeDashboard === 'resp'" class="btn-group" style="display:flex;justify-content: flex-end;">
+        <button *ngFor="let gate of ['Gate 0', 'Gate 1', 'Gate 2', 'Gate 3', 'Gate 4', 'Gate 5']"
+          (click)="setGateCategory(gate)" [class.active]="selectedGate === gate">{{ gate }}
+        </button>
+      </div>
+      <!-- <div *ngIf="activeDashboard === 'ageing'" class="btn-group">
+        <button *ngFor="let cat of ['Distribution', 'O', 'R1', 'R2', 'C', 'Total']" (click)="setPhoneCategory(cat)"
+          [class.active]="selectedPhoneCategory === cat">{{ cat }}</button>
+      </div>
+      <div *ngIf="activeDashboard === 'rpn'" class="btn-group">
+        <button *ngFor="let cat of ['Distribution', 'O', 'R1', 'R2', 'C', 'Total']" (click)="setRpnCategory(cat)"
+          [class.active]="selectedRpnCategory === cat">{{ cat }}</button>
+      </div> -->
+    </div>
+
+    <div [ngSwitch]="activeDashboard">
+
+      <div *ngSwitchCase="'resp'">
+        <div class="row" style="display: flex; flex-wrap: wrap; width: 100%; margin: 0;">
+          <div class="col-md-6" style="flex: 0 0 50%; max-width: 50%; padding: 10px;">
+            <div class="chart-section"
+              style="background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+              <div id="portfolioStatusChartContainer" style="width: 100%; height: 400px;"></div>
+            </div>
+          </div>
+          <div class="col-md-6" style="flex: 0 0 50%; max-width: 50%; padding: 10px;">
+            <div class="chart-section"
+              style="background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+              <div id="portfolioSummaryPieChartContainer" style="width: 100%; height: 400px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'category'">
+        <div class="gantt-controls">
+          <div class="ctrl-group">
+            <label>Project</label>
+            <select [(ngModel)]="selectedProject">
+              <option *ngFor="let p of projects" [value]="p">{{ p }}</option>
+            </select>
+          </div>
+          <div class="ctrl-group">
+            <label>Stage</label>
+            <select [(ngModel)]="selectedStageFilter">
+              <option value="all">All Stages</option>
+              <option *ngFor="let g of gateHeaders" [value]="g.key">{{ g.label }}</option>
+            </select>
+          </div>
+          <button class="go-btn" (click)="applyGanttFilter()">Go →</button>
+        </div>
+
+        <div class="gantt-wrapper">
+          <div class="gantt-scroll">
+            <table class="gantt-table">
+              <thead>
+                <!-- Top header row: fixed cols + Gate groups -->
+                <tr class="hdr-top">
+                  <th class="fixed-col stage-col">Stage / Activity</th>
+                  <th class="fixed-col" style="color:#fff">Start Date</th>
+                  <th class="fixed-col" style="color:#fff">End Date</th>
+                  <th class="fixed-col pct-col">Completion</th>
+                  <th *ngFor="let gate of gateHeaders" [attr.colspan]="gate.sprints.length" class="gate-cell">
+                    {{ gate.label }}<br>
+                    <span class="gate-sub">{{ gate.subtitle }}</span>
+                  </th>
+                </tr>
+                <!-- Sub-header: sprint labels -->
+                <tr class="hdr-sub">
+                  <th class="fixed-col"></th>
+                  <th class="fixed-col"></th>
+                  <th class="fixed-col"></th>
+                  <th class="fixed-col"></th>
+                  <ng-container *ngFor="let gate of gateHeaders">
+                    <th *ngFor="let sprint of gate.sprints" class="sprint-col">{{ sprint }}</th>
+                  </ng-container>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of filteredGanttData">
+                  <td class="fixed-col stage-col">{{ item.task }}</td>
+                  <td class="fixed-col date-col">{{ item.start | date:'dd-MMM-yyyy' }}</td>
+                  <td class="fixed-col date-col">{{ item.end | date:'dd-MMM-yyyy' }}</td>
+                  <td class="fixed-col pct-col"
+                    [style.color]="item.completion >= 75 ? '#28a745' : item.completion > 0 ? '#f4a300' : '#6c757d'">
+                    {{ item.completion }}%
+                  </td>
+                  <!-- Sprint cells -->
+                  <ng-container *ngFor="let gate of gateHeaders">
+                    <ng-container *ngFor="let sprint of gate.sprints; let last = last">
+                      <td class="sprint-cell">
+                        <div *ngIf="isSprintInRange(item, gate.key, sprint)" class="bar-outer"
+                          [style.background]="getBarColor(item.completion)" (mouseenter)="showTooltip($event, item)"
+                          (mousemove)="moveTooltip($event)" (mouseleave)="hideTooltip()">
+                          <div class="bar-fill" [style.width.%]="item.completion"
+                            [style.background]="getDarkBarColor(item.completion)">
+                          </div>
+                          <span *ngIf="last && item.completion > 0 && item.completion < 100" class="bar-label">
+                            {{ item.completion }}%
+                          </span>
+                          <span *ngIf="last && item.completion === 100" class="bar-label">100%</span>
+                        </div>
+                      </td>
+                    </ng-container>
+                  </ng-container>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="gantt-legend">
+          <span><span class="dot" style="background:#28a745"></span>Completed</span>
+          <span><span class="dot" style="background:#f4a300"></span>In Progress</span>
+          <span><span class="dot" style="background:#dc3545"></span>Behind Schedule</span>
+          <span><span class="dot" style="background:#adb5bd"></span>Not Started</span>
+        </div>
+        <!-- Tooltip -->
+        <div class="gantt-tooltip" *ngIf="tooltipVisible" [style.top.px]="tooltipY" [style.left.px]="tooltipX">
+          <div class="tt-date-range">
+            {{ tooltipData?.start | date:'EEEE, MMM d, y' }} – {{ tooltipData?.end | date:'EEEE, MMM d, y' }}
+          </div>
+          <div class="tt-title">{{ tooltipData?.task }}</div>
+          <div class="tt-divider"></div>
+          <div class="tt-row">Start: <span>{{ tooltipData?.start | date:'d MMM y' }}</span></div>
+          <div class="tt-row">End: <span>{{ tooltipData?.end | date:'d MMM y' }}</span></div>
+          <div class="tt-row">Progress:
+            <span
+              [style.color]="tooltipData?.completion === 100 ? '#28a745' : tooltipData?.completion > 0 ? '#f4a300' : '#6c757d'">
+              <strong>{{ tooltipData?.completion }}%</strong>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'ageing'">
+        <div class="row"
+          style="display: flex; flex-wrap: wrap; width: 100%; margin: 0; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+
+          <div class="col-md-6" style="padding-right: 15px; overflow-x: auto;">
+            <h3>Budget Allocation</h3>
+            <table style="width: 100%; border-collapse: collapse;">
+              <thead>
+                <tr style="border-bottom: 2px solid #ccc;">
+                  <th class="text-left" style="font-size: 15px; padding: 8px;">Phase</th>
+                  <th class="text-center" style="font-size: 15px; padding: 8px;">Allocated ($)</th>
+                  <th class="text-center" style="font-size: 15px; padding: 8px;">Spent ($)</th>
+                  <th class="text-center" style="font-size: 15px; padding: 8px;">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of budgetGanttData" style="font-size: 13px; border-bottom: 1px solid #eee;">
+                  <td class="text-left" style="padding: 8px; font-weight: 500;">{{ item.task }}</td>
+                  <td class="text-center" style="padding: 8px;">{{ item.allocated | number }}</td>
+                  <td class="text-center" style="padding: 8px;">{{ item.spent | number }}</td>
+                  <td class="text-center" style="padding: 8px; font-weight: bold;">
+                    <span
+                      [style.color]="item.completion > 100 ? '#dc3545' : (item.completion > 80 ? '#f4a300' : '#28a745')">
+                      {{ item.completion }}% Used
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="col-md-6" style="padding-left: 15px;">
+            <div class="chart-section" style="width: 100%;">
+              <div id="budgetGanttChartContainer" style="height: 400px; width: 100%;"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'rpn'">
+        <div class="row" style="display: flex; flex-wrap: wrap; width: 100%; margin: 0;">
+          <div class="col-md-6" style="flex: 0 0 50%; max-width: 50%; padding: 10px;">
+            <div class="chart-section"
+              style="background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+              <div id="bufferBarChartContainer" style="width: 100%; height: 400px;"></div>
+            </div>
+          </div>
+          <div class="col-md-6" style="flex: 0 0 50%; max-width: 50%; padding: 10px;">
+            <div class="chart-section"
+              style="background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+              <div id="bufferPieChartContainer" style="width: 100%; height: 400px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

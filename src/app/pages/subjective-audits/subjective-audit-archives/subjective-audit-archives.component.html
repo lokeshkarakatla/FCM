@@ -1,0 +1,70 @@
+<div class="col-sm-12 mt-5">
+   <div id="grid-table-container tableScroll" class="table-responsive" style="width: 100%;">
+    <table matSort id="example2" class="table table-bordered table-hover data-table">
+      <thead class="tbl-head">
+        <tr>
+          <th class="theadcolor text-center">Actions</th>
+          <th class="theadcolor text-center">Status</th>
+          <th class="theadcolor">VIN</th>
+          <th class="theadcolor">Target</th>
+          <th class="theadcolor">Audit Type</th>
+          <th class="theadcolor">Demerit</th>
+          <th class="theadcolor">Location</th>
+          <th class="theadcolor">Auditor</th>
+          <th class="theadcolor">Model</th>
+          <th class="theadcolor">Colour</th>
+          <th class="text-center">Transmission</th>
+          <th class="text-center">Fuel Type</th>
+          <th class="text-center"> Start Date</th>
+          <th class="text-center"> End Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of values">
+          <td class="text-center editDel"
+            style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+           
+            <mat-icon matTooltip="Unarchive" style="cursor: pointer; color: cornflowerblue;">
+              unarchive
+            </mat-icon>
+          </td>
+          <td class="text-center">
+            <mat-select class="form-control" [(ngModel)]="item.Status" placeholder="Select Status">
+              <mat-option value="Open">Pending</mat-option>
+              <mat-option value="In Progress">Draft</mat-option>
+              <mat-option value="Hold">Done</mat-option>
+            </mat-select>
+          </td>
+          <td>{{item.VIN}}</td>
+          <td class="text-center">{{item.Taget}}</td>
+          <td>{{item.AuditType}}</td>
+          <td class="text-center"><a (click)="opendashboard()" style="color: red;cursor: pointer;">{{item.Demerits}}</a>
+          </td>
+          <td>{{item.Location}}</td>
+          <td>{{item.Auditor}}</td>
+          <td>{{item.Model}}</td>
+          <td class="text-center">{{item.Colour}}</td>
+          <td class="text-center">{{item.Transmission}}</td>
+          <td class="text-center">{{item.Fuel_Type}}</td>
+          <td class="text-center">{{item.Date}}</td>
+          <td class="text-center">{{item.Date1}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid-footer">
+    <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+      [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons>
+    </mat-paginator>
+
+    <div class="scroll-buttons ">
+      <button class="mine" mat-fab (click)="scrollRight()">
+        <mat-icon style="color: #37474f">fast_forward</mat-icon>
+      </button>
+      <button class="mine" mat-fab style="margin-right: 78px !important" (click)="scrollLeft()">
+        <mat-icon style="color: #37474f">fast_rewind</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

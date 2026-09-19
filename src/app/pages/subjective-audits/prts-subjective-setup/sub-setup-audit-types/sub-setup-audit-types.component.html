@@ -1,0 +1,158 @@
+<!--Add Module and Filter Buttons-->
+<div class="col-sm-12">
+  <div class="container-fluid" style="padding-right: 1px; padding-left: 0px">
+    <div class="w-100">
+      <div class="flex-p">
+        <div class="row wrap">
+          <div class="col-sm-12 no-padding">
+            <div class="row-wrap">
+              <div class="w-100">
+                <div class="row">
+                  <div class="col-xs-6"></div>
+                  <div class="col-xs-6" style="margin-left: 21px">
+                    <div class="col-xs-6"></div>
+                    <div class="col-xs-6" style="margin-left: -13px;margin-bottom: -7px;">
+                      <div class="">
+                        <button mat-raised-button class="pull-right btn-primary margin-right-5 mt-3"
+                          (click)="addaudit(null)" color="primary">
+                          <mat-icon>add</mat-icon> Add Audit
+                        </button>
+                        <button mat-raised-button style="background-color: black;
+                       color: white;" class="pull-right filters-hover margin-right-10 mt-3" (click)="filterToggle = !filterToggle">
+                          <mat-icon>filter_list</mat-icon> Filter
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <div fxLayout="row wrap" *ngIf="filterToggle">
+  <div fxFlex="100" class="flex-p w-100 margins">
+    <mat-card class="filter">
+      <mat-card-content>
+        <div class="d-flex align-items-center flex-wrap" style="gap: 30px;">
+
+          <div class="d-flex align-items-center" style="gap: 8px;">
+            <label for="auditTypeInput" style="white-space: nowrap;">Audit Type:</label>
+            <input id="auditTypeInput" type="text" placeholder="Search Module Name" class="form-control" style="width: 250px;" />
+          </div>
+
+          <div class="d-flex align-items-center" style="gap: 8px;">
+            <label for="statusSelect">Status:</label>
+            <select id="statusSelect" class="form-control" required style="width: 250px;">
+              <option value="" disabled selected>Select Status</option>
+              <option *ngFor="let option of Status" [value]="option.value">
+                {{ option.name }}
+              </option>
+            </select>
+          </div>
+
+         <div style="display: flex; align-items: center; gap: 15px;margin-left: 20%;">
+
+  <button mat-raised-button color="primary" (click)="getTests()">
+    <mat-icon>search</mat-icon> Search
+  </button>
+
+  <button mat-raised-button class="btn-default" (click)="clearFilter(); getTests()">
+    <mat-icon>settings_backup_restore</mat-icon> Clear
+  </button>
+
+  <a (click)="filterToggle = !filterToggle" style="font-size: 25px; cursor: pointer;">
+    <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+  </a>
+
+</div>
+
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+  <!--table -->
+  <div class="container-fluid" style="padding-right: 1px; padding-left: 0px">
+    <div fxLayout="row wrap" #resizedDiv>
+      <div class="flex-p w-100 sizeAlign">
+        <div class="row">
+          <div class="col-sm-12">
+            <div id="grid-table-container" class="table-responsive">
+              <table matSort id="example2" class="table table-bordered table-hover">
+                <thead class="tbl-head">
+                  <tr>
+                    <th class="text-center" style="width: 112px !important">
+                      Actions
+                    </th>
+                    <th class="text-center">Status</th>
+
+                    <th>Audit Type</th>
+                    <th class="text-center">Audit Code</th>
+                    <th class="text-center">Demerit</th>
+                    <th class="text-center">Dashboard</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of values">
+                    <td class="text-center editDel">
+                      <a style="
+                          cursor: pointer;
+                          margin-right: 0px;
+                          margin-left: -5px;
+                        " matTooltip="Edit" (click)="addaudit(item)">
+                        <i class="fa fa-edit" style="color: cornflowerblue"></i>
+                      </a>
+                      <a [ngClass]="{
+                          'disable-custom': !canDelete || item.TotalUsed
+                        }">
+                        <i style="cursor: pointer" matTooltip="Delete" class="fa fa-trash red"
+                          (click)="deleteConfirmation(item)"></i>
+                      </a>
+                    </td>
+                    <td class="text-center" style="text-align: center !important">
+                      <a [ngStyle]="{
+                          color: item.status ? 'blue' : 'red',
+                          cursor: 'pointer'
+                        }" [ngClass]="{ 'disable-custom': !canUpdate }">
+                        <span (click)="Confirmation(item)">
+                          {{ item.status ? "Active" : "Inactive" }}
+                        </span>
+                      </a>
+                    </td>
+
+                    <td>{{ item.modulename }}</td>
+                    <td class="text-center">{{ item.type }}</td>
+                    <td class="text-center" style="width: 200px">
+                      <mat-select class="form-control" placeholder="Select demerit option" multiple>
+                        <mat-option [value]="0">1 - Minor</mat-option>
+                        <mat-option [value]="1">5 - Small</mat-option>
+                        <mat-option [value]="2">10 - Moderate</mat-option>
+                        <mat-option [value]="4">20 - Major</mat-option>
+                        <mat-option [value]="5">50 - Critical</mat-option>
+                      </mat-select>
+                    </td>
+
+                    <td class="text-center">
+                      <mat-checkbox [checked]="item.isActive"> </mat-checkbox>
+                    </td>
+
+
+                  </tr>
+                </tbody>
+              </table>
+              <!--Pagination-->
+              <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+                [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

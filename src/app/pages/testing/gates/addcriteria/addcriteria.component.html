@@ -1,0 +1,123 @@
+<div class="NewHeader">
+    <h3 style="padding-top:10px;">Add Criteria</h3>
+</div>
+
+
+<!-- column 1 -->
+<div class="col-sm-6 p-4"  >
+
+<div fxLayout="row wrap" class="col-sm-12">
+        <div class="col-sm-12" style="margin-top: 0px; padding-left: 20px;">
+            <form>
+                <div>
+                    
+                    <!-- Select Stage -->
+                    <div class="row" style="margin-bottom: 12px;">
+                        <div class="col-sm-4">
+                            <label class="add-member-label mt5 required" style="margin-top:5px;">Subject :</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="text" maxlength="150" style="height:35px;" class="form-control back" placeholder="Enter Task Subject">
+
+                        </div>
+                    </div>
+
+
+
+
+
+                       <!-- Description (Replaced Project Manager with Text Area) -->
+                    <div class="row" style="margin-top: 10px; margin-bottom: 12px;">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <label class="control-label mt-1">Description:</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <textarea class="form-control" rows="3" placeholder="Enter Description" style="resize: vertical;"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Select Module -->
+                    <div class="row" style="margin-bottom: 12px;">
+                        <div class="col-sm-4">
+                            <label class="add-member-label mt5 required" style="margin-top:5px;">Priority  :</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <mat-select placeholder="Select Module" class="form-control">
+                                <mat-option value="Module1"> High</mat-option>
+                                <mat-option value="Module2">Medium</mat-option>
+                                <mat-option value="Module3"> Low </mat-option>
+                            </mat-select>
+                        </div>
+                    </div>
+
+                    <!-- Task Subject (Replaced Dates with Single Text Input) -->
+                 <div class="row" style="margin-bottom: 12px;">
+    <div class="col-sm-4">
+        <label class="add-member-label mt5 required" style="margin-top:5px;">
+            Mandatory:
+        </label>
+    </div>
+
+    <div class="col-sm-8 d-flex align-items-center">
+        <mat-checkbox class="back"> </mat-checkbox>
+    </div>
+</div>
+
+                 
+
+                </div>
+            </form>
+
+           
+            
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+<!-- column 2 -->
+ <h4 class="text-center " style="margin-top: 30px;">Upload Template:</h4>
+<div class="col-sm-6"  >
+      
+          <div class="form-row" >
+     
+
+    <div class="upload-box">
+      <p>Drag and drop files here</p>
+
+      <button type="button" class="browse-btn" (click)="fileInput.click()">
+        Browse Files
+      </button>
+
+      <input type="file" #fileInput hidden (change)="onFileSelected($event)">
+    </div>
+  </div>
+
+   <!-- Actions -->
+
+            <mat-dialog-actions align="end" style="margin-top: 35px;">
+                <button mat-raised-button class="ms-2 add-dark-hover btn-default" (click)="close()" style="background-color: lightgray; color: red; margin-right: 0px;">
+                    <mat-icon>cancel</mat-icon> Close
+                </button>
+                <button mat-raised-button type="button" class="save" color="primary" style="margin-right: 0px;">
+                    <mat-icon>save</mat-icon> Save
+                </button>
+            </mat-dialog-actions>
+</div>

@@ -1,0 +1,53 @@
+<div class="col-sm-12" style="
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  ">
+    <div class="NewHeader">
+        <h1 style="color: white; margin-top:5px" mat-dialog-title>
+            {{ data ? "Update" : "Add" }} Fuel Type
+        </h1>
+    </div>
+    <div mat-dialog-content>
+        <form class="form-horizontal">
+            <!-- Complaint -->
+            <div class="form-group" style="margin-top: 20px">
+                <label class="control-label col-sm-4 add-member-label"> Model Name :
+                </label>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <select class="form-control">
+                        <option value="0">Select Model Name</option>
+                        <option value="1">Hector 7 Seater</option>
+                        <option value="2">Gloster 6 Seater</option>
+                        <option value="3">Innova High Cross</option>
+                        <option value="4">Fortuner</option>
+                        <option value="5">Accent</option>
+                        <option value="6">Jaguar</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Role -->
+            <div class="form-group" style="margin-top: 20px">
+                <label class="control-label col-sm-4 add-member-label">Fuel type:
+                </label>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <input type="text" class="form-control" placeholder="Enter Fuel Type" />
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+    <mat-dialog-actions align="end">
+        <div class="margin-bottom-10" style="margin-top: 30px; margin-right: 10px">
+            <button mat-raised-button color="primary" [mat-dialog-close]="'test'">
+                <mat-icon>save</mat-icon> <span>{{ data ? "Update" : "Save" }}</span>
+            </button>
+            <button mat-raised-button style="background-color: lightgray; color: red" class="add-dark-hover btn-default"
+                (click)="close()">
+                <mat-icon>cancel</mat-icon>Close
+            </button>
+        </div>
+    </mat-dialog-actions>
+</div>

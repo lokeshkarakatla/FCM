@@ -1,0 +1,104 @@
+<div fxLayout="row wrap" #resizedDiv>
+  <!-- Table -->
+
+  <div class="flex-p w-100" style="width: 100% !important ; margin-left: -9px;">
+
+    <div class="table-responsive sizeAlign">
+      <!-- <h2>Preferences</h2> -->
+      <table id="example2" style="margin-top: 10px ;width: 99%;
+    margin-left: 14px;" class="table table-bordered table-hover ">
+        <thead class="tbl-head">
+          <tr class="tr-grid-header">
+            <th>Subject</th>
+            <th>Description</th>
+            <th>Previous Value</th>
+            <th>New Value</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of tableList">
+            <td>{{ item.name }}</td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.old_value }}</td>
+            <td>
+              <!-- <div *ngIf="item.name == 'Time Zone'">
+                <select class="form-control" id="email">
+                  <option>--Select--</option>
+                  <option value="AST">AST</option>
+                  <option value="IST">IST</option>
+                  <option value="CST">CST</option>
+                  <option value="MST">MST</option>
+                  <option value="PST">PST</option>
+                  <option value="ADT">ADT</option>
+                  <option value="EDT">EDT</option>
+                  <option value="PST">PST</option>
+                  <option value="MDT">MDT</option>
+                  <option value="PDT">PDT</option>
+                </select>
+              </div> -->
+              <div *ngIf="item.name == 'Grid Length'">
+                <!-- <select class="form-control" id="email">
+                  <option>--Select--</option>
+                  <option value="10">10</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select> -->
+                <mat-select class="form-control" placeholder="Select Grid Length" required>
+                  <mat-option [value]="0">10</mat-option>
+                  <mat-option [value]="1">20</mat-option>
+                  <mat-option [value]="2">30</mat-option>
+                  <mat-option [value]="4">40</mat-option>
+                  <mat-option [value]="5">50</mat-option>
+                </mat-select>
+              </div>
+              <div *ngIf="item.name == 'Notification Email'">
+                <input type="email" class="form-control" id="email" placeholder="Enter Notification Email" />
+              </div>
+              <div *ngIf="item.name == 'Email of the Director'">
+                <input type="email" class="form-control" id="email" placeholder="Enter Director Email" />
+              </div>
+              <div *ngIf="item.name == 'Audit Approval'">
+                <input type="email" class="form-control" id="email" placeholder="Enter Manager Name" />
+              </div>
+              <!-- <div *ngIf="item.name == 'Prospect Follow-up Days'">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="Enter Prospect Follow-up Days"
+                />
+              </div>
+              <div *ngIf="item.name == 'Project Follow-up Days'">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="Enter Opportunity Follow-up Days"
+                />
+              </div> -->
+            </td>
+            <td>
+              <!-- <a style="margin-right: 10px;display: flex;
+              flex-direction: column;
+              justify-content: center;
+              text-align: center;" class="status" placement="left" (confirm)="saveSettings()"
+                matTooltip="Click to Save">
+                Save
+              </a> -->
+              <div style="display: flex; justify-content: center;">
+                <button mat-raised-button color="primary" [mat-dialog-close]="'test'" matTooltip="Click to Save">
+                  <mat-icon  style="font-size:20px" class="mt-1">save</mat-icon>
+                  <span style="margin-left: 5px;">{{ data ? "Update" : "Save" }}</span>
+                </button>
+              </div>
+
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

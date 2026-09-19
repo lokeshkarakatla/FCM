@@ -1,0 +1,200 @@
+<!--This page is used to add or edit meeting schedule-->
+
+<h1 class="custom-header" mat-dialog-title>Add Actions
+</h1>
+<div mat-dialog-content style="overflow: hidden !important;;">
+    <form class="form-horizontal" novalidate>
+        <div class="row" style="padding-left: 15px;padding-right: 15px;">
+            <div class="col-sm-6" style="padding-right: 20px !important;padding-left: 5px !important;">
+
+
+                <div class="form-group">
+                    <label class="control-label col-sm-4 add-member-label">Select Issue: </label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <input class="form-control bac" placeholder="H2022191">
+
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-4 add-member-label">Select Stage: </label>
+                    <div class="col-sm-8">
+                        <select name="bdm" class='form-control bac'>
+                            <option Value="" selected>--Select Stage--</option>
+                            <option class='option'>D1:Process</option>
+                            <option class='option'>D2:Tool</option>
+                            <option class='option'>D3a:Production</option>
+                            <option class='option'>D3b:SQM</option>
+                            <option class='option'>D4a:Internal Quality Control</option>
+                            <option class='option'>D4b:Supplier Part Quality</option>
+                            <option class='option'>D5:Process ENG</option>
+                            <option class='option'>D6:Product ENG</option>
+                            <option class='option'>D7:CFT</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-4 add-member-label">Subject: </label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <input class="form-control bac" placeholder="Enter Subject">
+
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 add-member-label">Description :
+                    </label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <textarea class="form-control txtarea bac" maxlength="50" rows="2"
+                            placeholder="Enter Description " style="resize: none;"></textarea>
+
+                    </div>
+                </div>
+
+                <!-- <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 add-member-label">Meeting Type:
+                    </label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <select class='form-control bac' name="Select Activity Type">
+                            <option value="" selected>--Select Meeting Type--</option>
+                            <option class='option'></option>
+                        </select>
+                       
+                    </div>
+                </div> -->
+
+                <!-- <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 add-member-label">Country: </label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <select class='form-control bac' name="Select Location">
+                            <option value="" selected>--Select Country--</option>
+                            <option class='option'>India</option>
+                            <option class='option'>Australia</option>
+                            <option class='option'>UK</option>
+                        </select>
+                        
+                    </div>
+                </div> -->
+
+                <!-- <div class="form-group">
+                    <label class="control-label col-sm-4 add-member-label">Contact Person: </label>
+                    <div class="col-sm-8">
+                        <input class="form-control txtarea bac" maxlength="30" placeholder="Enter Contact Person">
+                       
+                    </div>
+                </div> -->
+
+                <!-- <div class="form-group">
+                    <label class="control-label col-sm-4">Business Name: </label>
+                    <div class="col-sm-8">
+                        <input class="form-control txtarea" maxlength="30" placeholder="Enter Business Name">
+                       
+                    </div>
+                </div> -->
+
+                <!-- <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 add-member-label">Meeting Subject:
+                    </label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <textarea class="form-control txtarea bac" maxlength="50" rows="2"
+                            placeholder="Enter Meeting Subject" style="resize: none;"></textarea>
+                       
+                    </div>
+                </div> -->
+            </div>
+            <div class="col-sm-6" style="padding-right: 5px !important;padding-left: 5px !important;">
+                <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 add-member-label">Due Date:
+                    </label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <div class="input-icon right">
+                            <!-- <i class="fa fa-calendar" [owlDateTimeTrigger]="dt1"></i> -->
+                            <input class="form-control" placeholder="MM/DD/YYYY" class="form-control bac">
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 add-member-label">Meeting Time:
+                    </label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <div class="input-icon right">
+                            <i class="fa fa-clock-o"></i>
+                            <input class="form-control " placeholder="HH:MM" class="form-control bac">
+                        </div>
+                       
+                    </div>
+                </div> -->
+
+                <!-- <div class="form-group">
+                    <label class="control-label col-sm-4">Duration: </label>
+                    <div class="col-sm-8">
+                        <input class="form-control txtarea" maxlength="3" placeholder="Enter Duration">
+                        
+                    </div>
+                </div> -->
+
+                <div class="form-group">
+                    <label class="control-label col-sm-4 ">Select Agency: </label>
+                    <div class="col-sm-8">
+                        <select name="timeZone" formControlName="timeZone" class='form-control'>
+                            <option value="" selected>--Select Agency--</option>
+                            <option class='option'>Agency 1</option>
+                            <option class='option'>Agency 2</option>
+                            <option class='option'>Agency 3</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-4 ">Select User: </label>
+                    <div class="col-sm-8">
+                        <select name="timeZone" formControlName="timeZone" class='form-control'>
+                            <option value="" selected>--Select User--</option>
+                            <option class='option'>Vamshi</option>
+                            <option class='option'> Krishna</option>
+                            <option class='option'> Radhakrishna</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-4 ">Complexity : </label>
+                    <div class="col-sm-8">
+                        <select name="timeZone" formControlName="timeZone" class='form-control'>
+                            <option value="" selected>--Select Complexity--</option>
+                            <option class='option'>High</option>
+                            <option class='option'> Medium</option>
+                            <option class='option'> Low</option>
+                        </select>
+
+                    </div>
+                </div>
+
+                <!-- <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4">Meeting Location: </label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <textarea class="form-control txtarea" maxlength="300" rows="1"
+                            placeholder="Enter Meeting Location" style="resize: none;"></textarea>
+                        
+                    </div>
+                </div> -->
+            </div>
+
+        </div>
+    </form>
+</div>
+<div class="margin-left:15px">
+    <mat-dialog-actions align="end" style="margin-right:30px;">
+        <button mat-raised-button color="primary" class="add-hover" type="submit" (click)="close()">
+            <mat-icon>save</mat-icon>&nbsp;Save
+        </button>
+        <button mat-raised-button class="btn-default pull-right" type="button" (click)="close()">
+            <mat-icon>cancel</mat-icon> &nbsp;Cancel
+        </button>
+
+
+    </mat-dialog-actions>
+</div>

@@ -1,0 +1,110 @@
+<div class="col-sm-12" style="
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  ">
+    <div class="NewHeader">
+        <h1 style="color: white; margin-top:5px" mat-dialog-title>
+            {{ data ? "Update" : "Add" }} CAPA
+        </h1>
+    </div>
+    <div mat-dialog-content>
+        <form class="form-horizontal">
+            <!-- Complaint -->
+            <div class="form-group" style="margin-top: 20px">
+                <label class="control-label col-sm-4 add-member-label">Complaint:
+                </label>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <mat-select placeholder="Select Complaint" class="form-control bac">
+
+                        <mat-option value="Global fleet of connected vehicles (FIELD/2024/09/3)">
+                            Global fleet of connected vehicles (FIELD/2024/09/3)
+                        </mat-option>
+                        <mat-option value="High-Performance Nissan Ariya NISMO Debuts on World EV (FIELD/2024/09/6)">
+                            High-Performance Nissan Ariya NISMO Debuts on World EV (FIELD/2024/09/6)
+                        </mat-option>
+                        <mat-option
+                            value="This road hazard service is part of Bosch’s connected map issue (FIELD/2024/09/8)">
+                            This road hazard service is part of Bosch’s connected map issue (FIELD/2024/09/8)
+                        </mat-option>
+                        <mat-option value="Engine Overheating (FIELD/2024/09/13)">
+                            Engine Overheating (FIELD/2024/09/13)
+                        </mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <!-- Role -->
+            <div class="form-group" style="margin-top: 20px">
+                <label class="control-label col-sm-4 add-member-label">Role:
+                </label>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <mat-select placeholder="Select Role " class="form-control bac">
+
+                        <mat-option value="Admin">Admin</mat-option>
+                        <mat-option value="Shop Head">Shop Head</mat-option>
+                        <mat-option value="Shift Manager">Shift Manager</mat-option>
+                        <mat-option value="General Manager">General Manager</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <!-- Department -->
+
+            <div class="form-group" style="margin-top: 20px">
+                <label class="control-label col-sm-4 add-member-label">Department:
+                </label>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <mat-select placeholder="Select Department"
+                                        class="form-control bac">
+                       
+                        <mat-option value="Developer">Developer</mat-option>
+                        <mat-option value="Account">Account</mat-option>
+                        <mat-option value="QA">QA</mat-option>
+                        <mat-option value="RnD">RnD</mat-option>
+                        <mat-option value="Test">Test</mat-option>
+                        <mat-option value="Quality">Quality</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+
+            <!-- Subject -->
+            <div class="form-group" style="margin-top: 20px">
+                <label class="control-label col-sm-4 add-member-label  ">Subject:
+                </label>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <input type="text" class="form-control bac" placeholder="Enter Subject" />
+                </div>
+            </div>
+
+            <!-- Target Date -->
+            <div class="form-group" style="margin-top: 20px">
+                <label class="control-label col-sm-4 add-member-label">Target Date:
+                </label>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <input type="date" class="form-control bac" placeholder="Enter Subject" />
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div class="form-group" style="margin-top: 20px">
+                <label class="control-label col-sm-4 add-member-label">Description:
+                </label>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <textarea class="form-control bac" rows="3" formControlName="problemStatement"
+                        placeholder="Enter Description"></textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+    <mat-dialog-actions align="end" style="margin-right: -14px;margin-bottom: -21px;">
+        <div class="margin-bottom-10" style="margin-top: 30px; margin-right: 10px">
+            <button mat-raised-button color="primary" [mat-dialog-close]="'test'">
+                <mat-icon>save</mat-icon> <span>{{ data ? "Update" : "Save" }}</span>
+            </button>
+            <button mat-raised-button style="background-color: lightgray; color: red" class="add-dark-hover btn-default"
+                (click)="close()">
+                <mat-icon>cancel</mat-icon>Close
+            </button>
+        </div>
+    </mat-dialog-actions>
+</div>

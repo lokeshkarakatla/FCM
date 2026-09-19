@@ -1,0 +1,30 @@
+<div class="NewHeader">
+  <h1 mat-dialog-title style="color: white;">Status</h1>
+</div>
+
+<div mat-dialog-content>
+  <form class="form-horizontal" novalidate [formGroup]="gridColumnForm">
+
+    <mat-checkbox [checked]="true" class="col-sm-6">Field Info Awaited</mat-checkbox>
+    <mat-checkbox [checked]="true" class="col-sm-6">Failed Part Awaited</mat-checkbox>
+    <mat-checkbox class="col-sm-6">Design Review</mat-checkbox>
+    <mat-checkbox class="col-sm-6">Supplier Action</mat-checkbox>
+    <mat-checkbox [checked]="true" class="col-sm-6">Implementation</mat-checkbox>
+    <mat-checkbox class="col-sm-6">Validation</mat-checkbox>
+    <mat-checkbox class="col-sm-6">Cut Off Awaited</mat-checkbox>
+    <mat-checkbox class="col-sm-6">Closure Printing</mat-checkbox>
+    <mat-checkbox class="col-sm-6">Closure Sign-Off</mat-checkbox>
+    <mat-checkbox class="col-sm-6">Shift to Project</mat-checkbox>
+    <mat-checkbox class="col-sm-6">Closed</mat-checkbox>
+
+  </form>
+</div>
+
+<mat-dialog-actions align="end" style="padding-bottom: 10px;">
+  <button mat-raised-button color="primary" [mat-dialog-close]="'test'">
+       <mat-icon  style="font-size:20px" class="mt-1">save</mat-icon>Save
+  </button>
+  <button mat-raised-button class="btn-default"  style="background-color: lightgray; color: red" (click)="close()">
+    <mat-icon>cancel</mat-icon>Close
+  </button>
+</mat-dialog-actions>

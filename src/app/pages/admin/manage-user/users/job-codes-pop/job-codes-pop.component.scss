@@ -1,0 +1,44 @@
+.custom-header-table {
+  margin-bottom: 0;
+
+  thead {
+    th {
+      background-color: #276ba3; /* Matches the blue header in your image */
+      color: #ffffff;
+      font-weight: 600;
+      border-color: #e0e0e0;
+      padding: 10px;
+    }
+  }
+
+  tbody {
+    td {
+      border-color: #e0e0e0;
+      padding: 6px 10px;
+    }
+    
+    .project-name-text {
+      color: #0000cc; /* Blue text color shown in the image */
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+}
+
+.close-btn {
+  background-color: #ffffff;
+  color: #333333;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  padding: 0 20px;
+  min-width: 80px;
+  
+  &:hover {
+    background-color: #f5f5f5;
+  }
+}
+
+// Adjust mat-checkbox inner spacing to look tighter in the table cell
+::ng-deep .mat-checkbox-inner-container {
+  margin: 0 auto;
+}

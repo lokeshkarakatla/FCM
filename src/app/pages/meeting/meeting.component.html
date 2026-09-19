@@ -1,0 +1,89 @@
+<div class="col-lg-12" style="overflow: hidden; ">
+  <!-- <div>
+    <h2 style="font-size: 25px; font-weight: bold">Complaints</h2>
+    <hr />
+  </div> -->
+  <div class="d-flex justify-content-end p-2" style="margin-right: -7px;">
+    
+
+    <button style="margin-right: 10px" mat-raised-button color="primary" class="pull-right" (click)="gotoMeeting(null)">
+      <mat-icon>person_add</mat-icon> Add Meeting
+    </button>
+  </div>
+
+  <!-- Table -->
+
+  <div class="col-sm-12" style="margin-top: 10px;margin-left: -6px;">
+    <div class="table-responsive" id="grid-table-container">
+      <table class="table table-bordered table-hover">
+        <thead class="tbl-head">
+          <tr>
+            <th style="white-space: nowrap">Referance No</th>
+            <th style="white-space: nowrap">Date</th>
+            <th style="white-space: nowrap">Time</th>
+            <th style="white-space: nowrap">Duration</th>
+            <th class="text-center">Meeting Ref</th>
+            <th class="text-center">CAPA</th>
+            <th class="text-center">Attendance</th>
+            <th class="text-center">Agenda</th>
+            <!-- <th class="text-center">Late Attendance</th> -->
+            <th class="text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of data">
+
+            <td>{{item.referenceNo}}</td>
+
+
+
+            <td>{{ item.date }}</td>
+            <td>{{ item.time }}</td>
+            <td>{{ item.duration }}</td>
+           <td class="text-center">
+  <span style="color: blue; cursor: pointer;"
+        (click)="openMeetingDialog(item)">
+    {{ item.meetingRef }}
+  </span>
+</td>
+            <!-- <td class="text-center">
+              <a
+                [routerLink]="['/app/capa']"
+                style="color: blue; text-decoration: none"
+                >2</a
+              >
+            </td> -->
+            <td class="text-center">
+              <a [routerLink]="['/app/complaints/capa']" [queryParams]="{ from: 'meeting' }"
+                style="color: blue; text-decoration: none">
+                {{ item.capa }}
+              </a>
+            </td>
+
+            <td class="text-center" style="color: blue; cursor: pointer" (click)="Attendancecount()">
+              {{ item.attendance }}
+            </td>
+
+            <td class="agenda-cell center-cell" (click)="openAgendaDialog(item)">
+              {{ item.agenda }}
+            </td>
+
+            <td class="text-center">
+              <a matTooltip="Edit Meeting" (click)="gotoMeeting(null)">
+                <i class="fa fa-edit"></i>
+              </a>
+              <a matTooltip="Delete Meeting" (click)="deleteConfirmation()">
+                <i class="fa fa-trash red"></i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- Pagination -->
+      <mat-paginator [length]="totalSize" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons>
+      </mat-paginator>
+    </div>
+  </div>
+
+  <!-- Table -->
+</div>

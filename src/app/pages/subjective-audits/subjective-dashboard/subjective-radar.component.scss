@@ -1,0 +1,244 @@
+.radar-container {
+  width: 100%;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Roboto, sans-serif;
+  overflow-x: auto;
+}
+
+/* --- Filter Header (Top Right Alignment) --- */
+.filter-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.filter-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #333;
+    white-space: nowrap;
+    margin: 0;
+  }
+
+  .filter-select {
+    height: 32px !important;
+    width: 155px !important;
+    padding: 3px 8px !important;
+    border: 1px solid #ced4da !important;
+    border-radius: 4px !important;
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+    background-color: #ffffff !important;
+    cursor: pointer;
+    box-shadow: none;
+
+    &:focus {
+      outline: none;
+      border-color: #80bdff !important;
+    }
+  }
+}
+
+.go-btn {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  height: 32px !important;
+  padding: 0 16px !important;
+  background-color: #007bff !important;
+  color: #ffffff !important;
+  border-radius: 4px !important;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 32px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+
+  mat-icon {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+    line-height: 16px;
+  }
+}
+
+/* --- Models Layout --- */
+.models-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.model-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  width: 100%;
+}
+
+/* Model Badge Column */
+.model-badge-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 75px;
+  min-width: 75px;
+  cursor: pointer;
+  user-select: none;
+  margin-top: 10px;
+}
+
+.model-badge {
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: bold;
+  height: 38px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  letter-spacing: 0.5px;
+}
+
+.model-nav-arrows {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+
+  .arrow-icon {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    color: #222;
+    cursor: pointer;
+
+    &:hover {
+      color: #000;
+    }
+  }
+}
+
+/* Metrics Cards Group */
+.metrics-cards-group {
+  display: flex;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+}
+
+/* Individual Metric Card */
+.metric-card {
+  flex: 1 1 0;
+  min-width: 0;
+  background-color: #dcdcdc;
+  /* Exact gray background from AQA img1 */
+  border-radius: 2px;
+  padding: 8px 8px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 136px;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: opacity 0.15s ease;
+
+  &:hover {
+    opacity: 0.95;
+  }
+}
+
+/* Card Left Section */
+.card-left {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.metric-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #000000;
+  white-space: nowrap;
+}
+
+.metric-day-val {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  margin-top: -2px;
+
+  &.text-green {
+    color: #1ba13b;
+  }
+
+  &.text-red {
+    color: #e52b2b;
+  }
+
+  &.text-yellow {
+    color: #f5a623;
+  }
+}
+
+.metric-avg-val {
+  font-size: 15px;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 2px;
+}
+
+/* Card Right Section (Legend Bars) */
+.card-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 105px;
+  width: 150px;
+  min-width: 150px;
+  margin-left: auto;
+  margin-top: -18px;
+
+  ngx-charts-bar-horizontal {
+    display: block;
+  }
+
+  ::ng-deep .tick text {
+    font-size: 10px !important;
+    fill: #333333 !important;
+  }
+}
+
+/* Bottom Right Target Badge */
+.card-target {
+  position: absolute;
+  bottom: 4px;
+  right: 6px;
+  font-size: 9.5px;
+  color: #333333;
+  font-weight: 500;
+  white-space: nowrap;
+  margin-right: 9px;
+}

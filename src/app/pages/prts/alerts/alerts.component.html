@@ -1,0 +1,129 @@
+<!-- Add Filter Tabs -->
+<div class="container-fluid" style="padding-right: 5px;
+  padding-left: 0px;">
+    <div class="w-100">
+        <div class="flex-p">
+            <div class="row wrap">
+                <div class="col-sm-12 no-padding">
+                    <div class="row-wrap">
+                        <div class="w-100">
+                            <div class="row">
+                                <div class="col-sm-12">
+
+                                    <div class="col-sm-12" style="margin-left: -13px;">
+                                        <div class="">
+                                          
+                                            <button mat-raised-button style="background-color:#37474f;color:white"
+                                                class="pull-right filters-hover margin-right-10 mt-3"
+                                                (click)="filterToggle = !filterToggle">
+                                                <mat-icon>filter_list</mat-icon> Filter
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Filter UI -->
+<div fxLayout="row wrap" *ngIf="filterToggle">
+    <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p w-100 margins" style="margin-right: 6px;">
+        <mat-card class="filter">
+            <mat-card-content>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="col-sm-3">
+                            <label class="pull-right" style="margin-top: 6px;">Industry:</label>
+                        </div>
+                        <div class="col-sm-6">
+                            <mat-select class="form-control" placeholder="Select location" required>
+                                <mat-option [value]="0">IT</mat-option>
+                                <mat-option [value]="1">Automotibile</mat-option>
+                                <mat-option [value]="2">Construction</mat-option>
+                            </mat-select>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-5">
+                        <div class="col-sm-3">
+                            <label class="pull-right" style="margin-top: 6px;">Status:</label>
+                        </div>
+                        <div class="col-sm-6">
+                            <mat-select class="form-control" placeholder="Select Status">
+                                <mat-option [value]="0">Active</mat-option>
+                                <mat-option [value]="1">Inactive</mat-option>
+                            </mat-select>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-2">
+                        <button mat-raised-button class="pull-right btn-primary" style="margin-left: 5px;">
+                            <mat-icon>youtube_searched_for</mat-icon> Go
+                        </button>
+                        <button mat-raised-button style="background-color:#37474f; color:#fff !important;"
+                            class="pull-right">
+                            <mat-icon>settings_backup_restore</mat-icon> Clear
+                        </button>
+                    </div>
+
+
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+</div>
+<!-- Table -->
+<div class="container-fluid" style="padding-right: 5px;
+  padding-left: 0px;">
+    <div fxLayout="row wrap" #resizedDiv>
+        <div class="flex-p w-100 sizeAlign">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="grid-table-container" class="table-responsive">
+                        <table matSort id="example2" class="table table-bordered table-hover">
+                            <thead class="tbl-head">
+                                <tr>
+                                    
+                                    <th class="text-center">Date Time</th>
+                                    <th class="text-center">Action Title</th>
+                                    <th class="text-center">Stage</th>
+                                    <th class="text-center">Assigned To</th>
+                                    <th class="text-center">Context</th>
+                                    <th class="text-center">Escalated to</th>
+                                    <th class="text-center">Due Date</th>
+                                    <th class="text-center">Delay Days</th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of values">
+                                    <td>{{item.date}}</td>
+                                    <td class="text-center" style="color:rgb(6, 104, 250);">{{item.action}}</td>
+                                    <td class="text-center">{{item.Stage}}</td>
+                                    <td class="text-center">{{item.assing}}</td>
+                                    <td class="text-center">{{item.context}}</td>
+                                    <td class="text-center">{{item.escalated}}</td>
+                                    <td class="text-center">{{item.due}}</td>
+                                    <td class="text-center" style="color:red;">{{item.deley}}</td>
+                                   
+                                    
+                                </tr>
+                            </tbody>
+                        </table>
+                        <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+                            [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

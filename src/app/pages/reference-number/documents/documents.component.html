@@ -1,0 +1,46 @@
+<div style="width: 59%;">
+
+    <div style="margin-bottom: 30px; margin-top: 50px; margin-right: 15px;">
+        <button mat-raised-button color="primary" class="pull-right" (click)="openDocument(null)">
+            <mat-icon>person_add</mat-icon> Add Document
+        </button>
+    </div>
+
+    <div class="col-sm-12" style="margin-top: 10px;">
+        <div class="table-responsive" id="grid-table-container" style="width: 99.5%; margin-left: 6px;">
+            <table class="table  table-bordered table-hover">
+
+                <thead class="tbl-head">
+                    <tr>
+                        <th>Date</th>
+                        <th>Doc Title</th>
+                        <th class="text-center">View</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of tableData">
+                        <td>{{ item.date }}</td>
+                        <td>{{ item.subject }}</td>
+                        <td class="text-center">
+                            <a matTooltip="View Document" (click)="openDocument(item)">
+                                <i class="fa fa-eye"></i>
+                            </a>
+                        </td>
+                        <td class="text-center" style="white-space:nowrap">
+                            <a matTooltip="Edit Document" (click)="openDocument(null)">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a matTooltip="Delete Document" (click)="deleteConfirmation(applicant)">
+                                <i class="fa fa-trash red"></i>
+                            </a>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>

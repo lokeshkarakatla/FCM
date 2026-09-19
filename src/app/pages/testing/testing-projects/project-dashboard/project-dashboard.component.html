@@ -1,0 +1,166 @@
+<div class="nav-container" [ngClass]="{'nav-open': isNavOpen, 'nav-closed': !isNavOpen}">
+  
+  <button (click)="toggleNav()" class="toggle-button">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <nav class="nav-links">
+    <ul>
+      <li routerLinkActive="active">
+        <a [routerLink]="['analytics']">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Analytics">analytics</mat-icon>
+          <span *ngIf="isNavOpen">Analytics</span>
+        </a>
+      </li>
+
+      <li routerLinkActive="active">
+        <a [routerLink]="['overview']">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Overview">dashboard</mat-icon>
+          <span *ngIf="isNavOpen">Overview</span>
+        </a>
+      </li>
+
+      <li routerLinkActive="active">
+        <a [routerLink]="['setup']">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Setup">settings</mat-icon>
+          <span *ngIf="isNavOpen">Setup</span>
+        </a>
+      </li>
+
+      <li routerLinkActive="active">
+        <a [routerLink]="['team']">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Team">group</mat-icon>
+          <span *ngIf="isNavOpen">Team</span>
+        </a>
+      </li>
+
+      <li routerLinkActive="active">
+        <a [routerLink]="['wbs']">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="WBS">account_tree</mat-icon>
+          <span *ngIf="isNavOpen">WBS</span>
+        </a>
+      </li>
+
+      <li routerLinkActive="active">
+        <a [routerLink]="['schedule']">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Schedule">calendar_month</mat-icon>
+          <span *ngIf="isNavOpen">Schedule</span>
+        </a>
+      </li>
+
+      <li routerLinkActive="active">
+        <a [routerLink]="['budget']">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Budget">account_balance_wallet</mat-icon>
+          <span *ngIf="isNavOpen">Budget</span>
+        </a>
+      </li>
+
+      <li routerLinkActive="active">
+        <a [routerLink]="['backlog']">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Backlog">list_alt</mat-icon>
+          <span *ngIf="isNavOpen">Backlog</span>
+        </a>
+      </li>
+
+      <li routerLinkActive="active">
+        <a [routerLink]="['sprints']">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Sprints">autorenew</mat-icon>
+          <span *ngIf="isNavOpen">Sprints</span>
+        </a>
+      </li>
+
+      <li routerLinkActive="active">
+        <a [routerLink]="['timeline']">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Timeline">timeline</mat-icon>
+          <span *ngIf="isNavOpen">Timeline</span>
+        </a>
+      </li>
+
+      <li routerLinkActive="active">
+        <a [routerLink]="['assets']">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Assets">inventory_2</mat-icon>
+          <span *ngIf="isNavOpen">Assets</span>
+        </a>
+      </li>
+
+      <li routerLinkActive="active">
+        <a [routerLink]="['facilities']">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Facilities">domain</mat-icon>
+          <span *ngIf="isNavOpen">Facilities</span>
+        </a>
+      </li>
+
+      <li routerLinkActive="active">
+        <a [routerLink]="['expenses']">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Expenses">receipt_long</mat-icon>
+          <span *ngIf="isNavOpen">Expenses</span>
+        </a>
+      </li>
+
+      <li routerLinkActive="active">
+        <a [routerLink]="['hours']">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Hours">schedule</mat-icon>
+          <span *ngIf="isNavOpen">Hours</span>
+        </a>
+      </li>
+      <li routerLinkActive="active">
+        <a [routerLink]="['timesheet1']">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Timesheet 1">schedule</mat-icon>
+          <span *ngIf="isNavOpen">Timesheet 1</span>
+        </a>
+      </li>
+      <li routerLinkActive="active">
+        <a [routerLink]="['timesheet2']">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Timesheet 2">schedule</mat-icon>
+          <span *ngIf="isNavOpen">Timesheet 2</span>
+        </a>
+      </li>
+
+      <li routerLinkActive="active">
+        <a [routerLink]="['notes']">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Notes">edit_note</mat-icon>
+          <span *ngIf="isNavOpen">Notes</span>
+        </a>
+      </li>
+
+      <li routerLinkActive="active">
+        <a [routerLink]="['documents']">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Documents">description</mat-icon>
+          <span *ngIf="isNavOpen">Documents</span>
+        </a>
+      </li>
+
+      <li routerLinkActive="active" style="margin-bottom: 100px;">
+        <a [routerLink]="['photos']">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Photos">photo_library</mat-icon>
+          <span *ngIf="isNavOpen">Photos</span>
+        </a>
+      </li>
+
+
+<!-- 
+            <li routerLinkActive="active">
+        <a  >
+          <mat-icon *ngIf="!isNavOpen" > </mat-icon>
+          <span *ngIf="isNavOpen"> </span>
+        </a>
+      </li>
+
+
+            <li routerLinkActive="active">
+        <a >
+          <mat-icon *ngIf="!isNavOpen" > </mat-icon>
+          <span *ngIf="isNavOpen"> </span>
+        </a>
+      </li> -->
+
+
+
+    </ul>
+  </nav>
+
+</div>
+
+<div [ngClass]="{'full-width': !isNavOpen}" class="col-sm-10">
+  <router-outlet></router-outlet>
+</div>

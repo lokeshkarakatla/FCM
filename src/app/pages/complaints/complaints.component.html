@@ -1,0 +1,245 @@
+<div class="col-lg-12">
+
+    <!-- Action Buttons -->
+    <div class="action-bar">
+
+        <button mat-raised-button color="primary" class="pull-right primary-btn" (click)="goToAddComplaint()">
+            <mat-icon>person_add</mat-icon> Add Complaint
+        </button>
+
+        <button mat-raised-button class="pull-right margin-right-10 dark-btn" (click)="filterToggle = !filterToggle">
+            <mat-icon>filter_list</mat-icon> Filter
+        </button>
+
+    </div>
+
+    <!-- Filter -->
+    <div class="col-lg-12 filter-wrapper" fxLayout="row wrap" *ngIf="filterToggle">
+        <div fxFlex="100" class="flex-p w-100">
+            <form>
+                <mat-card class="filter filter-card">
+                    <mat-card-content>
+                        <div class="row col-lg-12 col-sm-12">
+
+                            <div class="col-sm-4 row me-2 mt-3">
+                                <div class="col-sm-3 newMarginClass"><b>Keyword:</b></div>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" placeholder="Enter Keyword" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4 row me-2 mt-3">
+                                <div class="col-sm-3 newMarginClass"><b>Country:</b></div>
+                                <div class="col-sm-9">
+                                    <mat-select placeholder="Select Country" class="form-control">
+                                        <mat-option value="Albania">Albania</mat-option>
+                                        <mat-option value="Algeria">Algeria</mat-option>
+                                        <mat-option value="Andorra">Andorra</mat-option>
+                                        <mat-option value="Angolas">Angolas</mat-option>
+                                        <mat-option value="America">America</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4 row me-2 mt-3">
+                                <div class="col-sm-3 newMarginClass"><b>Model:</b></div>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" placeholder="Enter Model Name" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4 row me-2 mt-3">
+                                <div class="col-sm-3 newMarginClass"><b>Current Status:</b></div>
+                                <div class="col-sm-9">
+                                    <mat-select placeholder="Select Status" class="form-control">
+                                        <mat-option value="Opened">Opened</mat-option>
+                                        <mat-option value="Closed">Closed</mat-option>
+                                        <mat-option value="WIP">WIP</mat-option>
+                                        <mat-option value="Pending">Pending</mat-option>
+                                        <mat-option value="Done">Done</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4 row me-2 mt-3">
+                                <div class="col-sm-3 newMarginClass"><b>Distributor:</b></div>
+                                <div class="col-sm-9">
+                                    <mat-select placeholder="Select Distributor" class="form-control">
+                                        <mat-option value="Global Distributors Pvt. Ltd">Global Distributors Pvt.
+                                            Ltd</mat-option>
+                                        <mat-option value="Prime Trade & Supply">Prime Trade & Supply</mat-option>
+                                        <mat-option value="Vertex Distribution Services">Vertex Distribution
+                                            Services</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4 row me-2 mt-3">
+                                <div class="col-sm-3 newMarginClass"><b>Department:</b></div>
+                                <div class="col-sm-9">
+                                    <mat-select placeholder="Select Department" class="form-control">
+                                        <mat-option value="Developer">Developer</mat-option>
+                                        <mat-option value="RnD">RnD</mat-option>
+                                        <mat-option value="QA">QA</mat-option>
+                                        <mat-option value="Account">Account</mat-option>
+                                        <mat-option value="Test">Test</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4 row me-2 mt-3">
+                                <div class="col-sm-3 newMarginClass"><b>Criticality:</b></div>
+                                <div class="col-sm-9">
+                                    <mat-select placeholder="Select Criticality" class="form-control">
+                                        <mat-option value="Low Criticality">Low Criticality</mat-option>
+                                        <mat-option value="Medium Criticality">Medium Criticality</mat-option>
+                                        <mat-option value="High Criticality">High Criticality</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4 row me-2 mt-3">
+                                <div class="col-sm-3 newMarginClass"><b>Lead:</b></div>
+                                <div class="col-sm-9">
+                                    <mat-select class="form-control">
+                                        <mat-option value="Sai">Sai</mat-option>
+                                        <mat-option value="Ayush">Ayush</mat-option>
+                                        <mat-option value="Vamshi">Vamshi</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 pull-right mt-3 filter-actions">
+
+                                <a (click)="filterToggle = !filterToggle" class="pull-right toggle-icon">
+                                    <i class="fa fa-angle-double-up"></i>
+                                </a>
+
+                                <button mat-raised-button class="pull-right btn-default margin-right-10"
+                                    (click)="clearFilter();getTests()">
+                                    <mat-icon>settings_backup_restore</mat-icon> Clear
+                                </button>
+
+                                <button mat-raised-button color="primary" class="pull-right margin-right-10"
+                                    (click)="getTests()">
+                                    <mat-icon>search</mat-icon> Search
+                                </button>
+
+                            </div>
+
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </form>
+        </div>
+    </div>
+
+    <!-- Table -->
+    <div class="col-sm-12 table-container">
+        <div class="table-responsive" id="grid-table-container">
+            <table class="table table-bordered table-hover">
+
+                <thead class="tbl-head">
+                    <tr>
+                        <th>Action</th>
+                        <th>Reference No</th>
+                        <th>Subject</th>
+                        <th class="problem-statement-header">Description</th>
+                        <th>Department</th>
+                        <th class="text-center">CAPA</th>
+                        <th class="text-center">Steps</th>
+                        <th>Progress</th>
+                        <th class="nowrap">Country</th>
+                        <th>City</th>
+                        <th>Model</th>
+                        <th>Severity</th>
+                        <th>Distributor</th>
+                        <th>Serial No</th>
+                        <th class="status-col text-center">Status</th>
+                        <th>Responsibility</th>
+                        <th>Complaint Date</th>
+                        <th>Customer</th>
+                        <th class="text-center">Failure Date</th>
+                        <th class="text-center">Due Date</th>
+                        <th class="text-center">Completion Date</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let applicant of complaintsData; let i = index">
+
+
+                        <td class="nowrap">
+                            <a matTooltip="Edit User" (click)="goToAddComplaint()">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a matTooltip="Delete User" (click)="deleteConfirmation(applicant)">
+                                <i class="fa fa-trash red"></i>
+                            </a>
+                        </td>
+
+                        <td (click)="gotoReferenceNumber()">
+                            <a class="link">
+                                {{ applicant.referenceNumber }}
+                            </a>
+                        </td>
+
+                        <td class="nowrap">{{ applicant.subject }}</td>
+                        <td class="problem-statement">{{ applicant.problemSubject }}</td>
+                        <td>{{ applicant.department }}</td>
+
+                        <td class="text-center link" (click)="openCAPA()">2</td>
+                        <td class="switchToggle text-center" (click)="gotoupdate()">
+                            {{ applicant.steps }}
+                        </td>
+
+                        <td [matTooltip]="applicant.range + '%'">
+                            <input type="range" [min]="0" [max]="100" [value]="applicant.range"
+                                [ngStyle]="getRangeStyle(applicant.range, i)" (mousedown)="$event.preventDefault()"
+                                (touchstart)="$event.preventDefault()">
+                        </td>
+
+                        <td class="text-center">{{ applicant.country }}</td>
+                        <td>{{ applicant.City }}</td>
+                        <td>{{ applicant.model }}</td>
+                        <td>{{ applicant.criticality }}</td>
+                        <td>{{ applicant.distributor }}</td>
+                        <td class="text-center">{{ applicant.serialno }}</td>
+
+                        <td class="status-col">
+                            <select class="form-select status-select">
+                                <option [selected]="applicant.status === 'Pending'">Pending</option>
+                                <option [selected]="applicant.status === 'Process'">Process</option>
+                                <option [selected]="applicant.status === 'Hold'">Hold</option>
+                                <option [selected]="applicant.status === 'Closed'">Closed</option>
+                            </select>
+                        </td>
+
+                        <td>{{ applicant.Lead }}</td>
+                        <td>{{ applicant.FailureDate }}</td>
+                        <td>{{ applicant.TargetDate }}</td>
+                        <td>{{ applicant.ExpectedFinishDate }}</td>
+                        <td>{{ applicant.ActualFinishDate }}</td>
+                        <td class="text-center">{{ applicant.complitionDate }}</td>
+
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+        <mat-paginator [length]="totalSize" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 50, 100]"
+            showFirstLastButtons>
+        </mat-paginator>
+
+        <button class="mine" style="background-color: white !important;" mat-fab (click)="scrollGrid('right')">
+            <mat-icon>fast_forward</mat-icon>
+        </button>
+
+        <button class="mine left-btn" style="background-color: white !important;" mat-fab (click)="scrollGrid('left')">
+            <mat-icon>fast_rewind</mat-icon>
+        </button>
+
+    </div>
+
+</div>

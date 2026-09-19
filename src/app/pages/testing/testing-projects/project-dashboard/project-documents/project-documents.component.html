@@ -1,0 +1,120 @@
+<div class="page-container" style=" margin-left : -15px">
+  
+  <div class="toolbar">
+    
+    <div class="filter-item">
+      <label>Keyword:</label>
+      <input type="text" placeholder="Enter Keyword" class="simple-input">
+      <button mat-icon-button color="primary" class="icon-action-btn" matTooltip="Search">
+        <mat-icon>search</mat-icon>
+      </button>
+      <button mat-icon-button class="icon-action-btn" matTooltip="Clear">
+        <mat-icon>refresh</mat-icon>
+      </button>
+    </div>
+<label>Select Category:</label>
+    <mat-select _ngcontent-ng-c1498838364="" role="combobox" aria-autocomplete="none" aria-haspopup="listbox" ngskiphydration="" formcontrolname="DocumentTypeId" placeholder="Select Category" class="mat-mdc-select form-control ng-tns-c2400438669-784 mat-mdc-select-empty ng-untouched ng-pristine ng-valid ng-star-inserted" style="width: 180px;" aria-labelledby="mat-select-value-1037" id="mat-select-1036" tabindex="0" aria-expanded="false" aria-required="false" aria-disabled="false" aria-invalid="false"><div cdk-overlay-origin="" class="mat-mdc-select-trigger ng-tns-c2400438669-784"><div class="mat-mdc-select-value ng-tns-c2400438669-784" id="mat-select-value-1037"><span class="mat-mdc-select-placeholder mat-mdc-select-min-line ng-tns-c2400438669-784 ng-star-inserted">Select Category</span><!----><!----></div><div class="mat-mdc-select-arrow-wrapper ng-tns-c2400438669-784"><div class="mat-mdc-select-arrow ng-tns-c2400438669-784"><svg viewBox="0 0 24 24" width="24px" height="24px" focusable="false" aria-hidden="true" class="ng-tns-c2400438669-784"><path d="M7 10l5 5 5-5z" class="ng-tns-c2400438669-784"></path></svg></div></div></div><!----></mat-select>
+
+    <div class="visit-filter">
+      <button class="active">All</button>
+      <button>Pre Visit</button>
+      <button>Post Visit</button>
+    </div>
+
+    <button mat-raised-button class="view-toggle-btn" (click)="toggleView()">
+      <mat-icon>{{ isGridView ? 'view_list' : 'view_module' }}</mat-icon>
+      {{ isGridView ? 'Card View' : 'Grid View' }}
+    </button>
+    
+  </div>
+
+  <div *ngIf="isGridView" class="grid-container" >
+    
+    <mat-card class="add-doc-card" (click)="uploaddoc()">
+      <mat-icon class="add-icon">note_add</mat-icon>
+      <span style="margin-top:30px">Add Document Record</span>
+    </mat-card>
+
+    <mat-card class="doc-card" *ngFor="let doc of dataSource" (click)="onCardClick(doc)">
+      <div class="card-actions">
+        <mat-icon class="action-icon view-icon" matTooltip="View" (click)="$event.stopPropagation()">visibility</mat-icon>
+        <mat-icon class="action-icon delete-icon" matTooltip="Delete" (click)="$event.stopPropagation()">delete</mat-icon>
+        <mat-icon class="action-icon edit-icon" matTooltip="Edit" (click)="$event.stopPropagation()">edit</mat-icon>
+      </div>
+
+      <div class="card-body">
+        <mat-icon class="file-icon">description</mat-icon>
+        <div class="doc-title">{{ doc.documentTitle }}</div>
+        <div class="doc-meta">OMEGANET | {{ doc.uploadedDate }}</div>
+      </div>
+    </mat-card>
+
+  </div>
+
+  <div *ngIf="!isGridView" class="table-container mat-elevation-z1">
+    <table mat-table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="documentType">
+        <th mat-header-cell *matHeaderCellDef class="text-center"> Document Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.documentType}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="documentTitle">
+        <th mat-header-cell *matHeaderCellDef class="text-center"> Document Title </th>
+        <td mat-cell *matCellDef="let element" class="text-center"> {{element.documentTitle}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef class="text-center"> Category </th>
+        <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="context">
+        <th mat-header-cell *matHeaderCellDef class="text-center"> Context </th>
+        <td mat-cell *matCellDef="let element"> {{element.context}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="uploadFile">
+        <th mat-header-cell *matHeaderCellDef class="text-center"> Upload File </th>
+        <td mat-cell *matCellDef="let element" class="text-center">
+          <a href="javascript:void(0)" class="view-link">{{element.uploadFile}}</a>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="uploadedDate">
+        <th mat-header-cell *matHeaderCellDef class="text-center"> Uploaded Date </th>
+        <td mat-cell *matCellDef="let element" class="text-center"> {{element.uploadedDate}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="uploadedBy">
+        <th mat-header-cell *matHeaderCellDef class="text-center"> Uploaded By </th>
+        <td mat-cell *matCellDef="let element" class="text-center"> {{element.uploadedBy}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="remarks">
+        <th mat-header-cell *matHeaderCellDef class="text-center"> Remarks </th>
+        <td mat-cell *matCellDef="let element" class="text-center">
+          <mat-icon class="info-icon" matTooltip="Info">info</mat-icon>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="text-center"> Actions </th>
+        <td mat-cell *matCellDef="let element" class="text-center">
+          <button mat-icon-button class="table-action-btn edit-icon">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button class="table-action-btn delete-icon">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons aria-label="Select page"></mat-paginator>
+  </div>
+
+</div>

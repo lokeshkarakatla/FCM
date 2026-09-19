@@ -1,0 +1,107 @@
+<div class="NewHeader">
+    <h1 mat-dialog-title>
+        <span>PSR</span>
+    </h1>
+</div>
+
+<div fxLayout="row wrap" #resizedDiv>
+    <div class="flex-p w-100">
+        <!-- <div class="row" style="margin-bottom:7px;">
+            <div class="col-xs-2 ">
+            </div>
+            <div class="col-xs-10 mb-3">
+                <div class="flex-p">
+                    <button mat-raised-button color="primary" class="pull-right" (click)="filterToggle = !filterToggle">
+                        <mat-icon>person_add</mat-icon> Add Action
+                    </button>
+                    <button mat-raised-button style="background-color: black; color:white;"
+                        class="pull-right filters-hover margin-right-10" (click)="filterToggle = !filterToggle">
+                        <mat-icon>filter_list</mat-icon> Filter
+                    </button>
+                </div>
+            </div>
+        </div> -->
+        <!-- <div class="container-fluid" style="padding: 0% !important;">
+            <div fxLayout="row wrap" *ngIf="filterToggle" class="sizeAlign">
+                <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p w-100 margins">
+                    <mat-card class="filter">
+                        <mat-card-content>
+                            <div class="row">
+                                <div class="col-sm-6" style="margin-top: 10px;">
+                                    <div class="col-sm-4 newMarginClass" style="margin-top: 5px;">Action Name:</div>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="Enter Action Name">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6" style="margin-top: 10px;">
+                                    <label class="control-label col-sm-4">Start Date: </label>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                        <input type="date" class="form-control" placeholder="Select Date ">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6" style="margin-top: 10px;">
+                                    <label class="control-label col-sm-4">End Date: </label>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                        <input type="date" class="form-control" placeholder="Select Date ">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6" style="margin-top: 10px;">
+                                    <label class="control-label col-sm-4">Select Lead: </label>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                        <mat-select class="form-control" placeholder="Select Lead Name" required>
+                                            <mat-option [value]="0">Satya</mat-option>
+                                            <mat-option [value]="1">Navin Malik</mat-option>
+                                            <mat-option [value]="1">Radha Krishna</mat-option>
+                                        </mat-select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12" style="margin-top: 10px;">
+                                    <button mat-raised-button class="pull-right btn-default" style="margin-left:10px ;"
+                                        (click)="filterToggle = !filterToggle">
+                                        <mat-icon>closed</mat-icon> Close
+                                    </button>
+                                    <button mat-raised-button color="primary" class="pull-right">
+                                        <mat-icon>save</mat-icon> Save
+                                    </button>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+        </div> -->
+        <!-- Creating Table -->
+        <div style="margin-left: 13px;">
+            <div class="table-responsive">
+                <table id="example2" class="table table-bordered table-hover">
+                    <thead class="tbl-head">
+                        <tr class="tr-grid-header">
+                            <th class="text-center">Reference</th>
+                            <th class="text-center">Author</th>
+                            <th class="text-center">Subject</th>
+                            <th class="text-center">Stages</th>
+                            <th class="text-center">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of tableList">
+                            <td class="text-center" (click)="reference()" style="color: blue;">{{item.reference}}</td>
+                            <td class="text-center">{{item.author}}</td>
+                            <td class="text-center">{{item.subject}}</td>
+                            <td class="text-center">{{item.stage}}</td>
+                            <td class="text-center">{{item.date}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- <mat-paginator [length]=" totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+                    [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons>
+                </mat-paginator> -->
+            </div>
+        </div>
+    </div>
+    <mat-dialog-actions class="col-sm-12" align="end">
+        <button mat-raised-button class="btn-default" (click)="close()">
+            <mat-icon>cancel</mat-icon>&nbsp;Close
+        </button>
+    </mat-dialog-actions>
+</div>

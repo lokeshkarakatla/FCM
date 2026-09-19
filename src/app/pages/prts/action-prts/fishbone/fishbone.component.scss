@@ -1,0 +1,13 @@
+.rectangle {
+    height: 15px;
+    width: 1150px;
+    background-color: #555;
+    margin-top: 18px;
+}
+.triangle-right {
+    width: 0;
+    height: 0;
+    border-top: 25px solid transparent;
+    border-left: 50px solid #555;
+    border-bottom: 25px solid transparent;
+}

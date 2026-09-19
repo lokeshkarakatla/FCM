@@ -1,0 +1,45 @@
+<div class="col-sm-12" style="
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  ">
+    <div class="NewHeader">
+        <h1 style="color: white; margin-top:5px" mat-dialog-title>
+            {{ data ? "Update" : "Add" }} Stage
+        </h1>
+    </div>
+    <div mat-dialog-content>
+        <form class="form-horizontal">
+            <!-- Complaint -->
+            <div class="form-group" style="margin-top: 20px">
+                <label class="control-label col-sm-4 add-member-label"> Stage Name :
+                </label>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <input type="text" class="form-control" placeholder="Enter Stage Name" />
+                </div>
+            </div>
+            <!-- Role -->
+            <div class="form-group" style="margin-top: 20px">
+                <label class="control-label col-sm-4 add-member-label">Stage Code:
+                </label>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <input type="text" class="form-control" placeholder="Enter Stage Code" />
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+    <mat-dialog-actions align="end">
+        <div class="margin-bottom-10" style="margin-top: 30px; margin-right: 10px">
+            <button mat-raised-button color="primary" [mat-dialog-close]="'test'">
+                <mat-icon>save</mat-icon> <span>{{ data ? "Update" : "Save" }}</span>
+            </button>
+            <button mat-raised-button style="background-color: lightgray; color: red" class="add-dark-hover btn-default"
+                (click)="close()">
+                <mat-icon>cancel</mat-icon>Close
+            </button>
+        </div>
+    </mat-dialog-actions>
+</div>

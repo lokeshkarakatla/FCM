@@ -1,0 +1,199 @@
+<div class="col-sm-12 mt-4" style="margin-left: -2px; margin-bottom: 15px;">
+    <div class="col-lg-4 col-sm-4">
+        <div class="form-group">
+            <label class="control-label col-sm-4 mt-2">Select Period : </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 mt-1">
+                <mat-select class="form-control" [value]="0">
+                    <mat-option [value]="0">-- Select Period --</mat-option>
+                    <mat-option [value]="1">Last Years</mat-option>
+                    <mat-option [value]="2">Last 60 Days</mat-option>
+                    <mat-option [value]="3">Last 6 Months</mat-option>
+                    <mat-option [value]="4">Last 12 Months</mat-option>
+                    <mat-option [value]="5">Last 2 Years</mat-option>
+                </mat-select>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-sm-4">
+        <div class="form-group">
+            <label class="control-label col-sm-4 mt-2">Display</label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 mt-1">
+                <mat-select class="form-control" [value]="0">
+                    <mat-option [value]="0">-- Select Display --</mat-option>
+                    <mat-option [value]="4">Pass</mat-option>
+                    <mat-option [value]="5">Fail</mat-option>
+                </mat-select>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-sm-4">
+
+        <button mat-raised-button [color]="viewMode === 2 ? 'primary' : ''" (click)="switchView(2)">
+            View 2
+        </button>
+
+        <button mat-raised-button style="margin-left: 10px;" [color]="viewMode === 1 ? 'primary' : ''"
+            (click)="switchView(1)">
+            View 1
+        </button>
+    </div>
+
+</div>
+
+<div class="col-sm-12 mt-4" *ngIf="filterToggle">`
+    <div fxLayout="row wrap" style="margin-bottom: 10px">
+        <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p w-100 margins">
+            <mat-card class="filter" style="margin-top: 16px;
+    width: 94%;
+    margin-left: 27px;">
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="col-sm-4 newMarginClass">
+                                From Date:
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="date" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="col-sm-4 newMarginClass">
+                                To Date:
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="date" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="col-sm-4 newMarginClass">
+                                Audit Type:
+                            </div>
+                            <div class="col-sm-8">
+                                <mat-select class="form-control" placeholder="Select Audit Type">
+                                    <mat-option [value]="0">PQA</mat-option>
+                                    <mat-option [value]="1">Body Audit</mat-option>
+                                    <mat-option [value]="2">Paint Audit</mat-option>
+                                    <mat-option [value]="3">Process Audit</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 mt-2">
+                            <div class="col-sm-4 newMarginClass">
+                                Color:
+                            </div>
+                            <div class="col-sm-8">
+                                <mat-select class="form-control" placeholder="Select Color">
+                                    <mat-option [value]="0">Red</mat-option>
+                                    <mat-option [value]="1">Green</mat-option>
+                                    <mat-option [value]="2">White</mat-option>
+                                    <mat-option [value]="3">Blue</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 mt-2">
+                            <div class="col-sm-4 newMarginClass">
+                                Model:
+                            </div>
+                            <div class="col-sm-8">
+                                <mat-select class="form-control" placeholder="Select Model">
+                                    <mat-option [value]="0">Hector</mat-option>
+                                    <mat-option [value]="1">Astor</mat-option>
+                                    <mat-option [value]="2">Gloster</mat-option>
+                                    <mat-option [value]="3">ZSEV</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 mt-2">
+                            <div class="col-sm-4 newMarginClass">
+                                Fuel Type:
+                            </div>
+                            <div class="col-sm-8">
+                                <mat-select class="form-control" placeholder="Select Fuel Type">
+                                    <mat-option [value]="0">Petrol</mat-option>
+                                    <mat-option [value]="1">Diesel</mat-option>
+                                    <mat-option [value]="2">EV</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding-top:10px; margin-right:2px !important">
+                        <div>
+                            <button mat-raised-button class="pull-right btn-success">
+                                GO
+                            </button>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- <div class="row mt-3 mb-3 text-center">
+  <div class="col-sm-6">
+    <button mat-raised-button color="primary" (click)="viewMode = 1">1 View</button>
+  </div>
+  <div class="col-sm-6">
+    <button mat-raised-button color="accent" (click)="viewMode = 2">2 View</button>
+  </div>
+</div> -->
+
+
+<!-- SINGLE VIEW -->
+<div *ngIf="viewMode === 1">
+    <div *ngFor="let img of images; let i = index" class="row mb-4" style="margin-top: 20px;">
+        <div class="col-sm-12" style="margin-left: 31px;">
+            <h2 style="margin-bottom: 20px;">{{ img.title }}</h2>
+
+            <div class="image-grid-container" [ngStyle]="{'width': img.width, 'height': img.height}">
+                <img [src]="img.src" [alt]="img.title" style="width: 100%; height: 100%; background: white;">
+                <!-- Canvas overlay replaces grid-overlay div -->
+                <!-- <canvas #gridCanvas
+          [width]="img.width"
+          [height]="img.height"
+          class="grid-canvas">
+        </canvas> -->
+
+                <canvas #gridCanvas [width]="img.widthPx" [height]="img.heightPx" class="grid-canvas">
+                </canvas>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- DOUBLE VIEW -->
+<div *ngIf="viewMode === 2" style="margin-top: 80px;">
+    <div class="row mb-4" *ngFor="let row of images; let i = index">
+        <ng-container *ngIf="i % 2 === 0">
+
+            <div class="col-sm-6 text-center" *ngIf="images[i]" style="margin-bottom: 30px;">
+                <h2 style="margin-bottom: 20px;">{{ images[i].title }}</h2>
+                <div class="image-grid-container" [ngStyle]="{'height': images[i].height, 'width': images[i].width}">
+                    <img [src]="images[i].src" [alt]="images[i].title"
+                        style="width: 100%; height: 100%; background: white;">
+                    <canvas #gridCanvas [width]="images[i].widthPx" [height]="images[i].heightPx" class="grid-canvas">
+                    </canvas>
+                </div>
+            </div>
+
+            <div class="col-sm-6 text-center" *ngIf="images[i + 1]">
+                <h2 style="margin-bottom: 20px;">{{ images[i + 1].title }}</h2>
+                <div class="image-grid-container"
+                    [ngStyle]="{'height': images[i + 1].height, 'width': images[i + 1].width}">
+                    <img [src]="images[i + 1].src" [alt]="images[i + 1].title"
+                        style="width: 100%; height: 100%; background: white;">
+                    <canvas #gridCanvas [width]="images[i + 1].widthPx" [height]="images[i + 1].heightPx"
+                        class="grid-canvas">
+                    </canvas>
+                </div>
+            </div>
+
+        </ng-container>
+    </div>
+</div>

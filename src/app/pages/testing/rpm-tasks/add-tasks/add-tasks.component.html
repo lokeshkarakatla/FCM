@@ -1,0 +1,264 @@
+<div class="NewHeader">
+  <h3 style="padding-top: 10px">Add Task</h3>
+</div>
+
+<div id="stepper" class="bs-stepper row col-12">
+
+  <!-- Stepper Pills -->
+  <div class="pills col-2">
+    <div class="step mb-2" data-target="#step-1">
+      <button class="step-trigger text-center" (click)="activeStep = 1"
+        [ngClass]="{ 'active-step': activeStep === 1 }">
+        <span class="bs-stepper-label ">Overview</span>
+      </button>
+    </div>
+    <div class="step" data-target="#step-2">
+      <button class="step-trigger text-center" (click)="activeStep = 2"
+        [ngClass]="{ 'active-step': activeStep === 2 }">
+        <span class="bs-stepper-label">Timeline</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Content Area -->
+  <div class="col-10">
+
+    <!-- ✅ STEP 1: Overview -->
+    <div *ngIf="activeStep === 1">
+      <div class="row p-4" style="margin-left: 10px;">
+
+        <!-- Column 1: Form Fields -->
+        <div class="col-sm-6">
+          <form>
+
+            <!-- Task Name -->
+            <div class="row" style="margin-bottom: 12px">
+              <div class="col-sm-4">
+                <label class="add-member-label mt5 required" style="margin-top: 5px">Task Name :</label>
+              </div>
+              <div class="col-sm-8">
+                <input type="text" maxlength="150" style="height: 35px" class="form-control"
+                  placeholder="Enter Task Name" />
+              </div>
+            </div>
+
+            <!-- Task Type -->
+            <div class="row" style="margin-bottom: 12px">
+              <div class="col-sm-4">
+                <label class="add-member-label mt5 required" style="margin-top: 5px">Task Type :</label>
+              </div>
+              <div class="col-sm-8">
+                <mat-select placeholder="Select Task Type" class="form-control">
+                  <mat-option value="Commercial">Commercial</mat-option>
+                  <mat-option value="Technical">Technical</mat-option>
+                  <mat-option value="Field">Field</mat-option>
+                  <mat-option value="Engineering">Engineering</mat-option>
+                  <mat-option value="Audit">Audit</mat-option>
+                  <mat-option value="Finance">Finance</mat-option>
+                  <mat-option value="Regulatory">Regulatory</mat-option>
+                </mat-select>
+              </div>
+            </div>
+
+            <!-- Description -->
+            <div class="row" style="margin-bottom: 12px">
+              <div class="col-sm-4">
+                <label class="control-label mt-1">Description :</label>
+              </div>
+              <div class="col-sm-8">
+                <textarea class="form-control" rows="3" placeholder="Enter Description"
+                  style="resize: vertical"></textarea>
+              </div>
+            </div>
+
+            <!-- Priority -->
+            <div class="row" style="margin-bottom: 12px">
+              <div class="col-sm-4">
+                <label class="add-member-label mt5 required" style="margin-top: 5px">Priority :</label>
+              </div>
+              <div class="col-sm-8">
+                <mat-select placeholder="Select Priority" class="form-control">
+                  <mat-option value="High">High</mat-option>
+                  <mat-option value="Medium">Medium</mat-option>
+                  <mat-option value="Low">Low</mat-option>
+                </mat-select>
+              </div>
+            </div>
+
+            <!-- Complexity -->
+            <div class="row" style="margin-bottom: 12px">
+              <div class="col-sm-4">
+                <label class="add-member-label mt5 required" style="margin-top: 5px">Complexity :</label>
+              </div>
+              <div class="col-sm-8">
+                <mat-select placeholder="Select Complexity" class="form-control">
+                  <mat-option value="High">High</mat-option>
+                  <mat-option value="Medium">Medium</mat-option>
+                  <mat-option value="Low">Low</mat-option>
+                </mat-select>
+              </div>
+            </div>
+
+          </form>
+        </div>
+
+        <!-- Column 2: Upload -->
+        <div class="col-sm-6">
+          <h4 class="text-center" style="margin-bottom: 16px">Upload Template:</h4>
+          <div class="upload-box">
+            <p>Drag and drop files here</p>
+            <button type="button" class="browse-btn" (click)="fileInput.click()">
+              Browse Files
+            </button>
+            <input type="file" #fileInput hidden (change)="onFileSelected($event)" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ✅ STEP 2: Timeline -->
+    <div *ngIf="activeStep === 2">
+      <div class="row p-4" style="margin-left: 10px;">
+
+        <!-- Column 1: Planned Dates -->
+        <div class="col-sm-6">
+          <!-- <h5 style="margin-bottom: 16px; font-weight: 600;">Planned Dates</h5> -->
+          <form>
+
+            <!-- Responsibility -->
+            <div class="row" style="margin-bottom: 12px">
+              <div class="col-sm-4">
+                <label class="add-member-label mt5" style="margin-top: 5px">Responsibility :</label>
+              </div>
+              <div class="col-sm-8">
+                <input type="text" style="height: 35px" class="form-control"
+                  placeholder="Enter Responsible Person" />
+              </div>
+            </div>
+
+            <!-- Duration -->
+            <div class="row" style="margin-bottom: 12px">
+              <div class="col-sm-4">
+                <label class="add-member-label mt5" style="margin-top: 5px">Duration :</label>
+              </div>
+              <div class="col-sm-8">
+                <input type="text" style="height: 35px" class="form-control"
+                  placeholder="e.g. 5 days" />
+              </div>
+            </div>
+
+            <!-- Effort -->
+            <div class="row" style="margin-bottom: 12px">
+              <div class="col-sm-4">
+                <label class="add-member-label mt5" style="margin-top: 5px">Effort :</label>
+              </div>
+              <div class="col-sm-8">
+                <input type="text" style="height: 35px" class="form-control"
+                  placeholder="e.g. 20 hrs" />
+              </div>
+            </div>
+
+            <!-- Plan Start -->
+            <div class="row" style="margin-bottom: 12px">
+              <div class="col-sm-4">
+                <label class="add-member-label mt5" style="margin-top: 5px">Plan Start :</label>
+              </div>
+              <div class="col-sm-8">
+                <input type="date" style="height: 35px" class="form-control" />
+              </div>
+            </div>
+
+            <!-- Plan End -->
+            <div class="row" style="margin-bottom: 12px">
+              <div class="col-sm-4">
+                <label class="add-member-label mt5" style="margin-top: 5px">Plan End :</label>
+              </div>
+              <div class="col-sm-8">
+                <input type="date" style="height: 35px" class="form-control" />
+              </div>
+            </div>
+
+          </form>
+        </div>
+
+        <!-- Column 2: Actual Dates -->
+        <div class="col-sm-6">
+          <!-- <h5 style="margin-bottom: 16px; font-weight: 600;">Actual Dates</h5> -->
+          <form>
+
+            <!-- Actual Start -->
+            <div class="row" style="margin-bottom: 12px">
+              <div class="col-sm-4">
+                <label class="add-member-label mt5" style="margin-top: 5px">Actual Start :</label>
+              </div>
+              <div class="col-sm-8">
+                <input type="date" style="height: 35px" class="form-control" />
+              </div>
+            </div>
+
+            <!-- Actual End -->
+            <div class="row" style="margin-bottom: 12px">
+              <div class="col-sm-4">
+                <label class="add-member-label mt5" style="margin-top: 5px">Actual End :</label>
+              </div>
+              <div class="col-sm-8">
+                <input type="date" style="height: 35px" class="form-control" />
+              </div>
+            </div>
+
+            <!-- ETA -->
+            <div class="row" style="margin-bottom: 12px">
+              <div class="col-sm-4">
+                <label class="add-member-label mt5" style="margin-top: 5px">ETA :</label>
+              </div>
+              <div class="col-sm-8">
+                <input type="date" style="height: 35px" class="form-control" />
+              </div>
+            </div>
+
+            <!-- Status -->
+            <div class="row" style="margin-bottom: 12px">
+              <div class="col-sm-4">
+                <label class="add-member-label mt5" style="margin-top: 5px">Status :</label>
+              </div>
+              <div class="col-sm-8">
+                <mat-select placeholder="Select Status" class="form-control">
+                  <mat-option value="Pending">Pending</mat-option>
+                  <mat-option value="In Progress">In Progress</mat-option>
+                  <mat-option value="Completed">Completed</mat-option>
+                  <mat-option value="On Hold">On Hold</mat-option>
+                  <mat-option value="Cancelled">Cancelled</mat-option>
+                </mat-select>
+              </div>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <mat-dialog-actions align="end" style="padding-right: 16px">
+      <button mat-raised-button class="add-dark-hover btn-default" (click)="close()"
+        style="background-color: lightgray; color: red;">
+        <mat-icon>cancel</mat-icon> Close
+      </button>
+      <button *ngIf="activeStep === 1" mat-raised-button type="button" color="primary"
+        class="ms-2" (click)="activeStep = 2">
+        <mat-icon>arrow_forward</mat-icon> Next
+      </button>
+      <button *ngIf="activeStep === 2" mat-raised-button type="button" color="primary"
+        class="ms-2" (click)="activeStep = 1">
+        <mat-icon>arrow_back</mat-icon> Back
+      </button>
+      <button *ngIf="activeStep === 2" mat-raised-button type="button" color="primary"
+        class="ms-2">
+        <mat-icon>save</mat-icon> Save
+      </button>
+    </mat-dialog-actions>
+
+  </div>
+
+</div>

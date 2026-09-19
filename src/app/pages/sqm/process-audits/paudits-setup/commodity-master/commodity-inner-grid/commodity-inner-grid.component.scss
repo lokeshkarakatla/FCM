@@ -1,0 +1,150 @@
+:host {
+  display: block;
+  width: 100%;
+}.main-container {
+  padding: 20px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Top Button Area */
+.top-action-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+
+  .add-target-btn {
+    background-color: #145b73; /* Dark blue from your image */
+    color: white;
+    border-radius: 0px; /* Sharp corners */
+    font-weight: 500;
+  }
+}
+
+/* Flex Layout for Sidebar + Grid */
+.content-layout {
+  display: flex;
+  gap: 30px;
+}
+
+/* Left Sidebar Menu Buttons */
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Spacing between the buttons */
+  width: 200px;
+  flex-shrink: 0;
+
+  button {
+    width: 100%;
+    height: 45px;
+    border-radius: 0px; /* Sharp corners */
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .active-tab {
+    background-color: #145b73 !important;
+    color: white !important;
+    // border: 2px solid #0d3d4d;
+  }
+
+  .inactive-tab {
+    background-color: #f2f2f2 !important;
+    color: black !important;
+    border: 2px solid #145b73; /* Dark border outline when inactive */
+  }
+}
+
+/* Right Side Grid Styles */
+.grid-container {
+  flex-grow: 1;
+  overflow-x: auto;
+}
+
+.custom-grid-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th {
+    background-color: black; /* Requested: Black background */
+    color: white; /* Requested: White text */
+    text-align: left;
+    padding: 10px 15px;
+    font-weight: 500;
+    border-right: 1px solid white; /* White divider between headers */
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  td {
+    padding: 8px 15px;
+   
+    background-color: #d5dbdf; /* Matches the greyish background from the image */
+    border-right: 1px solid white; /* White vertical grid lines */
+    border-bottom: 1px solid white; /* White horizontal grid lines */
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  /* Keep empty rows looking like grid structure */
+  .empty-row td {
+    height: 35px;
+  }
+}
+
+.custom-grid-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #e0e0e0;
+
+  th {
+    background-color: black;
+    color: white;
+    text-align: left;
+    padding: 10px 15px;
+    font-weight: 500;
+    border: 1px solid #e0e0e0;
+  }
+
+  td {
+    padding: 8px 15px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+  }
+
+  .empty-row td {
+    height: 35px;
+    background-color: #ffffff;
+  }
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 200px;
+  flex-shrink: 0;
+
+  button {
+    width: 100%;
+    height: 45px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 4px;
+  }
+
+  .active-tab {
+    background-color: #145b73 !important;
+    color: #fff !important;
+  }
+
+  .inactive-tab {
+    background-color: #ffffff !important;
+    color: #333333 !important;
+    border: 1px solid #d1d5db;
+  }
+}

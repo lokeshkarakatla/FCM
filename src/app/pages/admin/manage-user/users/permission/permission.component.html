@@ -1,0 +1,54 @@
+<div fxLayout="row wrap">
+    <div class="col-12">
+        <button mat-raised-button class="pull-right btn-default margin-right-10" (click)="goback()">
+            <mat-icon>settings_backup_restore</mat-icon> Back
+          </button>
+    
+          <button mat-raised-button class="pull-right btn-primary margin-right-10" (click)="saveUserPermissions()">
+            <mat-icon>youtube_searched_for</mat-icon> Save
+          </button>
+    </div>
+
+    <div class="table-responsive flex-p">
+
+      
+        <p style="margin-top: 20px; margin-left: 3px;"><b>Role Name: </b>{{roleName}}</p>
+          <table id="example2" class="table table-bordered table-hover" style="margin-top: 15px;">
+              <thead class="tbl-head">
+                  <tr class="tr-grid-header">
+                      <th>Screen Permissions</th>
+                      <th class="style">Create</th>
+                      <th class="style">Read</th>
+                      <th class="style">Update</th>
+                      <th class="style">Delete</th>
+
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let item of items">
+                          <td>{{item.ScreenName}}</td>
+                          <td class="style"><input type="checkbox" [checked]="item.IsCreate == true"
+                            (change)="item.IsCreate = !item.IsCreate" (click)="recordChange()">
+                        </td>
+                        <td class="style"><input type="checkbox" [checked]="item.IsRead == true "
+                            (change)="item.IsRead = !item.IsRead" (click)="recordChange()"
+                            >                           
+                        </td>
+                        <td class="style"><input type="checkbox" [checked]="item.IsUpdate == true"
+                            (change)="item.IsUpdate = !item.IsUpdate" (click)="recordChange()">
+                
+                        </td>
+                
+                        <td class="style">
+                          <input type="checkbox" [checked]="item.IsDelete == true" (change)="item.IsDelete = !item.IsDelete"
+                            (click)="recordChange()">
+                          
+                        </td>
+                      </tr>
+                      <tr>
+                          
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>

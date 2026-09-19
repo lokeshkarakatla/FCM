@@ -1,0 +1,22 @@
+<div class="row-wrap">
+    <div class="w-100">
+      <!-- Master Data Tabs -->
+      <div class="col-xs-12" style="margin-top: 15px; margin-left: -16px;">
+        <div class="pills">
+          <ul class="nav nav-pills" style="margin-left: 10px;">
+            <li routerLinkActive="active" [routerLink]="['./gridview']">
+              <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                <mat-icon> border_all</mat-icon>Grid View
+              </a>
+            </li>
+            <li routerLinkActive="active" [routerLink]="['./archive-prts']">
+              <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                <mat-icon> border_all</mat-icon>Archives
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>

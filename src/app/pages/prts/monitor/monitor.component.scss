@@ -1,0 +1,153 @@
+/* 1. Force fixed layout on the correct table class */
+.table {
+  table-layout: fixed !important;  /* your table uses .table, not .data-table */
+  width: 100%;
+}
+
+/* 2. Define ALL column widths explicitly using nth-child */
+.table th:nth-child(1),  /* Execute */
+.table td:nth-child(1) {
+  width: 100px;
+}
+
+.table th:nth-child(2),  /* Step */
+.table td:nth-child(2) {
+  width: 55px;
+}
+
+.table th:nth-child(3),  /* Step Name */
+.table td:nth-child(3) {
+  width: 160px;
+}
+
+.table th:nth-child(4),  /* Notes */
+.table td:nth-child(4) {
+  width: 55px;
+}
+
+.table th:nth-child(5),  /* Department */
+.table td:nth-child(5) {
+  width: 140px;
+}
+
+.table th:nth-child(6),  /* Assigned */
+.table td:nth-child(6) {
+  width: 120px;
+}
+
+.table th:nth-child(7),  /* Status */
+.table td:nth-child(7) {
+  width: 110px;
+}
+
+.table th:nth-child(8),  /* Last Updated */
+.table td:nth-child(8) {
+  width: 110px;
+}
+
+.table th:nth-child(9),  /* Updated By */
+.table td:nth-child(9) {
+  width: 110px;
+}
+
+.table th:nth-child(10), /* Start Date */
+.table td:nth-child(10) {
+  width: 100px;
+}
+
+.table th:nth-child(11), /* End Date */
+.table td:nth-child(11) {
+  width: 100px;
+}
+
+.table th:nth-child(12), /* Done */
+.table td:nth-child(12) {
+  width: 55px;
+}
+
+/* 3. All cells truncate overflow cleanly */
+.table th,
+.table td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+  vertical-align: middle;
+  padding: 8px 6px;
+}
+
+/* 4. Keep horizontal scroll working */
+.table-responsive {
+  overflow-x: auto;
+  overflow-y: visible;
+}
+
+.header-info {
+  margin: 3px 0px 0px 0px;
+  font-size: 13px;
+  color: #555;
+}
+
+
+.page-header {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-title {
+  margin: 0 !important;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.header-info {
+  margin: 3px 0 0 0;
+  font-size: 13px;
+  color: #555;
+}
+
+.back-btn {
+  background-color: gray;
+  color: white;
+
+  display: flex;
+  align-items: center;
+
+  height: 40px;
+  margin-top: 5px;
+}
+
+/* Optional spacing replacements for Bootstrap classes */
+.ms-5 {
+  margin-left: 3rem;
+}
+
+.me-5 {
+  margin-right: 3rem;
+}
+
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.ms-3 {
+  margin-left: 1rem;
+}
+
+.fw-bold {
+  font-weight: 700;
+}

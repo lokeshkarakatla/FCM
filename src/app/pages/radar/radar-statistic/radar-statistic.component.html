@@ -1,0 +1,137 @@
+<div class="row col-12 ">
+  <div class="row col-12 ">
+    <h3 class="text-center" style="margin-left: 40%;">Checklist Distribution</h3>
+    <div class="row col-12">
+
+      <div class="col-6">
+        <div style="margin-left: 2%">
+
+          <div class="flex-p">
+            <mat-card>
+              <div class="chart-header">
+                <p style="font-size: 20px;margin-top:10px;margin-left: 36%;">Sections</p>
+              </div>
+              <div class="w-100 h-300p">
+                <ngx-charts-pie-chart [scheme]="colorScheme" [results]="three" [legend]="showLegend"
+                  [explodeSlices]="explodeSlices" [labels]="showLabels" [doughnut]="doughnut" [gradient]="gradient">
+                </ngx-charts-pie-chart>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-6">
+        <div style="margin-left: 2%">
+
+          <div class="flex-p">
+            <mat-card>
+              <div class="chart-header">
+                <p style="font-size: 20px;margin-top:10px;margin-left: 36%;">Sections</p>
+              </div>
+              <div class="w-100 h-300p">
+                <ngx-charts-pie-chart [scheme]="colorScheme" [results]="three" [legend]="showLegend"
+                  [explodeSlices]="explodeSlices" [labels]="showLabels" [doughnut]="doughnut" [gradient]="gradient">
+                </ngx-charts-pie-chart>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row col-12 mt-5">
+    <h3 class="text-center" style="margin-left: 40%;">Parameter Distribution</h3>
+    <div class="row col-12">
+
+      <div class="col-6">
+        <div style="margin-left: 2%">
+
+          <div class="flex-p">
+            <mat-card>
+              <div class="chart-header">
+                <p style="font-size: 20px;margin-top:10px;margin-left: 36%;">Sections</p>
+              </div>
+              <div class="w-100 h-300p">
+                <ngx-charts-pie-chart [scheme]="colorScheme" [results]="three" [legend]="showLegend"
+                  [explodeSlices]="explodeSlices" [labels]="showLabels" [doughnut]="doughnut" [gradient]="gradient">
+                </ngx-charts-pie-chart>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-6">
+        <div style="margin-left: 2%">
+
+          <div class="flex-p">
+            <mat-card>
+              <div class="chart-header">
+                <p style="font-size: 20px;margin-top:10px;margin-left: 36%;">Sections</p>
+              </div>
+              <div class="w-100 h-300p">
+                <ngx-charts-pie-chart [scheme]="colorScheme" [results]="three" [legend]="showLegend"
+                  [explodeSlices]="explodeSlices" [labels]="showLabels" [doughnut]="doughnut" [gradient]="gradient">
+                </ngx-charts-pie-chart>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+
+    <div class="flex-p">
+      <mat-card style="width: 1185px;">
+        <div class="chart-header">
+          <mat-select class="form-control pull-right" placeholder="Select Year" style="width: 118px;">
+            <mat-option [value]="0">2021</mat-option>
+            <mat-option [value]="1">2020</mat-option>
+            <mat-option [value]="2">2019</mat-option>
+            <mat-option [value]="3">2018</mat-option>
+            <mat-option [value]="4">2017</mat-option>
+            <mat-option [value]="5">2016</mat-option>
+
+          </mat-select>
+          <h3 class="text-center" style="font-size: 25px;">Checklist Audit Trend</h3>
+        </div>
+        <div class="h-300p">
+          <ngx-charts-bar-vertical-stacked [scheme]="colorSchemee" [results]="multi" [gradient]="gradient"
+            [legend]="showLegend" [xAxis]="showXAxis" [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"
+            [animations]="animations" (select)="onSelect($event)">
+          </ngx-charts-bar-vertical-stacked>
+        </div>
+      </mat-card>
+    </div>
+    <div class="col-12">
+      <div class="flex-p">
+        <mat-card style="width: 1185px;">
+          <div class="chart-header">
+            <mat-select class="form-control pull-right" placeholder="Select Year" style="width: 118px;">
+              <mat-option [value]="0">2021</mat-option>
+              <mat-option [value]="1">2020</mat-option>
+              <mat-option [value]="2">2019</mat-option>
+              <mat-option [value]="3">2018</mat-option>
+              <mat-option [value]="4">2017</mat-option>
+              <mat-option [value]="5">2016</mat-option>
+
+            </mat-select>
+            <h3 class="text-center" style="font-size: 25px;">Parameter Audit Trend</h3>
+          </div>
+          <div class="h-300p">
+            <ngx-charts-bar-vertical-stacked [scheme]="colorSchemee" [results]="multi" [gradient]="gradient"
+              [legend]="showLegend" [xAxis]="showXAxis" [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"
+              [animations]="animations" (select)="onSelect($event)">
+            </ngx-charts-bar-vertical-stacked>
+          </div>
+        </mat-card>
+      </div>
+
+    </div>
+  </div>

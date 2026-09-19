@@ -1,0 +1,138 @@
+<div class="NewHeader" style="background-color: #2865ab">
+    <h1 mat-dialog-title style="color:white;">
+        {{ data ? 'Update' : 'Add'}} Equipment
+    </h1>
+</div>
+
+<div mat-dialog-content>
+    <form [formGroup]="myGroup">
+
+        <div class="col-sm-12 row form-horizontal" style="padding-left:40px;">
+
+            <div class="col-sm-6 row">
+                <div class="row" style="margin-bottom: 12px;">
+                    <div class="col-sm-4 ">
+                        <label class="add-member-label mt5 required " style="margin-top:5px;">Equipment ID:</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input class="form-control name back" formControlName="EquipmentID" maxlength="50" placeholder="Enter Equipment ID" type="text">
+                        <div *ngIf="f.EquipmentID.touched && f.EquipmentID.errors" class="error-text">
+                            <div *ngIf="f.EquipmentID.errors.required">{{'Equipment ID is Required'}}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-bottom: 12px;">
+                    <div class="col-sm-4 ">
+                        <label class="add-member-label mt5 required " style="margin-top:5px;">Project:</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <mat-select class="form-control back" formControlName="ProjectId" placeholder="Select Project">
+                            <ng-container *ngFor="let item of projects">
+                                <mat-option [value]="item.ProjectId" matTooltip="{{item.ProjectCode + ' ( '+ item.ProjectName +' ) ' }}">
+                                    <div class="option-content"> {{item.ProjectCode + " (" + item.ProjectName + " )"}}
+                                    </div>
+                                </mat-option>
+                            </ng-container>
+                        </mat-select>
+                        <div *ngIf="f.ProjectId.touched && f.ProjectId.errors" class="error-text">
+                            <div *ngIf="f.ProjectId.errors.required">{{'Project is Required'}}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-bottom: 12px;">
+                    <div class="col-sm-4 ">
+                        <label class="add-member-label mt5 required " style="margin-top:5px;">Model:</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <mat-select placeholder="Select Model Name" formControlName="Model" class="form-control bac">
+                            <mat-form-field appearance="fill" style="width: 100%">
+                                <input matInput placeholder="Search..." />
+                            </mat-form-field>
+                            <mat-option value="1">Hector 7 Seater</mat-option>
+                            <mat-option value="2">Gloster 6 Seater</mat-option>
+                            <mat-option value="3">Innova Hycross</mat-option>
+                        </mat-select>
+                         <div *ngIf="f.Model.touched && f.Model.errors" class="error-text">
+                            <div *ngIf="f.Model.errors.required">{{'Model Name is Required'}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 12px;">
+                    <div class="col-sm-4 ">
+                        <label class="add-member-label mt5 required " style="margin-top:5px;">Serial No:</label>
+                    </div>
+                    <div class="col-sm-8">
+                         <input class="form-control name back" formControlName="SerialNo" maxlength="50" placeholder="Enter Serial Number" type="text">
+                         <div *ngIf="f.SerialNo.touched && f.SerialNo.errors" class="error-text">
+                            <div *ngIf="f.SerialNo.errors.required">{{'Serial Number is Required'}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 ">
+                        <label class="add-member-label mt5 required " style="margin-top:5px;">Config:</label>
+                    </div>
+                    <div class="col-sm-8">
+                         <input class="form-control name back" formControlName="Config" maxlength="50" placeholder="Enter Config" type="text">
+                        <div *ngIf="f.Config.touched && f.Config.errors" class="error-text">
+                            <div *ngIf="f.Config.errors.required">{{'Config is Required'}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 row">
+                <div class="row" style="margin-bottom: 12px;">
+                    <div class="col-sm-4 ">
+                        <label class=" mt5 required " style="margin-top:5px;">Test Activity Planned:</label>
+                    </div>
+                    <div class="col-sm-8">
+                         <input class="form-control name" formControlName="TestActivityPlanned" maxlength="50" placeholder="Enter Test Activity Plan" type="text">
+                         
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 12px;">
+                    <div class="col-sm-4 ">
+                        <label class=" mt5 required " style="margin-top:5px;">Planned Testing Hours:</label>
+                    </div>
+                    <div class="col-sm-8">
+                         <input class="form-control name" formControlName="PlannedTestingHours" placeholder="Enter Planned Testing Hours" type="number">
+                        
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 12px;">
+                    <div class="col-sm-4 ">
+                        <label class=" mt5 required " style="margin-top:5px;">Actual Testing Hours:</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input class="form-control name" formControlName="ActualTestingHours" placeholder="Enter Actual Testing Hours" type="number">
+                          
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 12px;">
+                    <div class="col-sm-4 ">
+                        <label class="mt5" style="margin-top:5px;">Remarks:</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input class="form-control name" formControlName="Remarks" style="height:60px;" maxlength="250" placeholder="Remarks" type="text">
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 5px; padding-right:50px;">
+                <div class="pull-right">
+                     <button mat-raised-button class="ms-2 add-dark-hover btn-default" (click)="close()" style="background-color: lightgray; color: red;margin-right: 8px;">
+                        <mat-icon>cancel</mat-icon>
+                        Close
+                    </button>
+                    <button mat-raised-button type="button" class="save" color="primary" style="margin-right: 5px;" (click)="upsertProjects()">
+                        <mat-icon>save</mat-icon> Save
+                    </button>
+                   
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

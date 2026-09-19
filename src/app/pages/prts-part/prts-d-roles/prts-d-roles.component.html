@@ -1,0 +1,134 @@
+<div class="col-sm-12">
+
+  <!-- Page Header -->
+  <div class="page-header d-flex justify-content-between align-items-start">
+    <div class="header-content">
+      <h3 class="page-title mb-2">Setup</h3>
+    </div>
+  </div>
+
+  <!-- Filter UI -->
+  <div *ngIf="filterToggle" style="margin-bottom: 10px;">
+    <mat-card class="filter">
+      <mat-card-content>
+        <div class="row">
+
+          <div class="col-sm-5">
+            <div class="col-sm-3">
+              <label class="pull-right" style="margin-top: 6px;">Step:</label>
+            </div>
+            <div class="col-sm-6">
+              <mat-select class="form-control" placeholder="Select step" required>
+                <mat-option [value]="0">D1</mat-option>
+                <mat-option [value]="1">D2</mat-option>
+                <mat-option [value]="2">D3</mat-option>
+                <mat-option [value]="3">D4 A</mat-option>
+                <mat-option [value]="4">D4 B</mat-option>
+                <mat-option [value]="5">D5</mat-option>
+                <mat-option [value]="6">D6</mat-option>
+                <mat-option [value]="7">D7</mat-option>
+              </mat-select>
+            </div>
+          </div>
+
+          <div class="col-sm-5">
+            <div class="col-sm-3">
+              <label class="pull-right" style="margin-top: 6px;">Status:</label>
+            </div>
+            <div class="col-sm-6">
+              <mat-select class="form-control" placeholder="Select Status" required>
+                <mat-option *ngFor="let option of Status" [value]="option.value">
+                  {{ option.name }}
+                </mat-option>
+              </mat-select>
+            </div>
+          </div>
+
+          <div class="col-sm-2 d-flex align-items-center justify-content-end gap-2">
+            <button mat-raised-button color="primary">
+              <mat-icon>youtube_searched_for</mat-icon> Go
+            </button>
+            <button mat-raised-button style="background-color: #37474f; color: #fff;">
+              <mat-icon>settings_backup_restore</mat-icon> Clear
+            </button>
+          </div>
+
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Table -->
+  <div class="table-responsive">
+    <table matSort id="example2" class="table table-bordered table-hover" style="table-layout: fixed; width: 100%;">
+      <thead class="tbl-head">
+        <tr>
+          <th class="text-center" style="width: 80px;">Actions</th>
+          <th class="text-center" style="width: 80px;">Status</th>
+          <th class="text-center" style="width: 80px;">Step Code</th>
+          <th style="width: 120px;">Step Name</th>
+          <th class="text-center" style="width: 100px;">Description</th>
+          <th class="text-center" style="width: 110px;">Document Types</th>
+          <th class="text-center" style="width: 90px;">Checklist</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of values; let i = index">
+
+          <!-- Actions -->
+          <td class="text-center editDel">
+            <a style="cursor: pointer; margin-right: 10px;" matTooltip="Edit" (click)="addmodule(item)">
+              <i class="fa fa-edit" style="color: cornflowerblue;"></i>
+            </a>
+            <a style="cursor: pointer;" matTooltip="Delete" (click)="deleteConfirmation()">
+              <i class="fa fa-trash" style="color: red;"></i>
+            </a>
+          </td>
+
+          <!-- Status -->
+          <td class="text-center">
+            <span *ngIf="item.IsActive" (click)="Confirmation(item)"
+              [ngClass]="{'disable-custom': !canUpdate}"
+              style="color: blue; cursor: pointer;">Active</span>
+            <span *ngIf="!item.IsActive" (click)="Confirmation(item)"
+              [ngClass]="{'disable-custom': !canUpdate}"
+              style="color: red; cursor: pointer;">Inactive</span>
+          </td>
+
+          <!-- Step Code -->
+          <td class="text-center">{{ item.stepcode }}</td>
+
+          <!-- Step Name -->
+          <td>{{ item.stepname }}</td>
+
+          <!-- Description -->
+          <td class="text-center">
+            <i class="fa fa-info-circle"
+              style="font-size: 20px; color: blue; cursor: pointer;"
+              (click)="adddesc()"></i>
+          </td>
+
+          <!-- Document Types -->
+          <td class="text-center" style="color: blue; cursor: pointer;" (click)="adddocument()">
+            3
+          </td>
+
+          <!-- Checklist -->
+          <td class="text-center" style="color: blue; cursor: pointer;" (click)="addchecklist()">
+           4
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+
+    <mat-paginator
+      [length]="totalSize"
+      [pageIndex]="currentPage"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[5, 10, 25, 50, 100]"
+      showFirstLastButtons>
+    </mat-paginator>
+  </div>
+
+</div>

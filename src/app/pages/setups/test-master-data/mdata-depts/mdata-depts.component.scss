@@ -1,0 +1,130 @@
+.active-status {
+    color: blue;
+}
+
+.inactive-status {
+    color: red;
+    
+}
+.section-gap {
+  margin-bottom: 50px; /* adjust as needed */
+}
+
+.nav-container {
+  padding: 10px;
+  width: 14%;
+  position: fixed;
+  right: 0;
+  top: 56px;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: #f0f0f0;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-open {
+  width: 14%;
+}
+
+.nav-closed {
+  width: 60px;
+  overflow: hidden;
+}
+
+.toggle-button {
+  margin-top: 10px;
+  background-color: #f0f0f0;
+  border: none;
+  font-size: 24px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  // padding: 10px;
+}
+
+// .toggle-button {
+//     background-color: #f0f0f0;
+//     border: none;
+//     font-size: 24px;
+//     margin-bottom: 15px;
+//     cursor: pointer;
+//     width: 100%;
+//     text-align: left;
+//     padding: 10px;
+//     margin-left: -10px;
+// }
+
+.toggle-button mat-icon {
+  font-size: 30px;
+}
+
+.toggle-button:hover {
+  background-color: #e0e0e0;
+}
+
+.nav-links ul {
+  font-size: 17px;
+  padding-top: 38px;
+  list-style-type: none;
+  margin: 0;
+}
+
+.nav-links li {
+  margin: 10px 0;
+  cursor: pointer;
+  color: black;
+}
+
+.nav-links li.active {
+  color: green !important;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.nav-links li:hover {
+  color: grey;
+}
+
+.nav-links li.router-link-active {
+  color: blue !important;
+}
+
+.nav-links mat-icon {
+  margin-right: 10px;
+}
+
+.nav-links span {
+  display: inline-block;
+  transition: opacity 0.3s ease;
+}
+
+.nav-closed .nav-links span {
+  opacity: 0;
+}
+
+.full-width {
+  width: 97% !important;
+}
+
+.nav-container.nav-open .col-sm-10 {
+  width: calc(100% - 250px);
+}
+
+.col-sm-10 {
+  transition: width 0.3s ease;
+}
+
+.toggle-icon {
+  font-size: 40px;
+}
+.nav-icon {
+  font-size: 30px;       /* Size of the icon */
+  height: 24px;
+  width: 24px;
+  margin-left: -10px;     
+  vertical-align: middle;
+}
+
+
+

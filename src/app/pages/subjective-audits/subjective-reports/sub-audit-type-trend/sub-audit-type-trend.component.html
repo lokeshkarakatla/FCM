@@ -1,0 +1,183 @@
+ 
+
+  <div class="col-lg-4 col-sm-4" style="margin-bottom: 21px;
+    margin-left: -6px;">
+        <div class="form-group">
+            <label class="control-label col-sm-4 mt-2">Select Period: </label>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mt-1">
+                <mat-select class="form-control" [value]="0">
+                    <mat-option [value]="0">This Year (2025)</mat-option>
+                    <mat-option [value]="1">Last Years</mat-option>
+                    <mat-option [value]="2">Last 60 Days</mat-option>
+                    <mat-option [value]="3">Last 6 Months</mat-option>
+                    <mat-option [value]="4">Last 12 Months</mat-option>
+                    <mat-option [value]="5">Last 2 Years</mat-option>
+                </mat-select>
+            </div>
+        </div>
+    </div>
+
+<div fxLayout="row wrap" style="margin-bottom: 10px;margin-top: 0px;;margin-left:10px;margin-right:5px" *ngIf="filterToggle">
+    <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p w-100 margins">
+        <mat-card class="filter">
+            <mat-card-content>
+                <div class="row">
+                    <!-- Select Period -->
+                    <div class="col-sm-4">
+                        <div class="col-sm-4 newMarginClass">Select Period:</div>
+                        <div class="col-sm-8">
+                            <mat-select class="form-control" placeholder="Select Period"
+                                (selectionChange)="fnYearChange($event)" required>
+                                <mat-option [value]="0">Last 2 Years</mat-option>
+                                <mat-option [value]="1">Last 3 Years</mat-option>
+                            </mat-select>
+                        </div>
+                    </div>
+
+                    <!-- Audit Type -->
+                    <div class="col-sm-4">
+                        <div class="col-sm-4 newMarginClass">Audit Type:</div>
+                        <div class="col-sm-8">
+                            <mat-select class="form-control" placeholder="Select Audit Type" required>
+                                <mat-option [value]="0">Product Quality Audit</mat-option>
+                                <mat-option [value]="1">Body Audit</mat-option>
+                                <mat-option [value]="2">Paint Audit</mat-option>
+                            </mat-select>
+                        </div>
+                    </div>
+
+                    <!-- Category -->
+                    <!-- <div class="col-sm-4">
+                        <div class="col-sm-4 newMarginClass">Category:</div>
+                        <div class="col-sm-8">
+                            <mat-select class="form-control" placeholder="Select Category">
+                                <mat-option [value]="0">PQA</mat-option>
+                                <mat-option [value]="1">Body Audit</mat-option>
+                                <mat-option [value]="2">Paint Audit</mat-option>
+                                <mat-option [value]="3">Process Audit</mat-option>
+                            </mat-select>
+                        </div>
+                    </div> -->
+
+                    <!-- From Date -->
+                    <div class="col-sm-4 mt-2">
+                        <div class="col-sm-4 newMarginClass">From Date:</div>
+                        <div class="col-sm-8">
+                            <input type="date" class="form-control">
+                        </div>
+                    </div>
+
+                    <!-- To Date -->
+                    <div class="col-sm-4 mt-2">
+                        <div class="col-sm-4 newMarginClass">To Date:</div>
+                        <div class="col-sm-8">
+                            <input type="date" class="form-control">
+                        </div>
+                    </div>
+
+                    <!-- GO Button -->
+                    
+        <div class="row">
+  <div class="col-12 d-flex justify-content-end align-items-center gap-3">
+    <!-- Toggle Icon -->
+   
+
+    <!-- Clear Button -->
+  
+
+    <!-- Search Button -->
+    <button mat-raised-button color="primary"
+            (click)="getTests()">
+      <mat-icon>search</mat-icon> Search
+    </button>
+
+      <button mat-raised-button class="btn-default"
+            (click)="clearFilter(); getTests()">
+      <mat-icon>settings_backup_restore</mat-icon> Clear
+    </button>
+     <a (click)="filterToggle = !filterToggle"  
+       style="font-size: 25px; cursor: pointer;">
+      <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+    </a>
+  </div>
+</div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+
+<!-- Bar Graph -->
+<div fxLayout="column" fxLayout.gt-sm="row wrap">
+    <div fxFlex="100" class="flex-p">
+        <mat-card style="width: 99%;
+    margin-left: 6px;">
+            <mat-card-header fxLayoutAlign="center center">
+                <mat-card-subtitle>
+                    <h2>Demerit by Audit Type</h2>
+                </mat-card-subtitle>
+            </mat-card-header>
+            <div class="w-100 h-300p">
+                <ngx-charts-bar-vertical [scheme]="colorScheme" [gradient]="gradient" [xAxis]="showXAxis"
+                    [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel"
+                    [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"
+                    [results]="second">
+                </ngx-charts-bar-vertical>
+            </div>
+        </mat-card>
+    </div>
+
+</div>
+
+<div id="grid-table-container" class="col-sm-12 table-responsive mt-4">
+    <table matSort id="example2" class="table table-bordered table-hover">
+        <thead class="tbl-head">
+            <tr>
+                <th class="text-center">Audit Type</th>
+                <th class="text-center">Demerit</th>
+                <!-- <th class="text-center">Compilance</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of items">
+                <td class="text-center">{{item.model }}</td>
+                <td class="text-center">{{item.issues }}</td>
+                <!-- <td class="text-center">{{item.demerit }}</td> -->
+            </tr>
+            <tr>
+                <td class="text-center">Average</td>
+                <!-- <td class="text-center">90</td> -->
+                <td class="text-center">80%</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+
+<!-- Pie charts div-->
+<div class="row col-12 mt-5">
+    <!-- Pie chart by checkpoints -->
+    <!-- <div class="col-sm-6 text-center">
+            <mat-card>
+                <div class="chart-header">
+                    <h4>Distribution by Checkpoints</h4>
+                </div>
+                <ngx-charts-pie-chart [scheme]="colorScheme" [results]="first" [explodeSlices]="explodeSlices"
+                    [legend]="showLegend" [labels]="showLabels" [doughnut]="doughnut" [gradient]="gradient">
+                </ngx-charts-pie-chart>
+            </mat-card>
+        </div> -->
+    <!-- Pie chart by compilance -->
+    <!-- <div class="col-6 text-center">
+            <mat-card>
+                <div class="chart-header">
+                    <h4>Distribution by Compilance</h4>
+                </div>
+                <ngx-charts-pie-chart [scheme]="colorScheme" [results]="three" [explodeSlices]="explodeSlices"
+                    [legend]="showLegend" [labels]="showLabels" [doughnut]="doughnut" [gradient]="gradient">
+                </ngx-charts-pie-chart>
+            </mat-card>
+        </div> -->
+</div>

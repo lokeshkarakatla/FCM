@@ -1,0 +1,197 @@
+<div fxLayout="row wrap" style="margin-bottom: 10px">
+    <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p w-100 margins">
+      <mat-card class="chart-header mb-4" style="width:99%;">
+        <h3 class="text-center" style="color: #212121; font-size: 18px; margin: 0;">
+          Rating Distribution by Model
+        </h3>
+      </mat-card>
+  
+      <!-- <button mat-raised-button style="background-color: black;
+        color: white;
+        margin-left: 91.8%;
+        margin-bottom: -1px;"
+        class="filters-hover margin-right-10 mt-3" 
+        (click)="filterToggle = !filterToggle">
+        <mat-icon>filter_list</mat-icon> Filter
+      </button> -->
+
+
+      <div class="col-lg-4 col-sm-4" style="margin-bottom: 21px;
+    margin-left: -6px;">
+        <div class="form-group">
+            <label class="control-label col-sm-4 mt-2">Select Period: </label>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mt-1">
+                <mat-select class="form-control" [value]="0">
+                    <mat-option [value]="0">This Year (2025)</mat-option>
+                    <mat-option [value]="1">Last Years</mat-option>
+                    <mat-option [value]="2">Last 60 Days</mat-option>
+                    <mat-option [value]="3">Last 6 Months</mat-option>
+                    <mat-option [value]="4">Last 12 Months</mat-option>
+                    <mat-option [value]="5">Last 2 Years</mat-option>
+                </mat-select>
+            </div>
+        </div>
+    </div>
+  
+     <mat-card class="filter" *ngIf="filterToggle" style="margin-top: 27px;
+    margin-bottom: 0px;
+    width: 98.5%;
+    margin-left: 10px;">
+      <mat-card-content>
+        <div class="row">
+          <!-- From Month -->
+          <div class="col-sm-4">
+            <div class="col-sm-4 newMarginClass">From Month:</div>
+            <div class="col-sm-8">
+              <mat-select class="form-control" placeholder="Select Month">
+                <mat-option [value]="0">January</mat-option>
+                <mat-option [value]="1">February</mat-option>
+                <mat-option [value]="2">March</mat-option>
+                <mat-option [value]="3">April</mat-option>
+                <mat-option [value]="4">May</mat-option>
+                <mat-option [value]="5">June</mat-option>
+                <mat-option [value]="6">July</mat-option>
+                <mat-option [value]="7">August</mat-option>
+                <mat-option [value]="8">September</mat-option>
+                <mat-option [value]="9">October</mat-option>
+                <mat-option [value]="10">November</mat-option>
+                <mat-option [value]="11">December</mat-option>
+              </mat-select>
+            </div>
+          </div>
+
+          <!-- To Month -->
+          <div class="col-sm-4">
+            <div class="col-sm-4 newMarginClass">To Month:</div>
+            <div class="col-sm-8">
+              <mat-select class="form-control" placeholder="Select Month">
+                <mat-option [value]="0">January</mat-option>
+                <mat-option [value]="1">February</mat-option>
+                <mat-option [value]="2">March</mat-option>
+                <mat-option [value]="3">April</mat-option>
+                <mat-option [value]="4">May</mat-option>
+                <mat-option [value]="5">June</mat-option>
+                <mat-option [value]="6">July</mat-option>
+                <mat-option [value]="7">August</mat-option>
+                <mat-option [value]="8">September</mat-option>
+                <mat-option [value]="9">October</mat-option>
+                <mat-option [value]="10">November</mat-option>
+                <mat-option [value]="11">December</mat-option>
+              </mat-select>
+            </div>
+          </div>
+
+          <!-- From Year -->
+          <div class="col-sm-4">
+            <div class="col-sm-4 newMarginClass">From Year:</div>
+            <div class="col-sm-8">
+              <mat-select class="form-control" placeholder="Select Year">
+                <mat-option [value]="2022">2022</mat-option>
+                <mat-option [value]="2021">2021</mat-option>
+                <mat-option [value]="2020">2020</mat-option>
+                <mat-option [value]="2019">2019</mat-option>
+              </mat-select>
+            </div>
+          </div>
+
+          <!-- To Year -->
+          <div class="col-sm-4 mt-2">
+            <div class="col-sm-4 newMarginClass">To Year:</div>
+            <div class="col-sm-8">
+              <mat-select class="form-control" placeholder="Select Year">
+                <mat-option [value]="2022">2022</mat-option>
+                <mat-option [value]="2021">2021</mat-option>
+                <mat-option [value]="2020">2020</mat-option>
+                <mat-option [value]="2019">2019</mat-option>
+              </mat-select>
+            </div>
+          </div>
+
+          <!-- Category -->
+          <div class="col-sm-4 mt-2">
+            <div class="col-sm-4 newMarginClass">Category:</div>
+            <div class="col-sm-8">
+              <mat-select class="form-control" placeholder="Select Category">
+                <mat-option [value]="0">PQA</mat-option>
+                <mat-option [value]="1">Body Audit</mat-option>
+                <mat-option [value]="2">Paint Audit</mat-option>
+                <mat-option [value]="3">Process Audit</mat-option>
+              </mat-select>
+            </div>
+          </div>
+
+          <!-- GO Button -->
+          <div class="row" style="padding-top:10px; margin-left:-3px !important">
+            <div>
+              <a (click)="filterToggle = !filterToggle" class="pull-right"
+                style="font-size: 25px; cursor: pointer; margin-left: 5px">
+                <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+              </a>
+              <button mat-raised-button class="pull-right btn-default margin-right-10"
+                (click)="clearFilter();getTests()">
+                <mat-icon>settings_backup_restore</mat-icon> Clear
+              </button>
+              <button mat-raised-button color="primary" class="pull-right margin-right-10" (click)="getTests()">
+                <mat-icon>search</mat-icon> Search
+              </button>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    </div>
+  </div>
+  
+  <div class="col-sm-12" style="margin-left: -7px;">
+
+    <div fxLayout="column" fxLayout.gt-sm="row wrap">
+      <mat-card>
+        <div class="chart-header">
+          <h3 class="text-center" style="color: #212121; font-size: 18px; padding-top: 10px;">
+            Rating Distribution by Model
+          </h3>
+        </div>
+        <div style="height: 400px; width: 100%;">
+          <ngx-charts-bar-vertical
+            [results]="first"
+            [scheme]="colorScheme"
+            [gradient]="gradient"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [legend]="showLegend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel">
+          </ngx-charts-bar-vertical>
+        </div>
+      </mat-card>
+    </div>
+    <div >
+      
+
+      <div  id="grid-table-container" class="col-sm-12 table-responsive mt-4" style="margin-left: -15px;
+    width: 102.5%;">
+        <table matSort id="example2" class="table table-bordered table-hover">
+          <thead class="tbl-head">
+            <tr>
+              <th class="text-center">Model</th>
+              <th class="text-center">Rating</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of items">
+              <td class="text-center">{{ item.model }}</td>
+              <td class="text-center">{{ item.issues }}%</td>
+            </tr>
+            <tr>
+              <td class="text-center">Average</td>
+              <td class="text-center">95%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+    
+  </div>

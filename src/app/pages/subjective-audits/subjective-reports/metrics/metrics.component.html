@@ -1,0 +1,42 @@
+<div class="col-sm-2 mt-4 mb-5">
+    <div class="pills w-100 row">
+        <ul class="nav nav-pills">
+            <li routerLinkActive="active" class="col-xs-12 width-100" style="padding:0px;">
+                <a mat-raised-button [routerLink]="['audit-type']" style="margin-bottom: 10px;width:190px">
+                    Audit Type</a>
+            </li>
+            <li routerLinkActive="active" class="col-xs-12 width-100" style="padding:0px;">
+                <a mat-raised-button [routerLink]="['severity']" style="margin-bottom: 10px;width:190px">
+                    Severity</a>
+            </li>
+            <li routerLinkActive="active" class="col-xs-12 width-100" style="padding:0px;">
+                <a mat-raised-button [routerLink]="['agency']" style="margin-bottom: 10px;width:190px">
+                    Agency</a>
+            </li>
+            <li routerLinkActive="active" class="col-xs-12 width-100" style="padding:0px;">
+                <a mat-raised-button style="margin-bottom: 10px;width:190px" [routerLink]="['model']">
+                    Model</a>
+            </li>
+            <li routerLinkActive="active" class="col-xs-12 width-100" style="padding:0px;">
+                <a mat-raised-button style="margin-bottom: 10px;width:190px" [routerLink]="['fuel-type']">
+                    Fuel Type</a>
+            </li>
+            <li routerLinkActive="active" class="col-xs-12 width-100" style="padding:0px;">
+                <a mat-raised-button style="margin-bottom: 10px;width:190px" [routerLink]="['transmission']">
+                    Transmissions</a>
+            </li>
+            <li routerLinkActive="active" class="col-xs-12 width-100" style="padding:0px;">
+                <a mat-raised-button style="margin-bottom: 10px;width:190px" [routerLink]="['variant']">
+                    Variant</a>
+            </li>
+            <li routerLinkActive="active" class="col-xs-12 width-100" style="padding:0px;">
+                <a mat-raised-button style="margin-bottom: 10px;width:190px" [routerLink]="['module']">
+                    Module</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="col-sm-10">
+    <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,84 @@
+<div class="active-audits-container">
+
+  <div class="charts-row">
+    <div class="chart-container">
+      <highcharts-chart [Highcharts]="Highcharts" [options]="commodityChartOptions"></highcharts-chart>
+    </div>
+    <div class="chart-container">
+      <highcharts-chart [Highcharts]="Highcharts" [options]="auditorChartOptions"></highcharts-chart>
+    </div>
+    <div class="chart-container">
+      <highcharts-chart [Highcharts]="Highcharts" [options]="statusChartOptions"></highcharts-chart>
+    </div>
+  </div>
+
+  <div class="toolbar-row">
+    <button mat-raised-button class="btn-dark" (click)="openGridView()">
+      <mat-icon>grid_on</mat-icon> Grid View
+    </button>
+    <button mat-raised-button class="btn-dark">
+      <mat-icon>filter_list</mat-icon> Filter
+    </button>
+    <button mat-raised-button color="primary" class="btn-blue" (click)="openaudit()">
+      <mat-icon>person_add</mat-icon> Add Audit
+    </button>
+  </div>
+
+  <div class="table-responsive">
+    <table class="audit-table">
+      <thead>
+        <tr>
+          <th>Audit Reference</th>
+          <th>Commodity</th>
+          <th>Location</th>
+          <th>Supplier</th>
+          <th>Auditor</th>
+          <th>Audit Date</th>
+          <th>CAPA</th>
+          <th>Report</th>
+          <th>Status</th>
+          <th>Done</th>
+          <th>Manage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let audit of auditData">
+          <td class="text-link">
+            <a [routerLink]="['/app','sqm','process-inner-screen','process-audit-reference']">
+              {{ audit.ref }}
+            </a>
+          </td>
+          <td>{{ audit.commodity }}</td>
+          <td>{{ audit.location }}</td>
+          <td>{{ audit.supplier }}</td>
+          <td>{{ audit.auditor }}</td>
+          <td>{{ audit.date }}</td>
+          <td class="text-link text-center">{{ audit.action }}</td>
+          <td class="text-link text-center" (click)="openscorepdf('processaudit.pdf')">{{ audit.score }}</td>
+          <td class="text-center">
+            <mat-select placeholder="Select Status"
+              style="max-width: 120px; min-width: 120px; border: 0.5px solid black; border-radius: 4px; padding: 4px;">
+              <mat-option value="Initiated">Initiated</mat-option>
+              <mat-option value="Awarded">Awarded</mat-option>
+              <mat-option value="In Process">In Process</mat-option>
+              <mat-option value="On Hold">On Hold</mat-option>
+              <mat-option value="Complete">Complete</mat-option>
+            </mat-select>
+          </td>
+          <td class="text-center">
+            <mat-checkbox [checked]="audit.done" (click)="onDoneClick($event, audit)" color="primary">
+            </mat-checkbox>
+          </td>
+          <td class="text-center manage-icons">
+            <i class="fas fa-edit edit-icon" title="Edit"></i>
+            <i class="fas fa-trash delete-icon" title="Delete"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <mat-paginator [length]="auditData.length" [pageSize]="4" [pageSizeOptions]="[4, 10, 20]" aria-label="Select page">
+    </mat-paginator>
+  </div>
+
+</div>

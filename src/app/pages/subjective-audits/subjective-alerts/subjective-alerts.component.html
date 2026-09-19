@@ -1,0 +1,256 @@
+<div class="col-sm-12">
+    <!-- Add Filter Tabs -->
+    <div class="container-fluid" style="padding-right: 5px;padding-left: 0px;">
+        <div class="w-100">
+            <div class="flex-p">
+                <div class="row wrap">
+                    <div class="col-sm-12 no-padding">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="">
+                                    <button mat-raised-button style="background-color:#37474f;color:white;margin-bottom: -13px;
+    margin-left: 92.5%;"
+                                        class="filters-hover margin-right-10 mt-3"
+                                        (click)="filterToggle = !filterToggle">
+                                        <mat-icon>filter_list</mat-icon> Filter
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Filter UI -->
+    <div fxLayout="row wrap" *ngIf="filterToggle">
+        <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p w-100 margins" style="margin-right: 6px;">
+            <mat-card class="filter" style="width: 99.5%;">
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="col-sm-3">
+                                <label class="pull-right" style="margin-top: 6px;">Industry:</label>
+                            </div>
+                            <div class="col-sm-6">
+                                <mat-select class="form-control" placeholder="Select location" required>
+                                    <mat-option [value]="0">IT</mat-option>
+                                    <mat-option [value]="1">Automotibile</mat-option>
+                                    <mat-option [value]="2">Construction</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-5">
+                            <div class="col-sm-3">
+                                <label class="pull-right" style="margin-top: 6px;">Status:</label>
+                            </div>
+                            <div class="col-sm-6">
+                                <mat-select class="form-control" placeholder="Select Status">
+                                    <mat-option [value]="0">Active</mat-option>
+                                    <mat-option [value]="1">Inactive</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+
+
+
+                        
+                         
+
+
+                    </div>
+                    
+        <div class="row">
+  <div class="col-12 d-flex justify-content-end align-items-center gap-3">
+    <!-- Toggle Icon -->
+   
+
+    <!-- Clear Button -->
+  
+
+    <!-- Search Button -->
+    <button mat-raised-button color="primary"
+            (click)="getTests()">
+      <mat-icon>search</mat-icon> Search
+    </button>
+
+      <button mat-raised-button class="btn-default"
+            (click)="clearFilter(); getTests()">
+      <mat-icon>settings_backup_restore</mat-icon> Clear
+    </button>
+     <a (click)="filterToggle = !filterToggle"  
+       style="font-size: 25px; cursor: pointer;">
+      <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+    </a>
+  </div>
+</div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+    </div>
+    <!-- Table -->
+
+   <!-- Table -->
+<div>
+    <div class="col-xs-12">
+        <div>
+
+       
+           
+            <!-- Table -->
+
+            <div id="grid-table-container tableScroll" class="table-responsive" style="width: 100%;margin-top: 13px;">
+                <table matSort id="example2" class="table table-bordered table-hover data-table">
+                    <thead class="tbl-head">
+                        <tr>
+                            <th class="theadcolor text-center">Actions</th>
+                            <th class="theadcolor text-center">Status</th>
+                            <th class="theadcolor">Reference</th>
+                            <th class="theadcolor">Subject</th>
+                                 <th class="theadcolor">Info</th>
+                            <th class="theadcolor">Description</th>
+                            <th class="theadcolor">Assigned Date</th>
+                            <th class="theadcolor text-center">Source</th>
+                            <th class="theadcolor">Requested By</th>
+                            <th class="theadcolor">Reporting Department</th>
+                            <th class="theadcolor">Project Code/Name</th>
+                            <th class="theadcolor">Model</th>
+                            <th class="theadcolor">Variant</th>
+                            <th class="theadcolor">Criticality</th>
+                            <th class="theadcolor">Category</th>
+                            <th class="theadcolor">5 W's & H</th>
+                            <th class="theadcolor">Assigned to</th>
+                            <th class="theadcolor">Containment Assigned to</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of values1">
+                            <!-- Actions -->
+                            <td class="text-center editDel">
+                                <a style="cursor: pointer;" matTooltip="Edit" (click)="addchecklistaudit(item)">
+                                    <i class="fa fa-edit" style="color: cornflowerblue"></i>
+                                </a>
+                                <a><i class="fa fa-trash red" matTooltip="Delete" (click)="deleteConfirmation()"
+                                        style="cursor: pointer;"></i></a>
+                                
+                            </td>
+
+                            <!-- Status -->
+                            <td class="text-center">
+                                <mat-select class="form-control" [(ngModel)]="item.Status" placeholder="Select Status">
+                                    <mat-option value="Open">Open</mat-option>
+                                    <mat-option value="In Progress">In Progress</mat-option>
+                                    <mat-option value="Hold">Hold</mat-option>
+                                    <mat-option value="Closed">Closed</mat-option>
+                                </mat-select>
+                            </td>
+
+                            <!-- Reference -->
+                            <td>
+                                <a (click)="opendashboard()"
+                                    style="color: cornflowerblue;cursor: pointer;">{{item.ref}}</a>
+                            </td>
+
+                            <!-- Subject -->
+                            <td>{{item.AuditType}}</td>
+
+
+                            <!-- Info -->
+<td class="text-center">
+  <ng-container *ngIf="item.ref; else noInfo">
+    <mat-icon
+      matTooltip="Reference ID: {{item.Info}}"
+      matTooltipPosition="above"
+      color="primary"
+      style="cursor: pointer;"
+    >
+      info
+    </mat-icon>
+  </ng-container>
+
+  <ng-template #noInfo>
+    <span style="color: gray;">-</span>
+  </ng-template>
+</td>
+
+
+                            <!-- Description -->
+                            <td>{{item.Description}}</td>
+
+                            <!-- Assigned Date -->
+                            <td class="text-center">{{item.Date}}</td>
+
+                            <!-- Source -->
+                            <td class="text-center">{{item.Source}}</td>
+
+                            <!-- Requested By -->
+                            <td>{{item.RequestedBy}}</td>
+
+                            <!-- Reporting Department -->
+                            <td>{{item.ReportingDept}}</td>
+
+                            <!-- Project Code/Name -->
+                            <td>{{item.ProjectCode}}</td>
+
+                            <!-- Model -->
+                            <td>{{item.Model}}</td>
+
+                            <!-- Variant -->
+                            <td>{{item.Variant}}</td>
+
+                            <!-- Criticality -->
+                            <td class="text-center">
+
+                                {{item.Criticality}}
+
+                            </td>
+
+                            <!-- Category -->
+                            <td>{{item.Category}}</td>
+
+                            <!-- 5W & H -->
+                            <td>
+                                <span matTooltip="{{item.WHandH}}" style="cursor: help;">
+                                    {{item.WHandH | slice:0:25}}...
+                                </span>
+                            </td>
+
+                            <!-- Assigned To -->
+                            <td>{{item.AssignedTo}}</td>
+
+                            <!-- Containment Assigned To -->
+                            <td>{{item.ContainmentAssignedTo}}</td>
+                        </tr>
+                    </tbody>
+
+
+                </table>
+
+                <button class="mine" mat-fab (click)="scrollGrid()">
+                    <mat-icon style="color: #37474f">fast_forward</mat-icon>
+                </button>
+                <button class="mine" mat-fab style="margin-right: 78px !important" (click)="scrollGrid()">
+                    <mat-icon style="color: #37474f">fast_rewind</mat-icon>
+                </button>
+            </div>
+
+
+            <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+                [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons (page)="onPageChange()">
+            </mat-paginator>
+
+
+
+        </div>
+
+
+
+
+
+    </div>
+
+</div>
+</div>

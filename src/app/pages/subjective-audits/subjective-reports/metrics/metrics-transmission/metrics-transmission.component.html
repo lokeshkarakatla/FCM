@@ -1,0 +1,38 @@
+<div class="col-sm-1"></div>
+
+<div class="col-sm-10 mb-5">
+    <div class="chart-header">
+        <h3 style="color: #212121;font-size:26;margin-top:10px;margin-left: 20%;">
+            Averge Demerit Distribution by Transmission
+        </h3>
+    </div>
+    <div id="grid-table-container" class="table-responsive" style="margin-top:25px;width: 95%;margin-left:17px">
+        <table matSort id="example2" class="table table-bordered table-hover">
+            <thead class="tbl-head">
+                <tr>
+                    <th class="text-center">Transmission Type</th>
+                    <th class="text-center">Issues</th>
+                    <th class="text-center">Demerit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of items">
+                    <td class="text-center">{{item.transmission_type }}</td>
+                    <td class="text-center">{{item.issues }}</td>
+                    <td class="text-center">{{item.demerit }}</td>
+                </tr>
+                <tr>
+                    <td class="text-center">Total</td>
+                    <td class="text-center">38</td>
+                    <td class="text-center">323</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="col-sm-12">
+    <highcharts-chart [Highcharts]="highcharts" [options]="chartOptions"
+        style="width: 80%; height: 400px; display: block;margin: auto;">
+    </highcharts-chart>
+</div>

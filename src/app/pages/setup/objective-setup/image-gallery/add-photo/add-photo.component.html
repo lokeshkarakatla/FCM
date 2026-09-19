@@ -1,0 +1,69 @@
+<div class="NewHeader">
+    <h1 mat-dialog-title>
+        {{data ? 'Update' : 'Add'}} Image
+    </h1>
+</div>
+<div mat-dialog-content>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Audit Type </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <mat-select class="form-control" placeholder="Select Audit Type" required>
+                    <mat-option [value]="0">Product Quality Audit</mat-option>
+                    <mat-option [value]="1">Body Audit</mat-option>
+                    <mat-option [value]="2">Paint Audit</mat-option>
+
+                </mat-select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Image Title: </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <input type="text" class="form-control" placeholder="Enter Title">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-sm-4 ">Upload Image:</label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <input type="file" #fileinput id="file-upload" placeholder="Enter Document">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Enter Zones: (Ex:Zone 1,Zone 2,Zone 3) </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <input type="text" class="form-control" placeholder="Enter  Zone">
+            </div>
+        </div>
+        <!-- <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Add Image: </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <mat-select class="form-control" placeholder="Select Image" required>
+                    <mat-option [value]="0">Back Rear Grill</mat-option>
+                    <mat-option [value]="1">Front right head lamp</mat-option>
+                    <mat-option [value]="2">Back Rear tail lamp</mat-option>
+                    <mat-option [value]="3">Front Bumper section</mat-option>
+
+                </mat-select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Add checkpoint: </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <input type="text" class="form-control" placeholder="Enter Checkpoint">
+            </div>
+        </div> -->
+
+
+
+    </form>
+</div>
+<mat-dialog-actions align="end">
+    <button mat-raised-button class="btn-primary" [mat-dialog-close]="'test'">
+        <mat-icon>save</mat-icon><span> {{ data ? ' Update' : ' Save'}}</span>
+    </button>
+    <button mat-raised-button class="add-dark-hover btn-default" (click)="close()">
+        <mat-icon>cancel</mat-icon> Close
+    </button>
+</mat-dialog-actions>

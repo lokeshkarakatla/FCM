@@ -1,0 +1,43 @@
+<div class="dialog-header pt-2" style="height:50px">
+    <h2 mat-dialog-title class="m-0 text-center text-white pb-2 pt-2 mt-2" style="padding-top:0px; padding-left: 20px; font-weight: 400;font-size: 24px;">Add Photo</h2>
+</div>
+
+ <div class="upload-container pt-4">
+
+  <input
+    type="file"
+    #fileInput
+    hidden
+    multiple
+  >
+
+  <div class="drag-drop-zone" (click)="fileInput.click()">
+
+    <div class="upload-text">
+      Drag and drop files here
+    </div>
+
+    <button
+      mat-raised-button
+      type="button"
+      class="browse-btn"
+      (click)="$event.stopPropagation(); fileInput.click()"
+    >
+      Browse Files
+    </button>
+
+  </div>
+
+</div>
+
+<mat-dialog-actions align="end" class="pb-2 pe-3">
+    <button mat-raised-button class="close-btn" (click)="onClose()">
+        <mat-icon style="font-size: 20px; height: 20px; width: 20px; margin-right: 4px; margin-top: 4px;">cancel</mat-icon> 
+        Close
+    </button>
+    <button mat-raised-button color="primary" class="save-btn">
+    <mat-icon style="font-size: 20px; height: 20px; width: 20px; margin-right: 4px; margin-top: 4px;">save</mat-icon>
+    Save
+</button>
+    
+</mat-dialog-actions>

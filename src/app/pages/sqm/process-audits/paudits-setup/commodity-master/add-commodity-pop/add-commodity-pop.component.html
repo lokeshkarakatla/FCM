@@ -1,0 +1,85 @@
+<div class="NewHeader">
+<h3 style="padding-top:0px; padding-left: 20px; font-weight: 400;font-size: 24px;">
+  {{ isEditMode ? 'Update Commodity' : 'Add Commodity' }}
+</h3>
+</div>
+
+<div>
+    <div fxLayout="row wrap" class="col-sm-12">
+        <div class="col-sm-12" style="margin-top: 0px; padding-left: 10px; padding-right: 20px;">
+            <form>
+                <div>
+
+                    <div class="row" style="margin-bottom: 12px;">
+                        <div class="col-sm-4">
+                            <label class="add-member-label mt-2" style="margin-top:5px; font-weight: bold;">
+                                Commodity Name :
+                            </label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control mt-2" placeholder="Enter Commodity Name">
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-bottom: 12px;">
+                        <div class="col-sm-4">
+                            <label class="add-member-label mt-2" style="margin-top:5px; font-weight: bold;">
+                                Upload Parameter Template :
+                            </label>
+                        </div>
+                        <div class="col-sm-8">
+
+                            <!-- Hidden file input -->
+                            <input #fileInput type="file" style="display: none;" (change)="onFileSelected($event)">
+
+                            <!-- Drag & Drop Zone -->
+                            <div
+                                class="drag-drop-zone"
+                                [class.drag-over]="isDragOver"
+                                (click)="fileInput.click()"
+                                (dragover)="onDragOver($event)"
+                                (dragleave)="onDragLeave($event)"
+                                (drop)="onDrop($event)">
+
+                                <!-- Upload Icon -->
+                                <div class="upload-icon">
+                                    <mat-icon>upload</mat-icon>
+                                </div>
+
+                                <!-- File name shown after selection, otherwise prompt -->
+                                <span class="drag-drop-text">
+                                    {{ selectedFileName ? selectedFileName : 'Drag and drop files here' }}
+                                </span>
+
+                                <!-- Browse Button -->
+                                <button
+                                    mat-raised-button
+                                    class="browse-btn"
+                                    type="button"
+                                    color="primary"
+                                    (click)="$event.stopPropagation(); fileInput.click()">
+                                    Browse Files
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+
+            <mat-dialog-actions align="end"
+                style="margin-top: 15px; display: flex; justify-content: flex-end; margin-right: -20px;">
+                <button mat-raised-button class="ms-2 add-dark-hover btn-default" (click)="close()"
+                    style="background-color: lightgray; color: red; margin-right: 5px;">
+                    <mat-icon>cancel</mat-icon> Close
+                </button>
+                <button mat-raised-button type="submit" class="save" color="primary" style="margin-right: 17px;">
+                  <mat-icon>save</mat-icon>
+{{ isEditMode ? 'Update' : 'Save' }}
+                </button>
+            </mat-dialog-actions>
+
+        </div>
+    </div>
+</div>

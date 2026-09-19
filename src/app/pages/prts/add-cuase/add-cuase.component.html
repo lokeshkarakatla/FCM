@@ -1,0 +1,65 @@
+<div class="NewHeader" style="background-color:#286ba5 !important; height: 50px;">
+    <h1 class="mat-dialog-title" mat-dialog-title="" id="mat-dialog-title-7">
+        Add Cause 
+    </h1>
+</div>
+<div class="mat-dialog-content" mat-dialog-content="">
+    <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
+        <div class="form-group ">
+            <label class="col-lg-4 control-label"> Enter Short Code: </label>
+            <div class="col-lg-8 ">
+                <textarea type="text" class="form-control" style="height: 50px; " placeholder=" Enter Short Code"
+                    required></textarea>
+
+            </div>
+        </div>
+        <div class="form-group ">
+            <label class="col-lg-4 control-label"> Enter Possible Cause: </label>
+            <div class="col-lg-8 ">
+                <textarea type="text" class="form-control" style="height: 50px; " placeholder=" Enter Possible Cause"
+                    required></textarea>
+
+            </div>
+        </div>
+<div class="form-group">
+  <label class="col-lg-4 control-label">Issue Category:</label>
+  <div class="col-lg-8">
+    <mat-form-field appearance="fill" style="width: 100%;">
+      <mat-label>Select Issue Category</mat-label>
+      <mat-select [(ngModel)]="selectedCategory" name="issuecategory" required>
+        <mat-option value="man">Man</mat-option>
+        <mat-option value="material">Material</mat-option>
+        <mat-option value="machines">Machines</mat-option>
+        <mat-option value="methods">Methods</mat-option>
+        <mat-option value="environment">Environment</mat-option>
+        <mat-option value="supply_exception">Supply Exception</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+
+
+
+
+    </form>
+</div>
+
+
+
+<div class="margin-left:15px">
+    <mat-dialog-actions align="end" style="margin-right:30px;">
+        <button *ngIf="!isSaveBtnClicked" mat-raised-button color="primary" class="add-hover" type="submit"
+            (click)="close(null)">
+            <mat-icon>save</mat-icon>&nbsp;Save
+        </button>
+        <button mat-raised-button class="add-hover  pull-right " type="button" style="background-color:#dcdfe0;"
+            (click)="close(null)">
+            <mat-icon>cancel</mat-icon> &nbsp;Cancel
+        </button>
+        <button *ngIf="isSaveBtnClicked" mat-raised-button class="add-hover btn-success pull-right CancelClass"
+            disabled>
+            <i class='fas fa-spinner fa-spin'></i>&nbsp;Saving..
+        </button>
+
+    </mat-dialog-actions>
+</div>

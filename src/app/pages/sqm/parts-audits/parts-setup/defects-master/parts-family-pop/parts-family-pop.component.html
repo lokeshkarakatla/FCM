@@ -1,0 +1,28 @@
+<div class="NewHeader">
+  <h1 mat-dialog-title>Parts Families</h1>
+</div>
+<div mat-dialog-content style="overflow:hidden!important;">
+  <form class="form-horizontal" novalidate style="margin-top:10px">
+    <div style="margin-bottom: 10px;"><mat-checkbox class="col-sm-6">Engine Components</mat-checkbox></div>
+    <div style="margin-bottom: 10px;"><mat-checkbox class="col-sm-6">Transmission Systems</mat-checkbox></div>
+    <div style="margin-bottom: 10px;"><mat-checkbox class="col-sm-6">Chasis and Frame</mat-checkbox></div>
+    <div style="margin-bottom: 10px;"><mat-checkbox class="col-sm-6">Suspension Parts</mat-checkbox></div>
+    <div style="margin-bottom: 10px;"><mat-checkbox class="col-sm-6">Electrical System</mat-checkbox></div>
+    <div style="margin-bottom: 10px;"><mat-checkbox class="col-sm-6">Braking Systems</mat-checkbox></div>
+    <div style="margin-bottom: 10px;"><mat-checkbox class="col-sm-6">Body and Cabin</mat-checkbox></div>
+    <div style="margin-bottom: 10px;"><mat-checkbox class="col-sm-6">Fuel Systems</mat-checkbox></div>
+    <div style="margin-bottom: 10px;"><mat-checkbox class="col-sm-6">Cooling Systems</mat-checkbox></div>
+        <div style="margin-bottom: 10px;"><mat-checkbox class="col-sm-6">Steering Systems</mat-checkbox></div>
+  </form>
+</div>
+
+
+<mat-dialog-actions align="end" style="margin-top: 10px;">
+  
+  <button mat-raised-button class="grey" style="color:red" (click)="close()">
+    <mat-icon>cancel</mat-icon>Cancel
+  </button>
+  <button mat-raised-button color="primary" (click)="close()">
+    <mat-icon>save</mat-icon>Save
+  </button>
+</mat-dialog-actions>

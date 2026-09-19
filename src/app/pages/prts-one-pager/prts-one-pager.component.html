@@ -1,0 +1,58 @@
+<div class="layout-container">
+
+
+
+  <!-- Sidebar -->
+  <div class="sidebar" [ngClass]="{'nav-open': isNavOpen, 'nav-closed': !isNavOpen}">
+
+    <!-- Toggle Button -->
+    <button (click)="toggleNav()" class="toggle-button ms-3">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <ul>
+      <li class="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" routerLink="base-info">
+        <a>
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Base Info" >info</mat-icon>
+          <span *ngIf="isNavOpen">Base Info</span>
+        </a>
+      </li>
+
+      <li   routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" routerLink="updates">
+        <a>
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Updates"   >update</mat-icon>
+          <span *ngIf="isNavOpen">Updates</span>
+        </a>
+      </li>
+
+      <li   routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+        routerLink="action/grid-view">
+        <a>
+          <mat-icon *ngIf="!isNavOpen" matTooltip="CAPA"  >assignment</mat-icon>
+          <span *ngIf="isNavOpen">CAPA</span>
+        </a>
+      </li>
+
+      <li   routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" routerLink="mitigation">
+        <a>
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Mitigation"   >build</mat-icon>
+          <span *ngIf="isNavOpen">Mitigation</span>
+        </a>
+      </li>
+
+      <li   routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" routerLink="document">
+        <a>
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Documents"   >folder</mat-icon>
+          <span *ngIf="isNavOpen">Documents</span>
+        </a>
+      </li>
+    </ul>
+
+  </div>
+
+  <!-- Content -->
+  <div class=" content">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

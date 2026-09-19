@@ -1,0 +1,164 @@
+<!-- 
+<button mat-raised-button style="background-color: black;
+    color: white;
+    margin-left: 91.8%;
+    margin-bottom: 8px;"
+    class=" filters-hover margin-right-10 mt-3" (click)="filterToggle = !filterToggle">
+    <mat-icon>filter_list</mat-icon> Filter
+</button> -->
+<div class="col-sm-12 mt-4 " style="    margin-left: -2px;
+    margin-bottom: 15px;">
+    <div class="col-lg-4 col-sm-4">
+        <div class="form-group">
+            <label class="control-label col-sm-4 mt-2">Select Period: </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 mt-1">
+                <mat-select class="form-control" [value]="0">
+                    <mat-option [value]="0">This Year (2022)</mat-option>
+                    <mat-option [value]="1">Last Years</mat-option>
+                    <mat-option [value]="2">Last 60 Days</mat-option>
+                    <mat-option [value]="3">Last 6 Months</mat-option>
+                    <mat-option [value]="4">Last 12 Months</mat-option>
+                    <mat-option [value]="5">Last 2 Years</mat-option>
+                </mat-select>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="col-sm-1">
+        <button mat-raised-button class="pull-right btn-success">
+            GO
+        </button>
+    </div> -->
+</div>
+
+<div class="col-sm-12 mt-4"  *ngIf="filterToggle">
+    <div fxLayout="row wrap" style="margin-bottom: 10px">
+        <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p w-100 margins">
+            <mat-card class="filter" style="margin-top: -18px;">
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="col-sm-4 newMarginClass">
+                                From Date:
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="date" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="col-sm-4 newMarginClass">
+                                To Date:
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="date" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="col-sm-4 newMarginClass">
+                                Audit Type:
+                            </div>
+                            <div class="col-sm-8">
+                                <mat-select class="form-control" placeholder="Select Audit Type">
+                                    <mat-option [value]="0">PQA</mat-option>
+                                    <mat-option [value]="1">Body Audit</mat-option>
+                                    <mat-option [value]="2">Paint Audit</mat-option>
+                                    <mat-option [value]="3">Process Audit</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 mt-2">
+                            <div class="col-sm-4 newMarginClass">
+                                Color:
+                            </div>
+                            <div class="col-sm-8">
+                                <mat-select class="form-control" placeholder="Select Color">
+                                    <mat-option [value]="0">Red</mat-option>
+                                    <mat-option [value]="1">Green</mat-option>
+                                    <mat-option [value]="2">White</mat-option>
+                                    <mat-option [value]="3">Blue</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 mt-2">
+                            <div class="col-sm-4 newMarginClass">
+                                Model:
+                            </div>
+                            <div class="col-sm-8">
+                                <mat-select class="form-control" placeholder="Select Model">
+                                    <mat-option [value]="0">Hector</mat-option>
+                                    <mat-option [value]="1">Astor</mat-option>
+                                    <mat-option [value]="2">Gloster</mat-option>
+                                    <mat-option [value]="3">ZSEV</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 mt-2">
+                            <div class="col-sm-4 newMarginClass">
+                                Fuel Type:
+                            </div>
+                            <div class="col-sm-8">
+                                <mat-select class="form-control" placeholder="Select Fuel Type">
+                                    <mat-option [value]="0">Petrol</mat-option>
+                                    <mat-option [value]="1">Diesel</mat-option>
+                                    <mat-option [value]="2">EV</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+                    </div>
+
+                 <div class="row" style="padding-top:10px; margin-right:2px !important">
+            <div>
+             <a (click)="filterToggle = !filterToggle" class="pull-right"
+                         style="font-size: 25px; cursor: pointer; margin-left: 5px">
+                        <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                      </a>
+                            <button mat-raised-button class="pull-right btn-default margin-right-10"
+                              (click)="clearFilter();getTests()">
+                        <mat-icon>settings_backup_restore</mat-icon> Clear
+                      </button>
+                      <button mat-raised-button color="primary" class="pull-right margin-right-10"
+                              (click)="getTests()">
+                        <mat-icon>search</mat-icon> Search
+                      </button>
+            </div>
+          </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
+<!-- Creating Table -->
+<div class="col-sm-12">
+    <div style="margin-left: 13px;">
+        <div class="table-responsive">
+            <table id="example2" class="table table-bordered table-hover">
+                <thead class="tbl-head">
+                    <tr class="tr-grid-header">
+                        <th>Parameters</th>
+                        <!-- <th>Category</th>
+                        <th>Measure</th> -->
+                        <th class="text-center">PSR</th>
+                        <th class="text-center">One Pager</th>
+                        <th class="text-center">Last  Updated</th>
+                        <!-- <th class="text-center">Last Closed Date</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of tableList">
+                        <td>{{item.Issues}}</td>
+                        <!-- <td>{{item.category}}</td>
+                        <td>{{item.measure}}</td> -->
+                        <td class="text-center" style="color: blue;" (click)="addchecklistaudit(item)">
+                            {{item.Reference}}</td>
+                        <td class="text-center" style="color: blue;" (click)="openONEdialog(item)">
+                            {{item.one}}</td>
+                        <td class="text-center">{{item.Initiated}}</td>
+                        <!-- <td class="text-center">{{item.Closed}}</td> -->
+                    </tr>
+                </tbody>
+            </table>
+            <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+                [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons>
+            </mat-paginator>
+        </div>
+    </div>
+</div>

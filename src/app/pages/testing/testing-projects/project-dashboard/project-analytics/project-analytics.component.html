@@ -1,0 +1,197 @@
+<div class="dashboard-container">
+  
+  <div class="dashboard-header">
+    <div class="header-titles">
+      <h1>Project Dashboard</h1>
+      <p class="subtitle">Real-time overview of NPI timeline, production metrics, and resource allocation.</p>
+    </div>
+
+    <div class="time-toggle">
+      <button *ngFor="let frame of timeframes" 
+              [class.active]="frame === selectedTimeframe"
+              (click)="setTimeframe(frame)">
+        {{ frame }}
+      </button>
+    </div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="card kpi-card">
+      <div class="kpi-header">
+        <div class="icon-box blue"><mat-icon>trending_up</mat-icon></div>
+        <span class="badge blue-badge">Stage 3/7</span>
+      </div>
+      <h2 style="color:#3b82f6">26%</h2>
+      <p class="title">Completion</p>
+      <p class="subtitle">-4% vs plan</p>
+    </div>
+
+    <div class="card kpi-card">
+      <div class="kpi-header">
+        <div class="icon-box green"><mat-icon>layers</mat-icon></div>
+      </div>
+      <h2 class="text-green">Prototyping</h2>
+      <p class="title">Current Stage</p>
+      <p class="subtitle">Prototyping - Stage 3 of 7</p>
+    </div>
+
+    <div class="card kpi-card">
+      <div class="kpi-header">
+        <div class="icon-box orange"><mat-icon>calendar_today</mat-icon></div>
+      </div>
+      <h2 class="text-orange">15 July 2026</h2>
+      <p class="title">Stage ETA</p>
+      <p class="subtitle">23 days remaining</p>
+    </div>
+
+    <div class="card kpi-card">
+      <div class="kpi-header">
+        <div class="icon-box red" ><mat-icon >error_outline</mat-icon></div>
+        <span class="badge red-badge"><mat-icon class="small-icon mt-3">warning</mat-icon> Monitor</span>
+      </div>
+      <h2 class="text-red">38%</h2>
+      <p class="title">Buffer Status</p>
+      <p class="subtitle">consumed of 45-day buffer</p>
+    </div>
+  </div>
+
+  <div class="row-2-grid">
+    <div class="card task-card">
+      <div class="card-header">
+        <div>
+          <h3>Overdue tasks</h3>
+          <p class="subtitle">Sorted by slip days</p>
+        </div>
+        <span class="task-count">6 active</span>
+      </div>
+      
+      <div class="task-list">
+        <div class="task-item" *ngFor="let task of overdueTasks">
+          <div class="task-info">
+            <p class="task-name">{{ task.name }}</p>
+            <p class="task-assignee">{{ task.assignee }}</p>
+          </div>
+          <div class="task-meta">
+            <span class="status-badge" [ngClass]="task.status.toLowerCase()">{{ task.status }}</span>
+            <span class="slip-days">{{ task.slipDays }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   <div class="card chart-card">
+      <div class="card-header">
+        <div>
+          <h3>Active tasks - Gantt</h3>
+          <p class="subtitle">Jun - Sep 2026 timeline</p>
+        </div>
+        <div class="gantt-legend">
+           <span class="legend-item"><span class="dot green"></span> Done</span>
+           <span class="legend-item"><span class="dot blue"></span> Active</span>
+           <span class="legend-item"><span class="dot red"></span> At risk</span>
+           <span class="legend-item"><span class="dot gray"></span> Planned</span>
+        </div>
+      </div>
+      
+      <div class="chart-container" style="border: none; background: transparent; height: 420px;">
+        <highcharts-chart 
+          [Highcharts]="Highcharts" 
+          [constructorType]="'ganttChart'" 
+          [options]="ganttChartOptions"
+          [(update)]="updateFlag"
+          style="width: 100%; height: 100%; display: block;">
+        </highcharts-chart>
+      </div>
+    </div>
+  </div>
+
+  <div class="row-3-grid">
+    <div class="card chart-card full-width">
+      <div class="card-header">
+        <div>
+          <h3>Completion velocity</h3>
+          <p class="subtitle">Monthly delivery vs cumulative plan trajectory</p>
+        </div>
+      </div>
+      <div class="chart-container" style="height: 300px; border: none; background: transparent;">
+        <highcharts-chart 
+          [Highcharts]="Highcharts" 
+          [options]="velocityChartOptions"
+          [(update)]="updateFlag"
+          style="width: 100%; height: 100%; display: block;">
+        </highcharts-chart>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-grid">
+    <div class="card chart-card">
+      <div class="card-header">
+        <div>
+          <h3>Plan vs Actual - Costs</h3>
+          <p class="subtitle">₹ Lakhs - monthly run-rate</p>
+        </div>
+      </div>
+      <div class="chart-container" style="border: none; background: transparent;">
+        <highcharts-chart 
+          [Highcharts]="Highcharts" 
+          [options]="costsChartOptions"
+          [(update)]="updateFlag"
+          style="width: 100%; height: 100%; display: block;">
+        </highcharts-chart>
+      </div>
+    </div>
+
+    <div class="card chart-card">
+      <div class="card-header">
+        <div>
+          <h3>Completion vs Buffer</h3>
+          <p class="subtitle">Weekly - burn ratio under watch</p>
+        </div>
+      </div>
+      <div class="chart-container" style="border: none; background: transparent;">
+        <highcharts-chart 
+          [Highcharts]="Highcharts" 
+          [options]="bufferChartOptions"
+          [(update)]="updateFlag"
+          style="width: 100%; height: 100%; display: block;">
+        </highcharts-chart>
+      </div>
+    </div>
+
+    <div class="card chart-card">
+      <div class="card-header">
+        <div>
+          <h3>Project expenses</h3>
+          <p class="subtitle">₹ Lakhs - stacked by category</p>
+        </div>
+      </div>
+      <div class="chart-container" style="border: none; background: transparent;">
+        <highcharts-chart 
+          [Highcharts]="Highcharts" 
+          [options]="expensesChartOptions"
+          [(update)]="updateFlag"
+          style="width: 100%; height: 100%; display: block;">
+        </highcharts-chart>
+      </div>
+    </div>
+
+    <div class="card chart-card">
+      <div class="card-header">
+        <div>
+          <h3>Project hours</h3>
+          <p class="subtitle">Effort allocation across teams</p>
+        </div>
+      </div>
+      <div class="chart-container" style="border: none; background: transparent;">
+        <highcharts-chart 
+          [Highcharts]="Highcharts" 
+          [options]="hoursChartOptions"
+          [(update)]="updateFlag"
+          style="width: 100%; height: 100%; display: block;">
+        </highcharts-chart>
+      </div>
+    </div>
+  </div>
+
+</div>

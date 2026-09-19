@@ -1,0 +1,96 @@
+<div class="analytics-container">
+
+  <div class="tab-row">
+
+    <button
+      mat-raised-button
+      class="tab-btn"
+      routerLink="commodity"
+      routerLinkActive="active-tab"
+      #rla1="routerLinkActive"
+      [color]="rla1.isActive ? 'primary' : ''"
+      (click)="forceUpdate()" 
+    >
+      Commodity
+    </button>
+
+    <button
+      mat-raised-button
+      class="tab-btn"
+      routerLink="performance"
+      routerLinkActive="active-tab"
+      #rla2="routerLinkActive"
+      [color]="rla2.isActive ? 'primary' : ''"
+      (click)="forceUpdate()"
+    >
+      Performance
+    </button>
+
+    <button
+      mat-raised-button
+      class="tab-btn"
+      routerLink="analyticsactions"
+      routerLinkActive="active-tab"
+      #rla3="routerLinkActive"
+      [color]="rla3.isActive ? 'primary' : ''"
+      (click)="forceUpdate()"
+    >
+      Actions
+    </button>
+
+    <button
+      mat-raised-button
+      class="tab-btn"
+      routerLink="scatter"
+      routerLinkActive="active-tab"
+      #rla4="routerLinkActive"
+      [color]="rla4.isActive ? 'primary' : ''"
+      (click)="forceUpdate()"
+    >
+      Scatter
+    </button>
+
+    <button
+      mat-raised-button
+      class="tab-btn"
+      routerLink="bell-curve"
+      routerLinkActive="active-tab"
+      #rla5="routerLinkActive"
+      [color]="rla5.isActive ? 'primary' : ''"
+      (click)="forceUpdate()"
+    >
+      Bell Curve
+    </button>
+
+    <button
+      mat-raised-button
+      class="tab-btn"
+      routerLink="pareto"
+      routerLinkActive="active-tab"
+      #rla6="routerLinkActive"
+      [color]="rla6.isActive ? 'primary' : ''"
+      (click)="forceUpdate()"
+    >
+      Pareto
+    </button>
+    <button
+      mat-raised-button
+      class="tab-btn"
+      routerLink="summary"
+      routerLinkActive="active-tab"
+      #rla6="routerLinkActive"
+      [color]="rla6.isActive ? 'primary' : ''"
+      (click)="forceUpdate()"
+    >
+      Summary
+    </button>
+
+  </div>
+
+  <div class="analytics-content">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>
+
+

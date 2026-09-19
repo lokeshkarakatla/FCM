@@ -1,0 +1,162 @@
+<div class="page-wrapper">
+  <div class="dashboard-controls">
+    <div class="dash-btn-group">
+      <button *ngFor="let dash of dashboards" class="dash-btn" [class.active]="activeDistribution === dash.key"
+        [style.background-color]="activeDistribution === dash.key ? dash.color : null"
+        (click)="setActiveDistribution(dash.key)">
+        {{ dash.title }}
+      </button>
+    </div>
+
+    <div class="right-controls">
+      <div class="pills">
+        <ul class="nav nav-pills">
+          <li [class.active]="currentView === 'graph'" (click)="setView('graph')">
+            <a mat-raised-button>
+              <mat-icon>bar_chart</mat-icon> Graph
+            </a>
+          </li>
+          <li [class.active]="currentView === 'grid'" (click)="setView('grid')">
+            <a mat-raised-button>
+              <mat-icon>grid_on</mat-icon> Grid
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="dashboard-content">
+    <div [ngSwitch]="activeDistribution">
+
+      <div *ngSwitchCase="'model'" class="content-section">
+        <h3>Model Wise Distribution</h3>
+        <div *ngIf="currentView === 'grid'" class="table-section">
+          <table class="table table-bordered table-hover text-center">
+            <thead class="tbl-head">
+              <tr>
+                <th>Model</th>
+                <th>Pending</th>
+                <th>Design</th>
+                <th>Implement</th>
+                <th>Others</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of values">
+                <td>{{item.category}}</td>
+                <td><a (click)="navigate()" style="color: blue">{{item.c}}</a></td>
+                <td><a (click)="navigate()" style="color: blue">{{item.r2}}</a></td>
+                <td><a (click)="navigate()" style="color: blue">{{item.r1}}</a></td>
+                <td><a (click)="navigate()" style="color: blue">{{item.o}}</a></td>
+                <td><a (click)="navigate()" style="color: blue">{{item.total}}</a></td>
+              </tr>
+            </tbody>
+            <tfoot class="tbl-head">
+              <tr>
+                <th>Grand Total</th>
+                <th>{{modelTotals.pending}}</th>
+                <th>{{modelTotals.design}}</th>
+                <th>{{modelTotals.implement}}</th>
+                <th>{{modelTotals.others}}</th>
+                <th>{{modelTotals.total}}</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div *ngIf="currentView === 'graph'" class="chart-section">
+          <div class="chart-filters">
+            <div class="btn-group">
+              <button *ngFor="let cat of ['Distribution', 'Pending', 'Design', 'Implement', 'Others', 'Total']"
+                (click)="setModelCategory(cat)" [class.active]="selectedModelCategory === cat">
+                {{ cat }}
+              </button>
+            </div>
+          </div>
+          <div *ngIf="!isModelPieChartMode()" id="modelBarContainer"></div>
+          <div *ngIf="isModelPieChartMode()" id="modelPieContainer"></div>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'country'" class="content-section">
+        <h3>Country Wise Distribution</h3>
+        <div *ngIf="currentView === 'grid'" class="table-section">
+          <table class="table table-bordered table-hover">
+            <thead class="tbl-head">
+              <tr>
+                <th>Country</th>
+                <th>Pending</th>
+                <th>Design</th>
+                <th>Implement</th>
+                <th>Others</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of values1">
+                <td>{{item.category}}</td>
+                <td><a (click)="navigate()" style="color: blue">{{item.c}}</a></td>
+                <td><a (click)="navigate()" style="color: blue">{{item.r2}}</a></td>
+                <td><a (click)="navigate()" style="color: blue">{{item.r1}}</a></td>
+                <td><a (click)="navigate()" style="color: blue">{{item.o}}</a></td>
+                <td><a (click)="navigate()" style="color: blue">{{item.total}}</a></td>
+              </tr>
+            </tbody>
+            <tfoot class="tbl-head">
+              <tr>
+                <th>Grand Total</th>
+                <th>{{countryTotals.pending}}</th>
+                <th>{{countryTotals.design}}</th>
+                <th>{{countryTotals.implement}}</th>
+                <th>{{countryTotals.others}}</th>
+                <th>{{countryTotals.total}}</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div *ngIf="currentView === 'graph'" class="chart-section">
+          <div class="chart-filters">
+            <div class="btn-group">
+              <button *ngFor="let cat of ['Distribution', 'Pending', 'Design', 'Implement', 'Others', 'Total']"
+                (click)="setCountryCategory(cat)" [class.active]="selectedCountryCategory === cat">
+                {{ cat }}
+              </button>
+            </div>
+          </div>
+          <div *ngIf="!isCountryPieChartMode()" id="countryBarContainer"></div>
+          <div *ngIf="isCountryPieChartMode()" id="countryPieContainer"></div>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'ageing'" class="content-section">
+        <h3>Ageing Analysis</h3>
+        <div *ngIf="currentView === 'grid'" class="table-section">
+          <table class="table table-bordered table-hover">
+            <thead class="tbl-head">
+              <tr>
+                <th>Period</th>
+                <th>Issues</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of values2">
+                <td>{{item.period}}</td>
+                <td><a (click)="navigate()" style="color: blue">{{item.issues}}</a></td>
+              </tr>
+            </tbody>
+            <tfoot class="tbl-head">
+              <tr>
+                <th>Total</th>
+                <th>{{ageingTotal}}</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div *ngIf="currentView === 'graph'" class="chart-section">
+          <div id="ageingPieContainer"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

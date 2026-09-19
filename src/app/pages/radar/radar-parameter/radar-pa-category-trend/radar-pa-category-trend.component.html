@@ -1,0 +1,76 @@
+<!-- Table div-->
+<div class="row col-12 mt-5">
+    <div class="col-sm-12">
+      <div class="chart-header text-center">
+        <mat-card >
+          <h3>Defects Distribution by Category</h3>
+        </mat-card>
+      </div>
+      <div id="grid-table-container" class="table-responsive mt-4">
+        <table matSort id="example2" class="table table-bordered table-hover">
+          <thead class="tbl-head">
+            <tr >
+              <th class="text-center">Category</th>
+              <th class="text-center">Checkpoints</th>
+              <th class="text-center">Compilance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of items">
+              <td class="text-center">{{item.model }}</td>
+              <td class="text-center">{{item.issues }}</td> 
+              <td class="text-center">{{item.demerit }}</td> 
+                       </tr>
+                       <tr >
+                        <td class="text-center">Total</td>
+                        <td class="text-center">137</td> 
+                        <td class="text-center">75%</td> 
+                        </tr>    
+          </tbody>
+        </table>
+        
+      </div>
+  
+    </div>
+  </div>
+  <!-- Pie charts div-->
+  <div class="row col-12 mt-5">
+    <!-- Pie chart by checkpoints -->
+    <div class="col-sm-6 text-center">
+        <mat-card >
+          <div class="chart-header">
+            <h4>Distribution by Checkpoints</h4>
+          </div>
+          <ngx-charts-pie-chart
+            [scheme]="colorScheme"
+            [results]="first"
+            [explodeSlices]="explodeSlices"
+            [legend]="showLegend"
+            [labels]="showLabels"
+            [doughnut]="doughnut"
+            [gradient]="gradient"
+          >
+          </ngx-charts-pie-chart>
+      </mat-card>
+  </div>
+  <!-- Pie chart by compilance -->
+  <div class="col-6 text-center">
+        <mat-card >
+          <div class="chart-header">
+            <h4>Distribution by Compilance</h4>
+          </div>
+          <ngx-charts-pie-chart
+            [scheme]="colorScheme"
+            [results]="three"
+            [explodeSlices]="explodeSlices"
+            [legend]="showLegend"
+            [labels]="showLabels"
+            [doughnut]="doughnut"
+            [gradient]="gradient"
+          >
+          </ngx-charts-pie-chart>
+      </mat-card>
+  </div>
+  </div>
+  
+  

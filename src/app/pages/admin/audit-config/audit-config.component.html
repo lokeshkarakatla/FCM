@@ -1,0 +1,80 @@
+<div class="row-wrap">
+    <div class="w-100">
+        <!-- Master Data Tabs -->
+        <div class="col-xs-12" style="margin-top: 15px; margin-left: -1px;">
+            <div class="pills">
+                <ul class="nav nav-pills" style="margin-left: 10px;">
+                    <li routerLinkActive="active" [routerLink]="['./audit-model']">
+                        <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                            Models
+                        </a>
+                    </li>
+                    <li routerLinkActive="active" [routerLink]="['./audit-variants']">
+                        <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                            Variants
+                        </a>
+                    </li>
+                    <li routerLinkActive="active" [routerLink]="['./audit-plants']">
+                        <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                            Plant
+                        </a>
+                    </li>
+                    <!-- <li routerLinkActive="active" [routerLink]="['./audit-agencies']">
+                        <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                            Departments
+                        </a>
+                    </li> -->
+                    <!-- <li routerLinkActive="active" [routerLink]="['./audit-interior-trim']">
+                        <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                            Interior Trim
+                        </a>
+                    </li> -->
+                    <li routerLinkActive="active" [routerLink]="['./audit-color']">
+                        <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                            Color
+                        </a>
+                    </li>
+
+                    <li routerLinkActive="active" [routerLink]="['./audit-transmission']">
+                        <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                            Transmission
+                        </a>
+                    </li>
+                    <li routerLinkActive="active" [routerLink]="['./audit-fuel-type']">
+                        <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                            Fuel Type
+                        </a>
+                    </li>
+                    <li routerLinkActive="active" [routerLink]="['./audit-stages']">
+                        <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                            Stages
+                        </a>
+                    </li>
+
+                    <li routerLinkActive="active" [routerLink]="['./audit-engine-type']">
+                        <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                            Engine Type
+                        </a>
+                    </li>
+                    <li routerLinkActive="active" [routerLink]="['./audit-drive-type']">
+                        <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                            Drive Type
+                        </a>
+                    </li>
+                    <li routerLinkActive="active" [routerLink]="['./audit-drive-grade']">
+                        <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                            Drive Grade
+                        </a>
+                    </li>
+                    <li routerLinkActive="active" [routerLink]="['./audit-vehicle-type']">
+                        <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                            Vehicle Type
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

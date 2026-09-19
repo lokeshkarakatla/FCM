@@ -1,0 +1,127 @@
+<!-- Add,filter -->
+<div class="col-sm-8 mt-4" style="margin-left: -4px;">
+    <button [ngClass]="{'disable-custom' : !canCreate}" mat-raised-button color="primary"
+        class="pull-right  margin-right-5 mt-3" (click)="addmodule(null)">
+        <mat-icon>add</mat-icon> Add Department
+    </button>
+    <button mat-raised-button style="background-color: black; color: white;" class="pull-right  margin-right-10 mt-3"
+        (click)="filterToggle = !filterToggle">
+        <mat-icon>filter_list</mat-icon> Filter
+    </button>
+</div>
+<!--Filter Toggle-->
+<div class="col-lg-8" fxLayout="row wrap" *ngIf="filterToggle" style="margin-bottom: 20px;">
+    <div fxFlex="100" class="flex-p w-100">
+        <form>
+            <mat-card class="filter" style="width: 100.5%; margin-left: 6px;margin-bottom: -30px;">
+                <mat-card-content>
+                    <div class="row col-lg-12 col-sm-12">
+                        <!-- Project Dropdown -->
+                         <div class="col-sm-6 row me-2 mt-3">
+                            <div class="col-sm-3 newMarginClass"><b>Keyword:</b></div>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" placeholder="Enter Keyword "
+                                     required>
+                            </div>
+                        </div>
+
+                        
+
+                        <!-- Section Dropdown -->
+                        <div class="col-sm-6 row me-2 mt-3">
+                            <div class="col-sm-3 newMarginClass"><b style="margin-left: 10px;">Status:</b></div>
+                            <div class="col-sm-9">
+                                
+                                 <mat-select class="form-control" placeholder="Select Status " required>
+
+                                    <mat-option value="Maintenance">Active</mat-option>
+                                    <mat-option value="Engineering">Inactive</mat-option>
+                                    
+                                </mat-select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 row me-2 mt-3">
+                            <div class="col-sm-3 newMarginClass"><b>Department:</b></div>
+                            <div class="col-sm-9">
+                                <mat-select class="form-control" placeholder="Select Department Name"  multiple  required>
+
+                                    <mat-option value="Maintenance">Maintenance</mat-option>
+                                    <mat-option value="Engineering">Engineering</mat-option>
+                                    <mat-option value="RnD">RnD</mat-option>
+                                    <mat-option value="Purchase Department">Purchase Department</mat-option>
+                                    <mat-option value="Inspection">Inspection</mat-option>
+                                    <mat-option value="Quality Assurance">Quality Assurance</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+                        
+
+                        <!-- Buttons -->
+                        <div class="col-sm-6 pull-right mt-3"style="margin-left: -10px;" >
+                            <a (click)="filterToggle = !filterToggle" class="pull-right"
+                                style="font-size: 25px; cursor: pointer; margin-left: -7px">
+                                <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                            </a>
+                           
+                            <button mat-raised-button class="pull-right btn-default margin-right-10"
+                                (click)="clearFilter();getTests()">
+                                <mat-icon>settings_backup_restore</mat-icon> Clear
+
+                            </button>
+                             <button mat-raised-button color="primary" class="pull-right margin-right-10" (click)="getTests()">
+                                <mat-icon>search</mat-icon> Search
+                            </button>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+
+    </div>
+</div>
+
+<!-- Table -->
+<div class="col-sm-8 mt-4" style="margin-left:-5px;">
+    <div id="grid-table-container" class="table-responsive" style="margin-left: 25px;">
+        <table matSort id="example2" class="table table-bordered table-hover">
+            <thead class="tbl-head">
+                <tr>
+                    <th>Department</th>
+                    <th>Department Code</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center" style="width: 112px!important;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of tableList">
+                    <td>{{item.agency}}</td>
+                    <td>{{item.code}}</td>
+                    <td class="text-center" style="text-align: center !important;">
+                        <a [ngStyle]="{'color':  item.IsActive? 'blue' : 'red','cursor':'pointer'}"
+                            [ngClass]="{'disable-custom' : !canUpdate}">
+                            <span *ngIf="!item.IsActive" (click)="Confirmation(item)" style="color:red">Inactive</span>
+                            <span *ngIf=" item.IsActive" (click)="Confirmation(item)" style="color:blue;">Active</span>
+                        </a>
+                    </td>
+
+                    <td class="text-center editDel">
+                        <a [ngClass]="{'disable-custom' : !canUpdate}" style="cursor: pointer;margin-right:10px;"
+                            matTooltip="Edit" (click)="addmodule(item)">
+                            <i class="fa fa-edit" style="color: cornflowerblue"></i>
+                        </a>
+                        <a [ngClass]="{'disable-custom' : !canDelete || item.TotalUsed || item.Used}"><i
+                                class="fa fa-trash red" matTooltip="Delete" style="cursor: pointer;"
+                                (click)="deleteConfirmation(item)"></i></a>
+                    </td>
+                </tr>
+                <tr *ngIf="tableList ==null || tableList.length ==0">
+                    <td colspan="13" class="text-center">No data available</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- PAGINATION CONTENT  ------------------------------------------------------>
+        <mat-paginator class="col-sm-12" [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+            [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons>
+        </mat-paginator>
+    </div>
+</div>

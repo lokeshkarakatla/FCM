@@ -1,0 +1,361 @@
+<div class="col-sm-12">
+    <div class="row" style="margin-top: 15px; margin-left:40px;">
+        <div class="col-lg-6">
+            <mat-card-header fxLayoutAlign="center center" class="m-t-20">
+                <mat-card-subtitle>
+                    <h2>By Status</h2>
+                </mat-card-subtitle>
+            </mat-card-header>
+            <div class="w-100 h-300p">
+                <ngx-charts-pie-chart [scheme]="colorScheme" [results]="first" [legend]="showLegend"
+                    [explodeSlices]="explodeSlices" [labels]="showLabels" [doughnut]="doughnut" [gradient]="gradient"
+                    (select)="onSelect($event)">
+                </ngx-charts-pie-chart>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <mat-card-header fxLayoutAlign="center center" class="m-t-20">
+                <mat-card-subtitle>
+                    <h2>By Model</h2>
+                </mat-card-subtitle>
+            </mat-card-header>
+            <div class="w-100 h-300p">
+                <ngx-charts-pie-chart [scheme]="colorScheme" [results]="multi" [legend]="showLegend"
+                    [explodeSlices]="explodeSlices" [labels]="showLabels" [doughnut]="doughnut" [gradient]="gradient"
+                    (select)="onSelect($event)">
+                </ngx-charts-pie-chart>
+            </div>
+        </div>
+        <!-- <div class="col-lg-4">
+            <mat-card-header fxLayoutAlign="center center" class="m-t-20">
+                <mat-card-subtitle>
+                    <h2>Ageing Distribution</h2>
+                </mat-card-subtitle>
+            </mat-card-header>
+            <div class="w-100 h-300p">
+                <ngx-charts-pie-chart [scheme]="colorScheme" [results]="triple" [legend]="showLegend"
+                    [explodeSlices]="explodeSlices" [labels]="showLabels" [doughnut]="doughnut" [gradient]="gradient"
+                    (select)="onSelect($event)">
+                </ngx-charts-pie-chart>
+            </div>
+        </div> -->
+    </div>
+</div>
+
+<!-- Table -->
+<div>
+    <div class="col-xs-12" style="padding: 0 0 0 11px;">
+        <div id="grid-table-container" class="table-responsive" style="width: 99%;">
+            <!-- <h3>Checklist based Audit</h3> -->
+            <!-- Add Filter -->
+            <div class="container-fluid">
+                <div class="w-100">
+                    <div class="flex-p">
+                        <div class="row wrap">
+                            <div class="col-sm-12 no-padding">
+                                <div class="row-wrap">
+                                    <div class="w-100">
+                                        <div class="row pull-right" style="margin-right: -5px;">
+                                            <div class="">
+                                                <button mat-raised-button color="primary"
+                                                    class="pull-right  btn-primary  mt-3  "
+                                                    (click)="addchecklistaudit(null)">
+                                                    <mat-icon>add</mat-icon> Add Request
+                                                </button>
+
+                                                <button mat-raised-button
+                                                    class="pull-right  btn-primary margin-right-5   mt-3"
+                                                    (click)="grid(null)">
+                                                    Grid Columns
+                                                </button>
+                                                <button style="margin-bottom: 7px" mat-raised-button color="primary"
+                                                    class="pull-right filters-hover margin-right-10 mt-3"
+                                                    (click)="filterToggle = !filterToggle">
+                                                    <mat-icon>filter_list</mat-icon> Filter
+                                                </button>
+
+
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Filter UI -->
+            <div fxLayout="row wrap" *ngIf="filterToggle">
+                <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p w-100 margins">
+                    <mat-card class="filter">
+                        <mat-card-content>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="col-sm-4">
+                                        <label class="pull-right" style="margin-top: 6px;">Start Date:</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="date" placeholder="Start Date" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="col-sm-4">
+                                        <label class="pull-right" style="margin-top: 6px;">End Date:</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="date" placeholder="End Date" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="col-sm-4">
+                                        <label class="pull-right" style="margin-top: 6px;">VIN::</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <mat-select class="form-control" placeholder="Select VIN:" required>
+                                            <mat-option [value]="0">HR07 BP0721</mat-option>
+                                            <mat-option [value]="1">HR02 BP0421</mat-option>
+                                            <mat-option [value]="2">CG07 VP0021</mat-option>
+                                            <mat-option [value]="4">TN17 EP5021</mat-option>
+                                            <mat-option [value]="5">PN07 AM9021</mat-option>
+                                        </mat-select>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row" style="padding-top:10px !important">
+                                <div class="col-sm-4">
+                                    <div class="col-sm-4">
+                                        <label class="pull-right" style="margin-top: 6px;">Variant:</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <mat-select class="form-control" placeholder="Select Variant:" required>
+                                            <mat-option [value]="0">Automatic</mat-option>
+                                            <mat-option [value]="1">Semi-Automatic</mat-option>
+                                            <mat-option [value]="2">Manual</mat-option>
+                                        </mat-select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="col-sm-4">
+                                        <label class="pull-right" style="margin-top: 6px;">Interior Trim:</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <mat-select class="form-control" placeholder="Select Interior Trim:" required>
+                                            <mat-option [value]="0">High</mat-option>
+                                            <mat-option [value]="1">Low</mat-option>
+                                            <mat-option [value]="2">Medium</mat-option>
+                                        </mat-select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="col-sm-4">
+                                        <label class="pull-right" style="margin-top: 6px;">Color:</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <mat-select class="form-control" placeholder="Select Color:" required>
+                                            <mat-option [value]="0">Black</mat-option>
+                                            <mat-option [value]="1">White</mat-option>
+                                            <mat-option [value]="2">Blue</mat-option>
+                                            <mat-option [value]="4">Orange</mat-option>
+                                        </mat-select>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row" style="padding-top:10px !important">
+                                <div class="col-sm-4">
+                                    <div class="col-sm-4">
+                                        <label class="pull-right" style="margin-top: 6px;">Transmission:</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <mat-select class="form-control" placeholder="Select Transmission:" required>
+                                            <mat-option [value]="0">AMT</mat-option>
+                                            <mat-option [value]="1">DCT</mat-option>
+                                            <mat-option [value]="2">Manual</mat-option>
+                                        </mat-select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="col-sm-4">
+                                        <label class="pull-right" style="margin-top: 6px;">Fuel Type:</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <mat-select class="form-control" placeholder="Select Fuel Type:" required>
+                                            <mat-option [value]="0">Diesel</mat-option>
+                                            <mat-option [value]="1">Petrol</mat-option>
+
+                                        </mat-select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="col-sm-4">
+                                        <label class="pull-right" style="margin-top: 6px;">Status:</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <mat-select class="form-control" placeholder="Select Status:" required>
+                                            <mat-option [value]="0">Inactive</mat-option>
+                                            <mat-option [value]="1">Active</mat-option>
+
+                                        </mat-select>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row" style="padding-top:10px !important">
+                                <div class="col-sm-4">
+                                    <div class="col-sm-4">
+                                        <label class="pull-right" style="margin-top: 6px;">Max Issues:</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="Enter Max Issues">
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="col-sm-4">
+                                        <label class="pull-right" style="margin-top: 6px;">Min Issues:</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="Enter Min Issues">
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="col-sm-4">
+                                        <label class="pull-right" style="margin-top: 6px;">Max Compailance:</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="Enter Max Compailance">
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="row" style="padding-top:10px !important">
+                                <div class="col-sm-4">
+                                    <div class="col-sm-4">
+                                        <label class="pull-right" style="margin-top: 6px;">Min Compailance:</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" placeholder="Enter Min Compailance">
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="col-sm-4">
+                                        <label class="pull-right" style="margin-top: 6px;">Auditor</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <mat-select class="form-control" placeholder="Select VIN:" required>
+                                            <mat-option [value]="0">Surya</mat-option>
+                                            <mat-option [value]="1">Siva</mat-option>
+                                            <mat-option [value]="2">Ridhma</mat-option>
+                                            <mat-option [value]="4">Navin</mat-option>
+                                        </mat-select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="col-sm-4">
+                                        <label class="pull-right" style="margin-top: 6px;">Model:</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <mat-select class="form-control" placeholder="Select Model:" required>
+                                            <mat-option [value]="0">Hector</mat-option>
+                                            <mat-option [value]="1">Gloster</mat-option>
+                                            <mat-option [value]="2">Astor</mat-option>
+                                        </mat-select>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row" style="padding-top:10px !important">
+                                <div class="col-sm-12">
+                                    <button mat-raised-button class="pull-right btn-primary" style="margin-left: 5px;">
+                                        <mat-icon>youtube_searched_for</mat-icon> Go&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </button>
+                                    <button mat-raised-button style="background-color:#37474f; color:#fff !important;"
+                                        class="pull-right">
+                                        <mat-icon>settings_backup_restore</mat-icon> Clear
+                                    </button>
+                                </div>
+
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+
+            </div>
+            <!-- Table -->
+            <table matSort id="example2" class="table table-bordered table-hover">
+                <thead class="tbl-head">
+                    <tr>
+                        <th class="theadcolor">Reference</th>
+                        <th class="theadcolor">Author</th>
+                        <th class="theadcolor">Subject</th>
+                        <th class="theadcolor">Description</th>
+                        <th class="theadcolor">Document</th>
+                        <th class="theadcolor">Location</th>
+                        <!-- <th class="theadcolor">Auditor</th> -->
+                        <th class="theadcolor">Model</th>
+                        <!-- <th class="theadcolor">Variant</th>
+            <th class="theadcolor">Interior Trim</th> -->
+                        <th class="theadcolor">Colour</th>
+                        <th class="theadcolor">Transmission</th>
+                        <th class="theadcolor text-center">Fuel Type</th>
+                        <th class="theadcolor">Date</th>
+                        <th class="theadcolor text-center">Status</th>
+                        <th class="theadcolor text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of values">
+                        <td> <a (click)="opendashboard()"
+                                style="color: cornflowerblue;cursor: pointer;">{{item.ref}}</a></td>
+                        <td>{{item.VIN}}</td>
+                        <td><a (click)="opendashboard()"
+                                style="color: cornflowerblue;cursor: pointer;">{{item.AuditType}}</a></td>
+                        <td class="text-center">
+                            <a>{{item.Checkpoints}}</a>
+                        </td>
+                        <td class="text-center">
+                            <mat-icon>library_books</mat-icon>
+                        </td>
+                        <td>{{item.Location}}</td>
+                        <!-- <td>{{item.Auditor}}</td> -->
+                        <td>{{item.Model}}</td>
+                        <!-- <td>{{item.Variant}}</td>
+            <td>{{item.Interior_Trim}}</td> -->
+                        <td>{{item.Colour}}</td>
+                        <td>{{item.Transmission}}</td>
+                        <td>{{item.Fuel_Type}}</td>
+                        <td>{{item.Date}}</td>
+                        <td>
+                            <mat-select class="form-control" placeholder="Select Status" required>
+                                <mat-option [value]="0">Initiated</mat-option>
+                                <mat-option [value]="1">Under Process</mat-option>
+                                <mat-option [value]="2">On Hold</mat-option>
+                                <mat-option [value]="3">Done</mat-option>
+
+                            </mat-select>
+                        </td>
+                        <td class="text-center editDel">
+                            <a style="cursor: pointer;" matTooltip="Edit" (click)="addchecklistaudit(1)">
+                                <i class="fa fa-edit" style="color: cornflowerblue"></i>
+                            </a>
+                            <a><i class="fa fa-trash red" matTooltip="Delete" style="cursor: pointer;"></i>
+                            </a>
+                            <a><i class="fa fa-archive" matTooltip="Archive" style="cursor: pointer;"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Pagination -->
+            <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+                [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+        </div>
+    </div>
+</div>

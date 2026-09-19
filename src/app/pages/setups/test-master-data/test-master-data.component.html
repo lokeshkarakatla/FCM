@@ -1,0 +1,25 @@
+<div class="nav-container" [ngClass]="{'nav-open': isNavOpen, 'nav-closed': !isNavOpen}">
+
+  <button (click)="toggleNav()" class="toggle-button">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <nav class="nav-links">
+    <ul>
+      <li *ngFor="let item of navItems" routerLinkActive="active">
+        <a [routerLink]="[item.link]" (click)="setActiveItem(item.name)">
+          <mat-icon *ngIf="!isNavOpen" [matTooltip]="item.name">{{ item.icon }}</mat-icon>
+          <span *ngIf="isNavOpen">{{ item.name }}</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+</div>
+
+<div [ngClass]="{'full-width': !isNavOpen}" class="col-sm-10">
+  <div class="active-title-bar">
+    <label class="active-title-label">{{ activeItemName }}</label>
+  </div>
+  <router-outlet></router-outlet>
+</div>

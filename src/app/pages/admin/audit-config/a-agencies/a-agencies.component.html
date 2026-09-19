@@ -1,0 +1,113 @@
+<!-- Add,filter -->
+<div class="col-sm-12 mt-4">
+    <button [ngClass]="{'disable-custom' : !canCreate}" mat-raised-button color="primary"
+        class="pull-right  btn-primary margin-right-5 mt-3" (click)="addmodule(null)">
+        <mat-icon>add</mat-icon> Add Agency
+    </button>
+    <button mat-raised-button style="background-color: black; color:white;"
+        class="pull-right filter-hover margin-right-10 mt-3" (click)="filterToggle = !filterToggle">
+        <mat-icon>filter_list</mat-icon> Filter
+    </button>
+</div>
+<!--Filter Toggle-->
+<div class="col-lg-12" fxLayout="row wrap" *ngIf="filterToggle" style="margin-bottom: 20px;">
+    <div fxFlex="100" class="flex-p w-100">
+        <form [formGroup]="filterForm">
+            <mat-card class="filter">
+                <mat-card-content>
+                    <div class="row col-lg-12 col-sm-12">
+                        <!-- Project Dropdown -->
+                        <div class="col-sm-6 row me-2 mt-3">
+                            <div class="col-sm-3 newMarginClass"><b>Agency :</b></div>
+                            <div class="col-sm-9">
+                                <select class="form-control">
+                                    <option >-- Select Agency Name --</option>
+                                    <option>Maintenance</option>
+                                    <option>Engineering</option>
+                                    <option>RnD</option>
+                                    <option>Purchase Department</option>
+                                    <option>Inspection</option>
+                                    <option>Quality Assurance</option>
+
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Section Dropdown -->
+                        <div class="col-sm-6 row me-2 mt-3">
+                            <div class="col-sm-3 newMarginClass"><b>Status:</b></div>
+                            <div class="col-sm-9">
+                                <select class="form-control">
+                                    <option >-- Select Status --</option>
+                                    <option>Active</option>
+                                    <option>Inactive</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <!-- Buttons -->
+                        <div class="col-sm-12pull-right mt-3">
+                            <a (click)="filterToggle = !filterToggle" class="pull-right"
+                                style="font-size: 25px; cursor: pointer; margin-left: 5px">
+                                <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                            </a>
+                            <button mat-raised-button color="primary" class="pull-right" (click)="getTests()">
+                                Search
+                            </button>
+                            <button mat-raised-button class="pull-right btn-default margin-right-10"
+                                (click)="clearFilter();getTests()">
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+
+    </div>
+</div>
+
+<!-- Table -->
+<div class="col-sm-12 mt-4" style="margin-left:-5px;">
+    <div id="grid-table-container" class="table-responsive">
+        <table matSort id="example2" class="table table-bordered table-hover">
+            <thead class="tbl-head">
+                <tr>
+                    <th>Agency</th>
+                    <th>Agency Code</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center" style="width: 112px!important;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of tableList">
+                    <td>{{item.agency}}</td>
+                    <td>{{item.code}}</td>
+                    <td [ngClass]="{'active-status': item.status, 'inactive-status': !item.status}"
+                        style="text-align: center !important;">
+                        {{ item.status ? 'Active' : 'Inactive' }}
+                    </td>
+
+                    <td class="text-center editDel">
+                        <a [ngClass]="{'disable-custom' : !canUpdate}" style="cursor: pointer;margin-right:10px;"
+                            matTooltip="Edit" (click)="addmodule(item)">
+                            <i class="fa fa-edit" style="color: cornflowerblue"></i>
+                        </a>
+                        <a [ngClass]="{'disable-custom' : !canDelete || item.TotalUsed || item.Used}"><i
+                                class="fa fa-trash red" matTooltip="Delete" style="cursor: pointer;"
+                                (click)="deleteConfirmation(item)"></i></a>
+                    </td>
+                </tr>
+                <tr *ngIf="tableList ==null || tableList.length ==0">
+                    <td colspan="13" class="text-center">No data available</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- PAGINATION CONTENT  ------------------------------------------------------>
+        <mat-paginator class="col-sm-12" [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+            [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons>
+        </mat-paginator>
+    </div>
+</div>

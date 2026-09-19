@@ -1,0 +1,92 @@
+<div class="NewHeader" style="background-color: #2972a3; padding: 15px; margin: -24px -24px 20px -24px; text-align: center;">
+    <h1 mat-dialog-title style="color:white; margin: 0; font-size: 22px;">
+        {{ data ? 'Update' : 'Add'}} Job Code
+    </h1>
+</div>
+ 
+<div mat-dialog-content style="overflow-x: hidden;">
+    <div class="col-sm-12" style="margin-bottom: 10px;">
+        <form [formGroup]="myGroup">
+            
+            <div class="row align-items-center" style="margin-bottom: 15px;">
+                <div class="col-sm-4 text-right">
+                    <label class="  control-label" style="margin-top:5px; font-weight: 600;">
+                        Job Code :
+                    </label>
+                </div>
+                <div class="col-sm-8">
+                    <input class="form-control" maxlength="50" placeholder="Enter Job Code"
+                        formControlName="jobCode" type="text"
+                        style="background-color: #ffffff; border: 1px solid #9ecaed; height: 38px; border-radius: 4px;">
+                    <div *ngIf="isSubmitting && f['jobCode'].errors" class="text-danger mt-1" style="font-size: 12px;">
+                        <div *ngIf="f['jobCode'].errors['required']">Job Code is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row align-items-center" style="margin-bottom: 15px;">
+                <div class="col-sm-4 text-right">
+                    <label class="  control-label" style="margin-top:5px; font-weight: 600;">
+                        Job Code Title :
+                    </label>
+                </div>
+                <div class="col-sm-8">
+                    <input class="form-control" maxlength="100" placeholder="Enter Job Code Title"
+                        formControlName="jobCodeTitle" type="text"
+                        style="background-color: #ffffff; border: 1px solid #9ecaed; height: 38px; border-radius: 4px;">
+                    <div *ngIf="isSubmitting && f['jobCodeTitle'].errors" class="text-danger mt-1" style="font-size: 12px;">
+                        <div *ngIf="f['jobCodeTitle'].errors['required']">Job Code Title is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row align-items-center" style="margin-bottom: 15px;">
+                <div class="col-sm-4 text-right">
+                    <label class=" control-label" style="margin-top:5px; font-weight: 600;">
+                        Category :
+                    </label>
+                </div>
+                <div class="col-sm-8">
+                    <input class="form-control" maxlength="100" placeholder="Enter Category"
+                        formControlName="jobCodeCategory" type="text"
+                        style="background-color: #ffffff; border: 1px solid #9ecaed; height: 38px; border-radius: 4px;">
+                    <div *ngIf="isSubmitting && f['jobCodeCategory'].errors" class="text-danger mt-1" style="font-size: 12px;">
+                        <div *ngIf="f['jobCodeCategory'].errors['required']">Category is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row align-items-center" style="margin-bottom: 25px;">
+                <div class="col-sm-4 text-right">
+                    <label class="  control-label" style="margin-top:5px; font-weight: 600;">
+                        Hourly Rate ($):
+                    </label>
+                </div>
+                <div class="col-sm-8">
+                    <input class="form-control" placeholder="Enter Rate (e.g. 50)"
+                        formControlName="chargeoutRate" type="number"
+                        style="background-color: #ffffff; border: 1px solid #9ecaed; height: 38px; border-radius: 4px;">
+                    <div *ngIf="isSubmitting && f['chargeoutRate'].errors" class="text-danger mt-1" style="font-size: 12px;">
+                        <div *ngIf="f['chargeoutRate'].errors['required']">Chargeout Rate is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <div class="pull-right" style="display: flex; gap: 10px; justify-content: flex-end;">
+                    
+                    <button type="button" mat-raised-button (click)="close()" 
+                            style="background-color: #e0e0e0; color: red; display: flex; align-items: center; line-height: 36px;">
+                        <mat-icon class="material-icons" style="margin-right: 4px; height: 20px; width: 20px; font-size: 20px; margin-bottom: -5px;">cancel</mat-icon> Close
+                    </button> 
+                    
+                    <button type="submit" mat-raised-button (click)="upsertCategory()" 
+                            style="background-color: #1b85ca; color: white; display: flex; align-items: center; line-height: 36px;">
+                        <mat-icon class="material-icons" style="margin-right: 4px; height: 20px; width: 20px; font-size: 20px;; margin-bottom: -5px;">save</mat-icon> Save
+                    </button>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

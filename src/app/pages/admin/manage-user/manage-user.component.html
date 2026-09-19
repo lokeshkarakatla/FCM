@@ -1,0 +1,31 @@
+<div class="w-100">
+    <div class="flex-p">
+        <div class="row wrap">
+            <div class="col-sm-12 no-padding">
+                <div class="row-wrap">
+                    <div class="w-100">
+                        <div class="row">
+                            <div class="col-xs-12" style="margin-bottom: 15px;">
+                                <div class="pills">
+                                    <ul class="nav nav-pills" style="margin-left: 10px;margin-bottom: -25px;">
+                                        <li routerLinkActive="active" [routerLink]="['./users']">
+                                            <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                                                Users
+                                            </a>
+                                        </li>
+                                        <li routerLinkActive="active" [routerLink]="['./roles']">
+                                            <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                                                Roles
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,268 @@
+/* --- Global & Container Variables --- */
+$bg-app: #f4f5f7;
+$bg-white: #ffffff;
+$border-color: #e5e7eb;
+$text-dark: #111827;
+$text-muted: #6b7280;
+$primary-green: #10b981;
+$primary-blue: #2563eb;
+$primary-orange: #f97316;
+$accent-red: #ef4444;
+
+.overview-container {
+   min-width: 1250px;
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: $bg-app;
+  font-family: 'Inter', -apple-system, sans-serif;
+  min-height: 100vh;
+}
+
+.overview-card {
+  background: $bg-white;
+  border-radius: 8px;
+  border: 1px solid $border-color;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  margin-bottom: 24px;
+}
+
+/* --- Top Card: Header Row --- */
+.top-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+}
+
+.title-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  .accent-bar {
+    width: 4px;
+    height: 24px;
+    background-color: $primary-orange;
+    border-radius: 2px;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: $text-dark;
+  }
+
+  .project-id {
+    background-color: #f3f4f6;
+    color: $text-muted;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid #d1d5db;
+    letter-spacing: 0.5px;
+  }
+}
+
+.status-badge {
+  background-color: $primary-green;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+/* --- Top Card: Dividers --- */
+.divider {
+  height: 1px;
+  background-color: $border-color;
+  width: 100%;
+}
+
+/* --- Top Card: KPI Grid --- */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  
+  .kpi-item {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 24px;
+    border-right: 1px solid $border-color;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #9ca3af;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .value {
+      font-size: 15px;
+      font-weight: 600;
+      color: $text-dark;
+    }
+  }
+}
+
+/* --- Top Card: Progress Row --- */
+.progress-row {
+  display: flex;
+  align-items: center;
+  padding: 16px 24px;
+  gap: 16px;
+
+  .progress-label, .gates-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #9ca3af;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
+  .progress-bar-container {
+    flex-grow: 1;
+    height: 8px;
+    background-color: #f3f4f6;
+    border-radius: 4px;
+    overflow: hidden;
+
+    .progress-bar-fill {
+      height: 100%;
+      background-color: $primary-blue;
+      border-radius: 4px;
+    }
+  }
+
+  .progress-percentage {
+    font-size: 13px;
+    font-weight: 700;
+    color: $primary-blue;
+    width: 40px;
+  }
+
+  .gates-label {
+    margin-left: 24px;
+  }
+
+  .gates-group {
+    display: flex;
+    gap: 8px;
+
+    .gate-badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: 4px;
+      background-color: #f3f4f6;
+      color: #9ca3af;
+      border: 1px solid #e5e7eb;
+
+      &.passed {
+        background-color: #d1fae5;
+        color: $primary-green;
+        border-color: #a7f3d0;
+      }
+    }
+  }
+}
+
+/* --- Timeline Card --- */
+.timeline-card {
+  padding: 24px;
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+
+  h2 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: $text-dark;
+  }
+}
+
+.timeline-legend {
+  display: flex;
+  gap: 20px;
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #9ca3af;
+    letter-spacing: 0.5px;
+
+    .legend-color {
+      display: inline-block;
+      width: 14px;
+      height: 10px;
+      border-radius: 2px;
+
+      &.bg-green { background-color: $primary-green; }
+      &.bg-gray { background-color: #e5e7eb; border: 1px solid #d1d5db; }
+      &.bg-red-pipe { 
+        width: 3px; 
+        height: 14px; 
+        background-color: $accent-red; 
+        border-radius: 0;
+      }
+    }
+  }
+}
+
+.gantt-wrapper {
+  width: 100%;
+  height: 450px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+/* --- Page Header --- */
+.overview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px; /* Space between the header and the top card */
+
+  .header-titles {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    
+    .page-title {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 700;
+      color: $text-dark;
+    }
+    
+    .subtitle {
+      font-size: 14px;
+      color: $text-muted;
+      margin: 0;
+    }
+  }
+}

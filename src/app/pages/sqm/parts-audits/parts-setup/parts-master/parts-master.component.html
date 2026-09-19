@@ -1,0 +1,229 @@
+<div class="page-container p-3">
+
+  <div class="d-flex justify-content-end mb-3 gap-2">
+    
+    <button
+      mat-raised-button
+      style="background-color: #000; color: #fff;"
+      (click)="toggleFilters()">
+
+      <mat-icon class="icon-sm" style="margin-right: 4px;  margin-top:4px">
+        filter_list
+      </mat-icon>
+
+      Filter
+    </button>
+
+    <button (click)="addpart(null)"
+      mat-raised-button
+      color="primary"
+      style="background-color: #1b85ca; color: #fff;">
+
+      <mat-icon class="icon-sm" style="margin-right: 4px;  margin-top:4px">
+        add
+      </mat-icon>
+
+      Add Part
+    </button>
+
+  </div>
+
+  <div class="filter-wrapper" *ngIf="showFilters">
+
+    <div class="filter-row">
+
+      <div class="filter-group">
+        <label class="filter-label">Commodity:</label>
+
+        <mat-select
+          placeholder="Select Commodity"
+          class="custom-mat-select"
+          [(ngModel)]="selectedIndustry">
+
+          <mat-option value="manufacturing">Casting</mat-option>
+          <mat-option value="automotive">Forging</mat-option>
+          <!-- <mat-option value="logistics">Logistics</mat-option> -->
+           <mat-option value="manufacturing">Machining</mat-option>
+          <mat-option value="automotive">Fasteners</mat-option>
+           <mat-option value="automotive">Non-Metallic</mat-option>
+        </mat-select>
+      </div>
+
+<div class="filter-group">
+  <label class="filter-label mb-0">Keyword :</label>
+  <input type="text" [(ngModel)]="selectedKeyword" placeholder="Enter Keyword" class="custom-mat-input">
+</div>
+
+      <div class="button-group">
+
+        <button
+          mat-raised-button
+          class="btn-clear"
+          (click)="onClear()">
+
+          <mat-icon>settings_backup_restore</mat-icon>
+          Clear
+        </button>
+
+        <button
+          mat-raised-button
+          color="primary"
+          class="btn-go"
+          (click)="onGo()">
+
+          <mat-icon>youtube_searched_for</mat-icon>
+          Go
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="table-responsive bg-white shadow-sm" #tableContainer>
+
+    <table class="custom-grid-table">
+
+      <thead>
+        <tr>
+          <th>Part Name</th>
+          <th>Part Code</th>
+          <th>Part Family Name</th>
+          <th>Commodity</th>
+          <th class="text-center">Suppliers</th>
+          <th class="text-center">Priority</th>
+          <th class="text-center">Status</th>
+              <th class="text-center">Parameters</th>
+          <th class="text-center">   Parameter Template</th>
+          <th class="text-center">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr *ngFor="let item of pagedData">
+
+          <td>{{ item.partName }}</td>
+          <td>{{ item.partCode }}</td>
+          <td>{{ item.partFamily }}</td>
+          <td>{{ item.commodity }}</td>
+
+          <td
+            class="text-center text-link"
+            style="color: blue; cursor: pointer;"  (click)="opensuppliers()">
+         
+            {{ item.suppliers }}
+          </td>
+
+          <td class="text-center">
+            <mat-checkbox
+              color="primary"
+              [(ngModel)]="item.priority">
+            </mat-checkbox>
+          </td>
+
+          <td
+            class="text-center"
+            [ngStyle]="{
+              'color': item.status === 'Active' ? 'blue' : 'red'
+            }">
+
+            {{ item.status }}
+          </td>
+          <td class="text-center">
+  <a class="text-blue" 
+     style="cursor: pointer; text-decoration: underline;" 
+     [routerLink]="['inner']" 
+     [queryParams]="{ code: item.code, name: item.name }"
+     matTooltip="View Parameter Details">
+    {{ item.parameters }}
+  </a>
+</td>
+          <td class="text-center editDel">
+
+            <a
+              matTooltip="Download"
+              style="cursor: pointer; margin-right: 10px;">
+
+              <i
+                class="fa fa-download"
+                style="color: cornflowerblue;">
+              </i>
+
+            </a>
+
+          </td>
+
+          <td class="text-center manage-icons">
+
+            <mat-icon  (click)="addpart(1)"
+              class="edit-icon"
+              matTooltip="Edit"
+              style="color: #3b7bbd; font-size: 18px; margin-right: 8px; cursor: pointer;">
+
+              edit
+            </mat-icon>
+
+            <mat-icon
+              class="delete-icon"
+              matTooltip="Delete"
+              style="color: red; font-size: 18px; cursor: pointer;">
+
+              delete
+            </mat-icon>
+
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+    <mat-paginator
+      [length]="filteredData.length"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[5, 10, 25, 50]"
+      showFirstLastButtons
+      (page)="onPageChange($event)">
+
+    </mat-paginator>
+
+  </div>
+
+  <div
+    class="fab-wrapper d-flex justify-content-end gap-3"
+    style="margin-bottom:40px; z-index: 3;">
+
+    <button
+      mat-fab
+      color="accent"
+      class="nav-fab"
+      style="background-color: #fafafa;"
+      (click)="scrollLeft()"
+      matTooltip="Scroll Left">
+
+      <mat-icon style="color: #37474f;">
+        fast_rewind
+      </mat-icon>
+
+    </button>
+
+    <button
+      mat-fab
+      color="accent"
+      class="nav-fab"
+      style="background-color: #fafafa;"
+      (click)="scrollRight()"
+      matTooltip="Scroll Right">
+
+      <mat-icon style="color: #37474f;">
+        fast_forward
+      </mat-icon>
+
+    </button>
+
+  </div>
+
+</div>

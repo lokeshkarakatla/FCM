@@ -1,0 +1,57 @@
+<table style="margin-top: 7px; padding-left: 0px; padding-right: 0px; margin-bottom: 0;" matSort class="table table-bordered table-hover">
+    <thead class="tbl-head">
+        <tr class="theadcolor text-center">
+            <th>{{ ImageObj?.title || 'Sample Image' }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <div class="upload-container" style="padding: 20px;">
+                    <div style="display: flex; align-items: flex-start; justify-content: center; gap: 30px;">
+                        
+                        <div class="drop-zone" (dragover)="onDragOver($event)" (drop)="onDrop($event)" style="margin-top: 50px;">
+                            <mat-icon style="font-size: 40px; width: 40px; height: 40px; color: #888;">cloud_upload</mat-icon>
+                            <p style="color: #666; margin-top: 10px;">Drag and drop files here</p>
+                            <input type="file" #fileInput hidden (change)="onFileSelected($event)" />
+                            <button mat-raised-button color="primary" (click)="fileInput.click()" style="margin-top: 10px;">Browse Files</button>
+                        </div>
+
+                        <div class="image-grid-container"
+                             [style.width]="ImageObj?.width || '480px'"
+                             [style.height]="ImageObj?.height || '310px'">
+
+                           <img class="overlay-image" [src]="uploadedImageSrc || ImageObj?.src" />
+
+                            <table class="grid-overlay">
+                                <tbody>
+                                    <tr *ngFor="let r of gridRows; let rowIndex = index" [style.height.%]="100 / gridRows.length">
+                                        <td *ngFor="let c of gridCols; let colIndex = index"
+                                            class="grid-cell"
+                                            (click)="selectCell(rowIndex + 1, colIndex + 1)"
+                                            [ngStyle]="{
+                                              'background-color': isCellSelected(rowIndex + 1, colIndex + 1) 
+                                                                  ? 'rgba(0, 123, 255, 0.4)' 
+                                                                  : getCellData(rowIndex + 1, colIndex + 1)?.color
+                                            }">
+                                            
+                                            {{ getCellData(rowIndex + 1, colIndex + 1)?.value || '' }}
+                                            
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<mat-dialog-actions align="center" style="padding-bottom: 20px;">
+    <button mat-raised-button class="add-dark-hover btn-default" (click)="close()">
+        <mat-icon>cancel</mat-icon> Close
+    </button>
+</mat-dialog-actions>

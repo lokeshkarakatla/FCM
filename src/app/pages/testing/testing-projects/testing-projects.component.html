@@ -1,0 +1,316 @@
+<div class="col-sm-12 mt-5" style="margin-top: 90px;margin-bottom: 5px;">
+    <div class="row mb-2">
+        <div class="col-sm-12 d-flex justify-content-end gap-2">
+
+            <button *ngIf="!isKanbanView" mat-raised-button (click)="freezepanes()">
+                <span class="icon-wrapper">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icon-tabler-layout-grid">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M4 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4" />
+                        <path d="M14 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4" />
+                        <path d="M4 15a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4" />
+                        <path d="M14 15a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4" />
+                    </svg>
+                </span>
+                <span style="font: bold;font-size: 14px;"> Grid Layout</span>
+            </button>
+
+            <button mat-raised-button 
+                style="background-color: black; color: white;" 
+                [matTooltip]="isKanbanView ? 'Switch to Grid View' : 'Switch to Kanban View'" 
+                (click)="toggleView(!isKanbanView)">
+                <mat-icon>{{ isKanbanView ? 'grid_view' : 'view_kanban' }}</mat-icon> 
+                {{ isKanbanView ? 'Grid View' : 'Kanban' }}
+            </button>
+
+            <button [ngClass]="{ 'disable-custom': !canCreate }" mat-raised-button color="primary"
+                (click)="openEditDialog(null)" matTooltip="Add Project">
+                <mat-icon>add</mat-icon> Add Project
+            </button>
+
+            <button mat-raised-button style="background-color: black; color: white;" matTooltip="Filter"
+                (click)="isKanbanView ? toggleFilter() : filterToggle = !filterToggle">
+                <mat-icon>filter_list</mat-icon> Filter
+            </button>
+
+        </div>
+    </div>
+</div>
+
+<div fxLayout="row wrap" *ngIf="!isKanbanView && filterToggle" style="margin-bottom: 10px;">
+    <div fxFlex="100" class="flex-p w-100">
+        <form [formGroup]="filterForm">
+            <mat-card class="filter" style="width: 98.5%;margin-left: 14px;">
+                <mat-card-content>
+                    <div class="row col-sm-12">
+                        <div class="col-sm-4 row me-2">
+                            <div class="col-sm-3 newMarginClass" style="margin-top: 4px;">
+                                <b class="keyword-text">Keyword:</b>
+                            </div>
+                            <div class="col-sm-9">
+                                <input type="text" formControlName="Keyword" class="form-control" placeholder="Search Project">
+                            </div>
+                        </div>
+                        <div class="col-sm-4 row me-2">
+                            <div class="col-sm-3 newMarginClass">
+                                <b class="keyword-text">Status:</b>
+                            </div>
+                            <div class="col-sm-8">
+                                <mat-select placeholder="Select Status" class="form-control" formControlName="Status">
+                                    <mat-option [value]=true>Active</mat-option>
+                                    <mat-option [value]=false>InActive</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 pull-right">
+                            <a (click)="filterToggle = !filterToggle" class="pull-right" style="font-size: 25px; cursor: pointer; margin-left: 5px">
+                                <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                            </a>
+                            <button mat-raised-button class="pull-right btn-default margin-right-10" (click)="clearFilter()">
+                                <mat-icon>settings_backup_restore </mat-icon> Clear
+                            </button>
+                            <button mat-raised-button color="primary" style="margin-right: 10px;" class="pull-right" (click)="getCategory()">
+                                <mat-icon>search</mat-icon>Search
+                            </button>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </div>
+</div>
+
+<div *ngIf="isKanbanView && showFilter" style="width:100%; margin-left: 6px;">
+    <div fxFlex="100" class="flex-p w-100" style="margin-top: 10px;">
+        <form>
+            <mat-card class="filter">
+                <mat-card-content>
+                    <div class="row col-lg-12 col-sm-12">
+                        <div class="col-sm-4 row me-2 mt-3">
+                            <div class="col-sm-4 newMarginClass"><b>Select Project:</b></div>
+                            <div class="col-sm-8">
+                                <mat-select class="form-control" placeholder="Select Project">
+                                    <mat-option value="Pending">Project 1</mat-option>
+                                    <mat-option value="Allocation">Project 2</mat-option>
+                                    <mat-option value="Progress">Project 3</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 row me-2 mt-3">
+                            <div class="col-sm-4 newMarginClass"><b>Select Stage:</b></div>
+                            <div class="col-sm-8">
+                                <mat-select class="form-control" placeholder="Select Stage">
+                                    <mat-option value="High">Stage 1</mat-option>
+                                    <mat-option value="Medium">Stage 2</mat-option>
+                                    <mat-option value="Low">Stage 3</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 row me-2 mt-3">
+                            <div class="col-sm-4 newMarginClass"><b>Select Sprint:</b></div>
+                            <div class="col-sm-8">
+                                <mat-select class="form-control" placeholder="Select Sprint">
+                                    <mat-option value="High">Sprint 1</mat-option>
+                                    <mat-option value="Medium">Sprint 2</mat-option>
+                                    <mat-option value="Low">Sprint 3</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 pull-right mt-3" style="margin-left: -15px;">
+                            <a (click)="toggleFilter()" class="pull-right" style="font-size: 25px; cursor: pointer; margin-left: 5px; color: #333;" matTooltip="Close Filter">
+                                <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                            </a>
+                            <button mat-raised-button class="pull-right btn-default margin-right-10">
+                                <mat-icon>settings_backup_restore</mat-icon> Clear
+                            </button>
+                            <button mat-raised-button style="margin-right: 10px;" color="primary" class="pull-right">
+                                <mat-icon>search</mat-icon> Search
+                            </button>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </div>
+</div>
+
+<div class="w-100" *ngIf="!isKanbanView">
+    <div>
+        <div class="flex-p">
+            <div class="row">
+                <div class="col-sm-12" style="width: 98.5%; margin-left: 16px;">
+                    <div class="d-flex justify-content-end mb-2" style="gap: 10px;">
+                        <div class="d-flex justify-content-end mb-2">
+                            <button class="mine" mat-fab style="background-color: white; right: 110px;" (click)="scrollLeft()">
+                                <mat-icon style="color: #37474f">fast_rewind</mat-icon>
+                            </button>
+                            <button class="mine" mat-fab style="background-color: white;" (click)="scrollRight()">
+                                <mat-icon style="color: #37474f">fast_forward</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+
+                 <div #scrollContainer id="grid-table-container" class="table-responsive" style="overflow-x: auto; scroll-behavior: smooth;">
+    <table matSort id="example2" class="table table-bordered table-hover text-nowrap">
+        <thead class="tbl-head">
+            <tr>
+                <th class="text-center" style="width: 120px!important;">Actions</th>
+                <th class="text-center">Project Name</th>
+                <th class="text-center">Project Code</th>
+                <th class="text-center">Description</th>
+                <th class="text-center">Start Date</th>
+                <th class="text-center">Due Date</th>
+                <th class="text-center">Project Manager</th>
+                <th class="text-center">Project Type</th>
+                <th class="text-center">Team</th>
+                <th class="text-center">Assets</th>
+                <th class="text-center">Facilities</th>
+                <th class="text-center">Stages</th>
+                <th class="text-center">Gates</th>
+                <th class="text-center">Current Stage</th>
+                <th class="text-center">Current Gate</th>
+                <th class="text-center">Backlog</th>
+                <th class="text-center">Sprints</th>
+                <th class="text-center">Buffer Status</th>
+                <th class="text-center">Project Status</th>
+                <th class="text-center">Completion</th>
+                <th class="text-center">Budget</th>
+                <th class="text-center">Hours</th>
+                <th class="text-center">Expenses</th>
+                <th class="text-center">ETA</th>
+                <th class="text-center">Updated Date</th>
+                <th class="text-center">Completion (Secondary)</th>
+                <th class="text-center">Done</th>
+                <th class="text-center">Is Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of allProjects">
+                <td class="text-center">
+                    <a matTooltip="Edit Project" [ngClass]="{'disable-custom': !canUpdate}" style="margin-right: 10px; cursor: pointer; color: cornflowerblue;" (click)="openEditDialog(item)">
+                        <i class="fa fa-edit"></i>
+                    </a>
+                    <a [ngClass]="{'disable-custom': !canDelete }" style="margin-right: 10px;">
+                        <i style="cursor: pointer;" matTooltip="Delete Project" class="fa fa-trash red" (click)="deleteConfirmation(item)"></i>
+                    </a>
+                    <a [ngClass]="{'disable-custom': !canUpdate}">
+                        <i style="cursor: pointer; color: gray;" matTooltip="Archive Project" class="fa fa-archive"></i>
+                    </a>
+                </td>
+                <td class="text-center">
+    <a (click)="goToDashboard(item.ProjectCode)" style="color: blue; cursor: pointer; text-decoration: none;">{{ item.ProjectName }}</a>
+</td>
+<td class="text-center">
+    <a (click)="goToDashboard(item.ProjectCode)" style="color: blue; cursor: pointer; text-decoration: none;">{{ item.ProjectCode }}</a>
+</td>
+                <td class="text-center" matTooltip="{{ item.Description }}">{{ item.Description | slice:0:20 }}...</td>
+                <td class="text-center">{{ item.StartDate }}</td>
+                <td class="text-center">{{ item.DueDate }}</td>
+                <td class="text-center">{{ item.ProjectManager }}</td>
+                <td class="text-center">{{ item.ProjectType }}</td>
+                <td class="text-center">{{ item.Team }}</td>
+                <td class="text-center">{{ item.Assets }}</td>
+                <td class="text-center">{{ item.Facilities }}</td>
+                <td class="text-center">{{ item.Stages }}</td>
+                <td class="text-center">{{ item.Gates }}</td>
+                <td class="text-center">{{ item.CurrentStage }}</td>
+                <td class="text-center">{{ item.CurrentGate }}</td>
+                <td class="text-center">{{ item.Backlog }}</td>
+                <td class="text-center">{{ item.Sprints }}</td>
+                <td class="text-center">{{ item.BufferStatus }}</td>
+                <td class="text-center">{{ item.ProjectStatus }}</td>
+                <td class="text-center">{{ item.Completion }}</td>
+                <td class="text-center">{{ item.Budget }}</td>
+                <td class="text-center">{{ item.Hours }}</td>
+                <td class="text-center">{{ item.Expenses }}</td>
+                <td class="text-center">{{ item.ETA }}</td>
+                <td class="text-center">{{ item.UpdatedDate }}</td>
+                <td class="text-center">{{ item.CompletionSecondary }}</td>
+                <td class="text-center">{{ item.Done }}</td>
+                <td class="text-center">
+                    <span *ngIf="item.IsActive" style="color: green; font-weight: 500;">Yes</span>
+                    <span *ngIf="!item.IsActive" style="color: red; font-weight: 500;">No</span>
+                </td>
+            </tr>
+        </tbody>
+        <tr *ngIf="allProjects == null || allProjects.length == 0">
+            <td colspan="28" class="text-center">No records found</td>
+        </tr>
+    </table>
+</div>
+
+                    <mat-paginator class="col-sm-12 mt-2" [length]="totalSize" [pageIndex]="currentPage"
+                        [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20, 50, 100]" (page)="fnHandlePage($event)"
+                        showFirstLastButtons>
+                    </mat-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isKanbanView" class="kanban-board" cdkDropListGroup>
+  <div *ngFor="let list of lists" class="kanban-list">
+    <div style="background-color: rgb(64, 64, 64); color: white" class="kanban-list-header">
+      <div style="display: flex; align-items: center; gap: 10px">
+        <span [style.background-color]="getColor(list)" class="status-dot"></span>
+        <h3 style="margin: 0">{{ list }}</h3>
+      </div>
+      <span style="background-color: white; color: black; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 4px;">
+          {{ cards[list]?.length || 0 }}
+      </span>
+    </div>
+
+    <div cdkDropList [id]="list" [cdkDropListData]="cards[list]" (cdkDropListDropped)="drop($event, list)" class="drop-container">
+      <div *ngFor="let card of cards[list]; trackBy: trackByCard" cdkDrag class="kanban-card" [ngClass]="getCardClass(list)">
+        <div class="fs-4 fw-semibold d-flex align-items-center justify-content-between">
+          <span>{{ card.subject }}</span>
+          <span class="material-symbols-outlined icon" style="padding: 5px; cursor: pointer" (click)="toggleCard(card)">
+              {{ card.expanded ? "remove" : "add" }}
+          </span>
+        </div>
+        
+        <div class="card-info">
+          <p class="info-item">
+            <mat-icon>business</mat-icon>
+            <span>{{ card.LawFirm }}</span>
+          </p>
+          <p class="info-item">
+            <mat-icon>calendar_today</mat-icon>
+            <span>{{ card.createdDate }}</span>
+          </p>
+        </div>
+
+        <div class="card-info">
+          <p class="info-item">
+            <mat-icon class="status-icon">schedule</mat-icon>
+            <span>{{ card.status }}</span>
+          </p>
+        </div>
+        <hr />
+
+        <div style="display: inline-flex; justify-content: center; align-items: center; gap: 4px; border: 1px solid gray; color: gray; padding: 2px 6px; border-radius: 6px; margin: 2px;">
+          <mat-icon style="font-size: 14px; width: 14px; height: 14px; line-height: 14px; display: inline-flex; align-items: center; vertical-align: middle;">alarm</mat-icon>
+          <span style="font-size: 10px; line-height: 1; vertical-align: middle">
+            ETA {{ card.dueDate | date: "dd MMM" }}
+          </span>
+        </div>
+
+        <div *ngIf="card.expanded" class="card-expanded-details">
+          <p><strong>Created By:</strong> {{ card.createdBy }}</p>
+          <p><strong>Assigned To:</strong> {{ card.assignedTo }}</p>
+          <p><strong>Expedite:</strong> {{ card.expedite ? "Yes" : "No" }}</p>
+          <div *ngIf="card.notes.length > 0">
+            <strong>Notes:</strong>
+            <ul class="notes-list">
+              <li *ngFor="let note of card.notes">{{ note.text }} — {{ note.author }}, {{ note.date }}</li>
+            </ul>
+          </div>
+          <p *ngIf="card.notes.length === 0" style="color: gray; font-size: 12px">No notes added.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,116 @@
+<button mat-raised-button class="pull-right" type="button" (click)="back()"
+    style="color: rgb(7, 10, 7); background-color: #e0e0e0; margin-left: 27cm;">
+    <mat-icon>fast_rewind</mat-icon> Back
+</button>
+<div class="col-lg-12">
+    <!-- Master Data Tabs -->
+    <div class="col-xs-12" style="margin-top: 15px; margin-left: -16px; margin-bottom: 30px;">
+        <div class="pills">
+            <ul class="nav nav-pills" style="margin-left: 10px;">
+                <li>
+                    <a mat-raised-button class="navtabWidth"
+                        style="margin-top: 10px;"
+                        routerLinkActive="active" [routerLink]="['../d5']">
+                        Overview
+                    </a>
+                </li>
+                <li>
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;background-color: #50636d ;color: rgb(245, 241, 241);" routerLinkActive="active"
+                        [routerLink]="['../diagnosis']">
+                        Diagnosis
+                    </a>
+                </li>
+                <li>
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;" routerLinkActive="active"
+                        [routerLink]="['../fish']">
+                        Fish Bone Diagram
+                    </a>
+                </li>
+                <li>
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;" routerLinkActive="active"
+                        [routerLink]="['../why']">
+                        5 WHY
+                    </a>
+                </li>
+                <li>
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;" routerLinkActive="active"
+                        [routerLink]="['../actionmoniter']">
+                        Monitoring
+                    </a>
+                </li>
+                <li>
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;" routerLinkActive="active"
+                        [routerLink]="['../deploy']">
+                        Deployment
+                    </a>
+                </li>
+                <li>
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;" routerLinkActive="active"
+                        [routerLink]="['../actiondocumenttwo']">
+                        Document
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<button mat-raised-button color="primary" class="pull-right  btn-primary  mt-3 mb-4" style="margin-right:25px;"
+   (click)="addchecklistaudit()" >
+    <mat-icon>add</mat-icon> Add Cause
+</button>
+<table matSort id="example2" class="table table-bordered table-hover">
+    <thead class="tbl-head">
+        <tr>
+            <th class="theadcolor">Possible Cause</th>
+            <th class="theadcolor">Short Text</th>
+            <th class="theadcolor">Classification</th>
+            <th class="theadcolor text-center">Probable Cause</th>
+            <th class="theadcolor text-center">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of values">
+
+
+            <td>{{item.possible}}</td>
+            <td>{{item.short}}</td>
+
+            <td>
+                <mat-select class="form-control" placeholder="Select Classification:" required>
+                    <mat-option [value]="0">Man</mat-option>
+                    <mat-option [value]="1">Machine</mat-option>
+                    <mat-option [value]="2">Methods</mat-option>
+                    <mat-option [value]="1">Material</mat-option>
+                    <mat-option [value]="2">Environment</mat-option>
+                </mat-select>
+            </td>
+            <td class="theadcolor text-center"><mat-checkbox></mat-checkbox></td>
+
+            <td class="text-center editDel">
+                <a style="cursor: pointer;margin-right:10px; " matTooltip="Edit" (click)="addchecklistaudit(1)">
+                    <i class="fa fa-edit" style="color: cornflowerblue"></i>
+                </a>
+                <a><i class="fa fa-trash red" matTooltip="Delete" style="cursor: pointer;"></i>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class="col-lg-12 margin-top:50px">
+    <div class=" pull-right mt-5">
+
+        <button mat-raised-button (click)="back()" class="mr-2" type="button"
+            style="color: rgb(7, 10, 7); background-color: #e0e0e0; margin-right: 10px;">
+            <mat-icon>fast_rewind</mat-icon> Back
+        </button>
+        <button mat-raised-button class="mr-2" type="button"
+            style="color: rgba(252, 253, 252, 0.926); background-color: #3262a8; margin-right: 10px;">
+            <mat-icon>save</mat-icon>Save
+        </button>
+
+        <button mat-raised-button class="mr-2" type="button" (click)="next()"
+            style="color: rgb(10, 10, 10); background-color: #eff0f3;">
+            Next<mat-icon>fast_forward</mat-icon>
+        </button>
+    </div>
+</div>

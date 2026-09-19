@@ -1,0 +1,33 @@
+<div class="NewHeader">
+    <h1 mat-dialog-title>Agenda</h1>
+</div>
+
+<div class="meeting-container">
+
+    <!-- LEFT: Agenda -->
+    <div class="agenda-section">
+
+        <div class="section-title">
+            Agenda
+            <span class="badge">{{ agenda.length }} items</span>
+        </div>
+
+        <div class="agenda-list">
+            <div class="agenda-card" *ngFor="let item of agenda; let i = index">
+                <div class="agenda-index">{{ i + 1 }}</div>
+                <div class="agenda-text">{{ item }}</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- RIGHT: Attended -->
+    
+
+</div>
+
+<mat-dialog-actions align="end" style="margin-top: 10px;">
+    <button mat-raised-button style="background-color: lightgray; color: red" (click)="close()">
+        <mat-icon>cancel</mat-icon>Close
+    </button>
+</mat-dialog-actions>

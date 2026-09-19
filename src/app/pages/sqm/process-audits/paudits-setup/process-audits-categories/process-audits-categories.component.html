@@ -1,0 +1,115 @@
+<div class="custom-layout-wrapper">
+
+  <!-- <div class="action-bar">
+    <button mat-raised-button class="btn-black" (click)="toggleFilters()">
+      <mat-icon class="icon-sm">filter_list</mat-icon> Filter
+    </button>
+    <button mat-raised-button color="primary" class="btn-add">
+      <mat-icon class="icon-sm">add</mat-icon> Add Process Category
+    </button>
+  </div> -->
+
+
+  <div style="display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 15px;">
+
+    <button mat-raised-button
+      style="background-color: #1a1a1a; color: white; padding: 0 16px; height: 40px; border: none; border-radius: 4px; display: flex; align-items: center; gap: 6px; font-weight: 500; cursor: pointer;"
+      (click)="toggleFilters()">
+      <mat-icon class="mt-1" style="font-size: 18px; height: 18px; width: 18px;">filter_list</mat-icon>
+      Filter
+    </button>
+
+    <!-- <button mat-raised-button style="background-color: #1a1a1a; color: white; padding: 0 16px; height: 40px; border: none; border-radius: 4px; display: flex; align-items: center; gap: 6px; font-weight: 500; cursor: pointer;">
+    Grid Columns
+  </button> -->
+
+    <button mat-raised-button
+      style="background-color: #2196f3; color: white; padding: 0 16px; height: 40px; border: none; border-radius: 4px; display: flex; align-items: center; gap: 6px; font-weight: 500; cursor: pointer;"
+      (click)="addCategory(null)">
+      <mat-icon class="mt-1" style="font-size: 18px; height: 18px; width: 18px;">add</mat-icon>
+      Add Process Category
+    </button>
+
+  </div>
+
+
+  <div class="filter-wrapper" *ngIf="showFilters">
+    <mat-card class="filter-card">
+      <mat-card-content>
+        <div class="filter-row">
+
+          <div class="filter-group">
+  <label class="filter-label mb-0">Keyword :</label>
+  <input type="text" [(ngModel)]="selectedCategory" placeholder="Enter Keyword" class="custom-mat-input">
+</div>
+
+          <div class="filter-group">
+            <label class="filter-label mb-0">Status :</label>
+            <mat-select [(ngModel)]="selectedStatus" placeholder="Select Status" class="custom-mat-select">
+              <mat-option value="Active">Active</mat-option>
+              <mat-option value="Inactive">Inactive</mat-option>
+            </mat-select>
+          </div>
+
+          <div class="button-group">
+            <button mat-raised-button class="btn-go" (click)="onGo()">
+              <mat-icon>search</mat-icon> Go
+            </button>
+            <button mat-raised-button class="btn-clear" (click)="onClear()">
+              <mat-icon>settings_backup_restore</mat-icon> Clear
+            </button>
+          </div>
+
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+<div class="table-responsive bg-white shadow-sm">
+  <table class="custom-grid-table">
+    <thead>
+      <tr>
+        <th>Process Category Name</th>
+        <th style="width: 130px;">Category Code</th>
+                <th>Checklist  </th>
+         <th class="text-center" style="width: 150px;">Status</th>
+        <th class="text-center" style="width: 150px;">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of tableData">
+        <td>{{ item.name }}</td>
+        
+     <td class="text-center">
+          
+  {{ item.code }}
+ 
+        </td>
+        <td class="text-center"> <a [routerLink]="['inner']" class="text-blue"
+   [queryParams]="{ code: item.code }"
+   style=" cursor: pointer;"
+   matTooltip="View Details">
+  {{ item.checklist }}
+</a></td>
+        <td class="text-center">
+          <a class="status-link" [ngClass]="item.status === 'Active' ? 'text-blue' : 'text-red'"
+            matTooltip="Click to Change Status">
+            {{ item.status }}
+          </a>
+        </td>
+        <td class="text-center manage-icons">
+          <mat-icon class="edit-icon" matTooltip="Edit" (click)="addCategory(1)">edit</mat-icon>
+          <mat-icon class="delete-icon" matTooltip="Delete">delete</mat-icon>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+   
+</div>
+
+    <mat-paginator [length]="tableData.length" [pageSize]="4" [pageSizeOptions]="[4, 10, 25, 50]" showFirstLastButtons>
+    </mat-paginator>
+  </div>
+
+ 

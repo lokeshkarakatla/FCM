@@ -1,0 +1,64 @@
+.table {
+  width: 100%;
+  table-layout: auto;
+}
+
+.table td,
+.table th {
+  vertical-align: middle !important;
+  text-align: center;
+  padding: 8px 12px;
+  white-space: nowrap;
+}
+
+.table-responsive {
+  overflow-x: auto;
+  margin: 0;
+  padding: 0;
+}
+
+/* Fixed toolbar: plain block outside any overflow container, never scrolls */
+.fixed-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+ .mine {
+    position: fixed;
+    bottom: 80px;
+    right: 40px;
+    background-color: #e6e6e6 !important;
+}
+
+/* Icon size */
+
+/* Colors */
+.action-btn.edit mat-icon {
+  color: cornflowerblue;
+}
+
+.action-btn.delete mat-icon {
+  color: #e53935;
+}
+
+.action-btn.archive mat-icon {
+  color: #6c757d;
+}
+
+/* Hover */
+.action-btn:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+
+/* Scrollable table wrapper: scrollGrid() targets this */
+.table-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}

@@ -1,0 +1,33 @@
+<div class="NewHeader">
+  <h1 mat-dialog-title>Audit Types</h1>
+</div>
+
+<div mat-dialog-content class="dialog-content">
+  <form class="form-horizontal" style="margin-top:10px">
+    <div class="row">
+      <div class="col-sm-6">
+        <mat-checkbox>Product Audit</mat-checkbox><br />
+        <mat-checkbox>Mfg Process Audit</mat-checkbox><br />
+        <mat-checkbox>CQI Audit</mat-checkbox><br />
+        <mat-checkbox>Safety Audit</mat-checkbox><br />
+        <mat-checkbox>Supplier Audit</mat-checkbox><br />
+      </div>
+
+      <div class="col-sm-6">
+        <mat-checkbox>C-Rating Audit</mat-checkbox><br />
+        <mat-checkbox>Spare Parts</mat-checkbox><br />
+        <mat-checkbox>Streamlines Audit</mat-checkbox><br />
+        <mat-checkbox>SUV Audits</mat-checkbox><br />
+      </div>
+    </div>
+  </form>
+</div>
+
+<mat-dialog-actions align="end" class="dialog-actions">
+  <button mat-raised-button color="primary" (click)="close()">
+    <mat-icon>save</mat-icon>&nbsp;Configure
+  </button>
+  <button mat-raised-button class="cancel-btn" (click)="close()">
+    <mat-icon>cancel</mat-icon>Cancel
+  </button>
+</mat-dialog-actions>

@@ -1,0 +1,48 @@
+
+<div class="back-btn ps-1 mb-4" style="display: flex; justify-content: flex-end; font-size: 18px; font-weight:500">
+ 
+  
+ <div class="col-sm-6" style="display: flex; justify-content: flex-end; ">
+      <!-- <button _ngcontent-utt-c603="" mat-raised-button="" class="mat-focus-indicator mat-raised-button mat-button-base" style="background-color: #808080; color: white; ;margin-right: 10px;"><span class="mat-button-wrapper" (click)="goBack()"><mat-icon _ngcontent-utt-c603="" role="img" class="mat-icon notranslate material-icons mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font">arrow_back</mat-icon> Back </span><span matripple="" class="mat-ripple mat-button-ripple" ng-reflect-disabled="false" ng-reflect-centered="false" ng-reflect-trigger="[object HTMLButtonElement]"></span><span class="mat-button-focus-overlay"></span></button> -->
+
+  </div>
+ 
+</div>
+
+
+<div class="page-container p-3">
+
+  <div class="mb-3" style="width: 60%; display: flex; justify-content: flex-end;">
+     <button _ngcontent-utt-c603="" mat-raised-button="" class="mat-focus-indicator mat-raised-button mat-button-base" style="background-color: #808080; color: white; ;margin-right: 10px;"><span class="mat-button-wrapper" (click)="goBack()"><mat-icon _ngcontent-utt-c603="" role="img" class="mat-icon notranslate material-icons mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font">arrow_back</mat-icon> Back </span><span matripple="" class="mat-ripple mat-button-ripple" ng-reflect-disabled="false" ng-reflect-centered="false" ng-reflect-trigger="[object HTMLButtonElement]"></span><span class="mat-button-focus-overlay"></span></button>
+
+  </div>
+
+  <div class="table-responsive bg-white shadow-sm"
+    style="border: 1px solid #e0e0e0; border-radius: 4px; overflow: hidden; width:60%">
+    <table class="custom-grid-table">
+      <thead>
+        <tr>
+          <th>Parameter</th>
+          <th>Spec</th>
+          <th class="text-center">Min</th>
+          <th class="text-center">Max</th>
+          <th>Method</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of pagedData">
+          <td>{{ item.parameter }}</td>
+          <td>{{ item.spec }}</td>
+          <td class="text-center">{{ item.min }}</td>
+          <td class="text-center">{{ item.max }}</td>
+          <td>{{ item.method }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <mat-paginator [length]="tableData.length" [pageSize]="4" [pageSizeOptions]="[4, 10, 25, 50]" showFirstLastButtons
+      (page)="onPageChange($event)">
+    </mat-paginator>
+  </div>
+
+</div>

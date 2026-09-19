@@ -1,0 +1,106 @@
+.plain-date-input {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 13px;
+  outline: none;
+  cursor: pointer;
+  box-sizing: border-box;
+
+  &:focus {
+    border-color: #3b82f6;
+    outline: none;
+  }
+}
+
+#grid-table-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  margin-right: 40px;
+}
+
+.table-scroll-wrapper {
+  overflow-x: auto;
+  overflow-y: auto;
+  flex: 1;
+  max-height: calc(100vh - 220px);
+}
+
+mat-paginator {
+  flex-shrink: 0;
+  background: #fff;
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+}
+
+#example2 {
+  min-width: 1600px;
+  width: 100%;
+}
+
+.mine {
+  position: fixed;
+  bottom: 80px;
+  right: 40px;
+  background-color: #e6e6e6 !important;
+  z-index: 9999;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.scroll-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 12px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* Custom Range Slider Styles */
+.custom-range {
+  -webkit-appearance: none;
+  width: 90px;
+  height: 8px;
+  background: linear-gradient(to right, var(--slider-color) var(--slider-fill), #555555 var(--slider-fill));
+  border-radius: 10px;
+  outline: none;
+  margin: 0;
+  vertical-align: middle;
+}
+
+.custom-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--slider-color);
+  cursor: pointer;
+  border: 1px solid #fff;
+}
+
+.custom-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--slider-color);
+  cursor: pointer;
+  border: 1px solid #fff;
+}
+
+/* * UI FIX: Force the calendar header text color to remain white 
+ * AND the background to remain black, overriding any Bootstrap/Global table styles applied to <th> 
+ */
+.calendar-container thead th {
+  background-color: black !important;
+  color: white !important;
+}
+

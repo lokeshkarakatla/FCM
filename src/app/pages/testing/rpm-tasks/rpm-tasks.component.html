@@ -1,0 +1,326 @@
+<div class="col-lg-12" style="overflow: hidden; margin-top: 40px;">
+  <div class="col-sm-12" style="margin-top: 10px">
+    
+  <div class="button-container"
+  style="display: flex; justify-content: flex-end; margin-bottom: 15px; align-items: center; width: 100%; gap: 10px;">
+
+  <button mat-raised-button class="top-btn"
+    style="display: flex; align-items: center; background-color: black; color: white;"
+    (click)="toggleView()">
+    <mat-icon style="vertical-align: middle; margin-right: 4px;">
+      {{ isCalendarView ? 'view_column' : 'calendar_today' }}
+    </mat-icon>
+    {{ isCalendarView ? 'Grid Layout' : 'Calendar View' }}
+  </button>
+
+  <button *ngIf="isCalendarView" mat-raised-button class="top-btn"
+    style="display: flex; align-items: center; background-color: black; color: white;"
+    (click)="toggleWeekend()">
+    <mat-icon style="vertical-align: middle; margin-right: 4px;">
+      {{ showWeekend ? 'view_week' : 'weekend' }}
+    </mat-icon>
+    {{ showWeekend ? 'Show Weekdays' : 'Show Weekend' }}
+  </button>
+
+  <button mat-raised-button class="top-btn"
+    style="display: flex; align-items: center; background-color: black; color: white;"
+    (click)="toggleFilter()">
+    <mat-icon style="vertical-align: middle; margin-right: 4px;">filter_list</mat-icon>Filter
+  </button>
+
+  <button mat-raised-button (click)="gridview()">
+    <span class="icon-wrapper">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="icon icon-tabler icon-tabler-layout-grid">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M4 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4" />
+        <path d="M14 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4" />
+        <path d="M4 15a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4" />
+        <path d="M14 15a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4" />
+      </svg>
+    </span>
+    <span style="font: bold; font-size: 14px;"> Grid Layout</span>
+  </button>
+
+</div>
+
+ <div *ngIf="showFilter" style="width:101%; margin-left: -8px;">
+  <div fxFlex="100" class="flex-p w-100" style="margin-top: 10px;">
+    <form>
+      <mat-card class="filter">
+        <mat-card-content>
+          <div class="row col-lg-12 col-sm-12">
+
+            <div class="col-sm-4 row me-2 mt-3">
+              <div class="col-sm-4 newMarginClass"><b>Keyword:</b></div>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" placeholder="Search by keyword" />
+              </div>
+            </div>
+
+              <div class="col-sm-4 row me-2 mt-3">
+              <div class="col-sm-4 newMarginClass"><b>Project Name:</b></div>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" placeholder="Search by project name" />
+              </div>
+            </div>
+
+            <div class="col-sm-4 row me-2 mt-3">
+              <div class="col-sm-4 newMarginClass"><b>Date Type:</b></div>
+              <div class="col-sm-8">
+                <mat-select class="form-control" placeholder="Select Date type">
+                  <mat-option value="Pending">Plan Start</mat-option>
+                  <mat-option value="Allocation">Plan End</mat-option>
+                  <mat-option value="Progress">Actual Start</mat-option>
+                  <mat-option value="Hold">Actual End</mat-option>
+                  <mat-option value="ETA">ETA</mat-option>
+                </mat-select>
+              </div>
+            </div>
+
+            <div class="col-sm-4 row me-2 mt-3">
+              <div class="col-sm-4 newMarginClass"><b>From Date:</b></div>
+              <div class="col-sm-8">
+                <input type="date" class="form-control" />
+              </div>
+            </div>
+
+            <div class="col-sm-4 row me-2 mt-3">
+              <div class="col-sm-4 newMarginClass"><b>To Date:</b></div>
+              <div class="col-sm-8">
+                <input type="date" class="form-control" />
+              </div>
+            </div>
+
+            <div class="col-sm-4 row me-2 mt-3">
+              <div class="col-sm-4 newMarginClass"><b>Status:</b></div>
+              <div class="col-sm-8">
+                <mat-select class="form-control" placeholder="Select Status">
+                  <mat-option value="Pending">Pending</mat-option>
+                  <mat-option value="Allocation">Allocation</mat-option>
+                  <mat-option value="Progress">Progress</mat-option>
+                  <mat-option value="Hold">Hold</mat-option>
+                  <mat-option value="Cancelled">Cancelled</mat-option>
+                  <mat-option value="Completed">Completed</mat-option>
+                </mat-select>
+              </div>
+            </div>
+
+            <div class="col-sm-4 row me-2 mt-3">
+              <div class="col-sm-4 newMarginClass"><b>Priority:</b></div>
+              <div class="col-sm-8">
+                <mat-select class="form-control" placeholder="Select Priority">
+                  <mat-option value="High">High</mat-option>
+                  <mat-option value="Medium">Medium</mat-option>
+                  <mat-option value="Low">Low</mat-option>
+                </mat-select>
+              </div>
+            </div>
+
+            <div class="col-sm-4 row me-2 mt-3">
+              <div class="col-sm-4 newMarginClass"><b>Complexity:</b></div>
+              <div class="col-sm-8">
+                <mat-select class="form-control" placeholder="Select Complexity">
+                  <mat-option value="High">High</mat-option>
+                  <mat-option value="Medium">Medium</mat-option>
+                  <mat-option value="Low">Low</mat-option>
+                </mat-select>
+              </div>
+            </div>
+
+            <div class="col-sm-4 row me-2 mt-3">
+              <div class="col-sm-4 newMarginClass"><b>Active:</b></div>
+              <div class="col-sm-8">
+                <mat-checkbox color="primary"></mat-checkbox>
+              </div>
+            </div>
+
+            <div class="col-sm-12 pull-right mt-3" style="margin-left: -15px;">
+              <a (click)="toggleFilter()" class="pull-right"
+                style="font-size: 25px; cursor: pointer; margin-left: 5px; color: #333;"
+                matTooltip="Close Filter">
+                <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+              </a>
+              <button mat-raised-button class="pull-right btn-default margin-right-10">
+                <mat-icon>settings_backup_restore</mat-icon> Clear
+              </button>
+              <button mat-raised-button style="margin-right: 10px;" color="primary" class="pull-right">
+                <mat-icon>search</mat-icon> Search
+              </button>
+            </div>
+
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </div>
+</div>
+
+    <div *ngIf="!isCalendarView" class="table-responsive" id="grid-table-container">
+      <table matSort id="example2" mat-table class="table table-bordered table-hover">
+        <thead class="tbl-head">
+          <tr>
+            <th mat-header-cell mat-sort-header class="text-center" style="min-width: 90px;">Action</th>
+            <th mat-header-cell mat-sort-header class="text-center" style="min-width: 90px;">Active</th>
+            <th mat-header-cell mat-sort-header class="text-center" style="min-width: 150px; white-space: nowrap;">Project Name</th>
+            <th mat-header-cell mat-sort-header class="text-center" style="min-width: 150px; white-space: nowrap;">Project Code</th>
+            <th mat-header-cell mat-sort-header class="text-center" style="min-width: 180px; white-space: nowrap;">Task Name</th>
+            <th mat-header-cell mat-sort-header class="text-center" style="min-width: 130px; white-space: nowrap;">Task Type</th>
+            <th mat-header-cell mat-sort-header class="text-center" style="min-width: 160px; white-space: nowrap;">Responsibility</th>
+            <th mat-header-cell mat-sort-header class="text-center" style="min-width: 100px; white-space: nowrap;">Duration</th>
+            <th mat-header-cell mat-sort-header class="text-center" style="min-width: 90px; white-space: nowrap;">Hours</th>
+            <th mat-header-cell mat-sort-header class="text-center" style="min-width: 220px; white-space: nowrap;">Description</th>
+            <th mat-header-cell mat-sort-header class="text-center" style="min-width: 120px; white-space: nowrap;">Plan Start</th>
+            <th mat-header-cell mat-sort-header class="text-center" style="min-width: 120px; white-space: nowrap;">Plan End</th>
+            <th mat-header-cell mat-sort-header class="text-center" style="min-width: 120px; white-space: nowrap;">Actual Start</th>
+            <th mat-header-cell mat-sort-header class="text-center" style="min-width: 120px; white-space: nowrap;">Actual End</th>
+            <th mat-header-cell mat-sort-header class="text-center" style="min-width: 120px; white-space: nowrap;">ETA</th>
+            <th mat-header-cell mat-sort-header class="text-center" style="min-width: 120px; white-space: nowrap;">Progress</th>
+            <th mat-header-cell mat-sort-header class="text-center" style="min-width: 120px; white-space: nowrap;">Status</th>
+            <th mat-header-cell mat-sort-header class="text-center" style="min-width: 130px; white-space: nowrap;">Priority</th>
+            <th mat-header-cell mat-sort-header class="text-center" style="min-width: 130px; white-space: nowrap;">Complexity</th>
+            <th mat-header-cell mat-sort-header class="text-center" style="min-width: 100px; white-space: nowrap;">Template</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let item of allProjects">
+            <td class="text-center">
+              <a matTooltip="Edit Task" style="margin-right: 8px; cursor: pointer;" (click)="openEditDialog(item)">
+                <i class="fa fa-edit" style="color: cornflowerblue;"></i>
+              </a>
+              <a matTooltip="Delete Task" style="cursor: pointer;" (click)="deleteConfirmation(item)">
+                <i class="fa fa-trash" style="color: red;"></i>
+              </a>
+            </td>
+            <td class="text-center">
+              <mat-checkbox color="primary" [(ngModel)]="item.IsActive" (change)="Confirmation(item)"></mat-checkbox>
+            </td>
+            <td class="text-center">
+              <a style="color: blue; cursor: pointer; text-decoration: none;" (click)="openProject(item)">
+                {{ item.ProjectName }}
+              </a>
+            </td>
+            <td class="text-center">
+              <a style="color: blue; cursor: pointer; text-decoration: none;" (click)="openProject(item)">
+                {{ item.ProjectCode }}
+              </a>
+            </td>
+            <td class="text-center">{{ item.TaskName }}</td>
+            <td class="text-center">{{ item.TaskType }}</td>
+            <td class="text-center">{{ item.Responsibility }}</td>
+            <td class="text-center">{{ item.Duration }}</td>
+            <td class="text-center">{{ item.Effort }}</td>
+            <td class="text-center">{{ item.Description }}</td>
+            <td class="text-center">{{ item.PlanStart }}</td>
+            <td class="text-center">{{ item.PlanEnd }}</td>
+            <td class="text-center">{{ item.ActualStart }}</td>
+            <td class="text-center">{{ item.ActualEnd }}</td>
+            <td class="text-center">{{ item.ETA }}</td>
+            <td class="text-center" style="vertical-align: middle;">
+              <input type="range" min="0" max="100"
+                     [(ngModel)]="item.PercentCompletion"
+                     class="custom-range"
+                     [style.--slider-color]="getSliderColor(item.PercentCompletion)"
+                     [style.--slider-fill]="item.PercentCompletion + '%'"
+                     matTooltip="{{ item.PercentCompletion }}%">
+            </td>
+            <td class="text-center">
+              <select [(ngModel)]="item.Status"
+                style="width: 100%; padding: 4px 8px; border: 1px solid #ccc; border-radius: 4px; background-color: white; appearance: auto; cursor: pointer;">
+                <option value="" disabled hidden selected>Select</option>
+                <option value="Pending">Pending</option>
+                <option value="Allocation">Allocation</option>
+                <option value="Progress">Progress</option>
+                <option value="Hold">Hold</option>
+                <option value="Cancelled">Cancelled</option>
+                <option value="Completed">Completed</option>
+              </select>
+            </td>
+            <td class="text-center">
+              <select [(ngModel)]="item.Priority"
+                style="width: 100%; padding: 4px 8px; border: 1px solid #ccc; border-radius: 4px; background-color: white; appearance: auto; cursor: pointer;">
+                <option value="" disabled hidden selected>Select</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+              </select>
+            </td>
+            <td class="text-center">
+              <select [(ngModel)]="item.Complexity"
+                style="width: 100%; padding: 4px 8px; border: 1px solid #ccc; border-radius: 4px; background-color: white; appearance: auto; cursor: pointer;">
+                <option value="" disabled hidden selected>Select</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+              </select>
+            </td>
+            <td class="text-center">
+              <mat-icon style="cursor: pointer;" (click)="openPdf('sample-1.pdf')">visibility</mat-icon>
+            </td>
+          </tr>
+
+          <tr *ngIf="!allProjects || allProjects.length === 0">
+            <td colspan="20" class="text-center">No records found</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button class="mine" mat-fab (click)="scrollRight()">
+        <mat-icon style="color: #37474f">fast_forward</mat-icon>
+      </button>
+      <button class="mine" mat-fab style="margin-right: 78px !important" (click)="scrollLeft()">
+        <mat-icon style="color: #37474f">fast_rewind</mat-icon>
+      </button>
+    </div>
+
+    <mat-paginator *ngIf="!isCalendarView" [length]="totalSize" [pageSize]="5"
+      [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons>
+    </mat-paginator>
+
+    <div *ngIf="isCalendarView" class="calendar-container" style="margin-top: 10px; overflow-x: auto;">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th style="min-width: 80px; background-color: black; color: white;">Time</th>
+            <th style="background-color: black; color: white; min-width: 160px;">Monday</th>
+            <th style="background-color: black; color: white; min-width: 160px;">Tuesday</th>
+            <th style="background-color: black; color: white; min-width: 160px;">Wednesday</th>
+            <th style="background-color: black; color: white; min-width: 160px;">Thursday</th>
+            <th style="background-color: black; color: white; min-width: 160px;">Friday</th>
+            <th *ngIf="showWeekend" style="background-color: black; color: white; min-width: 160px;">Saturday</th>
+            <th *ngIf="showWeekend" style="background-color: black; color: white; min-width: 160px;">Sunday</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let hour of hoursList">
+            <td style="font-weight: bold; font-size: 12px; white-space: nowrap; background: #f5f5f5;">
+              {{ hour }}
+            </td>
+            <td *ngFor="let day of displayDays" style="vertical-align: top; padding: 4px;">
+              <ng-container *ngFor="let card of calendarCards">
+                <div *ngIf="card.hour === hour && card.dayPlacement === day"
+                  [style.background-color]="card.color"
+                  style="border-radius: 6px; padding: 6px 8px; margin-bottom: 4px; font-size: 12px; border-left: 4px solid #555;">
+                  <div style="font-weight: bold;">{{ card.pInitials }} — {{ card.taskName }}</div>
+                  <div style="color: #444;">{{ card.projectName }}</div>
+                  <div style="color: #666;">
+                    <mat-icon style="font-size: 12px; vertical-align: middle;">person</mat-icon>
+                    {{ card.user }}
+                  </div>
+                  <div>
+                    <span style="font-size: 11px; background: rgba(0,0,0,0.1); border-radius: 3px; padding: 1px 5px;">
+                      {{ card.status }}
+                    </span>
+                  </div>
+                </div>
+              </ng-container>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

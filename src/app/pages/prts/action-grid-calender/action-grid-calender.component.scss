@@ -1,0 +1,68 @@
+.header-info {
+  margin: 3px 0px 0px 0px;
+  font-size: 13px;
+  color: #555;
+}
+
+.page-header {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-title {
+  margin: 0 !important;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.header-info {
+  margin: 3px 0 0 0;
+  font-size: 13px;
+  color: #555;
+}
+
+.back-btn {
+  background-color: gray;
+  color: white;
+
+  display: flex;
+  align-items: center;
+
+  height: 40px;
+  margin-top: 5px;
+}
+
+/* Optional spacing replacements for Bootstrap classes */
+.ms-5 {
+  margin-left: 3rem;
+}
+
+.me-5 {
+  margin-right: 3rem;
+}
+
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.ms-3 {
+  margin-left: 1rem;
+}
+
+.fw-bold {
+  font-weight: 700;
+}

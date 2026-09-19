@@ -1,0 +1,39 @@
+<div class="NewHeader">
+    <h1 mat-dialog-title >
+      <span *ngIf="!role">Add</span><span *ngIf="role">Update</span> Role
+    </h1>
+  </div>
+  
+    <form class="form-horizontal" [formGroup]="myGroup" autocomplete="off">
+      <div mat-dialog-content>
+        
+        <div class="form-group">
+          <label class="control-label col-sm-3 " >Role: </label>
+          <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+            <input *ngIf="!role" type="text" autocomplete="off" formControlName="RoleName" class="form-control " (keypress)="onlyAlphabets($event)" placeholder="Enter Role Name" maxlength="50" required>
+            <input *ngIf="role" type="text" formControlName="RoleName" class="form-control bac" (keypress)="onlyAlphabets($event)" placeholder="Enter Role Name" maxlength="50" required>
+            <!-- <div *ngIf="!myGroup.controls.RoleName.valid && (myGroup.controls.RoleName.dirty || myGroup.controls.RoleName.touched)" class="error-text">
+                <div *ngIf="myGroup.controls.RoleName.errors.required">
+                    Role Name is required
+                </div>
+            </div> -->
+          </div>
+      </div>
+      
+      </div>
+  
+        <mat-dialog-actions align="end">
+            
+              <button mat-raised-button (click)="close()"  type="button" style="background-color: lightgray; color: red" class="add-dark-hover btn-default">
+                <mat-icon>cancel</mat-icon> Close
+              </button>  
+              
+                <button mat-raised-button [ngClass]="{'btn-disabled' :  !myGroup.valid}"  [disabled]="!myGroup.valid"
+              color="primary"  class="btn-primary" type="button" (click)="Upsertrole()">
+                <mat-icon  style="font-size:20px" class="mt-1">save</mat-icon>
+                <span style="margin-left: 5px;" *ngIf="!role">Save</span><span *ngIf="role">Update</span>
+              </button>
+            
+        </mat-dialog-actions>
+    </form>
+  

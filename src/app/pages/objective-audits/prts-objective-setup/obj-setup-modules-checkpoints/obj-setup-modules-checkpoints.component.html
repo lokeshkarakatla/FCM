@@ -1,0 +1,157 @@
+<div class="col-sm-12 mt-4 mb-3">
+  <button style="margin-bottom: 7px" mat-raised-button class="pull-right  btn-primary margin-right-5 mt-3"
+    color="primary" (click)="addcheckpoint(null)">
+    <mat-icon>add</mat-icon> Add Module
+  </button>
+  <button style="margin-bottom: 7px" mat-raised-button style="background-color: black;color: white;"
+    class="pull-right filters-hover margin-right-10 mt-3" (click)="filterToggle = !filterToggle">
+    <mat-icon>filter_list</mat-icon> Filter
+  </button>
+  <!-- <button style="margin-bottom: 7px" mat-raised-button class="pull-right  btn-primary margin-right-10 mt-3"
+    (click)="openUploadCSV()" style="background-color: black;color: white;">
+    <mat-icon>cloud_upload</mat-icon> Upload CSV
+  </button>
+  <button style="margin-bottom: 7px" mat-raised-button class="pull-right  btn-primary margin-right-10 mt-3"
+    (click)="downloadSampleExcel()" style="background-color: black;color: white;">
+    <mat-icon>archive</mat-icon> Download Sample
+  </button> -->
+  <!-- <div class="switchToggle pull-right" style="margin-right:10px!important; margin-top: 5px!important;">
+    <input type="checkbox" (click)="gridToggle = !gridToggle" id="switch" />
+    <label class="mt-3" style="background-color: #3e98d3;" for="switch">Toggle</label>
+  </div>
+  <label class="pull-right" style="margin-top:18px; margin-right: 16px;">Sort By : </label> -->
+</div>
+<div fxLayout="row wrap" *ngIf="filterToggle">
+  <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p w-100 margins">
+    <mat-card class="filter" style="margin-bottom: 10px;
+    width: 98.5%;
+    margin-left: 10px;">
+      <mat-card-content>
+        <div class="row" style="padding-top:10px !important">
+          <div class="col-sm-4">
+            <div class="col-sm-4">
+              <label class="pull-right" style="margin-top: 6px;">Category:</label>
+            </div>
+            <div class="col-sm-8">
+              <mat-select class="form-control" placeholder="Select Variant:" required>
+                <mat-option [value]="0">Exterior</mat-option>
+                <mat-option [value]="1">Interior</mat-option>
+              </mat-select>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="col-sm-4">
+              <label class="pull-right" style="margin-top: 6px;">Measurement Name:</label>
+            </div>
+            <div class="col-sm-8">
+              <mat-select class="form-control" placeholder="Select Interior Trim:" required>
+                <mat-option [value]="0"> GAP( a )</mat-option>
+                <mat-option [value]="1"> GAP( b )</mat-option>
+                <mat-option [value]="2">FLUSH</mat-option>
+                <mat-option [value]="3">PARALLELISM </mat-option>
+                <mat-option [value]="4">DIST</mat-option>
+              </mat-select>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="col-sm-4">
+              <label class="pull-right" style="margin-top: 6px;">Status:</label>
+            </div>
+            <div class="col-sm-8">
+              <mat-select class="form-control" placeholder="Select Status" required>
+                <mat-option *ngFor="let option of Status" [value]="option.value">
+                  {{option.name}}
+                </mat-option>
+              </mat-select>
+            </div>
+          </div>
+        </div>
+
+       
+        <div class="row">
+  <div class="col-12 d-flex justify-content-end align-items-center gap-3">
+    <!-- Toggle Icon -->
+   
+
+    <!-- Clear Button -->
+  
+
+    <!-- Search Button -->
+    <button mat-raised-button color="primary"
+            (click)="getTests()">
+      <mat-icon>search</mat-icon> Search
+    </button>
+
+      <button mat-raised-button class="btn-default"
+            (click)="clearFilter(); getTests()">
+      <mat-icon>settings_backup_restore</mat-icon> Clear
+    </button>
+     <a (click)="filterToggle = !filterToggle"  
+       style="font-size: 25px; cursor: pointer;">
+      <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+    </a>
+  </div>
+</div>
+      
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<div class="col-sm-12">
+  <table style="margin-top: -4px;padding-left: 0px; padding-right: 0px;" matSort id="example2"
+    class="table table-bordered table-hover">
+    <thead class="tbl-head">
+      <tr>
+        <th class="theadcolor text-center">Actions</th>
+        <th class="theadcolor text-center">Status</th>
+
+        <th class="theadcolor">Module</th>
+        <th class="theadcolor text-center">Audit Types</th>
+        <th class="theadcolor text-center">Models</th>
+
+        <th class="theadcolor text-center">Image</th>
+        <th class="theadcolor text-center">Checkpoints</th>
+        <th class="theadcolor text-center">Grid</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of values">
+        <td class="text-center editDel">
+          <a style="cursor: pointer;margin-right:10px; " matTooltip="Edit" (click)="addcheckpoint(item)">
+            <i class="fa fa-edit" style="color: cornflowerblue"></i>
+          </a>
+          <a>
+            <i class="fa fa-trash red" matTooltip="Delete" style="cursor: pointer;"
+              (click)="deleteConfirmation(item)"></i>
+          </a>
+        </td>
+        <td class="text-center" style="text-align: center !important">
+          <a [ngStyle]="{
+                          color: item.status ? 'blue' : 'red',
+                          cursor: 'pointer'
+                        }" [ngClass]="{ 'disable-custom': !canUpdate }">
+            <span (click)="Confirmation(item)">
+              {{ item.status ? "Active" : "Inactive" }}
+            </span>
+          </a>
+        </td>
+        <td>{{item.module}}</td>
+        <td style="color:blue; cursor:pointer" class="text-center" (click)="openAuditTypes()">{{item.audittype}}</td>
+        <td class="text-center">
+          <span style="color: blue; cursor: pointer" (click)="modelspop()">8/8</span>
+        </td>
+        <td class="text-center">
+          <mat-icon style="cursor: pointer;" (click)="imageSource(item.image)">visibility
+          </mat-icon>
+        </td>
+        <td class="text-center" style="cursor: pointer;margin-right:10px; color: blue;" matTooltip="checkpoint" (click)="opencheckpoint(item)">{{item.checkpoints}}</td>
+        <td class="text-center">{{item.min}}</td>
+
+
+      </tr>
+    </tbody>
+  </table>
+  <mat-paginator [length]="4" [pageIndex]="0" [pageSize]="4" [pageSizeOptions]="[5, 10, 25, 50, 100]"
+    showFirstLastButtons></mat-paginator>
+</div>

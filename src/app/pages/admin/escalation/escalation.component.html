@@ -1,0 +1,120 @@
+<!-- <div class="col-sm-12" style="margin-top:30px;">
+    <table matSort id="example2" class="table table-bordered table-hover">
+        <thead class="tbl-head">
+            <tr>
+                <th class="theadcolor">Level</th>
+                <th class="theadcolor">Recipient</th>
+                <th class="theadcolor">Remarks</th>
+                <th class="theadcolor text-center">Delay</th>
+                <th class="theadcolor text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of values">
+
+
+                <td>{{item.level}}</td>
+                <td>{{item.Recipient}}</td>
+                <td>{{item.Remarks}}</td>
+
+
+                <td class="theadcolor text-center">
+                    {{item.Deley}}
+                </td>
+
+                <td class="text-center editDel">
+                    <a style="cursor: pointer;margin-right:10px; " matTooltip="Edit" (click)="addchecklistaudit(1)">
+                        <i class="fa fa-edit" style="color: cornflowerblue"></i>
+                    </a>
+                    <a><i class="fa fa-trash red" matTooltip="Delete" style="cursor: pointer;"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="col-lg-12 margin-top:50px">
+    <div class=" pull-right mt-5">
+
+
+    </div>
+</div> -->
+
+
+
+
+
+
+<div fxLayout="row wrap" #resizedDiv>
+  <!-- Table -->
+
+  <div class=" col-sm-12 flex-p w-100">
+
+    <div class="table-responsive sizeAlign">
+      <!-- <h2>Preferences</h2> -->
+      <table id="example2" style="margin-top: 10px;width: 99%;
+    margin-left: 14px;" class="table table-bordered table-hover ">
+        <thead class="tbl-head">
+          <tr class="tr-grid-header">
+            <th>Escalation </th>
+            <th>Description</th>
+            <th>Current Value</th>
+            <th>Revised Value</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of values">
+            <td>{{ item.name }}</td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.old_value }}</td>
+            <td>
+              <!-- <div *ngIf="item.name == 'Time Zone'">
+                <select class="form-control" id="email">
+                  <option>--Select--</option>
+                  <option value="AST">AST</option>
+                  <option value="IST">IST</option>
+                  <option value="CST">CST</option>
+                  <option value="MST">MST</option>
+                  <option value="PST">PST</option>
+                  <option value="ADT">ADT</option>
+                  <option value="EDT">EDT</option>
+                  <option value="PST">PST</option>
+                  <option value="MDT">MDT</option>
+                  <option value="PDT">PDT</option>
+                </select>
+              </div> -->
+              <!-- <div *ngIf="item.name == 'Grid Length'">
+               
+                <mat-select class="form-control" placeholder="Select Grid Length" required>
+                  <mat-option [value]="0">10</mat-option>
+                  <mat-option [value]="1">20</mat-option>
+                  <mat-option [value]="2">30</mat-option>
+                  <mat-option [value]="4">40</mat-option>
+                  <mat-option [value]="5">50</mat-option>
+                </mat-select>
+              </div> -->
+              
+              <div >
+                <input type="email" class="form-control" id="email" placeholder="Enter Revised Value " />
+              </div>
+              
+              
+            </td>
+            <td>
+              
+              <div style="display: flex; justify-content: center;">
+                <button mat-raised-button color="primary" [mat-dialog-close]="'test'" matTooltip="Click to Save">
+                  <mat-icon style="font-size:20px" class="mt-1">save</mat-icon>
+                   <span style="margin-left: 5px;">{{ data ? "Update" : "Save" }}</span>
+                </button>
+              </div>
+
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

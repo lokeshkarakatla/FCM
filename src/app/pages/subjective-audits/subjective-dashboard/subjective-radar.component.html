@@ -1,0 +1,578 @@
+<div class="radar-container">
+  <!-- Top Filter Section -->
+  <div class="filter-header">
+    <div class="filter-controls">
+      <div class="filter-group">
+        <label>Select Year: </label>
+        <select class="form-control filter-select" [(ngModel)]="selectedYear">
+          <option>--Select Year--</option>
+          <option>2021</option>
+          <option>2022</option>
+          <option>2023</option>
+          <option>2024</option>
+          <option>2025</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label>Select Month: </label>
+        <select class="form-control filter-select" [(ngModel)]="selectedMonth">
+          <option>--Select Month--</option>
+          <option>January</option>
+          <option>February</option>
+          <option>March</option>
+          <option>April</option>
+          <option>May</option>
+          <option>June</option>
+          <option>July</option>
+          <option>August</option>
+          <option>September</option>
+          <option>October</option>
+          <option>November</option>
+          <option>December</option>
+        </select>
+      </div>
+
+      <button mat-raised-button color="primary" class="go-btn">
+        <mat-icon>east</mat-icon> Go
+      </button>
+    </div>
+  </div>
+
+  <!-- Models Dashboard Grid (Matching img1) -->
+  <div class="models-grid">
+
+    <!-- 1. Hector -->
+    <div class="model-row">
+      <div class="model-badge-col" (click)="piechartpop('Hector')">
+        <div class="model-badge">Hector</div>
+        <div class="model-nav-arrows">
+          <mat-icon class="arrow-icon">arrow_back</mat-icon>
+          <mat-icon class="arrow-icon">arrow_forward</mat-icon>
+        </div>
+      </div>
+
+      <div class="metrics-cards-group">
+        <!-- Card 1: PQA -->
+        <div class="metric-card" (click)="piechartpop('PQA')">
+          <div class="card-left">
+            <div class="metric-title">PQA</div>
+            <div class="metric-day-val text-green" matTooltip="Day Value">90</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">91</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view"
+              [scheme]="colorScheme"
+              [results]="single"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 90 WDPV</div>
+        </div>
+
+        <!-- Card 2: Paint -->
+        <div class="metric-card" (click)="piechartpop('Paint')">
+          <div class="card-left">
+            <div class="metric-title">Paint</div>
+            <div class="metric-day-val text-red" matTooltip="Day Value">9</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">8.5</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view"
+              [scheme]="colorScheme"
+              [results]="single"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 7 WDPV</div>
+        </div>
+
+        <!-- Card 3: Body -->
+        <div class="metric-card" (click)="piechartpop('Body')">
+          <div class="card-left">
+            <div class="metric-title">Body</div>
+            <div class="metric-day-val text-red" matTooltip="Day Value">9</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">8.5</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view"
+              [scheme]="colorScheme"
+              [results]="single"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 7 WDPV</div>
+        </div>
+
+        <!-- Card 4: GA -->
+        <div class="metric-card" (click)="piechartpop('GA')">
+          <div class="card-left">
+            <div class="metric-title">GA</div>
+            <div class="metric-day-val text-red" matTooltip="Day Value">12</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">11.2</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view"
+              [scheme]="colorScheme"
+              [results]="single"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 10 WDPV</div>
+        </div>
+
+        <!-- Card 5: Press -->
+        <div class="metric-card" (click)="piechartpop('Press')">
+          <div class="card-left">
+            <div class="metric-title">Press</div>
+            <div class="metric-day-val text-green" matTooltip="Day Value">5</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">4.8</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view"
+              [scheme]="colorScheme"
+              [results]="single"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 4 WDPV</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Astor -->
+    <div class="model-row">
+      <div class="model-badge-col" (click)="piechartpop('Astor')">
+        <div class="model-badge">Astor</div>
+        <div class="model-nav-arrows">
+          <mat-icon class="arrow-icon">arrow_back</mat-icon>
+          <mat-icon class="arrow-icon">arrow_forward</mat-icon>
+        </div>
+      </div>
+
+      <div class="metrics-cards-group">
+        <!-- Card 1: PQA -->
+        <div class="metric-card" (click)="piechartpop('PQA')">
+          <div class="card-left">
+            <div class="metric-title">PQA</div>
+            <div class="metric-day-val text-green" matTooltip="Day Value">90</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">91</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view"
+              [scheme]="colorScheme"
+              [results]="single"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 90 WDPV</div>
+        </div>
+
+        <!-- Card 2: Paint -->
+        <div class="metric-card" (click)="piechartpop('Paint')">
+          <div class="card-left">
+            <div class="metric-title">Paint</div>
+            <div class="metric-day-val text-red" matTooltip="Day Value">9</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">8.5</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view"
+              [scheme]="colorScheme"
+              [results]="single"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 7 WDPV</div>
+        </div>
+
+        <!-- Card 3: Body -->
+        <div class="metric-card" (click)="piechartpop('Body')">
+          <div class="card-left">
+            <div class="metric-title">Body</div>
+            <div class="metric-day-val text-red" matTooltip="Day Value">9</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">8.5</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view"
+              [scheme]="colorScheme"
+              [results]="single"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 7 WDPV</div>
+        </div>
+
+        <!-- Card 4: GA -->
+        <div class="metric-card" (click)="piechartpop('GA')">
+          <div class="card-left">
+            <div class="metric-title">GA</div>
+            <div class="metric-day-val text-red" matTooltip="Day Value">12</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">11.2</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view"
+              [scheme]="colorScheme"
+              [results]="single"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 10 WDPV</div>
+        </div>
+
+        <!-- Card 5: Press -->
+        <div class="metric-card" (click)="piechartpop('Press')">
+          <div class="card-left">
+            <div class="metric-title">Press</div>
+            <div class="metric-day-val text-green" matTooltip="Day Value">5</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">4.8</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view"
+              [scheme]="colorScheme"
+              [results]="single"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 4 WDPV</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Gloster -->
+    <div class="model-row">
+      <div class="model-badge-col" (click)="piechartpop('Gloster')">
+        <div class="model-badge">Gloster</div>
+        <div class="model-nav-arrows">
+          <mat-icon class="arrow-icon">arrow_back</mat-icon>
+          <mat-icon class="arrow-icon">arrow_forward</mat-icon>
+        </div>
+      </div>
+
+      <div class="metrics-cards-group">
+        <!-- Card 1: PQA -->
+        <div class="metric-card" (click)="piechartpop('PQA')">
+          <div class="card-left">
+            <div class="metric-title">PQA</div>
+            <div class="metric-day-val text-green" matTooltip="Day Value">90</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">91</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view"
+              [scheme]="colorScheme"
+              [results]="single"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 90 WDPV</div>
+        </div>
+
+        <!-- Card 2: Paint -->
+        <div class="metric-card" (click)="piechartpop('Paint')">
+          <div class="card-left">
+            <div class="metric-title">Paint</div>
+            <div class="metric-day-val text-red" matTooltip="Day Value">9</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">8.5</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view"
+              [scheme]="colorScheme"
+              [results]="single"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 7 WDPV</div>
+        </div>
+
+        <!-- Card 3: Body -->
+        <div class="metric-card" (click)="piechartpop('Body')">
+          <div class="card-left">
+            <div class="metric-title">Body</div>
+            <div class="metric-day-val text-red" matTooltip="Day Value">9</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">8.5</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view"
+              [scheme]="colorScheme"
+              [results]="single"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 7 WDPV</div>
+        </div>
+
+        <!-- Card 4: GA -->
+        <div class="metric-card" (click)="piechartpop('GA')">
+          <div class="card-left">
+            <div class="metric-title">GA</div>
+            <div class="metric-day-val text-red" matTooltip="Day Value">12</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">11.2</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view"
+              [scheme]="colorScheme"
+              [results]="single"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 10 WDPV</div>
+        </div>
+
+        <!-- Card 5: Press -->
+        <div class="metric-card" (click)="piechartpop('Press')">
+          <div class="card-left">
+            <div class="metric-title">Press</div>
+            <div class="metric-day-val text-green" matTooltip="Day Value">5</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">4.8</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view"
+              [scheme]="colorScheme"
+              [results]="single"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 4 WDPV</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. ZSEV -->
+    <div class="model-row">
+      <div class="model-badge-col" (click)="piechartpop('ZSEV')">
+        <div class="model-badge">ZSEV</div>
+        <div class="model-nav-arrows">
+          <mat-icon class="arrow-icon">arrow_back</mat-icon>
+          <mat-icon class="arrow-icon">arrow_forward</mat-icon>
+        </div>
+      </div>
+
+      <div class="metrics-cards-group">
+        <!-- Card 1: PQA -->
+        <div class="metric-card" (click)="piechartpop('PQA')">
+          <div class="card-left">
+            <div class="metric-title">PQA</div>
+            <div class="metric-day-val text-green" matTooltip="Day Value">90</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">91</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view"
+              [scheme]="colorScheme"
+              [results]="single"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 90 WDPV</div>
+        </div>
+
+        <!-- Card 2: Paint -->
+        <div class="metric-card" (click)="piechartpop('Paint')">
+          <div class="card-left">
+            <div class="metric-title">Paint</div>
+            <div class="metric-day-val text-red" matTooltip="Day Value">9</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">8.5</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view"
+              [scheme]="colorScheme"
+              [results]="single"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 7 WDPV</div>
+        </div>
+
+        <!-- Card 3: Body -->
+        <div class="metric-card" (click)="piechartpop('Body')">
+          <div class="card-left">
+            <div class="metric-title">Body</div>
+            <div class="metric-day-val text-red" matTooltip="Day Value">9</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">8.5</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view"
+              [scheme]="colorScheme"
+              [results]="single"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 7 WDPV</div>
+        </div>
+
+        <!-- Card 4: GA -->
+        <div class="metric-card" (click)="piechartpop('GA')">
+          <div class="card-left">
+            <div class="metric-title">GA</div>
+            <div class="metric-day-val text-red" matTooltip="Day Value">12</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">11.2</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view"
+              [scheme]="colorScheme"
+              [results]="single"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 10 WDPV</div>
+        </div>
+
+        <!-- Card 5: Press -->
+        <div class="metric-card" (click)="piechartpop('Press')">
+          <div class="card-left">
+            <div class="metric-title">Press</div>
+            <div class="metric-day-val text-green" matTooltip="Day Value">5</div>
+            <div class="metric-avg-val" matTooltip="Monthly Average Value">4.8</div>
+          </div>
+          <div class="card-right">
+            <ngx-charts-bar-horizontal
+              [view]="view"
+              [scheme]="colorScheme"
+              [results]="single"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel">
+            </ngx-charts-bar-horizontal>
+          </div>
+          <div class="card-target">Target : 4 WDPV</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

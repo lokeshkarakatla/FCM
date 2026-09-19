@@ -1,0 +1,40 @@
+<div class="row col-12 mt-4">
+    <div class="col-sm-6 mb-5">
+        <div class="chart-header">
+            <h3 style="color: #212121;font-size:26;margin-top:10px;margin-left: 20%;">Demerit distribution by Audit
+                Type
+            </h3>
+        </div>
+        <div id="grid-table-container" class="table-responsive" style="margin-top:25px;width: 95%;margin-left:17px">
+            <table matSort id="example2" class="table table-bordered table-hover">
+                <thead class="tbl-head">
+                    <tr>
+                        <th class="text-center">Audit Type</th>
+                        <th class="text-center">Issues</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of items">
+                        <td class="text-center">{{item.audtitype }}</td>
+                        <td class="text-center">{{item.issues }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <mat-card style="margin-top: 57px;">
+            <div class="chart-header">
+                <p style="font-size: 20px;margin-top:10px;margin-left: 36%;">Sections</p>
+            </div>
+            <div class="w-100 h-300p">
+                <ngx-charts-bar-vertical [scheme]="colorScheme" [results]="three" [xAxis]="showXAxis"
+                    [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+                    [xAxisLabel]="'Category'" [yAxisLabel]="'Value'" [gradient]="gradient">
+                </ngx-charts-bar-vertical>
+
+            </div>
+        </mat-card>
+    </div>
+</div>

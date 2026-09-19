@@ -1,0 +1,97 @@
+<div class="criteria-wrapper">
+  <div class="row" style="margin: 0;">
+    
+    <div class="col-lg-2 col-sm-4" style="padding-left: 0; margin-top: 12px;">
+      
+      <h4 style="margin: 0 0 12px 0; font-weight: 500; color: #333; margin-bottom: 40px; margin-top: -30px;">{{ selectedModule?.name }}</h4>
+      
+      <div class="module-list">
+        <div class="module-card" 
+             *ngFor="let mod of modules" 
+             [ngClass]="{'active': selectedModule?.id === mod.id}"
+             (click)="selectModule(mod)">
+          <span class="chevron">›</span>
+          <span class="module-name">{{ mod.name }} ({{ mod.criteria.length }})</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-10 col-sm-8" style="padding-right: 0;">
+      
+      <div style="display: flex; justify-content: flex-end; align-items: center; margin-bottom: 8px;">
+        <button mat-raised-button color="primary" class="primary-btn" (click)="addCriteria()">
+          <mat-icon>add</mat-icon> Add Criteria
+        </button>
+      </div>
+
+      <div class="table-responsive bg-white shadow-sm">
+        <table matSort id="example2" class="table table-bordered table-hover custom-grid-table" style="margin-bottom: 0;">
+          <thead class="tbl-head">
+            <tr>
+              <th class="theadcolor text-center" style="width: 60px;">Move</th>
+              <th class="theadcolor text-center" style="width: 90px;">Actions</th>
+              <th class="theadcolor text-center" style="width: 80px;">Status</th>
+              <th class="theadcolor text-left" style="width: 25%;">Subject</th>
+              <th class="theadcolor text-left" style="width: 30%;">Description</th>
+              <th class="theadcolor text-center" style="width: 120px;">Priority</th>
+              <th class="theadcolor text-center" style="width: 100px;">Mandatory</th>
+            </tr>
+          </thead>
+
+          <tbody dragula="CRITERIA_ROWS" [dragulaModel]="selectedModule.criteria"
+            (dragulaModelChange)="selectedModule.criteria = $event">
+            
+            <tr *ngFor="let item of selectedModule.criteria">
+              <td class="text-center align-middle">
+                <mat-icon style="color: #9e9e9e; cursor: grab;">drag_indicator</mat-icon>
+              </td>
+
+              <td class="text-center editDel align-middle">
+                <a style="cursor: pointer; margin-right: 8px;" matTooltip="Edit" (click)="addmodule(item)">
+                  <i class="fa fa-edit" style="color: cornflowerblue"></i>
+                </a>
+                <a [ngClass]="{ 'disable-custom': !canDelete || item.TotalUsed }">
+                  <i style="cursor: pointer" matTooltip="Delete" class="fa fa-trash red" (click)="deleteConfirmation(item)"></i>
+                </a>
+              </td>
+
+              <td class="text-center align-middle">
+                <a [ngStyle]="{ color: item.status ? 'blue' : 'red', cursor: canUpdate ? 'pointer' : 'default' }"
+                  [ngClass]="{ 'disable-custom': !canUpdate }">
+                  <span (click)="canUpdate && Confirmation(item)">
+                    {{ item.status ? 'Active' : 'Inactive' }}
+                  </span>
+                </a>
+              </td>
+
+              <td class="align-middle">{{ item.question }}</td>
+
+              <td class="align-middle">{{ item.description }}</td>
+
+              <td class="text-center align-middle">
+                <select [(ngModel)]="item.priority"
+                  style="width: 100%; padding: 4px 8px; border: 1px solid #ccc; border-radius: 4px; background-color: white; appearance: auto; cursor: pointer;">
+                  <option value="" disabled hidden selected> Priority</option>
+                  <option value="High">High</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Low">Low</option>
+                </select>
+              </td>
+
+              <td class="text-center align-middle">
+                <mat-checkbox [(ngModel)]="item.mandatory"></mat-checkbox>
+              </td>
+            </tr>
+            
+            <tr *ngIf="selectedModule.criteria.length === 0">
+              <td colspan="7" class="text-center py-4 text-muted">
+                No criteria found for this module.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>

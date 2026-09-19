@@ -1,0 +1,290 @@
+<!-- <button mat-raised-button style="background-color: black;
+    color: white;margin-bottom: -8px;margin-left: 89.5%;" class=" "
+    (click)="filterToggle = !filterToggle">
+    <mat-icon>filter_list</mat-icon> Filter
+</button> -->
+
+
+
+ <div class="col-lg-4 col-sm-4" style="margin-bottom: 21px;
+    margin-left: 19px;margin-top: 10px;">
+        <div class="form-group">
+            <label class="control-label col-sm-4 mt-2">Select Period: </label>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mt-1">
+                <mat-select class="form-control" [value]="0">
+                    <mat-option [value]="0">This Year (2025)</mat-option>
+                    <mat-option [value]="1">Last Years</mat-option>
+                    <mat-option [value]="2">Last 60 Days</mat-option>
+                    <mat-option [value]="3">Last 6 Months</mat-option>
+                    <mat-option [value]="4">Last 12 Months</mat-option>
+                    <mat-option [value]="5">Last 2 Years</mat-option>
+                </mat-select>
+            </div>
+        </div>
+    </div>
+
+    
+<div class="container-fluid" style="padding: 0 36px; margin-top: 25px;" *ngIf="filterToggle"> <!-- Adjust 36px if needed -->
+  <div style="max-width: 100%; margin: 0 auto;">
+    <mat-card class="filter">
+      <mat-card-content>
+        <div class="row">
+          <!-- Select Period -->
+          <div class="col-sm-4">
+            <div class="col-sm-4 newMarginClass">Select Period:</div>
+            <div class="col-sm-8">
+              <mat-select class="form-control" placeholder="Select Period"
+                (selectionChange)="fnYearChange($event)" required>
+                <mat-option [value]="0">Last 2 Years</mat-option>
+                <mat-option [value]="1">Last 3 Years</mat-option>
+              </mat-select>
+            </div>
+          </div>
+
+          <!-- Audit Type -->
+          <div class="col-sm-4">
+            <div class="col-sm-4 newMarginClass">Audit Type:</div>
+            <div class="col-sm-8">
+              <mat-select class="form-control" placeholder="Select Audit Type" required>
+                <mat-option [value]="0">Product Quality Audit</mat-option>
+                <mat-option [value]="1">Body Audit</mat-option>
+                <mat-option [value]="2">Paint Audit</mat-option>
+              </mat-select>
+            </div>
+          </div>
+
+          <!-- Category -->
+          <div class="col-sm-4">
+            <div class="col-sm-4 newMarginClass">Category:</div>
+            <div class="col-sm-8">
+              <mat-select class="form-control" placeholder="Select Category">
+                <mat-option [value]="0">PQA</mat-option>
+                <mat-option [value]="1">Body Audit</mat-option>
+                <mat-option [value]="2">Paint Audit</mat-option>
+                <mat-option [value]="3">Process Audit</mat-option>
+              </mat-select>
+            </div>
+          </div>
+
+          <!-- From Date -->
+          <div class="col-sm-4 mt-2">
+            <div class="col-sm-4 newMarginClass">From Date:</div>
+            <div class="col-sm-8">
+              <input type="date" class="form-control">
+            </div>
+          </div>
+
+          <!-- To Date -->
+          <div class="col-sm-4 mt-2">
+            <div class="col-sm-4 newMarginClass">To Date:</div>
+            <div class="col-sm-8">
+              <input type="date" class="form-control">
+            </div>
+          </div>
+
+          <!-- GO Button -->
+          <div class="row" style="padding-top:10px; margin-left:-3px !important">
+            <div>
+              <button mat-raised-button class="pull-right btn-success">
+                GO
+              </button>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<div class="col-lg-12 col-xm-12 mt-3">
+    <div class="flex-p row-wrap">
+        <mat-card style="height:400px; display: grid; margin:10px 15px 7px 0px !important;">
+            <mat-card-header style="font-size: 20px;">
+                Audit Score Over Time Series Table
+            </mat-card-header>
+            <mat-card-content style="padding-bottom: 0px">
+                <ngx-charts-bar-vertical [scheme]="colorScheme1" [results]="single" [gradient]="gradient1"
+                    [xAxis]="showXAxis1" [yAxis]="showYAxis1" [showXAxisLabel]="showXAxisLabel1"
+                    [showYAxisLabel]="showYAxisLabel1" [xAxisLabel]="xAxisLabel1" [yAxisLabel]="yAxisLabel1"
+                    [barPadding]="barPadding" (select)="onSelect($event)">
+                </ngx-charts-bar-vertical>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+</div>
+
+
+<div class="col-lg-12 col-xm-12 mt-3">
+    <div class="col-lg-6 col-xm-6 ">
+        <div class="flex-p row-wrap">
+            <mat-card style="height:290px ;">
+                <mat-card-header style="font-size: 20px;">
+                    Distribution by Model
+                </mat-card-header>
+                <mat-card-content style="padding-bottom: 0px">
+                    <table style="padding-left: 0px; padding-right: 0px;" matSort id="example2"
+                        class="table table-bordered table-hover">
+                        <thead class="tbl-head">
+                            <tr>
+                                <th class="theadcolor">Model Name</th>
+                                <th class="theadcolor">Percentage</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of values">
+                                <td>{{item.measurement}}</td>
+                                <td>{{item.value}}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+    <div class="col-lg-6 col-xm-6">
+        <div class="flex-p row-wrap">
+            <mat-card style="height: 295px ;">
+                <mat-card-header style="font-size: 20px;">
+                    Distribution by Model
+                </mat-card-header>
+                <mat-card-content style="padding-bottom: 0px">
+                    <div>
+                       <ngx-charts-bar-vertical
+  [view]="view"
+  [scheme]="colorScheme"
+  [results]="three"
+  [gradient]="gradient"
+  [xAxis]="showXAxis"
+  [yAxis]="showYAxis"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxisLabel]="xAxisLabel"
+  [yAxisLabel]="yAxisLabel"
+  [barPadding]="barPadding"
+  (select)="onSelect($event)">
+</ngx-charts-bar-vertical>
+
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+    </div>
+</div>
+<div class="col-lg-12 col-xm-12 mt-3">
+    <div class="col-lg-6 col-xm-6 ">
+        <div class="flex-p row-wrap">
+            <mat-card style="height: 298px;">
+                <mat-card-header style="font-size: 20px;">
+                    Distribution by Function
+                </mat-card-header>
+                <mat-card-content style="padding-bottom: 0px">
+                    <table style="padding-left: 0px; padding-right: 0px;" matSort id="example2"
+                        class="table table-bordered table-hover">
+                        <thead class="tbl-head">
+                            <tr>
+                                <th class="theadcolor">Function Name</th>
+                                <th class="theadcolor">Percentage</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of values1">
+                                <td>{{item.measurement}}</td>
+                                <td>{{item.value}}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+    <div class="col-lg-6 col-xm-6">
+        <div class="flex-p row-wrap">
+            <mat-card style="height: 295px ;">
+                <mat-card-header style="font-size: 20px;">
+                    Distribution by Function
+                </mat-card-header>
+                <mat-card-content style="padding-bottom: 0px">
+                    <div>
+                      <ngx-charts-bar-vertical
+  [view]="view"
+  [scheme]="colorScheme"
+  [results]="function"
+  [gradient]="gradient"
+  [xAxis]="showXAxis"
+  [yAxis]="showYAxis"
+  
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxisLabel]="'Category'"
+  [yAxisLabel]="'Value'">
+</ngx-charts-bar-vertical>
+
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
+<div class="col-lg-12 col-xm-12 mt-3">
+    <div class="col-lg-6 col-xm-6 ">
+        <div class="flex-p row-wrap">
+            <mat-card style="height: 295px;">
+                <mat-card-header style="font-size: 20px;">
+                    Distribution by Defect
+                </mat-card-header>
+                <mat-card-content style="padding-bottom: 0px">
+                    <table style="padding-left: 0px; padding-right: 0px;" matSort id="example2"
+                        class="table table-bordered table-hover">
+                        <thead class="tbl-head">
+                            <tr>
+                                <th class="theadcolor">Defect Name</th>
+                                <th class="theadcolor">Percentage</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of values2">
+                                <td>{{item.measurement}}</td>
+                                <td>{{item.value}}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+  <div class="col-lg-6 col-xm-6">
+  <div class="flex-p row-wrap">
+    <mat-card style="height: 295px; display: flex; flex-direction: column;">
+      <mat-card-header>
+        <mat-card-title>Distribution by Defect</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content style="flex: 1; display: block;">
+        <div style="width: 100%; height: 100%;">
+          <ngx-charts-bar-vertical
+            
+            [scheme]="colorScheme"
+            [results]="defect"
+            [gradient]="gradient"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="'Defect Type'"
+            [yAxisLabel]="'Count'">
+          </ngx-charts-bar-vertical>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+</div>

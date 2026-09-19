@@ -1,0 +1,108 @@
+<div class="overview-container">
+  
+
+
+
+  <div class="overview-header">
+    <div class="header-titles">
+      <h1 class="page-title">Project Overview</h1>
+      <p class="subtitle">High-level summary of project status, key performance indicators, and master schedule.</p>
+    </div>
+  </div>
+  <div class="overview-card top-card">
+    
+    <div class="header-row">
+      <div class="title-group">
+        <div class="accent-bar"></div>
+        <h1>Aurora Platform</h1>
+        <span class="project-id">PRJ-2026-04</span>
+      </div>
+      <div class="status-badge">IN PROGRESS</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="kpi-grid">
+      <div class="kpi-item">
+        <label>PROJECT</label>
+        <span class="value">Aurora Platform</span>
+      </div>
+      <div class="kpi-item">
+        <label>MANAGER</label>
+        <span class="value">Sarah Kestner</span>
+      </div>
+      <div class="kpi-item">
+        <label>START DATE</label>
+        <span class="value">Jan 15, 2026</span>
+      </div>
+      <div class="kpi-item">
+        <label>DUE DATE</label>
+        <span class="value">Jul 31, 2027</span>
+      </div>
+      <div class="kpi-item">
+        <label>ETA</label>
+        <span class="value">Aug 12, 2027</span>
+      </div>
+      <div class="kpi-item">
+        <label>HOURS</label>
+        <span class="value">1,248 / 4,000</span>
+      </div>
+      <div class="kpi-item">
+        <label>STAGES</label>
+        <span class="value">2 / 5</span>
+      </div>
+      <div class="kpi-item">
+        <label>GATES</label>
+        <span class="value">2 Passed</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="progress-row">
+      <span class="progress-label">HOURS CONSUMED</span>
+      <div class="progress-bar-container">
+        <div class="progress-bar-fill" style="width: 31%;"></div>
+      </div>
+      <span class="progress-percentage">31%</span>
+
+      <span class="gates-label">GATES</span>
+      <div class="gates-group">
+        <span class="gate-badge" *ngFor="let gate of gates" [ngClass]="gate.status">
+          {{ gate.label }}
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="overview-card timeline-card">
+    
+    <div class="timeline-header">
+      <h2>Project Timeline — Jan 2026 to Jul 2027</h2>
+      
+      <div class="timeline-legend">
+        <div class="legend-item">
+          <span class="legend-color bg-green"></span> COMPLETE
+        </div>
+        <div class="legend-item">
+          <span class="legend-color bg-gray"></span> PLANNED
+        </div>
+        <div class="legend-item">
+          <span class="legend-color bg-red-pipe"></span> GATE
+        </div>
+      </div>
+    </div>
+
+    <div class="gantt-wrapper">
+      <highcharts-chart 
+        [Highcharts]="Highcharts" 
+        [constructorType]="'ganttChart'" 
+        [options]="ganttChartOptions"
+        style="width: 100%; height: 100%; display: block;">
+      </highcharts-chart>
+    </div>
+
+  </div>
+
+</div>

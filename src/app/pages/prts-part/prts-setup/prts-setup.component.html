@@ -1,0 +1,32 @@
+<div class="w-100">
+    <div class="flex-p">
+        <div class="row wrap">
+            <div class="col-sm-12 no-padding">
+                <div class="row-wrap">
+                    <div class="w-100">
+                        <div class="row">
+                            <div class="col-xs-12" style="margin-bottom: 15px;">
+                                <div class="pills">
+                                    <ul class="nav nav-pills" style="margin-left: 10px;margin-bottom: -25px; margin-top:20px;">
+                                        <!-- Here routing names are given oppositely -->
+                                        <li routerLinkActive="active" [routerLink]="['./objective-setup']">
+                                            <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                                                Objective Setup
+                                            </a>
+                                        </li>
+                                        <li routerLinkActive="active" [routerLink]="['./subjective-setup']">
+                                            <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                                                Subjective Setup
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,38 @@
+<div class="col-sm-12" style="
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  ">
+    <div class="NewHeader">
+        <h1 style="color: white; margin-top:5px" mat-dialog-title>
+            {{ data ? "Update" : "Add" }} Notes
+        </h1>
+    </div>
+    <div mat-dialog-content>
+        <form class="form-horizontal">
+
+
+            <!-- Remarks -->
+            <div class="form-group" style="margin-top: 20px">
+                <label class="control-label col-sm-4 a">Notes:
+                </label>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <textarea class="form-control" rows="3" formControlName="problemStatement"
+                        placeholder="Enter Notes"></textarea>
+                </div>
+            </div>
+        </form>
+    </div> 
+    <mat-dialog-actions align="end" style="margin-bottom: -19px;">
+        <div class="margin-bottom-10" style="margin-top: 30px; margin-right: -4px">
+            <button mat-raised-button color="primary" [mat-dialog-close]="'test'">
+                <mat-icon>save</mat-icon> <span>{{ data ? "Update" : "Save" }}</span>
+            </button>
+            <button mat-raised-button style="background-color: lightgray; color: red" class="add-dark-hover btn-default"
+                (click)="close()">
+                <mat-icon>cancel</mat-icon>Close
+            </button>
+        </div>
+    </mat-dialog-actions>
+</div>

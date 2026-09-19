@@ -1,0 +1,50 @@
+<div class="NewHeader">
+    <h1 mat-dialog-title style="color:white;">
+        {{ data ? 'Update' : 'Add'}} Detection
+    </h1>
+</div>
+ 
+<div mat-dialog-content>
+    <div class="col-sm-12" style="margin-bottom: 10px;">
+        <form [formGroup]="myGroup">
+            <div class="row " style="margin-bottom: 12px;">
+                <div class="col-sm-4 ">
+                    <label class="add-member-label  mt5 required imli" style="margin-top:5px; ">Detection
+                        Value:</label>
+                </div>
+                <div class="col-sm-8">
+                    <input class="form-control name back" formControlName="DetectionName" maxlength="50"
+                        placeholder="Enter Detection Value" type="number" value="">
+                    <div *ngIf="isSubmitting && f.DetectionName.errors" class="error-text">
+                        <div *ngIf="f.DetectionName.errors.required">{{'Detection Required'}}</div>
+                    </div>
+ 
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 12px;">
+                <div class="col-sm-4 ">
+                    <label class="mt5 required imli" style="margin-top:5px; ">Remarks
+                        :</label>
+                </div>
+                <div class="col-sm-8">
+                    <textarea class="form-control" formControlName="Remarks" style="height:100px;"></textarea>
+                </div>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <div class="pull-right">
+                    
+                     <button mat-raised-button class="me-3" (click)="close()"
+     style="background-color: lightgray; color: red">
+      <mat-icon>cancel</mat-icon> Close
+    </button> 
+
+<button mat-raised-button type="submit" class="save" color="primary" style="margin-right: 0px;"
+                        (click)="upsertDetection()">
+                        <mat-icon>save</mat-icon> Save
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+ 

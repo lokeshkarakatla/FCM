@@ -1,0 +1,67 @@
+<div class="row col-12 mt-4">
+  <div class="col-sm-12">
+    <div class="chart-header">
+      <h3 style="color: #212121;font-size:26;margin-top:10px;margin-left: 20%;">Demerit distribution by Transmission</h3>
+    </div>
+       <table matSort id="example2" class="table table-bordered table-hover">
+        <thead class="tbl-head">
+          <tr>
+            <th class="text-center">Transmission Type</th>
+            <th class="text-center">Issues</th>
+            <th class="text-center">Demerit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of items">
+            <td class="text-center">{{item.transmission_type }}</td>
+            <td class="text-center">{{item.issues }}</td>
+            <td class="text-center">{{item.demerit }}</td>
+          </tr>
+          <tr>
+            <td class="text-center">Total</td>
+            <td class="text-center">38</td>
+            <td class="text-center">323</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+
+
+</div>
+
+<div class="col-sm-12">
+  
+
+<div class="col-sm-6">
+        <mat-card style="margin-top: 57px;">
+            <div class="chart-header">
+                <p style="font-size: 20px;margin-top:10px;margin-left: 36%;">Demerits</p>
+            </div>
+            <div class="w-100 h-300p">
+                <ngx-charts-bar-vertical [scheme]="colorScheme" [results]="three" [xAxis]="showXAxis"
+                    [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+                    [xAxisLabel]="'Category'" [yAxisLabel]="'Value'" [gradient]="gradient">
+                </ngx-charts-bar-vertical>
+
+            </div>
+        </mat-card>
+    </div>
+
+
+    
+<div class="col-sm-6">
+        <mat-card style="margin-top: 57px;">
+            <div class="chart-header">
+                <p style="font-size: 20px;margin-top:10px;margin-left: 36%;">By Issues</p>
+            </div>
+            <div class="w-100 h-300p">
+                <ngx-charts-bar-vertical [scheme]="colorScheme" [results]="three" [xAxis]="showXAxis"
+                    [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+                    [xAxisLabel]="'Category'" [yAxisLabel]="'Value'" [gradient]="gradient">
+                </ngx-charts-bar-vertical>
+
+            </div>
+        </mat-card>
+    </div>
+
+</div>

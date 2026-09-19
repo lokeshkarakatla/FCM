@@ -1,0 +1,48 @@
+<div class="NewHeader">
+    <h1 mat-dialog-title>Audit Types </h1>
+</div>
+
+<div class="col-sm-12"> 
+
+
+<div  style="margin-left:70px;">
+    <div mat-dialog-content>
+
+        <!-- Grid Names -->
+        <form class="form-horizontal" style="margin-top:0px">
+            <div class="col-sm-12">
+
+                <div class="col-sm-6 flex d-flex row">
+                    <h3 class="mb-3"><label>Objective Audits</label></h3>
+                    <mat-checkbox>C Rating</mat-checkbox>
+                    <mat-checkbox>D Rating</mat-checkbox>
+                    <mat-checkbox>Eng Spec Test</mat-checkbox>
+                    <mat-checkbox>Torque Audit</mat-checkbox>
+                    <mat-checkbox>Body Leak Test</mat-checkbox>
+                </div>
+
+                <div class="col-sm-6 flex d-flex row">
+                    <h3 class="mb-3"><label>Subjective Audits</label></h3>
+                    <mat-checkbox class="">PQA</mat-checkbox>
+                    <mat-checkbox>Body Audit</mat-checkbox>
+                    <mat-checkbox>Paint Audit</mat-checkbox>
+                    <mat-checkbox>RQA</mat-checkbox>
+                    <mat-checkbox>Process Audit</mat-checkbox>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Button -->
+<mat-dialog-actions align="end">
+
+      <button mat-raised-button   style="background-color: lightgray; color: red" (click)="close()">
+        <mat-icon>cancel</mat-icon>Close
+    </button>
+    <button mat-raised-button color="primary" (click)="close()">
+        <mat-icon  style="font-size:20px" class="mt-1">save</mat-icon>Save
+    </button>
+  
+</mat-dialog-actions>
+</div>

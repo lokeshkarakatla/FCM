@@ -1,0 +1,35 @@
+<div fxLayout="row wrap">
+    <div class="col-12">
+        <button mat-raised-button class="pull-right btn-default mb-3" (click)="backClicked()">
+            <mat-icon>chevron_left</mat-icon> Back
+        </button>
+    
+          <button mat-raised-button class="pull-right btn-success margin-right-10" >
+            <mat-icon>save</mat-icon> Save
+          </button>
+    </div>
+  <div class="table-responsive flex-p w-100">
+   
+   
+          <table id="example2" class="table table-bordered table-hover">
+              <thead class="tbl-head">
+                  <tr class="tr-grid-header">
+                      <th>Screen Permissions</th>
+                      <th class="text-center">Allow</th>
+
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let screenName of screens">
+                          <td>{{screenName.name}}</td>
+                          <td class="text-center"><input type="checkbox" checked></td>
+                      
+                      </tr>
+                      <tr>
+                          
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+      

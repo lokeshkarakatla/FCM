@@ -1,0 +1,103 @@
+.s {
+    width: 16% !important;
+    background-color: rgb(246, 252, 252);
+}
+
+.s2 {
+    // width: 10% !important;
+    margin-top: 10px;
+    margin-left: 5px;
+    width: 8% !important;
+    height: 10%;
+}
+
+.d {
+    margin-left: 1.5%;
+
+}
+
+//.col {
+// background-color: rgb(243, 241, 241);
+
+
+//}
+
+.col-lg {
+    padding: 1.5%;
+    margin-bottom: 2% !important;
+}
+
+.s1 {
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.margin {
+    margin-left: -23px;
+}
+
+.rec {
+    width: 60px;
+    color: white;
+    margin-bottom: 4px;
+    margin-right: -10px;
+}
+
+.float-vertical-align {
+    position: absolute;
+    top: 90%;
+    right: 4%;
+    transform: translateY(-50%);
+}
+
+.margin{
+        display: flex;
+        justify-content: center;
+        margin-left: 80px;
+        box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fafafa;
+  padding: 40px;
+}
+
+h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+.dashboard-button {
+  padding: 12px 24px;
+  // font-weight: bold;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  background-color: #fff;
+  color: #000;
+}
+
+.dashboard-button:hover {
+  background-color: #f0f0f0;
+}
+
+.dashboard-button.active {
+  background-color: #455A64;
+  color: #fff;
+}

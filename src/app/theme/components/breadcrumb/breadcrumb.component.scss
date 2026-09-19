@@ -1,0 +1,32 @@
+
+.breadcrumb-container {
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.breadcrumb-main-title {
+    font-size: 22px !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+    margin: 0 !important;
+    letter-spacing: -0.4px;
+}
+
+.breadcrumb-trail {
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: #64748b;
+
+    .bc-current {
+        color: #1e293b !important;
+        font-weight: 700 !important;
+    }
+
+    .bc-sep {
+        color: #94a3b8;
+        margin: 0 4px;
+    }
+}
+

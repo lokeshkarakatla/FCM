@@ -1,0 +1,719 @@
+<div class="col-sm-12" style="max-width: 100%; padding: 0; margin: 0; box-sizing: border-box;">
+  <div class="NewHeader">
+    <h1 style="color: white; margin-top:5px" mat-dialog-title>
+      {{ data ? "Update" : "Add" }} Issue
+    </h1>
+  </div>
+
+  <!-- Navigation Pills (always visible) -->
+  <div class="col-sm-2" style="margin-bottom: 10px;">
+    <div class="m-auto pills pt-2 pr-0">
+      <ul class="nav col-12 flex-column pr-0">
+        <li class="nav-item" style="margin-top: 10px;" [ngClass]=" addStep == 1 ? 'active nav-item' : 'nav-item'"
+          (click)="changeAddStep(1)">
+          <a mat-raised-button class="nav-link text-left py-2 width">Overview</a>
+        </li>
+
+        <li class="nav-item" style="margin-top: 10px;" [ngClass]=" addStep == 2 ? 'active nav-item': 'nav-item'"
+          (click)="changeAddStep(2)">
+          <a mat-raised-button class="nav-link text-left py-2 width">Details</a>
+        </li>
+
+        <li class="nav-item" style="margin-top: 10px;" [ngClass]=" addStep == 3 ? 'active nav-item': 'nav-item'"
+          (click)="changeAddStep(3)">
+          <a mat-raised-button class="nav-link text-left py-2 width">Actions</a>
+        </li>
+
+        <ng-container *ngIf="reviewIsDone">
+          <li class="nav-item" style="margin-top: 10px;" [ngClass]="(addStep == 4 ? 'active nav-item': 'nav-item')"
+            (click)="changeAddStep(4)">
+            <a mat-raised-button class="nav-link text-left py-2 width">RCA</a>
+          </li>
+
+          <li class="nav-item" style="margin-top: 10px;" [ngClass]=" addStep == 5 ? 'active nav-item': 'nav-item'"
+            (click)="changeAddStep(5)">
+            <a mat-raised-button class="nav-link text-left py-2 width">Interim Action</a>
+          </li>
+
+          <li class="nav-item" style="margin-top: 10px;" [ngClass]=" addStep == 6 ? 'active nav-item': 'nav-item'"
+            (click)="changeAddStep(6)">
+            <a mat-raised-button class="nav-link text-left py-2 width">Permanent Action</a>
+          </li>
+        </ng-container>
+
+      </ul>
+    </div>
+  </div>
+
+  <!-- Step 1: Overview -->
+  <div *ngIf="addStep == 1">
+    <form class="custom-two-column-form">
+      <div class="row">
+        <!-- Left Column -->
+        <div class="col-md-6">
+
+
+          <div class="form-group row align-items-center">
+            <label class="col-sm-4 col-form-label">New/Regular:<span class="text-danger">*</span></label>
+            <div class="col-sm-8">
+              <mat-select class="form-control back" placeholder="New/Regular">
+                <mat-option [value]="true">New</mat-option>
+                <mat-option [value]="false">Regular</mat-option>
+              </mat-select>
+            </div>
+          </div>
+          <div class="form-group row align-items-center">
+            <label class="col-sm-4 col-form-label">Select Project:<span class="text-danger">*</span></label>
+            <div class="col-sm-8">
+              <mat-select class="form-control back" placeholder="Select Project" [(value)]="selectedProject">
+
+                <mat-option value="">Select Project</mat-option>
+                <mat-option *ngFor="let project of projects" [value]="project">
+                  {{ project }}
+                </mat-option>
+
+              </mat-select>
+            </div>
+          </div>
+
+          <div class="form-group row align-items-center">
+            <label class="col-sm-4 col-form-label">Equipment ID:<span class="text-danger">*</span></label>
+            <div class="col-sm-8">
+              <mat-select class="form-control back" placeholder="Select Equipment ID">
+                <mat-option value="TRX1001">TRX1001</mat-option>
+                <mat-option value="TRX1002">TRX1002</mat-option>
+                <mat-option value="TRX1003">TRX1003</mat-option>
+                <mat-option value="TRX1004">TRX1004</mat-option>
+                <mat-option value="TRX1005">TRX1005</mat-option>
+                <mat-option value="TRX1006">TRX1006</mat-option>
+                <mat-option value="TRX1007">TRX1007</mat-option>
+                <mat-option value="TRX1008">TRX1008</mat-option>
+                <mat-option value="TRX1009">TRX1009</mat-option>
+                <mat-option value="TRX1010">TRX1010</mat-option>
+              </mat-select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Issue Description:<span class="text-danger">*</span></label>
+            <div class="col-sm-8">
+              <textarea class="form-control back" rows="4" placeholder="Issue Description"></textarea>
+            </div>
+          </div>
+
+          <div class="form-group row align-items-center">
+            <label class="col-sm-4 col-form-label">Part Code:<span class="text-danger">*</span></label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control back" placeholder="Part Code:">
+            </div>
+          </div>
+
+
+
+
+
+
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Part Description:<span class="text-danger">*</span></label>
+            <div class="col-sm-8">
+              <textarea class="form-control back" rows="4" placeholder="Part Description"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-md-6">
+          <div class="form-group row align-items-center">
+            <label class="col-sm-4 ">Severity:</label>
+            <div class="col-sm-8">
+              <mat-select class="form-control " placeholder=" Select Severity ">
+                <mat-option [value]="1">1 (Unlikely)</mat-option>
+                <mat-option [value]="2">2 (Remote)</mat-option>
+                <mat-option [value]="3">3 (Few)</mat-option>
+
+              </mat-select>
+
+            </div>
+          </div>
+          <div class="form-group row align-items-center">
+            <label class="col-sm-4 add-member-label">Probability:</label>
+            <div class="col-sm-8">
+              <mat-select class="form-control back" placeholder="Select Probability">
+                <mat-option [value]="1">1 (Unlikely)</mat-option>
+                <mat-option [value]="2">2 (Remote)</mat-option>
+                <mat-option [value]="3">3 (Few)</mat-option>
+                <mat-option [value]="4">4 (Low)</mat-option>
+                <mat-option [value]="5">5 (Moderate)</mat-option>
+                <mat-option [value]="6">6 (Occasional)</mat-option>
+                <mat-option [value]="7">7 (High)</mat-option>
+                <mat-option [value]="8">8 (Repeated)</mat-option>
+                <mat-option [value]="9">9 (Very High)</mat-option>
+                <mat-option [value]="10">10 (Inevitable)</mat-option>
+              </mat-select>
+            </div>
+          </div>
+
+          <div class="form-group row align-items-center">
+            <label class="col-sm-4 add-member-label">Context:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control back" placeholder="Context">
+            </div>
+          </div>
+
+
+          <div class="form-group row align-items-center">
+            <label class="col-sm-4 col-form-label ">Failure Hours:<span class="text-danger">*</span></label>
+            <div class="col-sm-8">
+              <input type="number" class="form-control back" placeholder="Enter Failure Hours">
+            </div>
+          </div>
+
+          <div class="form-group row align-items-center">
+            <label class="col-sm-4 col-form-label">Updation Hours:</label>
+            <div class="col-sm-8">
+              <input type="number" class="form-control" placeholder="Enter Hours">
+            </div>
+          </div>
+
+          <!-- <div class="form-group row align-items-center">
+            <label class="col-sm-4 col-form-label">Implement:<span class="text-danger">*</span></label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" placeholder="Enter Implement" formControlName="implement">
+            </div>
+          </div> -->
+
+
+
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Root Cause Analysis:<span class="text-danger">*</span></label>
+            <div class="col-sm-8">
+              <textarea class="form-control back" rows="3" placeholder="Root Cause Analysis"></textarea>
+            </div>
+          </div>
+
+          <div class="form-group row align-items-center">
+            <label class="col-sm-4 col-form-label">Photograph:</label>
+            <div class="col-sm-8">
+              <input type="file" class="form-control" (change)="onFileSelected($event)">
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="form-actions-mat pull-right">
+      <button mat-raised-button class="ms-2" (click)="close()"
+        style="background-color: lightgray; color: red;margin-right: 10px;">
+        <mat-icon>cancel</mat-icon>
+        Close
+      </button>
+      <button mat-raised-button color="primary" (click)="changeAddStep(2)" style="margin-right: 10px;">
+        <!-- <mat-icon class="me-1">arrow_forward</mat-icon> -->
+        <mat-icon>save</mat-icon>Save & Next
+      </button>
+
+
+    </div>
+  </div>
+
+  <!-- Step 2: Details -->
+  <div *ngIf="addStep == 2" class="mt-4">
+    <form [formGroup]="form" class="custom-two-column-form">
+      <div class="row">
+        <!-- Left Column -->
+        <div class="col-md-6">
+          <!-- <div class="form-group row align-items-center">
+          <label class="col-sm-4 col-form-label">New/Regular:</label>
+          <div class="col-sm-8">
+            <mat-select class="form-control"  placeholder="New/Regular">
+              <mat-option [value]="true">New</mat-option>
+              <mat-option [value]="false">Regular</mat-option>
+            </mat-select>
+          </div>
+        </div> -->
+
+          <div class="form-group row align-items-center">
+            <label class="col-sm-4 add-member-label">Responsible Section:</label>
+            <div class="col-sm-8">
+              <mat-select class="form-control back" placeholder="Responsible Section">
+                <mat-option value="1">Section A</mat-option>
+                <mat-option value="2">Section B</mat-option>
+                <mat-option value="3">Section C</mat-option>
+              </mat-select>
+            </div>
+          </div>
+
+          <div class="form-group row align-items-center">
+            <label class="col-sm-4 add-member-label">Sub Group:</label>
+            <div class="col-sm-8">
+              <mat-select class="form-control back" placeholder="Sub Group">
+                <mat-option value="1">Sub Group 1</mat-option>
+                <mat-option value="2">Sub Group 2</mat-option>
+                <mat-option value="3">Sub Group 3</mat-option>
+              </mat-select>
+            </div>
+          </div>
+
+          <div class="form-group row align-items-center">
+            <label class="col-sm-4 add-member-label">Section Lead:</label>
+            <div class="col-sm-8">
+              <!-- <input type="text" readonly class="form-control back"  placeholder="Responsible Section Lead"> -->
+              <mat-select class="form-control back" placeholder="Section Lead">
+                <mat-option value="1">John Doe</mat-option>
+                <mat-option value="2">Jane Smith</mat-option>
+                <mat-option value="3">Michael Johnson</mat-option>
+              </mat-select>
+            </div>
+          </div>
+
+          <div class="form-group row align-items-center">
+            <label class="col-sm-4 add-member-label">ORC Status:</label>
+            <div class="col-sm-8">
+              <mat-select class="form-control back" placeholder="ORC Status">
+                <mat-option value="O">O</mat-option>
+                <mat-option value="R1">R1</mat-option>
+                <mat-option value="R2">R2</mat-option>
+                <mat-option value="C">C</mat-option>
+              </mat-select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-md-6">
+          <div class="form-group row align-items-center">
+            <label class="col-sm-4 add-member-label">Project Lead:</label>
+            <div class="col-sm-8">
+              <mat-select class="form-control back" placeholder="Project Lead">
+                <mat-option value="1">John Doe</mat-option>
+                <mat-option value="2">Jane Smith</mat-option>
+                <mat-option value="3">Michael Johnson</mat-option>
+              </mat-select>
+            </div>
+          </div>
+
+          <div class="form-group row align-items-center">
+            <label class="col-sm-4 add-member-label">Failure Effect:</label>
+            <div class="col-sm-8">
+              <mat-select class="form-control back" placeholder="Failure Effect">
+                <mat-option value="1">High (FM1)</mat-option>
+                <mat-option value="2">Medium (FM2)</mat-option>
+                <mat-option value="3">Low (FM3)</mat-option>
+              </mat-select>
+            </div>
+          </div>
+
+          <!-- <div class="form-group row align-items-center">
+          <label class="col-sm-4 col-form-label">Severity:</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" readonly formControlName="Severity" placeholder="Severity">
+          </div>
+        </div>
+ 
+        <div class="form-group row align-items-center">
+          <label class="col-sm-4 add-member-label">Probability:</label>
+          <div class="col-sm-8">
+            <mat-select class="form-control back" formControlName="Probability" placeholder="Probability">
+              <mat-option [value]="1">1 (Unlikely)</mat-option>
+              <mat-option [value]="2">2 (Remote)</mat-option>
+              <mat-option [value]="3">3 (Few)</mat-option>
+              <mat-option [value]="4">4 (Low)</mat-option>
+              <mat-option [value]="5">5 (Moderate)</mat-option>
+              <mat-option [value]="6">6 (Occasional)</mat-option>
+              <mat-option [value]="7">7 (High)</mat-option>
+              <mat-option [value]="8">8 (Repeated)</mat-option>
+              <mat-option [value]="9">9 (Very High)</mat-option>
+              <mat-option [value]="10">10 (Inevitable)</mat-option>
+            </mat-select>
+          </div>
+        </div>
+  -->
+          <div class="form-group row align-items-center">
+            <label class="col-sm-4 col-form-label">Relevant Document:</label>
+            <div class="col-sm-8">
+              <input type="file" class="form-control" (change)="onFileSelected($event)">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions-mat pull-right mt-4" style="margin-right: 11px;">
+         <button mat-raised-button class="ms-2" (click)="close()"
+          style="background-color: lightgray; color: red;margin-right: 8px;">
+          <mat-icon>cancel</mat-icon>
+          Close
+        </button>
+        <button mat-raised-button (click)="changeAddStep(1)" style="margin-right: 3px;"> <mat-icon>arrow_back</mat-icon>Back</button>
+        <button mat-raised-button color="primary" style="color:white;" (click)="changeAddStep(3)" class="ms-2">
+          <mat-icon>arrow_forward</mat-icon>
+          Proceed</button>
+       
+
+      </div>
+    </form>
+  </div>
+
+
+
+  <div *ngIf="addStep == 3" style="margin-top:30px;">
+    <form [formGroup]="form" class="custom-two-column-form">
+      <div class="row">
+        <div class="col-md-6">
+          <!-- Category -->
+          <div class="form-group row align-items-center">
+            <label class="col-sm-4 col-form-label">Category:</label>
+            <div class="col-sm-8">
+              <mat-select class="form-control" placeholder="Select Category">
+                <mat-option value="1">Category A</mat-option>
+                <mat-option value="2">Category B</mat-option>
+                <mat-option value="3">Category C</mat-option>
+              </mat-select>
+            </div>
+          </div>
+
+          <!-- Current Responsibility -->
+          <div class="form-group row align-items-center">
+            <label class="col-sm-4 col-form-label">Current Responsibility:</label>
+            <div class="col-sm-8">
+              <mat-select class="form-control" placeholder="Select Current Responsibility">
+                <mat-form-field appearance="fill" style="width: 100%">
+
+                  <input matInput placeholder="Search..." />
+                </mat-form-field>
+                <mat-option value="1">John Doe</mat-option>
+                <mat-option value="2">Jane Smith</mat-option>
+                <mat-option value="3">Michael Johnson</mat-option>
+              </mat-select>
+            </div>
+          </div>
+
+          <!-- Target Date -->
+          <div class="form-group row align-items-center">
+            <label class="col-sm-4 col-form-label">Target Date:</label>
+            <div class="col-sm-8">
+              <input type="date" class="form-control">
+              <div class="error-text" *ngIf="f?.TargetDate?.errors?.invalidDate">
+                Date must be between today and 3 days from today.
+              </div>
+            </div>
+          </div>
+
+          <!-- Concerned Acknowledgement -->
+          <div class="form-group row align-items-center">
+            <label class="col-sm-4 col-form-label">Review Done:</label>
+            <div class="col-sm-8">
+              <mat-checkbox (change)="onReviewChange($event)"></mat-checkbox>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-md-6">
+          <div class="form-group row align-items-center">
+            <label class="col-sm-4 col-form-label" style="margin-bottom: 148px;
+    margin-right: -21px;
+">Current Status:</label>
+            <div class="col-sm-8">
+              <textarea class="form-control" style="height:180px;" placeholder="Current Status"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <!-- Action Buttons -->
+    <div class="form-actions-mat pull-right" style="margin-top: 7px;margin-right: 28px;">
+       <button mat-raised-button class="ms-2" (click)="close()"
+        style="background-color: lightgray; color: red;margin-right: 23px;">
+        <mat-icon>cancel</mat-icon>
+        Close
+      </button>
+      <button mat-raised-button (click)="changeAddStep(2)" style="margin-left: -12px;"><mat-icon>arrow_back</mat-icon>
+        Back</button>
+      <button [ngClass]="{ 'disable-custom': !form?.valid }" (click)="fnUpsertIssue()" mat-raised-button color="primary"
+        style="color:white;margin-left: 12px;">
+        <mat-icon>save</mat-icon>Save
+      </button>
+     
+
+    </div>
+  </div>
+
+  <div *ngIf="addStep == 4" class="col-sm-10 mt-4" style="margin-top: 10px;">
+    <div class="container-fluid" style="margin-left: 19px;">
+      <div class="w-100">
+        <div class="flex-p">
+          <div class="row wrap">
+            <div class="col-sm-12 no-padding">
+              <div class="row-wrap">
+                <div class="w-100">
+                  <div class="row">
+                    <div class="col-xs-6"></div>
+                    <div class="col-xs-6">
+                      <div class="col-xs-6"></div>
+                      <div class="col-xs-6" style="margin-left: -13px;margin-bottom: -7px;">
+                        <div class="">
+                          <button mat-raised-button color="primary" class="pull-right" style="padding-right:30px;"
+                            (click)="AddRCA()">
+                            <mat-icon>person_add</mat-icon> RCA
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div fxLayout="row wrap" #resizedDiv>
+        <div class="flex-p w-100 sizeAlign">
+          <div class="row">
+            <div class="col-sm-12">
+              <div id="grid-table-container" class="table-responsive">
+                <table matSort id="example2" class="table table-bordered table-hover">
+                  <thead class="tbl-head">
+                    <tr>
+                      <th class="text-center">Done</th>
+                      <th>RCA Description</th>
+                      <th class="text-center">RCA Document</th>
+                      <th class="text-center">Target Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngIf="RCAIssues == null || RCAIssues.length == 0">
+                      <td colspan="4" class="text-center">No records found</td>
+                    </tr>
+                    <tr *ngFor="let item of RCAIssues;index as i">
+                      <td class="style text-center p-0" style="cursor: pointer;text-align: center !important;">
+                        <mat-checkbox
+                          [ngClass]="{'disable-custom' : !(i == 0) || !(ResLeadId == userId ) || !(concernedackvalue ==true )}"
+                          [checked]="item.IsDone" (click)="fnUpdateRCA(item)">
+                        </mat-checkbox>
+                      </td>
+                      <td>{{item.RCADescription}}</td>
+                      <td class="text-center">
+                        <a *ngIf="item.RCADocURL != null" style="color:blue;cursor: pointer"
+                          style="color:blue;cursor:pointer" href="{{item.RCADocPath}}" target="_blank">
+                          View</a>
+                        <p *ngIf="item.RCADocURL == null">NA</p>
+                      </td>
+                      <td class="text-center">{{item.RCATargetDate | date:'dd/MM/yyyy'}}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+                  (page)="fnHandlePage($event)" [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons>
+                </mat-paginator>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <mat-dialog-actions align="end" style="margin-top: 15px;margin-right: 12px;">
+       <button mat-raised-button class="ms-2" (click)="close()"
+        style="background-color: lightgray; color: red;margin-right: 3px;">
+        <mat-icon>cancel</mat-icon>
+        Close
+      </button>
+      <button mat-raised-button (click)="changeAddStep(3)" style="margin-right: 6px;"> <mat-icon>arrow_back</mat-icon>Back</button>
+      <button mat-raised-button color="primary" style="color:white;margin-right: 6px;" (click)="changeAddStep(5)" class="ms-2">
+        <mat-icon>arrow_forward</mat-icon>
+        Proceed</button>
+     
+    </mat-dialog-actions>
+  </div>
+  <div *ngIf="addStep == 5" class="col-sm-10" style="margin-top: 10px;">
+    <div class="container-fluid" style="padding-right: 5px;
+                padding-left: 0px; margin-bottom: 10px;">
+      <div class="w-100">
+        <div class="flex-p">
+          <div class="row wrap">
+            <div class="col-sm-12 no-padding">
+              <div class="row-wrap">
+                <div class="w-100">
+                  <div class="row">
+                    <div class="col-xs-6"></div>
+                    <div class="col-xs-6">
+                      <div class="col-xs-6"></div>
+                      <div class="col-xs-6" style="margin-left: 0px;margin-bottom: -16px;">
+                        <div class="">
+                          <button mat-raised-button color="primary" class="pull-right" style="padding-right:30px;"
+                            (click)="AddInterim(null)">
+                            <mat-icon>person_add</mat-icon>Add Action
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div fxLayout="row wrap" #resizedDiv>
+        <div class="flex-p w-100 sizeAlign">
+          <div class="row">
+            <div class="col-sm-12">
+              <div id="grid-table-container" class="table-responsive">
+                <table matSort id="example2" class="table table-bordered table-hover" style="margin-left: -6px;">
+                  <thead class="tbl-head">
+                    <tr>
+                      <th class="text-center">Done</th>
+                      <th>Interim Description</th>
+                      <th class="text-center"> Document</th>
+                      <th class="text-center">Target Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngIf="InterimIssues == null || InterimIssues.length == 0">
+                      <td colspan="4" class="text-center">No records found</td>
+                    </tr>
+                    <tr *ngFor="let item of InterimIssues;index as i">
+                      <td class="style text-center p-0" style="cursor: pointer;text-align: center !important;">
+                        <mat-checkbox
+                          [ngClass]="{'disable-custom' : !(i == 0) || !(ResLeadId == userId ) || !(concernedackvalue ==true )}"
+                          [checked]="item.IsDone" (click)="fnUpdateInterim(item)">
+                        </mat-checkbox>
+                      </td>
+                      <td>{{item.InterimDescription}}</td>
+                      <td class="text-center">
+                        <a *ngIf="item.InterimDocURL != null" style="color:blue;cursor: pointer"
+                          style="color:blue;cursor:pointer" href="{{item.InterimDocPath}}" target="_blank">
+                          View</a>
+                        <p *ngIf="item.IntermDocURL == null">NA</p>
+                      </td>
+
+                      <td class="text-center">{{item.InterimTargetDate |
+                        date:'dd/MM/yyyy'}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+                  [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <mat-dialog-actions align="end" style="margin-top: 15px;margin-right: 9px;">
+
+        <button mat-raised-button class="ms-2" (click)="close()"
+        style="background-color: lightgray; color: red;margin-right: 3px;">
+        <mat-icon>cancel</mat-icon>
+        Close
+      </button>
+      <button mat-raised-button (click)="changeAddStep(4)" style="margin-right: 6px;"> <mat-icon>arrow_back</mat-icon>Back</button>
+      <button mat-raised-button color="primary" style="color:white;margin-right: 11px;" (click)="changeAddStep(6)" class="ms-2">
+        <mat-icon>arrow_forward</mat-icon>
+        Proceed</button>
+    
+    </mat-dialog-actions>
+  </div>
+  <div *ngIf="addStep == 6" class="col-sm-10" style="margin-top: 10px;">
+    <div class="container-fluid" style="padding-right: 5px;
+                padding-left: 0px; margin-bottom: 10px;">
+      <div class="w-100">
+        <div class="flex-p">
+          <div class="row wrap">
+            <div class="col-sm-12 no-padding">
+              <div class="row-wrap">
+                <div class="w-100">
+                  <div class="row">
+                    <div class="col-xs-6"></div>
+                    <div class="col-xs-6">
+                      <div class="col-xs-6"></div>
+                      <div class="col-xs-6" style="margin-left: 0px;margin-bottom: -15px;">
+                        <div class="">
+                          <button mat-raised-button color="primary" class="pull-right" style="padding-right:30px;"
+                            (click)="AddAction(null)">
+                            <mat-icon>person_add</mat-icon>
+                            Add Action
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div fxLayout="row wrap" #resizedDiv>
+        <div class="flex-p w-100 sizeAlign">
+          <div class="row">
+            <div class="col-sm-12">
+              <div id="grid-table-container" class="table-responsive">
+                <table matSort id="example2" class="table table-bordered table-hover">
+                  <thead class="tbl-head">
+                    <tr>
+                      <th class="text-center">Done</th>
+                      <th>Permanent Description</th>
+                      <th class="text-center"> Document</th>
+                      <th class="text-center">Target Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngIf="InterimIssues == null || InterimIssues.length == 0">
+                      <td colspan="4" class="text-center">No records found</td>
+                    </tr>
+                    <tr *ngFor="let item of InterimIssues;index as i">
+                      <td class="style text-center p-0" style="cursor: pointer;text-align: center !important;">
+                        <mat-checkbox
+                          [ngClass]="{'disable-custom' : !(i == 0) || !(ResLeadId == userId ) || !(concernedackvalue ==true )}"
+                          [checked]="item.IsDone" (click)="fnUpdateInterim(item)">
+                        </mat-checkbox>
+                      </td>
+                      <td>{{item.InterimDescription}}</td>
+                      <td class="text-center">
+                        <a *ngIf="item.InterimDocURL != null" style="color:blue;cursor: pointer"
+                          style="color:blue;cursor:pointer" href="{{item.InterimDocPath}}" target="_blank">
+                          View</a>
+                        <p *ngIf="item.IntermDocURL == null">NA</p>
+                      </td>
+
+                      <td class="text-center">{{item.InterimTargetDate |
+                        date:'dd/MM/yyyy'}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+                  [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <mat-dialog-actions align="end" style="margin-top: 15px;margin-right: 15px;">
+     
+        <button mat-raised-button class="ms-2" (click)="close()"
+        style="background-color: lightgray; color: red;margin-right: 2px;">
+        <mat-icon>cancel</mat-icon>
+        Close
+      </button>
+
+      <button mat-raised-button (click)="changeAddStep(5)" style="margin-right: 5px;"> <mat-icon>arrow_back</mat-icon>Back</button>
+
+      <button mat-raised-button color="primary" style="color:white;" (click)="closse()" class="ms-2">
+        <mat-icon>save</mat-icon>
+        Done</button>
+
+       
+    </mat-dialog-actions>
+  </div>
+
+</div>

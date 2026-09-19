@@ -1,0 +1,622 @@
+<div class="col-sm-12" style="max-width: 100%; padding: 0; margin: 0; box-sizing: border-box;">
+  <div class="NewHeader">
+    <h1 style="color: white; margin-top:5px" mat-dialog-title>
+     Edit Issue
+    </h1>
+  </div>
+
+  <!-- Navigation Pills (always visible) -->
+  <div class="col-sm-2" style="margin-bottom: 10px;">
+    <div class="m-auto pills pt-2 pr-0">
+      <ul class="nav col-12 flex-column pr-0">
+        <li class="nav-item" style="margin-top: 10px;"
+            [ngClass]=" addStep == 1 ? 'active nav-item' : 'nav-item'" (click)="changeAddStep(1)"
+            routerLinkActive="active">
+            <a mat-raised-button class="nav-link text-left py-2 width">Overview</a>
+        </li>
+        <li class="nav-item" style="margin-top: 10px;" [ngClass]=" addStep == 2 ? 'active nav-item': 'nav-item'"
+            (click)="changeAddStep(2)" routerLinkActive="active">
+            <a mat-raised-button class="nav-link text-left py-2 width">Details</a>
+        </li>
+        <li class="nav-item" style="margin-top: 10px;" [ngClass]=" addStep == 3 ? 'active nav-item': 'nav-item'"
+            (click)="changeAddStep(3)" routerLinkActive="active">
+            <a mat-raised-button class="nav-link text-left py-2 width">Actions</a>
+        </li>
+        <li class="nav-item"
+            style="margin-top: 10px;" [ngClass]="(addStep == 4 ? 'active nav-item': 'nav-item')"
+            routerLinkActive="active">
+            <a mat-raised-button class="nav-link text-left py-2 width" (click)="changeAddStep(4)">RCA</a>
+        </li>
+        <li class="nav-item"
+            style="margin-top: 10px;" [ngClass]=" addStep == 5 ? 'active nav-item': 'nav-item'"
+            routerLinkActive="active">
+            <a mat-raised-button class="nav-link text-left py-2 width" (click)="changeAddStep(5)">Interim Action</a>
+        </li>
+        <li class="nav-item"
+            style="margin-top: 10px;" [ngClass]=" addStep == 6 ? 'active nav-item': 'nav-item'"
+            routerLinkActive="active">
+            <a mat-raised-button class="nav-link text-left py-2 width" (click)="changeAddStep(6)">Permanent Action</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+<!-- Step 1: Overview -->
+<div *ngIf="addStep == 1">
+  <form [formGroup]="form" class="custom-two-column-form">
+    <div class="row">
+      <!-- Left Column -->
+      <div class="col-md-6">
+        <div class="form-group row align-items-center">
+          <label class="col-sm-4 col-form-label">Context:</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" formControlName="context" placeholder="Enter Context">
+          </div>
+        </div>
+
+        <div class="form-group row align-items-center">
+          <label class="col-sm-4 col-form-label">Context:<span class="text-danger">*</span></label>
+          <div class="col-sm-8">
+            <select class="form-control" formControlName="project" placeholder="Select Project">
+              <option value="">Select Project</option>
+              <option *ngFor="let project of projects" [value]="project">{{ project }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">Issue Description:<span class="text-danger">*</span></label>
+          <div class="col-sm-8">
+            <textarea class="form-control" rows="4" formControlName="issueDescription" placeholder="Enter Issue Description"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">Part Description:<span class="text-danger">*</span></label>
+          <div class="col-sm-8">
+            <textarea class="form-control" rows="4" formControlName="partDescription" placeholder="Enter Part Description"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="col-md-6">
+        <div class="form-group row align-items-center">
+          <label class="col-sm-4 col-form-label">Tractor ID:<span class="text-danger">*</span></label>
+          <div class="col-sm-8">
+            <select class="form-control" formControlName="tractorId" placeholder="Select Tractor">
+              <option value="">Select Tractor</option>
+              <option *ngFor="let tractor of tractors" [value]="tractor">{{ tractor }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row align-items-center">
+          <label class="col-sm-4 col-form-label">Failure Hours:<span class="text-danger">*</span></label>
+          <div class="col-sm-8">
+            <input type="number" class="form-control" placeholder="Enter Failure Hours" formControlName="failureHours">
+          </div>
+        </div>
+
+        <div class="form-group row align-items-center">
+          <label class="col-sm-4 col-form-label">Updation Hours:</label>
+          <div class="col-sm-8">
+            <input type="number" class="form-control" placeholder="Enter Updation Hours" formControlName="updationHours">
+          </div>
+        </div>
+
+        <div class="form-group row align-items-center">
+          <label class="col-sm-4 col-form-label">Implement:<span class="text-danger">*</span></label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" placeholder="Enter Implement" formControlName="implement">
+          </div>
+        </div>
+
+        <div class="form-group row align-items-center">
+          <label class="col-sm-4 col-form-label">Part Code:<span class="text-danger">*</span></label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" placeholder="Enter Part Code" formControlName="partCode">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">L1 RCA (Testing/Protoship):<span class="text-danger">*</span></label>
+          <div class="col-sm-8">
+            <textarea class="form-control" rows="3" placeholder="Enter L1 RCA Details" formControlName="l1rca"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group row align-items-center">
+          <label class="col-sm-4 col-form-label">Photograph:</label>
+          <div class="col-sm-8">
+            <input type="file" class="form-control" (change)="onFileSelected($event)">
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="form-actions-mat pull-right">
+    <button mat-raised-button color="primary" (click)="changeAddStep(2)">
+      Next
+    </button>
+    <button mat-raised-button (click)="close()" class="ms-2">
+      Close
+    </button>
+  </div>
+</div>
+
+<!-- Step 2: Details -->
+<div *ngIf="addStep == 2" class=" mt-4">
+  <form [formGroup]="form" class="custom-two-column-form">
+    <div class="row">
+      <!-- Left Column -->
+      <div class="col-md-6">
+        <div class="form-group row align-items-center">
+          <label class="col-sm-4 col-form-label">New/Regular:</label>
+          <div class="col-sm-8">
+            <mat-select class="form-control" formControlName="IsNew" placeholder="Select Type">
+              <mat-option [value]="true">New</mat-option>
+              <mat-option [value]="false">Regular</mat-option>
+            </mat-select>
+          </div>
+        </div>
+
+        <div class="form-group row align-items-center">
+          <label class="col-sm-4 col-form-label">ORC Status:</label>
+          <div class="col-sm-8">
+            <mat-select class="form-control" formControlName="ORCStatus" placeholder="Select ORC Status">
+              <mat-option value="O">O</mat-option>
+              <mat-option value="R1">R1</mat-option>
+              <mat-option value="R2">R2</mat-option>
+              <mat-option value="C">C</mat-option>
+            </mat-select>
+          </div>
+        </div>
+
+        <div class="form-group row align-items-center">
+          <label class="col-sm-4 col-form-label">Responsible Section:</label>
+          <div class="col-sm-8">
+            <mat-select class="form-control" formControlName="ResponsibleSectionId"
+              (selectionChange)="fnGetSubGroupsDD($event.value);fnGetResponsibleSectionLeadsDD($event.value)"
+              placeholder="Select Responsible Section">
+              <mat-option *ngFor="let item of ResponsibleSections" [value]="item.respSectionId">
+                {{ item.respSectionName }}
+              </mat-option>
+            </mat-select>
+          </div>
+        </div>
+
+        <div class="form-group row align-items-center">
+          <label class="col-sm-4 col-form-label">Sub Group:</label>
+          <div class="col-sm-8">
+            <mat-select class="form-control" formControlName="SubGroupId" placeholder="Select Sub Group">
+              <mat-option *ngFor="let item of subgroups" [value]="item.SubGroupId">
+                {{ item.SubGroupName }}
+              </mat-option>
+            </mat-select>
+          </div>
+        </div>
+
+        <div class="form-group row align-items-center">
+          <label class="col-sm-4 col-form-label">Responsible Section Lead:</label>
+          <div class="col-sm-8">
+            <input type="text" readonly class="form-control" placeholder="Auto-filled Lead" formControlName="ResponsibleSectionLeadId">
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="col-md-6">
+        <div class="form-group row align-items-center">
+          <label class="col-sm-4 col-form-label">Project VI Lead:</label>
+          <div class="col-sm-8">
+            <mat-select class="form-control" formControlName="ProjectVILead" placeholder="Select VI Lead">
+              <mat-option *ngFor="let item of VILeads" [value]="item.UserId">
+                {{ item.UserName }}
+              </mat-option>
+            </mat-select>
+          </div>
+        </div>
+
+        <div class="form-group row align-items-center">
+          <label class="col-sm-4 col-form-label">Failure Effect:</label>
+          <div class="col-sm-8">
+            <mat-select class="form-control" formControlName="ScoreMatrix" placeholder="Select Failure Effect"
+              (selectionChange)="onScoreMatrixSelectionChange($event.value)">
+              <mat-option *ngFor="let item of scorematrix" [value]="item.ScoreMatrixId">
+                {{ item.Severity + ' (' + item.ScoreMatrixName + ')' }}
+              </mat-option>
+            </mat-select>
+          </div>
+        </div>
+
+        <div class="form-group row align-items-center">
+          <label class="col-sm-4 col-form-label">Severity:</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" readonly placeholder="Auto-filled Severity" formControlName="Severity">
+          </div>
+        </div>
+
+        <div class="form-group row align-items-center">
+          <label class="col-sm-4 col-form-label">Probability:</label>
+          <div class="col-sm-8">
+            <mat-select class="form-control" formControlName="Probability" placeholder="Select Probability">
+              <mat-option [value]="1">1 (Unlikely)</mat-option>
+              <mat-option [value]="2">2 (Remote)</mat-option>
+              <mat-option [value]="3">3 (Few)</mat-option>
+              <mat-option [value]="4">4 (Low)</mat-option>
+              <mat-option [value]="5">5 (Moderate)</mat-option>
+              <mat-option [value]="6">6 (Occasional)</mat-option>
+              <mat-option [value]="7">7 (High)</mat-option>
+              <mat-option [value]="8">8 (Repeated)</mat-option>
+              <mat-option [value]="9">9 (Very High)</mat-option>
+              <mat-option [value]="10">10 (Inevitable)</mat-option>
+            </mat-select>
+          </div>
+        </div>
+
+        <div class="form-group row align-items-center">
+          <label class="col-sm-4 col-form-label">Relevant Document:</label>
+          <div class="col-sm-8">
+            <input type="file" class="form-control" (change)="onFileSelected($event)">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-actions-mat pull-right mt-8">
+      <button mat-raised-button (click)="changeAddStep(1)">
+        Back
+      </button>
+      <button mat-raised-button style="background-color:#229494; color:white;" (click)="changeAddStep(3)"
+        class="ms-2">
+        Proceed
+      </button>
+      <button mat-raised-button class="ms-2" (click)="close()">
+        Close
+      </button>
+    </div>
+  </form>
+</div>
+
+<!-- Step 3: Final -->
+<div *ngIf="addStep == 3" style="margin-top:30px;">
+  <form [formGroup]="form" class="custom-two-column-form">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group row align-items-center">
+          <label class="col-sm-4 col-form-label">Category:</label>
+          <div class="col-sm-8">
+            <mat-select class="form-control" formControlName="CategoryId" placeholder="Select Category">
+              <mat-option *ngFor="let item of categories" [value]="item.CategoryId">
+                {{ item.CategoryName }}
+              </mat-option>
+            </mat-select>
+          </div>
+        </div>
+
+        <div class="form-group row align-items-center">
+          <label class="col-sm-4 col-form-label">Current Responsibility:</label>
+          <div class="col-sm-8">
+            <mat-select class="form-control" formControlName="CurrentResponsibilityId" placeholder="Select Responsibility">
+              <mat-option *ngFor="let data of users" [value]="data.UserId">
+                {{ data.UserName }}
+              </mat-option>
+            </mat-select>
+          </div>
+        </div>
+
+        <div class="form-group row align-items-center">
+          <label class="col-sm-4 col-form-label">Target Date:</label>
+          <div class="col-sm-8">
+            <input type="date" formControlName="TargetDate" class="form-control" placeholder="Select Target Date">
+            <div class="error-text" *ngIf="f.TargetDate.errors?.invalidDate">
+              Date must be between today and 3 days from today.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row align-items-center">
+          <label class="col-sm-4 col-form-label">Concerned Acknowledgement:</label>
+          <div class="col-sm-8">
+            <select class="form-control" formControlName="ConcernedAcknowledgement" placeholder="Select Acknowledgement">
+              <option [value]="null">--Select Concerned Acknowledgment</option>
+              <option [value]="true">Review Done</option>
+              <option [value]="false">Review Not Done</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group row align-items-center">
+          <label class="col-sm-4 col-form-label">Current Status:</label>
+          <div class="col-sm-8">
+            <textarea class="form-control" style="height:180px;" placeholder="Enter Current Status" formControlName="CurrentStatus"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="form-actions-mat pull-right mt-4">
+    <button mat-raised-button (click)="changeAddStep(2)">
+      Back
+    </button>
+    <button mat-raised-button style="background-color:#229494; color:white;" (click)="changeAddStep(4)"
+      class="ms-2">
+      Proceed
+    </button>
+    <button mat-raised-button class="ms-2" (click)="close()">
+      Close
+    </button>
+  </div>
+</div>
+
+           <div *ngIf="addStep == 4" class="col-sm-10 mt-4" style="margin-top: 10px;">
+                <div class="container-fluid" style="padding-right: 5px;
+                padding-left: 0px; margin-bottom: 10px;">
+                    <div class="w-100">
+                        <div class="flex-p">
+                            <div class="row wrap">
+                                <div class="col-sm-12 no-padding">
+                                    <div class="row-wrap">
+                                        <div class="w-100">
+                                            <div class="row">
+                                                <div class="col-xs-6"></div>
+                                                <div class="col-xs-6">
+                                                    <div class="col-xs-6"></div>
+                                                    <div class="col-xs-6" style="margin-left: -13px;">
+                                                        <div class="">
+                                                            <button mat-raised-button color="primary" class="pull-right"
+                                                                style="padding-right:30px;" (click)="AddRCA()">
+                                                                <mat-icon >person_add</mat-icon> RCA
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div fxLayout="row wrap" #resizedDiv>
+                        <div class="flex-p w-100 sizeAlign">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div id="grid-table-container" class="table-responsive">
+                                        <table matSort id="example2" class="table table-bordered table-hover">
+                                            <thead class="tbl-head">
+                                                <tr>
+                                                    <th class="text-center">Done</th>
+                                                    <th>RCA Description</th>
+                                                    <th class="text-center">RCA Document</th>
+                                                    <th class="text-center">Target Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngIf="RCAIssues == null || RCAIssues.length == 0">
+                                                    <td colspan="4" class="text-center">No records found</td>
+                                                </tr>
+                                                <tr *ngFor="let item of RCAIssues;index as i">
+                                                    <td class="style text-center p-0" style="cursor: pointer;text-align: center !important;">
+                                                          <mat-checkbox   [ngClass]="{'disable-custom' : !(i == 0) || !(ResLeadId == userId ) || !(concernedackvalue ==true )}"
+                                                        [checked]="item.IsDone" (click)="fnUpdateRCA(item)">
+                                                    </mat-checkbox></td>
+                                                    <td>{{item.RCADescription}}</td>
+                                                    <td class="text-center">
+                                                        <a *ngIf="item.RCADocURL != null"
+                                                            style="color:blue;cursor: pointer"
+                                                            style="color:blue;cursor:pointer" href="{{item.RCADocPath}}"
+                                                            target="_blank">
+                                                            View</a>
+                                                        <p *ngIf="item.RCADocURL == null">NA</p>
+                                                    </td>
+                                                    <td class="text-center">{{item.RCATargetDate | date:'dd/MM/yyyy'}}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <mat-paginator [length]="totalSize" [pageIndex]="currentPage"
+                                            [pageSize]="pageSize" (page)="fnHandlePage($event)"
+                                            [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons>
+                                        </mat-paginator>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <mat-dialog-actions align="end" style="margin-top: 15px;">
+                    <button mat-raised-button (click)="changeAddStep(3)">Back</button>
+                    <button mat-raised-button color="primary"
+                    (click)="changeAddStep(5)">Proceed</button>
+                    <button mat-raised-button
+                    (click)="close()">Close</button>
+                </mat-dialog-actions>
+            </div>
+                        <div *ngIf="addStep == 5" class="col-sm-10" style="margin-top: 10px;">
+                <div class="container-fluid" style="padding-right: 5px;
+                padding-left: 0px; margin-bottom: 10px;">
+                    <div class="w-100">
+                        <div class="flex-p">
+                            <div class="row wrap">
+                                <div class="col-sm-12 no-padding">
+                                    <div class="row-wrap">
+                                        <div class="w-100">
+                                            <div class="row">
+                                                <div class="col-xs-6"></div>
+                                                <div class="col-xs-6">
+                                                    <div class="col-xs-6"></div>
+                                                    <div class="col-xs-6" style="margin-left: -13px;">
+                                                        <div class="">
+                                                            <button mat-raised-button color="primary" class="pull-right"
+                                                                style="padding-right:30px;" (click)="AddInterim(null)">
+                                                                <mat-icon >person_add</mat-icon>Add Action
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div fxLayout="row wrap" #resizedDiv>
+                        <div class="flex-p w-100 sizeAlign">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div id="grid-table-container" class="table-responsive">
+                                        <table matSort id="example2" class="table table-bordered table-hover">
+                                            <thead class="tbl-head">
+                                                <tr>
+                                                    <th class="text-center">Done</th>
+                                                    <th>Interim Description</th>
+                                                    <th class="text-center"> Document</th>
+                                                    <th class="text-center">Target Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngIf="InterimIssues == null || InterimIssues.length == 0">
+                                                    <td colspan="4" class="text-center">No records found</td>
+                                                </tr>
+                                                <tr *ngFor="let item of InterimIssues;index as i">
+                                                    <td class="style text-center p-0" style="cursor: pointer;text-align: center !important;">
+                                                         <mat-checkbox  [ngClass]="{'disable-custom' : !(i == 0) || !(ResLeadId == userId ) || !(concernedackvalue ==true )}"
+                                                        [checked]="item.IsDone" (click)="fnUpdateInterim(item)">
+                                                    </mat-checkbox></td>
+                                                    <td>{{item.InterimDescription}}</td>
+                                                    <td class="text-center">
+                                                        <a *ngIf="item.InterimDocURL != null"
+                                                            style="color:blue;cursor: pointer"
+                                                            style="color:blue;cursor:pointer"
+                                                            href="{{item.InterimDocPath}}" target="_blank">
+                                                            View</a>
+                                                        <p *ngIf="item.IntermDocURL == null">NA</p>
+                                                    </td>
+
+                                                    <td class="text-center">{{item.InterimTargetDate |
+                                                        date:'dd/MM/yyyy'}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <mat-paginator [length]="totalSize" [pageIndex]="currentPage"
+                                            [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 50, 100]"
+                                            showFirstLastButtons></mat-paginator>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <mat-dialog-actions align="end" style="margin-top: 15px;">
+
+                    <button mat-raised-button (click)="changeAddStep(4)">Back</button>
+                    <button mat-raised-button color="primary"
+                    (click)="changeAddStep(6)">Proceed</button>
+                    <button mat-raised-button
+                    (click)="close()">Close</button>
+                </mat-dialog-actions>
+            </div>
+                       <div *ngIf="addStep == 6" class="col-sm-10" style="margin-top: 10px;">
+                <div class="container-fluid" style="padding-right: 5px;
+                padding-left: 0px; margin-bottom: 10px;">
+                    <div class="w-100">
+                        <div class="flex-p">
+                            <div class="row wrap">
+                                <div class="col-sm-12 no-padding">
+                                    <div class="row-wrap">
+                                        <div class="w-100">
+                                            <div class="row">
+                                                <div class="col-xs-6"></div>
+                                                <div class="col-xs-6">
+                                                    <div class="col-xs-6"></div>
+                                                    <div class="col-xs-6" style="margin-left: -13px;">
+                                                        <div class="">
+                                                            <button mat-raised-button color="primary" class="pull-right"
+                                                                style="padding-right:30px;" (click)="AddAction(null)">
+                                                                <mat-icon >person_add</mat-icon>
+                                                                Add Action
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div fxLayout="row wrap" #resizedDiv>
+                        <div class="flex-p w-100 sizeAlign">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div id="grid-table-container" class="table-responsive">
+                                        <table matSort id="example2" class="table table-bordered table-hover">
+                                            <thead class="tbl-head">
+                                                <tr>
+                                                    <th class="text-center">Done</th>
+                                                    <th>Permanent Description</th>
+                                                    <th class="text-center"> Document</th>
+                                                    <th class="text-center">Target Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngIf="InterimIssues == null || InterimIssues.length == 0">
+                                                    <td colspan="4" class="text-center">No records found</td>
+                                                </tr>
+                                                <tr *ngFor="let item of InterimIssues;index as i">
+                                                    <td class="style text-center p-0" style="cursor: pointer;text-align: center !important;">
+                                                         <mat-checkbox  [ngClass]="{'disable-custom' : !(i == 0) || !(ResLeadId == userId ) || !(concernedackvalue ==true )}"
+                                                        [checked]="item.IsDone" (click)="fnUpdateInterim(item)">
+                                                    </mat-checkbox></td>
+                                                    <td>{{item.InterimDescription}}</td>
+                                                    <td class="text-center">
+                                                        <a *ngIf="item.InterimDocURL != null"
+                                                            style="color:blue;cursor: pointer"
+                                                            style="color:blue;cursor:pointer"
+                                                            href="{{item.InterimDocPath}}" target="_blank">
+                                                            View</a>
+                                                        <p *ngIf="item.IntermDocURL == null">NA</p>
+                                                    </td>
+
+                                                    <td class="text-center">{{item.InterimTargetDate |
+                                                        date:'dd/MM/yyyy'}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <mat-paginator [length]="totalSize" [pageIndex]="currentPage"
+                                            [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 50, 100]"
+                                            showFirstLastButtons></mat-paginator>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <mat-dialog-actions align="end" style="margin-top: 15px;">
+
+                    <button mat-raised-button (click)="changeAddStep(5)">Back</button>
+
+                    <button mat-raised-button
+                    (click)="close()">Done</button>
+                </mat-dialog-actions>
+            </div>
+
+
+</div>
+
+
+

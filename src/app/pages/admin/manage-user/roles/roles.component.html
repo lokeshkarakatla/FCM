@@ -1,0 +1,156 @@
+<div fxLayout="row wrap" #resizedDiv>
+    <div class="flex-p w-100">
+
+        <div class="row" style="margin-bottom:14px;">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="w-100 flex-p">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="w-100 flex-p">
+                    <button mat-raised-button color="primary" class="pull-right" (click)="openEditDialog(null)">
+                        <mat-icon>person_add</mat-icon> Add Role
+                    </button>
+
+                    <button mat-raised-button style="background-color: black; color:white;"
+                        class="pull-right margin-right-10" (click)="filterToggle = !filterToggle">
+                        <mat-icon>filter_list</mat-icon> Filter
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter -->
+        <div fxLayout="row wrap" *ngIf="filterToggle">
+            <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p">
+                <form [formGroup]="filterForm">
+                    <mat-card class="filter" style="width: 100%; margin-left: 5px;">
+                        <mat-card-content>
+                            <div class="row col-sm-12 col-md-12 col-lg-12">
+                                <div class="col-sm-4">
+                                    <div class="col-sm-3 newMarginClass">
+                                        <b>Keyword:</b>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <input type="text" formControlName="Keyword" onCopy="return false"
+                                            onPaste="return false" class="form-control"
+                                            placeholder="Search by Name, Email, Role">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="col-sm-3 newMarginClass">
+                                        <b>Role:</b>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <mat-select placeholder="Select Role" formControlName="Role" multiple
+                                            class="form-control">
+                                            <mat-option *ngFor="let option of options" [value]="option.RoleName">
+                                                {{ option.RoleName }}
+                                            </mat-option>
+                                        </mat-select>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+
+                                    <a (click)="filterToggle = !filterToggle" class="pull-right"
+                                        style="font-size: 25px; cursor: pointer; margin-left: 5px">
+                                        <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                                    </a>
+
+
+
+
+                                    <button mat-raised-button class="pull-right btn-default margin-right-10"
+                                        (click)="clearFilter()">
+                                        <mat-icon>settings_backup_restore</mat-icon> Clear
+                                    </button>
+                                    <button mat-raised-button color="primary" style="margin-right: 10px;"
+                                        class="pull-right" (click)="filter()">
+                                        <mat-icon>search</mat-icon> Search
+                                    </button>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- Creating Table -->
+        <div style="margin-left: 13px;">
+            <div class="table-responsive">
+                <table id="example2" class="table table-bordered table-hover">
+                    <thead class="tbl-head">
+                        <tr class="tr-grid-header">
+                            <th>Role</th>
+                            <th class="text-center">Users</th>
+                            <th style="text-align: center !important;">Screen Permissions</th>
+                            <th style="text-align: center !important;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf="tableList == null || tableList.length == 0">
+                            <td colspan="12" class="text-center">No records found</td>
+                        </tr>
+                        <tr *ngFor="let item of tableList">
+                            <td>{{item.RoleName}}</td>
+                            <td class="text-center"><a style="cursor: pointer; color: cornflowerblue;"
+                                    (click)="onuserclick(item)"
+                                    [routerLink]="['/app/admin/manage-users/users']">{{item.NoofUsers}}/{{item.TotalUsers}}</a>
+                            </td>
+                            <td class="text-center"><a style="cursor: pointer; color: cornflowerblue;"
+                                    (click)="onpermclick(item)">{{item.permissionCount}}/{{item.totalPermissionCount}}
+                                </a></td>
+                            <!-- <td style="text-align: center !important;">
+                                <a matTooltip="Edit Role"
+                                    style="margin-right: 10px; cursor: pointer; color: cornflowerblue;"
+                                    (click)="openEditDialog(item)">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+
+
+                                <a>
+                                    <i style="cursor: pointer;" matTooltip="Delete Role" class="fa fa-trash red"
+                                        (click)="deleteConfirmation(item)"></i>
+                                </a>
+
+
+                            </td> -->
+                            <td style="text-align: center !important;">
+  <!-- Edit button -->
+  <a matTooltip="Edit Role"
+     style="margin-right: 10px; cursor: pointer; color: cornflowerblue;"
+     (click)="openEditDialog(item)"
+     [ngClass]="{'disabled-action': isActionDisabled(item.RoleName)}"
+     [style.pointer-events]="isActionDisabled(item.RoleName) ? 'none' : 'auto'">
+    <i class="fa fa-edit"></i>
+  </a>
+
+  <!-- Delete button -->
+  <a>
+    <i style="cursor: pointer;"
+       matTooltip="Delete Role"
+       class="fa fa-trash red"
+       (click)="deleteConfirmation(item)"
+       [ngClass]="{'disabled-action': isActionDisabled(item.RoleName)}"
+       [style.pointer-events]="isActionDisabled(item.RoleName) ? 'none' : 'auto'">
+    </i>
+  </a>
+</td>
+
+                        </tr>
+                    </tbody>
+
+                </table>
+                <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+                    (page)="handlePage($event)" [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons>
+                </mat-paginator>
+            </div>
+        </div>
+    </div>
+</div>

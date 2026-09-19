@@ -1,0 +1,207 @@
+<div style="margin-top:-100px; margin-left:20px">
+    <h2 style="font-size:25px; font-weight:bold">Testing</h2>
+    <hr />
+</div>
+
+<div class="col-lg-12" style="overflow: hidden; margin-top: 40px">
+    <div style="margin-bottom: 30px; margin-top: 30px; margin-right: 15px;">
+        <button mat-raised-button color="primary" class="pull-right" (click)="openTest(null)">
+            <mat-icon class="">person_add</mat-icon> Add Test
+        </button>
+
+
+
+        <!-- <button mat-raised-button style="background-color: white; color:white; margin-right: 5px;" color="primary"
+            class="pull-right">
+            <mat-icon class="">grid_on</mat-icon> Grid Columns
+        </button> -->
+
+        <button mat-raised-button style="background-color: white; color:black;"
+            class="pull-right filter-hover margin-right-10" (click)="filterToggle = !filterToggle">
+            <mat-icon class="">filter_list</mat-icon> Filter
+        </button>
+    </div>
+
+    <div class="col-lg-12" fxLayout="row wrap" *ngIf="filterToggle" style="margin-bottom: 20px;">
+        <div fxFlex="100" class="flex-p w-100">
+            <form [formGroup]="filterForm">
+                <mat-card class="filter">
+                    <mat-card-content>
+                        <div class="row col-lg-12 col-sm-12">
+                            <!-- Project Dropdown -->
+                            <div class="col-sm-4 row me-2 mt-3">
+                                <div class="col-sm-3 newMarginClass"><b>Project:</b></div>
+                                <div class="col-sm-9">
+                                    <mat-select class="form-control" formControlName="ProjectId"
+                                        placeholder="Select project">
+                                        <mat-option *ngFor="let project of projectsDD" [value]="project.ProjectId">{{
+                                            project.ProjectName }}</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+
+                            <!-- Section Dropdown -->
+                            <div class="col-sm-4 row me-2 mt-3">
+                                <div class="col-sm-3 newMarginClass"><b>Status:</b></div>
+                                <div class="col-sm-9">
+                                    <mat-select class="form-control" formControlName="StatusId"
+                                        placeholder="Select Status">
+                                        <mat-option *ngFor="let section of StatusDD" [value]="section.StatusId">{{
+                                            section.StatusName }}</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+
+                            <!-- Lead Dropdown -->
+                            <div class="col-sm-4 row me-2 mt-3">
+                                <div class="col-sm-3 newMarginClass"><b>Lead:</b></div>
+                                <div class="col-sm-9">
+                                    <mat-select class="form-control" formControlName="LeadId" placeholder="Select Lead">
+                                        <mat-option *ngFor="let lead of SectionLeadsDD" [value]="lead.LeadId">{{
+                                            lead.UserName }}</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+
+                            <!-- Product Dropdown -->
+                            <div class="col-sm-4 row me-2 mt-3">
+                                <div class="col-sm-3 newMarginClass"><b>Product:</b></div>
+                                <div class="col-sm-9">
+                                    <mat-select class="form-control" formControlName="ProductId"
+                                        placeholder="Select ProductId">
+                                        <mat-option *ngFor="let product of ProductsDD" [value]="product.ProductId">{{
+                                            product.ProductName }}</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+
+                            <!-- Test Dropdown -->
+                            <div class="col-sm-4 row me-2 mt-3">
+                                <div class="col-sm-3 newMarginClass"><b>Test:</b></div>
+                                <div class="col-sm-9">
+                                    <mat-select class="form-control" formControlName="TestId" placeholder="Select Test">
+                                        <mat-option *ngFor="let test of TestDD" [value]="test.TestId">{{ test.Subject
+                                            }}</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+
+                            <!-- Category Dropdown -->
+                            <div class="col-sm-4 row me-2 mt-3">
+                                <div class="col-sm-3 newMarginClass"><b>Category:</b></div>
+                                <div class="col-sm-9">
+                                    <mat-select class="form-control" formControlName="CategoryId"
+                                        placeholder="Select Category">
+                                        <mat-option *ngFor="let category of CategoryDD" [value]="category.CategoryId">{{
+                                            category.CategoryName }}</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+
+                            <!-- Buttons -->
+                            <div class="col-sm-12pull-right mt-3">
+                                <a (click)="filterToggle = !filterToggle" class="pull-right"
+                                    style="font-size: 25px; cursor: pointer; margin-left: 5px">
+                                    <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                                </a>
+                                <button mat-raised-button color="primary" class="pull-right" (click)="getTests()">
+                                    Search
+                                </button>
+                                <button mat-raised-button class="pull-right btn-default margin-right-10"
+                                    (click)="clearFilter();getTests()">
+                                    Clear
+                                </button>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </form>
+
+        </div>
+    </div>
+
+
+    <div class="col-sm-12" style="margin-top: 10px;">
+        <div class="table-responsive" id="grid-table-container">
+            <table mat-table class="table table-bordered table-hover">
+                <thead class="tbl-head">
+                    <tr>
+                        <th class="text-center" mat-header-cell mat-sort-header>Actions</th>
+                        <th style="white-space:nowrap" class="text-left" mat-header-cell mat-sort-header>Test ID</th>
+                        <th mat-header-cell mat-sort-header>Product</th>
+                        <th mat-header-cell mat-sort-header>Project</th>
+                        <th mat-header-cell mat-sort-header>Subject</th>
+                        <th class="text-left" mat-header-cell mat-sort-header>Description</th>
+                        <th class="text-center" mat-header-cell mat-sort-header>Document</th>
+                        <th class="text-center" mat-header-cell mat-sort-header>Department</th>
+                        <th class="text-center" mat-header-cell mat-sort-header>Section</th>
+                        <th class="text-center" mat-header-cell mat-sort-header>Lead</th>
+                        <th class="text-center" mat-header-cell mat-sort-header>Status</th>
+
+
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let applicant of tableList">
+                        <td class="text-center" style="white-space:nowrap">
+                            <a matTooltip="Edit Test" (click)="openTest(null)">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a matTooltip="Delete User" (click)="deleteConfirmation(applicant)">
+                                <i class="fa fa-trash red"></i>
+                            </a>
+                        </td>
+                        <td class="text-center">{{ applicant.TestId }}</td>
+                        <td style="white-space:nowrap">{{ applicant.ProductName }}</td>
+                        <td>{{ applicant.ProjectName }}</td>
+                        <td class="text-left">
+                            {{applicant.Subject}}
+                        </td>
+                        <td class="text-left">
+                            {{applicant.Description}}
+                        </td>
+                        <td class="text-center">
+                            <mat-icon>visibility</mat-icon>
+                        </td>
+                        <td class="text-center">
+                            {{applicant.department}}
+                        </td>
+                        <td style="white-space:nowrap" class="text-center">
+                            {{applicant.SectionName}}
+                        </td>
+                        <td style="white-space:nowrap" class="text-center">
+                            {{applicant.UserName}}
+                        </td>
+                        <td class="text-center">
+                            <mat-chip style="cursor: pointer; font-weight: bold;"
+                                [ngClass]="applicant.status === 'Active' ? 'active-chip' : 'inactive-chip'"
+                                (click)="openConfirmDialog(applicant)">
+                                {{ applicant.status }}
+                            </mat-chip>
+
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <!-- Pagination -->
+            <mat-paginator [length]="totalSize" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 50, 100]"
+                showFirstLastButtons>
+            </mat-paginator>
+
+            <!-- Scroll Buttons -->
+            <button class="mine" mat-fab>
+                <mat-icon style="color:#37474f">fast_forward</mat-icon>
+            </button>
+            <button class="mine" mat-fab style="margin-right: 78px !important;">
+                <mat-icon style="color:#37474f">fast_rewind</mat-icon>
+            </button>
+        </div>
+    </div>
+
+
+</div>

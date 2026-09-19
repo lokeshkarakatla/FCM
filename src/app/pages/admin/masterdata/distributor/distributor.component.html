@@ -1,0 +1,135 @@
+<div class="col-sm-7 mt-4" style="padding-left: 8px; padding-right: 15px; position: fixed">
+
+    <div class="table-position-control">
+
+        <div class="row mb-3">
+            <div class="col-sm-12 d-flex justify-content-end align-items-center" style="gap: 10px;">
+                <button mat-raised-button style="background-color: black; color: white;" 
+                    (click)="filterToggle = !filterToggle">
+                    <mat-icon>filter_list</mat-icon> Filter
+                </button>
+
+                <button [ngClass]="{'disable-custom' : !canCreate}" mat-raised-button color="primary" 
+                    (click)="addmodule(null)">
+                    <mat-icon>add</mat-icon> Add Distributor
+                </button>
+
+                <button mat-raised-button style="background-color: gray; color: white;" 
+                    (click)="goBack()">
+                    <mat-icon>arrow_back</mat-icon> Back
+                </button>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="filterToggle" style="margin-bottom: 20px;">
+            <div class="col-sm-12">
+                <mat-card class="filter w-100">
+                    <mat-card-content>
+                        <div class="row align-items-center mt-2">
+                            
+                            <div class="col-sm-6 col-md-3 row align-items-center mb-3">
+                                <div class="col-sm-4"><b>Keyword:</b></div>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" placeholder="Enter Keyword" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-3 row align-items-center mb-3">
+                                <div class="col-sm-4"><b>Continent:</b></div>
+                                <div class="col-sm-8">
+                                    <mat-select class="form-control" placeholder="Select Continent" required>
+                                        <mat-option value="NA1">North America</mat-option>
+                                        <mat-option value="NA2">South America</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-3 row align-items-center mb-3">
+                                <div class="col-sm-4"><b>Country:</b></div>
+                                <div class="col-sm-8">
+                                    <mat-select class="form-control" placeholder="Select Country" required>
+                                        <mat-option value="US">America</mat-option>
+                                        <mat-option value="AD">Andorra</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-3 row align-items-center mb-3">
+                                <div class="col-sm-4"><b>Status:</b></div>
+                                <div class="col-sm-8">
+                                    <mat-select class="form-control" placeholder="Select Status" required>
+                                        <mat-option value="Maintenance">Active</mat-option>
+                                        <mat-option value="Engineering">Inactive</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 d-flex justify-content-end align-items-center mt-2" style="gap: 10px;">
+                                <button mat-raised-button color="primary" (click)="getTests()">
+                                    <mat-icon>search</mat-icon> Search
+                                </button>
+                                
+                                <button mat-raised-button class="btn-default" (click)="clearFilter();getTests()">
+                                    <mat-icon>settings_backup_restore</mat-icon> Clear
+                                </button>
+
+                                <a (click)="filterToggle = !filterToggle" style="font-size: 25px; cursor: pointer; color: #0d6efd;">
+                                    <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                                </a>
+                            </div>
+
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="grid-table-container" class="table-responsive">
+                    <table matSort id="example2" class="table table-bordered table-hover w-100">
+                        <thead class="tbl-head">
+                            <tr>
+                                <th>Distributor Name</th>
+                                <th>Continent</th>
+                                <th>Country</th>
+                                <th class="text-center">Status</th>
+                                <th class="text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of tableList">
+                                <td>{{item.stageName}}</td>
+                                <td>{{item.Continent}}</td>
+                                <td>{{item.Country}}</td>
+                                <td (click)="Confirmation()"
+                                    [ngClass]="{'active-status': item.status, 'inactive-status': !item.status}"
+                                    style="text-align: center !important; cursor:pointer;">
+                                    {{ item.status ? 'Active' : 'Inactive' }}
+                                </td>
+                                <td class="text-center editDel">
+                                    <a [ngClass]="{'disable-custom' : !canUpdate}" style="cursor: pointer;margin-right:10px;"
+                                        matTooltip="Edit" (click)="addmodule(item)">
+                                        <i class="fa fa-edit" style="color: cornflowerblue"></i>
+                                    </a>
+                                    <a [ngClass]="{'disable-custom' : !canDelete || item.TotalUsed || item.Used}">
+                                        <i class="fa fa-trash red" matTooltip="Delete" style="cursor: pointer;"
+                                        (click)="deleteConfirmation(item)"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr *ngIf="tableList == null || tableList.length == 0">
+                                <td colspan="5" class="text-center">No data available</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <mat-paginator class="w-100" [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+                        [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons>
+                    </mat-paginator>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

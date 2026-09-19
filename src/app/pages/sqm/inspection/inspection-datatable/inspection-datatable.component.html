@@ -1,0 +1,248 @@
+<div class="row" style="margin: 16px 0;">
+  <div class="col-lg-4 col-md-12">
+    <div style="background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px; margin-bottom: 15px;">
+      <h3 style="text-align: center; margin: 0 0 8px; font-size: 15px; color: #333;">Inspection by Stage</h3>
+      <div class="w-100" style="height: 350px; display: flex; justify-content: center;">
+        <ngx-charts-pie-chart
+          [scheme]="colorScheme"
+          [results]="first"
+          [legend]="showLegend"
+          [explodeSlices]="explodeSlices"
+          [labels]="showLabels"
+          [doughnut]="doughnut"
+          [gradient]="gradient"
+          (select)="onSelect($event)">
+        </ngx-charts-pie-chart>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4 col-md-12">
+    <div style="background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px; margin-bottom: 15px;">
+      <h3 style="text-align: center; margin: 0 0 8px; font-size: 15px; color: #333;">Distribution by Part Family</h3>
+      <div class="w-100" style="height: 350px; display: flex; justify-content: center;">
+        <ngx-charts-pie-chart
+          [scheme]="colorScheme"
+          [results]="multi"
+          [legend]="showLegend"
+          [explodeSlices]="explodeSlices"
+          [labels]="showLabels"
+          [doughnut]="doughnut"
+          [gradient]="gradient"
+          (select)="onSelect($event)">
+        </ngx-charts-pie-chart>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4 col-md-12">
+    <div style="background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px; margin-bottom: 15px;">
+      <h3 style="text-align: center; margin: 0 0 8px; font-size: 15px; color: #333;">By Inspector</h3>
+      <div class="w-100" style="height: 350px; display: flex; justify-content: center;">
+        <ngx-charts-pie-chart
+          [scheme]="colorScheme"
+          [results]="triple"
+          [legend]="showLegend"
+          [explodeSlices]="explodeSlices"
+          [labels]="showLabels"
+          [doughnut]="doughnut"
+          [gradient]="gradient"
+          (select)="onSelect($event)">
+        </ngx-charts-pie-chart>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-end align-items-center mb-3 gap-2">
+  <button mat-raised-button class="btn-dark" (click)="openGridView(null)">
+      <mat-icon>grid_on</mat-icon> Grid View
+    </button>
+  <button mat-raised-button style="background-color: #000000; color: #ffffff;" (click)="showFilter = !showFilter">
+    <mat-icon>filter_list</mat-icon> Filter
+  </button>
+  <button mat-raised-button color="primary" (click)="addrecord(null)">
+    <mat-icon>add</mat-icon> Add Record
+  </button>
+</div>
+
+<div class="row mb-3" *ngIf="showFilter">
+  <div class="col-12">
+    <div class="expanded-filter-content">
+      <form>
+        <div class="row">
+          
+          <div class="col-md-3 col-sm-6 row align-items-center mb-3">
+            <div class="col-sm-4 newMarginClass">
+              <b>Date:</b>
+            </div>
+            <div class="col-sm-8">
+              <div class="date-input-wrapper">
+                <input matInput [matDatepicker]="picker" placeholder="Select Date" class="form-control date-input" readonly (click)="picker.open()">
+                <mat-datepicker #picker></mat-datepicker>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-6 row align-items-center mb-3">
+            <div class="col-sm-4 newMarginClass"><b>Inspector:</b></div>
+            <div class="col-sm-8">
+              <mat-select placeholder="Select Inspector" class="form-control mat-select-custom">
+                <mat-option value="Rajiv Sharma">Rajiv Sharma</mat-option>
+                <mat-option value="Amit Singh">Amit Singh</mat-option>
+                <mat-option value="Priya Sharma">Priya Sharma</mat-option>
+              </mat-select>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-6 row align-items-center mb-3">
+            <div class="col-sm-4 newMarginClass"><b>Part Family:</b></div>
+            <div class="col-sm-8">
+              <mat-select placeholder="Select Part Family" class="form-control mat-select-custom">
+                <mat-option value="Engine Components">Engine Components</mat-option>
+                <mat-option value="Transmission">Transmission</mat-option>
+                <mat-option value="Electrical">Electrical</mat-option>
+              </mat-select>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-6 row align-items-center mb-3">
+            <div class="col-sm-4 newMarginClass"><b>Part Name:</b></div>
+            <div class="col-sm-8">
+              <mat-select placeholder="Select Part Name" class="form-control mat-select-custom">
+                <input type="text" class="form-control" placeholder="Search part name..." style="margin: 8px; width: calc(100% - 16px); box-sizing: border-box;" (keydown)="$event.stopPropagation()">
+                <mat-option value="Gear Shifter">Gear Shifter</mat-option>
+                <mat-option value="Alternator">Alternator</mat-option>
+                <mat-option value="Brake Pad">Brake Pad</mat-option>
+              </mat-select>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-6 row align-items-center mb-3">
+            <div class="col-sm-4 newMarginClass"><b>Method:</b></div>
+            <div class="col-sm-8">
+              <input matInput type="text" placeholder="Enter Method" class="form-control">
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-6 row align-items-center mb-3">
+            <div class="col-sm-4 newMarginClass"><b>CAPA:</b></div>
+            <div class="col-sm-8">
+              <mat-checkbox color="primary">Requires CAPA</mat-checkbox>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-6 row align-items-center mb-3">
+            <div class="col-sm-4 newMarginClass"><b>OK:</b></div>
+            <div class="col-sm-8">
+              <mat-checkbox color="primary">Requires Ok</mat-checkbox>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-6 d-flex justify-content-end align-items-center mb-3 gap-2">
+            <button mat-raised-button class="btn-clear">
+              <mat-icon>settings_backup_restore</mat-icon> Clear
+            </button>
+            <button mat-raised-button color="primary" class="btn-search">
+              <mat-icon>search</mat-icon> Search
+            </button>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="table-responsive" id="grid-table-container" #tableContainer style="overflow-x: auto; white-space: nowrap;">
+  <table matSort id="example2" mat-table class="table table-bordered table-hover" style="width: 100%;">
+    <thead class="tbl-head">
+      <tr>
+        <th class="text-center">Actions</th>
+        <th class="text-center">Reference</th>
+        <th class="text-center">Stage</th>
+        <th class="text-center">Publish</th>
+        <th class="text-center">Inspection Date</th>
+        <th class="text-center">Time</th>
+        <th class="text-center">Inspector</th>
+        <th class="text-center">Part Family</th>
+        <th class="text-center">Part Name</th>
+        <th class="text-center">Part Number</th>
+        <th class="text-center">Defects</th>
+        <th class="text-center">Parameters</th>
+        <th class="text-center">Remarks</th>
+        <th class="text-center">Batch Number</th>
+        <th class="text-center">Batch Qty</th>
+        <th class="text-center">Sample Qty</th>
+        <th class="text-center">Error Rate (%)</th>
+        <th class="text-center">Error Rate (PPM)</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of mockdata">
+        <td class="text-center">
+          <a matTooltip="Edit Record" style="margin-right: 8px; cursor: pointer;" (click)="openEditDialog(item)">
+            <i class="fa fa-edit" style="color: cornflowerblue;"></i>
+          </a>
+          <a matTooltip="Delete Record" style="margin-right: 8px; cursor: pointer;" (click)="deleteConfirmation(item)">
+            <i class="fa fa-trash" style="color: red;"></i>
+          </a>
+          <a matTooltip="Archive Record" style="cursor: pointer;" (click)="archiveRecord(item)">
+            <i class="fa fa-archive" style="color: gray;"></i>
+          </a>
+        </td>
+
+      <td class="text-link text-center">
+  <a [routerLink]="['/app','sqm','inspect-inner-screen','active-records']"
+     [queryParams]="{ reference: item.Reference, partFamily: item.PartFamily, partName: item.PartName }"> 
+    {{ item.Reference }} 
+  </a>
+</td>
+        <td class="text-center">{{ item.stage }}</td>
+        <td class="text-center">
+          <mat-checkbox [(ngModel)]="item.Publish" color="primary"></mat-checkbox>
+        </td>
+
+        <td class="text-center">{{ item.InspectionDate }}</td>
+        <td class="text-center">{{ item.Time }}</td>
+        <td class="text-center">{{ item.Inspector }}</td>
+        <td class="text-center">{{ item.PartFamily }}</td>
+        <td class="text-center">{{ item.PartName }}</td>
+        <td class="text-center">{{ item.PartNumber }}</td>
+
+        <td class="text-center">
+          <a style="color: #007bff; cursor: pointer; text-decoration: underline; font-weight: 500;" (click)="openDefectsPop(item)">
+            {{ item.Defects }}
+          </a>
+        </td>
+
+       <td class="text-center"> 
+  <a [routerLink]="['/app','sqm','inspect-inner-screen','active-records']"
+     [queryParams]="{ reference: item.Reference, partFamily: item.PartFamily, partName: item.PartName }"> 
+    {{ item.Parameters }} 
+  </a>
+</td>
+        <td class="text-center">{{ item.Remarks }}</td>
+        <td class="text-center">{{ item.BatchNumber }}</td>
+        <td class="text-center">{{ item.BatchQuantity }}</td>
+        <td class="text-center">{{ item.SampleQuantity }}</td>
+        <td class="text-center">{{ item.ErrorRatePct }}</td>
+        <td class="text-center">{{ item.ErrorRatePPM }}</td>
+      </tr>
+
+      <tr *ngIf="!mockdata || mockdata.length === 0">
+        <td colspan="17" class="text-center">No records found</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="position: fixed; bottom: 30px; right: 30px; z-index: 999; display: flex; gap: 15px;">
+  <button mat-fab color="white" (click)="scrollLeft()" matTooltip="Scroll Left">
+    <mat-icon>fast_rewind</mat-icon>
+  </button>
+  <button mat-fab color="white" (click)="scrollRight()" matTooltip="Scroll Right">
+    <mat-icon>fast_forward</mat-icon>
+  </button>
+</div>

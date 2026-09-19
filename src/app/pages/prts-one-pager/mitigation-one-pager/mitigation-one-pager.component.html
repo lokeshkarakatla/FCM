@@ -1,0 +1,69 @@
+
+<div style="margin-top: 10px;">
+
+ <div class="page-header  ms-5 d-flex justify-content-between align-items-start" style="padding-top: 20px;">
+
+        <!-- Left Content -->
+        <div class="header-content">
+            <h3 class="page-title mb-1">  Mitigation</h3>
+
+            <p class="header-info mb-0">
+                <span class="fw-bold">Ref No:</span>
+               H2022191
+
+                <span class="ms-3 fw-bold">Subject:</span>
+               Paint Sagging on Door
+            </p>
+        </div>
+
+        <!-- Back Button -->
+        <!-- <button class="btn btn-grey back-btn me-5" (click)="goBack()">
+            <mat-icon class="me-1">arrow_back</mat-icon>
+            Back
+        </button> -->
+
+    </div>
+
+
+
+<div class="editor-container" style=" padding: 20px;">
+
+
+  <div style="min-width: 65%; max-width: 70%; border-radius: 10px;">
+     <div class="quill-wrapper"  style=" border-radius: 10px;">
+  <quill-editor
+    [(ngModel)]="content"
+    [modules]="modules"
+    placeholder="Insert text here ...">
+  </quill-editor>
+</div>
+
+
+  </div>
+
+
+
+  <div  style ="display: flex; justify-content: flex-end; min-width: 65%; max-width: 70% ; margin-top: 20px;">
+    <button mat-raised-button color="primary" type="button" class="save-btn">
+  <mat-icon>save</mat-icon>
+  Save
+</button>
+  </div>
+  <!-- Rich Text Editor -->
+  <!-- <div class="editor-box">
+    <quill-editor [(ngModel)]="content" [modules]="modules" placeholder="Insert text here ...">
+    </quill-editor>
+  </div>
+
+</div> -->
+
+
+<!-- Save Button -->
+<!-- <div class="d-flex justify-content-end mt-3 save-box">
+  <button mat-raised-button type="button" class="save-btn">
+    <mat-icon>save</mat-icon>
+    Save
+  </button>
+</div> -->
+
+</div>

@@ -1,0 +1,65 @@
+.quill-wrapper {
+  min-height: 200px;
+  height: 500px;
+  border: 1px solid #ccc;
+  position: relative;
+
+  resize: vertical;
+  overflow: hidden;
+}
+.quill-wrapper ::ng-deep .ql-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  background-color: #fafafa;
+  color: white;
+
+  border-bottom: 1px solid #ccc;
+}
+
+.quill-wrapper ::ng-deep .ql-container {
+  height: calc(100% - 42px);
+  border: none !important;
+  overflow: hidden;
+}
+
+.quill-wrapper ::ng-deep .ql-editor {
+  height: 100%;
+  overflow-y: auto;
+  font-size: 14px;
+}
+/* --- Page Header Container --- */
+.page-header {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+/* --- Left Content Wrapper --- */
+.header-content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Title (H3 Element) --- */
+.page-title {
+  margin: 0 0 0 !important;
+  font-size: 20px;
+}
+
+/* --- Reference & Subject Text --- */
+.header-info {
+  margin: 3px 0px 0px 0px;
+  font-size: 13px;
+  color: #555;
+}
+
+/* --- Back Action Button --- */
+.back-btn {
+  background-color: gray;
+  color: white;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  margin-top: 5px;
+}

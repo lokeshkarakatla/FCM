@@ -1,0 +1,275 @@
+<div fxLayout="row wrap" #resizedDiv>
+    <div class="flex-p w-100">
+
+        <div class="row" style="margin-bottom:14px;">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="w-100 flex-p">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="w-100 flex-p">
+
+                    <button mat-raised-button color="primary" class="pull-right" (click)="openEditDialog(null)">
+                        <mat-icon>person_add</mat-icon> Add User
+                    </button>
+
+                    <button mat-raised-button style="background-color: black; color:white;"
+                        class="pull-right filter-hover margin-right-10" (click)="filterToggle = !filterToggle">
+                        <mat-icon>filter_list</mat-icon> Filter
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div fxLayout="row wrap" *ngIf="filterToggle" style="margin-left: 5px;">
+            <div fxFlex="100" class="flex-p w-100">
+                <form [formGroup]="filterForm">
+                    <mat-card class="filter">
+                        <mat-card-content>
+                            <div class="row col-sm-12">
+                                <div class="col-sm-4 row me-2">
+                                    <div class="col-sm-3 newMarginClass">
+                                        <b>Keyword:</b>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <input type="text" formControlName="Keyword" onCopy="return false"
+                                            onPaste="return false" class="form-control"
+                                            placeholder="Search by Name, Email, Role...">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="col-sm-3 newMarginClass">
+                                        <b>Status:</b>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <mat-select placeholder="Select Status" class="form-control"
+                                            formControlName="Status">
+                                            <mat-option *ngFor="let option of Status" [value]="option.value">
+                                                {{option.name}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="col-sm-3 newMarginClass">
+                                        <b>Department:</b>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <mat-select placeholder="Select Department" class="form-control" multiple
+                                            formControlName="Department">
+                                            <mat-option *ngFor="let dept of Departments" [value]="dept.value">
+                                                {{dept.name}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </div>
+
+
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+                            </div>
+                            <div class="row col-sm-12">
+                                <div class="col-sm-4 row mt-2">
+                                    <div class="col-sm-3 newMarginClass">
+                                        <b>Role:</b>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <mat-select placeholder="Select Role" class="form-control"
+                                            formControlName="Role">
+                                            <mat-option *ngFor="let role of Roles" [value]="role.value">
+                                                {{ role.name }}
+                                            </mat-option>
+                                        </mat-select>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-4">
+
+                                </div>
+
+                                <div class="col-sm-4 mt-2" style="    margin-left: -25px;">
+                                    <a (click)="filterToggle = !filterToggle" class="pull-right"
+                                        style="font-size: 25px; cursor: pointer; margin-left: 5px">
+                                        <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                                    </a>
+
+
+                                    <button mat-raised-button class="pull-right btn-default margin-right-10"
+                                        (click)="clearFilter()">
+                                        <mat-icon>settings_backup_restore</mat-icon> Clear
+                                    </button>
+                                    <button mat-raised-button color="primary" class="pull-right margin-right-10"
+                                        (click)="filter()">
+                                        <mat-icon>search</mat-icon> Search
+                                    </button>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </form>
+            </div>
+        </div>
+        <!-- Creating Table  -->
+        <div class="col-sm-12" style="margin-left: 13px;">  
+            <div id="grid-table-container" class="table-responsive" style="width: 101%; margin-left: -18px;">
+                <table id="example2" class="table table-bordered table-hover">
+                    <thead class="tbl-head">
+                        <tr class="tr-grid-header">
+                            <th class="text-center">Actions</th>
+                            <th class="text-center">Status</th>
+                            <th style="white-space:nowrap" class="text-center">Two-Factor</th>
+                             <th style="white-space:nowrap" class="text-center">Reset Password</th> 
+                            <th style="white-space:nowrap">User Name</th>
+                            <th class="text-center">Managers</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <!-- <th>Agency</th> -->
+                            <th>Department</th>
+                            <th>Role</th>
+                            <th style="min-width: 90px;">Job Code</th>
+                            <th>HOD</th>
+                            <th>CFT</th>
+                            <th>Auditor</th>
+                            <th style="white-space:nowrap">Web Access</th>
+                            <th style="white-space:nowrap">Mobile Access</th>
+                            <th style="white-space:nowrap" class="text-center">Managerial Role</th>
+                    
+                            <th style="white-space:nowrap" class="text-center">Audit Types</th>
+                                    <th style="white-space:nowrap" class="text-center">Inspector</th>
+                             <th style="white-space:nowrap" class="text-center">RPM</th>
+
+
+                            <!-- <th class="text-center">Special-Permissions</th> -->
+
+
+                            <!-- <th>User Type</th> -->
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf="users == null || users.length == 0">
+                            <td colspan="10" class="text-center">No records found</td>
+                        </tr>
+                        <tr *ngFor="let applicant of userss">
+                            <!-- <td style="white-space:nowrap" class=" text-center">
+                                <a matTooltip="Edit User"
+                                    style="margin-right: 10px; cursor: pointer; color: cornflowerblue;"
+                                    (click)="openEditDialog(applicant)">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+
+                                <a>
+                                    <i style="cursor: pointer;" matTooltip="Delete User" class="fa fa-trash red"
+                                        (click)="deleteConfirmation(item)"></i>
+                                </a>
+
+
+                            </td> -->
+                            <td style="white-space:nowrap" class="text-center">
+                                <!-- Edit button -->
+                                <a matTooltip="Edit User" style="margin-right: 10px; cursor: pointer;"
+                                    (click)="openEditDialog(applicant)"
+                                    [ngClass]="{'disabled-action': applicant.managerialRole}"
+                                    [style.pointer-events]="applicant.managerialRole ? 'none' : 'auto'">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+
+                                <!-- Delete button -->
+                                <a>
+                                    <i matTooltip="Delete User" class="fa fa-trash"
+                                        (click)="deleteConfirmation(applicant)"
+                                        [ngClass]="{'disabled-action': applicant.managerialRole, 'red': !applicant.managerialRole}"
+                                        [style.pointer-events]="applicant.managerialRole ? 'none' : 'auto'">
+                                    </i>
+                                </a>
+                            </td>
+
+                            <td class="text-center" style="text-align: center !important;">
+
+                                <a [ngStyle]="{'color':  applicant.IsActive? 'blue' : 'red','cursor':'pointer'}">
+                                    <span *ngIf="!applicant.IsActive" (click)="Confirmation(item)"
+                                        style="color:red">Inactive</span>
+                                    <span *ngIf=" applicant.IsActive" (click)="Confirmation(item)">Active</span>
+                                </a>
+                            </td>
+                            <td class="style text-center">
+                                <mat-checkbox (click)="Confirmation()"></mat-checkbox>
+                            </td>
+                             <td class="style text-center">
+                            <a style="margin-right: 10px; cursor: pointer; color: cornflowerblue;"
+                                [ngClass]="{'disable-custom' :!canUpdate || item.UserName =='Admin'}"
+                                (click)="openResetPassword(item)">
+                                <mat-icon matTooltip="Reset Password">autorenew</mat-icon>
+                            </a>
+                        </td>
+
+
+                            <td>{{applicant.name}}</td>
+                            <td class="text-center" style="color: blue; cursor:pointer" (click)="openManagersDialog()">4
+                            </td>
+                            <td>{{applicant.email}}
+                            </td>
+                            <td>{{applicant.phone}}</td>
+                            <!-- <td>
+                                {{applicant.agency}}
+                            </td> -->
+                            <td>
+                                {{applicant.department}}
+                            </td>
+                            <td>{{applicant.role}}</td>
+                             <td (click)="openjobpop()" style="color:blue; cursor: pointer;" class="text-center">{{applicant.job}}</td>
+                            <td class="text-center">
+                                <mat-checkbox [checked]="applicant.hod"></mat-checkbox>
+                            </td>
+
+
+                            <td class="text-center">
+                                <mat-checkbox [checked]="applicant.cft"></mat-checkbox>
+                            </td>
+                            <td class="text-center">
+                                <mat-checkbox [checked]="applicant.auditor"></mat-checkbox>
+                            </td>
+
+                            <td class="text-center">
+                                <mat-checkbox [checked]="applicant.webaccess"></mat-checkbox>
+                            </td>
+
+                            <td class="text-center">
+                                <mat-checkbox [checked]="applicant.mobileaccess"></mat-checkbox>
+                            </td>
+                            <td class="text-center">
+                                <mat-checkbox [checked]="applicant.managerialrole"></mat-checkbox>
+                            </td>
+                            <!-- <td>
+                                {{applicant.role}}
+                            </td> -->
+                            <td class="text-center" style="color: blue; cursor:pointer" (click)="audit()">10</td>
+                             <td class="text-center">
+                                <mat-checkbox  ></mat-checkbox>
+                            </td>
+                             <td class="text-center">
+                                <mat-checkbox ></mat-checkbox>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+                <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+                    [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons>
+                </mat-paginator>
+
+                <!-- Scroll Buttons -->
+                <button class="mine" mat-fab (click)="scrollGrid('right')">
+                    <mat-icon style="color: #37474f">fast_forward</mat-icon>
+                </button>
+                <button class="mine" mat-fab style="margin-right: 78px !important" (click)="scrollGrid('left')">
+                    <mat-icon style="color: #37474f">fast_rewind</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

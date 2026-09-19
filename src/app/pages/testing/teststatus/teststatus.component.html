@@ -1,0 +1,204 @@
+<div class="row">
+  <div class="col-sm-12 d-flex justify-content-end align-items-start" style="gap: 10px; margin-bottom: 2px; padding-right: 30px;">
+    <button mat-raised-button style="background-color: black;color: white;"
+        class="filters-hover mt-3"  matTooltip="Filter"
+        (click)="filterToggle = !filterToggle">
+        <mat-icon>filter_list</mat-icon> Filter
+    </button>
+    <button mat-raised-button
+        class="btn-primary mt-3" color="primary" matTooltip="Add Test"
+        [ngClass]="{'disable-custom' : !canCreate || (departmentName != 'Testing' )  && departmentName !='Protoshop'  && roleName != 'Admin'}"
+         (click)="addtests(null)"> 
+        <mat-icon>add</mat-icon> Add Test
+    </button>
+  </div>
+</div>
+<!-- Filter UI -->
+<div fxLayout="row wrap" *ngIf="filterToggle" style=" width: 98.5%;
+    margin-left: 10px;">
+    <div fxFlex="100" class="flex-p w-100">
+        <form [formGroup]="filterForm">
+     <mat-card class="filter">
+  <mat-card-content>
+    <div class="row col-lg-12 col-sm-12">
+ 
+      <!-- Row 1: Keyword (Not searchable) -->
+      <div class="col-sm-4 row me-2 mt-3">
+        <div class="col-sm-4 newMarginClass"><b>Keyword:</b></div>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" placeholder="Search by keyword" />
+        </div>
+      </div>
+ 
+      <!-- Status (Static, Not searchable) -->
+      <div class="col-sm-4 row me-2 mt-3">
+        <div class="col-sm-4 newMarginClass"><b>Status:</b></div>
+        <div class="col-sm-8">
+          <mat-select placeholder="Select Status" class="form-control">
+            <mat-option value="active">Active</mat-option>
+            <mat-option value="inactive">Inactive</mat-option>
+          </mat-select>
+        </div>
+      </div>
+ 
+      <!-- Aggregate Lead (Searchable) -->
+      <div class="col-sm-4 row me-2 mt-3">
+        <div class="col-sm-4 newMarginClass"><b>Aggregate Lead:</b></div>
+        <div class="col-sm-8">
+          <mat-select placeholder="Select Aggregate Lead" class="form-control">
+            <ngx-mat-select-search placeholderLabel="Search leads"></ngx-mat-select-search>
+            <mat-option value="lead1">Lead 1</mat-option>
+            <mat-option value="lead2">Lead 2</mat-option>
+            <mat-option value="lead3">Lead 3</mat-option>
+          </mat-select>
+        </div>
+      </div>
+ 
+      <!-- Concerned Aggregate (Searchable) -->
+      <div class="col-sm-4 row me-2 mt-3">
+        <div class="col-sm-4 newMarginClass"><b>Concerned Aggregate:</b></div>
+        <div class="col-sm-8">
+          <mat-select placeholder="Select Concerned Aggregate" class="form-control">
+            <ngx-mat-select-search placeholderLabel="Search users"></ngx-mat-select-search>
+            <mat-option value="user1">User 1</mat-option>
+            <mat-option value="user2">User 2</mat-option>
+            <mat-option value="user3">User 3</mat-option>
+          </mat-select>
+        </div>
+      </div>
+ 
+      <!-- Equipment Id (Searchable) -->
+      <div class="col-sm-4 row me-2 mt-3">
+        <div class="col-sm-4 newMarginClass"><b>Equipment Id:</b></div>
+        <div class="col-sm-8">
+          <mat-select placeholder="Select Equipment Id" class="form-control">
+            <ngx-mat-select-search placeholderLabel="Search equipment"></ngx-mat-select-search>
+            <mat-option value="eq1">Equipment 1</mat-option>
+            <mat-option value="eq2">Equipment 2</mat-option>
+            <mat-option value="eq3">Equipment 3</mat-option>
+          </mat-select>
+        </div>
+      </div>
+ 
+      <!-- Project Code (Searchable) -->
+      <div class="col-sm-4 row me-2 mt-3">
+        <div class="col-sm-4 newMarginClass"><b>Project Code:</b></div>
+        <div class="col-sm-8">
+          <mat-select placeholder="Select Project Code" class="form-control">
+            <ngx-mat-select-search placeholderLabel="Search project codes"></ngx-mat-select-search>
+            <mat-option value="p1">Project 1</mat-option>
+            <mat-option value="p2">Project 2</mat-option>
+            <mat-option value="p3">Project 3</mat-option>
+          </mat-select>
+        </div>
+      </div>
+ 
+      <!-- Buttons -->
+      <div class="col-sm-12 pull-right mt-3" style="margin-left: -19px;">
+        <a (click)="filterToggle = !filterToggle" class="pull-right" style="font-size: 25px; cursor: pointer; margin-left: 5px">
+          <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+        </a>
+        <button mat-raised-button class="pull-right btn-default margin-right-10" (click)="clearFilter()"><mat-icon>settings_backup_restore</mat-icon>Clear</button>
+                <button mat-raised-button color="primary" class="pull-right" style="margin-right: 10px;" (click)="go()"><mat-icon>search</mat-icon>Search</button>
+
+      </div>
+ 
+    </div>
+  </mat-card-content>
+</mat-card>
+ 
+ 
+ 
+        </form>
+    </div>
+</div>
+ 
+<!-- Table -->
+<div class="container-fluid" style="padding-right: 7px;
+   
+    width: 99%;">
+    <div fxLayout="row wrap" #resizedDiv>
+        <div class="flex-p w-100 sizeAlign">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="grid-table-container" class="table-responsive">
+                        <table matSort id="example2" class="table table-bordered table-hover">
+                            <thead class="tbl-head">
+                                <tr>
+                                    <th class="text-center">Actions</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-center" > Equipment Id</th>
+                                    <th class="text-center" >Project Code</th>
+                                    <th class="text-center" >Test Description</th>
+                                    <th class="text-center" >Benchmark</th>
+                                    <th class="text-center">Report No.</th>
+                                    <th class="text-center" >Actual Value</th>
+                                    <th class="text-center">Document</th>
+                                    <th class="text-center" >concerned</th>
+                                    <th class="text-center" >Section  Lead</th>
+                                    <th class="text-center" >Remarks</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of tableList">
+                                    <td class=" text-center">
+                                        <a matTooltip="Edit Test" [ngClass]="{'disable-custom' : !canUpdate  }"
+                                            style="margin-right: 10px; cursor: pointer; color: cornflowerblue;"
+                                            (click)="addtests(item)">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a [ngClass]="{'disable-custom' : !canDelete}">
+                                            <i style="cursor: pointer;" matTooltip="Delete Test" class="fa fa-trash red"
+                                                (click)="deleteConfirmation(item)"></i>
+                                        </a>
+                                    </td>
+                                    <td class="text-center" style="text-align: center !important;">
+                                        <a [ngStyle]="{'color':  item.IsActive? 'blue' : 'red','cursor':'pointer'}"
+                                            [ngClass]="{'disable-custom' : !canUpdate}">
+                                            <span *ngIf="!item.IsActive" (click)="Confirmation(item)"
+                                                style="color:red">Inactive</span>
+                                            <span *ngIf=" item.IsActive" (click)="Confirmation(item)"
+                                                style="color:blue;">Active</span>
+                                        </a>
+                                    </td>
+                                    <td class="text-center" >{{item.TractorNumber}}</td>
+                                    <td class="text-center" >{{item.ProjectCode}}</td>
+                                    <td class="text-center" >{{item.TestDescription}}</td>
+                                    <td class="text-center" >{{item.TestStandardReferred}}</td>
+                                    <td class="text-center">{{item.ReportNo}}</td>
+                                    <td class="text-center" >{{item.TestData}}</td>
+                                    <td class="text-center" class="text-center">
+                                        <!-- <a
+                                            style="color:blue;cursor:pointer"
+                                            href="https://qaitlapi.optionmatrix.co/Content/{{item.TestDocumentURL}}"
+                                            target="_blank">
+                                            View</a> -->
+                                        <a *ngIf="item.TestDocumentURL != null" style="color:blue;cursor: pointer"
+                                            style="color:blue;cursor:pointer" href="{{item.ImagePath}}" target="_blank">
+                                            View</a>
+                                        <p *ngIf="item.TestDocumentURL == null">NA</p>
+                                    </td>
+                                    <!-- <td class="text-center" *ngIf="item.ImagePath == null">
+                                        NA
+                                        </td> -->
+                                    <td class="text-center">{{item.ResponsibleSectionName}}</td>
+                                    <td class="text-center">{{item.UserName}}</td>
+                                    <td class="text-center">{{item.Remarks}}</td>
+                                </tr>
+                            </tbody>
+                            <tr *ngIf="tableList == null || tableList.length == 0">
+                                <td colspan="12" class="text-center">No records found</td>
+                            </tr>
+                        </table>
+                        <mat-paginator class="col-sm-12" [length]="totalSize" [pageIndex]="currentPage"
+                            [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20, 50, 100]" (page)="fnHandlePage($event)"
+                            showFirstLastButtons>
+                        </mat-paginator>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+ 

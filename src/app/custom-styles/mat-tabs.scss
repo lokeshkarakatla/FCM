@@ -1,0 +1,19 @@
+/* Styles for tab labels */
+.mat-tab-label {
+    font-weight: 700;
+    color: black !important;
+}
+
+/* Styles for the active tab label */
+.mat-tab-label.mat-tab-label-active,
+.mat-tab-label:focus,
+.mat-tab-label-active:focus {
+    background-color: #b5b1b1 !important;
+    color: black !important;
+    font-weight: 700 !important;
+}
+
+/* Styles for the ink bar */
+.mat-ink-bar {
+    background-color: blue !important;
+}

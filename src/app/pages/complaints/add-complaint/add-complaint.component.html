@@ -1,0 +1,242 @@
+<div class="NewHeader">
+  <h1 mat-dialog-title>
+    <span>Add Complaint</span>
+  </h1>
+</div>
+
+<div id="stepper" class="bs-stepper row col-12">
+
+
+
+
+  <div class=" pills col-2">
+
+    <div class="step mb-2" data-target="#step-1">
+      <button class="step-trigger">
+        <span class="bs-stepper-label">Overview</span>
+      </button>
+    </div>
+
+    <div class="step" data-target="#step-2">
+      <button class="step-trigger">
+        <span class="bs-stepper-label">Context</span>
+      </button>
+    </div>
+
+
+
+
+
+
+  </div>
+
+
+
+  <!-- Stepper Content -->
+
+  <div class="col-9">
+    <!-- Step 1: Base Info -->
+    <form id="step-1" class="content">
+      <div class="row">
+        <!-- Left Column -->
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label class="add-member-label"><b>Reference:</b></label>
+            <input type="text" placeholder="Enter Reference" class="form-control  bac">
+          </div>
+          <div class="mb-3">
+            <label class="add-member-label"><b>Complaint Date:</b></label>
+            <input type="date" class="form-control  bac">
+          </div>
+          <div class="mb-3">
+            <label class="add-member-label"><b>Description:</b></label>
+            <textarea name="" id="" rows="6" placeholder="Enter Description" class="form-control  bac"></textarea>
+          </div>
+        </div>
+
+
+
+
+
+        <!-- Right Column -->
+        <div class="col-md-6">
+         <div class="mb-3">
+            <label class="add-member-label"><b>Model:</b></label>
+            <mat-select class="form-control bac" placeholder="Select Model">
+             <mat-form-field appearance="fill" style="width: 100%">
+                <input matInput placeholder="Search..." />
+              </mat-form-field>
+              <mat-option value="Algeria">Hector 7 Seater
+              </mat-option>
+              <mat-option value="Albania">Gloster 6 Seater</mat-option>
+              <mat-option value="Innova Hycross">Innova Hycross</mat-option>
+              <mat-option value="Accord">Accord</mat-option>
+              <mat-option value="Accent">Accent</mat-option>
+              <mat-option value="Jaguar">Jaguar</mat-option>
+              <mat-option value="BWM">BWM</mat-option>
+            </mat-select>
+          </div>
+          <div class="mb-3">
+            <label class="add-member-label"><b>Serial No:</b></label>
+            <input type="text" placeholder="Enter Customer" class="form-control ">
+          </div>
+          <div class="mb-3">
+            <label class="add-member-label"><b>Subject:</b></label>
+            <input type="text" placeholder="Enter Subject" class="form-control bac">
+          </div>
+          <div class="mb-3 important">
+            <label class="add-member-label"><b>Select Department Head:</b></label>
+            <mat-select placeholder="Select Model Name" class="form-control bac">
+              <mat-option value="1">Tejaswi</mat-option>
+              <mat-option value="2">Roshan</mat-option>
+              <mat-option value="3">Raj</mat-option>
+              <mat-option value="4">Sai</mat-option>
+              <mat-option value="5">Karthik</mat-option>
+              <mat-option value="6">Ravi</mat-option>
+              <mat-option value="7">Jaguar</mat-option>
+              <mat-option value="9">Nikhil</mat-option>
+              <mat-option value="10">Hritik</mat-option>
+              <mat-option value="11">Shiv</mat-option>
+              <mat-option value="12">Chandana</mat-option>
+            </mat-select>
+          </div>
+          <div class="mb-3 important d-flex align-items-center">
+            <b class="me-2">Priority:</b>
+            <input type="checkbox" class="big-checkbox">
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+      <!-- Save Button -->
+      <div class="text-end mt-3">
+        <button mat-raised-button style="background-color: lightgray; color: red" class="add-dark-hover btn-default"
+          (click)="close()">
+          <mat-icon>cancel</mat-icon>Close
+        </button>
+        <button mat-raised-button color="primary" [mat-dialog-close]="'test'" style="margin-left: 8px;">
+          <i class="fas fa-save"></i> <span class="ms-2">Save & Next</span>
+        </button>
+      </div>
+    </form>
+
+    <!-- Step 2: Overview -->
+    <form id="step-2" class="content">
+      <div class="row">
+
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label class="add-member-label"><b>Distributor :</b></label>
+            <mat-select placeholder="select Distributor Name" class="form-control  bac">
+              <mat-form-field appearance="fill" style="width: 100%">
+                <input matInput placeholder="Search..." />
+              </mat-form-field>
+              <mat-option value="Medium Criticality">Vertex Distribution Services</mat-option>
+              <mat-option value="Low Criticality">Prime Trade & Supply</mat-option>
+              <mat-option value="Criticality">Global Distributors Pvt. Ltd </mat-option>
+
+            </mat-select>
+          </div>
+
+
+          <div class="mb-3">
+            <label class="add-member-label"><b>City :</b></label>
+            <mat-select placeholder="select City" class="form-control  bac">
+              <mat-form-field appearance="fill" style="width: 100%">
+
+                <input matInput placeholder="Search..." />
+              </mat-form-field>
+
+              <mat-option value="Medium Criticality">Oran</mat-option>
+              <mat-option value="Elbasan">Elbasan</mat-option>
+              <mat-option value="Encamp">Encamp </mat-option>
+              <mat-option value="New York">New York </mat-option>
+
+            </mat-select>
+          </div>
+
+
+
+          <div class="mb-3">
+            <label class="add-member-label"><b> Failure Date :</b></label>
+            <input type="date" class="form-control mandatory-field">
+          </div>
+
+          <div class="mb-3">
+            <label class="add-member-label"><b> Customer :</b></label>
+            <input type="text" placeholder="Enter Customer" class="form-control mandatory-field">
+          </div>
+
+
+
+
+
+        </div>
+
+        <div class="col-md-6">
+
+
+          <div class="mb-3">
+
+
+            <div class="mb-3">
+              <label class="add-member-label"><b>Country :</b></label>
+              <mat-select placeholder="select Country" class="form-control  bac">
+                <mat-form-field appearance="fill" style="width: 100%">
+                  <input matInput placeholder="Search..." /></mat-form-field>
+
+                <mat-option value="Medium Criticality">Algeria</mat-option>
+                <mat-option value="Albania">Albania </mat-option>
+                <mat-option value="Andorra">Andorra</mat-option>
+                <mat-option value="America">America</mat-option>
+
+              </mat-select>
+            </div>
+
+
+
+
+
+            <div class="mb-3">
+              <label class="add-member-label"><b>Severity :</b></label>
+              <mat-select placeholder="select Severity" class="form-control  bac">
+                <mat-form-field appearance="fill" style="width: 100%">
+                  <input matInput placeholder="Search..." /></mat-form-field>
+
+                <mat-option value="Low ">Low</mat-option>
+                <mat-option value="Med">Med </mat-option>
+                <mat-option value="High">High</mat-option>
+
+              </mat-select>
+            </div>
+
+
+            <div class="mb-3">
+              <label><b>Due Date :</b></label>
+              <input type="date" class="form-control  bac">
+            </div>
+
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Step 2 Buttons -->
+      <div class="mt-3 pull-right" style="margin-right: 5px;">
+        <button mat-raised-button style="background-color: lightgray; color: red; margin-right: 8px;"
+          class="add-dark-hover btn-default" (click)="close()">
+          <mat-icon>cancel</mat-icon>Close
+        </button>
+        <button mat-raised-button color="primary" (click)="onSubmit()"> <mat-icon>save</mat-icon> Submit</button>
+      </div>
+    </form>
+
+  </div>
+</div>

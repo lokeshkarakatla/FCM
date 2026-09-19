@@ -1,0 +1,49 @@
+.test{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 100px;
+    color: brown;
+}
+ 
+.table-container {
+    max-width: 600px; /* Adjust the maximum width as needed */
+    margin: 0 auto;  /* Center the table within the container */
+  }
+ 
+  .custom-table {
+    width: 100%; /* Set the table width to 100% of its container */
+    /* Add any additional styling you need for the table */
+  }
+ 
+  #grid-table-container {
+    overflow-x: auto;
+  }
+ 
+  .mat-table {
+    width: 100%;
+  }
+ 
+  .mat-row,
+  .mat-header-row {
+    width: 100%;
+    box-sizing: border-box;
+    display: table;
+  }
+ 
+  .mat-cell,
+  .mat-header-cell {
+    display: table-cell;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+ 
+  // .keyword-text {
+  //   font-weight: bold;
+  //   font-size: 12px; /* Adjust the font size as needed */
+  // }
+ 
+ 
+ 
+ 

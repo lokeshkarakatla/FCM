@@ -1,0 +1,197 @@
+<button mat-raised-button class="pull-right" type="button" (click)="back()"
+    style="color: rgb(7, 10, 7); background-color: #e0e0e0; margin-left: 27cm;">
+    <mat-icon>fast_rewind</mat-icon> Back
+</button>
+<div class="col-lg-12">
+    <!-- Master Data Tabs -->
+    <div class="col-xs-12" style="margin-top: 15px; margin-left: -16px; margin-bottom: 30px;">
+        <div class="pills">
+            <ul class="nav nav-pills" style="margin-left: 10px;">
+                <li>
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;" routerLinkActive="active"
+                        [routerLink]="['../d4']">
+                        Overview
+                    </a>
+                </li>
+                <li>
+                    <a mat-raised-button class="navtabWidth"
+                        style="margin-top: 10px;"
+                        routerLinkActive="active" [routerLink]="['../diagnosis']">
+                        Diagnosis
+                    </a>
+                </li>
+                <li>
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;background-color: #50636d ;color: rgb(245, 241, 241);" routerLinkActive="active"
+                        [routerLink]="['../fish']">
+                        Fish Bone Diagram
+                    </a>
+                </li>
+                <li>
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;" routerLinkActive="active"
+                        [routerLink]="['../why']">
+                        5 WHY
+                    </a>
+                </li>
+                <!-- <li>
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;" routerLinkActive="active"
+                        [routerLink]="['../actionmoniter']">
+                        Analysis
+                    </a>
+                </li> -->
+                <li>
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;" routerLinkActive="active"
+                        [routerLink]="['../deploy']">
+                        Deployment
+                    </a>
+                </li>
+                <li>
+                    <a mat-raised-button class="navtabWidth" style="margin-top: 10px;" routerLinkActive="active"
+                        [routerLink]="['../actiondocumenttwo']">
+                        Document
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+</div>
+<div class="col-lg-12">
+    <div class="col-lg-3"><div id="grid-table-container" class="table-responsive">
+        <table matSort id="example2" class="table table-bordered table-hover.">
+            <thead class="tbl-head">
+                <tr style="background-color:rgb(177, 177, 181) ; color: black;">
+                    <th class="text-center">Man</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of man">
+                    <td class="text-center">{{item.issue}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+
+    </div></div>
+    <div class="col-lg-3"><div id="grid-table-container" class="table-responsive">
+        <table matSort id="example2" class="table table-bordered table-hover.">
+            <thead class="tbl-head">
+                <tr style="background-color:rgb(177, 177, 181) ; color: black;">
+                    <th class="text-center">Material</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of material">
+                    <td class="text-center">{{item.issue}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+
+    </div></div>
+    <div class="col-lg-3"><div id="grid-table-container" class="table-responsive">
+        <table matSort id="example2" class="table table-bordered table-hover.">
+            <thead class="tbl-head">
+                <tr style="background-color:rgb(177, 177, 181) ; color: black;">
+                    <th class="text-center">Machines</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of machines">
+                    <td class="text-center">{{item.issue}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+
+    </div></div>
+
+</div>
+
+
+<div class="col-lg-11">
+
+    <div class="rectangle"></div>
+</div>
+<div class="col-lg-1">
+
+    <div class="triangle-right"></div>
+</div>
+
+<div class="col-lg-12">
+    <div class="col-lg-3"><div id="grid-table-container" class="table-responsive">
+        <table matSort id="example2" class="table table-bordered table-hover.">
+            <thead class="tbl-head">
+                <tr style="background-color:rgb(177, 177, 181) ; color: black;">
+                    <th class="text-center">Methods</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of methods">
+                    <td class="text-center">{{item.issue}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+
+    </div></div>
+    <div class="col-lg-3"><div id="grid-table-container" class="table-responsive">
+        <table matSort id="example2" class="table table-bordered table-hover.">
+            <thead class="tbl-head">
+                <tr style="background-color:rgb(177, 177, 181) ; color: black;">
+                    <th class="text-center">Environment</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of environment">
+                    <td class="text-center">{{item.issue}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+
+    </div></div>
+    <div class="col-lg-3"><div id="grid-table-container" class="table-responsive">
+        <table matSort id="example2" class="table table-bordered table-hover.">
+            <thead class="tbl-head">
+                <tr style="background-color:rgb(177, 177, 181) ; color: black;">
+                    <th class="text-center">Supply Exception</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of supply">
+                    <td class="text-center">{{item.issue}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+
+    </div></div>
+
+</div>
+
+<div class="col-lg-12 margin-top:50px">
+    <div class=" pull-right mt-5">
+
+        <button mat-raised-button (click)="back()" class="mr-2" type="button"
+            style="color: rgb(7, 10, 7); background-color: #e0e0e0; margin-right: 10px;">
+            <mat-icon>fast_rewind</mat-icon> Back
+        </button>
+        <button mat-raised-button class="mr-2" type="button"
+            style="color: rgba(252, 253, 252, 0.926); background-color: #3262a8; margin-right: 10px;">
+            <mat-icon>save</mat-icon>Save
+        </button>
+
+        <button mat-raised-button class="mr-2" type="button" (click)="next()"
+            style="color: rgb(10, 10, 10); background-color: #eff0f3;">
+            Next<mat-icon>fast_forward</mat-icon>
+        </button>
+    </div>
+</div>

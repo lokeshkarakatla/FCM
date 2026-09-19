@@ -1,0 +1,33 @@
+/* Container to hold both the image and the grid */
+.image-grid-container {
+    position: relative;
+    display: block; 
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* The underlying image */
+.overlay-image {
+    height: 100%;
+    width: 100%;
+    display: block;
+    object-fit: fill; 
+}
+
+/* The table acting as the grid overlay */
+.grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; 
+}
+
+/* The actual grid lines */
+.grid-cell {
+    border: 1px solid rgba(255, 255, 255, 0.4); 
+    vertical-align: middle;
+}

@@ -1,0 +1,60 @@
+<div class="col-sm-12" style="
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  ">
+    <div class="NewHeader">
+        <h1 style="color: white; margin-top:5px" mat-dialog-title>
+            {{ data ? "Update" : "Add" }} Drive Grade
+        </h1>
+    </div>
+    <div mat-dialog-content>
+        <form class="form-horizontal">
+            <!-- Complaint -->
+            <div class="form-group" style="margin-top: 20px">
+                <label class="control-label col-sm-4 add-member-label"> Drive Type :
+                </label>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <select class="form-control" placeholder="Enter Drive Type">
+                        <option>Rear Wheel Drive</option>
+                        <option>Front Wheel Drive</option>
+                        <option>All Wheel Drive</option>
+                        <option>Four Wheel Drive</option>
+                        <option>Automation Driver</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 20px">
+                <label class="control-label col-sm-4 add-member-label"> Drive Grade :
+                </label>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <input type="text" class="form-control" placeholder="Enter Drive Grade">
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 20px">
+                <label class="control-label col-sm-4 add-member-label"> Drive Grade Code :
+                </label>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <input type="text" class="form-control" placeholder="Enter Drive Grade Code">
+                </div>
+            </div>
+
+
+
+        </form>
+    </div>
+    <mat-dialog-actions align="end">
+        <div class="margin-bottom-10" style="margin-top: 30px; margin-right: 10px">
+            <button mat-raised-button color="primary" [mat-dialog-close]="'test'">
+                <mat-icon>save</mat-icon> <span>{{ data ? "Update" : "Save" }}</span>
+            </button>
+            <button mat-raised-button style="background-color: lightgray; color: red" class="add-dark-hover btn-default"
+                (click)="close()">
+                <mat-icon>cancel</mat-icon>Close
+            </button>
+        </div>
+    </mat-dialog-actions>
+</div>

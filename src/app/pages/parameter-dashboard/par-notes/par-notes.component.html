@@ -1,0 +1,198 @@
+<div fxLayout="row wrap" class="mt-1">
+  <div fxFlex="100" class="p-2" style="width: 98%;">
+    <mat-card class="p-0 chat" style="margin-left: -5px;">
+      <mat-sidenav-container>
+        <div>
+          <mat-card class="chat-actions">
+            <label class="font-semibold mb-4" style="font-size: 20px;">Add Note</label>
+            <div fxLayoutAlign="space-between start">
+              <mat-form-field style="margin-right:40px">
+                <mat-label>Select Tag</mat-label>
+                <mat-select placeholder="Select a tag" multiple [(ngModel)]="selectedTags">
+                  <mat-option value="emergency">Emergency</mat-option>
+                  <mat-option value="expedite">Expedite</mat-option>
+                  <mat-option value="delayed">Delayed</mat-option>
+                  <mat-option value="sub-acute">Sub Acute</mat-option>
+                  <mat-option value="commercial">Commercial</mat-option>
+                  <mat-option value="high-risk">High Risk</mat-option>
+                  <mat-option value="pregnant">Pregnant</mat-option>
+                  <mat-option value="minor">Minor</mat-option>
+                  <mat-option value="teenager">Teenager</mat-option>
+                  <mat-option value="cancer">Cancer</mat-option>
+                  <mat-option value="diabetic">Diabetic</mat-option>
+                  <mat-option value="hyper-tension">Hyper Tension</mat-option>
+                  <mat-option value="disabled">Disabled</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field style="width: 74%;">
+                <mat-label>Enter Description</mat-label>
+                <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+                  cdkAutosizeMaxRows="5" [(ngModel)]="message"></textarea>
+              </mat-form-field>
+
+              <button mat-icon-button type="button" (click)="openfileupload(null)">
+                <mat-icon>attach_file</mat-icon>
+              </button>
+              <button mat-mini-fab color="primary" type="button" (click)="addMessage()">
+                <mat-icon>send</mat-icon>
+              </button>
+
+
+
+            </div>
+          </mat-card>
+        </div>
+      </mat-sidenav-container>
+    </mat-card>
+
+    <div class="w-100 row" style="margin: 20px;margin-left: -3px;">
+      <div class="col-10 align-items-center d-flex">
+        <img src="../../../../assets/chatgpt.png" alt="AI Icon" width="24" height="24" class="me-3">
+        <span style="font-weight: bold; padding: 5px; font-size:16px"> AI Overview</span>
+      </div>
+
+      <div class="col-sm-12 mt-4">
+        <span style="font-size:18px">
+          Patient John Doe, 55 years old, presented for a routine check-up. He reports feeling
+          well with no
+          significant complaints. Physical exam is unremarkable. Blood pressure is slightly
+          elevated at 140/90
+          mmHg. Labs are within normal limits. Diagnosis: Mild hypertension. Treatment plan:
+          Continue
+          monitoring blood pressure at home, dietary modifications, and schedule a follow-up
+          appointment in 3
+          months to re-assess
+        </span>
+        <span *ngIf="showMore" style="font-size:18px">
+          Remember to always tailor the summary to the specific patient and their unique medical
+          situation,
+          ensuring all clarity and conciseness.
+          Additional details about the topic...
+        </span>
+
+        <span class="d-inline">
+          <span>
+            <button class="btn btn-link p-0 m-0 align-baseline" (click)="showMore = !showMore">
+              {{ showMore ? 'Less' : 'More' }}
+            </button>
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <div class="w-100 mt-3">
+      <div class="row" style="display: flex; margin-right: 15px; justify-content: flex-end; align-items: center">
+
+        <div class="pull-right"
+          style="margin-right: 8px; display: flex; align-items: center; border: 1px solid #ccc; border-radius: 4px; padding: 8px; width: 244px; height: 37px;margin-top: 7px;">
+          <input type="text" placeholder="Search by Keyword"
+            style="border: none; outline: none; flex: 1; padding: 5px;">
+          <mat-icon style="color: #333; cursor: pointer;">search</mat-icon>
+        </div>
+
+
+
+        <mat-menu #sortMenu="matMenu">
+          <div class="scrollable-menu">
+            <button mat-menu-item (click)="onSortOptionSelected('Actions')">Actions</button>
+            <button mat-menu-item (click)="onSortOptionSelected('Status')">Status</button>
+            <button mat-menu-item (click)="onSortOptionSelected('Referral ID')">Referral ID</button>
+            <button mat-menu-item (click)="onSortOptionSelected('Select')">Select</button>
+            <button mat-menu-item (click)="onSortOptionSelected('Visits')">Visits</button>
+            <button mat-menu-item (click)="onSortOptionSelected('Claims')">Claims</button>
+            <button mat-menu-item (click)="onSortOptionSelected('Patient ID')">Patient ID</button>
+            <button mat-menu-item (click)="onSortOptionSelected('Patient Name')">Patient Name</button>
+            <button mat-menu-item (click)="onSortOptionSelected('Referral From')"> Referral From</button>
+            <button mat-menu-item (click)="onSortOptionSelected('Referral To')">Referral To</button>
+            <button mat-menu-item (click)="onSortOptionSelected('Specialty')">Specialty</button>
+            <button mat-menu-item (click)="onSortOptionSelected('Case ID')">Case ID</button>
+            <button mat-menu-item (click)="onSortOptionSelected('Case Type')">Case Type</button>
+            <button mat-menu-item (click)="onSortOptionSelected('Order Type')">Order Type</button>
+            <button mat-menu-item (click)="onSortOptionSelected('Last Updated')">Last Updated</button>
+            <button mat-menu-item (click)="onSortOptionSelected('Created')">Created</button>
+          </div>
+        </mat-menu>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="col-sm-12 mt-4" [ngClass]="{ 'full-width': !isNavOpen }">
+  <div id="grid-table-container" class="table-responsive">
+    <div class="table-scrollable">
+      <table mat-table [dataSource]="chatMessages" matSort class="table table-bordered">
+
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="sticky-header">Date</th>
+          <td mat-cell *matCellDef="let msg"><strong>{{ msg.date | date:'dd MMM yyyy ; HH:mm'
+              }}</strong></td>
+        </ng-container>
+
+        <ng-container matColumnDef="postedBy">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="sticky-header">Posted By</th>
+          <td mat-cell *matCellDef="let msg"><strong>{{ msg.postedBy }}</strong></td>
+        </ng-container>
+
+        <ng-container matColumnDef="message">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="sticky-header text-center">
+            Message
+          </th>
+          <td mat-cell *matCellDef="let msg" class="word-wrap text-center"
+            [ngStyle]="{ 'color': msg.flag ? 'red' : 'black' }">
+            {{ msg.message }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="documents">
+          <th mat-header-cell *matHeaderCellDef class="sticky-header">
+            Documents
+          </th>
+          <td mat-cell *matCellDef="let msg" class="word-wrap text-center">
+            <mat-icon *ngIf="msg.documents">{{ msg.documents }}</mat-icon>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="context">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="sticky-header">Context</th>
+          <td mat-cell *matCellDef="let msg">{{ msg.context }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="tags">
+          <th mat-header-cell *matHeaderCellDef class="sticky-header  text-center">Tags</th>
+          <td mat-cell *matCellDef="let msg">
+            <div class=" text-center">
+              <button *ngFor="let tag of msg.tags" mat-raised-button class="tag-button text-center"
+                [ngStyle]="{'background-color': tag === 'emergency' ? 'red' : (tag === 'expedite' ? 'green' : '#b1ca40'), 'color': 'white'}">
+                {{ tag }}
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="flag">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="sticky-header text-center">
+            Flag
+          </th>
+          <td mat-cell *matCellDef="let msg" class="text-center">
+            <mat-checkbox [(ngModel)]="msg.flag" aria-label="Flag this row"></mat-checkbox>
+          </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      </table>
+    </div>
+  </div>
+
+  <mat-paginator #paginator [length]="totalSize" [pageIndex]="currentPage" [pageSizeOptions]="[5, 10, 25, 50, 100]"
+    showFirstLastButtons>
+  </mat-paginator>
+
+</div>

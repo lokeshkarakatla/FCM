@@ -1,0 +1,88 @@
+<div style="width: 100%; box-sizing: border-box; padding: 15px; background-color: #f8f9fa;">
+
+  <div style="display: flex; justify-content: flex-end; gap: 10px; margin-bottom: 15px;">
+    
+   
+
+       <button
+        mat-raised-button
+        style="background-color: #2196f3; color: white; padding: 0 16px; height: 45px; border: none; border-radius: 4px; display: flex; align-items: center; gap: 6px; font-weight: 500; cursor: pointer;"
+      (click)="onAddQuestion()">
+
+        <mat-icon class="mt-1" style="font-size: 18px; height: 18px; width: 18px;">
+          add
+        </mat-icon>
+
+        Add Question
+      </button>
+
+<!-- <button   (click)="goBack()" _ngcontent-vdl-c521="" _ngcontent-utt-c603="" mat-raised-button="" class="mat-focus-indicator mat-raised-button mat-button-base" style="background-color: #808080; color: white; ;margin-right: 10px;"><span class="mat-button-wrapper"><span _ngcontent-vdl-c521="" class="mat-button-wrapper"><mat-icon _ngcontent-vdl-c521="" role="img" _ngcontent-utt-c603="" aria-hidden="true" data-mat-icon-type="font" class="mat-icon notranslate material-icons mat-icon-no-color">arrow_back</mat-icon> Back </span><span _ngcontent-vdl-c521="" matripple="" ng-reflect-disabled="false" ng-reflect-centered="false" ng-reflect-trigger="[object HTMLButtonElement]" class="mat-ripple mat-button-ripple"></span><span _ngcontent-vdl-c521="" class="mat-button-focus-overlay"></span></span><span matripple="" class="mat-ripple mat-button-ripple" ng-reflect-disabled="false" ng-reflect-centered="false" ng-reflect-trigger="[object HTMLButtonElement]"></span><span class="mat-button-focus-overlay"></span></button> -->
+
+
+
+  <button mat-raised-button class="mat-focus-indicator mat-raised-button mat-button-base" style="background-color: #808080; color: white; margin-right: 10px;">
+        <span class="mat-button-wrapper" (click)="goBack()">
+          <mat-icon role="img" class="mat-icon notranslate material-icons mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font">arrow_back</mat-icon> Back 
+        </span>
+      </button>
+
+  </div>
+
+  <div class="table-responsive bg-white shadow-sm" style="width: 100%; border-radius: 4px; overflow-x: auto; border: 1px solid #e5e7eb;">
+
+    <table style="width: 100%; min-width: 900px; border-collapse: collapse; font-family: Roboto, 'Helvetica Neue', sans-serif;">
+      
+      <thead style="background-color: #212529; color: #ffffff;">
+        <tr>
+          <th style="padding: 12px 16px; text-align: left; border-right: 1px solid #495057; font-weight: 500; font-size: 14px;">Question</th>
+          
+          <th style="padding: 12px 16px; text-align: center; border-right: 1px solid #495057; font-weight: 500; width: 10px; font-size: 14px;">Mandatory</th>
+          <th style="padding: 12px 16px; text-align: center; border-right: 1px solid #495057; font-weight: 500; width: 10px; font-size: 14px;">Priority</th>
+          <th style="padding: 12px 16px; text-align: center; font-weight: 500; width: 120px; font-size: 14px;">Actions</th>
+        </tr>
+      </thead>
+
+     <tbody>
+        <tr *ngFor="let item of tableData" style="border-bottom: 1px solid #e5e7eb; background-color: #ffffff; transition: background-color 0.2s;">
+          
+          <td style="padding: 12px 16px; border-right: 1px solid #e5e7eb; font-size: 14px; color: #374151;">
+            {{ item.question }}
+          </td>
+
+          <td style="padding: 12px 16px; text-align: center; border-right: 1px solid #e5e7eb; font-size: 14px; color: #374151;">
+            <mat-checkbox 
+              [checked]="item.mandatory === 'Yes'" 
+              (change)="item.mandatory = $event.checked ? 'Yes' : 'No'">
+            </mat-checkbox>
+          </td>
+
+          <td style="padding: 12px 16px; text-align: center; border-right: 1px solid #e5e7eb; font-size: 14px; color: #374151;">
+            <mat-checkbox 
+              [checked]="item.priority" 
+              (change)="item.priority = $event.checked">
+            </mat-checkbox>
+          </td>
+
+          <td style="padding: 10px 16px; text-align: center;">
+            <button 
+              mat-icon-button 
+              (click)="onEdit(item)" 
+              style="background: none; border: none; cursor: pointer; color: #3b82f6; padding: 0 4px; margin-right: 4px;">
+              <mat-icon style="font-size: 18px; height: 18px; width: 18px;">edit</mat-icon>
+            </button>
+
+            <button 
+              mat-icon-button 
+              (click)="onDelete(item)" 
+              style="background: none; border: none; cursor: pointer; color: #ef4444; padding: 0 4px;">
+              <mat-icon style="font-size: 18px; height: 18px; width: 18px;">delete</mat-icon>
+            </button>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>

@@ -1,0 +1,81 @@
+<!-- <div class="NewHeader">
+    <h1 mat-dialog-title>
+        <span>{{ data ? 'Update' : ''}} Zones</span>
+    </h1>
+</div>
+
+<form class="form-horizontal">
+    <div mat-dialog-content>
+
+        <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Zone </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <mat-select class="form-control" placeholder="Select Zone" required>
+                    <mat-option [value]="0">Zone 1</mat-option>
+                    <mat-option [value]="1">Zone 2</mat-option>
+                    <mat-option [value]="2">Zone 3</mat-option>
+
+                </mat-select>
+            </div>
+        </div>
+
+
+
+    </div>
+    <mat-dialog-actions align="end">
+        <button mat-raised-button class="btn-primary" type="button" (click)="close()">
+            <mat-icon>save</mat-icon> <span>{{ data ? ' Update' : ' Save'}}</span>
+        </button>
+        <button mat-raised-button (click)="close()" type="button"
+            style="color: rgb(7, 10, 7); background-color: #e0e0e0;">
+            <mat-icon>cancel</mat-icon> Close
+        </button>
+
+    </mat-dialog-actions>
+</form> -->
+<div class="NewHeader">
+    <h1 mat-dialog-title>
+        <span> List of Defects linked to the image : Left Front Door</span>
+    </h1>
+</div>
+<!--  Table View -->
+<div class="container-fluid" style="padding-right: 5px;
+  padding-left: 0px;">
+    <div fxLayout="row wrap" #resizedDiv>
+        <div class="flex-p w-100 sizeAlign">
+            <div class="row">
+                <div class="col-12">
+                    <div id="grid-table-container" class="table-responsive">
+                        <table matSort id="example2" class="table table-bordered table-hover.">
+                            <thead class="tbl-head">
+                                <tr style="background-color:rgb(177, 177, 181) ; color: black;">
+                                    <th class="text-center">Defect</th>
+                                    <th class="text-center">Module</th>
+                                    <th class="text-center">Function</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of values">
+                                    <td class="text-center">{{item.defect}}</td>
+                                    <td class="text-center">{{item.module}}</td>
+                                    <td class="text-center">{{item.function}}</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- close Button -->
+<mat-dialog-actions align="center">
+
+    <button mat-raised-button class="add-dark-hover btn-default" (click)="close()">
+        <mat-icon>cancel</mat-icon>Close
+    </button>
+</mat-dialog-actions>

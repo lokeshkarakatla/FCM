@@ -1,0 +1,173 @@
+<div class="container-fluid">
+  <!-- Demerit Distribution by Model tabel -->
+  <div class="row">
+    <div class="col-sm-12">
+      <mat-card class="chart-header mb-4">
+        <h3 class="text-center" style="color: #212121;font-size:26;">Demerit Distribution by Model</h3>
+      </mat-card>
+      <div fxLayout="row wrap" style="margin-bottom: 10px">
+        <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p w-100 margins">
+          <mat-card class="filter">
+            <mat-card-content>
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="col-sm-4 newMarginClass">
+                    From Month:
+                  </div>
+                  <div class="col-sm-8">
+                    <mat-select class="form-control" placeholder="Select Month">
+                      <mat-option [value]="0">January</mat-option>
+                      <mat-option [value]="1">Febuary</mat-option>
+                      <mat-option [value]="2">March</mat-option>
+                      <mat-option [value]="3">April</mat-option>
+                      <mat-option [value]="4">May</mat-option>
+                      <mat-option [value]="5">June</mat-option>
+                      <mat-option [value]="6">July</mat-option>
+                      <mat-option [value]="7">August</mat-option>
+                      <mat-option [value]="8">September</mat-option>
+                      <mat-option [value]="9">October</mat-option>
+                      <mat-option [value]="10">November</mat-option>
+                      <mat-option [value]="11">December</mat-option>
+                    </mat-select>
+                  </div>
+                </div>
+
+                <div class="col-sm-4">
+                  <div class="col-sm-4 newMarginClass">
+                    To Month:
+                  </div>
+                  <div class="col-sm-8">
+                    <mat-select class="form-control" placeholder="Select Month">
+                      <mat-option [value]="0">January</mat-option>
+                      <mat-option [value]="1">Febuary</mat-option>
+                      <mat-option [value]="2">March</mat-option>
+                      <mat-option [value]="3">April</mat-option>
+                      <mat-option [value]="4">May</mat-option>
+                      <mat-option [value]="5">June</mat-option>
+                      <mat-option [value]="6">July</mat-option>
+                      <mat-option [value]="7">August</mat-option>
+                      <mat-option [value]="8">September</mat-option>
+                      <mat-option [value]="9">October</mat-option>
+                      <mat-option [value]="10">November</mat-option>
+                      <mat-option [value]="11">December</mat-option>
+                    </mat-select>
+                  </div>
+                </div>
+
+                <div class="col-sm-4">
+                  <div class="col-sm-4 newMarginClass">
+                    From Year:
+                  </div>
+                  <div class="col-sm-8">
+                    <mat-select class="form-control" placeholder="Select Year">
+                      <mat-option [value]="0">2022</mat-option>
+                      <mat-option [value]="1">2021</mat-option>
+                      <mat-option [value]="2">2020</mat-option>
+                      <mat-option [value]="3">2019</mat-option>
+                    </mat-select>
+                  </div>
+                </div>
+
+                <div style="margin-top:10px">
+                  <div class="col-sm-4">
+                    <div class="col-sm-4 newMarginClass">
+                      To Year:
+                    </div>
+                    <div class="col-sm-8">
+                      <mat-select class="form-control" placeholder="Select Year">
+                        <mat-option [value]="0">2022</mat-option>
+                        <mat-option [value]="1">2021</mat-option>
+                        <mat-option [value]="2">2020</mat-option>
+                        <mat-option [value]="3">2019</mat-option>
+                      </mat-select>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="col-sm-4 newMarginClass">
+                      Audit Type:
+                    </div>
+                    <div class="col-sm-8">
+                      <mat-select class="form-control" placeholder="Select Audit Type">
+                        <mat-option [value]="0">PQA</mat-option>
+                        <mat-option [value]="1">Body Audit</mat-option>
+                        <mat-option [value]="2">Paint Audit</mat-option>
+                        <mat-option [value]="3">Process Audit</mat-option>
+                      </mat-select>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="col-sm-4 newMarginClass">
+                      Model Type:
+                    </div>
+                    <div class="col-sm-8">
+                      <mat-select class="form-control" placeholder="Select Model Type">
+                        <mat-option [value]="0">Astor</mat-option>
+                        <mat-option [value]="1">Hector</mat-option>
+                        <mat-option [value]="2">Gloster</mat-option>
+                        <mat-option [value]="3">ZESV</mat-option>
+                      </mat-select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row" style="padding-top:10px !important">
+                <div class="col-lg-1" style="margin-left:80% !important;">
+                  <button mat-raised-button class="pull-right   btn-success "
+                    style=" margin-right: -121px;margin-top: -5px;">
+                    GO
+                  </button>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+      <div id="grid-table-container" class="table-responsive" style="width: 100%;">
+        <table matSort id="example2" class="table table-bordered table-hover">
+          <thead class="tbl-head">
+            <tr>
+              <th class="text-center">Model</th>
+              <th class="text-center">Rating</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of items">
+              <td class="text-center">{{item.model }}</td>
+              <td class="text-center">{{item.issues }}</td>
+            </tr>
+            <tr>
+              <td class="text-center">Total</td>
+              <td class="text-center">51</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- pie charts for table -->
+<div class="row">
+  <div class="col-sm-6">
+    <mat-card>
+      <div class="chart-header">
+        <p class="text-center" style="font-size: 20px;margin-top:10px;">By Issues</p>
+      </div>
+      <ngx-charts-pie-chart [scheme]="colorScheme" [results]="first" [explodeSlices]="explodeSlices"
+        [labels]="showLabels" [doughnut]="doughnut" [legend]="showLegend" [gradient]="gradient">
+      </ngx-charts-pie-chart>
+    </mat-card>
+  </div>
+  <div class="col-sm-6">
+    <mat-card>
+      <div class="chart-header">
+        <p class="text-center" style="font-size: 20px;margin-top:10px;">By Demerits</p>
+      </div>
+      <ngx-charts-pie-chart [scheme]="colorScheme" [results]="three" [explodeSlices]="explodeSlices"
+        [labels]="showLabels" [doughnut]="doughnut" [legend]="showLegend" [gradient]="gradient">
+      </ngx-charts-pie-chart>
+    </mat-card>
+  </div>
+</div>

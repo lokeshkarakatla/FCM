@@ -1,0 +1,19 @@
+<div fxLayout="row" fxLayoutAlign="start center" class="breadcrumb-container" *ngIf="breadcrumbs.length > 0">
+    <h2 class="breadcrumb-main-title">{{Header}}</h2>
+</div>
+
+<style>
+.breadcrumb-container {
+    padding: 6px 0;
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb-main-title {
+    font-size: 22px !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+    margin: 0 !important;
+    letter-spacing: -0.4px;
+}
+</style>

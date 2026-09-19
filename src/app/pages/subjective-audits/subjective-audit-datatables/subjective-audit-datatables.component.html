@@ -1,0 +1,46 @@
+<div class="row-wrap mt-3">
+    <div class="w-100">
+        <div class="col-xs-12 mb-5" style="margin-top: 15px;">
+            <div class="pills">
+                <ul class="nav nav-pills" sty le="margin-left: 10px;">
+                    <li routerLinkActive="active" [routerLink]="['sub-audit-type-trend']">
+                        <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                            Audit Type Trend
+                        </a>
+                    </li>
+                    <!-- <li routerLinkActive="active" [routerLink]="['sub-location-trend']">
+                        <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                            Location Trend&nbsp;&nbsp;&nbsp;
+                        </a>
+                    </li> -->
+                    <li routerLinkActive="active" [routerLink]="['sub-model-trend']">
+                        <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                            Model Trend&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </a>
+                    </li>
+                    <li routerLinkActive="active" [routerLink]="['sub-category-type-trend']">
+                        <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                            Category Trend&nbsp;&nbsp;
+                        </a>
+                    </li>
+                    <li routerLinkActive="active" [routerLink]="['sub-scatter-graph']">
+                        <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                            Scatter Graph Trend&nbsp;&nbsp;
+                        </a>
+                    </li>
+                    <li routerLinkActive="active" [routerLink]="['sub-bellcurve-graph']">
+                        <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                            Bell Curve Graph&nbsp;&nbsp;
+                        </a>
+                    </li>
+                    <!-- <li routerLinkActive="active" [routerLink]="['sub-time-series']">
+                        <a mat-raised-button class="navtabWidth" style="margin-top: 10px;">
+                            Time Series&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

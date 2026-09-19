@@ -1,0 +1,90 @@
+<div class="analytics-container">
+
+  <div class="tab-row">
+
+    <button
+      mat-raised-button
+      class="tab-btn"
+      routerLink="commodity"
+      routerLinkActive="active-tab"
+      #rla1="routerLinkActive"
+      [color]="rla1.isActive ? 'primary' : ''"
+    >
+      Commodity
+    </button>
+
+    <button
+      mat-raised-button
+      class="tab-btn"
+      routerLink="performance"
+      routerLinkActive="active-tab"
+      #rla2="routerLinkActive"
+      [color]="rla2.isActive ? 'primary' : ''"
+    >
+      Performance
+    </button>
+
+    <button
+      mat-raised-button
+      class="tab-btn"
+      routerLink="actions"
+      routerLinkActive="active-tab"
+      #rla3="routerLinkActive"
+      [color]="rla3.isActive ? 'primary' : ''"
+    >
+      Actions
+    </button>
+
+    <button
+      mat-raised-button
+      class="tab-btn"
+      routerLink="scatter"
+      routerLinkActive="active-tab"
+      #rla4="routerLinkActive"
+      [color]="rla4.isActive ? 'primary' : ''"
+    >
+      Scatter
+    </button>
+
+    <button
+      mat-raised-button
+      class="tab-btn"
+      routerLink="bell-curve"
+      routerLinkActive="active-tab"
+      #rla5="routerLinkActive"
+      [color]="rla5.isActive ? 'primary' : ''"
+    >
+      Bell Curve
+    </button>
+
+    <button
+      mat-raised-button
+      class="tab-btn"
+      routerLink="pareto"
+      routerLinkActive="active-tab"
+      #rla6="routerLinkActive"
+      [color]="rla6.isActive ? 'primary' : ''"
+    >
+      Pareto
+    </button>
+
+    <button
+      mat-raised-button
+      class="tab-btn"
+      routerLink="summary"
+      routerLinkActive="active-tab"
+      #rla7="routerLinkActive"
+      [color]="rla7.isActive ? 'primary' : ''"
+    >
+      Summary
+    </button>
+
+  </div>
+
+  
+
+  <div class="analytics-content">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

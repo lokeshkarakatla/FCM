@@ -1,0 +1,22 @@
+<div class="col-sm-12 mt-4">
+  <div style="margin-top: 10px;">
+    <div class="pills">
+      <ul class="nav nav-pills">
+        <li routerLink="sealing">
+          <a [ngStyle]="{'background-color':isChecked1 == 'yes' ? '#D3D3D3' : '#099FF0' }" (click)="color1()"
+            mat-raised-button style="margin-top: 10px;">
+            Sealing (117/128)
+          </a>
+        </li>
+        <li routerLink="matching">
+          <a [ngStyle]="{'background-color':isChecked2 == 'yes' ? '#D3D3D3' : '#099FF0' }" (click)="color2()"
+            mat-raised-button style="margin-top: 10px;">
+            Matching (71/75)
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,63 @@
+/* Wrapper styles to ensure proper spacing */
+.criteria-wrapper {
+  padding: 15px;
+  position: relative;
+  width: 100%;
+}
+
+/* Sidebar Module Cards Layout */
+.module-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.module-card {
+  display: flex;
+  align-items: center;
+  padding: 15px 12px;
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  min-height: 60px;
+
+  .chevron {
+    font-size: 18px;
+    margin-right: 12px;
+    color: #555;
+    font-weight: bold;
+  }
+
+  .module-name {
+    font-size: 14px;
+    color: #444;
+  }
+
+  &:hover {
+    background-color: #f1f5f9;
+  }
+
+  /* Active state */
+  &.active {
+    border-left: 5px solid #1976d2; 
+    background-color: #eef4fb; 
+    
+    .module-name, .chevron {
+      color: #1976d2;
+    }
+  }
+}
+
+/* Table styling with Black Header */
+.custom-grid-table thead th {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  border-bottom: none;
+}
+
+.red {
+  color: #f44336;
+}

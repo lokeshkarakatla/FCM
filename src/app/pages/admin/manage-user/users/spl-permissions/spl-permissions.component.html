@@ -1,0 +1,36 @@
+<div fxLayout="row wrap">
+  <div class="col-12">
+    <button mat-raised-button class="pull-right btn-primary" (click)="backClicked()">
+      <mat-icon>arrow_back_ios</mat-icon> Back
+    </button>
+
+    <button mat-raised-button class="pull-right btn-success margin-right-10" (click)="saveSplPermissions()">
+      <mat-icon>save</mat-icon> Save
+    </button>
+  </div>
+  <div class="table-responsive flex-p w-100">
+
+    <table id="example2" class="table table-bordered table-hover" style="margin-top: 15px;">
+      <thead class="tbl-head">
+        <tr class="tr-grid-header">
+          <th>Special Permission</th>
+          <th class="style">Allow</th>
+
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items">
+          <td>{{item.splpermname}}</td>
+          <td class="style"><input type="checkbox" [checked]="item.IsActive == true"
+              (change)="item.IsActive = !item.IsActive" (click)="recordChange()">
+          </td>
+
+        </tr>
+        <tr>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

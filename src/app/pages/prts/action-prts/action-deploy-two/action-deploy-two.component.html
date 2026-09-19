@@ -1,0 +1,88 @@
+<button mat-raised-button class="pull-right" type="button" (click)="back()"
+    style="color: rgb(7, 10, 7); background-color: #e0e0e0; margin-left: 27cm;">
+    <mat-icon>fast_rewind</mat-icon>Back
+</button>
+<div class="row-wrap">
+    <div class="w-100">
+        <!-- Master Data Tabs -->
+        <div class="col-xs-12" style="margin-top: 15px; margin-left: -16px; margin-bottom: 25px;">
+            <div class="pills">
+                <ul class="nav nav-pills" style="margin-left: 10px;">
+
+                    <li>
+                        <a mat-raised-button class="navtabWidth" style="margin-top: 10px;" routerLinkActive="active"
+                            [routerLink]="['../why-two']">
+                            5 WHY
+                        </a>
+                    </li>
+                    <li>
+                        <a mat-raised-button class="navtabWidth" style="margin-top: 10px;" routerLinkActive="active"
+                            [routerLink]="['../actionmoniter-two']">
+                            Monitoring
+                        </a>
+                    </li>
+                    <li>
+                        <a mat-raised-button class="navtabWidth"
+                            style="margin-top: 10px;background-color: #50636d ; color: rgb(250, 244, 244);"
+                            routerLinkActive="active" [routerLink]="['../deploy-two']">
+                            Deployment
+                        </a>
+                    </li>
+
+                    <li>
+                        <a mat-raised-button class="navtabWidth" style="margin-top: 10px;" routerLinkActive="active"
+                            [routerLink]="['../actiondocument']">
+                            Document
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="form-group  ">
+            <label class="col-lg-4">Is Horizontal Deployment viable ? : </label>
+            <div class="col-lg-4">
+                <div class="col-lg-4 newMarginClass">
+                    <input type="checkbox" name="test" [checked]="currentlyChecked === check_box_type.APPLY_FOR_JOB"
+                        (click)="selectCheckBox(check_box_type.APPLY_FOR_JOB)"> &nbsp;&nbsp; YES
+                </div>
+
+                <div class="col-lg-4 newMarginClass">
+                    <input class="col-lg-4 newMarginClass" type="checkbox" name="test"
+                        [checked]="currentlyChecked === check_box_type.MODIFY_A_JOB"
+                        (click)="selectCheckBox(check_box_type.MODIFY_A_JOB)">&nbsp;&nbsp; NO
+                </div>
+                <!-- <mat-checkbox class="col-lg-4 newMarginClass" name="test" [checked]="currentlyChecked === check_box_type.APPLY_FOR_JOB"
+                                            (click)="selectCheckBox(check_box_type.APPLY_FOR_JOB)">YES</mat-checkbox>
+                                        <mat-checkbox class="col-lg-4 newMarginClass" name="test" [checked]="currentlyChecked === check_box_type.MODIFY_A_JOB"
+                                            (click)="selectCheckBox(check_box_type.MODIFY_A_JOB)">NO</mat-checkbox> -->
+            </div>
+        </div>
+        <div class="form-group ">
+            <label class="col-lg-12 control-label mt-5"> Remark : </label>
+            <div class="col-lg-12 ">
+                <textarea type="text" class="form-control" style="height: 200px;width: 650px; "
+                    placeholder="Enter  Remark" required></textarea>
+
+            </div>
+        </div>
+        <div class="col-lg-12 margin-top:50px">
+            <div class=" pull-right mt-5">
+
+                <button mat-raised-button (click)="back()" class="mr-2" type="button"
+                    style="color: rgb(7, 10, 7); background-color: #e0e0e0; margin-right: 10px;">
+                    <mat-icon>fast_rewind</mat-icon> Back
+                </button>
+                <!-- <button mat-raised-button class="mr-2" type="button"
+                                    style="color: rgba(252, 253, 252, 0.926); background-color: #3262a8; margin-right: 10px;">
+                                    <mat-icon>save</mat-icon>Save
+                                </button> -->
+
+                <button mat-raised-button class="mr-2" type="button"
+                    style="color: rgb(246, 248, 250); background-color: #3262a8;">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,126 @@
+
+
+/* Style for when the nav is open */
+.content-shrink {
+  margin-left: 14%; /* Matches the open nav width */
+}
+
+/* Style for when the nav is closed */
+.content-expanded {
+  margin-left: 60px; /* Matches the closed nav width */
+  
+}
+
+
+/* --- Corrected Navigation Container --- */
+.nav-container {
+  // padding: 10px;
+  position: fixed;
+  /* === KEY CHANGE: Moves the bar to the left === */
+  left: 0; 
+  top: 56px; /* Adjust based on your header's height */
+  height: 100vh;
+  overflow-y: auto;
+  // background-color: #fafafa;
+   background-color: #f0f0f0;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-open {
+  width: 14%;
+}
+
+.nav-closed {
+  width: 60px;
+  overflow-x: hidden;
+}
+
+
+/* --- Navigation Links and Buttons (No changes needed here) --- */
+.toggle-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  padding: 0;
+  margin-bottom: 15px;
+}
+
+.toggle-button mat-icon {
+  font-size: 28px;
+  width: 28px;
+  height: 28px;
+  padding-left: 14px;
+  
+}
+
+.nav-links ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links li {
+  margin-bottom: 15px;
+  cursor: pointer;
+  color: black;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  // border-radius: 5px;
+}
+
+.nav-links li:hover {
+  background-color: #e0e0e0;
+}
+
+.nav-links li.active {
+  background-color: #d0d0d0;
+  font-weight: bold;
+}
+
+.nav-links a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+
+}
+
+.nav-icon {
+  margin-right: 15px;
+  vertical-align: middle;
+}
+
+.nav-links span {
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+  padding-left: 8px;
+}
+
+.nav-closed .nav-links span {
+  opacity: 0;
+  width: 0;
+  display: none;
+}
+
+ul li mat-icon {
+padding-left: 8px;
+}
+
+.nav-links li.active,
+.nav-links li.router-link-active {
+  background-color: #dfefff;  /* highlight background */
+    background-color: #dfefff;
+  font-weight: bold;
+  color: #1976d2;              /* <-- active text/icon color */
+}
+
+.nav-links li.active .nav-icon,
+.nav-links li.router-link-active .nav-icon {
+  color: #1976d2;              /* <-- active icon color */
+  background-color: #dfefff;  /* highlight background */
+}

@@ -1,0 +1,73 @@
+<div class="col-sm-12 mt-5">
+  <table matSort id="example2" class="table table-bordered table-hover mt-3">
+    <thead class="tbl-head">
+      <tr>
+        <th class="theadcolor text-center">Actions</th>
+        <th class="theadcolor text-center">Status</th>
+
+        <th class="theadcolor">VIN</th>
+        <th class="theadcolor">Audit Type</th>
+        <th class="theadcolor">Checkpoints</th>
+        <th class="theadcolor">Defect Rate</th>
+        <th class="theadcolor">Location</th>
+        <th class="theadcolor">Auditor</th>
+        <th class="theadcolor">Model</th>
+        <!-- <th class="theadcolor">Variant</th> -->
+        <!-- <th class="theadcolor">Interior Trim</th> -->
+        <th class="theadcolor">Colour</th>
+        <th class="theadcolor">Transmission</th>
+        <th class="theadcolor text-center">Fuel Type</th>
+        <th class="theadcolor">Date</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of values">
+
+
+        <td class="text-center editDel">
+          <!-- <a style="cursor: pointer;margin-right:10px; " matTooltip="Edit" (click)="addchecklistaudit(item)">
+              <i class="fa fa-edit" style="color: cornflowerblue"></i>
+            </a>
+            <a><i class="fa fa-trash red" matTooltip="Delete" style="cursor: pointer;"></i>
+            </a> -->
+         <a>
+  <mat-icon matTooltip="Unarchive" style="cursor: pointer; color: cornflowerblue;">
+    unarchive
+  </mat-icon>
+</a>
+
+        </td>
+        <td class="text-center" style="text-align: center !important">
+          <a [ngStyle]="{
+                          color: item.status ? 'blue' : 'red',
+                          cursor: 'pointer'
+                        }" [ngClass]="{ 'disable-custom': !canUpdate }">
+            <span (click)="Confirmation(item)">
+              {{ item.status ? "Active" : "Inactive" }}
+            </span>
+          </a>
+        </td>
+        <td>{{item.VIN}}</td>
+        <td>{{item.AuditType}}</td>
+        <td class="text-center">
+          <a (click)="opencheckpoint(item)" style="color: cornflowerblue;cursor: pointer;">{{item.Checkpoints}}</a>
+        </td>
+        <td class="text-center" style="color: red">{{item.Demerits}}</td>
+        <td>{{item.Location}}</td>
+        <td>{{item.Auditor}}</td>
+        <td>{{item.Model}}</td>
+        <!-- <td>{{item.Variant}}</td>
+          <td>{{item.Interior_Trim}}</td> -->
+        <td>{{item.Colour}}</td>
+        <td>{{item.Transmission}}</td>
+        <td>{{item.Fuel_Type}}</td>
+        <td>{{item.Date}}</td>
+
+      </tr>
+    </tbody>
+  </table>
+  <!-- Pagination -->
+  <!-- <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+      [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons></mat-paginator> -->
+</div>

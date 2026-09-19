@@ -1,0 +1,81 @@
+<div class="NewHeader mb-3">
+  <h1 mat-dialog-title style="margin-bottom: 0;">
+    <span>Job Code Categories</span>
+  </h1>
+</div>
+
+<div mat-dialog-content style="overflow-x: hidden;">
+  <div class="row">
+    
+    <div class="col-sm-6">
+      <div class="table-responsive">
+        <table class="table table-bordered custom-header-table">
+          <thead>
+            <tr>
+              <th class="text-center align-middle" style="width: 80px;">Select</th>
+              <th >Job Code</th>
+              <th  >Job Title</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of leftColumn">
+              <td class="text-center align-middle">
+                <mat-checkbox color="warn" [(ngModel)]="item.selected"></mat-checkbox>
+              </td>
+              <td class="align-middle project-name-text">{{ item.name }}</td>
+              <td class="align-middle text-muted">{{ item.title }}</td>
+            </tr>
+            <tr *ngIf="leftColumn.length === 0">
+              <td colspan="3" class="text-center text-muted">No records</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="table-responsive">
+        <table class="table table-bordered custom-header-table">
+          <thead>
+            <tr>
+              <th class="text-center align-middle" style="width: 80px;">Select</th>
+              <th class="align-middle text-center">Job Code</th>
+              <th class="align-middle text-center">Job Title</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of rightColumn">
+              <td class="text-center align-middle">
+                <mat-checkbox color="warn" [(ngModel)]="item.selected"></mat-checkbox>
+              </td>
+              <td class="align-middle project-name-text">{{ item.name }}</td>
+              <td class="align-middle text-muted">{{ item.title }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<div mat-dialog-actions class="d-flex justify-content-end align-items-center mt-3 p-0 pb-2 gap-3 w-100">
+  
+  <div class="d-flex align-items-center text-muted">
+    <button mat-icon-button (click)="firstPage()" [disabled]="currentPage === 0">
+      <mat-icon>first_page</mat-icon>
+    </button>
+    <button mat-icon-button (click)="prevPage()" [disabled]="currentPage === 0">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <button mat-icon-button (click)="nextPage()" [disabled]="currentPage >= totalPages - 1">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+    <button mat-icon-button (click)="lastPage()" [disabled]="currentPage >= totalPages - 1">
+      <mat-icon>last_page</mat-icon>
+    </button>
+  </div>
+
+  <button mat-button mat-dialog-close class="close-btn" style="background-color: rgba(0, 98, 255, 0.703); color:white">Close</button>
+
+</div>

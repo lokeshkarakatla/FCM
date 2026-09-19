@@ -1,0 +1,31 @@
+<div class="complaints-layout-container">
+
+  <!-- Top 5 Routing-based Tab Buttons Bar -->
+  <div class="dash-btn-group">
+    <a mat-button routerLink="radar" routerLinkActive="active" class="dash-btn radar-btn">
+      <mat-icon class="btn-icon">bar_chart</mat-icon> Radar
+    </a>
+
+    <a mat-button routerLink="monitor" routerLinkActive="active" class="dash-btn monitor-btn">
+      <mat-icon class="btn-icon">desktop_windows</mat-icon> Monitor
+    </a>
+
+    <a mat-button routerLink="capa" routerLinkActive="active" class="dash-btn capa-btn">
+      <mat-icon class="btn-icon">fact_check</mat-icon> CAPA
+    </a>
+
+    <a mat-button routerLink="kanban" routerLinkActive="active" class="dash-btn kanban-btn">
+      <mat-icon class="btn-icon">view_kanban</mat-icon> Kanban
+    </a>
+
+    <a mat-button routerLink="meetings" routerLinkActive="active" class="dash-btn meetings-btn">
+      <mat-icon class="btn-icon">video_call</mat-icon> Meetings
+    </a>
+  </div>
+
+  <!-- Route Outlet for Tab Views -->
+  <div class="complaints-tab-content">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

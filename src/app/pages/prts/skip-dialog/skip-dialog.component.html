@@ -1,0 +1,40 @@
+<div class="NewHeader" style="background-color:#286ba5 !important; height: 50px;">
+    <h1 class="mat-dialog-title" mat-dialog-title="" id="mat-dialog-title-7">
+        Why Skip ?
+    </h1>
+</div>
+<div class="mat-dialog-content" mat-dialog-content="">
+    <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
+        <div style="padding: 0px 30px !important;">
+            <div class="form-group">
+                <div class="col-sm-12"><textarea class="form-control ng-pristine ng-valid ng-touched" maxlength="300" placeholder="Enter Reason"
+                        style="height: 150px;" type="text">
+            </textarea>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div class="margin-left:15px">
+    <mat-dialog-actions align="end" style="margin-right:30px;">
+        <button *ngIf="!isSaveBtnClicked" mat-raised-button color="primary" class="add-hover" type="submit"
+            (click)="close(null)">
+            <mat-icon>save</mat-icon>&nbsp;Save
+        </button>
+        <button mat-raised-button class="add-hover  pull-right " type="button" style="background-color:#dcdfe0;"
+            (click)="close(null)">
+            <mat-icon>cancel</mat-icon> &nbsp;Cancel
+        </button>
+        <button mat-raised-button class="add-hover  pull-right " type="button" style="background-color:#dcdfe0;"
+            (click)="close(null)">
+            Remove
+        </button>
+        <button *ngIf="isSaveBtnClicked" mat-raised-button class="add-hover btn-success pull-right CancelClass"
+            disabled>
+            <i class='fas fa-spinner fa-spin'></i>&nbsp;Saving..
+        </button>
+
+    </mat-dialog-actions>
+</div>

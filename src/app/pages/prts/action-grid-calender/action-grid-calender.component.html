@@ -1,0 +1,47 @@
+<div class="page-header  ms-5 d-flex justify-content-between align-items-start" style="padding-top: 20px;">
+
+    <!-- Left Content -->
+    <div class="header-content">
+        <h3 class="page-title mb-1">CAPA (7)</h3>
+
+        <p class="header-info mb-0">
+            <span class="fw-bold">Ref No:</span>
+            PSR-24001
+
+            <span class="ms-3 fw-bold">Subject:</span>
+            Paint Defect
+        </p>
+    </div>
+
+    <!-- Back Button -->
+    <button class="btn btn-grey back-btn me-5" (click)="goBack()">
+        <mat-icon class="me-1">arrow_back</mat-icon>
+        Back
+    </button>
+
+</div>
+
+
+<div fxLayout="row wrap">
+    <div class="w-100">
+        <div class="flex-p">
+            <div class="row wrap">
+                <div class="col-sm-6">
+                    <div class="pills w-100 flex-p">
+                        <ul class="nav nav-pills ">
+                            <!-- <button mat-raised-button style="background-color:#37474f;color:white"
+                                class="pull-left mt-3" [routerLink]="['grid-meet']">
+                                <mat-icon>grid_on</mat-icon> Grid View
+                            </button>
+                            <button mat-raised-button color="primary" class=" btn-primary mt-3"
+                                style="margin-left:12px ;" [routerLink]="['/app/prtsnavbar/action-grid-calender/calender']">
+                                <mat-icon>date_range</mat-icon> Calender View
+                            </button> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,128 @@
+<div class="login-wrapper">
+  <!-- Left Side: Dashboard / Stats Graphics -->
+  <div class="login-left-panel">
+    <!-- Header Branding -->
+    <div class="left-header">
+      <h1 class="brand-title">FCM</h1>
+      <p class="brand-subtitle">FIELD COMPLAINT MONITORING SYSTEM</p>
+    </div>
+
+    <!-- Center Graphic Showcase -->
+    <div class="graphics-container">
+      <!-- Automotive Telemetry & Quality Inspection SVG -->
+      <svg class="network-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 320">
+        <!-- Radar Grid Rings -->
+        <circle cx="260" cy="170" r="130" fill="none" stroke="#dbeafe" stroke-width="1.5" stroke-dasharray="4 4" />
+        <circle cx="260" cy="170" r="85" fill="none" stroke="#bfdbfe" stroke-width="1.5" stroke-dasharray="3 3" />
+        <line x1="260" y1="40" x2="260" y2="300" stroke="#e0f2fe" stroke-width="1.5" />
+        <line x1="130" y1="170" x2="390" y2="170" stroke="#e0f2fe" stroke-width="1.5" />
+
+        <!-- Stylized Vehicle Inspection Silhouette -->
+        <path d="M 120 220 C 135 220, 145 190, 165 185 L 205 155 C 235 125, 295 125, 335 150 L 375 180 C 395 185, 415 195, 435 220 L 420 230 C 410 220, 390 220, 380 230 L 175 230 C 165 220, 145 220, 135 230 Z" fill="rgba(239, 246, 255, 0.7)" stroke="#93c5fd" stroke-width="2" stroke-linejoin="round" />
+        <!-- Cabin Glass -->
+        <path d="M 215 155 L 260 138 L 325 155 Z" fill="#bfdbfe" opacity="0.6" stroke="#60a5fa" stroke-width="1.5" />
+        <!-- Wheels -->
+        <circle cx="155" cy="230" r="16" fill="#ffffff" stroke="#3b82f6" stroke-width="2.5" />
+        <circle cx="395" cy="230" r="16" fill="#ffffff" stroke="#3b82f6" stroke-width="2.5" />
+        <circle cx="155" cy="230" r="6" fill="#2563eb" />
+        <circle cx="395" cy="230" r="6" fill="#2563eb" />
+
+        <!-- Telemetry Diagnostic Lines -->
+        <line x1="140" y1="188" x2="260" y2="135" stroke="#3b82f6" stroke-width="1.8" stroke-dasharray="4 3" />
+        <line x1="260" y1="135" x2="275" y2="185" stroke="#3b82f6" stroke-width="1.8" />
+
+        <!-- Quality Checkpoint Nodes -->
+        <circle cx="140" cy="188" r="8" fill="rgba(37,99,235,0.2)" />
+        <circle cx="140" cy="188" r="4.5" fill="#2563eb" />
+        <text x="140" y="175" font-size="9" font-weight="700" fill="#2563eb" text-anchor="middle">ENGINE / PE</text>
+
+        <circle cx="260" cy="135" r="9" fill="rgba(22,163,74,0.2)" />
+        <circle cx="260" cy="135" r="4.5" fill="#16a34a" />
+        <text x="260" y="122" font-size="9" font-weight="700" fill="#16a34a" text-anchor="middle">BODY &amp; PAINT</text>
+
+        <circle cx="275" cy="185" r="8" fill="rgba(245,158,11,0.2)" />
+        <circle cx="275" cy="185" r="4.5" fill="#f59e0b" />
+        <text x="275" y="202" font-size="9" font-weight="700" fill="#d97706" text-anchor="middle">INTERIOR</text>
+      </svg>
+
+      <!-- Floating Stat Cards -->
+      <div class="stat-pill-badge">
+        <span class="pill-dot"></span> REAL-TIME QUALITY MONITORING
+      </div>
+
+      <div class="glass-card card-field-complaints">
+        <span class="card-label">FIELD COMPLAINTS</span>
+        <div class="card-number">18</div>
+        <div class="card-subtext text-green">&#9660; 14% this month</div>
+      </div>
+
+      <div class="glass-card card-capa-actions">
+        <span class="card-label">CAPA &amp; 7D ACTIONS</span>
+        <div class="card-number">4</div>
+        <div class="card-subtext text-blue">2 in validation &bull; 0 critical</div>
+      </div>
+
+      <div class="glass-card card-quality-compliance">
+        <span class="card-label">QUALITY COMPLIANCE</span>
+        <div class="card-number">96.4%</div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" style="width: 96.4%;"></div>
+        </div>
+        <div class="card-subtext text-muted">Target: 93% WDPV Met</div>
+      </div>
+    </div>
+
+    <!-- Bottom Footer Banner -->
+    <div class="left-footer">
+      <h2 class="footer-headline">Empowering automotive quality, field reliability &amp; CAPA excellence.</h2>
+      <div class="tags-row">
+        <span>FIELD COMPLAINTS</span>
+        <span>7D PROBLEM SOLVING</span>
+        <span>AUDIT RADAR</span>
+        <span>CLOSED-LOOP CAPA</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Side: Login Form Panel -->
+  <div class="login-right-panel">
+    <div class="form-container">
+      <div class="logo-wrapper">
+        <img src="assets/fcm_logo.png" alt="FCM Logo" class="fcm-logo-img">
+      </div>
+
+      <h1 class="welcome-title">Welcome back</h1>
+      <p class="welcome-subtitle">Sign in to access your field complaint monitoring dashboard.</p>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+        <div class="form-group">
+          <label class="input-label">Email</label>
+          <input type="email" class="custom-input" placeholder="admin@optionmatrix.com" formControlName="email">
+          <span class="error-msg" *ngIf="form.controls.email.touched && form.controls.email.errors?.required">Email is required</span>
+        </div>
+
+        <div class="form-group" style="margin-top: 20px;">
+          <label class="input-label">Password</label>
+          <div class="password-input-wrapper">
+            <input [type]="passwordType" class="custom-input" placeholder="••••••••" formControlName="password">
+            <mat-icon class="eye-toggle-icon" (click)="togglePassword()">{{passwordType === 'password' ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </div>
+          <span class="error-msg" *ngIf="form.controls.password.touched && form.controls.password.errors?.required">Password is required</span>
+        </div>
+
+        <div class="options-row">
+          <label class="checkbox-container">
+            <input type="checkbox"> Remember me
+          </label>
+          <a [routerLink]="['/login/forgot']" class="forgot-link">Forgot password?</a>
+        </div>
+
+        <button mat-raised-button class="submit-btn" type="submit">Sign in</button>
+
+        <div class="signup-footer">
+          Don't have an account? <a href="javascript:void(0);" class="signup-link">Sign up</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

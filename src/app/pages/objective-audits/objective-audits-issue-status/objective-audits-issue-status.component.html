@@ -1,0 +1,243 @@
+<div class="col-sm-12 mt-5">
+  <div>
+    <button mat-raised-button color="primary" style="margin-bottom: 10px;" class="pull-right"
+      (click)="addchecklistaudit(null)">
+      <mat-icon>person_add</mat-icon> Add Audit
+    </button>
+    <button style="margin-bottom: 7px" mat-raised-button class="pull-right filters-hover margin-right-10 "
+      style="background-color: black; color: white" (click)="filterToggle = !filterToggle">
+      <mat-icon>filter_list</mat-icon> Filter
+    </button>
+  </div>
+
+
+  <!-- Filter UI Design -->
+
+  <div fxLayout="row wrap" *ngIf="filterToggle">
+                <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p w-100 margins">
+                    <mat-card class="filter" style="margin-top: 50px;">
+                     <mat-card-content>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="col-sm-4">
+        <label class="pull-right" style="margin-top: 6px;">Start Date:</label>
+      </div>
+      <div class="col-sm-8">
+        <input type="date" placeholder="Start Date" class="form-control">
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="col-sm-4">
+        <label class="pull-right" style="margin-top: 6px;">End Date:</label>
+      </div>
+      <div class="col-sm-8">
+        <input type="date" placeholder="End Date" class="form-control">
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="col-sm-4">
+        <label class="pull-right" style="margin-top: 6px;">Audit Type:</label>
+      </div>
+      <div class="col-sm-8">
+        <mat-select class="form-control" placeholder="Select Audit Type" required>
+          <mat-option [value]="0">Process Audit</mat-option>
+          <mat-option [value]="1">Product Audit</mat-option>
+          <mat-option [value]="2">System Audit</mat-option>
+          <mat-option [value]="3">Layered Audit</mat-option>
+          <mat-option [value]="4">Safety Audit</mat-option>
+        </mat-select>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="padding-top:10px !important">
+    <div class="col-sm-4">
+      <div class="col-sm-4">
+        <label class="pull-right" style="margin-top: 6px;">Location:</label>
+      </div>
+      <div class="col-sm-8">
+        <mat-select class="form-control" placeholder="Select Location" required>
+          <mat-option [value]="0">Pune Plant</mat-option>
+          <mat-option [value]="1">Chennai Plant</mat-option>
+          <mat-option [value]="2">Gurugram Plant</mat-option>
+          <mat-option [value]="3">Halol Plant</mat-option>
+          <mat-option [value]="4">Sanand Plant</mat-option>
+        </mat-select>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="col-sm-4">
+        <label class="pull-right" style="margin-top: 6px;">Transmission:</label>
+      </div>
+      <div class="col-sm-8">
+        <mat-select class="form-control" placeholder="Select Transmission" required>
+          <mat-option [value]="0">Manual</mat-option>
+          <mat-option [value]="1">Automatic</mat-option>
+          <mat-option [value]="2">DCT</mat-option>
+          <mat-option [value]="3">AMT</mat-option>
+        </mat-select>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="col-sm-4">
+        <label class="pull-right" style="margin-top: 6px;">Fuel Type:</label>
+      </div>
+      <div class="col-sm-8">
+        <mat-select class="form-control" placeholder="Select Fuel Type" required>
+          <mat-option [value]="0">Petrol</mat-option>
+          <mat-option [value]="1">Diesel</mat-option>
+          <mat-option [value]="2">CNG</mat-option>
+          <mat-option [value]="3">Electric</mat-option>
+          <mat-option [value]="4">Hybrid</mat-option>
+        </mat-select>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="padding-top:10px !important">
+    <div class="col-sm-4">
+      <div class="col-sm-4">
+        <label class="pull-right" style="margin-top: 6px;">Model:</label>
+      </div>
+      <div class="col-sm-8">
+        <mat-select class="form-control" placeholder="Select Model" required>
+          <mat-option [value]="0">Hector</mat-option>
+          <mat-option [value]="1">Astor</mat-option>
+          <mat-option [value]="2">Gloster</mat-option>
+          <mat-option [value]="3">Comet EV</mat-option>
+          <mat-option [value]="4">ZS EV</mat-option>
+        </mat-select>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="col-sm-4">
+        <label class="pull-right" style="margin-top: 6px;">Variant:</label>
+      </div>
+      <div class="col-sm-8">
+        <mat-select class="form-control" placeholder="Select Variant" required>
+          <mat-option [value]="0">Smart</mat-option>
+          <mat-option [value]="1">Sharp</mat-option>
+          <mat-option [value]="2">Style</mat-option>
+          <mat-option [value]="3">Savvy</mat-option>
+          <mat-option [value]="4">Executive</mat-option>
+        </mat-select>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="col-sm-4">
+        <label class="pull-right" style="margin-top: 6px;">Stage Name:</label>
+      </div>
+      <div class="col-sm-8">
+        <mat-select class="form-control" placeholder="Select Stage" required>
+          <mat-option [value]="0">Body Shop</mat-option>
+          <mat-option [value]="1">Paint Shop</mat-option>
+          <mat-option [value]="2">Trim Line</mat-option>
+          <mat-option [value]="3">Final Inspection</mat-option>
+          <mat-option [value]="4">Dispatch</mat-option>
+        </mat-select>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 16px;">
+    <div class="col-12 d-flex justify-content-end align-items-center gap-3">
+      <button mat-raised-button color="primary" (click)="getTests()">
+        <mat-icon>search</mat-icon> Search
+      </button>
+
+      <button mat-raised-button class="btn-default" (click)="clearFilter(); getTests()">
+        <mat-icon>settings_backup_restore</mat-icon> Clear
+      </button>
+
+      <a (click)="filterToggle = !filterToggle" style="font-size: 25px; cursor: pointer;">
+        <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</mat-card-content>
+
+                    </mat-card>
+                </div>
+
+            </div>
+
+
+  <div id="grid-table-container tableScroll" class="table-responsive" style="width: 100%;">
+    <table matSort id="example2" class="table table-bordered table-hover data-table">
+      <thead class="tbl-head">
+        <tr>
+          <th class="theadcolor text-center">Actions</th>
+          <th class="theadcolor text-center">Status</th>
+          <th class="theadcolor">VIN</th>
+          <th class="theadcolor">Target</th>
+          <th class="theadcolor">Audit Type</th>
+          <th class="theadcolor">Checkpoints</th>
+          <th class="theadcolor">Location</th>
+          <th class="theadcolor">Auditor</th>
+          <th class="theadcolor">Model</th>
+          <th class="theadcolor">Colour</th>
+          <th class="text-center">Transmission</th>
+          <th class="text-center">Fuel Type</th>
+          <th class="text-center"> Start Date</th>
+          <th class="text-center"> End Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of values">
+          <td class="text-center editDel"
+            style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+            <a style="cursor: pointer;" matTooltip="Edit" (click)="addchecklistaudit(item)">
+              <i class="fa fa-edit" style="color: cornflowerblue"></i>
+            </a>
+            <a style="cursor: pointer;" matTooltip="Delete" (click)="deleteConfirmation(item)">
+              <i class="fa fa-trash red"></i>
+            </a>
+            <mat-icon matTooltip="Unarchive" style="cursor: pointer; color: cornflowerblue;">
+              archive
+            </mat-icon>
+          </td>
+          <td class="text-center">
+            <mat-select class="form-control" [(ngModel)]="item.Status" placeholder="Select Status">
+              <mat-option value="Open">Pending</mat-option>
+              <mat-option value="In Progress">Draft</mat-option>
+              <mat-option value="Hold">Done</mat-option>
+            </mat-select>
+          </td>
+          <td>{{item.VIN}}</td>
+          <td class="text-center">{{item.Taget}}</td>
+          <td>{{item.AuditType}}</td>
+          <td class="text-center">
+            <a (click)="opencheckpoint(item)" style="color: cornflowerblue;cursor: pointer;">{{item.Checkpoints}}</a>
+          </td>
+          <td>{{item.Location}}</td>
+          <td>{{item.Auditor}}</td>
+          <td>{{item.Model}}</td>
+          <td class="text-center">{{item.Colour}}</td>
+          <td class="text-center">{{item.Transmission}}</td>
+          <td class="text-center">{{item.Fuel_Type}}</td>
+          <td class="text-center">{{item.Date}}</td>
+          <td class="text-center">{{item.Date1}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid-footer">
+    <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+      [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons>
+    </mat-paginator>
+
+    <div class="scroll-buttons ">
+      <button class="mine" mat-fab (click)="scrollRight()">
+        <mat-icon style="color: #37474f">fast_forward</mat-icon>
+      </button>
+      <button class="mine" mat-fab style="margin-right: 78px !important" (click)="scrollLeft()">
+        <mat-icon style="color: #37474f">fast_rewind</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

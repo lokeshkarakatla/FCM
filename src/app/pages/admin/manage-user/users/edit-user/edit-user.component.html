@@ -1,0 +1,139 @@
+<div class="NewHeader">
+    <h1 mat-dialog-title>
+      <span *ngIf="!user">{{data ? 'Edit' : 'Add'}} User</span>
+    </h1>
+  </div>
+  
+  <form class="form-horizontal" [formGroup]="myGroup" autocomplete="off">
+    <div mat-dialog-content>
+  
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="form-group">
+          <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 add-member-label">User Name: </label>
+          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+            <input  type="text" formControlName="UserName" class="form-control " style="background-color: #fefec4;"
+               placeholder="Enter User Name"  required>
+            <div
+              *ngIf="!myGroup.controls.UserName.valid && (myGroup.controls.UserName.dirty || myGroup.controls.UserName.touched)"
+              class="error-text">
+              <div *ngIf="myGroup.controls.UserName.errors.required">
+                User Name is required
+              </div>
+  
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 add-member-label">Email: </label>
+          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+            <input *ngIf="!user" type="text" formControlName="UserEmail" class="form-control bac" placeholder="Enter Email" maxlength="50" required>
+            <input *ngIf="user" disabled type="text" formControlName="UserEmail" class="form-control bac" placeholder="Enter Email" maxlength="50" required>
+            <div *ngIf="!myGroup.controls.UserEmail.valid && (myGroup.controls.UserEmail.dirty || myGroup.controls.UserEmail.touched)" class="error-text">
+              <div *ngIf="myGroup.controls.UserEmail.errors.required">
+                Email is required
+              </div>   
+              <div *ngIf="myGroup.controls.UserEmail.errors?.email">
+                Please enter a valid Email.
+              </div>              
+          </div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 add-member-label" for="pwd">Phone Number:
+          </label>
+          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+            <input *ngIf="!user" type="text" autocomplete="off" formControlName="UserPhone" class="form-control bac"
+              (keypress)="onlyNumbers($event)" placeholder="Enter Phone No" maxlength="10" required>
+            <input *ngIf="user" type="text" autocomplete="off" formControlName="UserPhone" class="form-control bac"
+              (keypress)="onlyNumbers($event)" placeholder="Enter Phone No" maxlength="10" required>
+            <div
+              *ngIf="!myGroup.controls.UserPhone.valid && (myGroup.controls.UserPhone.dirty || myGroup.controls.UserPhone.touched)"
+              class="error-text">
+              <div *ngIf="myGroup.controls.UserPhone.errors.required">
+                Phone No is required
+              </div>
+              <div *ngIf="!myGroup.controls.UserPhone.errors.required">Please Enter 10 digit Mobile
+                Number.
+              </div>
+            </div>
+  
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 add-member-label">Role: </label>
+          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+            <mat-select class="form-control bac" formControlName="RoleId" placeholder="Select Role">
+              <mat-option *ngFor="let item of options" [value]="item.RoleId">{{item.RoleName}}</mat-option>
+            </mat-select>
+            <div
+              *ngIf="!myGroup.controls.RoleId.valid && (myGroup.controls.RoleId.dirty || myGroup.controls.RoleId.touched)"
+              class="error-text">
+              <div *ngIf="myGroup.controls.RoleId.errors.required">
+                Role is required
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 add-member-label">Department: </label>
+          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+            <mat-select class="form-control bac" formControlName="DepartmentId" placeholder="Select Department">
+              <mat-option *ngFor="let item of options" [value]="item.RoleId">{{item.Agency}}</mat-option>
+            </mat-select>
+            <div *ngIf="!myGroup.controls.RoleId.valid && (myGroup.controls.RoleId.dirty || myGroup.controls.RoleId.touched)"
+              class="error-text">
+              <div *ngIf="myGroup.controls.RoleId.errors.required">
+                Department is required
+              </div>
+            </div>
+          </div>
+        </div>
+      
+
+
+        <div class="form-group">
+          <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 ">Manager: </label>
+          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+            <mat-select class="form-control" formControlName="RoleId" placeholder="Select  Manager " multiple>
+              <mat-option *ngFor="let item of options" [value]="item.RoleId">{{item.Manager}}</mat-option>
+            </mat-select>
+            <!-- <div *ngIf="!myGroup.controls.RoleId.valid && (myGroup.controls.RoleId.dirty || myGroup.controls.RoleId.touched)"
+              class="error-text">
+              <div *ngIf="myGroup.controls.RoleId.errors.required">
+                Role is required
+              </div>
+            </div> -->
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 ">Managerial Role: </label>
+          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+            <mat-checkbox class="mt-1"></mat-checkbox>
+            <!-- <div *ngIf="!myGroup.controls.RoleId.valid && (myGroup.controls.RoleId.dirty || myGroup.controls.RoleId.touched)"
+              class="error-text">
+              <div *ngIf="myGroup.controls.RoleId.errors.required">
+                Role is required
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <mat-dialog-actions align="end" style="margin-bottom: -14px;margin-right: 14px;">
+ 
+      <button mat-raised-button (click)="close(data)" class="mr-2" type="button" style="background-color: lightgray; color: red"
+      s class="add-dark-hover btn-default">
+        <mat-icon>cancel</mat-icon> Close
+      </button>
+
+           <button mat-raised-button class="btn-primary" color="primary" [ngClass]="{'btn-disabled' : !myGroup.valid}"
+        [disabled]="!myGroup.valid" type="button" (click)="upsertuser()">
+        <mat-icon style="font-size:20px" class="mt-1">save</mat-icon>
+        <span style="margin-left: 5px;" *ngIf="!user">Save</span><span *ngIf="user">Update</span>
+      </button>
+    </mat-dialog-actions>
+  </form>

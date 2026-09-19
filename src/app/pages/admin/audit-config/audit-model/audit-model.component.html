@@ -1,0 +1,117 @@
+<!-- Add,filter -->
+<div class="col-sm-12 mt-4">
+    <button [ngClass]="{'disable-custom' : !canCreate}" mat-raised-button color="primary"
+        class="pull-right  btn-primary margin-right-5 mt-3" (click)="addmodule(null)">
+        <mat-icon>add</mat-icon> Add Vehicle Model
+    </button>
+    <button mat-raised-button style="background-color: black; color:white;"
+        class="pull-right filter-hover margin-right-10 mt-3" (click)="filterToggle = !filterToggle">
+        <mat-icon>filter_list</mat-icon> Filter
+    </button>
+</div>
+
+<!-- ✅ Filter Toggle with fix -->
+<div class="col-sm-12" fxLayout="row wrap" *ngIf="filterToggle && myGroup" style="margin-bottom: 10px">
+    <div fxFlex="100" class="flex-p w-100 margins">
+        <mat-card class="filter">
+
+            <!-- ✅ Guarded with *ngIf="myGroup" above -->
+<form *ngIf="myGroup" [formGroup]="myGroup">
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-4 row">
+                            <div class="col-3 mt-1">
+                                <b>Keyword :</b>
+                            </div>
+                            <div class="col-8">
+                                <input formControlName="Keyword" placeholder="Enter Keyword">
+                            </div>
+                        </div>
+                        <div class="col-4 row">
+                            <div class="col-3 mt-1">
+                                <label style="margin-top: 6px;">Model:</label>
+                            </div>
+                            <div class="col-8">
+                                <mat-select formControlName="ModelName" placeholder="Select Model Name" required>
+                                    <mat-option *ngFor="let option of modelss" [value]="option.ModelName">
+                                        {{option.ModelName}}
+                                    </mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+
+                        <div class="col-4 row">
+                            <div class="col-3 mt-1">
+                                <b>Status :</b>
+                            </div>
+                            <div class="col-8">
+                                <mat-select formControlName="Status" placeholder="Select Status">
+                                    <mat-option value="true">Active</mat-option>
+                                    <mat-option value="false">Inactive</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12" style="margin-top: 10px;">
+                        <a (click)="filterToggle = !filterToggle" class="pull-right"
+                            style="font-size: 25px; cursor: pointer; margin-left: 5px;">
+                            <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                        </a>
+                        <button mat-raised-button class="pull-right"
+                            (click)="myGroup.reset(); formInit(); fnGetModel();"
+                            style="background-color:#37474f; color:#fff !important; margin-left:10px;">
+                            <mat-icon>settings_backup_restore</mat-icon> Clear
+                        </button>
+                        <button mat-raised-button color="primary" (click)="fnGetModel();" class="pull-right btn-primary"
+                            style="margin-left: 10px;">
+                            <mat-icon>search</mat-icon> Search
+                        </button>
+                    </div>
+                </mat-card-content>
+            </form>
+        </mat-card>
+    </div>
+</div>
+
+<!-- Table -->
+<div class="col-sm-12 mt-4" style="margin-left:-5px;">
+    <div id="grid-table-container" class="table-responsive">
+        <table matSort id="example2" class="table table-bordered table-hover">
+            <thead class="tbl-head">
+                <tr>
+                    <th>Vehicle Model</th>
+                    <th>Vehicle Model Code</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center" style="width: 112px!important;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of tableList">
+                    <td>{{item.name}}</td>
+                    <td>{{item.code}}</td>
+                    <td style="text-align: center !important;">
+                        {{item.status ? 'Active' : 'Inactive'}}
+                    </td>
+                    <td class="text-center editDel">
+                        <a [ngClass]="{'disable-custom' : !canUpdate}" style="cursor: pointer;margin-right:10px;"
+                            matTooltip="Edit" (click)="addmodule(item)">
+                            <i class="fa fa-edit" style="color: cornflowerblue"></i>
+                        </a>
+                        <a [ngClass]="{'disable-custom' : !canDelete || item.TotalUsed || item.Used}">
+                            <i class="fa fa-trash red" matTooltip="Delete" style="cursor: pointer;"
+                                (click)="deleteConfirmation(item)"></i>
+                        </a>
+                    </td>
+                </tr>
+                <tr *ngIf="tableList == null || tableList.length == 0">
+                    <td colspan="13" class="text-center">No data available</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <mat-paginator class="col-sm-12" [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+            [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons>
+        </mat-paginator>
+    </div>
+</div>

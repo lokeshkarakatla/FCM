@@ -1,0 +1,230 @@
+:host {
+  font-family: 'Roboto', sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.page-container {
+  padding: 32px;
+  background-color: #f8f9fa;
+}
+
+.page-header h2 {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0 0 4px 0;
+}
+.page-header p {
+  color: #6c757d;
+  margin: 0 0 24px 0;
+  font-size: 14px;
+}
+
+.form-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+.form-column-main {
+  flex: 6;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.form-column-side {
+  flex: 4;
+}
+
+.form-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 2px_10px rgba(0, 0, 0, 0.06);
+}
+.form-card h3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 0 20px 0;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 20px;
+}
+.form-group.full-span {
+  grid-column: 1 / -1;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+.form-group label {
+  font-size: 13px;
+  color: #495057;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.form-control {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #fff;
+  line-height: 1.5;
+}
+/* Styles for Angular Material mat-select to match */
+.form-control .mat-mdc-select-trigger {
+  padding: 0 12px;
+  height: 100%;
+}
+
+.radio-group, .checkbox-group {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  height: 38px;
+}
+
+.report-issue-checkbox {
+  padding-top: 31px;
+}
+
+/* Assignment Details Card */
+.assignment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.assignment-header .assignment-label {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+.add-assignment-btn {
+  border-color: #ced4da !important;
+  color: #495057 !important;
+  font-size: 12px;
+  min-width: auto;
+  padding: 0 12px !important;
+  height: 32px;
+}
+.assignment-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.containment-fields {
+  display: flex;
+  align-items: center;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+}
+.containment-fields span {
+  padding: 0 12px;
+  background-color: #e9ecef;
+  height: 38px;
+  line-height: 38px;
+  border-right: 1px solid #dee2e6;
+  color: #495057;
+}
+.containment-fields input.form-control {
+  border: none;
+}
+
+/* 5W1H Analysis Card */
+.analysis-grid {
+  display: grid;
+  gap: 20px;
+}
+.analysis-grid .form-group {
+  position: relative;
+  margin-top: 8px;
+}
+.numbered-label {
+  position: absolute;
+  top: -8px;
+  left: 10px;
+  background-color: #fff;
+  padding: 0 4px;
+  font-size: 12px;
+  color: #6c757d;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+.cancel-btn {
+  border-color: #ced4da !important;
+  color: #212529 !important;
+}
+
+
+// ::ng-deep .small-field .mat-form-field-flex {
+//   height: 36px;
+//   align-items: center;
+// }
+
+// ::ng-deep .small-field .mat-form-field-infix {
+//   padding: 4px 0 !important;
+// }
+
+::ng-deep ngx-mat-select-search input {
+  border: 1px solid #dee2e6 !important;
+  border-radius: 4px;
+  padding: 6px 10px;
+  height: 32px;
+  font-size: 13px;
+  outline: none;
+}
+
+::ng-deep ngx-mat-select-search input:focus {
+  border-color: #80bdff;
+  box-shadow: none;
+}
+
+/* Make labels follow same grid as inputs */
+.assignment-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 6px;
+}
+
+/* Clean label alignment */
+.assignment-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #495057;
+}
+
+.important .form-control{
+  background-color: #fff9c4;
+  border: 2px solid #fdd835;
+}
+
+.page-container {
+  margin-top: -20px; /* adjust value as needed */
+}
+
+
+::ng-deep .page-header-bar {
+  display: none !important;
+}
+
+:host {
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  margin-top: -56px; // cancel the page-header-bar height
+}
