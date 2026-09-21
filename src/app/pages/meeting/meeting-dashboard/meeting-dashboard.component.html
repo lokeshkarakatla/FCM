@@ -26,7 +26,7 @@
 
       <li [class.active]="activeTab === 'observations'" (click)="activeTab = 'observations'">
         <a>
-          <mat-icon>visibility</mat-icon> Observations
+          <mat-icon>visibility</mat-icon> Open Complaints
         </a>
       </li>
 
@@ -225,7 +225,7 @@
           <div class="all-folders-item mb-2" [class.active-parent]="selectedFolder === 'All'"
             (click)="selectFolder('All')">
             <mat-icon class="folder-icon">folder_special</mat-icon>
-            <span class="folder-label">All Categories ({{ complaintsData.length }})</span>
+            <span class="folder-label">All Countries ({{ complaintsData.length }})</span>
           </div>
 
           <div *ngFor="let folder of systemFolders" class="system-group mb-3">
@@ -256,7 +256,7 @@
         <div class="mb-3 d-flex justify-content-end gap-2">
 
           <button mat-raised-button color="primary" (click)="openAddObservation()">
-            <mat-icon>add</mat-icon> Add Observation
+            <mat-icon>add</mat-icon> Add Complaint
           </button>
         </div>
 
@@ -289,9 +289,9 @@
                 <!-- Actions -->
                 <td class="text-center text-nowrap">
                   <i class="fa fa-edit text-primary me-2 pointer" (click)="openAddObservation(item)"
-                    matTooltip="Edit Observation"></i>
+                    matTooltip="Edit Complaint"></i>
                   <i class="fa fa-trash text-danger pointer" (click)="deleteObservation(item)"
-                    matTooltip="Delete Observation"></i>
+                    matTooltip="Delete Complaint"></i>
                 </td>
 
                 <!-- Serial -->
