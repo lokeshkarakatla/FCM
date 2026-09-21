@@ -4,12 +4,9 @@
   </h1>
 </div>
 
-<div id="stepper" class="bs-stepper row col-12">
+<div id="stepper" class="bs-stepper row w-100 m-0">
 
-
-
-
-  <div class=" pills col-2">
+  <div class="pills col-2 ps-0 pe-2">
 
     <div class="step mb-2" data-target="#step-1">
       <button class="step-trigger">
@@ -23,18 +20,10 @@
       </button>
     </div>
 
-
-
-
-
-
   </div>
 
-
-
   <!-- Stepper Content -->
-
-  <div class="col-9">
+  <div class="col-10 ps-2 pe-0">
     <!-- Step 1: Base Info -->
     <form id="step-1" class="content">
       <div class="row">
@@ -229,7 +218,7 @@
       </div>
 
       <!-- Step 2 Buttons -->
-      <div class="mt-3 pull-right" style="margin-right: 5px;">
+      <div class="text-end mt-3">
         <button mat-raised-button style="background-color: lightgray; color: red; margin-right: 8px;"
           class="add-dark-hover btn-default" (click)="close()">
           <mat-icon>cancel</mat-icon>Close

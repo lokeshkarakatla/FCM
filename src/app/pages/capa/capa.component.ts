@@ -179,8 +179,9 @@ export class CapaComponent implements OnInit {
     // this.router.navigate(['/app/complaints/add-complaints']);
     let dialogRef = this.dialog.open(AddComplaintComponent, {
       data: null,
-      height: '500px',
-      width: '950px'
+      height: 'auto',
+      width: '850px',
+      autoFocus: false
     });
     dialogRef.afterClosed().subscribe(data => {
 
