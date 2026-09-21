@@ -1,25 +1,63 @@
-<div class="NewHeader">
-    <h1 mat-dialog-title>Attendance</h1>
-</div>
-<div mat-dialog-content style="overflow:hidden!important;">
-  <form class="form-horizontal" novalidate style="margin-top:10px">
-    <div style="margin-bottom: 10px;"><mat-checkbox class="col-sm-6">Ayush</mat-checkbox></div>
-    <div style="margin-bottom: 10px;"><mat-checkbox class="col-sm-6"> Contact OM</mat-checkbox></div>
-    <div style="margin-bottom: 10px;"><mat-checkbox class="col-sm-6"> Gaurav</mat-checkbox></div>
-    <div style="margin-bottom: 10px;"><mat-checkbox class="col-sm-6">Navin Malik</mat-checkbox></div>
-    <div style="margin-bottom: 10px;"><mat-checkbox class="col-sm-6">Karthik</mat-checkbox></div>
-    <div style="margin-bottom: 10px;"><mat-checkbox class="col-sm-6">Pavan Kalyan</mat-checkbox></div>
-    <div style="margin-bottom: 10px;"><mat-checkbox class="col-sm-6">Harsha</mat-checkbox></div>
-  </form>
-</div>
+<div class="attendance-modal-wrapper">
+  <!-- Top Header matching Snapshot 1 -->
+  <div class="attendance-header d-flex justify-content-between align-items-center mb-3">
+    <div class="d-flex align-items-center gap-2">
+      <h2 class="attendance-title mb-0">Attendance</h2>
+      <span class="count-pill">{{ presentCount }}/{{ attendees.length }}</span>
+      <span *ngIf="meetingRef" class="meeting-sub-text ms-2">({{ meetingRef }})</span>
+    </div>
 
+    <div class="d-flex align-items-center gap-3">
+      <div class="select-all-btn pointer" (click)="toggleSelectAll()" role="button">
+        <mat-icon class="select-all-icon">check_circle</mat-icon>
+        <span class="select-all-text">{{ isAllSelected ? 'Deselect All' : 'Select All' }}</span>
+      </div>
+      <button type="button" class="modal-close-icon btn btn-link p-0 text-muted" (click)="close()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
 
-<mat-dialog-actions align="end" style="margin-top: 10px;">
-    <button mat-raised-button color="primary" (click)="close()">
-        <mat-icon>save</mat-icon>Save
+  <!-- Body: 2-Column Grid matching Snapshot 1 -->
+  <div class="attendance-body">
+    <div class="attendees-grid">
+      <div *ngFor="let att of attendees"
+           class="attendee-card"
+           [class.present]="att.present"
+           (click)="toggleAttendee(att)">
+        
+        <div class="card-left d-flex align-items-center gap-3">
+          <mat-checkbox [checked]="att.present"
+                        (click)="$event.stopPropagation()"
+                        (change)="att.present = $event.checked">
+          </mat-checkbox>
+
+          <div class="avatar-circle" [style.background-color]="att.avatarBg">
+            {{ att.initials }}
+          </div>
+
+          <div class="attendee-details">
+            <div class="attendee-name">{{ att.name }}</div>
+            <div class="attendee-role">{{ att.role }}</div>
+          </div>
+        </div>
+
+        <div class="card-right" *ngIf="att.present">
+          <span class="present-badge">Present</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Actions -->
+  <div class="attendance-footer d-flex justify-content-end align-items-center gap-2 mt-4 pt-3 border-top">
+    <button mat-raised-button class="btn-default" (click)="close()">
+      <mat-icon class="btn-icon">cancel</mat-icon>
+      <span class="btn-label">Close</span>
     </button>
-    <button mat-raised-button  style="background-color: lightgray; color: red" (click)="close()">
-        <mat-icon>cancel</mat-icon>Close
+    <button mat-raised-button color="primary" (click)="save()">
+      <mat-icon class="btn-icon">save</mat-icon>
+      <span class="btn-label">Save Attendance</span>
     </button>
-</mat-dialog-actions>
-
+  </div>
+</div>

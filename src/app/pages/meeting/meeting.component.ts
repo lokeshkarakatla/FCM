@@ -8,6 +8,7 @@ import { AddattendanceComponent } from 'src/app/addattendance/addattendance.comp
 import { AgendadetailsComponent } from 'src/app/agendadetails/agendadetails.component';
 import { MeetingrefComponent } from 'src/app/meetingref/meetingref.component';
 import { ConfirmationDialogComponent } from 'src/app/shared/confirmation-dialog/confirmation-dialog.component';
+import { MeetingCapaDialogComponent } from './dialogs/meeting-capa-dialog/meeting-capa-dialog.component';
 
 @Component({
   selector: 'app-meeting',
@@ -35,8 +36,8 @@ export class MeetingComponent implements OnInit {
       meetingRef: "MEET-2025/10/02",
       capa: 2,
       actionPoints: 2,
-      attendance: "5/7",
-      lateAttendance: "1/7",
+      attendance: "5/8",
+      lateAttendance: "1/8",
       agenda: 3
     },
     {
@@ -149,10 +150,34 @@ export class MeetingComponent implements OnInit {
     });
   }
 
-  Attendancecount() {
-    this.dialog.open(AddattendanceComponent, {
-      height: '300px',
-      width: '600px' 
+  Attendancecount(item: any) {
+    const dialogRef = this.dialog.open(AddattendanceComponent, {
+      width: '780px',
+      maxWidth: '94vw',
+      data: {
+        meetingRef: item.meetingRef,
+        attendance: item.attendance,
+        attendees: item.attendees || null
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(res => {
+      if (res && res.attendance) {
+        item.attendance = res.attendance;
+        item.attendees = res.attendees;
+      }
+    });
+  }
+
+  openCapaDialog(item: any) {
+    this.dialog.open(MeetingCapaDialogComponent, {
+      width: '980px',
+      maxWidth: '95vw',
+      data: {
+        meetingRef: item.meetingRef,
+        date: item.date,
+        capas: item.capasList || null
+      }
     });
   }
 
@@ -175,8 +200,12 @@ export class MeetingComponent implements OnInit {
 
   openAgendaDialog(item: any) {
     this.dialog.open(AgendadetailsComponent, {
-      width: '700px',
-      data: item
+      width: '740px',
+      maxWidth: '94vw',
+      data: {
+        meetingRef: item.meetingRef,
+        date: item.date
+      }
     });
   }
 }

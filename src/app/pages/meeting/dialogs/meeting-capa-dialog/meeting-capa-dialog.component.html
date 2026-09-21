@@ -1,0 +1,88 @@
+<div class="custom-modal-wrapper">
+  <!-- Header -->
+  <div class="modal-header-custom" style="background: #0284c7 !important;">
+    <h2 class="modal-title-text">
+      CAPA Items for Meeting {{ meetingRef }}
+      <span class="capa-count-pill ms-2">{{ capaList.length }} CAPAs</span>
+    </h2>
+    <button type="button" class="modal-close-icon btn btn-link p-0 text-white" (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div mat-dialog-content class="modal-body-custom">
+    <!-- Meeting Context Bar / Mini KPIs -->
+    <div class="d-flex align-items-center justify-content-between p-2 mb-3 rounded bg-light border" style="font-size: 13px;">
+      <div class="d-flex align-items-center gap-3">
+        <span><b>Meeting:</b> {{ meetingRef }}</span>
+        <span *ngIf="meetingDate" class="text-muted">|</span>
+        <span *ngIf="meetingDate"><b>Date:</b> {{ meetingDate }}</span>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <span class="badge bg-secondary">Total: {{ capaList.length }}</span>
+        <span class="badge bg-warning text-dark">Pending: {{ pendingCount }}</span>
+        <span class="badge bg-success">Resolved: {{ resolvedCount }}</span>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover align-middle main-capa-table mb-0">
+        <thead class="table-dark">
+          <tr>
+            <th class="text-center" width="90">Ref</th>
+            <th>Subject</th>
+            <th>Category</th>
+            <th class="text-center">Function</th>
+            <th class="text-center" width="85">Severity</th>
+            <th class="text-center" width="105">Date Initiated</th>
+            <th class="text-center" width="105">Date Due</th>
+            <th class="text-center" width="95">Status</th>
+            <th class="text-center" width="75">TAT</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of capaList">
+            <td class="text-center">
+              <span class="ref-badge">{{ item.observationRef }}</span>
+            </td>
+            <td class="fw-semibold">{{ item.subject }}</td>
+            <td>{{ item.category }}</td>
+            <td class="text-center">{{ item.function }}</td>
+            <td class="text-center">
+              <span class="badge"
+                    [ngClass]="item.severity === 'High' ? 'bg-danger' : (item.severity === 'Medium' ? 'bg-warning text-dark' : 'bg-success')">
+                {{ item.severity }}
+              </span>
+            </td>
+            <td class="text-center">{{ item.dateInitiated }}</td>
+            <td class="text-center">{{ item.dateDue }}</td>
+            <td class="text-center">
+              <span class="badge" [ngClass]="item.resolved ? 'bg-success' : 'bg-warning text-dark'">
+                {{ item.resolved ? 'Resolved' : 'In Progress' }}
+              </span>
+            </td>
+            <td class="text-center">{{ item.tat }}</td>
+          </tr>
+
+          <tr *ngIf="capaList.length === 0">
+            <td colspan="9" class="text-center text-muted py-4">
+              <mat-icon style="font-size: 28px; width: 28px; height: 28px; color: #94a3b8;">build_circle</mat-icon>
+              <div class="mt-1">No CAPA items recorded for this meeting.</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Actions -->
+  <mat-dialog-actions align="end" class="modal-actions-custom d-flex justify-content-between">
+    <button mat-stroked-button color="primary" (click)="openFullExecution()">
+      <mat-icon>launch</mat-icon> Open in Meeting Execution
+    </button>
+    <button mat-raised-button class="btn-default" (click)="close()">
+      <mat-icon class="btn-icon">cancel</mat-icon><span class="btn-label">Close</span>
+    </button>
+  </mat-dialog-actions>
+</div>
