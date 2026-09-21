@@ -28,7 +28,7 @@
                         <mat-icon>add</mat-icon> Add Complaint
                     </button>
 
-                    <div class="notification-bell-wrapper" (mouseenter)="openNotificationMenu()">
+                    <div class="notification-bell-wrapper" (mouseenter)="openNotificationMenu()" style="margin-top: 14px;">
                         <mat-icon matBadge="5" matBadgeSize="small" matBadgeColor="accent"
                             #notifMenuTrigger="matMenuTrigger"
                             [matMenuTriggerFor]="notificationsMenu"
