@@ -9,6 +9,7 @@ import { MeetingNotesDialogComponent } from '../dialogs/meeting-notes-dialog/mee
 import { MeetingRemarksDialogComponent } from '../dialogs/meeting-remarks-dialog/meeting-remarks-dialog.component';
 import { OpenCapaDialogComponent } from '../dialogs/open-capa-dialog/open-capa-dialog.component';
 import { AddItemCapaDialogComponent } from '../dialogs/add-item-capa-dialog/add-item-capa-dialog.component';
+import { PublishMeetingDialogComponent } from '../dialogs/publish-meeting-dialog/publish-meeting-dialog.component';
 
 export interface AgendaItem {
   id: number;
@@ -23,6 +24,8 @@ export interface MeetingComplaint {
   subject: string;
   description: string;
   category: string;
+  country?: string;
+  dealer?: string;
   severity: 'High' | 'Moderate' | 'Low';
   status: 'Pending' | 'Overdue';
   chronic: boolean;
@@ -130,25 +133,47 @@ export class MeetingDashboardComponent implements OnInit {
   // STATUS: ALL(8), Pending(7), Overdue(1)
   selectedStatus: 'ALL' | 'Pending' | 'Overdue' = 'ALL';
 
-  // SEVERITY: High(4), Moderate(2), Low(2)
-  selectedSeverity: 'ALL' | 'High' | 'Moderate' | 'Low' = 'High';
+  // SEVERITY: ALL(8), High(4), Moderate(2), Low(2)
+  selectedSeverity: 'ALL' | 'High' | 'Moderate' | 'Low' = 'ALL';
 
-  // Left folder navigation
+  // Left folder navigation (Country -> Dealer hierarchy)
   selectedFolder: string = 'All';
   systemFolders = [
     {
-      name: 'Formulations',
-      count: 23,
+      name: 'India',
+      count: 4,
       isOpen: true,
       children: [
-        { name: 'Quality Oversight', count: 8 },
-        { name: 'Quality Check', count: 4 },
-        { name: 'Quality Enhancement', count: 3 }
+        { name: 'Mumbai Central', count: 2 },
+        { name: 'Delhi Motors', count: 1 },
+        { name: 'Bangalore Auto', count: 1 }
       ]
     },
-    { name: 'API Units', count: 11, isOpen: false },
-    { name: 'Laboratory Systems', count: 4, isOpen: false },
-    { name: 'Facility & Equipment Systems', count: 18, isOpen: false }
+    {
+      name: 'Germany',
+      count: 2,
+      isOpen: false,
+      children: [
+        { name: 'Munich Auto', count: 1 },
+        { name: 'Berlin Motors', count: 1 }
+      ]
+    },
+    {
+      name: 'United States',
+      count: 1,
+      isOpen: false,
+      children: [
+        { name: 'Chicago Fleet', count: 1 }
+      ]
+    },
+    {
+      name: 'Thailand',
+      count: 1,
+      isOpen: false,
+      children: [
+        { name: 'Bangkok Central', count: 1 }
+      ]
+    }
   ];
 
   // Concluding remarks
@@ -189,7 +214,9 @@ export class MeetingDashboardComponent implements OnInit {
       ref: 'NO-765',
       subject: 'Component Misalignment',
       description: 'Parts are not properly aligned before being fastened, creating a risk of structural weakness or functional failure.',
-      category: 'Formulations',
+      category: 'India',
+      country: 'India',
+      dealer: 'Mumbai Central',
       severity: 'High',
       status: 'Pending',
       chronic: false,
@@ -212,7 +239,9 @@ export class MeetingDashboardComponent implements OnInit {
       ref: 'NO-954',
       subject: 'Foreign Contamination',
       description: 'Traces of foreign particulate matter were discovered inside the material drums during routine batch sampling.',
-      category: 'Formulations',
+      category: 'India',
+      country: 'India',
+      dealer: 'Mumbai Central',
       severity: 'High',
       status: 'Pending',
       chronic: true,
@@ -234,7 +263,9 @@ export class MeetingDashboardComponent implements OnInit {
       ref: 'NO-356',
       subject: 'Missing COA',
       description: 'The shipment arrived from the supplier without the mandatory Certificate of Analysis documentation.',
-      category: 'API Units',
+      category: 'India',
+      country: 'India',
+      dealer: 'Delhi Motors',
       severity: 'High',
       status: 'Pending',
       chronic: false,
@@ -256,7 +287,9 @@ export class MeetingDashboardComponent implements OnInit {
       ref: 'NO-912',
       subject: 'Damaged Packaging',
       description: 'Raw material packaging was found torn or crushed upon delivery, increasing the risk of contamination.',
-      category: 'API Units',
+      category: 'India',
+      country: 'India',
+      dealer: 'Bangalore Auto',
       severity: 'High',
       status: 'Overdue',
       chronic: true,
@@ -278,7 +311,9 @@ export class MeetingDashboardComponent implements OnInit {
       ref: 'NO-441',
       subject: 'Sensor Calibration Drift',
       description: 'Optical alignment sensors showing intermittent +/- 2mm offset deviation during continuous cycle run.',
-      category: 'Laboratory Systems',
+      category: 'Germany',
+      country: 'Germany',
+      dealer: 'Munich Auto',
       severity: 'Moderate',
       status: 'Pending',
       chronic: false,
@@ -300,7 +335,9 @@ export class MeetingDashboardComponent implements OnInit {
       ref: 'NO-518',
       subject: 'Hydraulic Pressure Fluctuation',
       description: 'Secondary line pump pressure fluctuating outside 120-140 bar tolerance band during shift handover.',
-      category: 'Facility & Equipment Systems',
+      category: 'Germany',
+      country: 'Germany',
+      dealer: 'Berlin Motors',
       severity: 'Moderate',
       status: 'Pending',
       chronic: false,
@@ -322,7 +359,9 @@ export class MeetingDashboardComponent implements OnInit {
       ref: 'NO-215',
       subject: 'Label Barcode Readability',
       description: 'Thermal transfer printed barcodes showing 4% scanner rejection rate at warehouse inbound gate.',
-      category: 'Formulations',
+      category: 'United States',
+      country: 'United States',
+      dealer: 'Chicago Fleet',
       severity: 'Low',
       status: 'Pending',
       chronic: false,
@@ -345,7 +384,9 @@ export class MeetingDashboardComponent implements OnInit {
       ref: 'NO-102',
       subject: 'Storage Bin Dust Cover Defect',
       description: 'Dust cover clips on tier-3 storage bins showing cosmetic micro-cracks without functional impairment.',
-      category: 'Facility & Equipment Systems',
+      category: 'Thailand',
+      country: 'Thailand',
+      dealer: 'Bangkok Central',
       severity: 'Low',
       status: 'Pending',
       chronic: false,
@@ -417,6 +458,19 @@ export class MeetingDashboardComponent implements OnInit {
       dateResolved: '2026-08-14',
       resolved: true,
       tat: '10 Days'
+    },
+    {
+      id: 5,
+      subject: 'Recalibrate Optical Sensor Jig',
+      category: 'Laboratory Systems',
+      function: 'Calibration Check',
+      observationRef: 'NO-441',
+      severity: 'Medium',
+      dateInitiated: '2026-08-08',
+      dateDue: '2026-08-16',
+      dateResolved: 'N/A',
+      resolved: false,
+      tat: '8 Days'
     }
   ];
 
@@ -446,6 +500,14 @@ export class MeetingDashboardComponent implements OnInit {
       if (params['attendance']) {
         this.attendance = params['attendance'];
       }
+      if (params['status'] === 'Closed' || params['isClosed'] === 'true' || localStorage.getItem('meeting_closed_' + this.meetingRef) === 'true') {
+        this.isClosed = true;
+      }
+    });
+
+    // Synchronize initial CAPA counts dynamically
+    this.complaintsData.forEach(c => {
+      c.capaCount = this.capaList.filter(item => item.observationRef === c.ref).length;
     });
   }
 
@@ -497,21 +559,94 @@ export class MeetingDashboardComponent implements OnInit {
       if (this.selectedSeverity !== 'ALL' && item.severity !== this.selectedSeverity) {
         return false;
       }
-      // Folder filter
-      if (this.selectedFolder !== 'All' && item.category !== this.selectedFolder) {
-        return false;
+      // Folder filter (Country or Dealer)
+      if (this.selectedFolder !== 'All') {
+        const matchesCategory = item.category === this.selectedFolder;
+        const matchesCountry = item.country === this.selectedFolder;
+        const matchesDealer = item.dealer === this.selectedFolder;
+        if (!matchesCategory && !matchesCountry && !matchesDealer) {
+          return false;
+        }
       }
       return true;
     });
   }
 
   getStatusCount(status: 'ALL' | 'Pending' | 'Overdue'): number {
-    if (status === 'ALL') return this.complaintsData.length;
-    return this.complaintsData.filter(c => c.status === status).length;
+    return this.complaintsData.filter(item => {
+      // Respect selectedFolder
+      if (this.selectedFolder !== 'All') {
+        const matchesCategory = item.category === this.selectedFolder;
+        const matchesCountry = item.country === this.selectedFolder;
+        const matchesDealer = item.dealer === this.selectedFolder;
+        if (!matchesCategory && !matchesCountry && !matchesDealer) return false;
+      }
+      // Respect selectedSeverity
+      if (this.selectedSeverity !== 'ALL' && item.severity !== this.selectedSeverity) {
+        return false;
+      }
+      if (status === 'ALL') return true;
+      return item.status === status;
+    }).length;
   }
 
-  getSeverityCount(severity: 'High' | 'Moderate' | 'Low'): number {
-    return this.complaintsData.filter(c => c.severity === severity).length;
+  getSeverityCount(severity: 'ALL' | 'High' | 'Moderate' | 'Low'): number {
+    return this.complaintsData.filter(item => {
+      // Respect selectedFolder
+      if (this.selectedFolder !== 'All') {
+        const matchesCategory = item.category === this.selectedFolder;
+        const matchesCountry = item.country === this.selectedFolder;
+        const matchesDealer = item.dealer === this.selectedFolder;
+        if (!matchesCategory && !matchesCountry && !matchesDealer) return false;
+      }
+      // Respect selectedStatus
+      if (this.selectedStatus !== 'ALL' && item.status !== this.selectedStatus) {
+        return false;
+      }
+      if (severity === 'ALL') return true;
+      return item.severity === severity;
+    }).length;
+  }
+
+  getAllCountriesCount(): number {
+    return this.complaintsData.filter(item => {
+      if (this.selectedStatus !== 'ALL' && item.status !== this.selectedStatus) return false;
+      if (this.selectedSeverity !== 'ALL' && item.severity !== this.selectedSeverity) return false;
+      return true;
+    }).length;
+  }
+
+  getFolderCount(name: string): number {
+    return this.complaintsData.filter(item => {
+      if (this.selectedStatus !== 'ALL' && item.status !== this.selectedStatus) return false;
+      if (this.selectedSeverity !== 'ALL' && item.severity !== this.selectedSeverity) return false;
+      return item.country === name || item.dealer === name || item.category === name;
+    }).length;
+  }
+
+  getReviewTag(reviewDate?: string): { days: number, isPast: boolean, label: string, cssClass: string } | null {
+    if (!reviewDate) return null;
+    const rev = new Date(reviewDate);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    rev.setHours(0, 0, 0, 0);
+
+    const diffTime = rev.getTime() - today.getTime();
+    const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
+    const isPast = diffDays < 0;
+    const absDays = Math.abs(diffDays);
+
+    let label = '';
+    if (diffDays === 0) {
+      label = 'Today';
+    } else if (isPast) {
+      label = `-${absDays}d`;
+    } else {
+      label = `+${absDays}d`;
+    }
+
+    const cssClass = isPast ? 'red-tag' : 'blue-tag';
+    return { days: absDays, isPast, label, cssClass };
   }
 
   toggleFolder(folder: any): void {
@@ -545,8 +680,10 @@ export class MeetingDashboardComponent implements OnInit {
             ref: res.ref,
             subject: res.subject,
             description: res.description,
-            category: res.category,
-            severity: res.severity,
+            category: res.category || 'India',
+            country: res.country || 'India',
+            dealer: res.dealer || 'Mumbai Central',
+            severity: res.severity || 'High',
             status: 'Pending',
             chronic: res.chronic,
             demerit: res.demerit,
@@ -597,16 +734,23 @@ export class MeetingDashboardComponent implements OnInit {
   }
 
   openCapaDialog(item: MeetingComplaint): void {
+    const linkedCapas = this.capaList.filter(c => c.observationRef === item.ref);
     const dialogRef = this.dialog.open(OpenCapaDialogComponent, {
       width: '1060px',
       maxWidth: '95vw',
       maxHeight: '90vh',
-      data: item
+      data: {
+        ref: item.ref,
+        subject: item.subject,
+        capas: linkedCapas
+      }
     });
 
-    dialogRef.afterClosed().subscribe(list => {
-      if (list && list.length) {
-        item.capaCount = list.length;
+    dialogRef.afterClosed().subscribe((updatedList: any[]) => {
+      if (Array.isArray(updatedList)) {
+        this.capaList = this.capaList.filter(c => c.observationRef !== item.ref);
+        this.capaList.unshift(...updatedList);
+        item.capaCount = updatedList.length;
       }
     });
   }
@@ -644,7 +788,12 @@ export class MeetingDashboardComponent implements OnInit {
       width: '780px',
       maxWidth: '92vw',
       maxHeight: '90vh',
-      data: item ? { observationRef: item.ref, subject: item.subject, category: item.category } : null
+      data: item ? {
+        observationRef: item.ref,
+        subject: item.subject,
+        category: 'Quality Assurance',
+        severity: item.severity === 'High' ? 'High' : (item.severity === 'Moderate' ? 'Medium' : 'Low')
+      } : null
     });
 
     dialogRef.afterClosed().subscribe(newCapa => {
@@ -663,31 +812,47 @@ export class MeetingDashboardComponent implements OnInit {
           tat: newCapa.tat
         });
         if (item) {
-          item.capaCount++;
+          item.capaCount = this.capaList.filter(c => c.observationRef === item.ref).length;
+        } else {
+          const comp = this.complaintsData.find(c => c.ref === newCapa.observationRef);
+          if (comp) {
+            comp.capaCount = this.capaList.filter(c => c.observationRef === comp.ref).length;
+          }
         }
-        this.activeTab = 'capa';
       }
     });
   }
 
   deleteCapa(item: MeetingCapa): void {
     this.capaList = this.capaList.filter(c => c !== item);
+    const comp = this.complaintsData.find(c => c.ref === item.observationRef);
+    if (comp) {
+      comp.capaCount = this.capaList.filter(c => c.observationRef === comp.ref).length;
+    }
   }
 
   // ── Closure / Publish ──
   publishMeeting(): void {
-    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      width: 'auto',
+    const dialogRef = this.dialog.open(PublishMeetingDialogComponent, {
+      width: '640px',
+      maxWidth: '92vw',
       data: {
-        title: 'Publish & Close Meeting',
-        content: `Are you sure you want to close meeting ${this.meetingRef}? This will lock the agenda and publish the review decisions.`
+        meetingRef: this.meetingRef,
+        meetingDate: this.meetingDate,
+        attendance: this.attendance,
+        concludingRemarks: this.concludingRemarks
       }
     });
 
     dialogRef.afterClosed().subscribe(confirmed => {
       if (confirmed) {
         this.isClosed = true;
-        this.router.navigate(['/app/complaints/meetings']);
+        localStorage.setItem('meeting_closed_' + this.meetingRef, 'true');
+        this.router.navigate([], {
+          relativeTo: this.route,
+          queryParams: { status: 'Closed', isClosed: 'true' },
+          queryParamsHandling: 'merge'
+        });
       }
     });
   }

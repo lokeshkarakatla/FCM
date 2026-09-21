@@ -37,25 +37,33 @@
                 style="color: #0284c7; cursor: pointer; font-weight: 700; text-decoration: underline;">
                 {{ item.meetingRef }}
               </a>
+              <span *ngIf="isMeetingClosed(item)" class="badge bg-secondary ms-1" style="font-size: 11px;">Closed</span>
             </td>
 
             <td>{{ item.date }}</td>
             <td>{{ item.time }}</td>
             <td>{{ item.duration }}</td>
 
+            <!-- CAPA (Click to open dedicated CAPA dialog) -->
             <td class="text-center">
-              <a (click)="openMeetingInnerScreen(item, 'capa')"
-                style="color: #0284c7; cursor: pointer; text-decoration: none; font-weight: 600;">
+              <a (click)="openCapaDialog(item)"
+                style="color: #0284c7; cursor: pointer; text-decoration: underline; font-weight: 700;">
                 {{ item.capa }}
               </a>
             </td>
 
-            <td class="text-center" style="color: #0284c7; cursor: pointer" (click)="Attendancecount()">
-              {{ item.attendance }}
+            <!-- Attendance (Click to open Attendance modal matching Snapshot 1) -->
+            <td class="text-center" (click)="Attendancecount(item)">
+              <a style="color: #0284c7; cursor: pointer; text-decoration: underline; font-weight: 700;">
+                {{ item.attendance }}
+              </a>
             </td>
 
-            <td class="agenda-cell center-cell" (click)="openAgendaDialog(item)">
-              {{ item.agenda }}
+            <!-- Agenda (Click to open Agenda modal) -->
+            <td class="agenda-cell center-cell text-center pointer" (click)="openAgendaDialog(item)">
+              <a style="color: #0284c7; cursor: pointer; text-decoration: underline; font-weight: 700;">
+                {{ item.agenda }}
+              </a>
             </td>
 
             <td class="text-center text-nowrap">

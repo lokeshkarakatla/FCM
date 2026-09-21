@@ -16,6 +16,7 @@ export class ComplaintsComponent {
   totalSize = 0;
   filterToggle: boolean = false;
   currentPage: string = '';
+  maskInactive: boolean = false;
 
   selectedView: 'graph' | 'grid' = 'grid'; // 👈 default view
 

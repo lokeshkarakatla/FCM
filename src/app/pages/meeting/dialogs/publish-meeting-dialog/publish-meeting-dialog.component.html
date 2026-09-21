@@ -1,0 +1,60 @@
+<div class="custom-modal-wrapper">
+  <div class="modal-header-custom" style="background: #1e3a8a !important;">
+    <h2 class="modal-title-text">
+      Publish &amp; Close Meeting
+    </h2>
+    <button type="button" class="modal-close-icon btn btn-link p-0 text-white" (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div mat-dialog-content class="modal-body-custom">
+    <div class="d-flex align-items-start gap-3 p-3 mb-3" style="background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 4px;">
+      <mat-icon style="color: #16a34a; font-size: 32px; width: 32px; height: 32px; flex-shrink: 0;">task_alt</mat-icon>
+      <div>
+        <div style="font-weight: 700; color: #15803d; font-size: 15px; margin-bottom: 4px;">
+          Confirm Meeting Finalization
+        </div>
+        <p class="mb-0 text-muted" style="font-size: 13.5px; line-height: 1.5;">
+          Are you sure you want to publish and finalize meeting <b>{{ meetingRef }}</b>?
+        </p>
+      </div>
+    </div>
+
+    <div class="border rounded p-3 mb-3 bg-light">
+      <div class="row g-2" style="font-size: 13px;">
+        <div class="col-sm-6">
+          <span class="text-muted">Meeting Reference:</span> <b>{{ meetingRef }}</b>
+        </div>
+        <div class="col-sm-6" *ngIf="meetingDate">
+          <span class="text-muted">Meeting Date:</span> <b>{{ meetingDate }}</b>
+        </div>
+        <div class="col-sm-6" *ngIf="attendance">
+          <span class="text-muted">Attendance:</span> <b>{{ attendance }}</b>
+        </div>
+        <div class="col-sm-6">
+          <span class="text-muted">Status After Publish:</span> <span class="badge bg-success">Closed</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="publish-notice p-2" style="font-size: 13px; color: #475569;">
+      <b>What happens once published:</b>
+      <ul class="mb-0 ps-3 mt-1" style="line-height: 1.6;">
+        <li>All meeting reviews, decisions, and concluding remarks will be <b>locked</b> for audit compliance.</li>
+        <li>Meeting status will transition to <b>Closed &amp; Published</b>.</li>
+        <li>Assigned CAPA actions and review dates will be finalized for CFT tracking.</li>
+        <li>You will be able to download the official MOM report or email it to attendees.</li>
+      </ul>
+    </div>
+  </div>
+
+  <mat-dialog-actions align="end" class="modal-actions-custom">
+    <button mat-raised-button class="btn-default" (click)="close()">
+      <mat-icon class="btn-icon">cancel</mat-icon><span class="btn-label">Cancel</span>
+    </button>
+    <button mat-raised-button color="primary" style="background: #15803d !important;" (click)="confirm()">
+      <mat-icon class="btn-icon">check_circle</mat-icon><span class="btn-label">Publish &amp; Close</span>
+    </button>
+  </mat-dialog-actions>
+</div>

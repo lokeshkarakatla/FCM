@@ -1,0 +1,35 @@
+@import '../meeting-dialog-common.scss';
+
+.capa-count-pill {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 12px;
+  vertical-align: middle;
+}
+
+.ref-badge {
+  font-weight: 700;
+  color: #0f172a;
+  background: #f1f5f9;
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+}
+
+.main-capa-table {
+  font-size: 13.5px;
+
+  th {
+    font-size: 12.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    padding: 10px 12px;
+  }
+
+  td {
+    padding: 9px 12px;
+  }
+}

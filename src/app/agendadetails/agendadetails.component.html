@@ -1,33 +1,54 @@
-<div class="NewHeader">
-    <h1 mat-dialog-title>Agenda</h1>
-</div>
+<div class="custom-modal-wrapper">
+  <!-- Header -->
+  <div class="modal-header-custom" style="background: #2563eb !important;">
+    <h2 class="modal-title-text">
+      Agenda Topics for Meeting {{ meetingRef }}
+      <span class="agenda-count-pill ms-2">{{ agendaItems.length }} Topics</span>
+    </h2>
+    <button type="button" class="modal-close-icon btn btn-link p-0 text-white" (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
 
-<div class="meeting-container">
-
-    <!-- LEFT: Agenda -->
-    <div class="agenda-section">
-
-        <div class="section-title">
-            Agenda
-            <span class="badge">{{ agenda.length }} items</span>
-        </div>
-
-        <div class="agenda-list">
-            <div class="agenda-card" *ngFor="let item of agenda; let i = index">
-                <div class="agenda-index">{{ i + 1 }}</div>
-                <div class="agenda-text">{{ item }}</div>
-            </div>
-        </div>
-
+  <div mat-dialog-content class="modal-body-custom">
+    <!-- Meeting Context Bar -->
+    <div class="d-flex align-items-center justify-content-between p-2 mb-3 rounded bg-light border" style="font-size: 13px;">
+      <div class="d-flex align-items-center gap-3">
+        <span><b>Meeting:</b> {{ meetingRef }}</span>
+        <span *ngIf="meetingDate" class="text-muted">|</span>
+        <span *ngIf="meetingDate"><b>Date:</b> {{ meetingDate }}</span>
+      </div>
+      <span class="badge bg-primary">{{ agendaItems.length }} Agenda Items</span>
     </div>
 
-    <!-- RIGHT: Attended -->
-    
+    <!-- Agenda Cards List -->
+    <div class="agenda-topics-list">
+      <div class="agenda-topic-card" *ngFor="let item of agendaItems">
+        <div class="topic-index">{{ item.id }}</div>
 
-</div>
+        <div class="topic-content flex-grow-1">
+          <div class="d-flex justify-content-between align-items-start gap-2 mb-1">
+            <div class="topic-title">{{ item.title }}</div>
+            <span class="duration-badge"><mat-icon>schedule</mat-icon> {{ item.duration }}</span>
+          </div>
 
-<mat-dialog-actions align="end" style="margin-top: 10px;">
-    <button mat-raised-button style="background-color: lightgray; color: red" (click)="close()">
-        <mat-icon>cancel</mat-icon>Close
+          <p class="topic-desc mb-1">{{ item.description }}</p>
+
+          <div class="topic-presenter">
+            <mat-icon>person</mat-icon> {{ item.presenter }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Actions -->
+  <mat-dialog-actions align="end" class="modal-actions-custom d-flex justify-content-between">
+    <button mat-stroked-button color="primary" (click)="openFullExecution()">
+      <mat-icon>launch</mat-icon> Open in Meeting Execution
     </button>
-</mat-dialog-actions>
+    <button mat-raised-button class="btn-default" (click)="close()">
+      <mat-icon class="btn-icon">cancel</mat-icon><span class="btn-label">Close</span>
+    </button>
+  </mat-dialog-actions>
+</div>

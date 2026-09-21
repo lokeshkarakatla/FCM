@@ -26,7 +26,7 @@
 
       <li [class.active]="activeTab === 'observations'" (click)="activeTab = 'observations'">
         <a>
-          <mat-icon>visibility</mat-icon> Observations
+          <mat-icon>visibility</mat-icon> Open Complaints
         </a>
       </li>
 
@@ -193,6 +193,12 @@
           <span class="severity-label">SEVERITY</span>
 
           <ul class="nav nav-pills custom-tabs mb-0">
+            <li [class.active]="selectedSeverity === 'ALL'" class="severity-all-tab">
+              <a (click)="selectedSeverity = 'ALL'" class="pointer">
+                <mat-icon>list_alt</mat-icon> ALL ({{ getSeverityCount('ALL') }})
+              </a>
+            </li>
+
             <li [class.active]="selectedSeverity === 'High'" class="severity-high-tab">
               <a (click)="selectedSeverity = selectedSeverity === 'High' ? 'ALL' : 'High'" class="pointer">
                 <mat-icon>error_outline</mat-icon> High ({{ getSeverityCount('High') }})
@@ -225,7 +231,7 @@
           <div class="all-folders-item mb-2" [class.active-parent]="selectedFolder === 'All'"
             (click)="selectFolder('All')">
             <mat-icon class="folder-icon">folder_special</mat-icon>
-            <span class="folder-label">All Categories ({{ complaintsData.length }})</span>
+            <span class="folder-label">All Countries ({{ getAllCountriesCount() }})</span>
           </div>
 
           <div *ngFor="let folder of systemFolders" class="system-group mb-3">
@@ -235,14 +241,14 @@
               <mat-icon class="folder-icon">
                 {{ folder.isOpen ? 'folder_open' : 'folder' }}
               </mat-icon>
-              <span class="folder-label">{{ folder.name }} ({{ folder.count }})</span>
+              <span class="folder-label">{{ folder.name }} ({{ getFolderCount(folder.name) }})</span>
             </div>
 
             <!-- Child Items -->
             <div *ngIf="folder.isOpen && folder.children" class="child-list mt-2">
               <div *ngFor="let child of folder.children" class="child-item" (click)="selectFolder(child.name)"
                 [class.active-child]="selectedFolder === child.name">
-                {{ child.name }} ({{ child.count }})
+                {{ child.name }} ({{ getFolderCount(child.name) }})
               </div>
             </div>
           </div>
@@ -256,7 +262,7 @@
         <div class="mb-3 d-flex justify-content-end gap-2">
 
           <button mat-raised-button color="primary" (click)="openAddObservation()">
-            <mat-icon>add</mat-icon> Add Observation
+            <mat-icon>add</mat-icon> Add Complaint
           </button>
         </div>
 
@@ -289,9 +295,9 @@
                 <!-- Actions -->
                 <td class="text-center text-nowrap">
                   <i class="fa fa-edit text-primary me-2 pointer" (click)="openAddObservation(item)"
-                    matTooltip="Edit Observation"></i>
+                    matTooltip="Edit Complaint"></i>
                   <i class="fa fa-trash text-danger pointer" (click)="deleteObservation(item)"
-                    matTooltip="Delete Observation"></i>
+                    matTooltip="Delete Complaint"></i>
                 </td>
 
                 <!-- Serial -->
@@ -352,8 +358,14 @@
                     <mat-checkbox [checked]="item.reviewed" (change)="onToggleReviewed(item, $event)"
                       matTooltip="Click to select Next Review interval">
                     </mat-checkbox>
-                    <span *ngIf="item.nextReviewDate" class="next-rev-tag" (click)="openNextReviewDialog(item)">
+                    <span *ngIf="item.nextReviewDate" class="next-rev-tag"
+                      [ngClass]="getReviewTag(item.nextReviewDate)?.cssClass"
+                      [matTooltip]="'Next Review Date: ' + item.nextReviewDate + ' (' + (getReviewTag(item.nextReviewDate)?.isPast ? 'Past Due' : 'Upcoming') + ')'"
+                      (click)="openNextReviewDialog(item)">
                       {{ item.nextReviewDate | date:'shortDate' }}
+                      <span class="days-pill" *ngIf="getReviewTag(item.nextReviewDate) as tag">
+                        {{ tag.label }}
+                      </span>
                     </span>
                   </div>
                 </td>
@@ -480,16 +492,31 @@
 
     <div class="closure-editor-box mb-4">
       <textarea class="form-control closure-textarea" rows="10" placeholder="enter text..."
-        [(ngModel)]="concludingRemarks"></textarea>
+        [(ngModel)]="concludingRemarks" [readonly]="isClosed" [class.read-only-box]="isClosed"></textarea>
     </div>
 
     <!-- Actions Bar -->
-    <div class="d-flex justify-content-end align-items-center gap-3">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <div *ngIf="isClosed" class="d-flex align-items-center flex-wrap gap-2">
+        <span class="badge bg-success p-2 fs-6 d-inline-flex align-items-center gap-1">
+          <mat-icon style="font-size: 16px; height: 16px; width: 16px;">lock</mat-icon> Meeting Closed &amp; Published
+        </span>
+        <button mat-raised-button color="primary" class="d-inline-flex align-items-center gap-1" (click)="downloadReport()">
+          <mat-icon>file_download</mat-icon> Download MOM Report
+        </button>
+        <button mat-raised-button style="background: #0d9488 !important; color: #fff;" class="d-inline-flex align-items-center gap-1" (click)="emailReport()">
+          <mat-icon>email</mat-icon> Email to CFT Attendees
+        </button>
+        <button mat-button class="ms-1" (click)="goBack()">
+          <mat-icon>arrow_back</mat-icon> Back to Meetings
+        </button>
+      </div>
 
-
-      <button mat-raised-button class="finish-btn" (click)="publishMeeting()">
-        <mat-icon>check_circle</mat-icon> Publish
-      </button>
+      <div *ngIf="!isClosed" class="ms-auto">
+        <button mat-raised-button class="finish-btn" (click)="publishMeeting()">
+          <mat-icon>check_circle</mat-icon> Publish
+        </button>
+      </div>
     </div>
 
   </div>
