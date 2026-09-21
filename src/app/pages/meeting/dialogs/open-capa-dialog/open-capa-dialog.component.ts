@@ -8,7 +8,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class OpenCapaDialogComponent implements OnInit {
 
-  observationRef: string = 'NO-765';
+  observationRef: string = '';
+  subject: string = '';
   capaList: any[] = [];
 
   constructor(
@@ -17,35 +18,19 @@ export class OpenCapaDialogComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (this.data && this.data.ref) {
-      this.observationRef = this.data.ref;
+    if (this.data) {
+      this.observationRef = this.data.ref || this.data.observationRef || '';
+      this.subject = this.data.subject || '';
+      if (this.data.capas && Array.isArray(this.data.capas)) {
+        this.capaList = JSON.parse(JSON.stringify(this.data.capas));
+      } else {
+        this.capaList = [];
+      }
     }
-    this.loadData();
   }
 
-  loadData(): void {
-    this.capaList = [
-      {
-        category: 'Quality Assurance',
-        function: 'Inspection',
-        observationRef: this.observationRef,
-        severity: 'High',
-        dateInitiated: '2026-08-05',
-        dateResolved: '2026-08-12',
-        resolved: true,
-        tat: '7 Days'
-      },
-      {
-        category: 'Production',
-        function: 'Assembly',
-        observationRef: this.observationRef,
-        severity: 'Medium',
-        dateInitiated: '2026-08-08',
-        dateResolved: '-',
-        resolved: false,
-        tat: '-'
-      }
-    ];
+  deleteItem(item: any): void {
+    this.capaList = this.capaList.filter(c => c !== item);
   }
 
   close(): void {

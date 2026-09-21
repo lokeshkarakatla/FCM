@@ -457,6 +457,19 @@ export class MeetingDashboardComponent implements OnInit {
       dateResolved: '2026-08-14',
       resolved: true,
       tat: '10 Days'
+    },
+    {
+      id: 5,
+      subject: 'Recalibrate Optical Sensor Jig',
+      category: 'Laboratory Systems',
+      function: 'Calibration Check',
+      observationRef: 'NO-441',
+      severity: 'Medium',
+      dateInitiated: '2026-08-08',
+      dateDue: '2026-08-16',
+      dateResolved: 'N/A',
+      resolved: false,
+      tat: '8 Days'
     }
   ];
 
@@ -489,6 +502,11 @@ export class MeetingDashboardComponent implements OnInit {
       if (params['status'] === 'Closed' || params['isClosed'] === 'true') {
         this.isClosed = true;
       }
+    });
+
+    // Synchronize initial CAPA counts dynamically
+    this.complaintsData.forEach(c => {
+      c.capaCount = this.capaList.filter(item => item.observationRef === c.ref).length;
     });
   }
 
@@ -715,16 +733,23 @@ export class MeetingDashboardComponent implements OnInit {
   }
 
   openCapaDialog(item: MeetingComplaint): void {
+    const linkedCapas = this.capaList.filter(c => c.observationRef === item.ref);
     const dialogRef = this.dialog.open(OpenCapaDialogComponent, {
       width: '1060px',
       maxWidth: '95vw',
       maxHeight: '90vh',
-      data: item
+      data: {
+        ref: item.ref,
+        subject: item.subject,
+        capas: linkedCapas
+      }
     });
 
-    dialogRef.afterClosed().subscribe(list => {
-      if (list && list.length) {
-        item.capaCount = list.length;
+    dialogRef.afterClosed().subscribe((updatedList: any[]) => {
+      if (Array.isArray(updatedList)) {
+        this.capaList = this.capaList.filter(c => c.observationRef !== item.ref);
+        this.capaList.unshift(...updatedList);
+        item.capaCount = updatedList.length;
       }
     });
   }
@@ -762,7 +787,12 @@ export class MeetingDashboardComponent implements OnInit {
       width: '780px',
       maxWidth: '92vw',
       maxHeight: '90vh',
-      data: item ? { observationRef: item.ref, subject: item.subject, category: item.category } : null
+      data: item ? {
+        observationRef: item.ref,
+        subject: item.subject,
+        category: 'Quality Assurance',
+        severity: item.severity === 'High' ? 'High' : (item.severity === 'Moderate' ? 'Medium' : 'Low')
+      } : null
     });
 
     dialogRef.afterClosed().subscribe(newCapa => {
@@ -781,15 +811,23 @@ export class MeetingDashboardComponent implements OnInit {
           tat: newCapa.tat
         });
         if (item) {
-          item.capaCount++;
+          item.capaCount = this.capaList.filter(c => c.observationRef === item.ref).length;
+        } else {
+          const comp = this.complaintsData.find(c => c.ref === newCapa.observationRef);
+          if (comp) {
+            comp.capaCount = this.capaList.filter(c => c.observationRef === comp.ref).length;
+          }
         }
-        this.activeTab = 'capa';
       }
     });
   }
 
   deleteCapa(item: MeetingCapa): void {
     this.capaList = this.capaList.filter(c => c !== item);
+    const comp = this.complaintsData.find(c => c.ref === item.observationRef);
+    if (comp) {
+      comp.capaCount = this.capaList.filter(c => c.observationRef === comp.ref).length;
+    }
   }
 
   // ── Closure / Publish ──
