@@ -496,14 +496,27 @@
     </div>
 
     <!-- Actions Bar -->
-    <div class="d-flex justify-content-end align-items-center gap-3">
-      <span *ngIf="isClosed" class="badge bg-success p-2 fs-6 d-inline-flex align-items-center gap-1">
-        <mat-icon style="font-size: 16px; height: 16px; width: 16px;">lock</mat-icon> Meeting Closed &amp; Published
-      </span>
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <div *ngIf="isClosed" class="d-flex align-items-center flex-wrap gap-2">
+        <span class="badge bg-success p-2 fs-6 d-inline-flex align-items-center gap-1">
+          <mat-icon style="font-size: 16px; height: 16px; width: 16px;">lock</mat-icon> Meeting Closed &amp; Published
+        </span>
+        <button mat-raised-button color="primary" class="d-inline-flex align-items-center gap-1" (click)="downloadReport()">
+          <mat-icon>file_download</mat-icon> Download MOM Report
+        </button>
+        <button mat-raised-button style="background: #0d9488 !important; color: #fff;" class="d-inline-flex align-items-center gap-1" (click)="emailReport()">
+          <mat-icon>email</mat-icon> Email to CFT Attendees
+        </button>
+        <button mat-button class="ms-1" (click)="goBack()">
+          <mat-icon>arrow_back</mat-icon> Back to Meetings
+        </button>
+      </div>
 
-      <button *ngIf="!isClosed" mat-raised-button class="finish-btn" (click)="publishMeeting()">
-        <mat-icon>check_circle</mat-icon> Publish
-      </button>
+      <div *ngIf="!isClosed" class="ms-auto">
+        <button mat-raised-button class="finish-btn" (click)="publishMeeting()">
+          <mat-icon>check_circle</mat-icon> Publish
+        </button>
+      </div>
     </div>
 
   </div>

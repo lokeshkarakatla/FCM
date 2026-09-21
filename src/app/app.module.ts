@@ -91,6 +91,7 @@ import { MeetingNotesDialogComponent } from './pages/meeting/dialogs/meeting-not
 import { MeetingRemarksDialogComponent } from './pages/meeting/dialogs/meeting-remarks-dialog/meeting-remarks-dialog.component';
 import { OpenCapaDialogComponent } from './pages/meeting/dialogs/open-capa-dialog/open-capa-dialog.component';
 import { AddItemCapaDialogComponent } from './pages/meeting/dialogs/add-item-capa-dialog/add-item-capa-dialog.component';
+import { PublishMeetingDialogComponent } from './pages/meeting/dialogs/publish-meeting-dialog/publish-meeting-dialog.component';
 import { ReferenceNumberComponent } from './pages/reference-number/reference-number.component';
 import { AddtractorsComponent } from './addtractors/addtractors.component';
 import { AddtestsComponent } from './addtests/addtests.component';
@@ -216,6 +217,7 @@ DragulaModule.forRoot()
     MeetingRemarksDialogComponent,
     OpenCapaDialogComponent,
     AddItemCapaDialogComponent,
+    PublishMeetingDialogComponent,
     ReferenceNumberComponent,
     AddtractorsComponent,
     AddtestsComponent,

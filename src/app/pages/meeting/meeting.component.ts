@@ -129,7 +129,12 @@ export class MeetingComponent implements OnInit {
     this.router.navigate(['/app/complaints/meeting/add']);
   }
 
+  isMeetingClosed(item: any): boolean {
+    return localStorage.getItem('meeting_closed_' + item.meetingRef) === 'true';
+  }
+
   public openMeetingInnerScreen(item: any, tab: string = 'observations') {
+    const isClosed = this.isMeetingClosed(item);
     this.router.navigate(['/app/complaints/meetings/detail'], {
       queryParams: {
         meetingRef: item.meetingRef,
@@ -137,6 +142,8 @@ export class MeetingComponent implements OnInit {
         time: item.time,
         duration: item.duration,
         attendance: item.attendance,
+        status: isClosed ? 'Closed' : 'Open',
+        isClosed: isClosed ? 'true' : 'false',
         tab: tab
       }
     });

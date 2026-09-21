@@ -9,6 +9,7 @@ import { MeetingNotesDialogComponent } from '../dialogs/meeting-notes-dialog/mee
 import { MeetingRemarksDialogComponent } from '../dialogs/meeting-remarks-dialog/meeting-remarks-dialog.component';
 import { OpenCapaDialogComponent } from '../dialogs/open-capa-dialog/open-capa-dialog.component';
 import { AddItemCapaDialogComponent } from '../dialogs/add-item-capa-dialog/add-item-capa-dialog.component';
+import { PublishMeetingDialogComponent } from '../dialogs/publish-meeting-dialog/publish-meeting-dialog.component';
 
 export interface AgendaItem {
   id: number;
@@ -499,7 +500,7 @@ export class MeetingDashboardComponent implements OnInit {
       if (params['attendance']) {
         this.attendance = params['attendance'];
       }
-      if (params['status'] === 'Closed' || params['isClosed'] === 'true') {
+      if (params['status'] === 'Closed' || params['isClosed'] === 'true' || localStorage.getItem('meeting_closed_' + this.meetingRef) === 'true') {
         this.isClosed = true;
       }
     });
@@ -832,17 +833,26 @@ export class MeetingDashboardComponent implements OnInit {
 
   // ── Closure / Publish ──
   publishMeeting(): void {
-    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      width: 'auto',
+    const dialogRef = this.dialog.open(PublishMeetingDialogComponent, {
+      width: '640px',
+      maxWidth: '92vw',
       data: {
-        title: 'Publish & Close Meeting',
-        content: `Are you sure you want to close meeting ${this.meetingRef}? This will lock the agenda and publish the review decisions.`
+        meetingRef: this.meetingRef,
+        meetingDate: this.meetingDate,
+        attendance: this.attendance,
+        concludingRemarks: this.concludingRemarks
       }
     });
 
     dialogRef.afterClosed().subscribe(confirmed => {
       if (confirmed) {
         this.isClosed = true;
+        localStorage.setItem('meeting_closed_' + this.meetingRef, 'true');
+        this.router.navigate([], {
+          relativeTo: this.route,
+          queryParams: { status: 'Closed', isClosed: 'true' },
+          queryParamsHandling: 'merge'
+        });
       }
     });
   }

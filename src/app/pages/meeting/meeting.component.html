@@ -37,6 +37,7 @@
                 style="color: #0284c7; cursor: pointer; font-weight: 700; text-decoration: underline;">
                 {{ item.meetingRef }}
               </a>
+              <span *ngIf="isMeetingClosed(item)" class="badge bg-secondary ms-1" style="font-size: 11px;">Closed</span>
             </td>
 
             <td>{{ item.date }}</td>
