@@ -24,6 +24,10 @@
                     <app-horizontal-menu fxShow.gt-sm="true" fxShow="false" [menuParentId]="0"></app-horizontal-menu>
                 </div>
                 <div fxLayout="row" fxLayoutAlign="end center">
+                    <button mat-raised-button color="primary" class="top-nav-add-complaint-btn" (click)="openAddComplaintDialog()">
+                        <mat-icon>add</mat-icon> Add Complaint
+                    </button>
+
                     <div class="notification-bell-wrapper" (mouseenter)="openNotificationMenu()">
                         <mat-icon matBadge="5" matBadgeSize="small" matBadgeColor="accent"
                             #notifMenuTrigger="matMenuTrigger"

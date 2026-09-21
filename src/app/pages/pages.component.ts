@@ -1,12 +1,14 @@
 import { Component, OnInit, ViewChild, HostListener, ViewChildren, QueryList, ChangeDetectorRef } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { MatMenuTrigger } from '@angular/material/menu';
+import { MatDialog } from '@angular/material/dialog';
 import { PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
 import { AppSettings } from '../app.settings';
 import { Settings } from '../app.settings.model';
 import { MenuService } from '../theme/components/menu/menu.service';
 import { filter } from 'rxjs/operators';
 import { PageHeaderService } from '../shared/page-header.service';
+import { AddComplaintComponent } from './complaints/add-complaint/add-complaint.component';
 
 
 
@@ -66,7 +68,8 @@ export class PagesComponent implements OnInit {
     public router: Router,
     private menuService: MenuService,
     public pageHeaderService: PageHeaderService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    public dialog: MatDialog
   ) {
 
     this.settings = this.appSettings.settings;
@@ -96,6 +99,14 @@ export class PagesComponent implements OnInit {
     this.menuOption = this.settings.menu;
     this.menuTypeOption = this.settings.menuType;
     this.defaultMenu = this.settings.menu;
+  }
+
+  openAddComplaintDialog(): void {
+    this.dialog.open(AddComplaintComponent, {
+      height: 'auto',
+      width: '850px',
+      autoFocus: false,
+    });
   }
 
   ngAfterViewInit() {
