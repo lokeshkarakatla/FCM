@@ -70,6 +70,59 @@ export class MeetingDashboardComponent implements OnInit {
   attendance: string = '5/7';
   isClosed: boolean = false;
 
+  // Modern Agenda Items & CFT Attendees (Matches Snapshot 1)
+  agendaItems: string[] = [
+    'Safety Audit',
+    'Quality Audit',
+    'Hygiene & Cleanliness Audit'
+  ];
+
+  attendees = [
+    { name: 'Pavan Kalyan', role: 'Project Manager', initials: 'PK', color: '#4A90D9', present: true },
+    { name: 'Test1', role: 'Lead Developer', initials: 'T1', color: '#9B59B6', present: true },
+    { name: 'Navin Malik', role: 'UI/UX Designer', initials: 'NM', color: '#27AE60', present: true },
+    { name: 'Gaurav', role: 'Business Analyst', initials: 'GV', color: '#E67E22', present: true },
+    { name: 'Contact OM', role: 'QA Engineer', initials: 'CO', color: '#E74C3C', present: true },
+    { name: 'Ayush', role: 'Product Owner', initials: 'AY', color: '#1ABC9C', present: false },
+    { name: 'Santosh', role: 'DevOps Engineer', initials: 'ST', color: '#E91E8C', present: false },
+    { name: 'Harsha', role: 'Scrum Master', initials: 'HA', color: '#673AB7', present: false }
+  ];
+
+  get agendaCount(): number {
+    return this.agendaItems.filter(i => i && i.trim().length > 0).length;
+  }
+
+  addAgendaItem(): void {
+    this.agendaItems.push('');
+  }
+
+  get presentCount(): number {
+    return this.attendees.filter(a => a.present).length;
+  }
+
+  get allAttendeesSelected(): boolean {
+    return this.attendees.every(a => a.present);
+  }
+
+  toggleAllAttendees(): void {
+    const next = !this.allAttendeesSelected;
+    this.attendees.forEach(a => a.present = next);
+    this.updateAttendanceMeta();
+  }
+
+  updateAttendanceMeta(): void {
+    this.attendance = `${this.presentCount}/${this.attendees.length}`;
+  }
+
+  trackByIndex(index: number, item: any) {
+    return index;
+  }
+
+  saveAgenda(): void {
+    this.updateAttendanceMeta();
+    alert('Agenda and Attendance saved successfully!');
+  }
+
   // Active top tab: 'agenda' | 'observations' | 'capa' | 'closure'
   activeTab: 'agenda' | 'observations' | 'capa' | 'closure' = 'agenda';
 
@@ -381,6 +434,18 @@ export class MeetingDashboardComponent implements OnInit {
       if (params['tab']) {
         this.activeTab = params['tab'];
       }
+      if (params['date']) {
+        this.meetingDate = params['date'];
+      }
+      if (params['time']) {
+        this.meetingTime = params['time'];
+      }
+      if (params['duration']) {
+        this.duration = params['duration'];
+      }
+      if (params['attendance']) {
+        this.attendance = params['attendance'];
+      }
     });
   }
 
@@ -391,7 +456,8 @@ export class MeetingDashboardComponent implements OnInit {
   // ── Agenda Actions ──
   openAddAgenda(item?: AgendaItem): void {
     const dialogRef = this.dialog.open(AddAgendaDialogComponent, {
-      width: '600px',
+      width: '680px',
+      maxWidth: '92vw',
       data: item || null
     });
 
@@ -463,7 +529,9 @@ export class MeetingDashboardComponent implements OnInit {
   // ── Observation Modals ──
   openAddObservation(item?: MeetingComplaint): void {
     const dialogRef = this.dialog.open(AddObservationDialogComponent, {
-      width: '600px',
+      width: '780px',
+      maxWidth: '92vw',
+      maxHeight: '90vh',
       data: item || null
     });
 
@@ -505,14 +573,18 @@ export class MeetingDashboardComponent implements OnInit {
 
   openNotes(item: MeetingComplaint): void {
     this.dialog.open(MeetingNotesDialogComponent, {
-      width: '800px',
+      width: '850px',
+      maxWidth: '92vw',
+      maxHeight: '90vh',
       data: item
     });
   }
 
   openRemarks(item: MeetingComplaint): void {
     const dialogRef = this.dialog.open(MeetingRemarksDialogComponent, {
-      width: '960px',
+      width: '980px',
+      maxWidth: '95vw',
+      maxHeight: '90vh',
       data: item
     });
 
@@ -526,7 +598,9 @@ export class MeetingDashboardComponent implements OnInit {
 
   openCapaDialog(item: MeetingComplaint): void {
     const dialogRef = this.dialog.open(OpenCapaDialogComponent, {
-      width: '1020px',
+      width: '1060px',
+      maxWidth: '95vw',
+      maxHeight: '90vh',
       data: item
     });
 
@@ -567,7 +641,9 @@ export class MeetingDashboardComponent implements OnInit {
   // ── CAPA Modals ──
   openAddItemCapa(item?: MeetingComplaint): void {
     const dialogRef = this.dialog.open(AddItemCapaDialogComponent, {
-      width: '600px',
+      width: '780px',
+      maxWidth: '92vw',
+      maxHeight: '90vh',
       data: item ? { observationRef: item.ref, subject: item.subject, category: item.category } : null
     });
 

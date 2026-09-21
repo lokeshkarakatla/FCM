@@ -45,61 +45,109 @@
   </div>
 
   <!-- ════════════════════════════════════════════════════════════════ -->
-  <!-- TAB 1: AGENDA (Matches Option Matrix A2 Agenda UI/UX)           -->
+  <!-- TAB 1: AGENDA (Matches Snapshot 1: Date, Time, Duration & 2-Col) -->
   <!-- ════════════════════════════════════════════════════════════════ -->
   <div *ngIf="activeTab === 'agenda'" class="agenda-tab-container">
 
-    <!-- Header Action Buttons -->
-    <div class="row mb-3">
-      <div class="col-lg-12 d-flex justify-content-end align-items-center gap-2">
-        <button mat-raised-button class="csv-btn">
-          <mat-icon>cloud_download</mat-icon> Download CSV
-        </button>
+    <!-- ── Info bar: Date | Time | Duration + Save ── -->
+    <div class="am-info-bar">
+      <div class="am-info-fields">
 
-        <button mat-raised-button class="csv-btn">
-          <mat-icon>cloud_download</mat-icon> Upload CSV
-        </button>
+        <div class="am-info-field">
+          <span class="am-info-label">DATE</span>
+          <input type="date" class="am-info-input" [(ngModel)]="meetingDate" />
+        </div>
 
-        <button mat-raised-button color="primary" (click)="openAddAgenda()">
-          <mat-icon>add</mat-icon> Add Agenda
-        </button>
+        <div class="am-info-divider"></div>
+
+        <div class="am-info-field">
+          <span class="am-info-label">TIME</span>
+          <input type="time" class="am-info-input" [(ngModel)]="meetingTime" />
+        </div>
+
+        <div class="am-info-divider"></div>
+
+        <div class="am-info-field">
+          <span class="am-info-label">DURATION</span>
+          <select class="am-info-input am-duration-select" [(ngModel)]="duration">
+            <option value="">Select</option>
+            <option value="30 min">30 min</option>
+            <option value="45 min">45 min</option>
+            <option value="50 min">50 min</option>
+            <option value="55 min">55 min</option>
+            <option value="1 hr">1 hr</option>
+            <option value="1 hr 30 min">1 hr 30 min</option>
+            <option value="2 hr">2 hr</option>
+            <option value="2 hr 30 min">2 hr 30 min</option>
+            <option value="3 hr">3 hr</option>
+          </select>
+        </div>
+
       </div>
+
+      <button mat-raised-button color="primary" class="am-save-btn" (click)="saveAgenda()">
+        <mat-icon>save</mat-icon> Save
+      </button>
     </div>
 
-    <!-- Agenda Table -->
-    <div class="table-responsive">
-      <table class="table table-bordered table-hover table-striped align-middle main-grid-table">
-        <thead class="table-dark">
-          <tr>
-            <th>Agenda</th>
-            <th>Description</th>
-            <th width="120" class="text-center">Status</th>
-            <th width="120" class="text-center">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of agendaList">
-            <td class="fw-semibold">{{ item.name }}</td>
-            <td>{{ item.description }}</td>
-            <td class="text-center">
-              <span (click)="toggleAgendaStatus(item)"
-                    [style.color]="item.status ? '#007ad9' : 'red'"
-                    class="pointer fw-semibold">
-                {{ item.status ? 'Active' : 'Inactive' }}
-              </span>
-            </td>
-            <td class="text-center text-nowrap">
-              <i class="fa fa-edit text-primary me-2 pointer" (click)="openAddAgenda(item)"></i>
-              <i class="fa fa-trash text-danger pointer" (click)="deleteAgenda(item)"></i>
-            </td>
-          </tr>
-          <tr *ngIf="agendaList.length === 0">
-            <td colspan="4" class="text-center text-muted py-3">No agenda items added yet.</td>
-          </tr>
-        </tbody>
-      </table>
+    <!-- ── Main two-column layout ── -->
+    <div class="am-main">
 
-      <mat-paginator [length]="agendaList.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 20, 50]"></mat-paginator>
+      <!-- Left: Agenda -->
+      <div class="am-agenda-col">
+        <div class="am-section-header">
+          <h3 class="am-section-title">Agenda</h3>
+          <span class="am-count-badge">{{ agendaCount }} items</span>
+        </div>
+
+        <div class="am-agenda-list">
+          <div class="am-agenda-item" *ngFor="let item of agendaItems; let i = index; trackBy: trackByIndex">
+            <div class="am-agenda-num">{{ i + 1 }}</div>
+
+            <input type="text" class="am-agenda-input" placeholder="Enter agenda item..."
+              [(ngModel)]="agendaItems[i]" />
+          </div>
+        </div>
+
+        <button type="button" class="am-add-item-btn" (click)="addAgendaItem()">
+          <mat-icon>add</mat-icon> <span class="btn-text">Add Agenda Item</span>
+        </button>
+      </div>
+
+      <!-- Column divider -->
+      <div class="am-col-divider"></div>
+
+      <!-- Right: Attendance -->
+      <div class="am-attendance-col">
+        <div class="am-section-header">
+          <h3 class="am-section-title">Attendance</h3>
+          <span class="am-count-badge">{{ presentCount }}/{{ attendees.length }}</span>
+          <button mat-button type="button" class="am-select-all-btn" (click)="toggleAllAttendees()">
+            <mat-icon>{{ allAttendeesSelected ? 'remove_circle_outline' : 'check_circle_outline' }}</mat-icon>
+            {{ allAttendeesSelected ? 'Deselect All' : 'Select All' }}
+          </button>
+        </div>
+
+        <div class="am-attendee-list">
+          <div class="am-attendee-card" *ngFor="let person of attendees" [class.am-attendee-present]="person.present"
+            (click)="person.present = !person.present; updateAttendanceMeta()">
+            <mat-checkbox [(ngModel)]="person.present" (click)="$event.stopPropagation(); updateAttendanceMeta()"
+              class="am-checkbox"></mat-checkbox>
+
+            <div class="am-avatar" [style.background-color]="person.color">
+              {{ person.initials }}
+            </div>
+
+            <div class="am-attendee-info">
+              <span class="am-attendee-name">{{ person.name }}</span>
+              <span class="am-attendee-role">{{ person.role }}</span>
+            </div>
+
+            <span *ngIf="person.present" class="am-present-badge">Present</span>
+          </div>
+        </div>
+      </div>
+
     </div>
 
   </div>
@@ -113,26 +161,29 @@
     <div class="filters-panel mb-3">
       <div class="d-flex flex-wrap align-items-center gap-4">
 
-        <!-- STATUS Filter -->
-        <div class="d-flex align-items-center gap-2">
+        <!-- STATUS Filter (Same as SEVERITY) -->
+        <div class="status-container d-flex align-items-center">
           <span class="filter-header-label">STATUS</span>
-          <div class="status-tabs-group">
-            <button class="status-tab-btn"
-                    [class.active]="selectedStatus === 'ALL'"
-                    (click)="selectedStatus = 'ALL'">
-              ALL ({{ getStatusCount('ALL') }})
-            </button>
-            <button class="status-tab-btn"
-                    [class.active]="selectedStatus === 'Pending'"
-                    (click)="selectedStatus = 'Pending'">
-              Pending ({{ getStatusCount('Pending') }})
-            </button>
-            <button class="status-tab-btn overdue-btn"
-                    [class.active]="selectedStatus === 'Overdue'"
-                    (click)="selectedStatus = 'Overdue'">
-              Overdue ({{ getStatusCount('Overdue') }})
-            </button>
-          </div>
+
+          <ul class="nav nav-pills custom-tabs mb-0">
+            <li [class.active]="selectedStatus === 'ALL'" class="status-all-tab">
+              <a (click)="selectedStatus = 'ALL'" class="pointer">
+                <mat-icon>list_alt</mat-icon> ALL ({{ getStatusCount('ALL') }})
+              </a>
+            </li>
+
+            <li [class.active]="selectedStatus === 'Pending'" class="status-pending-tab">
+              <a (click)="selectedStatus = 'Pending'" class="pointer">
+                <mat-icon>schedule</mat-icon> Pending ({{ getStatusCount('Pending') }})
+              </a>
+            </li>
+
+            <li [class.active]="selectedStatus === 'Overdue'" class="status-overdue-tab">
+              <a (click)="selectedStatus = 'Overdue'" class="pointer">
+                <mat-icon>error_outline</mat-icon> Overdue ({{ getStatusCount('Overdue') }})
+              </a>
+            </li>
+          </ul>
         </div>
 
         <div class="vertical-sep"></div>
@@ -142,19 +193,19 @@
           <span class="severity-label">SEVERITY</span>
 
           <ul class="nav nav-pills custom-tabs mb-0">
-            <li [class.active]="selectedSeverity === 'High'">
+            <li [class.active]="selectedSeverity === 'High'" class="severity-high-tab">
               <a (click)="selectedSeverity = selectedSeverity === 'High' ? 'ALL' : 'High'" class="pointer">
                 <mat-icon>error_outline</mat-icon> High ({{ getSeverityCount('High') }})
               </a>
             </li>
 
-            <li [class.active]="selectedSeverity === 'Moderate'">
+            <li [class.active]="selectedSeverity === 'Moderate'" class="severity-mod-tab">
               <a (click)="selectedSeverity = selectedSeverity === 'Moderate' ? 'ALL' : 'Moderate'" class="pointer">
                 <mat-icon>warning_amber</mat-icon> Moderate ({{ getSeverityCount('Moderate') }})
               </a>
             </li>
 
-            <li [class.active]="selectedSeverity === 'Low'">
+            <li [class.active]="selectedSeverity === 'Low'" class="severity-low-tab">
               <a (click)="selectedSeverity = selectedSeverity === 'Low' ? 'ALL' : 'Low'" class="pointer">
                 <mat-icon>check_circle_outline</mat-icon> Low ({{ getSeverityCount('Low') }})
               </a>
@@ -171,18 +222,16 @@
       <!-- LEFT SIDE: FOLDER NAVIGATION -->
       <div class="col-md-2 col-sm-3">
         <div class="folder-container">
-          <div class="all-folders-item mb-2"
-               [class.active-parent]="selectedFolder === 'All'"
-               (click)="selectFolder('All')">
+          <div class="all-folders-item mb-2" [class.active-parent]="selectedFolder === 'All'"
+            (click)="selectFolder('All')">
             <mat-icon class="folder-icon">folder_special</mat-icon>
             <span class="folder-label">All Categories ({{ complaintsData.length }})</span>
           </div>
 
           <div *ngFor="let folder of systemFolders" class="system-group mb-3">
             <!-- Parent Folder -->
-            <div class="d-flex align-items-center folder-item"
-                 (click)="toggleFolder(folder); selectFolder(folder.name)"
-                 [class.active-parent]="selectedFolder === folder.name">
+            <div class="d-flex align-items-center folder-item" (click)="toggleFolder(folder); selectFolder(folder.name)"
+              [class.active-parent]="selectedFolder === folder.name">
               <mat-icon class="folder-icon">
                 {{ folder.isOpen ? 'folder_open' : 'folder' }}
               </mat-icon>
@@ -191,10 +240,8 @@
 
             <!-- Child Items -->
             <div *ngIf="folder.isOpen && folder.children" class="child-list mt-2">
-              <div *ngFor="let child of folder.children"
-                   class="child-item"
-                   (click)="selectFolder(child.name)"
-                   [class.active-child]="selectedFolder === child.name">
+              <div *ngFor="let child of folder.children" class="child-item" (click)="selectFolder(child.name)"
+                [class.active-child]="selectedFolder === child.name">
                 {{ child.name }} ({{ child.count }})
               </div>
             </div>
@@ -207,9 +254,7 @@
 
         <!-- Top Action Buttons -->
         <div class="mb-3 d-flex justify-content-end gap-2">
-          <button mat-raised-button class="publish-btn" (click)="publishMeeting()">
-            <mat-icon>upload</mat-icon> Publish
-          </button>
+
           <button mat-raised-button color="primary" (click)="openAddObservation()">
             <mat-icon>add</mat-icon> Add Observation
           </button>
@@ -240,11 +285,13 @@
             </thead>
             <tbody>
               <tr *ngFor="let item of filteredComplaints" [class.overdue-row]="item.status === 'Overdue'">
-                
+
                 <!-- Actions -->
                 <td class="text-center text-nowrap">
-                  <i class="fa fa-edit text-primary me-2 pointer" (click)="openAddObservation(item)" matTooltip="Edit Observation"></i>
-                  <i class="fa fa-trash text-danger pointer" (click)="deleteObservation(item)" matTooltip="Delete Observation"></i>
+                  <i class="fa fa-edit text-primary me-2 pointer" (click)="openAddObservation(item)"
+                    matTooltip="Edit Observation"></i>
+                  <i class="fa fa-trash text-danger pointer" (click)="deleteObservation(item)"
+                    matTooltip="Delete Observation"></i>
                 </td>
 
                 <!-- Serial -->
@@ -292,7 +339,8 @@
                     <span class="capa-count-badge pointer" (click)="openCapaDialog(item)">
                       {{ item.capaCount }}
                     </span>
-                    <button mat-icon-button class="capa-add-mini-btn" (click)="openAddItemCapa(item)" matTooltip="Log CAPA for this complaint">
+                    <button mat-icon-button class="capa-add-mini-btn" (click)="openAddItemCapa(item)"
+                      matTooltip="Log CAPA for this complaint">
                       <mat-icon>add_circle</mat-icon>
                     </button>
                   </div>
@@ -301,9 +349,8 @@
                 <!-- Reviewed (Checkbox opens 10-pill next review popup per wireframe) -->
                 <td class="text-center review-cell">
                   <div class="d-flex flex-column align-items-center">
-                    <mat-checkbox [checked]="item.reviewed"
-                                  (change)="onToggleReviewed(item, $event)"
-                                  matTooltip="Click to select Next Review interval">
+                    <mat-checkbox [checked]="item.reviewed" (change)="onToggleReviewed(item, $event)"
+                      matTooltip="Click to select Next Review interval">
                     </mat-checkbox>
                     <span *ngIf="item.nextReviewDate" class="next-rev-tag" (click)="openNextReviewDialog(item)">
                       {{ item.nextReviewDate | date:'shortDate' }}
@@ -340,7 +387,8 @@
             </tbody>
           </table>
 
-          <mat-paginator [length]="filteredComplaints.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 50]"></mat-paginator>
+          <mat-paginator [length]="filteredComplaints.length" [pageSize]="10"
+            [pageSizeOptions]="[5, 10, 25, 50]"></mat-paginator>
         </div>
 
       </div>
@@ -394,10 +442,10 @@
             <td>{{ capa.category }}</td>
             <td class="text-center">{{ capa.function }}</td>
             <td class="text-center"><b>{{ capa.observationRef }}</b></td>
-            
+
             <td class="text-center">
               <span class="badge"
-                    [ngClass]="capa.severity === 'High' ? 'bg-danger' : (capa.severity === 'Medium' ? 'bg-warning text-dark' : 'bg-success')">
+                [ngClass]="capa.severity === 'High' ? 'bg-danger' : (capa.severity === 'Medium' ? 'bg-warning text-dark' : 'bg-success')">
                 {{ capa.severity }}
               </span>
             </td>
@@ -431,28 +479,16 @@
     </div>
 
     <div class="closure-editor-box mb-4">
-      <textarea class="form-control closure-textarea"
-                rows="10"
-                placeholder="enter text..."
-                [(ngModel)]="concludingRemarks"></textarea>
+      <textarea class="form-control closure-textarea" rows="10" placeholder="enter text..."
+        [(ngModel)]="concludingRemarks"></textarea>
     </div>
 
     <!-- Actions Bar -->
     <div class="d-flex justify-content-end align-items-center gap-3">
-      <button mat-raised-button color="primary">
-        <mat-icon>save</mat-icon> Save Remarks
-      </button>
 
-      <button mat-raised-button color="primary" class="me-2" (click)="downloadReport()">
-        <mat-icon>download</mat-icon> Download Meeting Closure Report
-      </button>
-
-      <button mat-raised-button color="primary" class="me-2" (click)="emailReport()">
-        <mat-icon>mail</mat-icon> Email Report
-      </button>
 
       <button mat-raised-button class="finish-btn" (click)="publishMeeting()">
-        <mat-icon>check_circle</mat-icon> Finish
+        <mat-icon>check_circle</mat-icon> Publish
       </button>
     </div>
 

@@ -21,6 +21,9 @@
             <select class="am-info-input am-duration-select" [(ngModel)]="duration">
                 <option value="">Select</option>
                 <option value="30 min">30 min</option>
+                <option value="45 min">45 min</option>
+                <option value="50 min">50 min</option>
+                <option value="55 min">55 min</option>
                 <option value="1 hr">1 hr</option>
                 <option value="1 hr 30 min">1 hr 30 min</option>
                 <option value="2 hr">2 hr</option>
@@ -32,7 +35,7 @@
     </div>
 
     <button mat-raised-button color="primary" class="am-save-btn" (click)="save()">
-        Continue <mat-icon>arrow_forward</mat-icon>
+        <mat-icon>save</mat-icon> Save
     </button>
 </div>
 
@@ -55,7 +58,7 @@
             </div>
         </div>
 
-        <button class="am-add-item-btn" (click)="addAgendaItem()">
+        <button type="button" class="am-add-item-btn" (click)="addAgendaItem()">
             <mat-icon>add</mat-icon> <span class="btn-text">Add Agenda Item</span>
         </button>
     </div>
@@ -68,7 +71,7 @@
         <div class="am-section-header">
             <h3 class="am-section-title">Attendance</h3>
             <span class="am-count-badge">{{ presentCount }}/{{ attendees.length }}</span>
-            <button mat-button class="am-select-all-btn" (click)="toggleAll()">
+            <button mat-button type="button" class="am-select-all-btn" (click)="toggleAll()">
                 <mat-icon>{{ allSelected ? 'remove_circle_outline' : 'check_circle_outline' }}</mat-icon>
                 {{ allSelected ? 'Deselect All' : 'Select All' }}
             </button>

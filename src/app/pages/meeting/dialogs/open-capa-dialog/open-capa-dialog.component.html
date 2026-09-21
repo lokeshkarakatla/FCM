@@ -1,12 +1,15 @@
-<div style="overflow-y: hidden; overflow-x: hidden;">
-  <div class="NewHeader">
-    <h1 style="color: white; font-size: 18px; margin: 0; font-weight: 500;" mat-dialog-title>
+<div class="custom-modal-wrapper">
+  <div class="modal-header-custom">
+    <h2 class="modal-title-text">
       CAPA Items for Observation {{ observationRef }}
-    </h1>
+    </h2>
+    <button type="button" class="modal-close-icon btn btn-link p-0 text-white" (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
   </div>
 
-  <div mat-dialog-content style="overflow: auto; max-height: 65vh; padding-bottom: 0px; margin-top: -15px;">
-    <div class="table-responsive mt-3">
+  <div mat-dialog-content class="modal-body-custom">
+    <div class="table-responsive mt-1">
       <table class="table table-bordered table-hover table-striped align-middle">
         <thead class="table-dark">
           <tr>
@@ -50,12 +53,12 @@
     </div>
   </div>
 
-  <mat-dialog-actions align="end" style="margin-top: 15px; padding: 10px 0 0 0;">
-    <button mat-raised-button class="btn-default me-2" (click)="close()">
-      <mat-icon>cancel</mat-icon> Close
+  <mat-dialog-actions align="end" class="modal-actions-custom">
+    <button mat-raised-button class="btn-default" (click)="close()">
+      <mat-icon class="btn-icon">cancel</mat-icon><span class="btn-label">Close</span>
     </button>
     <button mat-raised-button color="primary" (click)="save()">
-      <mat-icon>save</mat-icon> Save
+      <mat-icon class="btn-icon">save</mat-icon><span class="btn-label">Save</span>
     </button>
   </mat-dialog-actions>
 </div>

@@ -1,28 +1,31 @@
-<div style="overflow-y: hidden; overflow-x: hidden;">
-  <div class="NewHeader">
-    <h1 style="color: white; font-size: 18px; margin: 0; font-weight: 500;" mat-dialog-title>
+<div class="custom-modal-wrapper">
+  <div class="modal-header-custom">
+    <h2 class="modal-title-text">
       <span *ngIf="!data">Add</span><span *ngIf="data">Edit</span> Agenda
-    </h1>
+    </h2>
+    <button type="button" class="modal-close-icon btn btn-link p-0 text-white" (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
   </div>
 
-  <div mat-dialog-content style="overflow: hidden; padding-bottom: 0px; margin-top: -15px;">
+  <div mat-dialog-content class="modal-body-custom">
     <form class="form-horizontal">
 
-      <div class="row align-items-center mb-3 mt-3">
-        <label class="col-sm-4 control-label">
-          <b style="color: black; font-weight: 650;">Subject : <span class="text-danger">*</span></b>
+      <div class="row align-items-center mb-3">
+        <label class="col-sm-3 control-label">
+          <b style="color: #1e293b; font-weight: 600;">Subject : <span class="text-danger">*</span></b>
         </label>
-        <div class="col-sm-8">
+        <div class="col-sm-9">
           <input type="text" class="form-control" style="border-radius: 4px;" placeholder="Enter Subject"
                  [(ngModel)]="name" name="agendaSubject" autofocus />
         </div>
       </div>
 
       <div class="row align-items-center mb-3">
-        <label class="col-sm-4 control-label">
-          <b style="color: black; font-weight: 650;">Description : <span class="text-danger">*</span></b>
+        <label class="col-sm-3 control-label">
+          <b style="color: #1e293b; font-weight: 600;">Description : <span class="text-danger">*</span></b>
         </label>
-        <div class="col-sm-8">
+        <div class="col-sm-9">
           <textarea class="form-control" rows="3" style="border-radius: 4px; height: auto;"
                     placeholder="Enter Description" [(ngModel)]="description" name="agendaDescription">
           </textarea>
@@ -32,12 +35,12 @@
     </form>
   </div>
 
-  <mat-dialog-actions align="end" style="margin-top: 15px; padding: 10px 0 0 0;">
-    <button mat-raised-button class="btn-default me-2" (click)="close()">
-      <mat-icon>cancel</mat-icon> Cancel
+  <mat-dialog-actions align="end" class="modal-actions-custom">
+    <button mat-raised-button class="btn-default" (click)="close()">
+      <mat-icon class="btn-icon">cancel</mat-icon><span class="btn-label">Cancel</span>
     </button>
     <button mat-raised-button color="primary" (click)="save()">
-      <mat-icon>save</mat-icon> Save
+      <mat-icon class="btn-icon">save</mat-icon><span class="btn-label">Save</span>
     </button>
   </mat-dialog-actions>
 </div>
