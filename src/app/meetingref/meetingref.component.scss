@@ -1,99 +1,291 @@
+:host {
+  display: block;
+  width: 100%;
+}
 
-
-.meeting-container {
+/* ── Info bar: Date | Time | Duration + Save ── */
+.am-info-bar {
   display: flex;
-  gap: 30px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: #fff;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-/* LEFT */
-.agenda-section {
-  width: 50%;
+.am-info-fields {
+  display: flex;
+  align-items: center;
 }
 
-.agenda-list {
+.am-info-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 28px;
+
+  &:first-child {
+    padding-left: 0;
+  }
+}
+
+.am-info-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #888;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.am-info-input {
+  border: none;
+  outline: none;
+  font-size: 15px;
+  font-weight: 600;
+  color: #222;
+  background: transparent;
+  padding: 0;
+  min-width: 120px;
+  cursor: pointer;
+}
+
+.am-duration-select {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.am-info-divider {
+  width: 1px;
+  height: 44px;
+  background: #e0e0e0;
+  flex-shrink: 0;
+}
+
+.am-save-btn {
+  min-width: 100px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  background-color: #0284c7 !important;
+  color: #fff !important;
+}
+
+/* ── Main two-column layout ── */
+.am-main {
+  display: flex;
+  padding: 28px 24px;
+  background: #fff;
+  min-height: calc(100vh - 200px);
+  gap: 0;
+}
+
+.am-agenda-col {
+  flex: 1;
+  padding-right: 32px;
+}
+
+.am-col-divider {
+  width: 1px;
+  background: #e0e0e0;
+  flex-shrink: 0;
+}
+
+.am-attendance-col {
+  flex: 1;
+  padding-left: 32px;
+}
+
+/* ── Section headers ── */
+.am-section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.am-section-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+  color: #222;
+}
+
+.am-count-badge {
+  background: #27ae60;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.am-select-all-btn {
+  margin-left: auto;
+  color: #1976d2 !important;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── Agenda items ── */
+.am-agenda-list {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin-bottom: 16px;
 }
 
-.agenda-card {
+.am-agenda-item {
   display: flex;
   align-items: center;
-  background: #f6f6f2;
-  border-radius: 12px;
-  padding: 12px;
+  gap: 14px;
 }
 
-.agenda-index {
+.am-agenda-num {
   width: 32px;
   height: 32px;
-  background: #bfe8e8;
   border-radius: 50%;
+  background: #e9ecef;
+  color: #555;
+  font-size: 14px;
+  font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.am-agenda-input {
+  flex: 1;
+  height: 42px;
+  padding: 8px 14px;
+  border: 1.5px solid #e1e1e1;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #222;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s;
+
+  &:focus {
+    outline: none;
+    border-color: #1a8a4a;
+    box-shadow: none;
+  }
+
+  &::placeholder {
+    color: #bbb;
+  }
+}
+
+.am-add-item-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: #1976d2;
+  font-size: 14px;
   font-weight: 600;
+  cursor: pointer;
+  padding: 4px 0;
+  margin-top: 4px;
+
+  &:hover {
+    color: #1256a2;
+
+    span.btn-text {
+      text-decoration: underline;
+    }
+  }
 }
 
-.agenda-text {
-  font-size: 15px;
-}
-
-/* RIGHT */
-.attended-section {
-width: 50%;
-}
-
-.attended-grid {
+/* ── Attendee cards ── */
+.am-attendee-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
 }
 
-.attended-card {
+.am-attendee-card {
   display: flex;
   align-items: center;
-  background: #f6f6f2;
-  border-radius: 12px;
-  padding: 12px;
+  gap: 12px;
+  padding: 12px 16px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  background: #f0f2f5;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  user-select: none;
+
+  &:hover {
+    border-color: #cbd5e1;
+    background: #e9ecef;
+  }
+
+  &.am-attendee-present {
+    background: #e3f2fd;
+    border-color: #1976d2;
+  }
 }
 
-.avatar {
-  width: 38px;
-  height: 38px;
+.am-checkbox {
+  flex-shrink: 0;
+}
+
+.am-avatar {
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: #bfe8e8;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
-  margin-right: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+  opacity: 1;
 }
 
-.name {
-  font-weight: 600;
-}
-
-.role {
-  font-size: 12px;
-  color: gray;
-}
-
-/* header badge */
-.section-title {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 12px;
+.am-attendee-info {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
 }
 
-.badge {
-  background: #28a745;
-  color: white;
+.am-attendee-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #222;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.am-attendee-role {
   font-size: 12px;
-  padding: 3px 10px;
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.am-present-badge {
+  font-size: 11px;
+  font-weight: 600;
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+  padding: 2px 9px;
   border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-left: auto;
 }

@@ -1,18 +1,21 @@
-<div style="overflow-y: hidden; overflow-x: hidden;">
-  <div class="NewHeader">
-    <h1 style="color: white; font-size: 18px; margin: 0; font-weight: 500;" mat-dialog-title>
+<div class="custom-modal-wrapper">
+  <div class="modal-header-custom">
+    <h2 class="modal-title-text">
       <span *ngIf="!data">Add</span><span *ngIf="data">Edit</span> Action Item
-    </h1>
+    </h2>
+    <button type="button" class="modal-close-icon btn btn-link p-0 text-white" (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
   </div>
 
-  <div mat-dialog-content style="overflow: auto; max-height: 65vh; padding-bottom: 0px; margin-top: -15px;">
+  <div mat-dialog-content class="modal-body-custom">
     <form class="form-horizontal">
 
-      <div class="row align-items-center mb-3 mt-3">
-        <label class="col-sm-4 control-label">
-          <b style="color: black; font-weight: 650;">Category : <span class="text-danger">*</span></b>
+      <div class="row align-items-center mb-3">
+        <label class="col-sm-3 control-label">
+          <b style="color: #1e293b; font-weight: 600;">Category : <span class="text-danger">*</span></b>
         </label>
-        <div class="col-sm-8">
+        <div class="col-sm-9">
           <mat-select class="form-control bac" [(ngModel)]="category" name="capaCategory">
             <mat-option value="Quality">Quality</mat-option>
             <mat-option value="Production Operations">Production Operations</mat-option>
@@ -23,10 +26,10 @@
       </div>
 
       <div class="row align-items-center mb-3">
-        <label class="col-sm-4 control-label">
-          <b style="color: black; font-weight: 650;">Function : <span class="text-danger">*</span></b>
+        <label class="col-sm-3 control-label">
+          <b style="color: #1e293b; font-weight: 600;">Function : <span class="text-danger">*</span></b>
         </label>
-        <div class="col-sm-8">
+        <div class="col-sm-9">
           <mat-select class="form-control bac" [(ngModel)]="functionName" name="capaFunction">
             <mat-option value="Function1">Function1</mat-option>
             <mat-option value="Assembly Line Inspection">Assembly Line Inspection</mat-option>
@@ -36,29 +39,29 @@
       </div>
 
       <div class="row align-items-center mb-3">
-        <label class="col-sm-4 control-label">
-          <b style="color: black; font-weight: 650;">Observation Ref : <span class="text-danger">*</span></b>
+        <label class="col-sm-3 control-label">
+          <b style="color: #1e293b; font-weight: 600;">Observation Ref : <span class="text-danger">*</span></b>
         </label>
-        <div class="col-sm-8">
+        <div class="col-sm-9">
           <input type="text" class="form-control bac" [(ngModel)]="observationRef" name="observationRef" />
         </div>
       </div>
 
       <div class="row align-items-center mb-3">
-        <label class="col-sm-4 control-label">
-          <b style="color: black; font-weight: 650;">Subject : <span class="text-danger">*</span></b>
+        <label class="col-sm-3 control-label">
+          <b style="color: #1e293b; font-weight: 600;">Subject : <span class="text-danger">*</span></b>
         </label>
-        <div class="col-sm-8">
+        <div class="col-sm-9">
           <input type="text" class="form-control bac" placeholder="Enter Action Subject"
                  [(ngModel)]="subject" name="capaSubject" autofocus />
         </div>
       </div>
 
       <div class="row align-items-center mb-3">
-        <label class="col-sm-4 control-label">
-          <b style="color: black; font-weight: 650;">Severity : <span class="text-danger">*</span></b>
+        <label class="col-sm-3 control-label">
+          <b style="color: #1e293b; font-weight: 600;">Severity : <span class="text-danger">*</span></b>
         </label>
-        <div class="col-sm-8">
+        <div class="col-sm-9">
           <mat-select class="form-control bac" [(ngModel)]="severity" name="capaSeverity">
             <mat-option value="Low">Low</mat-option>
             <mat-option value="Medium">Medium</mat-option>
@@ -68,28 +71,28 @@
       </div>
 
       <div class="row align-items-center mb-3">
-        <label class="col-sm-4 control-label">
-          <b style="color: black; font-weight: 650;">Date Initiated : <span class="text-danger">*</span></b>
+        <label class="col-sm-3 control-label">
+          <b style="color: #1e293b; font-weight: 600;">Date Initiated : <span class="text-danger">*</span></b>
         </label>
-        <div class="col-sm-8">
+        <div class="col-sm-9">
           <input type="date" class="form-control bac" [(ngModel)]="dateInitiated" name="dateInitiated" />
         </div>
       </div>
 
       <div class="row align-items-center mb-3">
-        <label class="col-sm-4 control-label">
-          <b style="color: black; font-weight: 650;">Date Due : <span class="text-danger">*</span></b>
+        <label class="col-sm-3 control-label">
+          <b style="color: #1e293b; font-weight: 600;">Date Due : <span class="text-danger">*</span></b>
         </label>
-        <div class="col-sm-8">
+        <div class="col-sm-9">
           <input type="date" class="form-control bac" [(ngModel)]="dateDue" name="dateDue" />
         </div>
       </div>
 
       <div class="row align-items-center mb-3">
-        <label class="col-sm-4 control-label">
-          <b style="color: black; font-weight: 650;">TAT : <span class="text-danger">*</span></b>
+        <label class="col-sm-3 control-label">
+          <b style="color: #1e293b; font-weight: 600;">TAT : <span class="text-danger">*</span></b>
         </label>
-        <div class="col-sm-8">
+        <div class="col-sm-9">
           <input type="text" class="form-control bac" placeholder="e.g. 7 Days"
                  [(ngModel)]="tat" name="tat" />
         </div>
@@ -98,12 +101,12 @@
     </form>
   </div>
 
-  <mat-dialog-actions align="end" style="margin-top: 15px; padding: 10px 0 0 0;">
-    <button mat-raised-button class="btn-default me-2" (click)="close()">
-      <mat-icon>cancel</mat-icon> Cancel
+  <mat-dialog-actions align="end" class="modal-actions-custom">
+    <button mat-raised-button class="btn-default" (click)="close()">
+      <mat-icon class="btn-icon">cancel</mat-icon><span class="btn-label">Cancel</span>
     </button>
     <button mat-raised-button color="primary" (click)="save()">
-      <mat-icon>save</mat-icon> Save
+      <mat-icon class="btn-icon">save</mat-icon><span class="btn-label">Save</span>
     </button>
   </mat-dialog-actions>
 </div>

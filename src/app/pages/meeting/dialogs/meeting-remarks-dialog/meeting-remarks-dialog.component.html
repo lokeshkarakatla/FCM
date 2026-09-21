@@ -1,11 +1,14 @@
-<div style="overflow-y: hidden; overflow-x: hidden;">
-  <div class="NewHeader">
-    <h1 style="color: white; font-size: 18px; margin: 0; font-weight: 500;" mat-dialog-title>
+<div class="custom-modal-wrapper">
+  <div class="modal-header-custom">
+    <h2 class="modal-title-text">
       <span *ngIf="!data">Add</span><span *ngIf="data">Edit</span> Comments
-    </h1>
+    </h2>
+    <button type="button" class="modal-close-icon btn btn-link p-0 text-white" (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
   </div>
 
-  <div mat-dialog-content style="overflow: auto; max-height: 70vh; padding-bottom: 0px; margin-top: -15px;">
+  <div mat-dialog-content class="modal-body-custom">
     <form class="form-horizontal">
 
       <!-- Row: Auditee & Auditor Sections Side by Side -->
@@ -15,14 +18,14 @@
         <div class="col-sm-6 divider-right">
           <div class="row align-items-center mb-3">
             <label class="col-sm-6 control-label">
-              <b>Auditee Response Date : <span class="text-danger">*</span></b>
+              <b style="color: #1e293b; font-weight: 600;">Auditee Response Date : <span class="text-danger">*</span></b>
             </label>
             <div class="col-sm-6">
               <input type="date" class="form-control" [(ngModel)]="auditeeResponseDate" name="auditeeResponseDate" />
             </div>
           </div>
 
-          <b class="d-block mb-1">Auditee Description</b>
+          <b class="d-block mb-1" style="color: #1e293b; font-weight: 600;">Auditee Description</b>
           <textarea class="form-control" style="height: 220px; resize: none;"
                     placeholder="Enter auditee remarks..." [(ngModel)]="auditeeNarration" name="auditeeNarration">
           </textarea>
@@ -32,14 +35,14 @@
         <div class="col-sm-6">
           <div class="row align-items-center mb-3">
             <label class="col-sm-6 control-label">
-              <b>Auditor Remarks Date : <span class="text-danger">*</span></b>
+              <b style="color: #1e293b; font-weight: 600;">Auditor Remarks Date : <span class="text-danger">*</span></b>
             </label>
             <div class="col-sm-6">
               <input type="date" class="form-control" [(ngModel)]="auditorRemarksDate" name="auditorRemarksDate" />
             </div>
           </div>
 
-          <b class="d-block mb-1">Auditor Remarks Description</b>
+          <b class="d-block mb-1" style="color: #1e293b; font-weight: 600;">Auditor Remarks Description</b>
           <textarea class="form-control" style="height: 220px; resize: none;"
                     placeholder="Enter auditor remarks..." [(ngModel)]="auditorDescription" name="auditorDescription">
           </textarea>
@@ -50,12 +53,12 @@
     </form>
   </div>
 
-  <mat-dialog-actions align="end" style="margin-top: 15px; padding: 10px 0 0 0;">
-    <button mat-raised-button class="btn-default me-2" (click)="close()">
-      <mat-icon>cancel</mat-icon> Cancel
+  <mat-dialog-actions align="end" class="modal-actions-custom">
+    <button mat-raised-button class="btn-default" (click)="close()">
+      <mat-icon class="btn-icon">cancel</mat-icon><span class="btn-label">Cancel</span>
     </button>
     <button mat-raised-button color="primary" (click)="save()">
-      <mat-icon>save</mat-icon> Save
+      <mat-icon class="btn-icon">save</mat-icon><span class="btn-label">Save</span>
     </button>
   </mat-dialog-actions>
 </div>
