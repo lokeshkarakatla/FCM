@@ -358,8 +358,14 @@
                     <mat-checkbox [checked]="item.reviewed" (change)="onToggleReviewed(item, $event)"
                       matTooltip="Click to select Next Review interval">
                     </mat-checkbox>
-                    <span *ngIf="item.nextReviewDate" class="next-rev-tag" (click)="openNextReviewDialog(item)">
+                    <span *ngIf="item.nextReviewDate" class="next-rev-tag"
+                      [ngClass]="getReviewTag(item.nextReviewDate)?.cssClass"
+                      [matTooltip]="'Next Review Date: ' + item.nextReviewDate + ' (' + (getReviewTag(item.nextReviewDate)?.isPast ? 'Past Due' : 'Upcoming') + ')'"
+                      (click)="openNextReviewDialog(item)">
                       {{ item.nextReviewDate | date:'shortDate' }}
+                      <span class="days-pill" *ngIf="getReviewTag(item.nextReviewDate) as tag">
+                        {{ tag.label }}
+                      </span>
                     </span>
                   </div>
                 </td>
@@ -486,14 +492,16 @@
 
     <div class="closure-editor-box mb-4">
       <textarea class="form-control closure-textarea" rows="10" placeholder="enter text..."
-        [(ngModel)]="concludingRemarks"></textarea>
+        [(ngModel)]="concludingRemarks" [readonly]="isClosed" [class.read-only-box]="isClosed"></textarea>
     </div>
 
     <!-- Actions Bar -->
     <div class="d-flex justify-content-end align-items-center gap-3">
+      <span *ngIf="isClosed" class="badge bg-success p-2 fs-6 d-inline-flex align-items-center gap-1">
+        <mat-icon style="font-size: 16px; height: 16px; width: 16px;">lock</mat-icon> Meeting Closed &amp; Published
+      </span>
 
-
-      <button mat-raised-button class="finish-btn" (click)="publishMeeting()">
+      <button *ngIf="!isClosed" mat-raised-button class="finish-btn" (click)="publishMeeting()">
         <mat-icon>check_circle</mat-icon> Publish
       </button>
     </div>

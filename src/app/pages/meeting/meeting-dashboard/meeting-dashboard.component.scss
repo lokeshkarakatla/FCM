@@ -737,14 +737,46 @@
   }
 
   .next-rev-tag {
-    font-size: 10px;
-    background: #e0f2fe;
-    color: #0369a1;
+    font-size: 11px;
     border-radius: 4px;
-    padding: 1px 5px;
+    padding: 2px 6px;
     cursor: pointer;
-    margin-top: 2px;
+    margin-top: 3px;
     font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.2s;
+
+    &.blue-tag {
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+
+      .days-pill {
+        background: #0284c7;
+        color: #ffffff;
+      }
+    }
+
+    &.red-tag {
+      background: #fee2e2;
+      color: #b91c1c;
+      border: 1px solid #fecaca;
+
+      .days-pill {
+        background: #dc2626;
+        color: #ffffff;
+      }
+    }
+
+    .days-pill {
+      font-size: 9px;
+      font-weight: 700;
+      padding: 0 4px;
+      border-radius: 10px;
+      line-height: 14px;
+    }
   }
 
   .capa-count-badge {
@@ -823,6 +855,12 @@
     padding: 12px;
     line-height: 1.6;
     resize: vertical;
+
+    &.read-only-box {
+      background-color: #f8fafc;
+      color: #64748b;
+      cursor: not-allowed;
+    }
   }
 
   .report-download-btn {

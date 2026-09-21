@@ -486,6 +486,9 @@ export class MeetingDashboardComponent implements OnInit {
       if (params['attendance']) {
         this.attendance = params['attendance'];
       }
+      if (params['status'] === 'Closed' || params['isClosed'] === 'true') {
+        this.isClosed = true;
+      }
     });
   }
 
@@ -600,6 +603,31 @@ export class MeetingDashboardComponent implements OnInit {
       if (this.selectedSeverity !== 'ALL' && item.severity !== this.selectedSeverity) return false;
       return item.country === name || item.dealer === name || item.category === name;
     }).length;
+  }
+
+  getReviewTag(reviewDate?: string): { days: number, isPast: boolean, label: string, cssClass: string } | null {
+    if (!reviewDate) return null;
+    const rev = new Date(reviewDate);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    rev.setHours(0, 0, 0, 0);
+
+    const diffTime = rev.getTime() - today.getTime();
+    const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
+    const isPast = diffDays < 0;
+    const absDays = Math.abs(diffDays);
+
+    let label = '';
+    if (diffDays === 0) {
+      label = 'Today';
+    } else if (isPast) {
+      label = `-${absDays}d`;
+    } else {
+      label = `+${absDays}d`;
+    }
+
+    const cssClass = isPast ? 'red-tag' : 'blue-tag';
+    return { days: absDays, isPast, label, cssClass };
   }
 
   toggleFolder(folder: any): void {
@@ -777,7 +805,6 @@ export class MeetingDashboardComponent implements OnInit {
     dialogRef.afterClosed().subscribe(confirmed => {
       if (confirmed) {
         this.isClosed = true;
-        this.router.navigate(['/app/complaints/meetings']);
       }
     });
   }
