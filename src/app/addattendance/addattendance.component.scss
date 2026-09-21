@@ -184,26 +184,84 @@
   }
 
   .attendance-footer {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 10px !important;
+    min-height: 52px;
+
     button {
-      height: 36px;
-      font-size: 14px;
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 0 16px;
-      border-radius: 4px;
+      height: 36px !important;
+      min-height: 36px !important;
+      max-height: 36px !important;
+      line-height: 36px !important;
+      padding: 0 16px !important;
+      font-size: 14px !important;
+      font-weight: 500 !important;
+      margin: 0 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      align-self: center !important;
+      vertical-align: middle !important;
+      border: 1px solid transparent !important;
+      border-radius: 4px !important;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+
+      ::ng-deep .mat-button-wrapper {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        vertical-align: middle !important;
+        height: 100% !important;
+        line-height: 1 !important;
+        gap: 6px !important;
+      }
 
       .btn-icon, mat-icon {
-        font-size: 18px;
-        width: 18px;
-        height: 18px;
+        font-size: 18px !important;
+        width: 18px !important;
+        height: 18px !important;
+        line-height: 18px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        vertical-align: middle !important;
+      }
+
+      .btn-label {
+        font-size: 14px !important;
+        font-weight: 500 !important;
+        line-height: 1 !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        vertical-align: middle !important;
+        margin: 0 !important;
+        padding: 0 !important;
       }
     }
 
     .btn-default {
-      background: #f1f5f9;
-      color: #475569;
+      background-color: #f1f5f9 !important;
+      color: #334155 !important;
+      border: 1px solid #cbd5e1 !important;
+
+      &:hover {
+        background-color: #e2e8f0 !important;
+      }
+    }
+
+    button[color="primary"] {
+      background-color: #0284c7 !important;
+      color: #ffffff !important;
+      border: 1px solid #0284c7 !important;
+
+      &:hover {
+        background-color: #0369a1 !important;
+      }
     }
   }
 }
