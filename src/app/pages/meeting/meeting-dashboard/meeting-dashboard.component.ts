@@ -132,8 +132,8 @@ export class MeetingDashboardComponent implements OnInit {
   // STATUS: ALL(8), Pending(7), Overdue(1)
   selectedStatus: 'ALL' | 'Pending' | 'Overdue' = 'ALL';
 
-  // SEVERITY: High(4), Moderate(2), Low(2)
-  selectedSeverity: 'ALL' | 'High' | 'Moderate' | 'Low' = 'High';
+  // SEVERITY: ALL(8), High(4), Moderate(2), Low(2)
+  selectedSeverity: 'ALL' | 'High' | 'Moderate' | 'Low' = 'ALL';
 
   // Left folder navigation (Country -> Dealer hierarchy)
   selectedFolder: string = 'All';
@@ -551,12 +551,55 @@ export class MeetingDashboardComponent implements OnInit {
   }
 
   getStatusCount(status: 'ALL' | 'Pending' | 'Overdue'): number {
-    if (status === 'ALL') return this.complaintsData.length;
-    return this.complaintsData.filter(c => c.status === status).length;
+    return this.complaintsData.filter(item => {
+      // Respect selectedFolder
+      if (this.selectedFolder !== 'All') {
+        const matchesCategory = item.category === this.selectedFolder;
+        const matchesCountry = item.country === this.selectedFolder;
+        const matchesDealer = item.dealer === this.selectedFolder;
+        if (!matchesCategory && !matchesCountry && !matchesDealer) return false;
+      }
+      // Respect selectedSeverity
+      if (this.selectedSeverity !== 'ALL' && item.severity !== this.selectedSeverity) {
+        return false;
+      }
+      if (status === 'ALL') return true;
+      return item.status === status;
+    }).length;
   }
 
-  getSeverityCount(severity: 'High' | 'Moderate' | 'Low'): number {
-    return this.complaintsData.filter(c => c.severity === severity).length;
+  getSeverityCount(severity: 'ALL' | 'High' | 'Moderate' | 'Low'): number {
+    return this.complaintsData.filter(item => {
+      // Respect selectedFolder
+      if (this.selectedFolder !== 'All') {
+        const matchesCategory = item.category === this.selectedFolder;
+        const matchesCountry = item.country === this.selectedFolder;
+        const matchesDealer = item.dealer === this.selectedFolder;
+        if (!matchesCategory && !matchesCountry && !matchesDealer) return false;
+      }
+      // Respect selectedStatus
+      if (this.selectedStatus !== 'ALL' && item.status !== this.selectedStatus) {
+        return false;
+      }
+      if (severity === 'ALL') return true;
+      return item.severity === severity;
+    }).length;
+  }
+
+  getAllCountriesCount(): number {
+    return this.complaintsData.filter(item => {
+      if (this.selectedStatus !== 'ALL' && item.status !== this.selectedStatus) return false;
+      if (this.selectedSeverity !== 'ALL' && item.severity !== this.selectedSeverity) return false;
+      return true;
+    }).length;
+  }
+
+  getFolderCount(name: string): number {
+    return this.complaintsData.filter(item => {
+      if (this.selectedStatus !== 'ALL' && item.status !== this.selectedStatus) return false;
+      if (this.selectedSeverity !== 'ALL' && item.severity !== this.selectedSeverity) return false;
+      return item.country === name || item.dealer === name || item.category === name;
+    }).length;
   }
 
   toggleFolder(folder: any): void {

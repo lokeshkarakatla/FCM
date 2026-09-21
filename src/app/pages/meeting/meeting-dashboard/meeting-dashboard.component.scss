@@ -569,7 +569,8 @@
     }
 
     /* Active styling: Soft colored badge pills */
-    &.status-all-tab.active a {
+    &.status-all-tab.active a,
+    &.severity-all-tab.active a {
       background-color: #e0f2fe !important;
       border-color: #bae6fd !important;
       color: #0369a1 !important;
