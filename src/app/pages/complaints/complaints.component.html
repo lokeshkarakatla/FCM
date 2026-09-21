@@ -3,12 +3,17 @@
     <!-- Action Buttons -->
     <div class="action-bar">
 
-        <button mat-raised-button color="primary" class="pull-right primary-btn" (click)="goToAddComplaint()">
-            <mat-icon>person_add</mat-icon> Add Complaint
-        </button>
+        <div class="switchToggle">
+            <input type="checkbox" id="maskInactiveSwitch" [(ngModel)]="maskInactive">
+            <label for="maskInactiveSwitch"></label>
+        </div>
 
         <button mat-raised-button class="pull-right margin-right-10 dark-btn" (click)="filterToggle = !filterToggle">
             <mat-icon>filter_list</mat-icon> Filter
+        </button>
+
+        <button mat-raised-button color="primary" class="pull-right primary-btn" (click)="goToAddComplaint()">
+            <mat-icon>person_add</mat-icon> Add Complaint
         </button>
 
     </div>
