@@ -25,6 +25,7 @@ export interface MeetingComplaint {
   description: string;
   category: string;
   country?: string;
+  department?: string;
   dealer?: string;
   severity: 'High' | 'Moderate' | 'Low';
   status: 'Pending' | 'Overdue';
@@ -216,6 +217,7 @@ export class MeetingDashboardComponent implements OnInit {
       description: 'Parts are not properly aligned before being fastened, creating a risk of structural weakness or functional failure.',
       category: 'India',
       country: 'India',
+      department: 'Production',
       dealer: 'Mumbai Central',
       severity: 'High',
       status: 'Pending',
@@ -241,6 +243,7 @@ export class MeetingDashboardComponent implements OnInit {
       description: 'Traces of foreign particulate matter were discovered inside the material drums during routine batch sampling.',
       category: 'India',
       country: 'India',
+      department: 'QA',
       dealer: 'Mumbai Central',
       severity: 'High',
       status: 'Pending',
@@ -265,6 +268,7 @@ export class MeetingDashboardComponent implements OnInit {
       description: 'The shipment arrived from the supplier without the mandatory Certificate of Analysis documentation.',
       category: 'India',
       country: 'India',
+      department: 'Incoming Inspection',
       dealer: 'Delhi Motors',
       severity: 'High',
       status: 'Pending',
@@ -289,6 +293,7 @@ export class MeetingDashboardComponent implements OnInit {
       description: 'Raw material packaging was found torn or crushed upon delivery, increasing the risk of contamination.',
       category: 'India',
       country: 'India',
+      department: 'Warehouse',
       dealer: 'Bangalore Auto',
       severity: 'High',
       status: 'Overdue',
@@ -313,6 +318,7 @@ export class MeetingDashboardComponent implements OnInit {
       description: 'Optical alignment sensors showing intermittent +/- 2mm offset deviation during continuous cycle run.',
       category: 'Germany',
       country: 'Germany',
+      department: 'Maintenance',
       dealer: 'Munich Auto',
       severity: 'Moderate',
       status: 'Pending',
@@ -337,6 +343,7 @@ export class MeetingDashboardComponent implements OnInit {
       description: 'Secondary line pump pressure fluctuating outside 120-140 bar tolerance band during shift handover.',
       category: 'Germany',
       country: 'Germany',
+      department: 'Production',
       dealer: 'Berlin Motors',
       severity: 'Moderate',
       status: 'Pending',
@@ -361,6 +368,7 @@ export class MeetingDashboardComponent implements OnInit {
       description: 'Thermal transfer printed barcodes showing 4% scanner rejection rate at warehouse inbound gate.',
       category: 'United States',
       country: 'United States',
+      department: 'Logistics',
       dealer: 'Chicago Fleet',
       severity: 'Low',
       status: 'Pending',
@@ -386,6 +394,7 @@ export class MeetingDashboardComponent implements OnInit {
       description: 'Dust cover clips on tier-3 storage bins showing cosmetic micro-cracks without functional impairment.',
       category: 'Thailand',
       country: 'Thailand',
+      department: 'Warehouse',
       dealer: 'Bangkok Central',
       severity: 'Low',
       status: 'Pending',

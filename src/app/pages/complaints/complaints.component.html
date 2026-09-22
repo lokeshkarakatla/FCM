@@ -151,22 +151,15 @@
                         <th>Subject</th>
                         <th class="problem-statement-header">Description</th>
                         <th>Department</th>
+                        <th>Severity</th>
                         <th class="text-center">CAPA</th>
                         <th class="text-center">Steps</th>
                         <th>Progress</th>
                         <th class="nowrap">Country</th>
-                        <th>City</th>
-                        <th>Model</th>
-                        <th>Severity</th>
-                        <th>Distributor</th>
-                        <th>Serial No</th>
                         <th class="status-col text-center">Status</th>
                         <th>Responsibility</th>
                         <th>Complaint Date</th>
-                        <th>Customer</th>
-                        <th class="text-center">Failure Date</th>
                         <th class="text-center">Due Date</th>
-                        <th class="text-center">Completion Date</th>
                     </tr>
                 </thead>
 
@@ -175,10 +168,10 @@
 
 
                         <td class="nowrap">
-                            <a matTooltip="Edit User" (click)="goToAddComplaint()">
+                            <a matTooltip="Edit Complaint" (click)="goToAddComplaint()">
                                 <i class="fa fa-edit"></i>
                             </a>
-                            <a matTooltip="Delete User" (click)="deleteConfirmation(applicant)">
+                            <a matTooltip="Delete Complaint" (click)="deleteConfirmation(applicant)">
                                 <i class="fa fa-trash red"></i>
                             </a>
                         </td>
@@ -192,6 +185,7 @@
                         <td class="nowrap">{{ applicant.subject }}</td>
                         <td class="problem-statement">{{ applicant.problemSubject }}</td>
                         <td>{{ applicant.department }}</td>
+                        <td>{{ applicant.criticality }}</td>
 
                         <td class="text-center link" (click)="openCAPA()">2</td>
                         <td class="switchToggle text-center" (click)="gotoupdate()">
@@ -205,11 +199,6 @@
                         </td>
 
                         <td class="text-center">{{ applicant.country }}</td>
-                        <td>{{ applicant.City }}</td>
-                        <td>{{ applicant.model }}</td>
-                        <td>{{ applicant.criticality }}</td>
-                        <td>{{ applicant.distributor }}</td>
-                        <td class="text-center">{{ applicant.serialno }}</td>
 
                         <td class="status-col">
                             <select class="form-select status-select">
@@ -222,10 +211,7 @@
 
                         <td>{{ applicant.Lead }}</td>
                         <td>{{ applicant.FailureDate }}</td>
-                        <td>{{ applicant.TargetDate }}</td>
-                        <td>{{ applicant.ExpectedFinishDate }}</td>
-                        <td>{{ applicant.ActualFinishDate }}</td>
-                        <td class="text-center">{{ applicant.complitionDate }}</td>
+                        <td class="text-center">{{ applicant.ExpectedFinishDate }}</td>
 
                     </tr>
                 </tbody>
