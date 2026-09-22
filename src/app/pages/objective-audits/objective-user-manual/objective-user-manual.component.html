@@ -1,2 +1,330 @@
-<img alt="logo" class="logo-default logo-img" style="align-items: center; height: 400px;  margin-left: 20px;margin-top:45px;
-    background: white;" src="../../../assets/cons.png">
+<div class="user-manual-container">
+  <!-- Top Hero Header -->
+  <div class="manual-hero">
+    <div class="hero-content">
+      <div class="d-flex align-items-center gap-2 mb-2">
+        <span class="badge-tag standard-badge">IATF 16949 / VDA 6.3 COMPLIANT</span>
+        <span class="badge-tag doc-badge">DOC-ID: SOP-QA-OBJ-2025-V4</span>
+        <span class="badge-tag rev-badge">Rev 4.2 | Live SSOT</span>
+      </div>
+      <h2 class="hero-title">Objective Quality Audit & Checkpoint Standard Operating Procedure (SOP)</h2>
+      <p class="hero-subtitle">
+        Automotive Vehicle Quality Assurance Standard for Finished Units, Sub-Assemblies, and In-Line Gate Inspections across Body-in-White (BIW), CED Paint, Trim-Chassis-Final (TCF), and Pre-Delivery Inspection (PDI).
+      </p>
+    </div>
+    <div class="hero-actions">
+      <button mat-raised-button class="btn-print" onclick="window.print()">
+        <mat-icon>print</mat-icon> Print SOP Manual
+      </button>
+    </div>
+  </div>
+
+  <!-- Key Metric Summary Cards -->
+  <div class="row kpi-row g-3 mb-4">
+    <div class="col-md-3 col-sm-6">
+      <div class="kpi-card border-left-primary">
+        <div class="kpi-label">TARGET WDPV COMPLIANCE</div>
+        <div class="kpi-value text-primary">&ge; 94.0%</div>
+        <div class="kpi-note">Weighted Demerit Per Vehicle</div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="kpi-card border-left-danger">
+        <div class="kpi-label">CLASS A DEFECT TOLERANCE</div>
+        <div class="kpi-value text-danger">ZERO (0)</div>
+        <div class="kpi-note">Safety / Regulatory / EV Isolation</div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="kpi-card border-left-warning">
+        <div class="kpi-label">TOTAL CHECKPOINTS</div>
+        <div class="kpi-value text-warning">560 Points</div>
+        <div class="kpi-note">6 Inspection Stations Across Plant</div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="kpi-card border-left-success">
+        <div class="kpi-label">7D PRTS ESCALATION</div>
+        <div class="kpi-value text-success">&le; 2 Hours</div>
+        <div class="kpi-note">Automated Ticket Creation for Demerits</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 1: Navigation & Workflow Mapping -->
+  <div class="card mb-4 shadow-sm manual-card">
+    <div class="card-header bg-white d-flex align-items-center gap-2">
+      <mat-icon class="section-icon text-primary">alt_route</mat-icon>
+      <h4 class="mb-0 font-weight-bold">1. Objective Audits Tab Navigation & Operational Workflow</h4>
+    </div>
+    <div class="card-body">
+      <p class="text-muted">The Objective Audits module provides 9 specialized side navigation views to manage end-to-end audit lifecycles:</p>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover mb-0">
+          <thead class="table-light">
+            <tr>
+              <th style="width: 180px;">Side Nav Item</th>
+              <th style="width: 200px;">Operational Purpose</th>
+              <th>Key User Actions & Business Rules</th>
+              <th style="width: 140px;">IATF Standard</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Radar</strong></td>
+              <td>Daily / Monthly Quality Scorecard</td>
+              <td>Visualizes model-wise compliance ((D)Met, (C)Met, (P)Met) vs 94% WDPV targets for Fortuner, Creta SX, XUV700, and Nexon EV. Color-coded red/green/blue bar trackers.</td>
+              <td>Clause 9.1.1 (Monitoring)</td>
+            </tr>
+            <tr>
+              <td><strong>Reports</strong></td>
+              <td>Trend & Demerit Analytics</td>
+              <td>Multi-tab historical analytics: Model Trend (line demerits), Department Wise (BIW, Paint, TCF, PDI), Agency breakdown, and Pareto defect rankings.</td>
+              <td>Clause 9.1.3 (Analysis)</td>
+            </tr>
+            <tr>
+              <td><strong>New Audit</strong></td>
+              <td>Audit Initiation Dialog</td>
+              <td>Creates a new audit record for a manufactured vehicle. Mandatory fields: 17-char ISO VIN, Model, Variant, Interior Trim, Paint Color, Transmission, Fuel Type, and Plant Facility.</td>
+              <td>Clause 8.6 (Release)</td>
+            </tr>
+            <tr>
+              <td><strong>Active Audits</strong></td>
+              <td>Live Audit Execution Register</td>
+              <td>Displays open and in-progress vehicle audits. Auditors score all 560 checkpoints, log demerit categories, and record real-time inspection photos and measurements.</td>
+              <td>Clause 8.5.1 (Control)</td>
+            </tr>
+            <tr>
+              <td><strong>Setup</strong></td>
+              <td>Master Target & Config Rules</td>
+              <td>Configuration for monthly WDPV targets, checkpoint definitions, demerit weightings, and model-specific inspection protocols.</td>
+              <td>Clause 7.5 (Documented Info)</td>
+            </tr>
+            <tr>
+              <td><strong>PRTS</strong></td>
+              <td>Direct 7D Engineering Alerts</td>
+              <td>Direct feed to Problem Resolution and Tracking System (PRTS) for audit findings requiring containment (D3) or root cause investigation (D4).</td>
+              <td>Clause 10.2 (Corrective Action)</td>
+            </tr>
+            <tr>
+              <td><strong>Archives</strong></td>
+              <td>Historical Record Vault</td>
+              <td>Searchable repository of completed vehicle audits with full checkpoint audit trails, demerit history, and auditor e-signatures for audit compliance.</td>
+              <td>Clause 7.5.3 (Retention)</td>
+            </tr>
+            <tr>
+              <td><strong>User Manual</strong></td>
+              <td>Standard Operating Procedures</td>
+              <td>Official SOP documentation, checkpoint rating rubrics, demerit calculation formulas, and escalation matrices (this document).</td>
+              <td>Clause 7.5 (Standards)</td>
+            </tr>
+            <tr>
+              <td><strong>IT Help Desk</strong></td>
+              <td>Support & System Ticket</td>
+              <td>Instant dialog to log technical issues, handheld terminal connection drops, or audit configuration discrepancy requests.</td>
+              <td>Clause 7.1.3 (Infrastructure)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2: Audit Gates & Inspection Stations -->
+  <div class="card mb-4 shadow-sm manual-card">
+    <div class="card-header bg-white d-flex align-items-center gap-2">
+      <mat-icon class="section-icon text-success">account_tree</mat-icon>
+      <h4 class="mb-0 font-weight-bold">2. Manufacturing Audit Gates & Checkpoint Allocation</h4>
+    </div>
+    <div class="card-body">
+      <p class="text-muted">A standard passenger vehicle undergoes 560 rigorous objective inspection checkpoints distributed across 6 sequential manufacturing gates:</p>
+      <div class="row g-3">
+        <div class="col-md-4">
+          <div class="gate-box">
+            <div class="gate-number">GATE 1</div>
+            <div class="gate-title">Body-in-White (BIW)</div>
+            <div class="gate-checkpoints">85 Checkpoints | Target &ge; 95%</div>
+            <ul class="gate-list">
+              <li>Laser brazing and spot weld shear integrity</li>
+              <li>Gap & flushness tolerances (A-Pillar, Doors &le; 3.0mm)</li>
+              <li>Hemming flange tightness and sealant bead continuity</li>
+              <li>Dimensional accuracy via CMM / laser tracker</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="gate-box">
+            <div class="gate-number">GATE 2</div>
+            <div class="gate-title">CED & Paint Shop</div>
+            <div class="gate-checkpoints">95 Checkpoints | Target &ge; 94%</div>
+            <ul class="gate-list">
+              <li>Dry Film Thickness (DFT) &ge; 110 &mu;m across all panels</li>
+              <li>Cathodic Electrodeposition (CED) corrosion dip coverage</li>
+              <li>Orange peel rating (Wave-Scan LW &lt; 12, SW &lt; 18)</li>
+              <li>Zero paint sags, cratering, pinholes, or dust inclusions</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="gate-box">
+            <div class="gate-number">GATE 3</div>
+            <div class="gate-title">Trim, Chassis & Final (TCF)</div>
+            <div class="gate-checkpoints">140 Checkpoints | Target &ge; 93%</div>
+            <ul class="gate-list">
+              <li>Class-A critical torque audits on steering and suspension</li>
+              <li>Wire harness routing, connector secondary lock seating</li>
+              <li>Instrument panel (IP) fitment and glovebox alignment</li>
+              <li>Brake line hydraulic flare tightness and fluid level</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="gate-box">
+            <div class="gate-number">GATE 4</div>
+            <div class="gate-title">EV High Voltage / Powertrain</div>
+            <div class="gate-checkpoints">70 Checkpoints | Target &ge; 98%</div>
+            <ul class="gate-list">
+              <li>Insulation resistance &gt; 500 &Omega;/V on 400V/800V bus</li>
+              <li>High-Voltage Interlock Loop (HVIL) continuity</li>
+              <li>Battery coolant circuit pressure test (&le; 0.05 bar drop/min)</li>
+              <li>BMS CAN bus communication and cell voltage delta &lt; 20mV</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="gate-box">
+            <div class="gate-number">GATE 5</div>
+            <div class="gate-title">End-of-Line (EOL) Dyno & Shower</div>
+            <div class="gate-checkpoints">90 Checkpoints | Target &ge; 96%</div>
+            <ul class="gate-list">
+              <li>High-pressure monsoon shower test (150 bar, 15 minutes)</li>
+              <li>Roller dynamometer brake force balance & ABS cycling</li>
+              <li>Headlamp beam aim and ADAS camera radar calibration</li>
+              <li>Exhaust gas emission audit (BS-VI OBD-II diagnostics)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="gate-box">
+            <div class="gate-number">GATE 6</div>
+            <div class="gate-title">Pre-Delivery Inspection (PDI)</div>
+            <div class="gate-checkpoints">80 Checkpoints | Target &ge; 95%</div>
+            <ul class="gate-list">
+              <li>Static road test & squeak-and-rattle (BSR) track audit</li>
+              <li>Infotainment touchscreen, e-Call, and wireless charging</li>
+              <li>Exterior cosmetic showroom gloss finish verification</li>
+              <li>Final VIN barcode scanning and digital gate release sign-off</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3: Demerit Rating & Severity Scale -->
+  <div class="card mb-4 shadow-sm manual-card">
+    <div class="card-header bg-white d-flex align-items-center gap-2">
+      <mat-icon class="section-icon text-danger">warning</mat-icon>
+      <h4 class="mb-0 font-weight-bold">3. Demerit Point Classification & Scoring Rules</h4>
+    </div>
+    <div class="card-body">
+      <p class="text-muted">Any checkpoint deviation from standard engineering tolerance is assigned demerit penalty points based on customer impact and safety severity:</p>
+      <div class="row g-3">
+        <div class="col-md-3">
+          <div class="demerit-card demerit-class-a">
+            <div class="demerit-badge">CLASS A</div>
+            <div class="demerit-pts">50 Points</div>
+            <div class="demerit-desc">Critical Safety / Legal / Regulatory</div>
+            <p class="demerit-examples">Brake hydraulic leaks, steering knuckle torque failure, EV battery insulation failure, fuel hose leakage, airbag harness detachment. <strong>Immediate line stop &amp; quarantine.</strong></p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="demerit-card demerit-class-b">
+            <div class="demerit-badge">CLASS B</div>
+            <div class="demerit-pts">20 Points</div>
+            <div class="demerit-desc">Major Functional / Breakdown Risk</div>
+            <p class="demerit-examples">7-DCT transmission shudder, HVAC cooling failure, ADAS lane centering sensor drift, door closing effort &gt; 1.5 N-m over spec, monsoon shower ingress. <strong>Mandatory 7D ticket within 2h.</strong></p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="demerit-card demerit-class-c">
+            <div class="demerit-badge">CLASS C</div>
+            <div class="demerit-pts">5 Points</div>
+            <div class="demerit-desc">Minor Functional / High Customer Dissatisfaction</div>
+            <p class="demerit-examples">Door-to-fender panel gap mismatch 2.5-3.5mm, noticeable paint orange peel, minor rattle over cobblestones, infotainment Bluetooth lag. <strong>Rework before dispatch.</strong></p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="demerit-card demerit-class-d">
+            <div class="demerit-badge">CLASS D</div>
+            <div class="demerit-pts">1 Point</div>
+            <div class="demerit-desc">Incidental Cosmetic / Appearance Imperfection</div>
+            <p class="demerit-examples">Light clearcoat scuff (buffable), interior carpet clip loose, barcode label tilted, glovebox damper slight noise. <strong>Addressed during standard PDI line.</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formula Box -->
+      <div class="formula-box mt-3">
+        <div class="formula-title"><mat-icon>functions</mat-icon> Weighted Demerit Per Vehicle (WDPV) Mathematical Formula:</div>
+        <div class="formula-code">
+          WDPV = &sum; [ (50 &times; N<sub>Class A</sub>) + (20 &times; N<sub>Class B</sub>) + (5 &times; N<sub>Class C</sub>) + (1 &times; N<sub>Class D</sub>) ] &divide; Total Audited Vehicles
+        </div>
+        <div class="formula-note">Where <strong>(D)Met</strong> represents Daily Audit Compliance, <strong>(C)Met</strong> represents Cumulative Monthly Compliance, and <strong>(P)Met</strong> represents Plant Overall Target against the 94% quality threshold.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 4: PRTS Integration & Escalation Matrix -->
+  <div class="card mb-4 shadow-sm manual-card">
+    <div class="card-header bg-white d-flex align-items-center gap-2">
+      <mat-icon class="section-icon text-info">sync_problem</mat-icon>
+      <h4 class="mb-0 font-weight-bold">4. PRTS 7D Escalation Matrix & SLA Protocols</h4>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped mb-0">
+          <thead class="table-light">
+            <tr>
+              <th>Trigger Condition</th>
+              <th>System Action</th>
+              <th>Lead Responsible Role</th>
+              <th>Mandatory SLA</th>
+              <th>Escalation Authority</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Any Class A Defect (&ge; 50 pts)</strong></td>
+              <td>Automated Batch Quarantine &amp; PRTS Issue Generated</td>
+              <td>Plant Quality Head &amp; Safety Engineer</td>
+              <td>&lt; 30 Minutes</td>
+              <td>VP Manufacturing</td>
+            </tr>
+            <tr>
+              <td><strong>Repeat Class B Defect (&gt; 2 units)</strong></td>
+              <td>7D Ticket dispatched to Area Cross-Functional Team</td>
+              <td>Area Production Lead &amp; SQE Specialist</td>
+              <td>&lt; 2 Hours</td>
+              <td>Quality Director</td>
+            </tr>
+            <tr>
+              <td><strong>Vehicle Demerit Score &gt; 35 points</strong></td>
+              <td>Routing diverted to Off-Line Rework Diagnostic Bay</td>
+              <td>PDI Final Inspector &amp; Lead Auditor</td>
+              <td>&lt; 1 Shift</td>
+              <td>Shop Floor Manager</td>
+            </tr>
+            <tr>
+              <td><strong>Station WDPV Trend below 92%</strong></td>
+              <td>Mandatory Process Audit &amp; Tooling Calibration</td>
+              <td>Industrial Engineering / Tooling Dept</td>
+              <td>&lt; 24 Hours</td>
+              <td>General Plant Manager</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

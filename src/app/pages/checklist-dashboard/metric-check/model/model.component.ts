@@ -30,44 +30,47 @@ showYAxisLabel = true;
   constructor() {
     const three = [
       {
-        name: 'Hector',
+        name: 'Toyota Fortuner',
         value: 1290
       },
       {
-        name: 'Ev',
-        value: 320
-      },
-      {
-        name: 'Astor',
+        name: 'Hyundai Creta',
         value: 751
       },
       {
-        name: 'Gloster',
+        name: 'Mahindra XUV700',
         value: 1190
       },
-
-
-
+      {
+        name: 'Tata Nexon EV',
+        value: 320
+      },
+      {
+        name: 'Camry Hybrid',
+        value: 450
+      },
     ];
     const first = [
       {
-        name: 'Hector',
+        name: 'Toyota Fortuner',
         value: 20
       },
       {
-        name: 'Ev',
-        value: 13
-      },
-      {
-        name: 'Astor',
+        name: 'Hyundai Creta',
         value: 7
       },
       {
-        name: 'Gloster',
+        name: 'Mahindra XUV700',
         value: 11
       },
-
-
+      {
+        name: 'Tata Nexon EV',
+        value: 13
+      },
+      {
+        name: 'Camry Hybrid',
+        value: 6
+      },
     ];
     Object.assign(this, { first, three });
   }

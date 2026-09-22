@@ -52,15 +52,15 @@ export class KanbanComponent implements OnInit, OnDestroy {
     }
   }
   data = [
-    { subject: 'Hydraulic Lift Pressure Drop', distributor: 'Punjab Agri Implements', department: 'Production', Lead: 'Ravi Verma', status: 'Pending', TargetDate: '2026-04-25', FailureDate: '2026-04-20' },
-    { subject: 'Engine Overheating Under Heavy Draft Load', distributor: 'Haryana Tractors', department: 'QA', Lead: 'Sneha Patel', status: 'Process', TargetDate: '2026-04-22', FailureDate: '2026-04-18' },
-    { subject: 'Transmission Gear Slipping in 3rd High', distributor: 'Maha Tractors', department: 'Production', Lead: 'Kiran Rao', status: 'Process', TargetDate: '2026-04-30', FailureDate: '2026-04-21' },
-    { subject: 'Steering Cylinder Oil Leakage', distributor: 'Solis Thailand', department: 'Maintenance', Lead: 'Arjun Sharma', status: 'Hold', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
-    { subject: 'Clutch Plate Premature Wear', distributor: 'Kisan Agri Corp', department: 'QA', Lead: 'Rajesh Kumar', status: 'Closed', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
-    { subject: 'Brake Squeal and Uneven Braking', distributor: 'Gujarat Agro', department: 'Production', Lead: 'Amit Singh', status: 'Pending', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
-    { subject: 'Alternator Not Charging Battery', distributor: 'Rajasthan Tractors', department: 'Incoming Inspection', Lead: 'Vikram Joshi', status: 'Hold', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
-    { subject: 'Fuel Injector Nozzle Clogging', distributor: 'Nepal Agri Traders', department: 'R&D', Lead: 'Pooja Reddy', status: 'Process', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
-    { subject: 'PTO Shaft Seal Seepage', distributor: 'Central Farm Services', department: 'Maintenance', Lead: 'Sunil Nair', status: 'Closed', TargetDate: '2026-04-15', FailureDate: '2026-04-10' }
+    { subject: 'ADAS Front Radar Camera Calibration Error', distributor: 'Apex Auto Retail Group (Berlin)', department: 'QA-16949', Lead: 'Ravi Verma', status: 'Pending', TargetDate: '2026-04-25', FailureDate: '2026-04-20' },
+    { subject: 'Turbocharger Boost Pressure Sensor Fluctuation', distributor: 'EuroStar Motors Ltd. (London)', department: 'QA-16949', Lead: 'Sneha Patel', status: 'Process', TargetDate: '2026-04-22', FailureDate: '2026-04-18' },
+    { subject: '7-Speed Dual-Clutch Shudder on Low Speed', distributor: 'Metro Auto Distribution (Los Angeles)', department: 'MFG-TCF', Lead: 'Kiran Rao', status: 'Process', TargetDate: '2026-04-30', FailureDate: '2026-04-21' },
+    { subject: 'High Voltage Traction Battery Fast-Charging Drop', distributor: 'Siam Premier Motors Co. (Bangkok)', department: 'RND-PWR', Lead: 'Arjun Sharma', status: 'Hold', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
+    { subject: 'Electronic Power Steering (EPS) Assist Sensor Loss', distributor: 'Bosphorus Auto Sales (Istanbul)', department: 'QA-16949', Lead: 'Rajesh Kumar', status: 'Closed', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
+    { subject: 'Brake Pedal Sponginess and ABS Warning Light', distributor: 'Alliance Auto France SAS (Paris)', department: 'MFG-TCF', Lead: 'Amit Singh', status: 'Pending', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
+    { subject: 'HVAC Dual-Zone Climate Compressor Noise', distributor: 'Himalaya Motors Pvt. Ltd. (Kathmandu)', department: 'SQA-VND', Lead: 'Vikram Joshi', status: 'Hold', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
+    { subject: 'Infotainment Wireless CarPlay / Telematics Error', distributor: 'Cape Town Automotive Hub', department: 'RND-EES', Lead: 'Pooja Reddy', status: 'Process', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
+    { subject: 'Panoramic Sunroof Drain Channel Ingress Noise', distributor: 'Metro Auto Distribution (Los Angeles)', department: 'MFG-TCF', Lead: 'Sunil Nair', status: 'Closed', TargetDate: '2026-04-15', FailureDate: '2026-04-10' }
   ];
 
   lists: Status[] = ['Pending', 'Process', 'Hold', 'Closed'];

@@ -19,12 +19,11 @@ export class ObjSetupMontlyTargetsComponent implements OnInit {
 
 
   values1 = [
-    { target: '100', month: 'Oct', year: "2021", model: "Hector", Audit: 'Product Quality Audit' },
-    { target: '85', month: 'Nov', year: "2021", model: "Astor", status: true, Audit: 'Body Type' },
-    { target: '90', month: 'Dec', year: "2021", model: "Gloster", status: true, Audit: 'Product Quality Audit' },
-    { target: '95', month: 'Jan', year: "2022", model: "ZSEV", status: true, Audit: 'Paint Audit' },
-
-  ]
+    { target: '95', month: 'Aug', year: "2025", model: "Toyota Fortuner 4x4", Audit: 'Product Quality Audit (PDI)' },
+    { target: '93', month: 'Aug', year: "2025", model: "Hyundai Creta SX", status: true, Audit: 'Body-in-White Audit' },
+    { target: '94', month: 'Sep', year: "2025", model: "Mahindra XUV700 AX7", status: true, Audit: 'Cathodic Paint Audit (CED)' },
+    { target: '96', month: 'Sep', year: "2025", model: "Tata Nexon EV Max", status: true, Audit: 'Chassis Dyno & Roller Audit' },
+  ];
   values = []
   ngOnInit() {
     if (environment.mode == 1) {

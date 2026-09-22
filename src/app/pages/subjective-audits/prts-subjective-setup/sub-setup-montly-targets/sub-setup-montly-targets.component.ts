@@ -15,11 +15,10 @@ export class SubSetupMontlyTargetsComponent implements OnInit {
   constructor(public dialog: MatDialog,) { }
 
   values1 = [
-    { Audit: 'Product Quality Audit', target: '100', month: 'Oct', year: "2021", model: "Hector", status: true },
-    { Audit: 'Product Quality Audit', target: '75', month: 'Nov', year: "2021", model: "Astor", status: true },
-    { Audit: 'Product Quality Audit', target: '90', month: 'Dec', year: "2021", model: "Gloster" },
-    { Audit: 'Product Quality Audit', target: '80', month: 'Jan', year: "2022", model: "ZSEV", status: true },
-
+    { Audit: 'Product Quality Audit (PQA)', target: '94%', month: 'Aug', year: "2025", model: "Toyota Fortuner 4x4", status: true },
+    { Audit: 'Customer Sensory Audit', target: '93%', month: 'Aug', year: "2025", model: "Hyundai Creta SX", status: true },
+    { Audit: 'NVH Dynamic Track Audit', target: '95%', month: 'Sep', year: "2025", model: "Mahindra XUV700 AX7", status: true },
+    { Audit: 'EV High Voltage Ride Audit', target: '96%', month: 'Sep', year: "2025", model: "Tata Nexon EV Max", status: true },
   ]
 
   values = []
@@ -54,7 +53,7 @@ export class SubSetupMontlyTargetsComponent implements OnInit {
     Confirmation(item: any) {
     let dialogRef = this.dialog.open(StatusConfirmationDialogComponent, {
       width: 'auto',
-      data: { TractorStatusId: item.TractorStatusId, title: 'Change Status', content: 'Are you sure you want to Change the Status ?' }
+      data: { StatusId: item.model, title: 'Change Status', content: 'Are you sure you want to Change the Status ?' }
     });
   }
 

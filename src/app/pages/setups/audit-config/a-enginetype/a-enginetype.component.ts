@@ -35,20 +35,13 @@ export class AEnginetypeComponent {
 
 
   tableList = [
-    { name: 'Twin-turbo 4.0L V8', code: 't', status: 'Active' },
-    { name: 'Gasoline Engine', code: 'g', status: 'Active' },
-    { name: 'K15C Smart Hybrid', code: 'C', status: 'Active' },
-    { name: 'Hybrid Engine', code: 'H', status: 'Active' },
-    { name: 'Otto Cycle Engine', code: 'O', status: 'Active' },
-    { name: 'Front Engine', code: 'N', status: 'Active' },
-    { name: 'Diesel Engine', code: 'L', status: 'Active' },
-    { name: 'Rotary Engine', code: 'K', status: 'Active' },
-    { name: 'Seam Engine', code: 'N', status: 'Active' },
-    { name: 'Spark-Ignition Engine', code: 'A', status: 'Active' },
-    { name: 'Petrol Engine', code: '1', status: 'Active' },
-    { name: 'Rotary Engine', code: 'R', status: 'Active' },
-    { name: 'Flat Engine', code: 'F', status: 'Active' },
-    { name: 'Inline Engine', code: 'E', status: 'Active' },
+    { name: '2.8L Turbo Diesel D-4D (204 PS / 500 Nm)', code: 'ENG-28D', status: 'Active' },
+    { name: '2.0L mStallion Turbo GDi Petrol (200 PS)', code: 'ENG-20TGDI', status: 'Active' },
+    { name: '1.5L Smartstream Turbo GDi Petrol (160 PS)', code: 'ENG-15TGDI', status: 'Active' },
+    { name: '2.5L 4-Cylinder Dynamic Force Hybrid (218 PS)', code: 'ENG-25HYB', status: 'Active' },
+    { name: 'Permanent Magnet Synchronous Motor (145 PS EV)', code: 'ENG-EVM', status: 'Active' },
+    { name: '2.0L Kryotec Turbocharged Diesel (170 PS)', code: 'ENG-20D', status: 'Active' },
+    { name: '1.5L i-VTEC DOHC with VTC (121 PS)', code: 'ENG-15NA', status: 'Active' }
   ];
 
   // Function to get status text

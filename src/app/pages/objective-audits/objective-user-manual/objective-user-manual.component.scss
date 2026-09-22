@@ -1,0 +1,306 @@
+.user-manual-container {
+  padding: 24px;
+  background-color: #f8fafc;
+  min-height: 100vh;
+  font-family: inherit;
+
+  .manual-hero {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.15);
+
+    .badge-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: inline-block;
+
+      &.standard-badge {
+        background-color: #3b82f6;
+        color: #ffffff;
+      }
+      &.doc-badge {
+        background-color: #334155;
+        color: #94a3b8;
+      }
+      &.rev-badge {
+        background-color: #10b981;
+        color: #ffffff;
+      }
+    }
+
+    .hero-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 8px 0 6px 0;
+      color: #ffffff;
+    }
+
+    .hero-subtitle {
+      font-size: 13.5px;
+      color: #cbd5e1;
+      margin: 0;
+      max-width: 850px;
+      line-height: 1.5;
+    }
+
+    .btn-print {
+      background-color: #ffffff;
+      color: #1e293b;
+      font-weight: 600;
+      border-radius: 6px;
+      padding: 0 16px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+
+      &:hover {
+        background-color: #f1f5f9;
+      }
+    }
+  }
+
+  .kpi-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 16px 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    border: 1px solid #e2e8f0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    &.border-left-primary { border-left: 4px solid #3b82f6; }
+    &.border-left-danger { border-left: 4px solid #ef4444; }
+    &.border-left-warning { border-left: 4px solid #f59e0b; }
+    &.border-left-success { border-left: 4px solid #10b981; }
+
+    .kpi-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #64748b;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .kpi-value {
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .kpi-note {
+      font-size: 12px;
+      color: #94a3b8;
+    }
+  }
+
+  .manual-card {
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+
+    .card-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid #e2e8f0;
+      background-color: #ffffff;
+
+      .section-icon {
+        font-size: 22px;
+        width: 22px;
+        height: 22px;
+      }
+
+      h4 {
+        font-size: 16px;
+        color: #1e293b;
+      }
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+  }
+
+  .gate-box {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px;
+    height: 100%;
+    transition: border-color 0.2s ease;
+
+    &:hover {
+      border-color: #3b82f6;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.08);
+    }
+
+    .gate-number {
+      font-size: 11px;
+      font-weight: 800;
+      color: #3b82f6;
+      letter-spacing: 0.8px;
+    }
+
+    .gate-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1e293b;
+      margin: 4px 0 2px 0;
+    }
+
+    .gate-checkpoints {
+      font-size: 12px;
+      color: #64748b;
+      font-weight: 600;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px dashed #e2e8f0;
+    }
+
+    .gate-list {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 12.5px;
+      color: #475569;
+      line-height: 1.6;
+
+      li {
+        margin-bottom: 4px;
+      }
+    }
+  }
+
+  .demerit-card {
+    border-radius: 8px;
+    padding: 18px 16px;
+    height: 100%;
+    border: 1px solid #e2e8f0;
+
+    &.demerit-class-a {
+      background-color: #fef2f2;
+      border-color: #fecaca;
+      .demerit-badge { background-color: #ef4444; color: white; }
+      .demerit-pts { color: #b91c1c; }
+    }
+    &.demerit-class-b {
+      background-color: #fffbeb;
+      border-color: #fde68a;
+      .demerit-badge { background-color: #f59e0b; color: white; }
+      .demerit-pts { color: #b45309; }
+    }
+    &.demerit-class-c {
+      background-color: #f0fdf4;
+      border-color: #bbf7d0;
+      .demerit-badge { background-color: #10b981; color: white; }
+      .demerit-pts { color: #047857; }
+    }
+    &.demerit-class-d {
+      background-color: #f8fafc;
+      border-color: #cbd5e1;
+      .demerit-badge { background-color: #64748b; color: white; }
+      .demerit-pts { color: #334155; }
+    }
+
+    .demerit-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .demerit-pts {
+      font-size: 20px;
+      font-weight: 800;
+      margin: 8px 0 4px 0;
+    }
+
+    .demerit-desc {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 8px;
+    }
+
+    .demerit-examples {
+      font-size: 12px;
+      color: #475569;
+      line-height: 1.5;
+      margin: 0;
+    }
+  }
+
+  .formula-box {
+    background-color: #f1f5f9;
+    border-radius: 8px;
+    padding: 16px 20px;
+    border: 1px solid #cbd5e1;
+
+    .formula-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1e293b;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
+
+      mat-icon {
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+        color: #3b82f6;
+      }
+    }
+
+    .formula-code {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 14px;
+      font-weight: 700;
+      color: #0f172a;
+      background: #ffffff;
+      padding: 10px 14px;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
+      margin-bottom: 8px;
+    }
+
+    .formula-note {
+      font-size: 12px;
+      color: #64748b;
+    }
+  }
+
+  .table {
+    font-size: 13px;
+
+    thead th {
+      font-weight: 700;
+      color: #334155;
+      background-color: #f8fafc;
+      border-bottom: 2px solid #cbd5e1;
+    }
+
+    td {
+      vertical-align: middle;
+      color: #334155;
+    }
+  }
+}

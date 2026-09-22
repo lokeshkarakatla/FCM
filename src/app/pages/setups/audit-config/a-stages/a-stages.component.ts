@@ -30,21 +30,15 @@ export class AStagesComponent {
 
 
   tableList = [
-    { stageName: 'Electric motor for a power boost.', stageCode: 'EM', status: 'Active' },
-    { stageName: 'Iron', stageCode: 'I-115', status: 'Active' },
-    { stageName: 'Assembly Line Paint Shop', stageCode: 'PNT', status: 'Active' },
-    { stageName: 'Raw Materials', stageCode: 'RM', status: 'Active' },
-    { stageName: 'Launching Stage', stageCode: 'LS', status: 'Active' },
-    { stageName: 'Quality Check', stageCode: 'QC', status: 'Active' },
-    { stageName: 'Testing Stage', stageCode: 'TS', status: 'Active' },
-    { stageName: 'Manufacturing Stage', stageCode: 'MS', status: 'Active' },
-    { stageName: 'Design Stage', stageCode: 'DS', status: 'Active' },
-    { stageName: 'Start of Production', stageCode: 'SOP', status: 'Active' },
-    { stageName: 'Production', stageCode: 'P', status: 'Active' },
-    { stageName: 'Pre Production', stageCode: 'PP', status: 'Active' },
-    { stageName: 'Pre Product validation', stageCode: 'PPV', status: 'Active' },
-    { stageName: 'Off Tool Sample', stageCode: 'OTS', status: 'Active' },
-    { stageName: 'Pre PPV', stageCode: 'Pre PPV', status: 'Active' }
+    { stageName: 'Body-in-White & Robotic Welding (BIW)', stageCode: 'STG-BIW', status: 'Active' },
+    { stageName: 'Cathodic Electrodeposition & Paint (CED)', stageCode: 'STG-PNT', status: 'Active' },
+    { stageName: 'Powertrain Docking & Marriage (Engine/Tranny)', stageCode: 'STG-DOC', status: 'Active' },
+    { stageName: 'Trim, Chassis & Final Assembly (TCF)', stageCode: 'STG-TCF', status: 'Active' },
+    { stageName: 'Wheel Alignment & ADAS Calibration', stageCode: 'STG-CAL', status: 'Active' },
+    { stageName: 'Chassis Dyno & Roller Brake Test (EOL)', stageCode: 'STG-RLR', status: 'Active' },
+    { stageName: 'Monsoon Shower & Water Ingress Test', stageCode: 'STG-SHW', status: 'Active' },
+    { stageName: 'Pre-Delivery Inspection & Road Track (PDI)', stageCode: 'STG-PDI', status: 'Active' },
+    { stageName: 'Customer Handover Quality Audit (PDI-2)', stageCode: 'STG-HND', status: 'Active' }
   ];
       deleteConfirmation(item: any) {
     let dialogRef = this.dialog.open(ConfirmationDialogComponent, {

@@ -20,12 +20,14 @@ currentPage: any;
 pageSize: any;
  myGroup!: FormGroup;
    modelss = [
-    { ModelName: 'Fortuner' },
-    { ModelName: 'Toyota LandCruiser' },
-    { ModelName: 'Defender 310' },
-    { ModelName: 'Corvette' },
-    { ModelName: 'Lexus' },
-    { ModelName: 'Mahindra XUV700' }
+    { ModelName: 'Toyota Fortuner 4x4' },
+    { ModelName: 'Toyota Camry Hybrid' },
+    { ModelName: 'Hyundai Creta SX' },
+    { ModelName: 'Hyundai Verna Turbo' },
+    { ModelName: 'Mahindra XUV700 AX7' },
+    { ModelName: 'Tata Safari Dark Edition' },
+    { ModelName: 'Tata Nexon EV Max' },
+    { ModelName: 'Honda Elevate ZX' }
   ];
 
   ngOnInit(): void {
@@ -53,19 +55,16 @@ pageSize: any;
 constructor(private router: Router, private dialog: MatDialog) { }
 
 
-  tableList =[
-    { name: 'Fortuner', code: ')', status: 'Active' },
-    { name: 'Toyota LandCruiser', code: '+', status: 'Active' },
-    { name: 'Toyota Forturner', code: '!', status: 'Active' },
-    { name: 'Defender 310', code: '#', status: 'Active' },
-    { name: 'Corvette', code: 'w', status: 'Active' },
-    { name: 'Toyota Camry', code: 'b', status: 'Active' },
-    { name: 'Hyundai', code: 'h', status: 'Active' },
-    { name: 'Ferrari', code: 'u', status: 'Active' },
-    { name: 'Lamborghini', code: 's', status: 'Active' },
-    { name: 'Lexus', code: 'q', status: 'Active' },
-    { name: 'Mahindra XUV700', code: 'p', status: 'Active' },
-  ]
+  tableList = [
+    { name: 'Toyota Fortuner 4x4', code: 'CAR-FORT', status: 'Active', IsActive: true },
+    { name: 'Toyota Camry Hybrid', code: 'CAR-CAM', status: 'Active', IsActive: true },
+    { name: 'Hyundai Creta SX', code: 'CAR-CRE', status: 'Active', IsActive: true },
+    { name: 'Hyundai Verna Turbo', code: 'CAR-VER', status: 'Active', IsActive: true },
+    { name: 'Mahindra XUV700 AX7', code: 'CAR-XUV', status: 'Active', IsActive: true },
+    { name: 'Tata Safari Dark Edition', code: 'CAR-SAF', status: 'Active', IsActive: true },
+    { name: 'Tata Nexon EV Max', code: 'CAR-NEX', status: 'Active', IsActive: true },
+    { name: 'Honda Elevate ZX', code: 'CAR-ELV', status: 'Active', IsActive: true }
+  ];
 
   public addmodule(id: any) {
     console.log('jkhksbdjk');

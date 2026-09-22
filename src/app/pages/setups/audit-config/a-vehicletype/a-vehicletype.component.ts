@@ -35,21 +35,12 @@ export class AVehicletypeComponent {
 }
 
     tableList = [
-      { name: 'Micro SUV', code: 'M', status: 'Active' },
-      { name: 'Elevate', code: 'A', status: 'Active' },
-      { name: 'EV', code: 'V', status: 'Active' },
-      { name: 'Versa', code: 'E', status: 'Active' },
-      { name: 'Crossover', code: 'O', status: 'Active' },
-      { name: 'Sumo', code: 'D', status: 'Active' },
-      { name: 'SUV', code: 'U', status: 'Active' },
-      { name: 'Hatchback', code: 'H', status: 'Active' },
-      { name: 'Pickup Truck', code: 'T', status: 'Active' },
-      { name: 'Hybrid SUV', code: 'B', status: 'Active' },
-      { name: 'AWD', code: 'W', status: 'Active' },
-      { name: 'Coupe', code: 'X', status: 'Active' },
-      { name: 'Convertible', code: 'S', status: 'Active' },
-      { name: 'Hybrid', code: 'I', status: 'Active' },
-      { name: 'Station Wagon', code: 'F', status: 'Active' }
+      { name: 'Passenger Cars & Executive Sedans', code: 'VTY-CAR', status: 'Active' },
+      { name: 'Premium & Compact SUVs (4x4 / AWD)', code: 'VTY-SUV', status: 'Active' },
+      { name: 'Battery Electric Vehicles (BEV Car & SUV)', code: 'VTY-BEV', status: 'Active' },
+      { name: 'Heavy Commercial Trucks & Lorries (HCV)', code: 'VTY-HCV', status: 'Active' },
+      { name: 'Light Commercial Vehicles & Vans (LCV)', code: 'VTY-LCV', status: 'Active' },
+      { name: 'Connected Fleet & Multi-Axle Haulers', code: 'VTY-FLT', status: 'Active' }
     ];
 
     // Function to get status text

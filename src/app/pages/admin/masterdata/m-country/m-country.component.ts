@@ -24,12 +24,14 @@ export class MCountryComponent   {
 
 
         tableList = [
-          { stageName: 'America',continent:'Africa', stageCode: 'EM', status: 'Active' },
-          { stageName: 'Angolas',continent:'Antarctica', stageCode: 'I-115', status: 'Active' },
-          { stageName: 'Andorra',continent:'Australia', stageCode: 'PNT', status: 'Active' },
-          { stageName: 'Algeria',continent:'Europe', stageCode: 'PNT', status: 'Inactive' },
-          { stageName: 'Albania',continent:'North America', stageCode: 'PNT', status: 'Inctive' },
-
+          { stageName: 'Thailand', continent: 'Asia', stageCode: 'THA', status: 'Active', IsActive: true },
+          { stageName: 'Israel', continent: 'Asia', stageCode: 'ISR', status: 'Active', IsActive: true },
+          { stageName: 'Nepal', continent: 'Asia', stageCode: 'NPL', status: 'Active', IsActive: true },
+          { stageName: 'Turkey', continent: 'Europe', stageCode: 'TUR', status: 'Active', IsActive: true },
+          { stageName: 'Germany', continent: 'Europe', stageCode: 'DEU', status: 'Active', IsActive: true },
+          { stageName: 'South Africa', continent: 'Africa', stageCode: 'ZAF', status: 'Active', IsActive: true },
+          { stageName: 'India', continent: 'Asia', stageCode: 'IND', status: 'Active', IsActive: true },
+          { stageName: 'Brazil', continent: 'South America', stageCode: 'BRA', status: 'Active', IsActive: true }
         ];
 
         // Function to get status text

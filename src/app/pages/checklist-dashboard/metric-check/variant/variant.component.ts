@@ -28,42 +28,47 @@ showYAxisLabel = true;
   constructor() {
     const three = [
       {
-        name: 'VDI',
+        name: '2.8L 4x4 AT',
         value: 129
       },
       {
-        name: 'SXI',
+        name: '1.5L Turbo DCT',
         value: 75
       },
       {
-        name: 'SXI(o)',
+        name: 'AX7L AWD Diesel',
         value: 119
       },
       {
-        name: 'LDI',
+        name: 'Empowered Plus LR',
         value: 32
       },
-
-
+      {
+        name: '2.5L Hybrid e-CVT',
+        value: 45
+      },
     ];
     const first = [
       {
-        name: 'VDI',
+        name: '2.8L 4x4 AT',
         value: 20
       },
       {
-        name: 'SXI',
+        name: '1.5L Turbo DCT',
         value: 7
       },
       {
-        name: 'SXI(o)',
+        name: 'AX7L AWD Diesel',
         value: 11
       },
       {
-        name: 'LDI',
+        name: 'Empowered Plus LR',
         value: 9
       },
-
+      {
+        name: '2.5L Hybrid e-CVT',
+        value: 6
+      },
     ];
     Object.assign(this, { first, three });
   }

@@ -1,6 +1,296 @@
-<img alt="logo" class="logo-default logo-img" style="align-items: center;
-    height: 98%;
-    margin-left: 54px;
-    margin-top: 0px;
-    background: white;
-    width: 92%;" src="../../../assets/cons.png">
+<div class="user-manual-container">
+  <!-- Top Hero Header -->
+  <div class="manual-hero">
+    <div class="hero-content">
+      <div class="d-flex align-items-center gap-2 mb-2">
+        <span class="badge-tag standard-badge">IATF 16949 / VDA CUSTOMER SENSORY STANDARD</span>
+        <span class="badge-tag doc-badge">DOC-ID: SOP-QA-SUBJ-2025-V4</span>
+        <span class="badge-tag rev-badge">Enterprise Edition</span>
+      </div>
+      <h2 class="hero-title">Subjective Quality Audit & Customer Sensory Perception SOP Manual</h2>
+      <p class="hero-subtitle">
+        Automotive Standard for Finished Vehicle Perceived Quality: Noise-Vibration-Harshness (NVH), Haptic &amp; Tactile Feel, Visual Color Harmony, Dynamic Drive Feel (D-Rating), and Static Customer Showroom Evaluation (C-Rating).
+      </p>
+    </div>
+    <div class="hero-actions">
+      <button mat-raised-button class="btn-print" onclick="window.print()">
+        <mat-icon>print</mat-icon> Print Subjective SOP
+      </button>
+    </div>
+  </div>
+
+  <!-- Sensory Benchmark KPI Cards -->
+  <div class="row kpi-row g-3 mb-4">
+    <div class="col-md-3 col-sm-6">
+      <div class="kpi-card border-left-primary">
+        <div class="kpi-label">CABIN NVH BENCHMARK</div>
+        <div class="kpi-value text-primary">&le; 62.5 dBA</div>
+        <div class="kpi-note">At 100 km/h Smooth Tarmac Cruise</div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="kpi-card border-left-danger">
+        <div class="kpi-label">DOOR SLAM EFFORT</div>
+        <div class="kpi-value text-danger">&le; 1.05 m/s</div>
+        <div class="kpi-note">Acoustic "Vault-Like" Sound Quality</div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="kpi-card border-left-warning">
+        <div class="kpi-label">COLOR DELTA-E TOLERANCE</div>
+        <div class="kpi-value text-warning">&Delta;E &le; 0.8</div>
+        <div class="kpi-note">Plastic Bumper vs Metal Sheet Metal</div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="kpi-card border-left-success">
+        <div class="kpi-label">BUZZ-SQUEAK-RATTLE (BSR)</div>
+        <div class="kpi-value text-success">ZERO (0)</div>
+        <div class="kpi-note">Cobblestone &amp; Belgian Pave Track</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 1: Objective vs Subjective Audits Comparison -->
+  <div class="card mb-4 shadow-sm manual-card">
+    <div class="card-header bg-white d-flex align-items-center gap-2">
+      <mat-icon class="section-icon text-primary">compare</mat-icon>
+      <h4 class="mb-0 font-weight-bold">1. Methodological Comparison: Objective vs. Subjective Quality Audits</h4>
+    </div>
+    <div class="card-body">
+      <p class="text-muted">While Objective Audits evaluate physical dimensional tolerances and go/no-go gauges, Subjective Audits evaluate the vehicle through the eyes, ears, and hands of a discerning automobile owner:</p>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover mb-0">
+          <thead class="table-light">
+            <tr>
+              <th style="width: 220px;">Evaluation Dimension</th>
+              <th>Objective Quality Audit (Checklist-Based)</th>
+              <th>Subjective Quality Audit (Sensory &amp; Customer-Centric)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Primary Evaluation Focus</strong></td>
+              <td>Blueprint drawing specs, mechanical torque (N-m), paint thickness (&mu;m), electrical circuit continuity, water tightness.</td>
+              <td>Perceived luxury, tactile switchgear damping, cabin silence, ride comfort, aesthetic harmony, human interface ergonomics.</td>
+            </tr>
+            <tr>
+              <td><strong>Measurement Tooling</strong></td>
+              <td>Vernier calipers, gap gauges, torque audit wrenches, ultrasonic thickness meters, laser CMM scanners.</td>
+              <td>Acoustic sound meters (dBA), human haptic touch, binaural acoustic head, calibrated daylight lighting booths, track road tests.</td>
+            </tr>
+            <tr>
+              <td><strong>Audit Classification</strong></td>
+              <td>Gate-by-gate in-line checkpoints (BIW, Paint, TCF, PDI).</td>
+              <td><strong>C-Rating</strong> (Static Showroom Walkaround) and <strong>D-Rating</strong> (Dynamic Road Drive Audit).</td>
+            </tr>
+            <tr>
+              <td><strong>Defect Trigger Example</strong></td>
+              <td>Door gap measures 4.2mm (Spec: 3.5 &plusmn; 0.5mm).</td>
+              <td>Door closes with a hollow tinny clatter instead of a premium solid damped "thud".</td>
+            </tr>
+            <tr>
+              <td><strong>Standard Reference</strong></td>
+              <td>IATF 16949 Clause 8.6 &amp; ISO 9001:2015.</td>
+              <td>VDA 6.3 / VDA 16 Surface Evaluation &amp; OEM Customer Experience Standards.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2: Subjective Audits Navigation & Operational Modules -->
+  <div class="card mb-4 shadow-sm manual-card">
+    <div class="card-header bg-white d-flex align-items-center gap-2">
+      <mat-icon class="section-icon text-success">view_quilt</mat-icon>
+      <h4 class="mb-0 font-weight-bold">2. Subjective Audits Module Navigation &amp; Workflows</h4>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover mb-0">
+          <thead class="table-light">
+            <tr>
+              <th style="width: 180px;">Side Nav Item</th>
+              <th style="width: 200px;">Operational Role</th>
+              <th>Key User Actions &amp; Business Rules</th>
+              <th style="width: 130px;">Key Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Radar</strong></td>
+              <td>Sensory Scorecard Dashboard</td>
+              <td>Displays model-wise subjective audit scores across PQA, interior, and exterior metrics for Fortuner, Creta SX, XUV700, and Nexon EV. Interactive distribution popovers.</td>
+              <td>Model Radar</td>
+            </tr>
+            <tr>
+              <td><strong>Reports</strong></td>
+              <td>Sensory &amp; NVH Analytics</td>
+              <td>Trend analysis of C-Rating and D-Rating audit scores across manufacturing months, vehicle lines, and sensory defect categories.</td>
+              <td>Trend Charts</td>
+            </tr>
+            <tr>
+              <td><strong>New Audit</strong></td>
+              <td>Subjective Audit Registration</td>
+              <td>Initiates a C-Rating or D-Rating audit. Captures VIN, Model, Variant, Interior Trim, Paint Color, Transmission, Fuel Type, and Plant Facility.</td>
+              <td>New Audit Record</td>
+            </tr>
+            <tr>
+              <td><strong>Active Audits</strong></td>
+              <td>Live Sensory Inspection Register</td>
+              <td>Auditors record tactile feedback, acoustic measurements, and visual harmony observations with real-time demerit penalty logging.</td>
+              <td>Active Register</td>
+            </tr>
+            <tr>
+              <td><strong>Setup</strong></td>
+              <td>Sensory Standards &amp; Targets</td>
+              <td>Defines subjective defect masters, acceptable vibration thresholds, color tolerance &Delta;E tables, and monthly quality target scorecards.</td>
+              <td>Sensory Config</td>
+            </tr>
+            <tr>
+              <td><strong>PRTS</strong></td>
+              <td>Sensory Non-Conformance Escalation</td>
+              <td>Direct connection to 7D PRTS for sensory defects requiring engineering intervention (e.g. cabin booming, door seal whistle).</td>
+              <td>7D Alert Cases</td>
+            </tr>
+            <tr>
+              <td><strong>Archives</strong></td>
+              <td>Historical Subjective Audit Vault</td>
+              <td>Permanent repository of completed C-Rating and D-Rating vehicle evaluations with full auditor sign-offs and demerit histories.</td>
+              <td>Archived Vault</td>
+            </tr>
+            <tr>
+              <td><strong>User Manual</strong></td>
+              <td>Standard Operating Procedures</td>
+              <td>Comprehensive perceived quality standards, rating scales, and inspection methods (this document).</td>
+              <td>SOP Reference</td>
+            </tr>
+            <tr>
+              <td><strong>IT Help Desk</strong></td>
+              <td>Technical Support Dialog</td>
+              <td>Modal interface to submit technical issues, software inquiries, or auditor profile requests.</td>
+              <td>Support Ticket</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3: The 5 Core Sensory Evaluation Pillars -->
+  <div class="card mb-4 shadow-sm manual-card">
+    <div class="card-header bg-white d-flex align-items-center gap-2">
+      <mat-icon class="section-icon text-warning">hearing</mat-icon>
+      <h4 class="mb-0 font-weight-bold">3. The 5 Core Pillars of Automotive Sensory Quality</h4>
+    </div>
+    <div class="card-body">
+      <div class="row g-3">
+        <!-- Pillar 1 -->
+        <div class="col-md-4">
+          <div class="pillar-box">
+            <div class="pillar-tag">PILLAR 1: ACOUSTICS</div>
+            <div class="pillar-title">Noise, Vibration &amp; Harshness (NVH)</div>
+            <ul class="pillar-list">
+              <li><strong>Buzz, Squeak &amp; Rattle (BSR):</strong> Driven over rough Belgian pave cobblestone track to detect instrument panel creaks, door card rattles, or sunroof squeaks.</li>
+              <li><strong>Powertrain Drone &amp; Booming:</strong> Low-frequency cabin acoustic resonance during acceleration (1500–2500 RPM).</li>
+              <li><strong>Wind Hiss:</strong> High-speed aerodynamic noise around side mirrors and A-pillar seals at 120 km/h.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="col-md-4">
+          <div class="pillar-box">
+            <div class="pillar-tag">PILLAR 2: HAPTICS</div>
+            <div class="pillar-title">Tactile Feel &amp; Switchgear Damping</div>
+            <ul class="pillar-list">
+              <li><strong>Actuation Haptics:</strong> Power window switches, HVAC knobs, and hazard buttons must exhibit crisp click feedback with zero wobble or sticking.</li>
+              <li><strong>Leather &amp; Soft-Touch:</strong> Steering wheel leather seam alignment, softness of dashboard slush-molded skin, and center armrest cushion density.</li>
+              <li><strong>Glovebox &amp; Grab Handles:</strong> Smooth hydraulic-damped opening action with consistent 2.0–2.5 second descent.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="col-md-4">
+          <div class="pillar-box">
+            <div class="pillar-tag">PILLAR 3: VISUAL</div>
+            <div class="pillar-title">Color Harmony &amp; Visual Alignment</div>
+            <ul class="pillar-list">
+              <li><strong>Substrate Color Match:</strong> Polypropylene bumpers vs sheet metal body panels evaluated under D65 artificial daylight lighting.</li>
+              <li><strong>Metallic Flake Orientation:</strong> Metallic and pearl paint flakes must align evenly across adjacent body panels to prevent color flip-flop.</li>
+              <li><strong>Cabin Night Illumination:</strong> Ambient LED lighting brightness consistency and backlighting color temperature balance across all displays.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Pillar 4 -->
+        <div class="col-md-6">
+          <div class="pillar-box">
+            <div class="pillar-tag">PILLAR 4: OPERABILITY</div>
+            <div class="pillar-title">Operating Efforts &amp; Acoustic Sound Quality</div>
+            <ul class="pillar-list">
+              <li><strong>Door Slam Quality:</strong> Door closing sound must produce a solid acoustic signature (frequency peak &lt; 150 Hz) without secondary bounce or loose latch reverberation.</li>
+              <li><strong>Door Closing Velocity:</strong> Must achieve full primary latch engagement with closing velocity &le; 1.05 m/s with all windows fully closed.</li>
+              <li><strong>Pedal Travel &amp; Resistance:</strong> Brake pedal must provide firm progressive bite without spongy travel; clutch pedal action smooth with clear friction bite point.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Pillar 5 -->
+        <div class="col-md-6">
+          <div class="pillar-box">
+            <div class="pillar-tag">PILLAR 5: DYNAMICS</div>
+            <div class="pillar-title">Dynamic Ride, Handling &amp; Powertrain Refinement</div>
+            <ul class="pillar-list">
+              <li><strong>Steering Feel:</strong> Precise on-center definition, linear steering resistance buildup during cornering, and smooth self-centering returnability.</li>
+              <li><strong>Transmission Shift Quality:</strong> Automatic/DCT shift smoothness with zero shift shock, clutch judder, or hunting on inclines.</li>
+              <li><strong>Suspension Compliance:</strong> Primary body control over undulating roads and secondary compliance over sharp highway expansion joints.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 4: Rating Rubrics (C-Rating vs D-Rating) -->
+  <div class="card mb-4 shadow-sm manual-card">
+    <div class="card-header bg-white d-flex align-items-center gap-2">
+      <mat-icon class="section-icon text-danger">stars</mat-icon>
+      <h4 class="mb-0 font-weight-bold">4. Evaluation Categories: Static C-Rating vs. Dynamic D-Rating</h4>
+    </div>
+    <div class="card-body">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="rating-card c-rating-card">
+            <div class="rating-badge c-badge">C-RATING: CUSTOMER STATIC EVALUATION</div>
+            <h5 class="rating-title mt-2">Static Showroom &amp; Walkaround Audit</h5>
+            <p class="rating-desc">Simulates a high-expectation customer inspecting a brand-new vehicle in a showroom environment.</p>
+            <ul class="rating-points">
+              <li>Exterior panel flushness, door glass alignment, and weatherstrip seating</li>
+              <li>Paint gloss uniformity, dust nibs, orange peel, and bumper color match</li>
+              <li>Interior trim gap harmony, stitching straightness, and carpet fitment</li>
+              <li>All mechanical door handles, hood release, and tailgate operation</li>
+              <li>Infotainment touchscreen fluidity, Apple CarPlay/Android Auto pairing, and audio clarity</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="rating-card d-rating-card">
+            <div class="rating-badge d-badge">D-RATING: DRIVER DYNAMIC ROAD AUDIT</div>
+            <h5 class="rating-title mt-2">Dynamic Proving Ground Track Audit</h5>
+            <p class="rating-desc">Conducted on dedicated automotive test tracks (high-speed oval, rough road, sine wave, brake pad).</p>
+            <ul class="rating-points">
+              <li>Cabin acoustic decibel levels at 40, 80, and 120 km/h speeds</li>
+              <li>Buzz, squeak, and rattle (BSR) identification over severe road surfaces</li>
+              <li>Emergency braking straight-line stability and pedal bite linearity</li>
+              <li>Engine, transmission, and EV powertrain vibration isolation</li>
+              <li>ADAS lane centering, adaptive cruise control, and blind-spot warning operation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

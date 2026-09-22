@@ -1,0 +1,31 @@
+.it-help-container {
+  background-color: #f8fafc;
+  min-height: 100vh;
+
+  .mat-card {
+    border-radius: 8px;
+    background: #ffffff;
+  }
+
+  .form-label {
+    font-size: 13px;
+    color: #334155;
+    margin-bottom: 4px;
+  }
+
+  .form-control {
+    font-size: 13px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+
+    &:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
+    }
+  }
+
+  .list-group-item {
+    font-size: 13px;
+    color: #334155;
+  }
+}

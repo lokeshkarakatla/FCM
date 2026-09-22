@@ -30,11 +30,11 @@ export class CapaComponent implements OnInit {
 
   private rawData = [
     {
-      title: "(FIELD/2024/09/1) - SOLIS 26 4WD - Hydraulic Lift Pressure Drop",
+      title: "(FIELD/2024/09/1) - Toyota Fortuner 4x4 - ADAS Front Radar Camera Calibration Error",
       role: "Shop Head",
-      department: "Production",
-      issue: "Hydraulic Pressure Drop",
-      details: "Hydraulic pump pressure drops under load after 2 hours continuous work",
+      department: "QA-16949",
+      issue: "Radar Misalignment During Bumper Assembly",
+      details: "Front millimeter-wave radar sensor clip deformed during front fascia mounting",
       date: "2025-09-20",
       eta: "2025-10-05",
       status: "Open",
@@ -42,11 +42,11 @@ export class CapaComponent implements OnInit {
       actions: { edit: true, delete: true }
     },
     {
-      title: "(FIELD/2024/09/2) - SOLIS NT 90 4WD - Engine Overheating Under Heavy Draft Load",
+      title: "(FIELD/2024/09/2) - Hyundai Creta SX - 7-Speed Dual-Clutch Transmission Shudder",
       role: "Shift Manager",
-      department: "QA",
-      issue: "Radiator Airflow Restriction",
-      details: "Coolant temperature exceeds 105C during deep tillage draft",
+      department: "QA-16949",
+      issue: "Clutch Pack Thermal Glazing",
+      details: "Dry clutch friction plate micro-slipping in stop-and-go city traffic",
       date: "2025-09-22",
       eta: "2025-10-08",
       status: "Pending",
@@ -54,11 +54,11 @@ export class CapaComponent implements OnInit {
       actions: { edit: true, delete: true }
     },
     {
-      title: "(FIELD/2024/09/3) - SOLIS NT 60 4WD - Transmission Gear Slipping in 3rd High",
+      title: "(FIELD/2024/09/3) - Mahindra XUV700 AX7 - Infotainment Twin Screen Blackout",
       role: "Shop Head",
-      department: "Production",
-      issue: "Synchronizer Ring Wear",
-      details: "Gear pop-out under reverse load torque in field trials",
+      department: "RND-EES",
+      issue: "Display LVDS Wiring Harness Pin Loose",
+      details: "Vehicle instrument cluster resets during cold start sequence",
       date: "2025-09-24",
       eta: "2025-10-10",
       status: "WIP",
@@ -66,11 +66,11 @@ export class CapaComponent implements OnInit {
       actions: { edit: true, delete: true }
     },
     {
-      title: "(FIELD/2024/09/4) - SOLIS 26 4WD - Steering Cylinder Oil Leakage",
+      title: "(FIELD/2024/09/4) - Tata Nexon EV Max - High Voltage Traction Battery Slow Charging",
       role: "Shift Manager",
-      department: "Maintenance",
-      issue: "Cylinder Seal Failure",
-      details: "Steering cylinder gland nut seal damaged during assembly",
+      department: "RND-PWR",
+      issue: "Battery Management System BMS Firmware Timeout",
+      details: "DC fast-charging current throttles at 45kW due to temperature sensor drift",
       date: "2025-09-25",
       eta: "2025-10-12",
       status: "WIP",
@@ -78,11 +78,11 @@ export class CapaComponent implements OnInit {
       actions: { edit: true, delete: true }
     },
     {
-      title: "(FIELD/2024/09/5) - SOLIS NT 90 4WD - Clutch Plate Premature Wear",
+      title: "(FIELD/2024/09/5) - Toyota Camry Hybrid - e-CVT Power Split Inverter Error",
       role: "QA Lead",
-      department: "QA",
-      issue: "Clutch Freeplay Misalignment",
-      details: "Release bearing binding causing continuous slip and heat",
+      department: "QA-16949",
+      issue: "Coolant Air Lock in Hybrid Inverter Loop",
+      details: "Bleeder valve vacuum filling incomplete on assembly line TCF-2",
       date: "2025-09-26",
       eta: "2025-10-15",
       status: "Closed",
@@ -90,11 +90,11 @@ export class CapaComponent implements OnInit {
       actions: { edit: true, delete: true }
     },
     {
-      title: "(FIELD/2024/09/6) - SOLIS NT 60 4WD - Brake Squeal and Uneven Braking",
+      title: "(FIELD/2024/09/6) - Tata Safari Dark Edition - Panoramic Sunroof Drain Water Ingress",
       role: "Shift Manager",
-      department: "Production",
-      issue: "Brake Lining Contamination",
-      details: "Oil seepage from axle housing contaminating dry brake discs",
+      department: "MFG-TCF",
+      issue: "A-Pillar Drain Hose Kinked",
+      details: "Drain tube pinched behind curtain airbag bracket during cabin trimming",
       date: "2025-09-27",
       eta: "2025-10-18",
       status: "Open",
@@ -102,11 +102,11 @@ export class CapaComponent implements OnInit {
       actions: { edit: true, delete: true }
     },
     {
-      title: "(FIELD/2024/09/7) - SOLIS 26 4WD - Alternator Not Charging Battery",
+      title: "(FIELD/2024/09/7) - Hyundai Verna Turbo - Turbocharger Wastegate Actuator Rattle",
       role: "Plant Quality Head",
-      department: "Incoming Inspection",
-      issue: "Alternator Diode Trio Failure",
-      details: "Batch defect in diode bridge from vendor supplier lot",
+      department: "SQA-VND",
+      issue: "Actuator Linkage Bushing Clearance",
+      details: "Excessive axial play on wastegate arm causing acoustic resonance at 2200 RPM",
       date: "2025-09-28",
       eta: "2025-10-20",
       status: "Pending",
@@ -114,11 +114,11 @@ export class CapaComponent implements OnInit {
       actions: { edit: true, delete: true }
     },
     {
-      title: "(FIELD/2024/09/8) - SOLIS NT 90 4WD - Fuel Injector Nozzle Clogging",
+      title: "(FIELD/2024/09/8) - Honda Elevate ZX - Electronic Power Steering Assist Fluctuation",
       role: "Shift Manager",
-      department: "R&D",
-      issue: "Fuel Filter Microns Inadequacy",
-      details: "Fine particulate passing through primary strainer in dusty regions",
+      department: "FES-DLR",
+      issue: "Torque Angle Sensor Calibration Offset",
+      details: "Zero-point steering angle sensor calibration required after wheel alignment",
       date: "2025-09-29",
       eta: "2025-10-22",
       status: "WIP",
