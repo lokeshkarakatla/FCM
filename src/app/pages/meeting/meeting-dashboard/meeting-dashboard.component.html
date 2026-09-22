@@ -257,15 +257,6 @@
 
       <!-- RIGHT SIDE: COMPLAINTS TABLE CONTENT -->
       <div class="col-md-10 col-sm-9">
-
-        <!-- Top Action Buttons -->
-        <div class="mb-3 d-flex justify-content-end gap-2">
-
-          <button mat-raised-button color="primary" (click)="openAddObservation()">
-            <mat-icon>add</mat-icon> Add Complaint
-          </button>
-        </div>
-
         <!-- Table Responsive -->
         <div class="table-responsive">
           <table class="table table-bordered table-hover align-middle main-grid-table">
@@ -402,7 +393,7 @@
       </div>
 
       <button mat-raised-button color="primary" (click)="openAddItemCapa()">
-        <mat-icon>add</mat-icon> Add Item
+        <mat-icon>add</mat-icon> Add CAPA
       </button>
     </div>
 
@@ -427,8 +418,8 @@
         <tbody>
           <tr *ngFor="let capa of capaList">
             <td class="text-center">
-              <i class="fa fa-edit text-primary me-2 pointer"></i>
-              <i class="fa fa-trash text-danger pointer" (click)="deleteCapa(capa)"></i>
+              <i class="fa fa-edit text-primary me-2 pointer" (click)="openEditCapa(capa)" matTooltip="Edit CAPA"></i>
+              <i class="fa fa-trash text-danger pointer" (click)="deleteCapa(capa)" matTooltip="Delete CAPA"></i>
             </td>
 
             <td class="fw-semibold">{{ capa.subject }}</td>
@@ -448,7 +439,7 @@
             <td class="text-center">{{ capa.dateResolved }}</td>
 
             <td class="text-center">
-              <mat-checkbox [(ngModel)]="capa.resolved"></mat-checkbox>
+              <mat-checkbox [(ngModel)]="capa.resolved" (change)="onMeetingCapaResolvedToggle(capa)"></mat-checkbox>
             </td>
 
             <td class="text-center">{{ capa.tat }}</td>

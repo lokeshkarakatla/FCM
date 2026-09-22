@@ -105,21 +105,50 @@
   margin-top: 0px;
 }
 
+#grid-table-container table {
+  min-width: 1400px;
+}
+
 .nowrap {
   white-space: nowrap;
 }
 
 .small-select {
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 500;
+  min-width: 110px;
+  width: 110px;
+  padding: 4px 24px 4px 10px !important;
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background-color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+
+  &:focus {
+    border-color: #0284c7;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.2);
+  }
 }
 
 /* Optional (keep only if used in HTML) */
 .link {
-  color: blue;
+  color: #0284c7;
 }
 
 .clickable {
-  color: blue;
+  color: #0284c7 !important;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.pointer {
   cursor: pointer;
 }
 

@@ -37,7 +37,9 @@ export class CapaComponent implements OnInit {
       details: "Front millimeter-wave radar sensor clip deformed during front fascia mounting",
       date: "2025-09-20",
       eta: "2025-10-05",
-      status: "Open",
+      completedDate: "2025-10-04",
+      done: true,
+      status: "Closed",
       meetingRef: '(Meet/2025/10/01)',
       actions: { edit: true, delete: true }
     },
@@ -49,7 +51,9 @@ export class CapaComponent implements OnInit {
       details: "Dry clutch friction plate micro-slipping in stop-and-go city traffic",
       date: "2025-09-22",
       eta: "2025-10-08",
-      status: "Pending",
+      completedDate: "2025-10-07",
+      done: true,
+      status: "Closed",
       meetingRef: '(Meet/2025/10/02)',
       actions: { edit: true, delete: true }
     },
@@ -61,7 +65,9 @@ export class CapaComponent implements OnInit {
       details: "Vehicle instrument cluster resets during cold start sequence",
       date: "2025-09-24",
       eta: "2025-10-10",
-      status: "WIP",
+      completedDate: "2025-10-09",
+      done: true,
+      status: "Closed",
       meetingRef: '(Meet/2025/10/03)',
       actions: { edit: true, delete: true }
     },
@@ -73,7 +79,9 @@ export class CapaComponent implements OnInit {
       details: "DC fast-charging current throttles at 45kW due to temperature sensor drift",
       date: "2025-09-25",
       eta: "2025-10-12",
-      status: "WIP",
+      completedDate: "2025-10-11",
+      done: true,
+      status: "Closed",
       meetingRef: '(Meet/2025/10/04)',
       actions: { edit: true, delete: true }
     },
@@ -85,6 +93,8 @@ export class CapaComponent implements OnInit {
       details: "Bleeder valve vacuum filling incomplete on assembly line TCF-2",
       date: "2025-09-26",
       eta: "2025-10-15",
+      completedDate: "2025-10-14",
+      done: true,
       status: "Closed",
       meetingRef: '(Meet/2025/10/05)',
       actions: { edit: true, delete: true }
@@ -97,7 +107,9 @@ export class CapaComponent implements OnInit {
       details: "Drain tube pinched behind curtain airbag bracket during cabin trimming",
       date: "2025-09-27",
       eta: "2025-10-18",
-      status: "Open",
+      completedDate: "2025-10-17",
+      done: true,
+      status: "Closed",
       meetingRef: '(Meet/2025/10/06)',
       actions: { edit: true, delete: true }
     },
@@ -109,7 +121,9 @@ export class CapaComponent implements OnInit {
       details: "Excessive axial play on wastegate arm causing acoustic resonance at 2200 RPM",
       date: "2025-09-28",
       eta: "2025-10-20",
-      status: "Pending",
+      completedDate: "2025-10-19",
+      done: true,
+      status: "Closed",
       meetingRef: '(Meet/2025/10/07)',
       actions: { edit: true, delete: true }
     },
@@ -121,7 +135,9 @@ export class CapaComponent implements OnInit {
       details: "Zero-point steering angle sensor calibration required after wheel alignment",
       date: "2025-09-29",
       eta: "2025-10-22",
-      status: "WIP",
+      completedDate: "2025-10-21",
+      done: true,
+      status: "Closed",
       meetingRef: '(Meet/2025/10/08)',
       actions: { edit: true, delete: true }
     }
@@ -183,12 +199,58 @@ export class CapaComponent implements OnInit {
     }
   }
 
-  public openCAPA(id: any) {
+  public openCAPA(item: any) {
     let dialogRef = this.dialog.open(AddCapaComponent, {
-      data: id,
-      height: 'auto',
-      width: '800px',
+      data: item,
+      width: '780px',
+      maxWidth: '92vw',
+      maxHeight: '90vh',
     });
+
+    dialogRef.afterClosed().subscribe(res => {
+      if (res) {
+        if (item) {
+          // Update existing item
+          Object.assign(item, res);
+          const idx = this.allData.findIndex(d => d === item);
+          if (idx !== -1) {
+            this.allData[idx] = { ...item };
+          }
+        } else {
+          // Add new item
+          const newItem = {
+            ...res,
+            actions: { edit: true, delete: true }
+          };
+          this.data.unshift(newItem);
+          this.allData.unshift(newItem);
+        }
+      }
+    });
+  }
+
+  onDoneToggle(item: any) {
+    if (item.done) {
+      item.completedDate = new Date().toISOString().split('T')[0];
+      item.status = 'Closed';
+    } else {
+      item.completedDate = '-';
+      if (item.status === 'Closed') {
+        item.status = 'WIP';
+      }
+    }
+  }
+
+  onStatusChange(item: any) {
+    if (item.status === 'Closed') {
+      item.done = true;
+      if (!item.completedDate || item.completedDate === '-') {
+        item.completedDate = new Date().toISOString().split('T')[0];
+      }
+    } else {
+      item.done = false;
+      item.completedDate = '-';
+    }
   }
 
   deleteConfirmation(item?: any) {

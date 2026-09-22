@@ -112,32 +112,34 @@
 
                 <thead class="tbl-head">
                     <tr>
-                        <th>Actions</th>
-                        <th>Status</th>
-                        <th class="nowrap">Complaint (Reference)</th>
-                        <th class="nowrap">Meeting Ref</th>
+                        <th class="text-center" width="70">Actions</th>
+                        <th class="text-center" width="130" style="min-width: 130px;">Status</th>
+                        <th class="nowrap" width="280" style="min-width: 280px;">Complaint (Reference)</th>
+                        <th class="nowrap text-center" width="110">Meeting Ref</th>
                         <th>Role</th>
                         <th>Department</th>
                         <th>Subject</th>
                         <th>Description</th>
-                        <th class="nowrap">Due Date</th>
-                        <th class="nowrap">ETA</th>
+                        <th class="nowrap text-center" width="105">Due Date</th>
+                        <th class="nowrap text-center" width="105">ETA Date</th>
+                        <th class="nowrap text-center" width="115">Completed Date</th>
+                        <th class="text-center nowrap" width="70">Done</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     <tr *ngFor="let item of data">
-                        <td class="nowrap">
-                            <a matTooltip="Edit CAPA" (click)="openCAPA(item)">
-                                <i class="fa fa-edit"></i>
+                        <td class="nowrap text-center">
+                            <a matTooltip="Edit CAPA" (click)="openCAPA(item)" class="pointer me-2">
+                                <i class="fa fa-edit text-primary"></i>
                             </a>
-                            <a matTooltip="Delete CAPA" (click)="deleteConfirmation(item)">
+                            <a matTooltip="Delete CAPA" (click)="deleteConfirmation(item)" class="pointer">
                                 <i class="fa fa-trash red"></i>
                             </a>
                         </td>
 
-                        <td>
-                            <select class="form-select small-select" [(ngModel)]="item.status">
+                        <td class="text-center" style="min-width: 130px;">
+                            <select class="form-select small-select" [(ngModel)]="item.status" (change)="onStatusChange(item)">
                                 <option value="Open">Open</option>
                                 <option value="Pending">Pending</option>
                                 <option value="WIP">WIP</option>
@@ -145,7 +147,7 @@
                             </select>
                         </td>
 
-                        <td>
+                        <td style="min-width: 280px; max-width: 330px; line-height: 1.45;">
                             <ng-container *ngFor="let word of item.title.split(' '); let i = index">
                                 <span [ngClass]="{'clickable': i === 0}"
                                     (click)="i === 0 && goToAddComplaint()">
@@ -155,13 +157,18 @@
                             </ng-container>
                         </td>
 
-                        <td class="link">{{ item.meetingRef }}</td>
+                        <td class="link text-center">{{ item.meetingRef }}</td>
                         <td>{{ item.role }}</td>
                         <td>{{ item.department }}</td>
-                        <td>{{ item.issue }}</td>
+                        <td class="fw-semibold">{{ item.issue }}</td>
                         <td>{{ item.details }}</td>
-                      <td class="nowrap red-due-date">{{ item.date }}</td>
-<td class="nowrap">{{ item.eta }}</td>
+                        <td class="nowrap red-due-date text-center">{{ item.date }}</td>
+                        <td class="nowrap text-center">{{ item.eta || '-' }}</td>
+                        <td class="nowrap text-center">{{ item.completedDate || '-' }}</td>
+                        <td class="text-center">
+                            <input type="checkbox" class="form-check-input pointer" style="cursor: pointer; transform: scale(1.15);"
+                                   [(ngModel)]="item.done" (change)="onDoneToggle(item)" />
+                        </td>
                     </tr>
                 </tbody>
 
