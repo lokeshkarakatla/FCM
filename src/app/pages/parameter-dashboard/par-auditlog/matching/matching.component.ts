@@ -3,6 +3,7 @@ import { ImgPopComponent } from './img-pop/img-pop.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { environment } from 'src/environments/environment';
+import { AddParameterLineitemComponent } from '../add-parameter-lineitem/add-parameter-lineitem.component';
 
 @Component({
   selector: 'app-matching',
@@ -274,7 +275,15 @@ export class MatchingComponent implements OnInit {
       data: item,
       width: "750px",
       height: "auto"
-    })
+    });
+  }
+
+  addParameterLineItem(item: any) {
+    this.dialog.open(AddParameterLineitemComponent, {
+      data: item,
+      width: "700px",
+      height: "auto"
+    });
   }
 
   // Helper method to reset all tabs to inactive state

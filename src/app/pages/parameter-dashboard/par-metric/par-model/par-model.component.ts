@@ -24,44 +24,47 @@ export class ParModelComponent implements OnInit {
   constructor() {
     const three = [
       {
-        name: 'Hector',
+        name: 'Toyota Fortuner',
         value: 89
       },
       {
-        name: 'Ev',
+        name: 'Hyundai Creta',
         value: 97
       },
       {
-        name: 'Astor',
+        name: 'Mahindra XUV700',
         value: 90
       },
       {
-        name: 'Gloster',
+        name: 'Tata Nexon EV',
         value: 98
       },
-
-
-
+      {
+        name: 'Camry Hybrid',
+        value: 96
+      },
     ];
     const first = [
       {
-        name: 'Hector',
+        name: 'Toyota Fortuner',
         value: 89
       },
       {
-        name: 'Ev',
+        name: 'Hyundai Creta',
         value: 97
       },
       {
-        name: 'Astor',
+        name: 'Mahindra XUV700',
         value: 90
       },
       {
-        name: 'Gloster',
+        name: 'Tata Nexon EV',
         value: 98
       },
-
-
+      {
+        name: 'Camry Hybrid',
+        value: 96
+      },
     ];
     Object.assign(this, { first, three });
   }

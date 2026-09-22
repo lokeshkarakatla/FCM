@@ -12,83 +12,47 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class ObjectiveAuditArchivesComponent implements OnInit {
 
-  //Objective Audit
   public pageSize = 5;
   public currentPage = 0;
   public totalSize = 0;
   filterToggle = false;
+
   constructor(
     public dialog: MatDialog,
     public router: Router
   ) { }
-  public popoverTitle: string = 'Confirm Delete';
-  public popoverMessage: string = 'Are you sure you want to delete this.?';
-  public popoverStatusTitle: string = 'Confirm Status Change';
-  public popoverStatusMessage: string = 'Are you sure you want to change status.?';
-  public cancelClicked: boolean = false;
-  public popoversendMessage: 'Are you sure you want to send.?'
-  public popoversendTitle: string = 'Confirm Delete';
-  values = []
+
+  values: any[] = [];
+
   ngOnInit() {
     if (environment.mode == 1) {
-      //this.values = PartsData.getd1();
       this.values = objectivedata.objectiveArchive();
+      this.totalSize = this.values.length;
     }
-    else {
-
-    }
-    
-
   }
 
-    scrollRight() {
-  const container = document.getElementById('grid-table-container');
-  if (container) {
-    container.scrollBy({ left: 300, behavior: 'smooth' });
+  scrollRight() {
+    const container = document.getElementById('grid-table-container tableScroll');
+    if (container) {
+      container.scrollBy({ left: 300, behavior: 'smooth' });
+    }
   }
-}
  
-scrollLeft() {
-  const container = document.getElementById('grid-table-container');
-  if (container) {
-    container.scrollBy({ left: -300, behavior: 'smooth' });
+  scrollLeft() {
+    const container = document.getElementById('grid-table-container tableScroll');
+    if (container) {
+      container.scrollBy({ left: -300, behavior: 'smooth' });
+    }
   }
-}
 
   opencheckpoint(item: any) {
-    const selectedImage = item && item.image ? item.image : '/assets/car10x10.png';
-    const cellsToHighlight = item && item.highlightedCells ? item.highlightedCells : [];
-    const selectedModule = item && item.Model ? item.Model : ''; 
-
-    sessionStorage.setItem('currentCheckpointImage', selectedImage);
-    sessionStorage.setItem('disableOverview', 'true');
-    sessionStorage.setItem('highlightedCells', JSON.stringify(cellsToHighlight));
-    sessionStorage.setItem('selectedModule', selectedModule);
-
-    this.router.navigate(['/app/parameterboard']);
+    window.open('/#/app/parameterboard/par-auditlog/sealing');
   }
 
-  opendashboard() {
-    this.router.navigate(['/app/parameterboard']);
-  }
-
-  //parameterboard
-  saveStatus() {
-    //this.alertService.createAlert('Successfully saved.', 1);
-  }
-  public addchecklistaudit(auditdata) {
-    //   let dialogRef = this.dialog.open(AddObjectiveAuditComponent, {
-    //     data: auditdata,
-    //     height: 'auto',
-    //     width: '600px'
-    //   });
-    //   dialogRef.afterClosed().subscribe(data => {
-    //   });
-  }
-        Confirmation(item: any) {
+  Confirmation(item: any) {
     let dialogRef = this.dialog.open(StatusConfirmationDialogComponent, {
       width: 'auto',
-      data: { TractorStatusId: item.TractorStatusId, title: 'Change Status', content: 'Are you sure you want to Change the Status ?' }
+      data: { StatusId: item.VIN || item.vin, title: 'Change Status', content: 'Are you sure you want to Change the Status ?' }
     });
   }
 }

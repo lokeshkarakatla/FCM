@@ -9,19 +9,18 @@
               <mat-form-field style="margin-right:40px">
                 <mat-label>Select Tag</mat-label>
                 <mat-select placeholder="Select a tag" multiple [(ngModel)]="selectedTags">
-                  <mat-option value="emergency">Emergency</mat-option>
+                  <mat-option value="critical-safety">Critical Safety</mat-option>
+                  <mat-option value="containment">Containment Active</mat-option>
                   <mat-option value="expedite">Expedite</mat-option>
-                  <mat-option value="delayed">Delayed</mat-option>
-                  <mat-option value="sub-acute">Sub Acute</mat-option>
-                  <mat-option value="commercial">Commercial</mat-option>
-                  <mat-option value="high-risk">High Risk</mat-option>
-                  <mat-option value="pregnant">Pregnant</mat-option>
-                  <mat-option value="minor">Minor</mat-option>
-                  <mat-option value="teenager">Teenager</mat-option>
-                  <mat-option value="cancer">Cancer</mat-option>
-                  <mat-option value="diabetic">Diabetic</mat-option>
-                  <mat-option value="hyper-tension">Hyper Tension</mat-option>
-                  <mat-option value="disabled">Disabled</mat-option>
+                  <mat-option value="rework">Rework Station</mat-option>
+                  <mat-option value="poka-yoke">Poka-Yoke Interlock</mat-option>
+                  <mat-option value="torque-audit">Torque Fastener Audit</mat-option>
+                  <mat-option value="gap-flushness">Gap & Flushness Variance</mat-option>
+                  <mat-option value="sealing-leak">Sealing & Water Ingress</mat-option>
+                  <mat-option value="chassis-geometry">Chassis Geometry Drift</mat-option>
+                  <mat-option value="supplier-sqe">Supplier SQE Escalation</mat-option>
+                  <mat-option value="tooling-drift">Tooling Wear / Drift</mat-option>
+                  <mat-option value="ev-high-voltage">EV High Voltage Isolation</mat-option>
                 </mat-select>
               </mat-form-field>
 
@@ -49,26 +48,16 @@
     <div class="w-100 row" style="margin: 20px;margin-left: -3px;">
       <div class="col-10 align-items-center d-flex">
         <img src="../../../../assets/chatgpt.png" alt="AI Icon" width="24" height="24" class="me-3">
-        <span style="font-weight: bold; padding: 5px; font-size:16px"> AI Overview</span>
+        <span style="font-weight: bold; padding: 5px; font-size:16px"> AI Inspection Overview</span>
       </div>
 
       <div class="col-sm-12 mt-4">
-        <span style="font-size:18px">
-          Patient John Doe, 55 years old, presented for a routine check-up. He reports feeling
-          well with no
-          significant complaints. Physical exam is unremarkable. Blood pressure is slightly
-          elevated at 140/90
-          mmHg. Labs are within normal limits. Diagnosis: Mild hypertension. Treatment plan:
-          Continue
-          monitoring blood pressure at home, dietary modifications, and schedule a follow-up
-          appointment in 3
-          months to re-assess
+        <span style="font-size:16px; line-height: 1.6;">
+          <strong>VIN #MBH45K23N0P721094 (Toyota Fortuner 4x4 - Bidadi Auto Facility - Plant 1):</strong>
+          Routine end-of-line objective inspection completed at Final Quality Gate 4. Hood-to-fender flushness nominal at 0.8mm (USL 1.25mm), Cpk 1.72. Sealing bead cross-section on LHS Tailgate garnish passed 3.2 bar pressurized water test. Front subframe fastener torque verified at 115 Nm (target: 110-120 Nm). ADAS forward camera optical calibration confirmed alignment variance within ±0.04°. Disposition: Batch cleared for pre-dispatch staging.
         </span>
-        <span *ngIf="showMore" style="font-size:18px">
-          Remember to always tailor the summary to the specific patient and their unique medical
-          situation,
-          ensuring all clarity and conciseness.
-          Additional details about the topic...
+        <span *ngIf="showMore" style="font-size:16px; line-height: 1.6; display: block; margin-top: 10px;">
+          Next scheduled calibration on Robot Nozzle 4 due in 48 operating hours. Historical demerit trends indicate a 34% reduction in assembly variance following automated torque monitoring rollout.
         </span>
 
         <span class="d-inline">
@@ -95,21 +84,15 @@
 
         <mat-menu #sortMenu="matMenu">
           <div class="scrollable-menu">
-            <button mat-menu-item (click)="onSortOptionSelected('Actions')">Actions</button>
+            <button mat-menu-item (click)="onSortOptionSelected('Checkpoint ID')">Checkpoint ID</button>
             <button mat-menu-item (click)="onSortOptionSelected('Status')">Status</button>
-            <button mat-menu-item (click)="onSortOptionSelected('Referral ID')">Referral ID</button>
-            <button mat-menu-item (click)="onSortOptionSelected('Select')">Select</button>
-            <button mat-menu-item (click)="onSortOptionSelected('Visits')">Visits</button>
-            <button mat-menu-item (click)="onSortOptionSelected('Claims')">Claims</button>
-            <button mat-menu-item (click)="onSortOptionSelected('Patient ID')">Patient ID</button>
-            <button mat-menu-item (click)="onSortOptionSelected('Patient Name')">Patient Name</button>
-            <button mat-menu-item (click)="onSortOptionSelected('Referral From')"> Referral From</button>
-            <button mat-menu-item (click)="onSortOptionSelected('Referral To')">Referral To</button>
-            <button mat-menu-item (click)="onSortOptionSelected('Specialty')">Specialty</button>
-            <button mat-menu-item (click)="onSortOptionSelected('Case ID')">Case ID</button>
-            <button mat-menu-item (click)="onSortOptionSelected('Case Type')">Case Type</button>
-            <button mat-menu-item (click)="onSortOptionSelected('Order Type')">Order Type</button>
-            <button mat-menu-item (click)="onSortOptionSelected('Last Updated')">Last Updated</button>
+            <button mat-menu-item (click)="onSortOptionSelected('VIN')">VIN</button>
+            <button mat-menu-item (click)="onSortOptionSelected('Model')">Model</button>
+            <button mat-menu-item (click)="onSortOptionSelected('Variant')">Variant</button>
+            <button mat-menu-item (click)="onSortOptionSelected('Demerits')">Demerits</button>
+            <button mat-menu-item (click)="onSortOptionSelected('Department')">Department</button>
+            <button mat-menu-item (click)="onSortOptionSelected('Inspector')">Inspector</button>
+            <button mat-menu-item (click)="onSortOptionSelected('Plant')">Plant</button>
             <button mat-menu-item (click)="onSortOptionSelected('Created')">Created</button>
           </div>
         </mat-menu>

@@ -1,7 +1,10 @@
 <div class="col-sm-12" align="end">
     <button type="button" class="btn btn-outline-success" style="margin-right: 10px; height: 41px;">Save Draft</button>
-    <button mat-raised-button color="primary" [mat-dialog-close]="'test'">
+    <button mat-raised-button color="primary" [mat-dialog-close]="'test'" style="margin-right: 10px;">
         <mat-icon>save</mat-icon>Submit
+    </button>
+    <button mat-raised-button color="primary" (click)="addParameterLineItem(null)">
+        <mat-icon>add</mat-icon> Add Line Item
     </button>
 </div>
 
@@ -128,7 +131,7 @@
     </div>
 </div>
 
-<div class="col-lg-10 mb-5">
+<div class="col-sm-12 mb-5">
     <table style="margin-top: 7px;padding-left: 0px; padding-right: 0px;" matSort id="example2"
         class="table table-bordered table-hover">
         <thead class="tbl-head">

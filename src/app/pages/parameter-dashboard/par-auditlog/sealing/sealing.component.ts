@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { environment } from 'src/environments/environment';
 import { ImgPopSealingComponent } from './img-pop-sealing/img-pop-sealing.component';
+import { AddParameterLineitemComponent } from '../add-parameter-lineitem/add-parameter-lineitem.component';
 
 @Component({
   selector: 'app-sealing',
@@ -274,7 +275,15 @@ export class SealingComponent implements OnInit {
       data: item,
       width: "1100px",
       height: "auto"
-    })
+    });
+  }
+
+  addParameterLineItem(item: any) {
+    this.dialog.open(AddParameterLineitemComponent, {
+      data: item,
+      width: "700px",
+      height: "auto"
+    });
   }
 
   // Helper method to reset all tabs to inactive state
