@@ -23,95 +23,106 @@ export class CapaComponent implements OnInit {
   allData: any[] = [];
   data: any[] = [];
 
+  filterKeyword: string = '';
+  filterRole: string = '';
+  filterDepartment: string = '';
+  filterStatus: string = '';
+
   private rawData = [
     {
-      title: "(FIELD/2024/09/6) - High-Performance Nissan Ariya NISMO Debuts on World EV ",
+      title: "(FIELD/2024/09/1) - SOLIS 26 4WD - Hydraulic Lift Pressure Drop",
       role: "Shop Head",
-      department: "QA",
-      issue: "Engine Overheating",
-      details: "enginee getting sound",
-      date: "2024-09-20",
-      eta: "0000-00-00",
+      department: "Production",
+      issue: "Hydraulic Pressure Drop",
+      details: "Hydraulic pump pressure drops under load after 2 hours continuous work",
+      date: "2025-09-20",
+      eta: "2025-10-05",
       status: "Open",
-      meetingRef:'(Meet/2025/10/02)',
+      meetingRef: '(Meet/2025/10/01)',
       actions: { edit: true, delete: true }
     },
     {
-      title: "(FIELD/2024/09/6) -  High-Performance Nissan Ariya NISMO Debuts on World EV ",
+      title: "(FIELD/2024/09/2) - SOLIS NT 90 4WD - Engine Overheating Under Heavy Draft Load",
       role: "Shift Manager",
-      department: "Quality",
-      issue: "Brakes Squeaking not working",
-      details: "Brakes Squeaking not working",
-      date: "2024-09-24",
-      eta: "2024-09-24",
-      status: "Pending",
-      meetingRef:'(Meet/2025/10/03)',
-      actions: { edit: true, delete: true }
-    },
-    {
-      title: "(FIELD/2024/09/6) - This road hazard service is part of Bosch’s connected map issue ",
-      role: "Shop Head",
       department: "QA",
-      issue: "Transmission Slipping",
-      details: "Transmission Slipping is not good",
-      date: "2024-09-24",
-      meetingRef:'(Meet/2025/10/03)',
-      status: "WIP",
+      issue: "Radiator Airflow Restriction",
+      details: "Coolant temperature exceeds 105C during deep tillage draft",
+      date: "2025-09-22",
+      eta: "2025-10-08",
+      status: "Pending",
+      meetingRef: '(Meet/2025/10/02)',
       actions: { edit: true, delete: true }
     },
     {
-      title: "(FIELD/2024/09/6) - High-Performance Nissan Ariya NISMO Debuts on World EV",
+      title: "(FIELD/2024/09/3) - SOLIS NT 60 4WD - Transmission Gear Slipping in 3rd High",
       role: "Shop Head",
-      department: "Account",
-      issue: "Transmission Slipping",
-      details: "Transmission Slipping",
-      date: "2024-09-24",
-      meetingRef:'(Meet/2025/10/04)',
+      department: "Production",
+      issue: "Synchronizer Ring Wear",
+      details: "Gear pop-out under reverse load torque in field trials",
+      date: "2025-09-24",
+      eta: "2025-10-10",
       status: "WIP",
+      meetingRef: '(Meet/2025/10/03)',
       actions: { edit: true, delete: true }
     },
     {
-      title: "(FIELD/2024/09/6) - High-Performance Nissan Ariya NISMO Debuts on World EV ",
+      title: "(FIELD/2024/09/4) - SOLIS 26 4WD - Steering Cylinder Oil Leakage",
       role: "Shift Manager",
-      department: "Developer",
-      issue: "Battery Draining",
-      details: "Battery Draining",
-      date: "2024-09-24",
-      meetingRef:'(Meet/2025/10/05)',
+      department: "Maintenance",
+      issue: "Cylinder Seal Failure",
+      details: "Steering cylinder gland nut seal damaged during assembly",
+      date: "2025-09-25",
+      eta: "2025-10-12",
+      status: "WIP",
+      meetingRef: '(Meet/2025/10/04)',
+      actions: { edit: true, delete: true }
+    },
+    {
+      title: "(FIELD/2024/09/5) - SOLIS NT 90 4WD - Clutch Plate Premature Wear",
+      role: "QA Lead",
+      department: "QA",
+      issue: "Clutch Freeplay Misalignment",
+      details: "Release bearing binding causing continuous slip and heat",
+      date: "2025-09-26",
+      eta: "2025-10-15",
       status: "Closed",
+      meetingRef: '(Meet/2025/10/05)',
       actions: { edit: true, delete: true }
     },
     {
-      title: "(FIELD/2024/09/6) - Global fleet of connected vehicles ",
+      title: "(FIELD/2024/09/6) - SOLIS NT 60 4WD - Brake Squeal and Uneven Braking",
       role: "Shift Manager",
-      department: "QA",
-      issue: "Unusual Vibrations",
-      details: "Unusual Vibrations",
-      meetingRef:'(Meet/2025/10/06)',
-      date: "2024-09-24",
-      status: "",
-      actions: { edit: true, delete: true }
-    },
-    {
-      title: "(FIELD/2024/09/6) - High-Performance Nissan Ariya NISMO Debuts on World EV ",
-      role: "Shift Manager",
-      department: "Quality",
-      issue: "Brakes Squeaking not working",
-      details: "Brakes Squeaking not working",
-      meetingRef:'(Meet/2025/10/07)',
-      date: "2024-09-24",
+      department: "Production",
+      issue: "Brake Lining Contamination",
+      details: "Oil seepage from axle housing contaminating dry brake discs",
+      date: "2025-09-27",
+      eta: "2025-10-18",
       status: "Open",
+      meetingRef: '(Meet/2025/10/06)',
       actions: { edit: true, delete: true }
     },
     {
-      title: "(FIELD/2024/09/6) - High-Performance Nissan Ariya NISMO Debuts on World EV ",
-      role: "Shift Manager",
-      department: "Quality",
-      issue: "Brakes Squeaking not getting",
-      details: "Brakes Squeaking not working",
-      meetingRef:'(Meet/2025/10/09)',
-      date: "2024-09-24",
+      title: "(FIELD/2024/09/7) - SOLIS 26 4WD - Alternator Not Charging Battery",
+      role: "Plant Quality Head",
+      department: "Incoming Inspection",
+      issue: "Alternator Diode Trio Failure",
+      details: "Batch defect in diode bridge from vendor supplier lot",
+      date: "2025-09-28",
+      eta: "2025-10-20",
       status: "Pending",
+      meetingRef: '(Meet/2025/10/07)',
+      actions: { edit: true, delete: true }
+    },
+    {
+      title: "(FIELD/2024/09/8) - SOLIS NT 90 4WD - Fuel Injector Nozzle Clogging",
+      role: "Shift Manager",
+      department: "R&D",
+      issue: "Fuel Filter Microns Inadequacy",
+      details: "Fine particulate passing through primary strainer in dusty regions",
+      date: "2025-09-29",
+      eta: "2025-10-22",
+      status: "WIP",
+      meetingRef: '(Meet/2025/10/08)',
       actions: { edit: true, delete: true }
     }
   ];
@@ -141,9 +152,29 @@ export class CapaComponent implements OnInit {
     });
   }
 
-  // goBack() {
-  //   this.router.navigate(['/app/complaints']);
-  // }
+  clearFilter() {
+    this.filterKeyword = '';
+    this.filterRole = '';
+    this.filterDepartment = '';
+    this.filterStatus = '';
+    this.isOverdueFilterActive = false;
+    this.data = [...this.allData];
+  }
+
+  applyFilter() {
+    this.data = this.allData.filter(item => {
+      const kw = this.filterKeyword ? this.filterKeyword.toLowerCase() : '';
+      const matchesKeyword = !kw ||
+        (item.title && item.title.toLowerCase().includes(kw)) ||
+        (item.issue && item.issue.toLowerCase().includes(kw)) ||
+        (item.details && item.details.toLowerCase().includes(kw));
+      const matchesRole = !this.filterRole || item.role === this.filterRole;
+      const matchesDept = !this.filterDepartment || item.department === this.filterDepartment;
+      const matchesStatus = !this.filterStatus || item.status === this.filterStatus;
+      return matchesKeyword && matchesRole && matchesDept && matchesStatus;
+    });
+  }
+
   goBack() {
     if (this.fromPage === 'meeting') {
       this.router.navigate(['/app/complaints/meeting']);
@@ -153,23 +184,23 @@ export class CapaComponent implements OnInit {
   }
 
   public openCAPA(id: any) {
-    console.log('jkhksbdjk');
     let dialogRef = this.dialog.open(AddCapaComponent, {
       data: id,
       height: 'auto',
       width: '800px',
     });
-    // dialogRef.afterClosed().subscribe((data: any) => {});
   }
 
-  deleteConfirmation() {
+  deleteConfirmation(item?: any) {
     let dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: 'auto',
-      data: { component: null, title: 'Delete Confirmation', content: 'Are you sure you want to Delete?', isConfirmation: true }
+      data: { component: null, title: 'Delete Confirmation', content: 'Are you sure you want to delete this CAPA?', isConfirmation: true }
     });
     dialogRef.afterClosed().subscribe(
-      (data: any) => {
-        if (data) {
+      (confirmed: any) => {
+        if (confirmed && item) {
+          this.data = this.data.filter(d => d !== item);
+          this.allData = this.allData.filter(d => d !== item);
         }
       }
     );

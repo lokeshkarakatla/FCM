@@ -1,0 +1,241 @@
+================================================================================
+          FIELD COMPLAINT MONITORING (FCM) SYSTEM - COMPLAINTS MODULE
+              BUSINESS REQUIREMENTS DOCUMENT (BRD) & FUNCTIONAL SPECIFICATION
+================================================================================
+Document Version : 2.0
+System Domain    : Manufacturing / Heavy Equipment / Tractor Field Quality Assurance
+Module           : Complaints (Radar, Monitor, Meetings, CAPA, Kanban)
+Author / Owner   : Quality Engineering & FCM Product Team
+Date             : September 2026
+Status           : Approved & Aligned to Real-World Business Operations
+================================================================================
+
+1. EXECUTIVE SUMMARY & BUSINESS OBJECTIVE
+--------------------------------------------------------------------------------
+The Field Complaint Monitoring (FCM) Complaints Module provides an end-to-end,
+closed-loop quality assurance and defect management platform. It bridges the gap
+between global distributors, field service engineers, manufacturing plants, and
+cross-functional quality teams (CFT).
+
+The module governs the entire complaint lifecycle across 5 integrated operational
+stages:
+  [1] Executive Radar        -> High-level trend detection & bottleneck monitoring
+  [2] Central Monitor        -> Standardized complaints register & triage
+  [3] CFT Quality Meetings   -> Cross-functional review & root cause deliberations
+  [4] CAPA Tracking          -> Corrective & Preventive Action accountability
+  [5] Kanban Pipeline        -> Agile visual execution & countermeasure rollout
+
+
+2. MODULE ARCHITECTURE & DATA FLOW
+--------------------------------------------------------------------------------
+                       [ Field Defect Logged ]
+                                 │
+                                 ▼
+                     ┌───────────────────────┐
+                     │   2. MONITOR SCREEN   │ ◄─── Filters & Search
+                     │ (Central Complaints)  │
+                     └───────────┬───────────┘
+                                 │
+           ┌─────────────────────┼─────────────────────┐
+           ▼                     ▼                     ▼
+┌────────────────────┐ ┌───────────────────┐ ┌────────────────────┐
+│   1. RADAR SCREEN  │ │ 3. MEETINGS FLOW  │ │  5. KANBAN BOARD   │
+│ (Executive Cockpit)│ │ (CFT Deliberation)│ │(Execution Pipeline)│
+└────────────────────┘ └─────────┬─────────┘ └────────────────────┘
+                                 │
+                                 ▼
+                       ┌───────────────────┐
+                       │  4. CAPA MODULE   │
+                       │ (Permanent Fixes) │
+                       └───────────────────┘
+
+
+3. SCREEN-BY-SCREEN FUNCTIONAL SPECIFICATIONS
+--------------------------------------------------------------------------------
+
+3.1. SCREEN 1: RADAR (EXECUTIVE ANALYTICS COCKPIT)
+--------------------------------------------------------------------------------
+• Primary Role: Quality Directors, Plant Heads, and Operations Leadership.
+• Business Objective: Instant macro-visibility of warranty failure rates, high-risk
+  tractor models, geographical failure clusters, and ageing bottlenecks.
+
+A. Executive KPI Summary Cards (Top Bar):
+   1. Total Field Complaints : High-level volume across all active product lines.
+   2. Pending Triage / RCA    : Complaints awaiting initial diagnostic investigation.
+   3. Under Design Fix        : Engineering countermeasures currently in development.
+   4. Field Implementation    : Countermeasures undergoing field/plant validation.
+   * Interaction: Clicking any KPI card drills down to the Monitor screen.
+
+B. Distribution Analyses:
+   1. Model-wise Distribution :
+      - Stacked column visualization categorized by tractor models (e.g., SOLIS 26 4WD,
+        SOLIS NT 90 4WD, SOLIS NT 60 4WD, Others).
+      - Color-coded status stacks:
+          • Pending   : #f59e0b (Amber)
+          • Design    : #6366f1 (Indigo)
+          • Implement : #10b981 (Emerald Green)
+          • Others    : #64748b (Slate Grey)
+      - Category sub-filters (Distribution, Pending, Design, Implement, Others, Total)
+        switching between stacked bar and focused model share pie charts.
+   2. Country-wise Distribution :
+      - Concentration breakdown across export territories (Thailand, Israel, Nepal, etc.).
+   3. Ageing Analysis :
+      - Standardized warranty resolution buckets:
+          • 0 - 15 Days  : Fresh intake / rapid containment window
+          • 16 - 30 Days : Detailed 4D/RCA investigation phase
+          • 31 - 60 Days : Countermeasure design & bench testing
+          • 60+ Days     : Critical backlog requiring immediate escalation
+      - Distribution pie chart with percentage shares and count tooltips.
+
+C. View Modes:
+   - Graph View : Interactive Highcharts rendering with clear bottom legend, unclipped
+     X-axis model labels, and shared multi-metric hover tooltips.
+   - Grid View  : Tabular breakdown with direct count hyperlinks that route to Monitor.
+
+
+3.2. SCREEN 2: MONITOR (CENTRAL COMPLAINTS REGISTER)
+--------------------------------------------------------------------------------
+• Primary Role: Quality Engineers, Service Coordinators, Field Managers.
+• Business Objective: Complete tabular operational control of all complaints.
+
+A. Streamlined 14 Core Columns:
+   1. Action          : Edit, Delete, View details shortcuts.
+   2. Reference No    : Standardized alphanumeric code (e.g., FIELD/2024/09/3).
+                        Clickable link leading to deep 8D/PRTS complaint view.
+   3. Subject         : Brief failure summary.
+   4. Description     : Detailed symptom and field failure description.
+   5. Department      : Responsible plant CFT function (Production, QA, Maintenance,
+                        R&D, Incoming Inspection, Warehouse, Logistics).
+   6. Severity        : Criticality rating (Critical, High, Medium, Low) with visual badges.
+   7. CAPA            : Status indicator displaying if formal CAPA is initiated.
+   8. Steps           : Problem-solving milestone progress (e.g., 9/15, 15/15).
+   9. Progress        : Percentage bar indicating resolution maturity.
+   10. Country        : Origin market / territory.
+   11. Status         : Lifecycle state (Open, Pending, WIP, Closed).
+   12. Responsibility : Assigned lead engineer.
+   13. Complaint Date : Date logged from field.
+   14. Due Date       : Agreed resolution SLA date.
+
+B. Controls & Capabilities:
+   - Active / Archive toggle: Filters out resolved/archived complaints from active scope.
+   - Advanced Multi-Criteria Filter: Keyword, Role, Department, Status, Date Range.
+   - Quick Creation: Top "+ Add Complaint" button triggering standardized intake dialog.
+
+
+3.3. SCREEN 3: MEETINGS (CFT QUALITY REVIEWS & MINUTES OF MEETING)
+--------------------------------------------------------------------------------
+• Primary Role: Cross-Functional Teams (CFT - Quality, Manufacturing, R&D, Service).
+• Business Objective: Structured review meetings to discuss open complaints, assign
+  action items, record attendance, and publish binding Minutes of Meeting (MOM).
+
+A. Outer Meeting Grid (Meeting Schedule & History):
+   1. Meeting Ref : Unique meeting identifier (e.g., Meet/2025/10/01).
+   2. Date        : Scheduled meeting date.
+   3. Time        : Start time.
+   4. Duration    : Planned duration (e.g., 45m, 1h).
+   5. Complaints  : Clickable counter badge navigating to the inner meeting observation grid.
+   6. CAPA        : Shortcut to review or assign CAPA actions generated in this session.
+   7. Attendance  : Interactive modal tracking attendee presence (Present / Absent / Online).
+   8. Agenda      : Modal detailing session objectives and target defect categories.
+   9. Status      : Dedicated visual badge (Open = Green badge / Closed = Grey badge).
+   10. Action     : Enter meeting execution room / Edit details / Delete.
+
+B. Inner Meeting Dashboard (Meeting Execution Room):
+   - Streamlined 12-column complaint review grid:
+       Actions | Reference No | Subject | Description | Department | Country |
+       Severity | CAPA | Status | Reviewed (Checkbox) | TAT | Date Logged
+   - Deliberation Tools:
+       • Notes Dialog    : Record specific technical feedback per complaint.
+       • Remarks Dialog  : Log department commitments and temporary countermeasures.
+   - Meeting Closure & Publishing:
+       • "Publish Meeting" workflow prompts for closing remarks and summary.
+       • On publish, the meeting transitions to "Closed", is archived in local storage,
+         and persists in a read-only historical record state.
+
+
+3.4. SCREEN 4: CAPA (CORRECTIVE AND PREVENTIVE ACTION)
+--------------------------------------------------------------------------------
+• Primary Role: Quality Assurance Leads, Plant Heads, Design Engineers.
+• Business Objective: Track systemic, permanent root cause fixes to prevent
+  recurrence in future production batches.
+
+A. Top Action Bar:
+   - Aligned to the right side with consistent 10px spacing:
+       [ Active / Archive Toggle ]  [ Filter Button ]  [ + Add CAPA Button ]
+
+B. Filter Criteria:
+   - Keyword Search    : Searches across Reference No, Failure issue, and Details.
+   - Role Filter       : Shop Head, Shift Manager, QA Lead, Plant Quality Head.
+   - Department Filter : Production, QA, Maintenance, R&D, Incoming Inspection.
+   - Status Filter     : Open, Pending, WIP, Closed.
+   - Actions           : Working "Search" (applies active filters) and "Clear" (resets).
+
+C. CAPA Table Columns:
+   1. Actions             : Edit CAPA dialog, Delete CAPA (with confirmation popup).
+   2. Status              : Interactive inline status dropdown (Open, Pending, WIP, Closed).
+   3. Complaint Reference : Links back to origin field complaint.
+   4. Meeting Ref         : Traces the review meeting where this CAPA was commissioned.
+   5. Role                : Designated owner title.
+   6. Department          : Executing department.
+   7. Subject             : Corrective action summary.
+   8. Description         : Engineering countermeasure description.
+   9. Due Date            : Target verification date.
+   10. ETA                : Projected closure timeline.
+
+
+3.5. SCREEN 5: KANBAN (AGILE EXECUTION PIPELINE)
+--------------------------------------------------------------------------------
+• Primary Role: Design & Manufacturing Engineers, Maintenance Task Teams.
+• Business Objective: Visual task execution board to drag-and-drop complaints
+  through engineering resolution phases.
+
+A. Pipeline Columns:
+   1. Pending : Initial backlog awaiting assignment and diagnostic verification.
+   2. Process : Active root-cause analysis and countermeasure prototyping.
+   3. Hold    : Blocked awaiting supplier parts, field trial feedback, or test bench.
+   4. Closed  : Implemented, verified in production, and officially closed.
+
+B. Card Structure & Visual Layout:
+   - Compact, non-overflowing typography:
+       • Title Row       : Defect subject (13px semi-bold, automatic text wrapping).
+       • Metadata Row 1  : Distributor / Plant name & Department badge.
+       • Metadata Row 2  : Logged date & Current status badge.
+       • SLA / ETA Badge : Alarm indicator showing remaining days to target.
+       • Accordion Panel : Expandable detail section showing Creator, Assignee,
+                           Expedite urgency flag, and chronological notes log.
+   - Drag-and-Drop:
+       • Angular CDK Drag-Drop enabled.
+       • Dragging a card across columns automatically updates its underlying status
+         and persists the layout in localStorage.
+
+
+4. REAL-WORLD COMPLIANCE & BEST PRACTICE ALIGNMENT
+--------------------------------------------------------------------------------
+1. Closed-Loop Traceability:
+   Every record maintains parent-child traceability:
+   Field Complaint (Monitor) -> Review Session (Meetings) -> Root Cause Fix (CAPA)
+   -> Visual Execution (Kanban) -> Trend Health (Radar).
+
+2. Domain Terminology:
+   Standardized to real tractor manufacturing and quality terminology:
+   - Tractor Models : SOLIS 26 4WD, SOLIS NT 90 4WD, SOLIS NT 60 4WD.
+   - Defect Types   : Hydraulic Lift Pressure Drop, Transmission Slipping,
+                      Radiator Airflow Restriction, Steering Cylinder Oil Leakage.
+   - Departments    : Production, QA, Maintenance, R&D, Incoming Inspection.
+   - Roles          : Shop Head, Shift Manager, QA Lead, Plant Quality Head.
+
+3. Responsive & Clean UI Layouts:
+   - Action bars use consistent right-aligned flexbox (`justify-content: flex-end`).
+   - Tables feature clean white-space management without cutoffs or hidden columns.
+   - Charts feature visible legends and responsive padding for X-axis labels.
+
+
+5. CONCLUSION & READINESS
+--------------------------------------------------------------------------------
+The entire Complaints Module is now 100% synchronized, structurally aligned, and
+fully represents real-world automotive and machinery field quality management
+best practices.
+
+================================================================================
+                        END OF SPECIFICATION DOCUMENT
+================================================================================

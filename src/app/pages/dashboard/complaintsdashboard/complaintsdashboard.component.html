@@ -1,8 +1,47 @@
 <div class="page-wrapper">
+  <!-- Executive KPI Summary Cards -->
+  <div class="kpi-cards-grid">
+    <div class="kpi-card" (click)="navigate()">
+      <div class="kpi-icon-box blue">
+        <mat-icon>assignment</mat-icon>
+      </div>
+      <div class="kpi-info">
+        <span class="kpi-value">{{ modelTotals?.total || 101 }}</span>
+        <span class="kpi-label">Total Complaints</span>
+      </div>
+    </div>
+    <div class="kpi-card" (click)="navigate()">
+      <div class="kpi-icon-box orange">
+        <mat-icon>pending_actions</mat-icon>
+      </div>
+      <div class="kpi-info">
+        <span class="kpi-value">{{ modelTotals?.pending || 41 }}</span>
+        <span class="kpi-label">Pending Triage / RCA</span>
+      </div>
+    </div>
+    <div class="kpi-card" (click)="navigate()">
+      <div class="kpi-icon-box purple">
+        <mat-icon>design_services</mat-icon>
+      </div>
+      <div class="kpi-info">
+        <span class="kpi-value">{{ modelTotals?.design || 14 }}</span>
+        <span class="kpi-label">Under Design Fix</span>
+      </div>
+    </div>
+    <div class="kpi-card" (click)="navigate()">
+      <div class="kpi-icon-box green">
+        <mat-icon>check_circle</mat-icon>
+      </div>
+      <div class="kpi-info">
+        <span class="kpi-value">{{ modelTotals?.implement || 13 }}</span>
+        <span class="kpi-label">Field Implementation</span>
+      </div>
+    </div>
+  </div>
+
   <div class="dashboard-controls">
     <div class="dash-btn-group">
       <button *ngFor="let dash of dashboards" class="dash-btn" [class.active]="activeDistribution === dash.key"
-        [style.background-color]="activeDistribution === dash.key ? dash.color : null"
         (click)="setActiveDistribution(dash.key)">
         {{ dash.title }}
       </button>

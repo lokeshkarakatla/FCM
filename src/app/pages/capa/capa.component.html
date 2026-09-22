@@ -10,11 +10,15 @@
             (click)="filterToggle = !filterToggle">
             <mat-icon>filter_list</mat-icon> Filter
         </button>
+
+        <button mat-raised-button color="primary" (click)="openCAPA(null)">
+            <mat-icon>add</mat-icon> Add CAPA
+        </button>
     </div>
 
     <div class="col-lg-12 filter-section" fxLayout="row wrap" *ngIf="filterToggle">
         <div fxFlex="100" class="flex-p w-100">
-            <form>
+            <form (ngSubmit)="applyFilter()">
                 <mat-card class="filter filter-card">
                     <mat-card-content>
                         <div class="row col-lg-12 col-sm-12">
@@ -22,16 +26,19 @@
                             <div class="col-sm-4 row me-2 mt-3">
                                 <div class="col-sm-3 newMarginClass"><b>Keyword:</b></div>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter Keyword" />
+                                    <input type="text" class="form-control" placeholder="Enter Keyword" [(ngModel)]="filterKeyword" name="keyword" />
                                 </div>
                             </div>
 
                             <div class="col-sm-4 row me-2 mt-3">
                                 <div class="col-sm-3 newMarginClass"><b>Role:</b></div>
                                 <div class="col-sm-9">
-                                    <mat-select placeholder="Select Role" class="form-control">
-                                        <mat-option value="Albania">Shift Manage</mat-option>
-                                        <mat-option value="Algeria">Shift Manage</mat-option>
+                                    <mat-select placeholder="Select Role" class="form-control" [(ngModel)]="filterRole" name="role">
+                                        <mat-option value="">All Roles</mat-option>
+                                        <mat-option value="Shop Head">Shop Head</mat-option>
+                                        <mat-option value="Shift Manager">Shift Manager</mat-option>
+                                        <mat-option value="QA Lead">QA Lead</mat-option>
+                                        <mat-option value="Plant Quality Head">Plant Quality Head</mat-option>
                                     </mat-select>
                                 </div>
                             </div>
@@ -39,12 +46,13 @@
                             <div class="col-sm-4 row me-2 mt-3">
                                 <div class="col-sm-3 newMarginClass"><b>Department:</b></div>
                                 <div class="col-sm-9">
-                                    <mat-select placeholder="Select Department" class="form-control">
-                                        <mat-option value="Developer">Developer</mat-option>
-                                        <mat-option value="RnD">RnD</mat-option>
+                                    <mat-select placeholder="Select Department" class="form-control" [(ngModel)]="filterDepartment" name="department">
+                                        <mat-option value="">All Departments</mat-option>
+                                        <mat-option value="Production">Production</mat-option>
                                         <mat-option value="QA">QA</mat-option>
-                                        <mat-option value="Account">Account</mat-option>
-                                        <mat-option value="Test">Test</mat-option>
+                                        <mat-option value="Maintenance">Maintenance</mat-option>
+                                        <mat-option value="R&D">R&D</mat-option>
+                                        <mat-option value="Incoming Inspection">Incoming Inspection</mat-option>
                                     </mat-select>
                                 </div>
                             </div>
@@ -52,10 +60,12 @@
                             <div class="col-sm-4 row me-2 mt-3">
                                 <div class="col-sm-3 newMarginClass"><b>Status:</b></div>
                                 <div class="col-sm-9">
-                                    <mat-select placeholder="Select Status" class="form-control">
-                                        <mat-option value="Opened">Opened</mat-option>
-                                        <mat-option value="WIP">WIP</mat-option>
+                                    <mat-select placeholder="Select Status" class="form-control" [(ngModel)]="filterStatus" name="status">
+                                        <mat-option value="">All Statuses</mat-option>
+                                        <mat-option value="Open">Open</mat-option>
                                         <mat-option value="Pending">Pending</mat-option>
+                                        <mat-option value="WIP">WIP</mat-option>
+                                        <mat-option value="Closed">Closed</mat-option>
                                     </mat-select>
                                 </div>
                             </div>
@@ -79,13 +89,12 @@
                                     <i class="fa fa-angle-double-up"></i>
                                 </a>
 
-                                <button mat-raised-button class="pull-right btn-default margin-right-10"
-                                    (click)="clearFilter();getTests()">
+                                <button type="button" mat-raised-button class="pull-right btn-default margin-right-10"
+                                    (click)="clearFilter()">
                                     <mat-icon>settings_backup_restore</mat-icon> Clear
                                 </button>
 
-                                <button mat-raised-button color="primary" class="pull-right margin-right-10"
-                                    (click)="getTests()">
+                                <button type="submit" mat-raised-button color="primary" class="pull-right margin-right-10">
                                     <mat-icon>search</mat-icon> Search
                                 </button>
                             </div>
@@ -119,20 +128,20 @@
                 <tbody>
                     <tr *ngFor="let item of data">
                         <td class="nowrap">
-                            <a matTooltip="Edit CAPA" (click)="openCAPA(null)">
+                            <a matTooltip="Edit CAPA" (click)="openCAPA(item)">
                                 <i class="fa fa-edit"></i>
                             </a>
-                            <a matTooltip="Delete CAPA" (click)="deleteConfirmation(applicant)">
+                            <a matTooltip="Delete CAPA" (click)="deleteConfirmation(item)">
                                 <i class="fa fa-trash red"></i>
                             </a>
                         </td>
 
                         <td>
-                            <select class="form-select small-select">
-                                <option [selected]="item.status === 'Pending'">Pending</option>
-                                <option [selected]="item.status === 'Process'">Process</option>
-                                <option [selected]="item.status === 'Hold'">Hold</option>
-                                <option [selected]="item.status === 'Closed'">Closed</option>
+                            <select class="form-select small-select" [(ngModel)]="item.status">
+                                <option value="Open">Open</option>
+                                <option value="Pending">Pending</option>
+                                <option value="WIP">WIP</option>
+                                <option value="Closed">Closed</option>
                             </select>
                         </td>
 

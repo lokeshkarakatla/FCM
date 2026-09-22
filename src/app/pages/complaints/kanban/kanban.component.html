@@ -22,7 +22,7 @@
             <div *ngFor="let card of cards[list]; trackBy: trackByCard" cdkDrag class="kanban-card"
                 [ngClass]="getCardClass(list)">
 
-                <div class="fs-4 fw-semibold d-flex align-items-center justify-content-between">
+                <div class="card-title-row d-flex align-items-center justify-content-between">
                     <span>{{ card.subject }}</span>
                     <span class="material-symbols-outlined icon" style="padding: 5px; cursor: pointer;"
                         (click)="toggleCard(card)">{{ card.expanded ? 'remove' : 'add' }}</span>
@@ -30,22 +30,27 @@
                 <div class="card-info">
                     <p class="info-item">
                         <mat-icon>business</mat-icon>
-                        <span>{{ card.LawFirm }}</span>
+                        <span>{{ card.distributor || card.LawFirm }}</span>
                     </p>
 
-                    <p class="info-item">
-                        <mat-icon>calendar_today</mat-icon>
-                        <span>{{ card.createdDate }}</span>
+                    <p class="info-item" *ngIf="card.department">
+                        <mat-icon>apartment</mat-icon>
+                        <span>{{ card.department }}</span>
                     </p>
                 </div>
 
                 <div class="card-info">
                     <p class="info-item">
+                        <mat-icon>calendar_today</mat-icon>
+                        <span>{{ card.createdDate }}</span>
+                    </p>
+
+                    <p class="info-item">
                         <mat-icon class="status-icon">schedule</mat-icon>
                         <span>{{ card.status }}</span>
                     </p>
                 </div>
-                <hr>
+                <hr style="margin: 8px 0;">
 
                 <div
                     style="display:inline-flex; justify-content: center; align-items: center; gap: 4px; border: 1px solid gray;color: gray; padding: 2px 6px; border-radius: 6px;margin: 2px;">

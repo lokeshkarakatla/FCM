@@ -14,6 +14,8 @@ interface Card {
   id: number;
   subject: string;
   LawFirm: string;
+  distributor?: string;
+  department?: string;
   createdBy: string;
   assignedTo: string;
   createdDate: string;
@@ -50,15 +52,15 @@ export class KanbanComponent implements OnInit, OnDestroy {
     }
   }
   data = [
-    { subject: 'Global fleet of connected vehicles', distributor: 'Mahindra', Lead: 'Ravi', status: 'Pending', TargetDate: '2026-04-25', FailureDate: '2026-04-20' },
-    { subject: 'Engine Overheating', distributor: 'Tata Motors', Lead: 'Sneha', status: 'Pending', TargetDate: '2026-04-22', FailureDate: '2026-04-18' },
-    { subject: 'Update Application Dependencies', distributor: 'Infosys', Lead: 'Kiran', status: 'Hold', TargetDate: '2026-04-30', FailureDate: '2026-04-21' },
-    { subject: 'Verify DLL Versions', distributor: 'Tesla', Lead: 'Arjun', status: 'Process', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
-    { subject: 'Bumper Issue', distributor: 'Tesla', Lead: 'Arjun', status: 'Hold', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
-    { subject: 'Error Testing', distributor: 'Tesla', Lead: 'Arjun', status: 'Pending', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
-    { subject: 'Error Testing', distributor: 'Tesla', Lead: 'Arjun', status: 'Hold', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
-    { subject: 'Error Testing', distributor: 'Tesla', Lead: 'Arjun', status: 'Process', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
-    { subject: 'Error Testing', distributor: 'Tesla', Lead: 'Arjun', status: 'Closed', TargetDate: '2026-04-15', FailureDate: '2026-04-10' }
+    { subject: 'Hydraulic Lift Pressure Drop', distributor: 'Punjab Agri Implements', department: 'Production', Lead: 'Ravi Verma', status: 'Pending', TargetDate: '2026-04-25', FailureDate: '2026-04-20' },
+    { subject: 'Engine Overheating Under Heavy Draft Load', distributor: 'Haryana Tractors', department: 'QA', Lead: 'Sneha Patel', status: 'Process', TargetDate: '2026-04-22', FailureDate: '2026-04-18' },
+    { subject: 'Transmission Gear Slipping in 3rd High', distributor: 'Maha Tractors', department: 'Production', Lead: 'Kiran Rao', status: 'Process', TargetDate: '2026-04-30', FailureDate: '2026-04-21' },
+    { subject: 'Steering Cylinder Oil Leakage', distributor: 'Solis Thailand', department: 'Maintenance', Lead: 'Arjun Sharma', status: 'Hold', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
+    { subject: 'Clutch Plate Premature Wear', distributor: 'Kisan Agri Corp', department: 'QA', Lead: 'Rajesh Kumar', status: 'Closed', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
+    { subject: 'Brake Squeal and Uneven Braking', distributor: 'Gujarat Agro', department: 'Production', Lead: 'Amit Singh', status: 'Pending', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
+    { subject: 'Alternator Not Charging Battery', distributor: 'Rajasthan Tractors', department: 'Incoming Inspection', Lead: 'Vikram Joshi', status: 'Hold', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
+    { subject: 'Fuel Injector Nozzle Clogging', distributor: 'Nepal Agri Traders', department: 'R&D', Lead: 'Pooja Reddy', status: 'Process', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
+    { subject: 'PTO Shaft Seal Seepage', distributor: 'Central Farm Services', department: 'Maintenance', Lead: 'Sunil Nair', status: 'Closed', TargetDate: '2026-04-15', FailureDate: '2026-04-10' }
   ];
 
   lists: Status[] = ['Pending', 'Process', 'Hold', 'Closed'];
@@ -85,6 +87,8 @@ export class KanbanComponent implements OnInit, OnDestroy {
         id: index + 1,
         subject: item.subject,
         LawFirm: item.distributor,
+        distributor: item.distributor,
+        department: item.department,
         createdBy: item.Lead,
         assignedTo: item.Lead,
         createdDate: item.FailureDate,

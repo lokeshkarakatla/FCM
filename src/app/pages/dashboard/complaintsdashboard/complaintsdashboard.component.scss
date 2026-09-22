@@ -23,6 +23,84 @@
   min-height: 500px;
 }
 
+/* Executive KPI Summary Cards */
+.kpi-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.kpi-card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.kpi-icon-box {
+  width: 46px;
+  height: 46px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  mat-icon {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+  }
+
+  &.blue {
+    background-color: #eff6ff;
+    color: #2563eb;
+  }
+  &.orange {
+    background-color: #fffbeb;
+    color: #d97706;
+  }
+  &.purple {
+    background-color: #f5f3ff;
+    color: #7c3aed;
+  }
+  &.green {
+    background-color: #ecfdf5;
+    color: #059669;
+  }
+}
+
+.kpi-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.kpi-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.kpi-label {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
 /* Main Dashboard Tab Buttons */
 .dash-btn-group {
   display: flex;
@@ -30,21 +108,22 @@
   flex-wrap: wrap;
 }
 .dash-btn {
-  padding: 10px 20px;
-  font-size: 14px;
+  padding: 9px 18px;
+  font-size: 13px;
   font-weight: 500;
-  border: 1px solid #dee2e6;
+  border: 1px solid #cbd5e1;
   border-radius: 6px;
   cursor: pointer;
-  background-color: #f8f9fa;
-  color: #495057;
+  background-color: #ffffff;
+  color: #475569;
   transition: all 0.2s ease-in-out;
 }
 .dash-btn.active {
-  color: #000;
+  color: #1e40af;
   font-weight: 600;
-  border: 1px solid #f5c6a5;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border: 2px solid #3b82f6;
+  background-color: #eff6ff;
+  box-shadow: 0 1px 3px rgba(59, 130, 246, 0.15);
 }
 
 /* Right-side controls */
@@ -110,7 +189,8 @@
 
 /* Chart Container Sizing */
 #modelBarContainer, #modelPieContainer, #countryBarContainer, #countryPieContainer, #ageingPieContainer {
-  height: 400px;
+  height: 430px;
+  min-height: 400px;
   width: 100%;
 }
 
