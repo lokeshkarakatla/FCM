@@ -395,32 +395,74 @@ The Objective Audit Equation:
   - Mat-paginator supporting 5, 10, 25, 50, 100 records per page.
 
 8.4. SCREEN 4: CHECKPOINTS INNER SCREEN & PARAMETER BOARD (parameterboard)
-• URL Route: http://localhost:4200/#/app/parameterboard/par-auditlog/sealing
+• URL Route: http://localhost:4200/#/app/parameterboard/par-auditlog/sealing (and matching)
 • Role: Metrology Technicians, Rework Engineers, Line Quality Leads.
 • Business Objective: Deep-dive physical dimensional and sealing inspection cockpit.
 • Architecture & Top Sub-Tabs:
   1. Issue Log (par-auditlog) : Contains Sealing (117/128) and Matching (71/75) sub-modules.
   2. Metrics (metricpara)     : Model, variant, fuel type, transmission, category compliance charts.
   3. Notes (notes-par)        : Metrology chat log, automotive quality tags, and AI Inspection Overview.
-• Dynamic Hot-Spot Matrix & Spatial Grid:
-  - Dynamic 9-Panel Body Assembly Selector: Right Fender (23), Right Front Door (41), 
+
+• Dynamic 9-Panel Body Assembly Selector:
+  - Responsive body assembly selection: Right Fender (23), Right Front Door (41), 
     Right Rear Door (15), Rear (25), Left Rear Door (5), Left Front Door (12), 
     Left Fender (14), Roof (14), Bonnet (14).
-  - Dynamic 8x11 Spatial Grid Overlay: Tri-color state mapping over high-resolution body CAD images:
-    * Green (rgba(127, 255, 127, 0.62)) : Verified Pass.
-    * Red (rgba(255, 205, 205, 0.64))   : Out-of-spec Fail.
-    * Grey (rgba(211, 211, 211, 0.8))   : Pending inspection checks.
-  - Dynamic Calculation Card: Real-time calculation engine that instantly updates Total, 
-    Pending Checks, Pass, and Fail statistics whenever any body panel is selected.
-  - Dynamic Checkpoints Table: Automatically filters to show only the selected module's 
-    measurement line items (Serial, Grid Row, Grid Column, Checkpoints, Measure, LSL, USL, 
-    Actual Value, Unit, and Actions).
-• Interactive Modals & Popups:
-  - Save Draft & Submit actions.
-  - "+ Add Line Item" Button: Opens AddParameterLineitemComponent dialog to log new 
-    dimensional measurements (Category, Checkpoint, Image, Measure GAP/FLUSH/PARALLELISM, LSL, USL, Value).
-  - Image Click: Opens ImgPopSealingComponent / ImgPopComponent for full-scale coordinate zoom.
-  - Request Icon: Opens AddCheckpointRequestComponent / AddRequestComponent for rework dispatch.
+  - Selecting any panel dynamically highlights the active pill in #099FF0, swaps 
+    the active CAD diagram, loads coordinate data, and triggers instant recalculations.
+
+• Dynamic 8x11 Spatial Grid Overlay & Color Code Engine:
+  - 8-Row x 11-Column Coordinate Matrix:
+    Overlaid directly on high-resolution vehicle CAD drawings via gridRows (8) and gridCols (11).
+    Cell styling dynamically driven by reactive coordinate lookup: getCellData(row, col).
+  - Tri-Color State Mapping Rules & Mathematical Tolerance Logic:
+    * 🟢 Green (rgba(127, 255, 127, 0.62)) : Pass / Within Specification.
+      Condition: Lower Spec Limit (LSL) <= Actual Measured Value <= Upper Spec Limit (USL).
+    * 🔴 Red (rgba(255, 205, 205, 0.64))   : Out-of-Spec Fail / Drift Variance.
+      Condition: Actual Value < LSL (undersized/pinch) OR Actual Value > USL (oversized gap/flush drift).
+    * ⚪ Grey (rgba(211, 211, 211, 0.8))   : Pending Checks / Scheduled Metrology.
+      Condition: Audit checkpoint scheduled or awaiting optical/CMM gauge recording.
+  - Real-Time Dynamic Calculation Engine (calculateMetrics / updateData):
+    * Total Checks   = Pass (Green) + Fail (Red) + Pending Checks (Grey)
+    * Pass Rate (%)  = (Pass / Total) * 100
+    * Drift Rate (%) = (Fail / Total) * 100
+    Instantly updates the Status Summary Card whenever panel selection or checkpoints change.
+
+• CAD Image Click & Coordinate Zoom Modal:
+  - Clicking directly on the CAD image or grid triggers imgpop() modal dialog (ImgPopSealingComponent / ImgPopComponent).
+  - Displays "Image Details" zoom screen featuring:
+    * Coordinate Location : e.g., Row 5 : Col 4
+    * Metrology Meta      : Serial No (e.g. 121), Checkpoint Name (Checkpoint-1), Measurement Name (Alignment).
+    * Engineering Limits  : USL (1.25 mm), LSL (0.20 mm), Units (mm).
+    * Actual Value Input  : Live entry field allowing auditors to update measurements on the floor.
+    * Quick-Switch Pills  : Instant toggle between localized panel checkpoints (Gap, Parallelism, Alignment, Symmetry).
+
+• "+ Add Line Item" End-to-End Lifecycle & Real-Time 3-Way UI Reflection:
+  - Trigger: Clicking "+ Add Line Item" button opens AddParameterLineitemComponent modal dialog.
+  - Data Captured:
+    * Category          : Exterior, Interior
+    * Checkpoint Name   : Standardized IATF checkpoint rubric (e.g., 1A - HOOD TO FRONT GRILL - GAP)
+    * Measurement Type  : GAP, Flush, Parallelism, Alignment
+    * Coordinate Coords : Grid Row (1 to 8), Grid Column (1 to 11)
+    * Tolerance Bounds  : Lower Spec Limit (LSL in mm), Upper Spec Limit (USL in mm)
+    * Actual Value      : Physical digital caliper / laser gauge reading (mm)
+  - Automatic Tolerance Evaluation on Save:
+    * If LSL <= Actual Value <= USL -> Assigned Status "Pass" & Color 🟢 Green (rgba(127, 255, 127, 0.62))
+    * If Actual Value < LSL or > USL -> Assigned Status "Fail" & Color 🔴 Red (rgba(255, 205, 205, 0.64))
+  - Immediate 3-Way Real-Time UI Reflection:
+    1. Checkpoints Data Table Reflection:
+       Prepend new row at the top of values1 with Serial No, Grid Row, Grid Column, 
+       Checkpoint Name, Measure, LSL, USL, Actual Value, Units, and Edit/Request action icons.
+    2. 8x11 Spatial CAD Grid Reflection:
+       Plots the coordinate cell at (Row, Col) in highlightedCells, lighting up the exact 
+       cell on the vehicle CAD diagram in Green (Pass) or Red (Fail).
+    3. Status Summary Card Reflection:
+       Re-executes calculateMetrics(), immediately incrementing Total by +1 and 
+       incrementing Pass or Fail count, giving auditors instant quantitative feedback.
+
+• Additional Interactive Action Modals:
+  - Save Draft & Submit actions for sign-off.
+  - Checkpoint Request Icon: Opens AddCheckpointRequestComponent / AddRequestComponent for 
+    direct rework dispatch to plant body/paint engineers.
 
 8.5. SCREEN 5: OBJECTIVE AUDIT SETUP & MASTERS (prts-objective-setup)
 • Role: Plant Quality System Administrators.
