@@ -369,17 +369,60 @@ The Objective Audit Equation:
   - Location, Transmission, Fuel Type, Vehicle Model, Variant, and Stage Name 
     strictly bounded to SSOT Master tables.
 
-8.3. SCREEN 3: CHECKPOINT VISUALIZATION & PARAMETER BOARD (parameterboard)
-• Role: Rework Technicians, Quality Analysts, Line Quality Leads.
-• Business Objective: Spatial coordinate visualization on vehicle panel diagrams.
-• Hot-Spot Matrix Mapping:
-  - Dynamic 10x10 coordinate grid overlaid across key vehicle exterior assemblies:
-    Right Fender, Right Front Door, Right Rear Door, Tailgate / Rear Quarter.
-  - Col/Row coordinate highlighting with severity values indicating exact 
-    flaw location (e.g., gap drift, flushness variance, spot-weld omission) 
-    to guide precision rectification on the rework loop.
+8.3. SCREEN 3: OBJECTIVE AUDIT ARCHIVES (objective-audit-archives)
+• Role: Quality Compliance Leads, Audit Archive Officers, Plant Quality Directors.
+• Business Objective: Complete historical repository of certified objective audit units.
+• Core Data Columns:
+  1. Actions           : Unarchive restore action with instant tooltip feedback.
+  2. Status            : Interactive mat-select dropdown (Pending, Draft, Done).
+  3. VIN               : 17-character ISO VIN with full lifecycle traceability.
+  4. Target            : Target quality compliance threshold (92% - 96%).
+  5. Audit Type        : PDI Audit, BIW Framing, CED Paint, Chassis Dyno, Monsoon Leak.
+  6. Checkpoints       : Clickable cornflowerblue link (e.g., 510/560) triggering dynamic 
+                         navigation to the Checkpoints Inner Screen (#/app/parameterboard/par-auditlog/sealing).
+  7. Demerit           : Total weighted demerit score in red text (e.g., 12/510).
+  8. Location          : Assembly facility (Bidadi Plant 1, Sriperumbudur, Chakan, Sanand).
+  9. Auditor           : Certified lead IATF inspector.
+  10. Model            : Toyota Fortuner 4x4, Hyundai Creta SX, Mahindra XUV700 AX7, 
+                         Tata Nexon EV Max, Toyota Camry Hybrid.
+  11. Colour           : Attitude Black Mica, Abyss Black, Platinum White Pearl, Daytona Grey, Silver.
+  12. Transmission     : 6-Speed AT, 7-Speed DCT, Single-Speed EV, e-CVT.
+  13. Fuel Type        : Diesel BS-VI, Petrol TGDi, BEV 400V, Strong Hybrid SHEV.
+  14. Start Date       : Initial gate audit date.
+  15. End Date         : Audit completion and sign-off timestamp.
+• Navigation & Grid Controls:
+  - Horizontal smooth-scroll buttons (fast_forward and fast_rewind) for multi-column viewing.
+  - Mat-paginator supporting 5, 10, 25, 50, 100 records per page.
 
-8.4. SCREEN 4: OBJECTIVE AUDIT SETUP & MASTERS (prts-objective-setup)
+8.4. SCREEN 4: CHECKPOINTS INNER SCREEN & PARAMETER BOARD (parameterboard)
+• URL Route: http://localhost:4200/#/app/parameterboard/par-auditlog/sealing
+• Role: Metrology Technicians, Rework Engineers, Line Quality Leads.
+• Business Objective: Deep-dive physical dimensional and sealing inspection cockpit.
+• Architecture & Top Sub-Tabs:
+  1. Issue Log (par-auditlog) : Contains Sealing (117/128) and Matching (71/75) sub-modules.
+  2. Metrics (metricpara)     : Model, variant, fuel type, transmission, category compliance charts.
+  3. Notes (notes-par)        : Metrology chat log, automotive quality tags, and AI Inspection Overview.
+• Dynamic Hot-Spot Matrix & Spatial Grid:
+  - Dynamic 9-Panel Body Assembly Selector: Right Fender (23), Right Front Door (41), 
+    Right Rear Door (15), Rear (25), Left Rear Door (5), Left Front Door (12), 
+    Left Fender (14), Roof (14), Bonnet (14).
+  - Dynamic 8x11 Spatial Grid Overlay: Tri-color state mapping over high-resolution body CAD images:
+    * Green (rgba(127, 255, 127, 0.62)) : Verified Pass.
+    * Red (rgba(255, 205, 205, 0.64))   : Out-of-spec Fail.
+    * Grey (rgba(211, 211, 211, 0.8))   : Pending inspection checks.
+  - Dynamic Calculation Card: Real-time calculation engine that instantly updates Total, 
+    Pending Checks, Pass, and Fail statistics whenever any body panel is selected.
+  - Dynamic Checkpoints Table: Automatically filters to show only the selected module's 
+    measurement line items (Serial, Grid Row, Grid Column, Checkpoints, Measure, LSL, USL, 
+    Actual Value, Unit, and Actions).
+• Interactive Modals & Popups:
+  - Save Draft & Submit actions.
+  - "+ Add Line Item" Button: Opens AddParameterLineitemComponent dialog to log new 
+    dimensional measurements (Category, Checkpoint, Image, Measure GAP/FLUSH/PARALLELISM, LSL, USL, Value).
+  - Image Click: Opens ImgPopSealingComponent / ImgPopComponent for full-scale coordinate zoom.
+  - Request Icon: Opens AddCheckpointRequestComponent / AddRequestComponent for rework dispatch.
+
+8.5. SCREEN 5: OBJECTIVE AUDIT SETUP & MASTERS (prts-objective-setup)
 • Role: Plant Quality System Administrators.
 • Configuration Sub-Modules:
   - Audit Types Master    : C-Rating (CR), D-Rating (DR), Torque Audit (TA), 
