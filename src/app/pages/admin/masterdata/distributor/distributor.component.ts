@@ -24,12 +24,14 @@ export class DistributorComponent  {
 
 
   tableList = [
-    // { stageName: 'Upper Level Criticality', stageCode: 'EM', status: 'Active' },
-    { stageName: ' Global Distributors Pvt. Ltd',Continent:'South America',Country :'America', stageCode: 'I-115', status: 'Active' },
-     { stageName: 'Prime Trade & Supply',Continent:'North America',Country :'Andorra',  stageCode: 'PNT', status: 'Inactive' },
-    { stageName: 'Vertex Distribution Services',Continent:'Antarctica',Country :'Angolas',  stageCode: 'PNT', status: 'Active' },
-   
-
+    { stageName: 'Apex Auto Retail Group (Berlin)', Continent: 'Europe', Country: 'Germany', stageCode: 'DLR-DEU01', status: 'Active' },
+    { stageName: 'EuroStar Motors Ltd. (London)', Continent: 'Europe', Country: 'United Kingdom', stageCode: 'DLR-GBR01', status: 'Active' },
+    { stageName: 'Metro Auto Distribution (Los Angeles)', Continent: 'North America', Country: 'United States', stageCode: 'DLR-USA01', status: 'Active' },
+    { stageName: 'Siam Premier Motors Co. (Bangkok)', Continent: 'Asia', Country: 'Thailand', stageCode: 'DLR-THA01', status: 'Active' },
+    { stageName: 'Bosphorus Auto Sales (Istanbul)', Continent: 'Europe', Country: 'Turkey', stageCode: 'DLR-TUR01', status: 'Active' },
+    { stageName: 'Himalaya Motors Pvt. Ltd. (Kathmandu)', Continent: 'Asia', Country: 'Nepal', stageCode: 'DLR-NPL01', status: 'Active' },
+    { stageName: 'Cape Town Automotive Hub', Continent: 'Africa', Country: 'South Africa', stageCode: 'DLR-ZAF01', status: 'Active' },
+    { stageName: 'Alliance Auto France SAS (Paris)', Continent: 'Europe', Country: 'France', stageCode: 'DLR-FRA01', status: 'Active' }
   ];
 
   // Function to get status text

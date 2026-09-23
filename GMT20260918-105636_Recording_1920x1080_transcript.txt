@@ -1,0 +1,955 @@
+=== VIDEO TRANSCRIPTION ===
+Source File: GMT20260918-105636_Recording_1920x1080.mp4
+Detected Language: en
+Duration: 5198.5s
+
+=== FULL TRANSCRIPT ===
+
+So, FCM it is, and we did a quick research on cloud about what a field combined with system can contain, and we have our own system, which is here, it's a good system, we don't really have to do much from here to here, only here your roles, this particular thing will get adjusted, and this is not by 35, you'll count the number of check boxes, and you will add it up. So, if you see here, you put denominator study, you much greater, and the main module that is getting changed is complaints. Now, you've got a monitor here, which is for complaints, that's good, and you've got a screen to add a complaint, so that's next. So, if I just apply my domain knowledge and take the automotive context, basically let's take two contexts, one is automotive, the second is consumer intervals. So, to be very specific for automotive, we'll take into account selling a car, and complaints are coming, I think that's the most comprehensive and difficult system, and for consumer intervals let's take the case of refrigerator, that is sold by say IG, and now they have to service. So, that's what this is about, field complaint management. So, there has to be a login for the field staff, and they should be able to put an complaint, and there can also be a login for a dealer, and so, the login for a field staff is different from the login for a dealer, because it's like, the field staff doesn't raise the complaint, it's the dealer who raises the complaint, and the dealer will put in the complaint. And the complaint goes through a preliminary investigation at the dealership itself, where if it is a complaint of a commercial nature, it will be sorted then and there. The complaint could take the shape of a warranty claim, and in which case it is predominantly about providing a certain service and certain part replacement, and so that becomes the claim. And the third kind of complaint is where there is some technical issue that is arising, and it can potentially involve returning a certain part, it is certain part of the vehicle is giving a problem, that part is returned to the factory, and it has to be replaced. And the design or technical team at the factory also wants to see the part, so that they can figure out what is the design effect, what is the engineering effect, and then you basically have to have a process where it can be a supplier-provided component, in which case you'll have to take action on the supplier side, or it can be a manufactured component. And the whole thing goes through what is called as an AD process, and we have already got the AD process, yeah, what you're calling as updates, this is nothing but AD, and we should very boldly rename this as AD process, because that's very well known in the industry. Now, it goes like this, intake, feed and forwarded, feed part awaited, containment investigation, design, review, supplier action, kappa, implementation is MEN, verification monitoring, prevention, recognition, closure, and computing. So, I would say this process of intake and feed and forwarded has got an intermediate step, based on routing, where the dealer itself is figuring out whether it's a complaint of a commercial merger or whatever. And this screen, this process over here should take this shift. Do you see this? 70-metrics, kappa, D1, D2, D3, we should take on this shift, because this is more rigorous. And kappa is coming out of it, you've got Kanban, where every complaint, you can see where each complaint stands, and there were meetings that were heard by the CFT team in order to manage these complaints. So, you have to add a meeting and you can enter the agenda, you can mark that attendance, and you can say, what is the date, time, iteration on which the meeting was heard. So, you're adding kappa out here, but kappa is also added during the meeting. So, you have the shoes, and you add kappa in there, is the summary of the complaint. If you want to do this software in a very rigorous manner, basically it needs to be done like this. 5 PM days, home, it's still a lot of PM. And oxygen matrix start in the agenda. See this. So imagine these are your complaints and this is a complaint actual and these are all the different aspects of it. We need to structure it like this. So if you observe, you've got radar and monitor, kappa, kanban meetings, right? So every meeting has got certain kappa. So meeting will also have like you add a meeting, right? And now the meeting has an agenda and it is showing who attended it. So actually all actions happens through meetings and so a meeting also has its own small dashboard which looks like the project dashboard and a meeting has got an agenda and it's got kappa and attendance and an overview. And if you remember our audit, I think A2, was it A2 or an option matrix? So when you met it and you go inside, you go to subjective audits. So think of it like this, this is a meeting and I can click something and you see. It has got observations, kappa and inclusion. So this is a kind of inner screen that a meeting has got. Just giving you certain pointers. Now to be very specific, let's give you some action events. So we have to work on only two areas, one is monitor, there is meetings. And so let's make meetings, let's say radar, monitor meetings, kappa and kanban, let that be the sequence. And since meetings is easier, let's work on meetings first. So this is the interface for meetings, this need not be in bracket, it's just straight meet 2025 October 2nd meeting, so that's totally okay. And you can see attendees in the meeting, you can see what agenda was published for the meeting. And so when you hit agenda, you're seeing like this, you're seeing attendees. So this is a much better way of showing attendees, you see how it's showing here. So let's show attendees in that manner. But when you're adding a meeting, you've seen this interface here, like you have attendees and you're able to put check boxes to it. Now sometimes it's used by large organizations and this is essentially all the potential attendees who can join the meeting. And how it is coming is that in the users, you have a check box called CFT. So whoever is tagged as CFT, they are potentially here. And not all of them will be present in a particular meeting. So you have this and you are able to take it. And so this is an excellent interface where you have agenda and you have attendees and you are adjusting it here. So really when you are here for attendees, you just want to show like this, like all the people who are actually in the meeting. And you have a lot of space because if you widen it, then one, two, three, four multiplied by even four columns, four into four, 16 people, so conference room is there but it's not there. Bara, art, it's not there. So as I interface, so you cannot adjust from here, but you can just see who it is in the meeting. Right. And cool then, so you will only show the people who attended it. And now when I click meeting reference, so see about reference number over here and that's the reference number of the so that that's not making any sense. So this column is completely unnecessary because this is the reference. And this is the one that should have a should be blue in color. When you click it, it will lead to an inner screen. How will that inner screen look? It will look like this. Okay. And so what are the tabs? It will have, obviously it should have kappa because you're creating kappa and that meetings. And what is it landing on? It's landing on kappa. That's the main purpose of the meeting. The main purpose of the meeting is to basically create kappa and now, not really, you have you can, the first one can be agenda. Now you have given a very, very simplistic definition of agenda over here wherein you are expecting people to type the agenda. At least that's not what the agenda is. The agenda of the meeting is, what are the issues, what are the complaints that we discussed in this meeting? That's it. And how do we arrive at it? You have a complaint. And every complaint has to have next review date. So these meetings happen almost daily on case, what does, on case, generally, what from any program? So you have to have next review date and it will reflect as a certain tag over here which shows the number of days in which the review is coming up. And that is either blue or red based on whether it is in the past or it's in the future. Suppose my next review date for the meeting for the complaint is 30th of September. I am today sitting on the 18th of September. So it will show the number blue in 12 in blue. But if that review date was, say, the 15th of September, it will show the number three in red column. Yeah, you are right. So every meeting has got a next, every complaint has got a next review date. And so when I have a meeting, my agenda is basically the list of all the complaints whose review date is either today or in the past. And I have the ability to, so I'm seeing the complaints and I can log the kappa. I can see what kappa is associated with that particular complaint. And I can then add kappa into that complaint. That's really what's happening. So the purpose of a agenda is to simply be able to select what complaints we will be discussing during this particular meeting. And so these are your complaints and this is, and so you can also have, see complaints also have severity, right? So you can have the same interface, high, moderate, and in case of manufacturing, you classified as safety, critical, important, other, safety, critical, important, other, right? You have those steps. And so complaints are classified like that. And make sure that severity is one of the attributes when you're adding a complaint. So every complaint should have a severity and complaints are being classified like this. So this also enables us to, and one other thing should be not due over you, over the first tab should be over you. And another tab can be that basically it is meant to be reviewed today, pending. So now what tabs do we have? So we have status, just like your severity. So imagine you have got, it's a status. You, what did we say over you and which is the other one, we said two words, pending, pending and over you, status, pending and over you. And then severity is safety, critical, important, and other, yeah, that's it. So think of it like, you have got 12 meetings in pending, there are 12 complaints in pending and 5 complaints in over you, now you were total off and you then also have all. So status, all review, all pending and over you, right, all pending and over you. So all is 17, pending is 12 and over you is 5, right. So now those 17 only will get split on the severity side also between safety, critical, important and others, yeah, you got, you got the concept. And now when we have complaints, they can also be classified. So when you are adding a complaint, yeah, I can classify complaints by country, so severity is right here. So instead of low video, I just go for those things that we spoke about, safety, critical, important, yeah, correct. So I can classify the complaint by severity, I'm also able to classify it by country. And I'm able to classify it by distributor and I'll not go down to city, right. So imagine that you have a tree structure out here. Imagine you have a tree structure out here and what is that tree structure is basically going in country wise and under country, you have got distributors and so you got it and it's very similar to what you actually have, yeah, this is exactly, this is the look approximately. Now we are going through a number here, so now this is your update so here, this is the grid of complaints, like this grid up here and there is no select work in it, but which is over, do you have a look at it or the only thing is you have an automatic check box that appears and that is called discussed or discussion, discussed, you have another word for discussed, reviewed, reviewed, so this is a review call. So now you will have a look at your complaints in the meeting, you will have a look at the list, you will have a look at the list, you will have a look at the list, you will have a look at the list, you will have a look at the list, you will have a look at the list, you will have a look at the list, you will have a look at the list, you will have a look at the list and you will have a look at the list, you will have a look at the list, you will have a look at the list, you will have a look at the list, you will have a look at the list, you will have a look at the list, you will have a look at the list, you will have a look at the list, you will have a look at the list, you will have a look at the list, you will have a look at the list, you will have a look at the list, you will have a look at the list, you will have a look at the list, you will have a look you will have a look at the list, you will have a look at the list, you will have a look at In your case, when you add a kappa, you complete this is the searchable field and you complete it. Then world work, you roll department subject, you did it in description but it is not that kappa. That's cool. So that can be added. And here also it. Yeah. And quality of your kappa elements here. The actions. In actions. Basically, you can have instead of giving add here, I can give you a kappa column, column, first column. And that's plus. Plus you hit. So full context is added to your vast complaint. You don't need to complete the complaint. Now just see that. You can add a couple of details. So in that sense, when you are looking at it here. So everything. It's already captured directly. All you have to enter is. Who's the person to whom you are allocating? What is the department? So department choice should come first. And then whose department could you log in? But every user belongs to a department. And then what is the subject? And what is the target date? And what is the description? That's it. That's enough. And the complaint reference will come to you. Because that's how you are adding it. Okay. So now you are clear. How are the meetings going? Based on the complaints. No, you have the design clear of the meetings. Lots of complaints. Yes, see that. Now repeat once again. When you click add meeting, this is not the interface. That's right. Your date, time, duration will be like this. And your one here is attendance. And this is the agenda. The agenda is completely changed. So this way the open agenda is not done. So how is the meeting interface? How is it? Overstatus and severity. And here you have countries and dealers. And this is not your cover. And this is your complete grid. And the complaint is the grid. And we have added a details column. So we will not have a scroll. But it is a details column. And in the details column, you can see it. And you will basically drive your attributes. And you will basically drive your attributes from. From here. Here you usually know what to do. And if you click cover, it will pop up. Already, something like that. Meeting. Complaint the reference. And you are just able to select the department rules. And you can see that's exactly what you have in the cover. And every cover element is associated with a meeting reference. You can see you have add cover here. This is nonsense. Please don't add it directly. So no cover can be added directly. Or cover can be added directly. In which case, it will not have a meeting reference. And if you add it directly, you have to select a complaint. You will not have a meeting reference. So again, we will resist from adding cover directly here. So remove the check. Remove this cover. Adding facility completely. If I'm in the monitor, I go here. I see cover here. Here it is OK to add cover. I can go inside a complaint and log the cover. So in which case, it's same. I basically added cover outside the meeting. And if I add outside the meeting, the meeting references. And the meeting reference is not there. And the meeting reference is never a bracket. It's basically either NA or it is meat dash something. And complaint is always comp dash 2025 slash month slash number. And you can use AI to write specific, you know, words for complaints and all that. So this is the global list of all complaints. And every cover item has the status open pending WIP. And that is very, very silly actually. So status should not appear like this. Status should appear like. You see this, this type of stuff. So and it is an automatic status. So it can be every cover item can be either open or closed or old. Right. And so if I'm here, I should have the ability to have a done column which I can just stick. And that's it. You can mark it as done. So when you are in the meeting interface, now what do you have? So here you have agenda, kappa. And this is showing closure. So here it says enter concluding remarks for audit. You write enter concluding remarks for the meeting. I can add, I can add some concluding remarks for the meeting. So this is exactly the interface that you use for every meeting. And now if I go back here. And so it's pretty clear what this meeting is. And this meeting is coming immediately after monitor. Kappa is just an aggregation. Conman, we are clear radar is already available coming to monitor. And in monitor, we have complaints so. And now complaints so can be in active status or. They can be archived. And so there has to be a clear facility like a check box to archive a complaint. And there's also a facility to barca complaint has done. Got closed. And therefore you need some kind of a toggle over here, which is a toggle between active and archives. And so when I'm coming here. Everything is good. Now, you know how to populate Kappa. You know how to do these documents. You know how to enter some notes. And. This is a terrible way to enter notes. It is a better way to do it. And that is see here. This is how you should enter notes. And a summarizing the notes. So. So the notes is clear timeline is like this. Anything that's happening. And now I'm into. So this we decided to call as 80 80 process. And. This particular screen. Is. Going to become the first screen or the land in screen. Right. So whenever you click a complaint, you land on 80 process. And then you have base info, summary, Kappa documents, notes and timeline. So let's discuss more about updates or 80 process. So in 80 process, what we are going to do is. We will. Have it like this. Like this 70. Issue status. You come here. You see this interface. But imagine it's on the right hand side. So the exact interface looks like this. You have this on the right hand side. And so. And you have a back when you will back. So I will just explain to you in a moment what it is. Yeah. So I have inside a complaint. And this is. Yeah, this is called monitor. That's okay. So you come here. And you can see that. This is the deep process. And. Yeah. So we are getting rid of the complete top menu. And everything is going to the right. So that means when you land on a complaint, you are basically landing on the. So it's. No more called. So now this particular thing which we are calling as monitor. This is now called 80 process. Yeah, it's called 80 process. And. And. You've got all the complaints here. You click the complaint. The landing on a screen. And that screen. Is essentially. Looking like this. Okay. So what do you have on that screen? What do you have on the screen? You have base info. Then you have somebody. And you have what is called as. 80 matrix. So there we call it as 80 process. Here we are calling it as 80 matrix. That's the only difference. And it's like. In here. Not in here. Here. You actually call it issue status, which could have been a much better word. It could have been called as. So here instead of issue status, please log it as 70. This is 70. So 70. Is it a log? Or is it a. Let's call it 70. Log. Yeah, let's call it 70 log. And when you go inside here. See it's called 70 matrix. Right. So it is the same here also. So here also. When you're landing on it, it is called 80 process. Not 80 log, but 80 process. And instead of process, let's call it workflow. 80. Is it called 80 process or 80 workflow? It's called 80 process. So you'll call it 80 process. It lands on 80 process. And then you go inside. What is it? Base info. Somebody. 80 matrix. Kappa. Documents. Notes. Time line. So now we are talking about. These things. So these are the steps intake. Field informative. Field part. Containment. Investigation. Where are they coming? They are coming in the matrix. But they are also. In the right path. So are you seeing what we are doing now? We are exploding the system. We will give a very specific screen. To record like what happens in intake. And you got it right. So. But we will not be able to cover each and every one of these. So there is more in the matrix than in the right hand side. So matrix is exactly like this. 80 matrix. But the right hand side is now going to have base info summary. I just write or write down what is there on the right hand side. So. So it's going to have. This info. Summary. Summary. Summary. Summary. Summary. Summary. Summary. Yeah. So. Should we wait for her. I'll write it anyway. So base info summary. And now. See, intake is not a process. Intake is like the complaint has been taken. There has to be some kind of. Screening. Or you can call it investigation also. We'll call it investigation. Now. So that means investigation is after intake. Right. In the matrix. Now this investigation has come up after intake. And. Then it is saying feel informative feel part of it. Right. So we are now. Going to say. Dispatch. Field. Field. Field. Spatch. Right. So field. Spatch is an event only if in investigation I click that. There is a certain field part which is being sent to the factory. Right. And. Containment. So you want to have a tab for containment. The containment means wireless problem is sorted. What actions are we taking? Okay. And. Then design review. Yes, we should have a clear. Form for that. And supplier action. So. Again, we should have. A clear space. Where. Talk about. Sublime action. Spelling of implementation is me and. So you have a summary here that is good. And. And. And. And. And. And. One. One. One. One. One. One. Overall somebody. Supplier action. And you can most suddenly have Kappa. And now because you have Kappa here, you don't need Kappa here. Right? implementation, yeah, that is most certainly needed and verification monitoring, revasion, revolution, and now you've got certain things like documents, roads, and timeline, we shift all the way to the top. So, base info, somebody timeline, that's it. Did you read it? Now, you don't have horizontal labs, you've got this thing on the right hand side. So, now, what is base info exactly like this? So, that's pretty clear now. Now, do you see there is a due date ETA priority. So, due date is here, so no need for you do it. Now, ETA and priority are here on the top and there should be a place to set ETA and priority for a complaint. And so, we should that be is the question. That's not in the base info. So, do you see where overall summary is. So, we can call it summary, summary overall summary, both mean the same thing, summary is here. So, summary at the top may ETA and priority be added. So, it doesn't make sense to put it in the base info, because earlier it was horizontal, so we added on the top because, yeah. So, summary may have quite ETA and priority added. And now, you've got timeline, which you know what it looks like and investigation. So, what is investigation? Investigation is initially, I want to determine whether it's a commercial complaint or it's technical case or it is a warranty, etc. So, warranty claim. So, warranty claim. It is optional. It depends upon the investigation. Then may or may not be a warranty claim, right. And a warranty claim will have two parts. It can have certain spares that were replaced or certain services that were provided. So, you've got the idea that on one side, if it's like spare, free of cost, free of cost, it's called FOC, free of cost replacement, free of cost spares. So, you have a list and you've got that means I need to maintain a spare spares master, spare parts master, yeah. So, when you're in complaints, you need to have a spare parts master. And if you see, kappa, kanva, mutants, yeah, you just need a spare parts master. So, all your modules are like this. They have some menu. There's a menu here. There's a menu here. Admin, you only have managed users, it seems. The admin is like this. So, the complaints module, we need spare parts. Good. So, I need a place to set up the spare parts master. And so, please give it to me, yeah. Somewhere here, give me a spare parts master. And that will feed into this area. So, Vikas Gaba. So, hello, Vikas, please let me know when we can do a quick call, yeah. So, no. Yeah. So, did you understand the idea of warranty claim? Yeah. On one side, you have basically a free of cost spare replacement. And on the other side, you have free of cost. And warranty claim will also have details of the warranty. That, you know, because if I have a dealer, I have to give a warranty to a customer, then I have to have some reference, right. So, but you understood the concept. Then, so, that is what is decided in investigation, whether there is a warranty claim, if warranty claim is activated, then warranty claim will be an active time, otherwise this will be disabled. If there is a field dispatch, that means, are we returning something to the factory, in which case the field dispatch will get enabled, otherwise it is not enabled. Now, you have containment. What does containment mean? Containment means that this problem is there. It may also be there in the other products. So, do we need to do a recall? Or do we need to immediately take some steps in our manufacturing process so that the problem doesn't spread and influence our customers? So, containment location, containment is after design review. Investigation, what is investigation? That will be clear. Now, somebody also you are clear. So, design review is a technical review, right. So, you will not call it design review, you will call it technical review. Now, it is in the factory, they are analyzing what is going on. And based on technical review, they decide whether we need containment. So, containment is again an optional step. It does not necessary that they will be containment. And also in the investigation you decide whether this complaint will go to factory level or not. Complaint doesn't go to factory level. It gets closed at the level level. So, there is no kappa or nothing. So, all of these are disabled if complaint doesn't go to factory level, right. So, that means warranty claim is optional. So, certain complaints it will be totally disabled. We will dispatch is optional. Technical reviews also, it is going to happen only if everything is, yeah. So, all of this is potentially optional, right. Closure is not optional. Documents, notes is always there. So, now kappa you know, kappa you know what it is, right. So, whatever is the kappa associated with this particular complaint, that has to come. Okay, I will explain to you what everything is, supplier action. So, what is supplier action? The complaint is caused by a component. As you know, manufacturing 60-80% of components come from suppliers. So, the complaint is arising because of faulty component that is supplied by the supplier. Then we have to have some discussion with the supplier and take corrective action there. So, that's what it is. Implementation. Now that you have done the technical review and you arrived at the course of action, we need to track the implementation, yeah. What is verification? Once the implementation has been done, somebody has to verify and say that yes, the problem has been solved, yeah. And then you have monitoring. Okay, we have, it's fine, the problem has been solved, but we just want to is like Navin-Maliksa smart doc problem is solved. But it has to be demonstrated, you have to hold the gains. Like we observe every day, what is a smart doc turn around? And fine, every day you did pro-square in less than 15 minutes, good. Now your problem is in control, right? So, that is what monitoring is. What is prevention? What steps can we take so that this problem doesn't happen in the future? So, that's sort of discussion. The manufacturing people are very intelligent, these are engineers and how many engineers in this room? So, that was the promise that this is the kind of work that we were supposed to do. The car is off air, yeah. But software is also engineering. So, especially if you do first act projects and you do system design. So, then there's a lot of engineering that goes into it, that performance, security, civility, recognition. Recognition is important because the whole thing happened and somebody played a tremendous and very appreciable role in solving the problem. So, you should put a note of appreciation that the whole company will see. So, sometimes people in the factory are least appreciated, but then somebody solved the problem and how should I put it? Imagine we have quarterly awards and we give quarterly awards and some people are recognized for certain things. So, they feel very good about it. Imagine this company had attended people. And there is a research analyst, Runeva's Chandana, and she is very quiet. She doesn't talk. And suddenly you say that the Geodas project is awarded and along with the JSC and Krishna, Chandana played a tremendous role in terms of providing farmers' specific content. And that enabled us to convince the client. So, everybody knows who's Chandana and like there's a far more amount of respect for that person. So, that's what recognition is. It might sound very trivial, what I'm telling you, it might sound like that, but it's not. It like, there are people value it. They see it like respect. Closure. So, ultimately you close the complaint. And you have some closure remarks. This is clear documents, notes. Notes will have an overview. So, now the screens that we have to design. Next, I'll just put next. You have to put next in the, like this is this is our interval notes next. So, okay. Now, containment, yes. I have to provide it to you. Technical review, I'll have to provide it to you. Field dispatch also, I'll have to provide to you. Warranty claim also, I'll provide it. Investigation also, I'll provide it. Rest you have. So, now if you give me this layout, as per this discussion, I think in a couple of meetings, like we will ask AI, we'll go one by one. We'll design the respective screens for investigation, warranty claim, field dispatch and all that. Then our software will look so much better. It looks like a more comprehensive system aligned to the AD process. There is an AD matrix. Suddenly, I also see that it is becoming more respectable now. So, that's that's what that's where we are going with this. Any questions? Turn around. I've got clarity now. What are you going to do? So, we have reached a spot where whatever we discuss, we should make it. And then we'll take the next step. So, if a long time is going to happen, then in the same meeting, I'll use the entire screen. I'll use two meetings. I'll use four, five screens in one meeting. I'll use four, five screens in one meeting. Back here, if you have an objective or an objective, an objective or an energy- about a lot of stuff is going to happen. Ultimately, it could happen. So, in those days we have to go into the same room, then we have to try to adjust the permissions, check boxes, and then adjust them. So, the same part we've got, the boat dispatched this. So, I've got a little time, all those menus are coming in there. So, the AD process is coming out. AD matrix is coming in there. This is where we don't have any add option. In the main one you don't have. You have to add it in the complaint only. Or you can add it in the meeting. Yes. Meeting screen. We only have one difference ID and there is no bracket. While adding a meeting, this part defines the same. But in the place of agenda, we have a tree. So yeah, that's a very good point. When you're doing a meeting. Fantastic. So when I'm doing a meeting, I would like to capture this. If they want to specify the agenda for the meeting, let them specify the agenda. I don't have a problem. Manually specify the agenda. You can indicate attendance. And you can basically say continue. It's not safe. When you hit continue, then you'll land on that three-part three-taps screen. So the first tab is not called agenda now. The first tab will be called as Active Complaints. Open Complaints. There we are capturing the models and actions we need to do. Yeah. So basically, there are actions where you can apply it. You can apply it. And in the value, there are countries and dealers. Like we discussed above, there is a status severity. That's the interface. So. And as we discussed here, it will be able to do it. So basically, the observations are there. So what's in it now? The tabs are agenda. Open Complaints. Open Complaints. And Complaints. Agenda Complaints. Okay. That's it. Agenda. We're already showing you the screen. Yeah. We have to keep the country. So. As I said, the chart is there. Yeah. So you have continued the agenda. So now you'll land on Complaints. Okay. Yeah. And you have to close the meeting. So if you'll publish here. Publish. And if you want. Because there's an explicit closure tab. I don't need publish. That means, I need publish. I mean, if you want. Because there's an explicit closure tab. I don't need publish. That means, you go to the meeting to close the meeting. You go to the clear. You finish. And you finish. That's how I publish a meeting. Once the meeting is published, the one that you have completed is the one that you have discussed. If I am opening the meeting, then it is the answer. The one that is pending, the one that is audio, but if it is the type of the meeting that is closed, then the one that you have completed is the one that you have covered. Sorry. See, I could have 2000 complaints in the system. Yes. Out of 2000 complaints, 1850 complaints are already closed. Yes. There is no need for me to see them in the meeting. Yeah. 150 are over. Out of 150 complaints, the action date or the review date for 100 and 20 meetings is in the future. Those I don't have to see. That means my action list is only 30 complaints. Those 30 have to appear when I am doing the meeting. When I am doing the meeting, then I have completed 5 complaints. Then I have closed the meeting. Now, if I come back to this meeting, the closure will be read only. And the complaint staff will only give me 5 meetings. Because those were the only meetings on which Kapa was raised. Yeah. And I cannot reopen the meeting now. And I cannot reopen the meeting now. And if I open the agenda, then I will look at the agenda on the other side of the agenda. So, I will give it to you. Yes. So I will have out now. I will review the agenda. Lastly. Let's see if we go up a skull weather in the threshold. So what we have said is this is as in the screen, like we have a four tabs on top and this whole thing is as in the screen. In the click on continue, we'll leads to the complaint screen, complaint screen, complaint screen. And in the complaint screen, we have like security based status and severity, status is pending under you, then your severity boom, but I can think of a post status and severity problem. Problems, you want to know exactly like this. Problems, so basically, yeah, the severity is written in this page, the side by side. So as at the top, so severity is a little bit there. And here, there's a severity like that, status like that, and status or outskirt, it is a pending and over you. No, not your quality. All assues, we are right. And these also have numbers in brackets. So, imagine all like this, high, moderate, low, some joke, eight, so all may eight I go. Pending, some of you pending me seven, you're not over view is over due, may one or over you have read the letter out there. I have first, I would select a status then based on the status will see at the number. All is by default, it's all yeah, if I click on pending will see at the number change, everything changes. And in severity also, do we require all because yeah, logically yes. So, basically both status and severity, default to all three, first we have countries, then you have dealers. So, instead of distributors, the world that is to be used as dealer. You also give you a login for dealer, you give you a dealer login and you give you a feed of it. So, it will be right as well. Just like in SQM, you have supply of it. So, every country, this is dealer, I mean, instead of distributor, it is dealer. Okay. So, based on that, it will be popular over there. And do we have a chip box to select those for the current meeting? Meaning. Like, we are right now populating what are there from the, from the components, but we have to assign those components to the meeting rate. You don't assign components to the meeting. We only filter this. So, basically, what appears in the meeting is the list of complaints that is either over you or pending. Yes. Based on the review date. So, every complaint has a review date. And where is the review date set, if you remember, we discussed the concept of summary. And what does summary look like? It looks like this. So, here we discussed on the top, we will have certain fields. Yes. And those fields like du-date, ETA, priority. Now, one more field that is getting added is review date. So, du-date, ETA. So, it is review date, du-date, ETA, and priority. Okay. Yeah. So, in addition to those three points, root cause analysis, entire interaction and prepayations are made by the four different. We can say that in the same way. Let's have selected pending. And I caught a list of cases. What is pending pending is, Ajav mintingar. There are certain things that are due today. We have the review date is today. Yes. That is pending. Okay. What is word you? Word you is. There is a certain review date for that particular complaint. And that is in the past because when you reviewed the complaint, so therefore, we can have a concept wherein I am in the meetings and my interface is like this. So, you have given me kappa. Give me another column here called reviewed. So, I may not love kappa for that particular complaint but I reviewed the status of that complaint. Then also it is considered that I reviewed it. And when you tag something as reviewed, it will pop up the next review date. And then the review date will change from whatever it was said to the next review date. So, and it will not ask you to select it. So, basically next review date will give you a pop will give you a pills on that thing. Next review choose time frame for next review. And that will be choose time frame for next review. So, you can say one day, two days, three days, five days, and custom. Custom may have dials so, otherwise you will have certain indications. And the review date changes for that complaint. Like in the overview. And you can also set the default review interval which can be one week. So, moment you tag something as reviewed when it is showing you that checkbox, it will show you the default review interval as the one week will be pre-stracted. And if you log kappa, the default review interval is one week only. That means I have log kappa, and that is in the settings in your overall global settings. You have default review interval. Now, I have based on the overview and there are all the 10 complaints. Yeah. So, let me know overview. Yeah. You know what you said is there 10 complaints. Okay. Yeah. Let's say we are in the meeting, we have discussed two complaints. Out of 10. How do they match those two? So, there are two ways to do it. One, you log the kappa for those for one of the complaints. Okay. For the second complaint, you didn't log a kappa, but you take reviewed. You take reviewed and you got a power which says enter next review date. And there you are getting pills, where enter time frame for next review. So, you are getting pills. One day, two days, three days, four days, five days, one week, 10 days, like that. And custom plus. That is one thing, one week. But if one day is one week. Customers, they will ask you to select the next review date. You say, okay. Below that, you say update. You are saying, uh, clicking on that check box, it will be reviewed. There is a, there is a kappa plus icon. That's the review. Review can enter check box. Which give us next review date. But if it is a one week. And if you click on the custom, we have a date picker. Yeah. That's it. You say, but if all, uh, you would have said custom, you basically say next review date. Next review date of select, so you can have a check box like custom. And just you have custom, but if you click on the next review date, it will be feedback. Oh. And then there will be a slide description that it is said to certain number of days as, as a default date. Yeah. Top pick I'll look at. It says next. Review. Okay. And in some way, I'll have to date with that level. That's how date will get out of here. And this can reach a, you have got a bunch of pills. 10 pills. here. Yeah. Yeah. Yeah. Yeah. Yeah. Yeah. Yeah. Yeah. Yeah. Yeah. once a two day three days. I said, I said, And bottom there, we basically give a save button, and something like this, no no. So the campaigns cannot be modest closed in the meeting, we have to go to monitor screen on. You have to go to the matrix, you have to go to the 80 matrix, that's the place where you were going to go to the 80 matrix. You can lock from the matrix, I'll just show you. So you're asking all valid questions, but you're not answered them yet. So you don't reach that stage. Basically, I have a complaint which is sitting here. I cannot just take a chip box and market as closed, right. So I have to go to the dashboard. But here I will see one column with the status like complaint is open or it's closed or it's over you. And how is the over you getting decided there are service levels in my admin area here. I've got service levels and service levels have set service levels of various types. And one of them is complaint turned around complaint act, and then complaints have got severity rate. So different severity can be a level of data. So you have a table read only status and if a complaint is closed, it's closed. But when I go inside and I'm in the 80 matrix, if you remember the 80 matrix has got closure. And there you will basically log and we will design the screen also. So you'll you'll have some notes and you will be uploading some closure documents and you select a closure. So there is something called closure report that gets generated. And the system will auto generate a closure report. And that's the format. I'll show you. I'm going to make a very rigorous system and then I'll appreciate it. So Sonalika. Yeah. Issues portal. Scope. Yeah. You see a pleasure note sample. You can use it to even summarize it. So some AI usage can come into picture. So you can use it to even summarize it. So some AI usage can come into picture. So. Yeah. So. So. So. So. So. So. So. And. So it's very good. It's crazy. Organizations of this size. So now you're flooded with work. You don't have people. And you have a time when you have nothing. So. Solution is. Your sense process and lead generation. And secondly, you have to do specialization maintenance. Which is your attraction in the market. If someone goes to you, you have to work. And the third thing is your quality. Which is your existing customer. You have to refer to it. So. There are some points. But. Yeah. We will be fine. You. I am meeting. As soon as I have a recording. I'll send you. And. I know. And. And. I will. But. The.
+
+=== TIMESTAMPED TRANSCRIPT ===
+
+[00:00 -> 00:17] So, FCM it is, and we did a quick research on cloud about what a field combined with
+[00:17 -> 00:25] system can contain, and we have our own system, which is here, it's a good system, we don't
+[00:25 -> 00:35] really have to do much from here to here, only here your roles, this particular thing will
+[00:35 -> 00:43] get adjusted, and this is not by 35, you'll count the number of check boxes, and you will
+[00:43 -> 00:50] add it up. So, if you see here, you put denominator study, you much greater, and the main module
+[00:50 -> 00:57] that is getting changed is complaints. Now, you've got a monitor here, which is for complaints,
+[00:57 -> 01:06] that's good, and you've got a screen to add a complaint, so that's next. So, if I just
+[01:06 -> 01:15] apply my domain knowledge and take the automotive context, basically let's take two contexts, one
+[01:15 -> 01:21] is automotive, the second is consumer intervals. So, to be very specific for automotive, we'll
+[01:21 -> 01:26] take into account selling a car, and complaints are coming, I think that's the most comprehensive
+[01:26 -> 01:35] and difficult system, and for consumer intervals let's take the case of refrigerator, that is
+[01:35 -> 01:41] sold by say IG, and now they have to service. So, that's what this is about, field complaint
+[01:41 -> 01:51] management. So, there has to be a login for the field staff, and they should be able to put
+[01:51 -> 02:06] an complaint, and there can also be a login for a dealer, and so, the login for a field staff
+[02:06 -> 02:13] is different from the login for a dealer, because it's like, the field staff doesn't raise
+[02:13 -> 02:21] the complaint, it's the dealer who raises the complaint, and the dealer will put in the complaint.
+[02:21 -> 02:41] And the complaint goes through a preliminary investigation at the dealership itself,
+[02:42 -> 02:46] where if it is a complaint of a commercial nature, it will be sorted then and there.
+[02:47 -> 02:55] The complaint could take the shape of a warranty claim, and in which case it is predominantly about
+[02:57 -> 03:06] providing a certain service and certain part replacement, and so that becomes the claim.
+[03:07 -> 03:12] And the third kind of complaint is where there is some technical issue that is arising, and
+[03:12 -> 03:22] it can potentially involve returning a certain part, it is certain part of the vehicle is giving a
+[03:22 -> 03:35] problem, that part is returned to the factory, and it has to be replaced. And the design or technical
+[03:35 -> 03:44] team at the factory also wants to see the part, so that they can figure out what is the design
+[03:44 -> 03:51] effect, what is the engineering effect, and then you basically have to have a process where
+[03:53 -> 03:57] it can be a supplier-provided component, in which case you'll have to take action on the supplier
+[03:57 -> 04:04] side, or it can be a manufactured component. And the whole thing goes through what is called as an
+[04:04 -> 04:13] AD process, and we have already got the AD process, yeah, what you're calling as updates,
+[04:16 -> 04:32] this is nothing but AD, and we should very boldly rename this as AD process, because that's very well
+[04:32 -> 04:40] known in the industry. Now, it goes like this, intake, feed and forwarded, feed part awaited,
+[04:40 -> 04:48] containment investigation, design, review, supplier action, kappa, implementation is MEN,
+[04:49 -> 04:54] verification monitoring, prevention, recognition, closure, and computing.
+[04:54 -> 05:15] So, I would say this process of intake and feed and forwarded has got an intermediate step,
+[05:16 -> 05:28] based on routing, where the dealer itself is figuring out whether it's a complaint of a commercial
+[05:28 -> 05:42] merger or whatever. And this screen, this process over here should take this shift.
+[05:47 -> 05:47] Do you see this?
+[05:47 -> 06:03] 70-metrics, kappa, D1, D2, D3, we should take on this shift, because this is more rigorous.
+[06:03 -> 06:22] And kappa is coming out of it, you've got Kanban, where every complaint, you can see where each
+[06:22 -> 06:32] complaint stands, and there were meetings that were heard by the CFT team in order to manage these
+[06:32 -> 06:42] complaints. So, you have to add a meeting and you can enter the agenda, you can mark that
+[06:42 -> 06:52] attendance, and you can say, what is the date, time, iteration on which the meeting was heard.
+[06:53 -> 07:16] So, you're adding kappa out here, but kappa is also added during the meeting.
+[07:16 -> 07:30] So, you have the shoes, and you add kappa in there,
+[08:00 -> 08:05] is the summary of the complaint.
+[08:30 -> 08:40] If you want to do this software in a very rigorous manner,
+[08:45 -> 08:47] basically it needs to be done like this.
+[08:47 -> 08:57] 5 PM days, home, it's still a lot of PM.
+[08:57 -> 09:08] And oxygen matrix start in the agenda.
+[09:18 -> 09:18] See this.
+[09:18 -> 09:30] So imagine these are your complaints and this is a complaint actual and these are all
+[09:30 -> 09:34] the different aspects of it.
+[09:34 -> 09:39] We need to structure it like this.
+[09:39 -> 10:00] So if you observe, you've got radar and monitor, kappa, kanban meetings, right?
+[10:00 -> 10:06] So every meeting has got certain kappa.
+[10:06 -> 10:10] So meeting will also have like you add a meeting, right?
+[10:10 -> 10:20] And now the meeting has an agenda and it is showing who attended it.
+[10:20 -> 10:27] So actually all actions happens through meetings and so a meeting also has its own small dashboard
+[10:27 -> 10:36] which looks like the project dashboard and a meeting has got an agenda and it's got
+[10:36 -> 10:40] kappa and attendance and an overview.
+[10:40 -> 10:51] And if you remember our audit, I think A2, was it A2 or an option matrix?
+[10:51 -> 11:14] So when you met it and you go inside, you go to subjective audits.
+[11:14 -> 11:21] So think of it like this, this is a meeting and I can click something and you see.
+[11:22 -> 11:24] It has got observations, kappa and inclusion.
+[11:24 -> 11:30] So this is a kind of inner screen that a meeting has got.
+[11:30 -> 11:35] Just giving you certain pointers.
+[11:35 -> 11:43] Now to be very specific, let's give you some action events.
+[11:43 -> 11:50] So we have to work on only two areas, one is monitor, there is meetings.
+[11:50 -> 12:05] And so let's make meetings, let's say radar, monitor meetings, kappa and kanban, let that
+[12:05 -> 12:07] be the sequence.
+[12:07 -> 12:12] And since meetings is easier, let's work on meetings first.
+[12:12 -> 12:19] So this is the interface for meetings, this need not be in bracket, it's just straight
+[12:19 -> 12:25] meet 2025 October 2nd meeting, so that's totally okay.
+[12:25 -> 12:29] And you can see attendees in the meeting, you can see what agenda was published for the
+[12:29 -> 12:30] meeting.
+[12:30 -> 12:38] And so when you hit agenda, you're seeing like this, you're seeing attendees.
+[12:38 -> 12:44] So this is a much better way of showing attendees, you see how it's showing here.
+[12:44 -> 12:47] So let's show attendees in that manner.
+[12:47 -> 12:54] But when you're adding a meeting, you've seen this interface here, like you have attendees
+[12:54 -> 12:57] and you're able to put check boxes to it.
+[12:57 -> 13:01] Now sometimes it's used by large organizations and this is essentially all the potential attendees
+[13:01 -> 13:03] who can join the meeting.
+[13:03 -> 13:07] And how it is coming is that in the users, you have a check box called CFT.
+[13:07 -> 13:11] So whoever is tagged as CFT, they are potentially here.
+[13:11 -> 13:15] And not all of them will be present in a particular meeting.
+[13:15 -> 13:17] So you have this and you are able to take it.
+[13:17 -> 13:22] And so this is an excellent interface where you have agenda and you have attendees and you
+[13:22 -> 13:24] are adjusting it here.
+[13:24 -> 13:33] So really when you are here for attendees, you just want to show like this, like all the people
+[13:33 -> 13:35] who are actually in the meeting.
+[13:35 -> 13:40] And you have a lot of space because if you widen it, then one, two, three, four multiplied
+[13:40 -> 13:48] by even four columns, four into four, 16 people, so conference room is there but it's not
+[13:48 -> 13:49] there.
+[13:49 -> 13:54] Bara, art, it's not there.
+[13:54 -> 14:00] So as I interface, so you cannot adjust from here, but you can just see who it is in
+[14:00 -> 14:01] the meeting.
+[14:01 -> 14:02] Right.
+[14:02 -> 14:16] And cool then, so you will only show the people who attended it.
+[14:16 -> 14:23] And now when I click meeting reference, so see about reference number over here and that's
+[14:23 -> 14:27] the reference number of the so that that's not making any sense.
+[14:27 -> 14:32] So this column is completely unnecessary because this is the reference.
+[14:33 -> 14:39] And this is the one that should have a should be blue in color.
+[14:39 -> 14:42] When you click it, it will lead to an inner screen.
+[14:42 -> 14:44] How will that inner screen look?
+[14:44 -> 14:45] It will look like this.
+[14:45 -> 14:46] Okay.
+[14:46 -> 14:47] And so what are the tabs?
+[14:47 -> 14:52] It will have, obviously it should have kappa because you're creating kappa and that meetings.
+[14:52 -> 14:56] And what is it landing on?
+[14:56 -> 14:57] It's landing on kappa.
+[14:57 -> 15:00] That's the main purpose of the meeting.
+[15:00 -> 15:11] The main purpose of the meeting is to basically create kappa and now, not really, you have
+[15:11 -> 15:14] you can, the first one can be agenda.
+[15:14 -> 15:25] Now you have given a very, very simplistic definition of agenda over here wherein you are
+[15:25 -> 15:29] expecting people to type the agenda.
+[15:29 -> 15:31] At least that's not what the agenda is.
+[15:31 -> 15:36] The agenda of the meeting is, what are the issues, what are the complaints that we discussed
+[15:36 -> 15:37] in this meeting?
+[15:37 -> 15:38] That's it.
+[15:38 -> 15:41] And how do we arrive at it?
+[15:41 -> 15:44] You have a complaint.
+[15:44 -> 15:49] And every complaint has to have next review date.
+[15:49 -> 15:58] So these meetings happen almost daily on case, what does, on case, generally, what from
+[15:58 -> 16:02] any program?
+[16:02 -> 16:15] So you have to have next review date and it will reflect as a certain tag over here which
+[16:15 -> 16:18] shows the number of days in which the review is coming up.
+[16:18 -> 16:23] And that is either blue or red based on whether it is in the past or it's in the future.
+[16:23 -> 16:30] Suppose my next review date for the meeting for the complaint is 30th of September.
+[16:30 -> 16:33] I am today sitting on the 18th of September.
+[16:33 -> 16:37] So it will show the number blue in 12 in blue.
+[16:37 -> 16:43] But if that review date was, say, the 15th of September, it will show the number three in
+[16:43 -> 16:44] red column.
+[16:44 -> 16:46] Yeah, you are right.
+[16:46 -> 16:51] So every meeting has got a next, every complaint has got a next review date.
+[16:51 -> 17:13] And so when I have a meeting, my agenda is basically the list of all the complaints
+[17:13 -> 17:19] whose review date is either today or in the past.
+[17:19 -> 17:26] And I have the ability to, so I'm seeing the complaints and I can log the kappa.
+[17:26 -> 17:31] I can see what kappa is associated with that particular complaint.
+[17:31 -> 17:34] And I can then add kappa into that complaint.
+[17:34 -> 17:37] That's really what's happening.
+[17:37 -> 17:48] So the purpose of a agenda is to simply be able to select what complaints we will be discussing
+[17:48 -> 17:51] during this particular meeting.
+[17:51 -> 18:03] And so these are your complaints and this is, and so you can also have, see complaints
+[18:03 -> 18:05] also have severity, right?
+[18:05 -> 18:13] So you can have the same interface, high, moderate, and in case of manufacturing, you classified
+[18:13 -> 18:21] as safety, critical, important, other, safety, critical, important, other, right?
+[18:21 -> 18:23] You have those steps.
+[18:23 -> 18:25] And so complaints are classified like that.
+[18:25 -> 18:31] And make sure that severity is one of the attributes when you're adding a complaint.
+[18:31 -> 18:34] So every complaint should have a severity and complaints are being classified like this.
+[18:34 -> 18:51] So this also enables us to, and one other thing should be
+[18:51 -> 18:55] not due over you, over the first tab should be over you.
+[18:55 -> 19:04] And another tab can be that basically it is meant to be reviewed today, pending.
+[19:04 -> 19:09] So now what tabs do we have?
+[19:09 -> 19:13] So we have status, just like your severity.
+[19:13 -> 19:20] So imagine you have got, it's a status.
+[19:21 -> 19:33] You, what did we say over you and which is the other one, we said two words, pending, pending
+[19:33 -> 19:36] and over you, status, pending and over you.
+[19:36 -> 19:48] And then severity is safety, critical, important, and other, yeah, that's it.
+[19:48 -> 19:58] So think of it like, you have got 12 meetings in pending, there are 12 complaints in pending
+[19:58 -> 20:06] and 5 complaints in over you, now you were total off and you then also have all.
+[20:06 -> 20:16] So status, all review, all pending and over you, right, all pending and over you.
+[20:16 -> 20:23] So all is 17, pending is 12 and over you is 5, right.
+[20:23 -> 20:31] So now those 17 only will get split on the severity side also between safety, critical,
+[20:31 -> 20:36] important and others, yeah, you got, you got the concept.
+[20:36 -> 20:55] And now when we have complaints, they can also be classified.
+[20:55 -> 21:13] So when you are adding a complaint, yeah, I can classify complaints by country, so severity
+[21:13 -> 21:14] is right here.
+[21:14 -> 21:19] So instead of low video, I just go for those things that we spoke about, safety, critical,
+[21:19 -> 21:22] important, yeah, correct.
+[21:22 -> 21:28] So I can classify the complaint by severity, I'm also able to classify it by country.
+[21:28 -> 21:34] And I'm able to classify it by distributor and I'll not go down to city, right.
+[21:34 -> 21:43] So imagine that you have a tree structure out here.
+[21:43 -> 21:46] Imagine you have a tree structure out here and what is that tree structure is basically going
+[21:46 -> 21:55] in country wise and under country, you have got distributors and so
+[22:25 -> 22:35] you got it and it's very similar to what you actually have, yeah, this is exactly, this
+[22:35 -> 22:38] is the look approximately.
+[22:38 -> 22:44] Now we are going through a number here, so now this is your update so here, this is the
+[22:44 -> 23:02] grid of complaints, like this grid up here and there is no select work in it, but
+[23:02 -> 23:18] which is over, do you have a look at it or the only thing is you have an automatic check
+[23:18 -> 23:34] box that appears and that is called discussed or discussion, discussed, you have another word
+[23:34 -> 23:39] for discussed, reviewed, reviewed, so this is a review call.
+[23:39 -> 23:44] So now you will have a look at your complaints in the meeting, you will have a look at the
+[23:44 -> 24:07] list, you will have a look at the list, you will have a look at the list, you will have a look
+[24:07 -> 24:32] at the list, you will have a look at the list, you will have a look at the list, you will
+[24:32 -> 24:54] have a look at the list, you will have a look at the list, you will have a look at the list
+[24:54 -> 25:20] and you will have a look at the list, you will have a look at the list, you will have a look at
+[25:20 -> 25:45] the list, you will have a look at the list, you will have a look at the list, you will have a look
+[25:45 -> 26:11] at the list, you will have a look at the list, you will have a look at the list, you will have a look
+[26:11 -> 26:36] at the list, you will have a look at the list, you will have a look at the list, you will have a look
+[26:36 -> 27:02] at the list, you will have a look at the list, you will have a look at the list, you will have a look
+[27:02 -> 27:27] you will have a look at the list, you will have a look at the list, you will have a look at
+[27:27 -> 27:37] In your case, when you add a kappa, you complete this is the searchable field and you
+[27:37 -> 27:38] complete it.
+[27:38 -> 27:43] Then world work, you roll department subject, you did it in description but it is not
+[27:43 -> 27:44] that kappa.
+[27:44 -> 27:45] That's cool.
+[27:45 -> 27:49] So that can be added.
+[27:49 -> 27:56] And here also it.
+[27:56 -> 27:57] Yeah.
+[27:57 -> 28:04] And quality of your kappa elements here.
+[28:04 -> 28:05] The actions.
+[28:05 -> 28:06] In actions.
+[28:06 -> 28:14] Basically, you can have instead of giving add here, I can give you a kappa column,
+[28:14 -> 28:16] column, first column.
+[28:16 -> 28:18] And that's plus.
+[28:18 -> 28:19] Plus you hit.
+[28:19 -> 28:21] So full context is added to your vast complaint.
+[28:21 -> 28:23] You don't need to complete the complaint.
+[28:23 -> 28:25] Now just see that.
+[28:25 -> 28:28] You can add a couple of details.
+[28:28 -> 28:35] So in that sense, when you are looking at it here.
+[28:35 -> 28:42] So everything.
+[28:42 -> 28:51] It's already captured directly.
+[28:51 -> 28:53] All you have to enter is.
+[28:53 -> 28:56] Who's the person to whom you are allocating?
+[28:56 -> 28:57] What is the department?
+[28:57 -> 28:59] So department choice should come first.
+[28:59 -> 29:01] And then whose department could you log in?
+[29:01 -> 29:03] But every user belongs to a department.
+[29:03 -> 29:05] And then what is the subject?
+[29:05 -> 29:06] And what is the target date?
+[29:06 -> 29:08] And what is the description?
+[29:08 -> 29:09] That's it.
+[29:09 -> 29:10] That's enough.
+[29:10 -> 29:13] And the complaint reference will come to you.
+[29:13 -> 29:15] Because that's how you are adding it.
+[29:15 -> 29:16] Okay.
+[29:16 -> 29:17] So now you are clear.
+[29:17 -> 29:20] How are the meetings going?
+[29:20 -> 29:25] Based on the complaints.
+[29:25 -> 29:28] No, you have the design clear of the meetings.
+[29:28 -> 29:31] Lots of complaints.
+[29:31 -> 29:32] Yes, see that.
+[29:32 -> 29:35] Now repeat once again.
+[29:35 -> 29:39] When you click add meeting, this is not the interface.
+[29:39 -> 29:40] That's right.
+[29:40 -> 29:42] Your date, time, duration will be like this.
+[29:42 -> 29:45] And your one here is attendance.
+[29:45 -> 29:46] And this is the agenda.
+[29:46 -> 29:48] The agenda is completely changed.
+[29:48 -> 29:51] So this way the open agenda is not done.
+[29:51 -> 29:56] So how is the meeting interface?
+[29:56 -> 29:58] How is it?
+[29:58 -> 30:01] Overstatus and severity.
+[30:01 -> 30:05] And here you have countries and dealers.
+[30:05 -> 30:07] And this is not your cover.
+[30:07 -> 30:10] And this is your complete grid.
+[30:10 -> 30:13] And the complaint is the grid.
+[30:13 -> 30:16] And we have added a details column.
+[30:16 -> 30:19] So we will not have a scroll.
+[30:19 -> 30:21] But it is a details column.
+[30:21 -> 30:24] And in the details column, you can see it.
+[30:24 -> 30:28] And you will basically drive your attributes.
+[30:28 -> 30:37] And you will basically drive your attributes from.
+[30:37 -> 30:38] From here.
+[30:38 -> 30:41] Here you usually know what to do.
+[30:41 -> 30:43] And if you click cover, it will pop up.
+[30:43 -> 30:48] Already, something like that.
+[30:48 -> 30:50] Meeting.
+[30:50 -> 30:52] Complaint the reference.
+[30:52 -> 30:57] And you are just able to select the department rules.
+[30:57 -> 31:00] And you can see that's exactly what you have in the cover.
+[31:00 -> 31:03] And every cover element is associated with a meeting reference.
+[31:03 -> 31:05] You can see you have add cover here.
+[31:05 -> 31:06] This is nonsense.
+[31:06 -> 31:07] Please don't add it directly.
+[31:07 -> 31:10] So no cover can be added directly.
+[31:10 -> 31:12] Or cover can be added directly.
+[31:12 -> 31:15] In which case, it will not have a meeting reference.
+[31:15 -> 31:18] And if you add it directly, you have to select a complaint.
+[31:18 -> 31:21] You will not have a meeting reference.
+[31:21 -> 31:24] So again, we will resist from adding cover directly here.
+[31:24 -> 31:25] So remove the check.
+[31:25 -> 31:27] Remove this cover.
+[31:27 -> 31:30] Adding facility completely.
+[31:30 -> 31:33] If I'm in the monitor, I go here.
+[31:33 -> 31:35] I see cover here.
+[31:35 -> 31:37] Here it is OK to add cover.
+[31:37 -> 31:39] I can go inside a complaint and log the cover.
+[31:39 -> 31:41] So in which case, it's same.
+[31:41 -> 31:44] I basically added cover outside the meeting.
+[31:44 -> 31:48] And if I add outside the meeting, the meeting references.
+[31:48 -> 31:51] And the meeting reference is not there.
+[31:51 -> 31:53] And the meeting reference is never a bracket.
+[31:53 -> 31:57] It's basically either NA or it is meat dash something.
+[31:57 -> 32:05] And complaint is always comp dash 2025 slash month slash number.
+[32:05 -> 32:12] And you can use AI to write specific, you know, words for complaints and all that.
+[32:12 -> 32:17] So this is the global list of all complaints.
+[32:17 -> 32:26] And every cover item has the status open pending WIP.
+[32:26 -> 32:34] And that is very, very silly actually.
+[32:34 -> 32:36] So status should not appear like this.
+[32:36 -> 32:41] Status should appear like.
+[32:41 -> 32:43] You see this, this type of stuff.
+[32:43 -> 32:46] So and it is an automatic status.
+[32:46 -> 33:00] So it can be every cover item can be either open or closed or old.
+[33:00 -> 33:01] Right.
+[33:01 -> 33:12] And so if I'm here, I should have the ability to have a done column which I can just stick.
+[33:12 -> 33:15] And that's it.
+[33:15 -> 33:18] You can mark it as done.
+[33:18 -> 33:26] So when you are in the meeting interface, now what do you have?
+[33:26 -> 33:32] So here you have agenda, kappa.
+[33:32 -> 33:35] And this is showing closure.
+[33:35 -> 33:40] So here it says enter concluding remarks for audit.
+[33:40 -> 33:43] You write enter concluding remarks for the meeting.
+[33:43 -> 33:47] I can add, I can add some concluding remarks for the meeting.
+[33:47 -> 33:51] So this is exactly the interface that you use for every meeting.
+[33:51 -> 33:56] And now if I go back here.
+[33:56 -> 34:02] And so it's pretty clear what this meeting is.
+[34:02 -> 34:05] And this meeting is coming immediately after monitor.
+[34:05 -> 34:07] Kappa is just an aggregation.
+[34:07 -> 34:11] Conman, we are clear radar is already available coming to monitor.
+[34:11 -> 34:21] And in monitor, we have complaints so.
+[34:21 -> 34:29] And now complaints so can be in active status or.
+[34:29 -> 34:31] They can be archived.
+[34:31 -> 34:36] And so there has to be a clear facility like a check box to archive a complaint.
+[34:36 -> 34:43] And there's also a facility to barca complaint has done.
+[34:43 -> 34:45] Got closed.
+[34:45 -> 34:53] And therefore you need some kind of a toggle over here, which is a toggle between active and archives.
+[34:53 -> 34:59] And so when I'm coming here.
+[34:59 -> 35:02] Everything is good. Now, you know how to populate Kappa.
+[35:02 -> 35:04] You know how to do these documents.
+[35:04 -> 35:07] You know how to enter some notes.
+[35:07 -> 35:11] And.
+[35:11 -> 35:15] This is a terrible way to enter notes.
+[35:15 -> 35:17] It is a better way to do it.
+[35:17 -> 35:20] And that is see here.
+[35:20 -> 35:23] This is how you should enter notes.
+[35:23 -> 35:27] And a summarizing the notes.
+[35:27 -> 35:33] So.
+[35:33 -> 35:36] So the notes is clear timeline is like this.
+[35:36 -> 35:38] Anything that's happening.
+[35:38 -> 35:41] And now I'm into.
+[35:41 -> 35:45] So this we decided to call as 80 80 process.
+[35:45 -> 35:48] And.
+[35:48 -> 35:54] This particular screen.
+[35:54 -> 35:58] Is.
+[35:58 -> 36:03] Going to become the first screen or the land in screen.
+[36:03 -> 36:04] Right.
+[36:04 -> 36:07] So whenever you click a complaint, you land on 80 process.
+[36:07 -> 36:13] And then you have base info, summary, Kappa documents, notes and timeline.
+[36:13 -> 36:17] So let's discuss more about updates or 80 process.
+[36:17 -> 36:23] So in 80 process, what we are going to do is.
+[36:23 -> 36:27] We will.
+[36:27 -> 36:30] Have it like this.
+[36:30 -> 36:33] Like this 70.
+[36:33 -> 36:34] Issue status.
+[36:34 -> 36:36] You come here.
+[36:36 -> 36:38] You see this interface.
+[36:38 -> 36:40] But imagine it's on the right hand side.
+[36:40 -> 36:45] So the exact interface looks like this.
+[36:45 -> 36:48] You have this on the right hand side.
+[36:48 -> 36:51] And so.
+[36:51 -> 36:57] And you have a back when you will back.
+[36:57 -> 37:05] So I will just explain to you in a moment what it is.
+[37:05 -> 37:06] Yeah.
+[37:06 -> 37:09] So I have inside a complaint.
+[37:09 -> 37:11] And this is.
+[37:11 -> 37:13] Yeah, this is called monitor.
+[37:13 -> 37:14] That's okay.
+[37:14 -> 37:16] So you come here.
+[37:16 -> 37:20] And you can see that.
+[37:21 -> 37:23] This is the deep process.
+[37:23 -> 37:25] And.
+[37:43 -> 37:44] Yeah.
+[37:44 -> 37:49] So we are getting rid of the complete top menu.
+[37:49 -> 37:52] And everything is going to the right.
+[37:52 -> 38:01] So that means when you land on a complaint, you are basically landing on the.
+[38:01 -> 38:04] So it's.
+[38:04 -> 38:07] No more called.
+[38:07 -> 38:13] So now this particular thing which we are calling as monitor.
+[38:13 -> 38:16] This is now called 80 process.
+[38:16 -> 38:19] Yeah, it's called 80 process.
+[38:19 -> 38:22] And.
+[38:22 -> 38:25] And.
+[38:25 -> 38:28] You've got all the complaints here.
+[38:28 -> 38:30] You click the complaint.
+[38:30 -> 38:32] The landing on a screen.
+[38:32 -> 38:34] And that screen.
+[38:34 -> 38:37] Is essentially.
+[38:37 -> 38:41] Looking like this.
+[38:41 -> 38:42] Okay.
+[38:42 -> 38:45] So what do you have on that screen?
+[38:45 -> 38:50] What do you have on the screen?
+[38:50 -> 38:52] You have base info.
+[38:52 -> 38:55] Then you have somebody.
+[38:55 -> 38:59] And you have what is called as.
+[38:59 -> 39:00] 80 matrix.
+[39:00 -> 39:03] So there we call it as 80 process.
+[39:03 -> 39:05] Here we are calling it as 80 matrix.
+[39:05 -> 39:07] That's the only difference.
+[39:07 -> 39:08] And it's like.
+[39:08 -> 39:10] In here.
+[39:10 -> 39:12] Not in here.
+[39:12 -> 39:14] Here.
+[39:14 -> 39:19] You actually call it issue status, which could have been a much better word.
+[39:19 -> 39:20] It could have been called as.
+[39:20 -> 39:29] So here instead of issue status, please log it as 70.
+[39:29 -> 39:30] This is 70.
+[39:30 -> 39:33] So 70.
+[39:33 -> 39:37] Is it a log?
+[39:37 -> 39:38] Or is it a.
+[39:38 -> 39:43] Let's call it 70.
+[39:43 -> 39:45] Log.
+[39:45 -> 39:47] Yeah, let's call it 70 log.
+[39:47 -> 39:50] And when you go inside here.
+[39:50 -> 39:52] See it's called 70 matrix.
+[39:52 -> 39:53] Right.
+[39:53 -> 39:56] So it is the same here also.
+[39:56 -> 39:58] So here also.
+[39:58 -> 40:02] When you're landing on it, it is called 80 process.
+[40:02 -> 40:05] Not 80 log, but 80 process.
+[40:06 -> 40:09] And instead of process, let's call it workflow.
+[40:09 -> 40:10] 80.
+[40:10 -> 40:12] Is it called 80 process or 80 workflow?
+[40:12 -> 40:14] It's called 80 process.
+[40:14 -> 40:15] So you'll call it 80 process.
+[40:15 -> 40:17] It lands on 80 process.
+[40:17 -> 40:20] And then you go inside.
+[40:20 -> 40:21] What is it?
+[40:21 -> 40:22] Base info.
+[40:22 -> 40:23] Somebody.
+[40:23 -> 40:25] 80 matrix.
+[40:25 -> 40:27] Kappa.
+[40:27 -> 40:28] Documents.
+[40:28 -> 40:29] Notes.
+[40:29 -> 40:31] Time line.
+[40:31 -> 40:33] So now we are talking about.
+[40:34 -> 40:36] These things.
+[40:36 -> 40:38] So these are the steps intake.
+[40:38 -> 40:39] Field informative.
+[40:39 -> 40:40] Field part.
+[40:40 -> 40:41] Containment.
+[40:41 -> 40:42] Investigation.
+[40:42 -> 40:43] Where are they coming?
+[40:43 -> 40:45] They are coming in the matrix.
+[40:45 -> 40:47] But they are also.
+[40:47 -> 40:51] In the right path.
+[40:51 -> 40:53] So are you seeing what we are doing now?
+[40:53 -> 40:55] We are exploding the system.
+[40:55 -> 40:59] We will give a very specific screen.
+[40:59 -> 41:02] To record like what happens in intake.
+[41:02 -> 41:04] And you got it right.
+[41:04 -> 41:07] So.
+[41:07 -> 41:14] But we will not be able to cover each and every one of these.
+[41:14 -> 41:18] So there is more in the matrix than in the right hand side.
+[41:18 -> 41:20] So matrix is exactly like this.
+[41:20 -> 41:21] 80 matrix.
+[41:21 -> 41:25] But the right hand side is now going to have base info summary.
+[41:25 -> 41:29] I just write or write down what is there on the right hand side.
+[41:29 -> 41:34] So.
+[41:34 -> 41:39] So it's going to have.
+[41:39 -> 41:45] This info.
+[41:45 -> 41:51] Summary.
+[41:52 -> 41:57] Summary.
+[41:57 -> 42:01] Summary.
+[42:01 -> 42:08] Summary.
+[42:08 -> 42:13] Summary.
+[42:13 -> 42:17] Summary.
+[42:17 -> 42:23] Summary.
+[42:23 -> 42:26] Yeah.
+[42:26 -> 42:29] So.
+[42:29 -> 42:32] Should we wait for her.
+[42:32 -> 42:34] I'll write it anyway.
+[42:34 -> 42:36] So base info summary.
+[42:36 -> 42:39] And now.
+[42:39 -> 42:41] See, intake is not a process.
+[42:41 -> 42:44] Intake is like the complaint has been taken.
+[42:44 -> 42:52] There has to be some kind of.
+[42:52 -> 42:59] Screening.
+[42:59 -> 43:03] Or you can call it investigation also.
+[43:03 -> 43:08] We'll call it investigation.
+[43:08 -> 43:12] Now.
+[43:13 -> 43:15] So that means investigation is after intake.
+[43:15 -> 43:16] Right.
+[43:16 -> 43:17] In the matrix.
+[43:17 -> 43:21] Now this investigation has come up after intake.
+[43:21 -> 43:22] And.
+[43:22 -> 43:25] Then it is saying feel informative feel part of it.
+[43:25 -> 43:26] Right.
+[43:26 -> 43:30] So we are now.
+[43:30 -> 43:35] Going to say.
+[43:36 -> 43:42] Dispatch.
+[43:42 -> 43:45] Field.
+[43:45 -> 43:47] Field.
+[43:47 -> 43:48] Field.
+[43:48 -> 43:49] Spatch.
+[43:49 -> 43:50] Right.
+[43:50 -> 43:51] So field.
+[43:51 -> 43:54] Spatch is an event only if in investigation I click that.
+[43:54 -> 43:57] There is a certain field part which is being sent to the factory.
+[43:57 -> 43:58] Right.
+[43:58 -> 44:01] And.
+[44:01 -> 44:04] Containment.
+[44:05 -> 44:08] So you want to have a tab for containment.
+[44:08 -> 44:11] The containment means wireless problem is sorted.
+[44:11 -> 44:13] What actions are we taking?
+[44:13 -> 44:14] Okay.
+[44:14 -> 44:15] And.
+[44:15 -> 44:17] Then design review.
+[44:17 -> 44:22] Yes, we should have a clear.
+[44:22 -> 44:23] Form for that.
+[44:23 -> 44:25] And supplier action.
+[44:25 -> 44:27] So.
+[44:27 -> 44:29] Again, we should have.
+[44:29 -> 44:31] A clear space.
+[44:31 -> 44:34] Where.
+[44:34 -> 44:37] Talk about.
+[44:37 -> 44:49] Sublime action.
+[44:49 -> 44:56] Spelling of implementation is me and.
+[44:56 -> 45:16] So you have a summary here that is good.
+[45:17 -> 45:19] And.
+[45:19 -> 45:23] And.
+[45:23 -> 45:26] And.
+[45:26 -> 45:28] And.
+[45:28 -> 45:34] And.
+[45:34 -> 45:41] And.
+[45:41 -> 45:46] One.
+[45:46 -> 45:51] One.
+[45:51 -> 45:56] One.
+[45:56 -> 46:01] One.
+[46:01 -> 46:03] One.
+[46:03 -> 46:06] One.
+[46:07 -> 46:13] Overall somebody.
+[46:13 -> 46:16] Supplier action.
+[46:16 -> 46:22] And you can most suddenly have Kappa.
+[46:22 -> 46:27] And now because you have Kappa here, you don't need Kappa here.
+[46:27 -> 46:30] Right?
+[46:30 -> 46:58] implementation, yeah, that is most certainly needed and verification monitoring, revasion,
+[46:58 -> 47:24] revolution, and now you've got certain things like documents, roads, and timeline, we shift all the way to the top.
+[47:24 -> 47:40] So, base info, somebody timeline, that's it. Did you read it? Now, you don't have horizontal
+[47:40 -> 47:51] labs, you've got this thing on the right hand side. So, now, what is base info exactly like this? So, that's
+[47:51 -> 48:01] pretty clear now. Now, do you see there is a due date ETA priority. So, due date is here, so no need for you
+[48:01 -> 48:12] do it. Now, ETA and priority are here on the top and there should be a place to set ETA and priority for a
+[48:12 -> 48:29] complaint. And so, we should that be is the question. That's not in the base info. So, do you see where
+[48:29 -> 48:36] overall summary is. So, we can call it summary, summary overall summary, both mean the same thing,
+[48:36 -> 48:43] summary is here. So, summary at the top may ETA and priority be added. So, it doesn't make sense to
+[48:43 -> 48:49] put it in the base info, because earlier it was horizontal, so we added on the top because, yeah. So,
+[48:49 -> 48:57] summary may have quite ETA and priority added. And now, you've got timeline, which you know what it
+[48:57 -> 49:08] looks like and investigation. So, what is investigation? Investigation is initially, I want to determine
+[49:08 -> 49:16] whether it's a commercial complaint or it's technical case or it is a warranty, etc. So,
+[49:27 -> 49:41] warranty claim. So, warranty claim. It is optional. It depends upon the investigation.
+[49:44 -> 49:50] Then may or may not be a warranty claim, right. And a warranty claim will have two parts. It can have
+[49:50 -> 49:57] certain spares that were replaced or certain services that were provided. So, you've got the idea
+[49:57 -> 50:06] that on one side, if it's like spare, free of cost, free of cost, it's called FOC, free of cost
+[50:06 -> 50:13] replacement, free of cost spares. So, you have a list and you've got that means I need to maintain
+[50:13 -> 50:22] a spare spares master, spare parts master, yeah. So, when you're in complaints,
+[50:23 -> 50:28] you need to have a spare parts master. And if you see,
+[50:29 -> 50:38] kappa, kanva, mutants, yeah, you just need a spare parts master. So, all your modules are like this.
+[50:39 -> 50:51] They have some menu. There's a menu here. There's a menu here. Admin, you only have managed
+[50:51 -> 51:04] users, it seems. The admin is like this. So, the complaints module, we need spare parts.
+[51:09 -> 51:20] Good. So, I need a place to set up the spare parts master.
+[51:23 -> 51:29] And so, please give it to me, yeah. Somewhere here, give me a spare parts master.
+[51:30 -> 51:40] And that will feed into this area. So, Vikas Gaba.
+[51:40 -> 52:06] So, hello, Vikas, please let me know when we can do a quick call, yeah.
+[52:06 -> 52:26] So, no. Yeah. So, did you understand the idea of warranty claim?
+[52:26 -> 52:35] Yeah. On one side, you have basically a free of cost spare
+[52:35 -> 52:41] replacement. And on the other side, you have free of cost. And warranty claim will also have
+[52:41 -> 52:50] details of the warranty. That, you know, because if I have a dealer, I have to give a warranty
+[52:50 -> 52:58] to a customer, then I have to have some reference, right. So, but you understood the concept.
+[52:58 -> 53:03] Then, so, that is what is decided in investigation, whether there is a warranty claim,
+[53:03 -> 53:10] if warranty claim is activated, then warranty claim will be an active time, otherwise this will be
+[53:10 -> 53:15] disabled. If there is a field dispatch, that means, are we returning something to the factory, in which
+[53:15 -> 53:22] case the field dispatch will get enabled, otherwise it is not enabled. Now, you have containment.
+[53:22 -> 53:34] What does containment mean? Containment means that this problem is there.
+[53:36 -> 53:43] It may also be there in the other products. So, do we need to do a recall? Or do we need to
+[53:43 -> 53:52] immediately take some steps in our manufacturing process so that the problem doesn't spread
+[53:53 -> 54:03] and influence our customers? So, containment location, containment is after design review.
+[54:04 -> 54:13] Investigation, what is investigation? That will be clear. Now,
+[54:16 -> 54:22] somebody also you are clear. So, design review is a technical review, right. So, you will not
+[54:22 -> 54:30] call it design review, you will call it technical review. Now, it is in the factory, they are analyzing
+[54:31 -> 54:42] what is going on. And based on technical review, they decide whether we need containment.
+[54:42 -> 54:50] So, containment is again an optional step. It does not necessary that they will be containment.
+[54:50 -> 54:55] And also in the investigation you decide whether this complaint will go to factory level or not.
+[54:55 -> 55:01] Complaint doesn't go to factory level. It gets closed at the level level. So, there is no kappa
+[55:01 -> 55:06] or nothing. So, all of these are disabled if complaint doesn't go to factory level, right. So,
+[55:07 -> 55:16] that means warranty claim is optional. So, certain complaints it will be totally disabled.
+[55:17 -> 55:18] We will dispatch is optional.
+[55:21 -> 55:23] Technical reviews also, it is going to happen only if
+[55:27 -> 55:35] everything is, yeah. So, all of this is potentially optional, right. Closure is not optional.
+[55:36 -> 55:44] Documents, notes is always there. So, now kappa you know, kappa you know what it is, right.
+[55:44 -> 55:48] So, whatever is the kappa associated with this particular complaint, that has to come.
+[55:51 -> 55:56] Okay, I will explain to you what everything is, supplier action. So, what is supplier action?
+[55:58 -> 56:04] The complaint is caused by a component. As you know, manufacturing 60-80% of components come
+[56:04 -> 56:08] from suppliers. So, the complaint is arising because of faulty component that is supplied by the
+[56:08 -> 56:13] supplier. Then we have to have some discussion with the supplier and take corrective action there.
+[56:13 -> 56:19] So, that's what it is. Implementation. Now that you have done the technical review and you arrived at
+[56:19 -> 56:28] the course of action, we need to track the implementation, yeah. What is verification? Once the implementation
+[56:28 -> 56:34] has been done, somebody has to verify and say that yes, the problem has been solved, yeah.
+[56:35 -> 56:45] And then you have monitoring. Okay, we have, it's fine, the problem has been solved, but we just want to
+[56:45 -> 56:52] is like Navin-Maliksa smart doc problem is solved. But it has to be demonstrated, you have to hold
+[56:52 -> 57:01] the gains. Like we observe every day, what is a smart doc turn around? And fine, every day you did
+[57:01 -> 57:09] pro-square in less than 15 minutes, good. Now your problem is in control, right? So, that is what
+[57:09 -> 57:15] monitoring is. What is prevention? What steps can we take so that this problem doesn't happen
+[57:15 -> 57:19] in the future? So, that's sort of discussion. The manufacturing people are very intelligent, these are
+[57:19 -> 57:27] engineers and how many engineers in this room? So, that was the promise that this is the kind of work
+[57:27 -> 57:35] that we were supposed to do. The car is off air, yeah. But software is also engineering. So, especially if you
+[57:36 -> 57:43] do first act projects and you do system design. So, then there's a lot of engineering that goes into it,
+[57:43 -> 57:51] that performance, security, civility, recognition. Recognition is important because
+[57:52 -> 58:01] the whole thing happened and somebody played a tremendous and very appreciable role in solving the
+[58:01 -> 58:11] problem. So, you should put a note of appreciation that the whole company will see. So, sometimes
+[58:11 -> 58:15] people in the factory are least appreciated, but then somebody solved the problem and
+[58:16 -> 58:29] how should I put it? Imagine we have quarterly awards and we give quarterly awards and some people
+[58:29 -> 58:37] are recognized for certain things. So, they feel very good about it. Imagine this company had
+[58:38 -> 58:45] attended people. And there is a research analyst, Runeva's Chandana, and she is very quiet. She doesn't
+[58:45 -> 58:53] talk. And suddenly you say that the Geodas project is awarded and along with the JSC and Krishna,
+[58:53 -> 59:00] Chandana played a tremendous role in terms of providing farmers' specific content. And that
+[59:00 -> 59:05] enabled us to convince the client. So, everybody knows who's Chandana and like there's a far more
+[59:05 -> 59:11] amount of respect for that person. So, that's what recognition is. It might sound very trivial,
+[59:11 -> 59:17] what I'm telling you, it might sound like that, but it's not. It like, there are people value it.
+[59:17 -> 59:25] They see it like respect. Closure. So, ultimately you close the complaint. And you have some closure
+[59:25 -> 59:33] remarks. This is clear documents, notes. Notes will have an overview. So, now the screens that we have
+[59:33 -> 59:41] to design. Next, I'll just put next. You have to put next in the, like this is this is our
+[59:41 -> 01:00:03] interval notes next. So, okay. Now, containment, yes. I have to provide
+[01:00:03 -> 01:00:08] it to you. Technical review, I'll have to provide it to you. Field dispatch also, I'll have to
+[01:00:08 -> 01:00:13] provide to you. Warranty claim also, I'll provide it. Investigation also, I'll provide it. Rest you
+[01:00:13 -> 01:00:20] have. So, now if you give me this layout, as per this discussion, I think in a couple of meetings,
+[01:00:20 -> 01:00:26] like we will ask AI, we'll go one by one. We'll design the respective screens for investigation,
+[01:00:26 -> 01:00:31] warranty claim, field dispatch and all that. Then our software will look so much better. It looks like
+[01:00:31 -> 01:00:37] a more comprehensive system aligned to the AD process. There is an AD matrix. Suddenly,
+[01:00:39 -> 01:00:45] I also see that it is becoming more respectable now. So, that's that's what that's where we are
+[01:00:45 -> 01:00:49] going with this. Any questions? Turn around.
+[01:01:01 -> 01:01:07] I've got clarity now. What are you going to do? So, we have reached a spot where
+[01:01:07 -> 01:01:12] whatever we discuss, we should make it. And then we'll take the next step.
+[01:01:12 -> 01:01:16] So, if a long time is going to happen, then in the same meeting, I'll use the entire screen.
+[01:01:16 -> 01:01:22] I'll use two meetings. I'll use four, five screens in one meeting. I'll use four, five screens in one meeting.
+[01:01:23 -> 01:01:27] Back here, if you have an objective or an objective, an objective or an energy- about a lot of stuff is going to happen.
+[01:01:29 -> 01:01:32] Ultimately, it could happen. So, in those days we have to go into the same room,
+[01:01:32 -> 01:01:37] then we have to try to adjust the permissions, check boxes, and then adjust them.
+[01:01:40 -> 01:01:45] So, the same part we've got, the boat dispatched this. So, I've got a little time,
+[01:01:45 -> 01:01:50] all those menus are coming in there. So, the AD process is coming out. AD matrix is coming in there.
+[01:01:52 -> 01:02:02] This is where we don't have any add option.
+[01:02:02 -> 01:02:04] In the main one you don't have.
+[01:02:04 -> 01:02:06] You have to add it in the complaint only.
+[01:02:06 -> 01:02:08] Or you can add it in the meeting.
+[01:02:08 -> 01:02:10] Yes.
+[01:02:10 -> 01:02:12] Meeting screen.
+[01:02:12 -> 01:02:16] We only have one difference ID and there is no bracket.
+[01:02:16 -> 01:02:18] While adding a meeting,
+[01:02:18 -> 01:02:22] this part defines the same.
+[01:02:22 -> 01:02:26] But in the place of agenda, we have a tree.
+[01:02:26 -> 01:02:30] So yeah, that's a very good point.
+[01:02:30 -> 01:02:34] When you're doing a meeting.
+[01:02:34 -> 01:02:36] Fantastic.
+[01:02:36 -> 01:02:38] So when I'm doing a meeting,
+[01:02:38 -> 01:02:40] I would like to capture this.
+[01:02:40 -> 01:02:44] If they want to specify the agenda for the meeting, let them specify the agenda.
+[01:02:44 -> 01:02:45] I don't have a problem.
+[01:02:45 -> 01:02:49] Manually specify the agenda.
+[01:02:49 -> 01:02:51] You can indicate attendance.
+[01:02:51 -> 01:02:59] And you can basically say continue.
+[01:02:59 -> 01:03:01] It's not safe.
+[01:03:01 -> 01:03:03] When you hit continue,
+[01:03:03 -> 01:03:07] then you'll land on that three-part three-taps screen.
+[01:03:07 -> 01:03:11] So the first tab is not called agenda now.
+[01:03:11 -> 01:03:13] The first tab will be called as
+[01:03:17 -> 01:03:20] Active Complaints.
+[01:03:20 -> 01:03:22] Open Complaints.
+[01:03:22 -> 01:03:26] There we are capturing the models and actions we need to do.
+[01:03:26 -> 01:03:27] Yeah.
+[01:03:27 -> 01:03:28] So basically,
+[01:03:28 -> 01:03:31] there are actions where you can apply it.
+[01:03:31 -> 01:03:32] You can apply it.
+[01:03:32 -> 01:03:33] And in the value,
+[01:03:33 -> 01:03:35] there are countries and dealers.
+[01:03:35 -> 01:03:37] Like we discussed above,
+[01:03:37 -> 01:03:39] there is a status severity.
+[01:03:39 -> 01:03:40] That's the interface.
+[01:03:40 -> 01:03:42] So.
+[01:03:42 -> 01:03:46] And as we discussed here,
+[01:03:46 -> 01:03:48] it will be able to do it.
+[01:03:48 -> 01:03:49] So basically,
+[01:03:49 -> 01:03:51] the observations are there.
+[01:03:51 -> 01:03:53] So what's in it now?
+[01:03:53 -> 01:03:57] The tabs are agenda.
+[01:03:57 -> 01:04:04] Open Complaints.
+[01:04:04 -> 01:04:06] Open Complaints.
+[01:04:06 -> 01:04:08] And Complaints.
+[01:04:08 -> 01:04:10] Agenda Complaints.
+[01:04:10 -> 01:04:11] Okay.
+[01:04:11 -> 01:04:12] That's it.
+[01:04:12 -> 01:04:13] Agenda.
+[01:04:13 -> 01:04:15] We're already showing you the screen.
+[01:04:15 -> 01:04:16] Yeah.
+[01:04:16 -> 01:04:17] We have to keep the country.
+[01:04:17 -> 01:04:18] So.
+[01:04:18 -> 01:04:19] As I said,
+[01:04:19 -> 01:04:21] the chart is there.
+[01:04:21 -> 01:04:22] Yeah.
+[01:04:22 -> 01:04:23] So you have continued the agenda.
+[01:04:23 -> 01:04:25] So now you'll land on Complaints.
+[01:04:25 -> 01:04:27] Okay.
+[01:04:27 -> 01:04:28] Yeah.
+[01:04:28 -> 01:04:30] And you have to close the meeting.
+[01:04:30 -> 01:04:33] So if you'll publish here.
+[01:04:33 -> 01:04:34] Publish.
+[01:04:34 -> 01:04:41] And if you want.
+[01:04:41 -> 01:04:44] Because there's an explicit closure tab.
+[01:04:44 -> 01:04:45] I don't need publish.
+[01:04:45 -> 01:04:46] That means,
+[01:04:46 -> 01:04:47] I need publish.
+[01:04:47 -> 01:04:48] I mean,
+[01:04:48 -> 01:04:50] if you want.
+[01:04:50 -> 01:04:52] Because there's an explicit closure tab.
+[01:04:52 -> 01:04:53] I don't need publish.
+[01:04:53 -> 01:04:54] That means,
+[01:04:54 -> 01:04:56] you go to the meeting to close the meeting.
+[01:04:56 -> 01:04:57] You go to the clear.
+[01:04:57 -> 01:04:58] You finish.
+[01:04:58 -> 01:04:59] And you finish.
+[01:04:59 -> 01:05:01] That's how I publish a meeting.
+[01:05:01 -> 01:05:07] Once the meeting is published, the one that you have completed is the one that you have discussed.
+[01:05:10 -> 01:05:13] If I am opening the meeting, then it is the answer.
+[01:05:13 -> 01:05:22] The one that is pending, the one that is audio, but if it is the type of the meeting that is closed,
+[01:05:22 -> 01:05:26] then the one that you have completed is the one that you have covered.
+[01:05:27 -> 01:05:28] Sorry.
+[01:05:30 -> 01:05:35] See, I could have 2000 complaints in the system.
+[01:05:35 -> 01:05:36] Yes.
+[01:05:36 -> 01:05:39] Out of 2000 complaints, 1850 complaints are already closed.
+[01:05:39 -> 01:05:40] Yes.
+[01:05:40 -> 01:05:42] There is no need for me to see them in the meeting.
+[01:05:42 -> 01:05:43] Yeah.
+[01:05:43 -> 01:05:44] 150 are over.
+[01:05:44 -> 01:05:55] Out of 150 complaints, the action date or the review date for 100 and 20 meetings is in the future.
+[01:05:56 -> 01:05:58] Those I don't have to see.
+[01:05:58 -> 01:06:01] That means my action list is only 30 complaints.
+[01:06:01 -> 01:06:04] Those 30 have to appear when I am doing the meeting.
+[01:06:04 -> 01:06:08] When I am doing the meeting, then I have completed 5 complaints.
+[01:06:08 -> 01:06:10] Then I have closed the meeting.
+[01:06:10 -> 01:06:15] Now, if I come back to this meeting, the closure will be read only.
+[01:06:15 -> 01:06:20] And the complaint staff will only give me 5 meetings.
+[01:06:21 -> 01:06:26] Because those were the only meetings on which Kapa was raised.
+[01:06:26 -> 01:06:27] Yeah.
+[01:06:27 -> 01:06:31] And I cannot reopen the meeting now.
+[01:06:31 -> 01:06:34] And I cannot reopen the meeting now.
+[01:06:35 -> 01:06:40] And if I open the agenda, then I will look at the agenda on the other side of the agenda.
+[01:06:52 -> 01:06:54] So, I will give it to you.
+[01:06:54 -> 01:06:55] Yes.
+[01:06:55 -> 01:07:03] So I will have out now.
+[01:07:03 -> 01:07:05] I will review the agenda.
+[01:07:05 -> 01:07:14] Lastly.
+[01:07:14 -> 01:07:31] Let's see if we go up a skull weather in the threshold.
+[01:07:31 -> 01:07:37] So what we have said is this is as in the screen, like we have a four tabs on top and
+[01:07:37 -> 01:07:40] this whole thing is as in the screen.
+[01:07:40 -> 01:07:54] In the click on continue, we'll leads to the complaint screen, complaint screen, complaint
+[01:07:54 -> 01:07:55] screen.
+[01:07:55 -> 01:08:01] And in the complaint screen, we have like security based status and severity, status is
+[01:08:01 -> 01:08:05] pending under you, then your severity boom, but I can think of a post status and severity
+[01:08:05 -> 01:08:06] problem.
+[01:08:06 -> 01:08:10] Problems, you want to know exactly like this.
+[01:08:10 -> 01:08:19] Problems, so basically, yeah, the severity is written in this page, the side by side.
+[01:08:19 -> 01:08:33] So as at the top, so severity is a little bit there.
+[01:08:33 -> 01:08:58] And here, there's a severity like that, status like that, and status or outskirt, it is
+[01:08:58 -> 01:09:06] a pending and over you.
+[01:09:06 -> 01:09:08] No, not your quality.
+[01:09:08 -> 01:09:23] All assues, we are right.
+[01:09:23 -> 01:09:26] And these also have numbers in brackets.
+[01:09:26 -> 01:09:38] So, imagine all like this, high, moderate, low, some joke, eight, so all may eight I go.
+[01:09:38 -> 01:09:51] Pending, some of you pending me seven, you're not over view is over due, may one or over you
+[01:09:51 -> 01:09:58] have read the letter out there.
+[01:09:58 -> 01:10:13] I have first, I would select a status then based on the status will see at the number.
+[01:10:13 -> 01:10:20] All is by default, it's all yeah, if I click on pending will see at the number change, everything
+[01:10:20 -> 01:10:21] changes.
+[01:10:21 -> 01:10:28] And in severity also, do we require all because yeah, logically yes.
+[01:10:28 -> 01:10:47] So, basically both status and severity, default to all three, first we have countries, then
+[01:10:47 -> 01:10:50] you have dealers.
+[01:10:50 -> 01:10:57] So, instead of distributors, the world that is to be used as dealer.
+[01:10:57 -> 01:11:14] You also give you a login for dealer, you give you a dealer login and you give you a feed
+[01:11:14 -> 01:11:15] of it.
+[01:11:15 -> 01:11:16] So, it will be right as well.
+[01:11:16 -> 01:11:21] Just like in SQM, you have supply of it.
+[01:11:21 -> 01:11:28] So, every country, this is dealer, I mean, instead of distributor, it is dealer.
+[01:11:28 -> 01:11:29] Okay.
+[01:11:29 -> 01:11:37] So, based on that, it will be popular over there.
+[01:11:37 -> 01:11:41] And do we have a chip box to select those for the current meeting?
+[01:11:41 -> 01:11:42] Meaning.
+[01:11:43 -> 01:11:49] Like, we are right now populating what are there from the, from the components, but we have
+[01:11:49 -> 01:11:54] to assign those components to the meeting rate.
+[01:11:54 -> 01:11:57] You don't assign components to the meeting.
+[01:11:57 -> 01:11:59] We only filter this.
+[01:11:59 -> 01:12:09] So, basically, what appears in the meeting is the list of complaints that is either over you or pending.
+[01:12:09 -> 01:12:10] Yes.
+[01:12:10 -> 01:12:11] Based on the review date.
+[01:12:11 -> 01:12:14] So, every complaint has a review date.
+[01:12:14 -> 01:12:22] And where is the review date set, if you remember, we discussed the concept of summary.
+[01:12:22 -> 01:12:31] And what does summary look like?
+[01:12:31 -> 01:12:32] It looks like this.
+[01:12:32 -> 01:12:35] So, here we discussed on the top, we will have certain fields.
+[01:12:35 -> 01:12:36] Yes.
+[01:12:36 -> 01:12:40] And those fields like du-date, ETA, priority.
+[01:12:40 -> 01:12:43] Now, one more field that is getting added is review date.
+[01:12:43 -> 01:12:46] So, du-date, ETA.
+[01:12:46 -> 01:12:49] So, it is review date, du-date, ETA, and priority.
+[01:12:49 -> 01:12:50] Okay.
+[01:12:50 -> 01:12:51] Yeah.
+[01:12:51 -> 01:12:58] So, in addition to those three points, root cause analysis, entire interaction and prepayations are
+[01:12:58 -> 01:13:01] made by the four different.
+[01:13:01 -> 01:13:05] We can say that in the same way.
+[01:13:05 -> 01:13:09] Let's have selected pending.
+[01:13:09 -> 01:13:12] And I caught a list of cases.
+[01:13:12 -> 01:13:17] What is pending pending is, Ajav mintingar.
+[01:13:17 -> 01:13:19] There are certain things that are due today.
+[01:13:19 -> 01:13:21] We have the review date is today.
+[01:13:21 -> 01:13:22] Yes.
+[01:13:22 -> 01:13:24] That is pending.
+[01:13:24 -> 01:13:25] Okay.
+[01:13:25 -> 01:13:32] What is word you? Word you is. There is a certain review date for that particular complaint.
+[01:13:32 -> 01:13:50] And that is in the past because when you reviewed the complaint, so therefore, we can have a concept
+[01:13:50 -> 01:14:02] wherein I am in the meetings and my interface is like this. So, you have given me kappa. Give me another
+[01:14:02 -> 01:14:10] column here called reviewed. So, I may not love kappa for that particular complaint but I reviewed
+[01:14:10 -> 01:14:18] the status of that complaint. Then also it is considered that I reviewed it. And when you tag
+[01:14:18 -> 01:14:31] something as reviewed, it will pop up the next review date. And then the review date will change
+[01:14:31 -> 01:14:39] from whatever it was said to the next review date. So, and it will not ask you to select it.
+[01:14:39 -> 01:14:48] So, basically next review date will give you a pop will give you a pills on that thing.
+[01:14:51 -> 01:15:02] Next review choose time frame for next review. And that will be choose time frame for next review.
+[01:15:02 -> 01:15:10] So, you can say one day, two days, three days, five days, and custom. Custom may have dials
+[01:15:10 -> 01:15:16] so, otherwise you will have certain indications. And the review date changes for that complaint.
+[01:15:16 -> 01:15:34] Like in the overview. And you can also set the default review interval which can be one week.
+[01:15:36 -> 01:15:40] So, moment you tag something as reviewed when it is showing you that checkbox, it will show you the
+[01:15:40 -> 01:15:49] default review interval as the one week will be pre-stracted. And if you log kappa, the default review interval
+[01:15:49 -> 01:15:55] is one week only. That means I have log kappa, and that is in the settings in your overall global
+[01:15:55 -> 01:15:57] settings. You have default review interval.
+[01:15:58 -> 01:16:07] Now, I have based on the overview and there are all the 10 complaints.
+[01:16:09 -> 01:16:13] Yeah. So, let me know overview. Yeah.
+[01:16:13 -> 01:16:16] You know what you said is there 10 complaints. Okay. Yeah.
+[01:16:18 -> 01:16:23] Let's say we are in the meeting, we have discussed two complaints.
+[01:16:24 -> 01:16:27] Out of 10. How do they match those two?
+[01:16:27 -> 01:16:32] So, there are two ways to do it. One, you log the kappa for those for one of the complaints.
+[01:16:32 -> 01:16:37] Okay. For the second complaint, you didn't log a kappa, but you take reviewed.
+[01:16:38 -> 01:16:47] You take reviewed and you got a power which says enter next review date.
+[01:16:48 -> 01:16:53] And there you are getting pills, where enter time frame for next review.
+[01:16:53 -> 01:16:58] So, you are getting pills. One day, two days, three days, four days, five days, one week,
+[01:16:58 -> 01:17:03] 10 days, like that. And custom plus.
+[01:17:03 -> 01:17:04] That is one thing, one week.
+[01:17:04 -> 01:17:09] But if one day is one week. Customers, they will ask you to select the next review date.
+[01:17:12 -> 01:17:15] You say, okay. Below that, you say update.
+[01:17:17 -> 01:17:26] You are saying, uh, clicking on that check box, it will be reviewed.
+[01:17:26 -> 01:17:30] There is a, there is a kappa plus icon.
+[01:17:30 -> 01:17:32] That's the review. Review can enter check box.
+[01:17:33 -> 01:17:34] Which give us next review date.
+[01:17:37 -> 01:17:42] But if it is a one week. And if you click on the custom, we have a date picker.
+[01:17:42 -> 01:17:44] Yeah. That's it.
+[01:17:44 -> 01:17:52] You say, but if all, uh, you would have said custom, you basically say next review date.
+[01:17:52 -> 01:18:00] Next review date of select, so you can have a check box like custom.
+[01:18:00 -> 01:18:04] And just you have custom, but if you click on the next review date, it will be feedback.
+[01:18:04 -> 01:18:07] Oh.
+[01:18:10 -> 01:18:19] And then there will be a slide description that it is said to certain number of days as, as a default date.
+[01:18:20 -> 01:18:22] Yeah.
+[01:18:34 -> 01:18:36] Top pick I'll look at.
+[01:18:43 -> 01:18:45] It says next.
+[01:18:45 -> 01:18:47] Review.
+[01:18:47 -> 01:18:48] Okay.
+[01:18:48 -> 01:18:51] And in some way, I'll have to date with that level.
+[01:18:54 -> 01:18:57] That's how date will get out of here.
+[01:18:57 -> 01:18:59] And this can reach a,
+[01:18:59 -> 01:19:02] you have got a bunch of pills.
+[01:19:02 -> 01:19:04] 10 pills.
+[01:19:32 -> 01:19:34] here.
+[01:19:34 -> 01:19:36] Yeah.
+[01:19:36 -> 01:19:37] Yeah.
+[01:19:37 -> 01:19:39] Yeah.
+[01:19:39 -> 01:19:40] Yeah.
+[01:19:40 -> 01:19:41] Yeah.
+[01:19:41 -> 01:19:42] Yeah.
+[01:19:42 -> 01:19:44] Yeah.
+[01:19:44 -> 01:19:46] Yeah.
+[01:19:46 -> 01:19:48] Yeah.
+[01:19:48 -> 01:19:49] Yeah.
+[01:19:49 -> 01:19:57] once a two day three days.
+[01:19:57 -> 01:19:59] I said,
+[01:19:59 -> 01:20:00] I said,
+[01:20:00 -> 01:20:28] And bottom there, we basically give a save button, and something like this, no no.
+[01:20:29 -> 01:20:56] So the campaigns cannot be modest closed in the meeting, we have to go to monitor screen on.
+[01:20:57 -> 01:21:09] You have to go to the matrix, you have to go to the 80 matrix, that's the place where you were going to go to the 80 matrix.
+[01:21:09 -> 01:21:13] You can lock from the matrix, I'll just show you.
+[01:21:13 -> 01:21:17] So you're asking all valid questions, but you're not answered them yet.
+[01:21:18 -> 01:21:23] So you don't reach that stage.
+[01:21:23 -> 01:21:29] Basically, I have a complaint which is sitting here.
+[01:21:29 -> 01:21:33] I cannot just take a chip box and market as closed, right.
+[01:21:33 -> 01:21:36] So I have to go to the dashboard.
+[01:21:36 -> 01:21:45] But here I will see one column with the status like complaint is open or it's closed or it's over you.
+[01:21:46 -> 01:21:52] And how is the over you getting decided there are service levels in my admin area here.
+[01:21:52 -> 01:21:57] I've got service levels and service levels have set service levels of various types.
+[01:21:58 -> 01:22:12] And one of them is complaint turned around complaint act, and then complaints have got severity rate.
+[01:22:12 -> 01:22:17] So different severity can be a level of data.
+[01:22:17 -> 01:22:25] So you have a table read only status and if a complaint is closed, it's closed.
+[01:22:25 -> 01:22:45] But when I go inside and I'm in the 80 matrix, if you remember the 80 matrix has got closure.
+[01:22:45 -> 01:22:53] And there you will basically log and we will design the screen also.
+[01:22:53 -> 01:23:05] So you'll you'll have some notes and you will be uploading some closure documents and you select a closure.
+[01:23:06 -> 01:23:13] So there is something called closure report that gets generated.
+[01:23:13 -> 01:23:17] And the system will auto generate a closure report.
+[01:23:17 -> 01:23:20] And that's the format.
+[01:23:20 -> 01:23:22] I'll show you.
+[01:23:22 -> 01:23:26] I'm going to make a very rigorous system and then I'll appreciate it.
+[01:23:26 -> 01:23:28] So Sonalika.
+[01:23:28 -> 01:23:37] Yeah.
+[01:23:38 -> 01:23:42] Issues portal.
+[01:23:42 -> 01:23:43] Scope.
+[01:23:43 -> 01:23:44] Yeah.
+[01:23:44 -> 01:23:53] You see a pleasure note sample.
+[01:23:53 -> 01:23:56] You can use it to even summarize it.
+[01:23:56 -> 01:24:03] So some AI usage can come into picture.
+[01:24:04 -> 01:24:13] So you can use it to even summarize it.
+[01:24:13 -> 01:24:21] So some AI usage can come into picture.
+[01:24:22 -> 01:24:28] So.
+[01:24:28 -> 01:24:37] Yeah.
+[01:24:38 -> 01:24:44] So.
+[01:24:44 -> 01:24:51] So.
+[01:24:51 -> 01:24:59] So.
+[01:25:00 -> 01:25:06] So.
+[01:25:06 -> 01:25:13] So.
+[01:25:13 -> 01:25:21] So.
+[01:25:21 -> 01:25:28] So.
+[01:25:28 -> 01:25:34] And.
+[01:25:34 -> 01:25:37] So it's very good.
+[01:25:37 -> 01:25:38] It's crazy.
+[01:25:38 -> 01:25:42] Organizations of this size.
+[01:25:42 -> 01:25:44] So now you're flooded with work.
+[01:25:44 -> 01:25:46] You don't have people.
+[01:25:46 -> 01:25:49] And you have a time when you have nothing.
+[01:25:49 -> 01:25:50] So.
+[01:25:50 -> 01:25:52] Solution is.
+[01:25:52 -> 01:25:55] Your sense process and lead generation.
+[01:25:55 -> 01:25:58] And secondly, you have to do specialization maintenance.
+[01:25:58 -> 01:26:01] Which is your attraction in the market.
+[01:26:01 -> 01:26:04] If someone goes to you, you have to work.
+[01:26:04 -> 01:26:07] And the third thing is your quality.
+[01:26:07 -> 01:26:09] Which is your existing customer.
+[01:26:09 -> 01:26:11] You have to refer to it.
+[01:26:11 -> 01:26:13] So.
+[01:26:13 -> 01:26:14] There are some points.
+[01:26:14 -> 01:26:15] But.
+[01:26:15 -> 01:26:16] Yeah.
+[01:26:16 -> 01:26:17] We will be fine.
+[01:26:17 -> 01:26:18] You.
+[01:26:18 -> 01:26:19] I am meeting.
+[01:26:19 -> 01:26:20] As soon as I have a recording.
+[01:26:20 -> 01:26:21] I'll send you.
+[01:26:21 -> 01:26:23] And.
+[01:26:23 -> 01:26:25] I know.
+[01:26:25 -> 01:26:27] And.
+[01:26:27 -> 01:26:29] And.
+[01:26:29 -> 01:26:31] I will.
+[01:26:31 -> 01:26:40] But.
+[01:26:40 -> 01:26:47] The.

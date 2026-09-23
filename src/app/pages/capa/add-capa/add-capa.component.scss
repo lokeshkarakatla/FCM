@@ -1,3 +1,20 @@
-.bac{
-  background-color: #fefec4;
+@import "../../meeting/dialogs/meeting-dialog-common.scss";
+
+.bac {
+  background-color: #fdfae5 !important;
+}
+
+/* Prevent double asterisks from global ::after styles */
+.control-label {
+  &::after {
+    display: none !important;
+    content: none !important;
+  }
+}
+
+.add-member-label {
+  &::after {
+    display: none !important;
+    content: none !important;
+  }
 }

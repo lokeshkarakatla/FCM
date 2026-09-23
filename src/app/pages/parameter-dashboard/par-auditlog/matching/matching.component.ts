@@ -3,6 +3,7 @@ import { ImgPopComponent } from './img-pop/img-pop.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { environment } from 'src/environments/environment';
+import { AddParameterLineitemComponent } from '../add-parameter-lineitem/add-parameter-lineitem.component';
 
 @Component({
   selector: 'app-matching',
@@ -274,7 +275,49 @@ export class MatchingComponent implements OnInit {
       data: item,
       width: "750px",
       height: "auto"
-    })
+    });
+  }
+
+  addParameterLineItem(item: any) {
+    const dialogRef = this.dialog.open(AddParameterLineitemComponent, {
+      data: item,
+      width: "700px",
+      height: "auto"
+    });
+
+    dialogRef.afterClosed().subscribe((res: any) => {
+      if (res && res.value) {
+        this.allCheckpoints.unshift({
+          module: this.currentImage.title,
+          value: res.value,
+          row: res.row,
+          col: res.col,
+          serial: res.serial,
+          checkpoints: res.checkpoints,
+          measure: res.measure,
+          lsl: res.lsl,
+          usl: res.usl,
+          unit: res.unit || 'mm'
+        });
+
+        const cellRow = parseInt(res.row);
+        const cellCol = parseInt(res.col);
+        const existingCell = this.currentImage.highlightedCells.find(
+          (c: any) => c.row === cellRow && c.col === cellCol
+        );
+        if (existingCell) {
+          existingCell.color = res.color;
+        } else {
+          this.currentImage.highlightedCells.push({
+            row: cellRow,
+            col: cellCol,
+            color: res.color
+          });
+        }
+
+        this.updateData();
+      }
+    });
   }
 
   // Helper method to reset all tabs to inactive state

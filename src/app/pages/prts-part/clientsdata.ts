@@ -48,24 +48,23 @@ export class ClientsData {
     static PieChartData21() {
         const multi = [
             {
-                name: 'Hector',
+                name: 'Fortuner 4x4',
                 value: 45
             },
             {
-                name: 'Astor',
+                name: 'Creta SX',
                 value: 70
             },
             {
-                name: 'Gloster',
+                name: 'XUV700 AX7',
                 value: 94
             },
             {
-                name: 'ZESV',
+                name: 'Nexon EV Max',
                 value: 64
             },
         ];
         return multi;
-
     }
 
     static PieChartData3() {
@@ -85,18 +84,16 @@ export class ClientsData {
         ];
         return triple;
     }
+
     static alert() {
         let values = [
-            { date: '11 oct 2022,4:44pm', action: 'Subject 1', Stage: 'D1:Process', assing: 'VamshiKrishna', context: 'Checklist', escalated: 'Vamshikrishna', due: '25 dec 2022', deley: '6' },
-            { date: '11 oct 2022,4:44pm', action: 'Subject 1', Stage: 'D1:Process', assing: 'VamshiKrishna', context: 'Checklist', escalated: 'Vamshikrishna', due: '25 dec 2022', deley: '10' },
-            { date: '11 oct 2022,4:44pm', action: 'Subject 1', Stage: 'D1:Process', assing: 'VamshiKrishna', context: 'Checklist', escalated: 'Vamshikrishna', due: '25 dec 2022', deley: '5' },
-            { date: '11 oct 2022,4:44pm', action: 'Subject 1', Stage: 'D1:Process', assing: 'VamshiKrishna', context: 'Checklist', escalated: 'Vamshikrishna', due: '25 dec 2022', deley: '10' },
-            { date: '11 oct 2022,4:44pm', action: 'Subject 1', Stage: 'D1:Process', assing: 'VamshiKrishna', context: 'Checklist', escalated: 'Vamshikrishna', due: '25 dec 2022', deley: '5' },
-            { date: '11 oct 2022,4:44pm', action: 'Subject 1', Stage: 'D1:Process', assing: 'VamshiKrishna', context: 'Checklist', escalated: 'Vamshikrishna', due: '25 dec 2022', deley: '6' },
-            { date: '11 oct 2022,4:44pm', action: 'Subject 1', Stage: 'D1:Process', assing: 'VamshiKrishna', context: 'Checklist', escalated: 'Vamshikrishna', due: '25 dec 2022', deley: '10' },
-            { date: '11 oct 2022,4:44pm', action: 'Subject 1', Stage: 'D1:Process', assing: 'VamshiKrishna', context: 'Checklist', escalated: 'Vamshikrishna', due: '25 dec 2022', deley: '5' },
-
-        ]
+            { date: '12-Aug-2025 09:30 AM', action: '7-DCT Transmission Judder Containment', Stage: 'D3: Interim Containment', assing: 'Rajesh Sharma', context: 'Batch Quarantine', escalated: 'Vikram Mehta', due: '20-Aug-2025', deley: '2' },
+            { date: '15-Aug-2025 11:15 AM', action: 'ADAS Camera Drift Sensor Calibration', Stage: 'D4: Root Cause Analysis', assing: 'Dr. Anand Verma', context: '5-Why Fishbone', escalated: 'Vikram Mehta', due: '25-Aug-2025', deley: '4' },
+            { date: '18-Aug-2025 02:45 PM', action: 'EV Battery BMS CAN Timeout Diagnostics', Stage: 'D5: Permanent Action', assing: 'Priya Sundaram', context: 'Firmware Validation', escalated: 'Deepak Nair', due: '30-Aug-2025', deley: '0' },
+            { date: '21-Aug-2025 10:00 AM', action: 'Monsoon Shower Tailgate Water Leak', Stage: 'D3: Interim Containment', assing: 'Kiran Patel', context: 'Gasket Rework', escalated: 'Vikram Mehta', due: '28-Aug-2025', deley: '1' },
+            { date: '25-Aug-2025 04:20 PM', action: 'Turbocharger Oil Line Pressure Drift', Stage: 'D4: Root Cause Analysis', assing: 'Manoj Tiwari', context: 'Metallurgical Bench', escalated: 'Deepak Nair', due: '05-Sep-2025', deley: '3' },
+            { date: '28-Aug-2025 01:10 PM', action: 'Electronic Power Steering Calibration', Stage: 'D6: Verification', assing: 'Suresh Menon', context: 'Cut-off VIN Audit', escalated: 'Vikram Mehta', due: '10-Sep-2025', deley: '0' },
+        ];
         return values;
     }
 

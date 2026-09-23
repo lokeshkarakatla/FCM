@@ -12,7 +12,7 @@ import { PopEditImageComponent } from './par-auditlog/pop-edit-image/pop-edit-im
 import { AddNotesTableComponent } from './par-auditlog/add-notes-table/add-notes-table.component';
 import { AddParameterLineitemComponent } from './par-auditlog/add-parameter-lineitem/add-parameter-lineitem.component';
 import { LogissueInnerFormComponent } from './par-auditlog/logissue-inner-form/logissue-inner-form.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -55,6 +55,7 @@ export const routes = [
   ],
   imports: [
     CommonModule,
+    FormsModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     MatButtonModule,

@@ -28,12 +28,14 @@ currentPage: any;
 pageSize: any;
  myGroup!: FormGroup;
    modelss = [
-    { ModelName: 'Fortuner' },
-    { ModelName: 'Toyota LandCruiser' },
-    { ModelName: 'Defender 310' },
-    { ModelName: 'Corvette' },
-    { ModelName: 'Lexus' },
-    { ModelName: 'Mahindra XUV700' }
+    { ModelName: 'Toyota Fortuner 4x4' },
+    { ModelName: 'Toyota Camry Hybrid' },
+    { ModelName: 'Hyundai Creta SX' },
+    { ModelName: 'Hyundai Verna Turbo' },
+    { ModelName: 'Mahindra XUV700 AX7' },
+    { ModelName: 'Tata Safari Dark Edition' },
+    { ModelName: 'Tata Nexon EV Max' },
+    { ModelName: 'Honda Elevate ZX' }
   ];
 
   ngOnInit(): void {
@@ -54,19 +56,16 @@ pageSize: any;
 constructor(private router: Router, private dialog: MatDialog) { }
 
 
-  tableList =[
-    { variantType: 'FVD++', modelName: 'Fortuner', status: 'Active', statusClass: 'active' },
-    { variantType: 'Dodge Nitro', modelName: 'Nitro', status: 'Inactive', statusClass: 'inactive' },
-    { variantType: 'Z06', modelName: 'Toyota Camry', status: 'Active', statusClass: 'active' },
-    { variantType: 'Hybrid 2.5', modelName: 'Toyota Camry', status: 'Active', statusClass: 'active' },
-    { variantType: 'Hyundai Grand i10 Nios', modelName: 'Hyundai', status: 'Active', statusClass: 'active' },
-    { variantType: 'Ferrari 250 GTO', modelName: 'Ferrari', status: 'Active', statusClass: 'active' },
-    { variantType: 'Maserati logo', modelName: 'Lamborghini', status: 'Active', statusClass: 'active' },
-    { variantType: 'LX100', modelName: 'Lexus', status: 'Active', statusClass: 'active' },
-    { variantType: 'XUV', modelName: 'Mahindra XUV700', status: 'Active', statusClass: 'active' },
-    { variantType: 'vxi', modelName: 'Toyota Fortuner', status: 'Active', statusClass: 'active' },
-    { variantType: 'zxi+', modelName: 'Hyundai Creta', status: 'Active', statusClass: 'active' }
-  ]
+  tableList = [
+    { variantType: 'ZX 4x4 AT (2.8L Diesel)', modelName: 'Toyota Fortuner 4x4', status: 'Active', IsActive: true, statusClass: 'active' },
+    { variantType: 'Dynamic Hybrid e-CVT (2.5L)', modelName: 'Toyota Camry Hybrid', status: 'Active', IsActive: true, statusClass: 'active' },
+    { variantType: 'SX(O) Turbo 7-DCT (1.5L TGDi)', modelName: 'Hyundai Creta SX', status: 'Active', IsActive: true, statusClass: 'active' },
+    { variantType: 'SX(O) Turbo 6MT (160 PS)', modelName: 'Hyundai Verna Turbo', status: 'Active', IsActive: true, statusClass: 'active' },
+    { variantType: 'AX7 Luxury Pack AWD (Diesel AT)', modelName: 'Mahindra XUV700 AX7', status: 'Active', IsActive: true, statusClass: 'active' },
+    { variantType: 'Accomplished+ 6S Dark (Diesel AT)', modelName: 'Tata Safari Dark Edition', status: 'Active', IsActive: true, statusClass: 'active' },
+    { variantType: 'Empowered+ LR (40.5 kWh EV)', modelName: 'Tata Nexon EV Max', status: 'Active', IsActive: true, statusClass: 'active' },
+    { variantType: 'ZX CVT with ADAS Sensing Suite', modelName: 'Honda Elevate ZX', status: 'Active', IsActive: true, statusClass: 'active' }
+  ];
 
   public addmodule(id: any) {
     console.log('jkhksbdjk');

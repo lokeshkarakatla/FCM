@@ -18,32 +18,26 @@ export class ModelTrendComponent implements OnInit {
 
   // Data for the main chart (e.g., Rating by Model)
   public first: any[] = [
-    { name: 'Hector', value: 90 },
-    { name: 'Ev', value: 90 },
-    { name: 'Astor', value: 79 },
-    { name: 'Gloster', value: 98 },
-    { name: 'Land Cruiser (LC)', value: 96 },
-  { name: 'Fortuner', value: 94 },
-  { name: 'Legender', value: 92 },
-   { name: 'MG4 Electric', value: 95 },
-  { name: 'RX5', value: 80 },
-  { name: 'Marvel R', value: 88 },
-  { name: 'Cyberster', value: 97 },
-  { name: 'One', value: 83 },
-  { name: 'HS', value: 91 },
-    
+    { name: 'Fortuner 4x4', value: 94 },
+    { name: 'Camry Hybrid', value: 96 },
+    { name: 'Creta SX', value: 92 },
+    { name: 'Verna Turbo', value: 90 },
+    { name: 'XUV700 AX7', value: 95 },
+    { name: 'Safari Dark', value: 93 },
+    { name: 'Nexon EV Max', value: 97 },
+    { name: 'Elevate ZX', value: 91 },
   ];
 
   // Data for a potential second chart (e.g., Demerits by Model)
   public three: any[] = [
-    { name: 'Hector', value: 1290 },
-    { name: 'Ev', value: 320 },
-    { name: 'Astor', value: 751 },
-    { name: 'Gloster', value: 1190 },
-     { name: 'Astor', value: 751 },
-    { name: 'Gloster', value: 1190 },
-     { name: 'Astor', value: 751 },
-    { name: 'Gloster', value: 1190 },
+    { name: 'Fortuner 4x4', value: 1290 },
+    { name: 'Camry Hybrid', value: 320 },
+    { name: 'Creta SX', value: 751 },
+    { name: 'Verna Turbo', value: 680 },
+    { name: 'XUV700 AX7', value: 1190 },
+    { name: 'Safari Dark', value: 890 },
+    { name: 'Nexon EV Max', value: 410 },
+    { name: 'Elevate ZX', value: 520 },
   ];
 
   // --- Chart Configuration ---

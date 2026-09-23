@@ -35,19 +35,14 @@ export class APlantComponent {
   constructor(private router: Router, private dialog: MatDialog) { }
 
 
-    tableList =[
-      { name: 'Kondapoor', typeCode: '+', status: 'Active' },
-      { name: 'Gulbarga', typeCode: '9', status: 'Active' },
-      { name: 'Bangalore', typeCode: '2', status: 'Active' },
-      { name: 'Bangalore', typeCode: '7', status: 'Active' },
-      { name: 'Ahmedabad G', typeCode: 'A', status: 'Active' },
-      { name: 'Raipur', typeCode: 'R', status: 'Active' },
-      { name: 'Delhi', typeCode: 'D', status: 'Active' },
-      { name: 'Hyderabad', typeCode: 'H', status: 'Active' },
-      { name: 'Vizag', typeCode: 'V', status: 'Active' },
-      { name: 'Kolkatta', typeCode: 'K', status: 'Active' },
-      { name: 'Indore', typeCode: 'I', status: 'Active' }
-    ]
+    tableList = [
+      { name: 'Bidadi Auto Facility - Plant 1', typeCode: 'PLT-BLR', status: 'Active', IsActive: true },
+      { name: 'Sriperumbudur Car Assembly', typeCode: 'PLT-CHE', status: 'Active', IsActive: true },
+      { name: 'Chakan Auto Mega Facility', typeCode: 'PLT-PUN', status: 'Active', IsActive: true },
+      { name: 'Sanand Passenger Car Plant', typeCode: 'PLT-GUJ', status: 'Active', IsActive: true },
+      { name: 'Manesar Automotive Facility', typeCode: 'PLT-HRY', status: 'Active', IsActive: true },
+      { name: 'Anantapur Greenfield Plant', typeCode: 'PLT-AP', status: 'Active', IsActive: true }
+    ];
 
     public addmodule(id: any) {
       console.log('jkhksbdjk');

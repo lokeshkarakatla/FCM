@@ -1,71 +1,60 @@
 export class auditdata {
 
-
     static objectiveArchive() {
         let values = [
-
-            { Date: '1-11-2021', VIN: 'HR07 BP0721', AuditType: 'Product Quality Audit', Checkpoints: '510/560', Demerits: '12/510', Location: 'Hyderabad', Auditor: 'Surya', Model: 'Hector', Variant: 'Manual', Interior_Trim: 'High', Colour: 'White', Transmission: 'Manual', Fuel_Type: 'Diesel', Status: true },
-            { Date: '12-11-2021', VIN: 'HR02 BP0421', AuditType: 'Body Audit', Checkpoints: '490/560', Demerits: '34/490', Location: 'Banglore', Auditor: 'Siva', Model: 'Astor', Variant: 'Automatic', Interior_Trim: 'Low', Colour: 'Black', Transmission: 'AMT', Fuel_Type: 'Petrol', Status: true },
-            { Date: '15-11-2021', VIN: 'HR07 EP0021', AuditType: 'Paint Audit', Checkpoints: '532/560', Demerits: '26/532', Location: 'Mumbai', Auditor: 'Navin', Model: 'Gloster', Variant: 'Manual', Interior_Trim: 'High', Colour: 'Blue', Transmission: 'DCT', Fuel_Type: 'Petrol', Status: true },
-            { Date: '23-10-2021', VIN: 'HR07 RG7218', AuditType: 'Body Audit', Checkpoints: '521/560', Demerits: '19/521', Location: 'Pune', Auditor: 'Ridhima', Model: 'Astor', Variant: 'Automatic', Interior_Trim: 'Medium', Colour: 'White', Transmission: 'AMT', Fuel_Type: 'Petrol', Status: true },
-            { Date: '5-08-2021', VIN: 'HR07 FK0770', AuditType: 'Paint Audit', Checkpoints: '502/560', Demerits: '15/502', Location: 'Raipur', Auditor: 'Siva', Model: 'Hector', Variant: 'Manual', Interior_Trim: 'Low', Colour: 'Orange', Transmission: 'Manual', Fuel_Type: 'Hybrid', Status: true },
-
-
-
-        ]
+            { Date: '14-08-2025', VIN: 'MBH45K23N0P721094', AuditType: 'Product Quality Audit (PDI)', Checkpoints: '510/560', Demerits: '12/510', Location: 'Bidadi Auto Facility - Plant 1', Auditor: 'Surya N.', Model: 'Toyota Fortuner 4x4', Variant: 'ZX 4x4 AT', Interior_Trim: 'High', Colour: 'Attitude Black Mica', Transmission: '6-Speed AT', Fuel_Type: 'Diesel BS-VI', Status: true },
+            { Date: '19-08-2025', VIN: 'MALH581CLPM042183', AuditType: 'Body-in-White Audit', Checkpoints: '490/560', Demerits: '34/490', Location: 'Sriperumbudur Car Assembly', Auditor: 'Siva K.', Model: 'Hyundai Creta SX', Variant: 'SX(O) Turbo 7-DCT', Interior_Trim: 'Medium', Colour: 'Abyss Black', Transmission: '7-Speed DCT', Fuel_Type: 'Petrol TGDi', Status: true },
+            { Date: '23-08-2025', VIN: 'MAT625458N0021578', AuditType: 'Cathodic Paint Audit (CED)', Checkpoints: '532/560', Demerits: '26/532', Location: 'Chakan Auto Mega Facility', Auditor: 'Navin R.', Model: 'Mahindra XUV700 AX7', Variant: 'AX7 AWD Luxury Pack', Interior_Trim: 'High', Colour: 'Platinum White Pearl', Transmission: '6-Speed AT', Fuel_Type: 'Diesel BS-VI', Status: true },
+            { Date: '28-08-2025', VIN: 'MAT622118N0072189', AuditType: 'Chassis Dyno & Roller Audit', Checkpoints: '521/560', Demerits: '19/521', Location: 'Sanand Passenger Car Plant', Auditor: 'Ridhima P.', Model: 'Tata Nexon EV Max', Variant: 'Empowered+ LR', Interior_Trim: 'Medium', Colour: 'Daytona Grey EV', Transmission: 'Single-Speed EV', Fuel_Type: 'BEV 400V Electric', Status: true },
+            { Date: '05-09-2025', VIN: 'MBH45K23N0P077032', AuditType: 'Monsoon Shower Leak Audit', Checkpoints: '502/560', Demerits: '15/502', Location: 'Bidadi Auto Facility - Plant 1', Auditor: 'Siva K.', Model: 'Toyota Camry Hybrid', Variant: 'Dynamic Hybrid e-CVT', Interior_Trim: 'High', Colour: 'Silver Metallic', Transmission: 'e-CVT', Fuel_Type: 'Strong Hybrid SHEV', Status: true },
+        ];
         return values;
     }
+
     static ojectiveAgency() {
         let values = [
-            { agency: 'GA', demerit: 1290, issues: 20 },
-            { agency: 'Body', demerit: 751, issues: 7 },
-            { agency: 'Paint', demerit: 1190, issues: 11 },
-            { agency: 'Press', demerit: 32, issues: 9 },
-            { agency: 'SQE', demerit: 78, issues: 5 },
-        ]
+            { agency: 'Trim, Chassis & Final (TCF)', demerit: 1290, issues: 20 },
+            { agency: 'Body-in-White (BIW)', demerit: 751, issues: 7 },
+            { agency: 'CED Paint Quality', demerit: 1190, issues: 11 },
+            { agency: 'Stamping & Press Shop', demerit: 32, issues: 9 },
+            { agency: 'Supplier Quality (SQM)', demerit: 78, issues: 5 },
+        ];
         return values;
     }
+
     static objectiveLoction() {
         let values = [
-            { model: 'Hyderabad', demerit: 1290, issues: 20 },
-            { model: 'Vadodara', demerit: 751, issues: 7 },
-            { model: 'Mumbai', demerit: 1190, issues: 11 },
-            { model: 'Banglore', demerit: 320, issues: 13 },
-        ]
+            { model: 'Bidadi Auto Facility - Plant 1', demerit: 1290, issues: 20 },
+            { model: 'Sriperumbudur Car Assembly', demerit: 751, issues: 7 },
+            { model: 'Chakan Auto Mega Facility', demerit: 1190, issues: 11 },
+            { model: 'Sanand Passenger Car Plant', demerit: 320, issues: 13 },
+        ];
         return values;
-
     }
-   static objectiveModel() {
-  let values = [
-    { model: 'Hector', demerit: 1290, issues: '90%' },
-    { model: 'EV', demerit: 320, issues: '90%' },
-    { model: 'Astor', demerit: 751, issues: '79%' },
-    { model: 'Gloster', demerit: 1190, issues: '98%' },
-    { model: 'Land Cruiser (LC)', demerit: 210, issues: '96%' },
-    { model: 'Fortuner', demerit: 250, issues: '94%' },
-    { model: 'Legender', demerit: 280, issues: '92%' },
-    { model: 'MG4 Electric', demerit: 330, issues: '95%' },
-    { model: 'RX5', demerit: 600, issues: '80%' },
-    { model: 'Marvel R', demerit: 420, issues: '88%' },
-    { model: 'Cyberster', demerit: 190, issues: '97%' },
-    { model: 'One', demerit: 500, issues: '83%' },
-    { model: 'HS', demerit: 410, issues: '91%' }
-  ];
-  return values;
-}
+
+    static objectiveModel() {
+        let values = [
+            { model: 'Toyota Fortuner 4x4', demerit: 250, issues: '94%' },
+            { model: 'Toyota Camry Hybrid', demerit: 210, issues: '96%' },
+            { model: 'Hyundai Creta SX', demerit: 751, issues: '92%' },
+            { model: 'Hyundai Verna Turbo', demerit: 680, issues: '90%' },
+            { model: 'Mahindra XUV700 AX7', demerit: 1190, issues: '95%' },
+            { model: 'Tata Safari Dark', demerit: 890, issues: '93%' },
+            { model: 'Tata Nexon EV Max', demerit: 410, issues: '97%' },
+            { model: 'Honda Elevate ZX', demerit: 520, issues: '91%' }
+        ];
+        return values;
+    }
 
     static objectiveStatue() {
         let values = [
-            { Date: '1-11-2021', VIN: 'HR07 BP0721', AuditType: 'Product Quality Audit', Checkpoints: '510/560', Demerits: '12/510', Location: 'Hyderabad', Auditor: 'Surya', Model: 'Hector', Variant: 'Manual', Interior_Trim: 'High', Colour: 'White', Transmission: 'Manual', Fuel_Type: 'Diesel', Status: true },
-            { Date: '12-11-2021', VIN: 'HR02 BP0421', AuditType: 'Body Audit', Checkpoints: '490/560', Demerits: '34/490', Location: 'Banglore', Auditor: 'Siva', Model: 'Astor', Variant: 'Automatic', Interior_Trim: 'Low', Colour: 'Black', Transmission: 'AMT', Fuel_Type: 'Petrol', Status: true },
-            { Date: '15-11-2021', VIN: 'HR07 EP0021', AuditType: 'Paint Audit', Checkpoints: '532/560', Demerits: '26/532', Location: 'Mumbai', Auditor: 'Navin', Model: 'Gloster', Variant: 'Manual', Interior_Trim: 'High', Colour: 'Blue', Transmission: 'DCT', Fuel_Type: 'Petrol', Status: true },
-            { Date: '23-10-2021', VIN: 'HR07 RG7218', AuditType: 'Body Audit', Checkpoints: '521/560', Demerits: '19/521', Location: 'Pune', Auditor: 'Ridhima', Model: 'Astor', Variant: 'Automatic', Interior_Trim: 'Medium', Colour: 'White', Transmission: 'AMT', Fuel_Type: 'Petrol', Status: true },
-            { Date: '5-08-2021', VIN: 'HR07 FK0770', AuditType: 'Paint Audit', Checkpoints: '502/560', Demerits: '15/502', Location: 'Raipur', Auditor: 'Siva', Model: 'Hector', Variant: 'Manual', Interior_Trim: 'Low', Colour: 'Orange', Transmission: 'Manual', Fuel_Type: 'Hybrid', Status: true },
-
-        ]
+            { Date: '14-08-2025', VIN: 'MBH45K23N0P721094', AuditType: 'Product Quality Audit (PDI)', Checkpoints: '510/560', Demerits: '12/510', Location: 'Bidadi Auto Facility - Plant 1', Auditor: 'Surya N.', Model: 'Toyota Fortuner 4x4', Variant: 'ZX 4x4 AT', Interior_Trim: 'High', Colour: 'Attitude Black Mica', Transmission: '6-Speed AT', Fuel_Type: 'Diesel BS-VI', Status: true },
+            { Date: '19-08-2025', VIN: 'MALH581CLPM042183', AuditType: 'Body-in-White Audit', Checkpoints: '490/560', Demerits: '34/490', Location: 'Sriperumbudur Car Assembly', Auditor: 'Siva K.', Model: 'Hyundai Creta SX', Variant: 'SX(O) Turbo 7-DCT', Interior_Trim: 'Medium', Colour: 'Abyss Black', Transmission: '7-Speed DCT', Fuel_Type: 'Petrol TGDi', Status: true },
+            { Date: '23-08-2025', VIN: 'MAT625458N0021578', AuditType: 'Cathodic Paint Audit (CED)', Checkpoints: '532/560', Demerits: '26/532', Location: 'Chakan Auto Mega Facility', Auditor: 'Navin R.', Model: 'Mahindra XUV700 AX7', Variant: 'AX7 AWD Luxury Pack', Interior_Trim: 'High', Colour: 'Platinum White Pearl', Transmission: '6-Speed AT', Fuel_Type: 'Diesel BS-VI', Status: true },
+            { Date: '28-08-2025', VIN: 'MAT622118N0072189', AuditType: 'Chassis Dyno & Roller Audit', Checkpoints: '521/560', Demerits: '19/521', Location: 'Sanand Passenger Car Plant', Auditor: 'Ridhima P.', Model: 'Tata Nexon EV Max', Variant: 'Empowered+ LR', Interior_Trim: 'Medium', Colour: 'Daytona Grey EV', Transmission: 'Single-Speed EV', Fuel_Type: 'BEV 400V Electric', Status: true },
+            { Date: '05-09-2025', VIN: 'MBH45K23N0P077032', AuditType: 'Monsoon Shower Leak Audit', Checkpoints: '502/560', Demerits: '15/502', Location: 'Bidadi Auto Facility - Plant 1', Auditor: 'Siva K.', Model: 'Toyota Camry Hybrid', Variant: 'Dynamic Hybrid e-CVT', Interior_Trim: 'High', Colour: 'Silver Metallic', Transmission: 'e-CVT', Fuel_Type: 'Strong Hybrid SHEV', Status: true },
+        ];
         return values;
     }
-
-
 
 }

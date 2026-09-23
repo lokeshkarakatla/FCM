@@ -1,6 +1,6 @@
 /* ===== Complaint Reference Header ===== */
 .complaint-ref-header {
-  padding: 8px 20px;
+  padding: 10px 20px;
   background: #fafafa;
   border-bottom: 1px solid #e0e0e0;
 
@@ -25,16 +25,18 @@
 .complaint-container {
   display: flex;
   flex-direction: row;
-  height: calc(100vh - 130px);
-  overflow: hidden;
+  align-items: flex-start;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* ===== Content Area (Left) ===== */
 .complaint-content {
   flex: 1;
-  overflow-y: auto;
-  padding: 0;
+  overflow: visible;
+  padding: 0 16px 80px 16px;
   min-width: 0;
+  box-sizing: border-box;
 }
 
 /* ===== Right Side Navigation ===== */
@@ -45,17 +47,9 @@
   border-left: 1px solid #e0e0e0;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+  padding-bottom: 40px;
   transition: width 0.25s ease, min-width 0.25s ease;
-
-  &::-webkit-scrollbar {
-    width: 4px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 4px;
-  }
+  box-sizing: border-box;
 }
 
 /* ===== Sidenav Header (Toggle) ===== */

@@ -36,22 +36,16 @@ export class AColorComponent  {
  constructor(private router: Router, private dialog: MatDialog) { }
 
 
-   tableList =[
-    { color: 'Maroon', model: 'Corvette', status: true },
-    { color: 'Black', model: 'Nitro', status: true },
-    { color: 'Maroon', model: 'Nitro', status: true },
-    { color: 'Steel Grey', model: 'Fortuner', status: true },
-    { color: 'Often blue', model: 'Corvette', status: true },
-    { color: 'Woody Black', model: 'Toyota Camry', status: true },
-    { color: 'Nouvelle Blue Pearly', model: 'Hyundai', status: true },
-    { color: 'Acura Valencia Red Pearl', model: 'Ferrari', status: true },
-    { color: 'Ceramic Gray', model: 'Lamborghini', status: true },
-    { color: 'Lite Gray', model: 'Lexus', status: true },
-    { color: 'Red Blue', model: 'Mahindra XUV700', status: true },
-    { color: 'Royal Red', model: 'Mahindra XUV700', status: true },
-    { color: 'Yellow', model: 'Toyota Fortuner', status: true },
-    { color: 'Old Orange', model: 'Toyota Fortuner', status: true }
-  ];
+    tableList = [
+      { color: 'Attitude Black Mica', model: 'Toyota Fortuner 4x4', status: true },
+      { color: 'Platinum White Pearl', model: 'Toyota Camry Hybrid', status: true },
+      { color: 'Ranger Khaki Dual Tone', model: 'Hyundai Creta SX', status: true },
+      { color: 'Abyss Black Pearl', model: 'Hyundai Verna Turbo', status: true },
+      { color: 'Midnight Black Metallic', model: 'Mahindra XUV700 AX7', status: true },
+      { color: 'Oberon Black (Dark Edition)', model: 'Tata Safari Dark Edition', status: true },
+      { color: 'Daytona Grey (EV Trim)', model: 'Tata Nexon EV Max', status: true },
+      { color: 'Phoenix Orange Metallic', model: 'Honda Elevate ZX', status: true }
+    ];
 
   // Function to get status text
   getStatusText(status: boolean): string {

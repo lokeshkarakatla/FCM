@@ -24,12 +24,12 @@ export class MContinentsComponent {
 
 
        tableList = [
-         { stageName: 'Antarctica', stageCode: 'EM', status: 'Active' },
-         { stageName: 'South America', stageCode: 'I-115', status: 'Active' },
-         { stageName: 'North America', stageCode: 'PNT', status: 'Active' },
-         { stageName: 'Africa', stageCode: 'PNT', status: 'Inactive' },
-         { stageName: 'Asia', stageCode: 'PNT', status: 'Inctive' },
-
+         { stageName: 'Europe', stageCode: 'EUR', status: 'Active' },
+         { stageName: 'Asia', stageCode: 'ASI', status: 'Active' },
+         { stageName: 'North America', stageCode: 'NAM', status: 'Active' },
+         { stageName: 'South America', stageCode: 'SAM', status: 'Active' },
+         { stageName: 'Africa', stageCode: 'AFR', status: 'Active' },
+         { stageName: 'Oceania & Australia', stageCode: 'OCE', status: 'Active' }
        ];
 
        // Function to get status text

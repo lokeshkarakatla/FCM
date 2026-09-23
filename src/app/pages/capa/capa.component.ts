@@ -23,95 +23,122 @@ export class CapaComponent implements OnInit {
   allData: any[] = [];
   data: any[] = [];
 
+  filterKeyword: string = '';
+  filterRole: string = '';
+  filterDepartment: string = '';
+  filterStatus: string = '';
+
   private rawData = [
     {
-      title: "(FIELD/2024/09/6) - High-Performance Nissan Ariya NISMO Debuts on World EV ",
+      title: "(FIELD/2024/09/1) - Toyota Fortuner 4x4 - ADAS Front Radar Camera Calibration Error",
       role: "Shop Head",
-      department: "QA",
-      issue: "Engine Overheating",
-      details: "enginee getting sound",
-      date: "2024-09-20",
-      eta: "0000-00-00",
-      status: "Open",
-      meetingRef:'(Meet/2025/10/02)',
-      actions: { edit: true, delete: true }
-    },
-    {
-      title: "(FIELD/2024/09/6) -  High-Performance Nissan Ariya NISMO Debuts on World EV ",
-      role: "Shift Manager",
-      department: "Quality",
-      issue: "Brakes Squeaking not working",
-      details: "Brakes Squeaking not working",
-      date: "2024-09-24",
-      eta: "2024-09-24",
-      status: "Pending",
-      meetingRef:'(Meet/2025/10/03)',
-      actions: { edit: true, delete: true }
-    },
-    {
-      title: "(FIELD/2024/09/6) - This road hazard service is part of Bosch’s connected map issue ",
-      role: "Shop Head",
-      department: "QA",
-      issue: "Transmission Slipping",
-      details: "Transmission Slipping is not good",
-      date: "2024-09-24",
-      meetingRef:'(Meet/2025/10/03)',
-      status: "WIP",
-      actions: { edit: true, delete: true }
-    },
-    {
-      title: "(FIELD/2024/09/6) - High-Performance Nissan Ariya NISMO Debuts on World EV",
-      role: "Shop Head",
-      department: "Account",
-      issue: "Transmission Slipping",
-      details: "Transmission Slipping",
-      date: "2024-09-24",
-      meetingRef:'(Meet/2025/10/04)',
-      status: "WIP",
-      actions: { edit: true, delete: true }
-    },
-    {
-      title: "(FIELD/2024/09/6) - High-Performance Nissan Ariya NISMO Debuts on World EV ",
-      role: "Shift Manager",
-      department: "Developer",
-      issue: "Battery Draining",
-      details: "Battery Draining",
-      date: "2024-09-24",
-      meetingRef:'(Meet/2025/10/05)',
+      department: "QA-16949",
+      issue: "Radar Misalignment During Bumper Assembly",
+      details: "Front millimeter-wave radar sensor clip deformed during front fascia mounting",
+      date: "2025-09-20",
+      eta: "2025-10-05",
+      completedDate: "2025-10-04",
+      done: true,
       status: "Closed",
+      meetingRef: '(Meet/2025/10/01)',
       actions: { edit: true, delete: true }
     },
     {
-      title: "(FIELD/2024/09/6) - Global fleet of connected vehicles ",
+      title: "(FIELD/2024/09/2) - Hyundai Creta SX - 7-Speed Dual-Clutch Transmission Shudder",
       role: "Shift Manager",
-      department: "QA",
-      issue: "Unusual Vibrations",
-      details: "Unusual Vibrations",
-      meetingRef:'(Meet/2025/10/06)',
-      date: "2024-09-24",
-      status: "",
+      department: "QA-16949",
+      issue: "Clutch Pack Thermal Glazing",
+      details: "Dry clutch friction plate micro-slipping in stop-and-go city traffic",
+      date: "2025-09-22",
+      eta: "2025-10-08",
+      completedDate: "2025-10-07",
+      done: true,
+      status: "Closed",
+      meetingRef: '(Meet/2025/10/02)',
       actions: { edit: true, delete: true }
     },
     {
-      title: "(FIELD/2024/09/6) - High-Performance Nissan Ariya NISMO Debuts on World EV ",
-      role: "Shift Manager",
-      department: "Quality",
-      issue: "Brakes Squeaking not working",
-      details: "Brakes Squeaking not working",
-      meetingRef:'(Meet/2025/10/07)',
-      date: "2024-09-24",
-      status: "Open",
+      title: "(FIELD/2024/09/3) - Mahindra XUV700 AX7 - Infotainment Twin Screen Blackout",
+      role: "Shop Head",
+      department: "RND-EES",
+      issue: "Display LVDS Wiring Harness Pin Loose",
+      details: "Vehicle instrument cluster resets during cold start sequence",
+      date: "2025-09-24",
+      eta: "2025-10-10",
+      completedDate: "2025-10-09",
+      done: true,
+      status: "Closed",
+      meetingRef: '(Meet/2025/10/03)',
       actions: { edit: true, delete: true }
     },
     {
-      title: "(FIELD/2024/09/6) - High-Performance Nissan Ariya NISMO Debuts on World EV ",
+      title: "(FIELD/2024/09/4) - Tata Nexon EV Max - High Voltage Traction Battery Slow Charging",
       role: "Shift Manager",
-      department: "Quality",
-      issue: "Brakes Squeaking not getting",
-      details: "Brakes Squeaking not working",
-      meetingRef:'(Meet/2025/10/09)',
-      date: "2024-09-24",
-      status: "Pending",
+      department: "RND-PWR",
+      issue: "Battery Management System BMS Firmware Timeout",
+      details: "DC fast-charging current throttles at 45kW due to temperature sensor drift",
+      date: "2025-09-25",
+      eta: "2025-10-12",
+      completedDate: "2025-10-11",
+      done: true,
+      status: "Closed",
+      meetingRef: '(Meet/2025/10/04)',
+      actions: { edit: true, delete: true }
+    },
+    {
+      title: "(FIELD/2024/09/5) - Toyota Camry Hybrid - e-CVT Power Split Inverter Error",
+      role: "QA Lead",
+      department: "QA-16949",
+      issue: "Coolant Air Lock in Hybrid Inverter Loop",
+      details: "Bleeder valve vacuum filling incomplete on assembly line TCF-2",
+      date: "2025-09-26",
+      eta: "2025-10-15",
+      completedDate: "2025-10-14",
+      done: true,
+      status: "Closed",
+      meetingRef: '(Meet/2025/10/05)',
+      actions: { edit: true, delete: true }
+    },
+    {
+      title: "(FIELD/2024/09/6) - Tata Safari Dark Edition - Panoramic Sunroof Drain Water Ingress",
+      role: "Shift Manager",
+      department: "MFG-TCF",
+      issue: "A-Pillar Drain Hose Kinked",
+      details: "Drain tube pinched behind curtain airbag bracket during cabin trimming",
+      date: "2025-09-27",
+      eta: "2025-10-18",
+      completedDate: "2025-10-17",
+      done: true,
+      status: "Closed",
+      meetingRef: '(Meet/2025/10/06)',
+      actions: { edit: true, delete: true }
+    },
+    {
+      title: "(FIELD/2024/09/7) - Hyundai Verna Turbo - Turbocharger Wastegate Actuator Rattle",
+      role: "Plant Quality Head",
+      department: "SQA-VND",
+      issue: "Actuator Linkage Bushing Clearance",
+      details: "Excessive axial play on wastegate arm causing acoustic resonance at 2200 RPM",
+      date: "2025-09-28",
+      eta: "2025-10-20",
+      completedDate: "2025-10-19",
+      done: true,
+      status: "Closed",
+      meetingRef: '(Meet/2025/10/07)',
+      actions: { edit: true, delete: true }
+    },
+    {
+      title: "(FIELD/2024/09/8) - Honda Elevate ZX - Electronic Power Steering Assist Fluctuation",
+      role: "Shift Manager",
+      department: "FES-DLR",
+      issue: "Torque Angle Sensor Calibration Offset",
+      details: "Zero-point steering angle sensor calibration required after wheel alignment",
+      date: "2025-09-29",
+      eta: "2025-10-22",
+      completedDate: "2025-10-21",
+      done: true,
+      status: "Closed",
+      meetingRef: '(Meet/2025/10/08)',
       actions: { edit: true, delete: true }
     }
   ];
@@ -141,9 +168,29 @@ export class CapaComponent implements OnInit {
     });
   }
 
-  // goBack() {
-  //   this.router.navigate(['/app/complaints']);
-  // }
+  clearFilter() {
+    this.filterKeyword = '';
+    this.filterRole = '';
+    this.filterDepartment = '';
+    this.filterStatus = '';
+    this.isOverdueFilterActive = false;
+    this.data = [...this.allData];
+  }
+
+  applyFilter() {
+    this.data = this.allData.filter(item => {
+      const kw = this.filterKeyword ? this.filterKeyword.toLowerCase() : '';
+      const matchesKeyword = !kw ||
+        (item.title && item.title.toLowerCase().includes(kw)) ||
+        (item.issue && item.issue.toLowerCase().includes(kw)) ||
+        (item.details && item.details.toLowerCase().includes(kw));
+      const matchesRole = !this.filterRole || item.role === this.filterRole;
+      const matchesDept = !this.filterDepartment || item.department === this.filterDepartment;
+      const matchesStatus = !this.filterStatus || item.status === this.filterStatus;
+      return matchesKeyword && matchesRole && matchesDept && matchesStatus;
+    });
+  }
+
   goBack() {
     if (this.fromPage === 'meeting') {
       this.router.navigate(['/app/complaints/meeting']);
@@ -152,24 +199,70 @@ export class CapaComponent implements OnInit {
     }
   }
 
-  public openCAPA(id: any) {
-    console.log('jkhksbdjk');
+  public openCAPA(item: any) {
     let dialogRef = this.dialog.open(AddCapaComponent, {
-      data: id,
-      height: 'auto',
-      width: '800px',
+      data: item,
+      width: '780px',
+      maxWidth: '92vw',
+      maxHeight: '90vh',
     });
-    // dialogRef.afterClosed().subscribe((data: any) => {});
+
+    dialogRef.afterClosed().subscribe(res => {
+      if (res) {
+        if (item) {
+          // Update existing item
+          Object.assign(item, res);
+          const idx = this.allData.findIndex(d => d === item);
+          if (idx !== -1) {
+            this.allData[idx] = { ...item };
+          }
+        } else {
+          // Add new item
+          const newItem = {
+            ...res,
+            actions: { edit: true, delete: true }
+          };
+          this.data.unshift(newItem);
+          this.allData.unshift(newItem);
+        }
+      }
+    });
   }
 
-  deleteConfirmation() {
+  onDoneToggle(item: any) {
+    if (item.done) {
+      item.completedDate = new Date().toISOString().split('T')[0];
+      item.status = 'Closed';
+    } else {
+      item.completedDate = '-';
+      if (item.status === 'Closed') {
+        item.status = 'WIP';
+      }
+    }
+  }
+
+  onStatusChange(item: any) {
+    if (item.status === 'Closed') {
+      item.done = true;
+      if (!item.completedDate || item.completedDate === '-') {
+        item.completedDate = new Date().toISOString().split('T')[0];
+      }
+    } else {
+      item.done = false;
+      item.completedDate = '-';
+    }
+  }
+
+  deleteConfirmation(item?: any) {
     let dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: 'auto',
-      data: { component: null, title: 'Delete Confirmation', content: 'Are you sure you want to Delete?', isConfirmation: true }
+      data: { component: null, title: 'Delete Confirmation', content: 'Are you sure you want to delete this CAPA?', isConfirmation: true }
     });
     dialogRef.afterClosed().subscribe(
-      (data: any) => {
-        if (data) {
+      (confirmed: any) => {
+        if (confirmed && item) {
+          this.data = this.data.filter(d => d !== item);
+          this.allData = this.allData.filter(d => d !== item);
         }
       }
     );

@@ -35,11 +35,10 @@ export class ADrivetypeComponent {
 
 
     tableList = [
-      { name: 'Automation Driver', status: 'Active' },
-    { name: 'Four Wheel Drive.', status: 'Active' },
-    { name: 'All Wheel Drive', status: 'Active' },
-    { name: 'Front Wheel Drive', status: 'Active' },
-    { name: 'Rear Wheel Drive', status: 'Active' }
+      { name: 'All-Wheel Drive with Electronic Lock (AWD)', status: 'Active' },
+      { name: 'Four-Wheel Drive with Low Range (4x4)', status: 'Active' },
+      { name: 'Front-Wheel Drive (FWD)', status: 'Active' },
+      { name: 'Rear-Wheel Drive (RWD)', status: 'Active' }
     ];
 
     // Function to get status text

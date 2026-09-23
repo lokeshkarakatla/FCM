@@ -50,8 +50,10 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit {
     { name: 'Others', pending: 4, design: 1, implement: 3, others: 1 }
   ];
   ageingData: AgeingRow[] = [
-    { period: '0-10', issues: 15 }, { period: '11-20', issues: 12 },
-    { period: '90+ Days', issues: 30 }
+    { period: '0-15 Days', issues: 18 },
+    { period: '16-30 Days', issues: 14 },
+    { period: '31-60 Days', issues: 16 },
+    { period: '60+ Days', issues: 9 }
   ];
 
   // Calculated totals and mapped values for the template
@@ -167,16 +169,140 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit {
 
   // --- GENERIC CHART GENERATORS ---
   renderPieChart(containerId: string, data: any[], title: string): void {
-    Highcharts.chart(containerId, { chart: { type: 'pie' }, title: { text: title }, tooltip: { pointFormat: '{series.name}: <b>{point.y}</b>' }, plotOptions: { pie: { allowPointSelect: true, cursor: 'pointer', dataLabels: { enabled: true, format: '<b>{point.name}</b>: {point.percentage:.1f} %' } } }, series: [{ type: 'pie', name: 'Count', colorByPoint: true, data: data }] });
+    Highcharts.chart(containerId, {
+      chart: {
+        type: 'pie',
+        style: { fontFamily: 'Roboto, -apple-system, BlinkMacSystemFont, sans-serif' }
+      },
+      title: {
+        text: title,
+        style: { fontSize: '16px', fontWeight: '600', color: '#1e293b' }
+      },
+      credits: { enabled: false },
+      tooltip: {
+        pointFormat: '{series.name}: <b>{point.y}</b> ({point.percentage:.1f}%)'
+      },
+      plotOptions: {
+        pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          showInLegend: true,
+          dataLabels: {
+            enabled: true,
+            format: '<b>{point.name}</b>: {point.y} ({point.percentage:.1f}%)',
+            style: { fontSize: '11px', fontWeight: '500' }
+          }
+        }
+      },
+      legend: {
+        enabled: true,
+        align: 'center',
+        verticalAlign: 'bottom',
+        layout: 'horizontal',
+        itemStyle: { fontSize: '12px', fontWeight: '500', color: '#334155' }
+      },
+      series: [{
+        type: 'pie',
+        name: 'Complaints',
+        colorByPoint: true,
+        data: data
+      }]
+    });
   }
+
   renderBarChart(containerId: string, series: any[], categories: string[], title: string): void {
-    Highcharts.chart(containerId, { chart: { type: 'column' }, title: { text: title }, xAxis: { categories: categories, crosshair: true }, yAxis: { min: 0, title: { text: 'Total Count' } }, tooltip: { headerFormat: '<b>{point.x}</b><br/>', pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}' }, plotOptions: { column: { stacking: 'normal' } }, series: series });
+    const statusColors: { [key: string]: string } = {
+      'Pending': '#f59e0b',
+      'Design': '#6366f1',
+      'Implement': '#10b981',
+      'Others': '#64748b'
+    };
+
+    const coloredSeries = series.map(s => ({
+      ...s,
+      color: statusColors[s.name] || undefined
+    }));
+
+    Highcharts.chart(containerId, {
+      chart: {
+        type: 'column',
+        spacingBottom: 25,
+        spacingTop: 15,
+        style: { fontFamily: 'Roboto, -apple-system, BlinkMacSystemFont, sans-serif' }
+      },
+      title: {
+        text: title,
+        style: { fontSize: '16px', fontWeight: '600', color: '#1e293b' }
+      },
+      credits: { enabled: false },
+      xAxis: {
+        categories: categories,
+        crosshair: true,
+        labels: {
+          style: {
+            fontSize: '12px',
+            fontWeight: '600',
+            color: '#334155'
+          }
+        }
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: 'Total Count',
+          style: { fontWeight: '600', color: '#475569' }
+        },
+        gridLineDashStyle: 'Dash',
+        gridLineColor: '#e2e8f0'
+      },
+      legend: {
+        enabled: true,
+        align: 'center',
+        verticalAlign: 'bottom',
+        layout: 'horizontal',
+        itemStyle: {
+          fontSize: '12px',
+          fontWeight: '500',
+          color: '#334155'
+        }
+      },
+      tooltip: {
+        headerFormat: '<div style="font-size: 13px; font-weight: bold; margin-bottom: 4px;">{point.x}</div>',
+        pointFormat: '<span style="color:{point.color}">\u25CF</span> {series.name}: <b>{point.y}</b><br/>',
+        footerFormat: '<hr style="margin: 4px 0; border: none; border-top: 1px solid #ddd;"/><b>Total: {point.stackTotal}</b>',
+        shared: true,
+        useHTML: true
+      },
+      plotOptions: {
+        column: {
+          stacking: 'normal',
+          borderRadius: 3,
+          dataLabels: {
+            enabled: true,
+            filter: {
+              property: 'y',
+              operator: '>',
+              value: 0
+            },
+            style: {
+              textOutline: 'none',
+              fontSize: '11px',
+              fontWeight: '600',
+              color: '#ffffff'
+            }
+          }
+        }
+      },
+      series: coloredSeries
+    });
   }
 
   // --- UTILITY & NAVIGATION ---
   openGrid(): void {
     this.dialog.open(FiletrCurrentStatusComponent, { width: "600px", height: "auto" });
   }
-  navigate(): void { /* Placeholder for navigation logic */ }
+  navigate(): void {
+    this.router.navigate(['/app/complaints/monitor']);
+  }
   goBack(): void { this.router.navigate(['/app/complaints']); }
 }

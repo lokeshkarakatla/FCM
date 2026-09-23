@@ -24,12 +24,10 @@ export class MCriticalityComponent {
 
 
   tableList = [
-    // { stageName: 'Upper Level Criticality', stageCode: 'EM', status: 'Active' },
-    { stageName: ' High Criticality', stageCode: 'I-115', status: 'Active' },
-     { stageName: 'Medium Criticality', stageCode: 'PNT', status: 'Inactive' },
-    { stageName: 'Low Criticality', stageCode: 'PNT', status: 'Active' },
-   
-
+    { stageName: 'Safety Critical (Airbag, Braking, Steering - Level 1)', stageCode: 'CRT-S1', status: 'Active' },
+    { stageName: 'Major Breakdown (Powertrain / Transmission - Level 2)', stageCode: 'CRT-M2', status: 'Active' },
+    { stageName: 'Moderate Issue (Infotainment, HVAC, Sensors - Level 3)', stageCode: 'CRT-M3', status: 'Active' },
+    { stageName: 'Minor Aesthetic (Panel Fitment, Paint Blemish - Level 4)', stageCode: 'CRT-A4', status: 'Active' }
   ];
 
   // Function to get status text

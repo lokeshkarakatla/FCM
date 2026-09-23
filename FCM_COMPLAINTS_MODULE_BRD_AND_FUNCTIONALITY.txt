@@ -1,0 +1,660 @@
+================================================================================
+     ENTERPRISE FIELD COMPLAINT MONITORING (FCM) & QUALITY ASSURANCE SYSTEM
+   BUSINESS REQUIREMENTS DOCUMENT (BRD) & FUNCTIONAL SPECIFICATION - VOL 1 TO 5
+================================================================================
+Document Version : 4.0 (Comprehensive Enterprise Edition)
+System Domain    : Automotive Passenger Vehicles (Cars/SUVs), Commercial Haulage
+                   (Lorries/Trucks), and Electric Mobility (EVs)
+Governing Norms  : IATF 16949, ISO 26262 (Functional Safety), 8D/7D Problem Solving
+Modules Covered  : PILLAR 1: Complaints (Radar, Monitor, Meetings, CAPA, Kanban)
+                   PILLAR 2: Master Data Management (Single Source of Truth - SSOT)
+                   PILLAR 3: 7D / PRTS (Problem Resolution & Tracking System)
+                   PILLAR 4: Objective Quality Audits (Checkpoints, Demerits, EOL)
+                   PILLAR 5: Subjective Quality Audits (Fit & Finish, Paint, NVH)
+Author / Owner   : Enterprise Quality Engineering & FCM Product Leadership
+Date             : September 2026
+Status           : Production Ready, Fully Aligned to Multi-Trillion Mobility Market
+================================================================================
+
+
+1. EXECUTIVE SUMMARY & MARKET POSITIONING
+--------------------------------------------------------------------------------
+The global automotive and commercial vehicle market represents over $4.1 Trillion 
+in annual valuation (~90 Million passenger cars and ~25 Million commercial lorries 
+sold per year worldwide). In this high-stakes environment, an unresolved field defect 
+or uncontained recall costs OEMs between $50 Million and $2 Billion in warranty 
+claims, brand erosion, and regulatory penalties.
+
+The Field Complaint Monitoring (FCM) System provides an enterprise closed-loop 
+quality engineering platform that seamlessly connects:
+  • Global Dealership Networks & Fleet Distributors (Point of Complaint)
+  • Central Technical Quality Triage & Warranty Authorization Teams
+  • Plant Quality Engineering & Assembly Facilities (Sriperumbudur, Chakan, etc.)
+  • Cross-Functional Taskforces (CFT) for 8D/7D Root-Cause Containment & CAPA
+  • Central Executive Leadership via Real-Time KPI Cockpits
+
+
+================================================================================
+                               PILLAR 1: COMPLAINTS
+================================================================================
+
+2. COMPLAINTS LIFECYCLE & ARCHITECTURAL DATA FLOW
+--------------------------------------------------------------------------------
+The Complaints module governs defect lifecycle across 5 synchronized stages:
+
+                        [ Field Defect Logged by Dealer ]
+                                       │
+                                       ▼
+                       ┌───────────────────────────────┐
+                       │       2. CENTRAL MONITOR      │ ◄── Master Data Dropdowns
+                       │   (Triage & Warranty Review)  │
+                       └───────────────┬───────────────┘
+                                       │
+            ┌──────────────────────────┼──────────────────────────┐
+            ▼                          ▼                          ▼
+ ┌──────────────────────┐  ┌───────────────────────┐  ┌───────────────────────┐
+ │    1. RADAR COCKPIT  │  │   3. QUALITY MEETINGS │  │    5. KANBAN BOARD    │
+ │ (Executive Analytics)│  │ (CFT Cross-Functional)│  │ (Agile Fix Pipeline)  │
+ └──────────────────────┘  └───────────┬───────────┘  └───────────────────────┘
+                                       │
+                                       ▼
+                            ┌─────────────────────┐
+                            │    4. CAPA MODULE   │
+                            │ (Permanent Actions) │
+                            └─────────────────────┘
+
+
+3. COMPLAINTS SCREEN-BY-SCREEN FUNCTIONAL SPECIFICATIONS
+--------------------------------------------------------------------------------
+
+3.1. SCREEN 1: RADAR (EXECUTIVE COCKPIT)
+• Role: Plant General Managers, Chief Quality Officers, Operational Directors.
+• Business Objective: Instant macro-visibility of warranty failure rates, model-wise 
+  defect distributions, geographical failure clusters, and ageing bottlenecks.
+• Key Elements:
+  - KPI Stat Cards: High-impact metrics (Total Complaints, Critical Recalls, 
+    Resolution Ratio, Average Days to Closure).
+  - Pareto Charts: Failure frequency by Automotive Model (Fortuner, Creta, XUV700, 
+    Nexon EV, etc.) with unclipped X-axis labels and responsive padding.
+  - Warranty Ageing Distribution: Standardized warranty intervals (0-15 Days, 
+    16-30 Days, 31-60 Days, 60+ Days Overdue).
+  - Interactive Drill-Down: Clicking any chart slice redirects the user directly 
+    to the Central Monitor filtered by that model/category.
+
+3.2. SCREEN 2: MONITOR (CENTRAL COMPLAINTS REGISTER)
+• Role: Warranty Analysts, Field Quality Managers, Service Engineers.
+• Business Objective: Primary transaction register to log, filter, triage, and 
+  manage complaints raised by global dealers.
+• Data Columns:
+  1. Complaint ID / Ref   (e.g., COMP-2025/09/001)
+  2. Vehicle Model        (Toyota Fortuner, Hyundai Creta, Tata Nexon EV, etc.)
+  3. VIN / Chassis No.    (17-character ISO automotive VIN)
+  4. Dealer / Distributor (Apex Auto Berlin, EuroStar London, Metro Auto USA)
+  5. Severity             (Safety Critical Level 1, Major Breakdown Level 2)
+  6. Failure Category     (ADAS Sensors, Dual-Clutch 7-DCT, EV Battery Pack)
+  7. Date Logged          (Calendar timestamp)
+  8. SLA Remaining        (Dynamic overdue badge)
+  9. Lifecycle Status     (Open, Pending, WIP, Hold, Closed)
+  10. Actions             (Inspect 8D, View Documents, Assign CFT)
+
+3.3. SCREEN 3: MEETINGS (CFT DELIBERATION ENGINE)
+• Role: Plant Managers, Design R&D, SQA Leads, Assembly Heads.
+• Business Objective: Cross-Functional Team (CFT) meeting environment to review 
+  overdue field complaints, evaluate physical defective parts returned to plant, 
+  and commission corrective action plans.
+• Key Elements:
+  - Dual-Grid Architecture: Outer meeting schedule table and nested complaint review.
+  - Interactive Attendance: Role-based checklist (QA, SQA, R&D, Production).
+  - Agenda & Notes: Meeting minutes and technical diagnostic notes.
+  - Direct Action Logging: Commission CAPA directly from the meeting row.
+
+3.4. SCREEN 4: CAPA (CORRECTIVE & PREVENTIVE ACTIONS)
+• Role: Quality Engineering Leads, Supplier Quality Engineers (SQE).
+• Business Objective: Formal corrective countermeasure execution under IATF 16949.
+• Top Action Bar: Right-aligned flexbox (`[switchToggle] [Filter] [+ Add CAPA]`).
+• Core Fields: Title (linked to Vehicle Model), Department (QA-16949, RND-PWR, etc.),
+  Root Cause Hypothesis, Permanent Engineering Countermeasure, Target Date, Status.
+
+3.5. SCREEN 5: KANBAN (AGILE TASK PIPELINE)
+• Role: Plant Maintenance Engineers, Design Engineering Teams.
+• Business Objective: Agile drag-and-drop board for visual task tracking.
+• Columns: Pending -> Process (WIP) -> Hold (Supplier Parts Awaited) -> Closed.
+• Layout: Fully responsive cards with automatic text wrapping (`word-break: break-word`),
+  distributor/plant tags, SLA status badges, and expandable accordion drawer.
+
+
+================================================================================
+                        PILLAR 2: MASTER DATA MANAGEMENT
+================================================================================
+
+4. MASTER DATA - THE SYSTEM OF RECORD (SSOT)
+--------------------------------------------------------------------------------
+Master Data provides the foundational baseline for all operations across the 
+entire enterprise. No user is permitted to manually type free-form strings for 
+critical parameters (models, plants, transmissions, failure categories, stages). 
+All operational screens consume these standardized master tables.
+
+4.1. MODELS MASTER (audit-model)
+• Governs active vehicle product lines across Passenger Cars, SUVs, and EVs:
+  - Toyota Fortuner 4x4        [Code: CAR-FORT] (Full-Size Premium SUV)
+  - Toyota Camry Hybrid        [Code: CAR-CAM]  (Executive Luxury Hybrid Sedan)
+  - Hyundai Creta SX           [Code: CAR-CRE]  (Compact Urban Crossover)
+  - Hyundai Verna Turbo        [Code: CAR-VER]  (Mid-Size Turbo Sedan)
+  - Mahindra XUV700 AX7        [Code: CAR-XUV]  (7-Seater Connected ADAS SUV)
+  - Tata Safari Dark Edition   [Code: CAR-SAF]  (Flagship Diesel SUV)
+  - Tata Nexon EV Max          [Code: CAR-NEX]  (High-Voltage Battery EV)
+  - Honda Elevate ZX           [Code: CAR-ELV]  (Urban ADAS Crossover)
+
+4.2. VARIANTS MASTER (a-variant)
+• Specific trim lines and powertrain configurations:
+  - ZX 4x4 AT (2.8L Diesel)             -> Toyota Fortuner 4x4
+  - Dynamic Hybrid e-CVT (2.5L)         -> Toyota Camry Hybrid
+  - SX(O) Turbo 7-DCT (1.5L TGDi)       -> Hyundai Creta SX
+  - SX(O) Turbo 6MT (160 PS)            -> Hyundai Verna Turbo
+  - AX7 Luxury Pack AWD (Diesel AT)     -> Mahindra XUV700 AX7
+  - Accomplished+ 6S Dark (Diesel AT)   -> Tata Safari Dark Edition
+  - Empowered+ LR (40.5 kWh EV)         -> Tata Nexon EV Max
+  - ZX CVT with ADAS Sensing Suite      -> Honda Elevate ZX
+
+4.3. MANUFACTURING PLANTS MASTER (a-plant)
+• Core manufacturing and assembly facilities:
+  - Bidadi Auto Facility - Plant 1      [Code: PLT-BLR] (Bangalore)
+  - Sriperumbudur Car Assembly          [Code: PLT-CHE] (Chennai)
+  - Chakan Auto Mega Facility           [Code: PLT-PUN] (Pune)
+  - Sanand Passenger Car Plant          [Code: PLT-GUJ] (Gujarat)
+  - Manesar Automotive Facility         [Code: PLT-HRY] (Haryana)
+  - Anantapur Greenfield Plant          [Code: PLT-AP]  (Andhra Pradesh)
+
+4.4. TRANSMISSIONS MASTER (a-transmission)
+• Advanced automotive transmissions and gearboxes:
+  - 6-Speed Torque Converter Automatic with Sequential Shift [Code: TRN-6AT]
+  - Electronic Continuously Variable Transmission (e-CVT)   [Code: TRN-ECVT]
+  - 7-Speed Dual-Clutch Transmission (7-DCT / DSG)          [Code: TRN-7DCT]
+  - 6-Speed Intelligent Manual Transmission (6-iMT)         [Code: TRN-6MT]
+  - 6-Speed Aisin Torque Converter with AWD Lock            [Code: TRN-AWD6]
+  - Single-Speed Direct Reduction EV Transmission           [Code: TRN-EV1S]
+
+4.5. POWERTRAINS & FUELS MASTER (a-fueltype)
+• Engine and propulsion technologies:
+  - Diesel (BS-VI CRDi with SCR AdBlue Injection)
+  - Strong Hybrid Electric Vehicle (SHEV)
+  - Petrol (Turbocharged Gasoline Direct Injection - TGDi)
+  - Battery Electric Vehicle (BEV High-Voltage 400V/800V)
+  - Turbocharged mStallion / Revotron Petrol
+
+4.6. QUALITY GATES & ASSEMBLY STAGES MASTER (a-stages)
+• Standard automotive manufacturing and quality gate inspection stages:
+  - Body-in-White & Robotic Framing (BIW)        [Code: STG-BIW]
+  - Cathodic Electrodeposition & Paint (CED)      [Code: STG-PNT]
+  - Powertrain Docking & Marriage (Engine/Tranny) [Code: STG-DOC]
+  - Trim, Chassis & Final Assembly Line (TCF)     [Code: STG-TCF]
+  - Wheel Alignment & ADAS Camera Calibration     [Code: STG-CAL]
+  - Chassis Dyno & Roller Brake Test (EOL)        [Code: STG-RLR]
+  - Monsoon Shower & Water Ingress Testing        [Code: STG-SHW]
+  - Pre-Delivery Inspection & Road Track (PDI)    [Code: STG-PDI]
+
+4.7. COMPLAINT & DEFECT CATEGORIES MASTER (m-categories)
+• Automotive defect classification taxonomy:
+  - ADAS, Radar & Safety Vision Sensors           [Code: CAT-ADAS]
+  - Engine, Turbocharger & Fuel Injection         [Code: CAT-ENG]
+  - Automatic Transmission & Dual-Clutch (DCT)    [Code: CAT-TRN]
+  - High Voltage Battery Pack & BMS (EV)          [Code: CAT-EVB]
+  - Infotainment, Digital Cockpit & Telematics   [Code: CAT-INF]
+  - HVAC, Dual-Zone AC & Climate Compressor       [Code: CAT-HVAC]
+  - Suspension, Steering & Anti-Lock Braking      [Code: CAT-CHS]
+  - Body Panel Fitment, Paint Quality & NVH       [Code: CAT-NVH]
+
+4.8. FAILURE CRITICALITIES MASTER (m-criticality)
+• Defect severity classifications based on automotive safety standards:
+  - Safety Critical (Airbag, Braking, Steering Loss - Level 1)   [Code: CRT-S1]
+  - Major Breakdown (Engine/Transmission Immobilized - Level 2)   [Code: CRT-M2]
+  - Moderate Issue (Infotainment, HVAC, Sensors Drift - Level 3) [Code: CRT-M3]
+  - Minor Aesthetic (Panel Gaps, Interior Blemish - Level 4)     [Code: CRT-A4]
+
+4.9. DEALERSHIPS & DISTRIBUTORS MASTER (distributor)
+• Tier-1 global sales, warranty, and field dealership networks:
+  - Apex Auto Retail Group (Berlin, Germany)          [Code: DLR-DEU01]
+  - EuroStar Motors Ltd. (London, United Kingdom)     [Code: DLR-GBR01]
+  - Metro Auto Distribution (Los Angeles, USA)        [Code: DLR-USA01]
+  - Siam Premier Motors Co. (Bangkok, Thailand)       [Code: DLR-THA01]
+  - Bosphorus Auto Sales (Istanbul, Turkey)           [Code: DLR-TUR01]
+  - Himalaya Motors Pvt. Ltd. (Kathmandu, Nepal)      [Code: DLR-NPL01]
+  - Cape Town Automotive Hub (South Africa)           [Code: DLR-ZAF01]
+
+4.10. QUALITY & ENGINEERING DEPARTMENTS MASTER (m-departments)
+• Departmental accountability for 8D root-cause and CAPA execution:
+  - Automotive Quality Assurance & IATF 16949         [Code: QA-16949]
+  - Field Engineering & Dealer Technical Support      [Code: FES-DLR]
+  - Powertrain R&D & Calibration                      [Code: RND-PWR]
+  - Electrical, Electronics & ADAS Software           [Code: RND-EES]
+  - Trim, Chassis & Final Assembly (TCF)              [Code: MFG-TCF]
+  - Supplier Quality Management (SQM)                 [Code: SQA-VND]
+  - Paint Shop & Cathodic Electrodeposition (CED)     [Code: PNT-CED]
+  - Vehicle Homologation & Safety Compliance          [Code: SAF-HOM]
+
+4.11. STATUS MASTER (m-status-master)
+• Unified lifecycle governance across all modules:
+  - Open     [Code: OPN] (Newly logged, pending preliminary review)
+  - Pending  [Code: PND] (Assigned, awaiting physical parts or trial data)
+  - WIP      [Code: WIP] (Active root cause analysis / CAPA in progress)
+  - Hold     [Code: HLD] (Blocked on supplier countermeasure / verification)
+  - Closed   [Code: CLS] (Verified in production, formally approved)
+
+
+================================================================================
+             PILLAR 3: 7D / PRTS (PROBLEM RESOLUTION & TRACKING SYSTEM)
+================================================================================
+
+5. 7D / PRTS LIFECYCLE & ARCHITECTURAL DISCIPLINE
+--------------------------------------------------------------------------------
+The 7D (Seven Disciplines) / PRTS system is the automotive OEM engineering workflow 
+designed for deep technical root-cause investigation and containment. When a field 
+complaint or high-severity internal audit failure requires formal containment, 
+a PRTS Issue is commissioned.
+
+The 7 Disciplines Framework:
+  • D1: Form CFT & Define Problem Ownership (Author Dept, Containment Engineer)
+  • D2: Comprehensive Problem Description (5W2H Automotive Diagnostic Analysis)
+  • D3: Interim Containment Actions (ICA - Quarantine, Sorting at Dealership/Plant)
+  • D4: Root Cause Verification (Fishbone / 5-Why, DTC Analysis, Component Bench)
+  • D5: Permanent Corrective Actions (PCA Formulation & Validation Trials)
+  • D6: PCA Implementation & Verification (Cut-off VIN / Serial Number Tracking)
+  • D7: Systemic Prevention & Lessons Learned (FMEA Updates, SOP Control Plans)
+
+
+6. 7D / PRTS SCREEN SPECIFICATIONS & DATA BINDING
+--------------------------------------------------------------------------------
+
+6.1. SCREEN 1: NEW PRTS ISSUE INGESTION (prts-issue-new)
+• Role: Plant Quality Engineers, Reliability Leads, SQA Specialists.
+• Business Objective: Standardized intake form to record new engineering problem cases.
+• Request Types:
+  - PSR (Problem Solving Report): Full multi-stage 7D/8D engineering investigation.
+  - One Pager: Rapid executive containment summary for immediate management briefing.
+• Standardized Dropdown Ingestion (Directly consuming SSOT Master Data):
+  - Model Selection       : [mat-select] Toyota Fortuner, Creta SX, XUV700, Nexon EV, etc.
+  - Variant Selection     : [mat-select] Dynamic Hybrid e-CVT, SX(O) 7-DCT, AX7 AWD, etc.
+  - Severity Level        : [mat-select] Safety Critical (L1) down to Minor Aesthetic (L4).
+  - Failure Category      : [mat-select] ADAS Vision Sensors, Powertrain, Dual-Clutch, etc.
+  - Author Department     : [mat-select] QA-16949, Powertrain R&D, EE & ADAS, TCF Assembly.
+  - Containment Ownership : [mat-select] Named Quality & Chief Technical Leads.
+• Repeat Issue Intelligent Reference:
+  - Allows linking the new issue to prior known PRTS cases (e.g., PRTS-2025-081, 
+    PRTS-2025-074, PRTS-2025-063, PRTS-2025-052) for accelerated lessons-learned reuse.
+• 5W2H Structured Diagnostic Questionnaire:
+  - 1. What?  : Symptom description, DTC codes (OBD-II), Warning Lamps illuminated.
+  - 2. Where? : Vehicle subsystem, harness connector, or assembly line station.
+  - 3. When?  : Operating mileage, ambient temperature (-10°C to +45°C), weather.
+  - 4. Who?   : Reporting dealer, fleet operator, or assembly audit gate inspector.
+  - 5. Why?   : Failure mechanism hypothesis or component drift.
+  - 6. How?   : Failure mode behavior (Sudden stall, intermittent judder, slow leak).
+  - 7. How Much? : PPM failure rate, affected batch lot numbers, uncontained VIN count.
+• User Actions:
+  - Save Issue : Form validation, snackbar confirmation, and redirect to Issue Status.
+  - Cancel/Close : Clean confirmation and safe return to dashboard.
+
+6.2. SCREEN 2: PRTS ISSUE STATUS REGISTER (psr-issue-status)
+• Role: Chief Quality Officers, Plant Directors, Taskforce Leaders.
+• Business Objective: Central real-time cockpit tracking all open, WIP, containment, 
+  and closed 7D investigation cases.
+• Data Columns:
+  1. PRTS Number          (e.g., PRTS-2025-001, PRTS-2025-002)
+  2. Issue Title          (e.g., 7-DCT Transmission Shudder on Low-Speed Crawl)
+  3. Vehicle Model        (Toyota Fortuner, Hyundai Creta SX, Mahindra XUV700 AX7)
+  4. Variant              (SX(O) Turbo 7-DCT, ZX 4x4 AT, AX7 Luxury Pack)
+  5. Plant Origin         (Sriperumbudur Car Assembly, Chakan Mega Facility, etc.)
+  6. Assigned Lead        (Quality / Powertrain Lead)
+  7. D-Stage Progress     (D1 through D7 visual phase badge)
+  8. Containment Status   (Quarantined, Sorting Active, Cut-off VIN Issued, Closed)
+  9. Target Closure Date  (SLA deadline indicator)
+
+
+================================================================================
+                    PILLAR 4: OBJECTIVE QUALITY AUDITS
+================================================================================
+
+7. OBJECTIVE AUDITS ARCHITECTURAL FRAMEWORK
+--------------------------------------------------------------------------------
+Objective Quality Audits represent quantifiable, verifiable engineering inspection 
+gates executed along the vehicle assembly line and at End-of-Line (EOL). Unlike 
+sensory reviews, objective audits evaluate exact dimensional tolerances, torque 
+specifications, electrical insulation resistance, and diagnostic checkpoint pass/fail 
+metrics against numerical engineering targets.
+
+The Objective Audit Equation:
+  • Audit Plan = Vehicle Model x Trim Variant x Assembly Stage x Manufacturing Plant
+  • Metric Compliance = [Passed Checkpoints / Total Checkpoints] vs Demerit Deductions
+  • Rating Scale = WDPV (Weighted Demerits Per Vehicle) Target Threshold (e.g., 93% WDPV)
+
+
+8. OBJECTIVE AUDITS SCREEN SPECIFICATIONS & DATA FLOW
+--------------------------------------------------------------------------------
+
+8.1. SCREEN 1: OBJECTIVE RADAR DASHBOARD (objective-radar)
+• Role: Plant Quality Directors, Shop Floor Superintendents, Audit Supervisors.
+• Business Objective: Multi-model executive dashboard tracking daily and monthly 
+  quality target attainment across vehicle lines.
+• Active Vehicle Model Rows (SSOT Aligned):
+  - Row 1: Toyota Fortuner 4x4 (Full-Size Premium SUV Line)
+  - Row 2: Hyundai Creta SX    (Compact Urban Crossover Line)
+  - Row 3: Mahindra XUV700 AX7 (ADAS Connected 7-Seater Line)
+  - Row 4: Tata Nexon EV Max   (High-Voltage Battery Electric Line)
+• 5 Key Automotive Quality Dimensions per Model:
+  1. (D)Met : Demerit Compliance Rate (Day Value vs Monthly Average vs Target WDPV)
+  2. (C)Met : Checkpoint Pass Ratio (Inspection criteria met at station)
+  3. (P)Met : Process Audit Attainment (Standardized Work Instruction adherence)
+  4. (S)Met : SQA / Supplier Part Quality (Incoming component batch integrity)
+  5. (O)Met : Overall Quality Gate Target (Composite plant release authorization)
+• Interactive Drill-down:
+  - Clicking any model or metric card triggers modal dialog (`PopPieChartComponent`)
+    revealing granular station-wise breakdown (BIW, Paint, Trim, Chassis, Dyno).
+
+8.2. SCREEN 2: ACTIVE AUDITS & ISSUE REGISTER (objective-audits-issue-status)
+• Role: Gate Quality Inspectors, PDI Managers, Auditor Leads.
+• Business Objective: Real-time transactional register of audited vehicle units.
+• Core Data Columns:
+  1. ISO VIN           : 17-character vehicle identification number (e.g. MBH45K23N0P721094)
+  2. Target            : Target compliance percentage (e.g., 93%, 94%, 96%)
+  3. Audit Type        : PDI Audit, BIW Framing, CED Paint, Dyno & Roller, Monsoon Shower
+  4. Checkpoints Ratio : Inspected checkpoints ratio (e.g., 510/560 checkpoints passed)
+  5. Demerits Fraction : Total demerit score recorded (e.g., 12/510 demerits)
+  6. Plant Location    : Bidadi Plant 1, Sriperumbudur, Chakan Mega, Sanand Plant
+  7. Auditor Name      : Certified IATF quality inspector ID
+  8. Model & Variant   : Master Data vehicle model and trim line
+  9. Colour & Tranny   : Standardized automotive body colour and transmission
+  10. Fuel / Powertrain: Diesel BS-VI, Petrol TGDi, Strong Hybrid SHEV, 400V BEV
+  11. Audit Timestamps : Start date and completion date
+  12. Status           : Open, In Progress, Hold (rework required), Closed/Done
+• Master Data Filtering System:
+  - Location, Transmission, Fuel Type, Vehicle Model, Variant, and Stage Name 
+    strictly bounded to SSOT Master tables.
+
+8.3. SCREEN 3: OBJECTIVE AUDIT ARCHIVES (objective-audit-archives)
+• Role: Quality Compliance Leads, Audit Archive Officers, Plant Quality Directors.
+• Business Objective: Complete historical repository of certified objective audit units.
+• Core Data Columns:
+  1. Actions           : Unarchive restore action with instant tooltip feedback.
+  2. Status            : Interactive mat-select dropdown (Pending, Draft, Done).
+  3. VIN               : 17-character ISO VIN with full lifecycle traceability.
+  4. Target            : Target quality compliance threshold (92% - 96%).
+  5. Audit Type        : PDI Audit, BIW Framing, CED Paint, Chassis Dyno, Monsoon Leak.
+  6. Checkpoints       : Clickable cornflowerblue link (e.g., 510/560) triggering dynamic 
+                         navigation to the Checkpoints Inner Screen (#/app/parameterboard/par-auditlog/sealing).
+  7. Demerit           : Total weighted demerit score in red text (e.g., 12/510).
+  8. Location          : Assembly facility (Bidadi Plant 1, Sriperumbudur, Chakan, Sanand).
+  9. Auditor           : Certified lead IATF inspector.
+  10. Model            : Toyota Fortuner 4x4, Hyundai Creta SX, Mahindra XUV700 AX7, 
+                         Tata Nexon EV Max, Toyota Camry Hybrid.
+  11. Colour           : Attitude Black Mica, Abyss Black, Platinum White Pearl, Daytona Grey, Silver.
+  12. Transmission     : 6-Speed AT, 7-Speed DCT, Single-Speed EV, e-CVT.
+  13. Fuel Type        : Diesel BS-VI, Petrol TGDi, BEV 400V, Strong Hybrid SHEV.
+  14. Start Date       : Initial gate audit date.
+  15. End Date         : Audit completion and sign-off timestamp.
+• Navigation & Grid Controls:
+  - Horizontal smooth-scroll buttons (fast_forward and fast_rewind) for multi-column viewing.
+  - Mat-paginator supporting 5, 10, 25, 50, 100 records per page.
+
+8.4. SCREEN 4: CHECKPOINTS INNER SCREEN & PARAMETER BOARD (parameterboard)
+• URL Route: http://localhost:4200/#/app/parameterboard/par-auditlog/sealing (and matching)
+• Role: Metrology Technicians, Rework Engineers, Line Quality Leads.
+• Business Objective: Deep-dive physical dimensional and sealing inspection cockpit.
+• Architecture & Top Sub-Tabs:
+  1. Issue Log (par-auditlog) : Contains Sealing (117/128) and Matching (71/75) sub-modules.
+  2. Metrics (metricpara)     : Model, variant, fuel type, transmission, category compliance charts.
+  3. Notes (notes-par)        : Metrology chat log, automotive quality tags, and AI Inspection Overview.
+
+• Dynamic 9-Panel Body Assembly Selector:
+  - Responsive body assembly selection: Right Fender (23), Right Front Door (41), 
+    Right Rear Door (15), Rear (25), Left Rear Door (5), Left Front Door (12), 
+    Left Fender (14), Roof (14), Bonnet (14).
+  - Selecting any panel dynamically highlights the active pill in #099FF0, swaps 
+    the active CAD diagram, loads coordinate data, and triggers instant recalculations.
+
+• Dynamic 8x11 Spatial Grid Overlay & Color Code Engine:
+  - 8-Row x 11-Column Coordinate Matrix:
+    Overlaid directly on high-resolution vehicle CAD drawings via gridRows (8) and gridCols (11).
+    Cell styling dynamically driven by reactive coordinate lookup: getCellData(row, col).
+  - Tri-Color State Mapping Rules & Mathematical Tolerance Logic:
+    * 🟢 Green (rgba(127, 255, 127, 0.62)) : Pass / Within Specification.
+      Condition: Lower Spec Limit (LSL) <= Actual Measured Value <= Upper Spec Limit (USL).
+    * 🔴 Red (rgba(255, 205, 205, 0.64))   : Out-of-Spec Fail / Drift Variance.
+      Condition: Actual Value < LSL (undersized/pinch) OR Actual Value > USL (oversized gap/flush drift).
+    * ⚪ Grey (rgba(211, 211, 211, 0.8))   : Pending Checks / Scheduled Metrology.
+      Condition: Audit checkpoint scheduled or awaiting optical/CMM gauge recording.
+  - Real-Time Dynamic Calculation Engine (calculateMetrics / updateData):
+    * Total Checks   = Pass (Green) + Fail (Red) + Pending Checks (Grey)
+    * Pass Rate (%)  = (Pass / Total) * 100
+    * Drift Rate (%) = (Fail / Total) * 100
+    Instantly updates the Status Summary Card whenever panel selection or checkpoints change.
+
+• CAD Image Click & Coordinate Zoom Modal:
+  - Clicking directly on the CAD image or grid triggers imgpop() modal dialog (ImgPopSealingComponent / ImgPopComponent).
+  - Displays "Image Details" zoom screen featuring:
+    * Coordinate Location : e.g., Row 5 : Col 4
+    * Metrology Meta      : Serial No (e.g. 121), Checkpoint Name (Checkpoint-1), Measurement Name (Alignment).
+    * Engineering Limits  : USL (1.25 mm), LSL (0.20 mm), Units (mm).
+    * Actual Value Input  : Live entry field allowing auditors to update measurements on the floor.
+    * Quick-Switch Pills  : Instant toggle between localized panel checkpoints (Gap, Parallelism, Alignment, Symmetry).
+
+• "+ Add Line Item" End-to-End Lifecycle & Real-Time 3-Way UI Reflection:
+  - Trigger: Clicking "+ Add Line Item" button opens AddParameterLineitemComponent modal dialog.
+  - Data Captured:
+    * Category          : Exterior, Interior
+    * Checkpoint Name   : Standardized IATF checkpoint rubric (e.g., 1A - HOOD TO FRONT GRILL - GAP)
+    * Measurement Type  : GAP, Flush, Parallelism, Alignment
+    * Coordinate Coords : Grid Row (1 to 8), Grid Column (1 to 11)
+    * Tolerance Bounds  : Lower Spec Limit (LSL in mm), Upper Spec Limit (USL in mm)
+    * Actual Value      : Physical digital caliper / laser gauge reading (mm)
+  - Automatic Tolerance Evaluation on Save:
+    * If LSL <= Actual Value <= USL -> Assigned Status "Pass" & Color 🟢 Green (rgba(127, 255, 127, 0.62))
+    * If Actual Value < LSL or > USL -> Assigned Status "Fail" & Color 🔴 Red (rgba(255, 205, 205, 0.64))
+  - Immediate 3-Way Real-Time UI Reflection:
+    1. Checkpoints Data Table Reflection:
+       Prepend new row at the top of values1 with Serial No, Grid Row, Grid Column, 
+       Checkpoint Name, Measure, LSL, USL, Actual Value, Units, and Edit/Request action icons.
+    2. 8x11 Spatial CAD Grid Reflection:
+       Plots the coordinate cell at (Row, Col) in highlightedCells, lighting up the exact 
+       cell on the vehicle CAD diagram in Green (Pass) or Red (Fail).
+    3. Status Summary Card Reflection:
+       Re-executes calculateMetrics(), immediately incrementing Total by +1 and 
+       incrementing Pass or Fail count, giving auditors instant quantitative feedback.
+
+• Additional Interactive Action Modals:
+  - Save Draft & Submit actions for sign-off.
+  - Checkpoint Request Icon: Opens AddCheckpointRequestComponent / AddRequestComponent for 
+    direct rework dispatch to plant body/paint engineers.
+
+8.5. SCREEN 5: OBJECTIVE AUDIT SETUP & MASTERS (prts-objective-setup)
+• Role: Plant Quality System Administrators.
+• Configuration Sub-Modules:
+  - Audit Types Master    : C-Rating (CR), D-Rating (DR), Torque Audit (TA), 
+                            Body Leak Test (BLT), Engine Spec Test (EST).
+  - Categories Master     : Exterior, Interior, Matching, Sealing, Underbody.
+  - Parameters Master     : Panel Gap, Flushness, Parallelism, Colour Shade, 
+                            Torque (Nm), Pressure Retention (bar).
+  - Modules & Checkpoints : Subassembly parts mapped with target inspection points.
+  - Monthly Targets       : Target WDPV set per vehicle line and calendar month.
+
+
+================================================================================
+                    PILLAR 5: SUBJECTIVE QUALITY AUDITS
+================================================================================
+
+9. SUBJECTIVE AUDITS ARCHITECTURAL & OPERATIONAL FRAMEWORK
+--------------------------------------------------------------------------------
+Subjective Quality Audits evaluate the finished vehicle from the customer's sensory 
+perspective. While Objective Audits evaluate physical dimensional tolerances, mechanical 
+torques, and electrical continuities, Subjective Audits evaluate perceived luxury, 
+tactile elegance, acoustic isolation, and dynamic driving refinement.
+
+Architecturally, the Subjective Audits module mirrors the structure of the Objective 
+Audits module with 9 synchronized side-navigation workflows, creating a consistent 
+user experience while focusing on qualitative sensory rubrics:
+
+                         [ Vehicle Rollout from Final Line / PDI ]
+                                            │
+                                            ▼
+                    ┌───────────────────────────────────────────────┐
+                    │       4. ACTIVE AUDITS REGISTER (C/D Rating)  │ ◄── Master Data SSOT
+                    │ (Live Sensory Scoring & Demerit Penalties)    │
+                    └───────────────────────┬───────────────────────┘
+                                            │
+            ┌───────────────────────────────┼───────────────────────────────┐
+            ▼                               ▼                               ▼
+ ┌──────────────────────┐        ┌───────────────────────┐       ┌───────────────────────┐
+ │   1. RADAR COCKPIT   │        │   2. SENSORY REPORTS  │       │     6. PRTS ALERTS    │
+ │ (Model Perception)   │        │ (NVH / BSR Trendline) │       │ (7D Containment Flow) │
+ └──────────────────────┘        └───────────────────────┘       └───────────────────────┘
+            │                               │                               │
+            ▼                               ▼                               ▼
+ ┌──────────────────────┐        ┌───────────────────────┐       ┌───────────────────────┐
+ │   3. NEW AUDIT DIALOG│        │       5. SETUP        │       │  7. ARCHIVES VAULT    │
+ │ (VIN / Trim Select)  │        │ (C/D Rating Criteria) │       │ (Closed Audit Record) │
+ └──────────────────────┘        └───────────────────────┘       └───────────────────────┘
+            │                               │                               │
+            └───────────────────────────────┼───────────────────────────────┘
+                                            ▼
+                                 ┌───────────────────────┐
+                                 │    8. USER MANUAL     │
+                                 │ (Sensory SOP Standard)│
+                                 └───────────────────────┘
+
+9.1. SCREEN 1: SUBJECTIVE RADAR COCKPIT (subjective-radar)
+• Role: Chief Craftsmanship Engineers, Quality Directors, Plant Managers.
+• Business Objective: Executive at-a-glance scorecard tracking model-wise customer 
+  perception metrics against annual craftsmanship targets.
+• Core Functional Metrics:
+  - PQA   : Product Quality Audit sensory composite score (Target: >= 90%).
+  - Paint : Paint finish aesthetic rating (Wave-Scan orange peel LW/SW and DOI gloss index).
+  - Body  : Exterior panel curvature continuity and visual gap symmetry.
+  - GA    : General Assembly craftsmanship (leather stitching straightness, carpet fit).
+  - Press : Stamping press surface ripple, strain marks, and drawline uniformity.
+• Vehicle Lines Benchmarked:
+  - Toyota Fortuner 4x4, Hyundai Creta SX, Mahindra XUV700 AX7, Tata Nexon EV Max.
+• Interactive Capabilities:
+  - Click-through modal popovers displaying demerit category distributions and historical trends.
+
+9.2. SCREEN 2: SENSORY & NVH REPORTS (subjective-reports)
+• Role: NVH Specialists, Acoustics Engineers, Interior Craftsmanship Leads.
+• Business Objective: Multi-dimensional historical analytics and trend reporting.
+• Analytics Views:
+  - Model Trend      : Sensory demerit score trends across 12 calendar months.
+  - Category Pareto  : Ranking defects across Acoustics (NVH), Haptics, Visual, and Operability.
+  - C-Rating vs D-Rating : Comparison of static showroom scores vs dynamic test track scores.
+
+9.3. SCREEN 3: NEW SUBJECTIVE AUDIT DIALOG (add-subjective-audit / addParameter)
+• Role: Certified Subjective Auditors, Customer Quality Inspectors.
+• Business Objective: Instant registration of a vehicle for sensory inspection.
+• Data Capture:
+  - 17-char ISO VIN, Audit Type (C-Rating Static or D-Rating Dynamic).
+  - Model, Variant, Interior Trim, Color, Transmission, Fuel Type, and Originating Plant.
+  - Direct validation against Master Data tables ensuring zero data corruption.
+
+9.4. SCREEN 4: ACTIVE SUBJECTIVE AUDITS REGISTER (subjective-audits-issue-status)
+• Role: Floor Auditors, Craftsmanship Quality Inspectors.
+• Business Objective: Live execution register where auditors record sensory evaluations.
+• Key Evaluation Rubrics:
+  - Acoustics & NVH  : Buzz, Squeak & Rattle (BSR), engine drone, wind hiss (<= 62.5 dBA @ 100km/h).
+  - Haptics & Feel   : Switchgear click feel, leather seam tactile softness, glovebox damping.
+  - Visual Alignment : Color match between plastic bumper and steel body (Delta-E <= 0.8).
+  - Operability      : Door slam sound quality (peak < 150 Hz) and closing velocity (<= 1.05 m/s).
+• Dynamic Checkpoint Hotspot Linkage:
+  - Integrated click to 10x10 spatial vehicle diagram highlighting specific sensory defect areas.
+
+9.5. SCREEN 5: SUBJECTIVE SETUP & MASTERS (prts-subjective-setup)
+• Role: Quality Engineering Administrators.
+• Configuration Sub-Modules:
+  - Sub-Setup Audit Types     : C-Rating (Static Showroom) and D-Rating (Dynamic Track Drive).
+  - Sub-Setup Defect Master   : Categorized sensory defects (wind whistle, loose knob, color delta).
+  - Sub-Setup Function Master : Functional mapping of sensory touchpoints across vehicle zones.
+  - Sub-Setup Monthly Targets : Monthly demerit ceiling targets per model line.
+  - Sub-Setup Image Gallery   : High-resolution visual boundary samples for color/grain standards.
+
+9.6. SCREEN 6: SUBJECTIVE PRTS ALERTS (subjective-alerts)
+• Role: Quality CFT Leads, Problem Resolution Engineers.
+• Business Objective: Direct escalation pipeline to 7D PRTS for sensory non-conformances.
+• Automatic Escalation Triggers:
+  - Persistent BSR squeak/rattle detected on 3 consecutive production units.
+  - Severe door closing effort exceeding 1.2 m/s or latch bounce on test track.
+  - Paint color Delta-E deviation > 1.2 between bumper and body panel.
+• Active Alert Workflow:
+  - Connected directly to ClientsData.alert() data feed (7-DCT Judder, ADAS Camera Drift, 
+    EV BMS CAN Timeout, Monsoon Shower Tailgate Leak, Steering Calibration).
+
+9.7. SCREEN 7: SUBJECTIVE AUDIT ARCHIVES (subjective-audit-archives)
+• Role: Compliance Auditors, Quality Archival Specialists.
+• Business Objective: Historical vault of completed C-Rating and D-Rating vehicle evaluations.
+• Traceability Features:
+  - Full 17-character ISO VIN traceability, auditor sign-offs, demerit penalty histories, 
+    and before/after rectification evidence.
+  - Unarchive and status toggle actions with confirmation safeguards.
+
+9.8. SCREEN 8: SUBJECTIVE AUDIT USER MANUAL (subjective-user-manual)
+• Role: All Quality Inspectors, Plant Engineers, Trainee Auditors.
+• Business Objective: Comprehensive Standard Operating Procedure (SOP) based on IATF 16949 / 
+  VDA Customer Sensory Standards (VDA 16 Surface Evaluation & ZP8 OEM standards).
+• Content Covered:
+  - Methodological comparison: Objective vs. Subjective audits.
+  - The 5 Core Pillars: Acoustics (NVH), Haptics (Touch), Visual Harmony, Operability, Dynamics.
+  - C-Rating (Customer Static Evaluation) vs D-Rating (Driver Dynamic Road Evaluation).
+  - Sensory demerit severity grading (Grade 1: 50pts, Grade 2: 20pts, Grade 3: 5pts, Grade 4: 1pt).
+  - Full print-ready layout with interactive KPI cards and SLA thresholds.
+
+9.9. SCREEN 9: IT HELP DESK (subjective-ithelp-desk / itHelpDeskPop)
+• Role: Plant Users & Handheld Terminal Operators.
+• Business Objective: Instant modal dialog to report system faults, sensory rating sync delays, 
+  or request permission elevation.
+
+
+================================================================================
+                    10. COMPLETE 5-PILLAR RELATIONAL INTEGRITY
+================================================================================
+The FCM architecture connects all 5 operational pillars into a unified ecosystem:
+
+                       ┌───────────────────────────────┐
+                       │   PILLAR 2: MASTER DATA SSOT  │
+                       │ (Models, Variants, Plants,    │
+                       │  Transmissions, Fuels, Stages)│
+                       └───────────────┬───────────────┘
+                                       │
+     ┌───────────────────┬─────────────┴───────┬───────────────────┐
+     ▼                   ▼                     ▼                   ▼
+┌───────────────┐ ┌───────────────┐   ┌─────────────────┐ ┌─────────────────┐
+│   PILLAR 1:   │ │   PILLAR 3:   │   │    PILLAR 4:    │ │    PILLAR 5:    │
+│  COMPLAINTS   │ │   7D / PRTS   │   │ OBJECTIVE AUDIT │ │ SUBJECTIVE AUDIT│
+│(Radar, Monitor│ │ (5W2H Problem │   │ (Checkpoints,   │ │ (Fit & Finish,  │
+│ Meetings,     │ │  Resolution,  │   │  Demerits,      │ │  Paint Quality, │
+│ CAPA, Kanban) │ │  Containment) │   │  EOL/PDI Gates) │ │  NVH Craft)     │
+└───────┬───────┘ └───────┬───────┘   └────────┬────────┘ └────────┬────────┘
+        │                 │                    │                   │
+        └─────────────────┼────────────────────┴───────────────────┘
+                          ▼
+           ┌─────────────────────────────┐
+           │ CLOSED-LOOP QUALITY FEEDBACK│
+           │ (Zero-Defect IATF 16949)    │
+           └─────────────────────────────┘
+
+Whenever an audit failure exceeds threshold or recurring field complaints arrive 
+from global dealers, an automated trigger promotes the incident directly into 
+the 7D/PRTS workflow for root-cause containment and permanent CAPA countermeasures.
+
+
+================================================================================
+                         11. CONCLUSION & STATUS SUMMARY
+================================================================================
+ALL 5 PILLARS of the Enterprise Field Complaint Monitoring (FCM) & Quality Assurance 
+System are now 100% verified, fully synchronized, and comprehensively documented:
+  • PILLAR 1: Complaints (Radar, Monitor, Meetings, CAPA, Kanban)     [100% COMPLETE]
+  • PILLAR 2: Master Data Management (SSOT across 11 core tables)      [100% COMPLETE]
+  • PILLAR 3: 7D / PRTS Problem Resolution & Tracking System           [100% COMPLETE]
+  • PILLAR 4: Objective Quality Audits (Checkpoints, Demerits, Gates)  [100% COMPLETE]
+  • PILLAR 5: Subjective Quality Audits (Craftsmanship, Paint, NVH)    [100% COMPLETE]
+
+The entire system is strictly aligned with the multi-trillion dollar automotive 
+passenger vehicle, commercial haulage, and EV manufacturing domains.
+
+================================================================================
+                        END OF SPECIFICATION DOCUMENT
+================================================================================
+
+

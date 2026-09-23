@@ -14,6 +14,8 @@ interface Card {
   id: number;
   subject: string;
   LawFirm: string;
+  distributor?: string;
+  department?: string;
   createdBy: string;
   assignedTo: string;
   createdDate: string;
@@ -50,15 +52,15 @@ export class KanbanComponent implements OnInit, OnDestroy {
     }
   }
   data = [
-    { subject: 'Global fleet of connected vehicles', distributor: 'Mahindra', Lead: 'Ravi', status: 'Pending', TargetDate: '2026-04-25', FailureDate: '2026-04-20' },
-    { subject: 'Engine Overheating', distributor: 'Tata Motors', Lead: 'Sneha', status: 'Pending', TargetDate: '2026-04-22', FailureDate: '2026-04-18' },
-    { subject: 'Update Application Dependencies', distributor: 'Infosys', Lead: 'Kiran', status: 'Hold', TargetDate: '2026-04-30', FailureDate: '2026-04-21' },
-    { subject: 'Verify DLL Versions', distributor: 'Tesla', Lead: 'Arjun', status: 'Process', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
-    { subject: 'Bumper Issue', distributor: 'Tesla', Lead: 'Arjun', status: 'Hold', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
-    { subject: 'Error Testing', distributor: 'Tesla', Lead: 'Arjun', status: 'Pending', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
-    { subject: 'Error Testing', distributor: 'Tesla', Lead: 'Arjun', status: 'Hold', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
-    { subject: 'Error Testing', distributor: 'Tesla', Lead: 'Arjun', status: 'Process', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
-    { subject: 'Error Testing', distributor: 'Tesla', Lead: 'Arjun', status: 'Closed', TargetDate: '2026-04-15', FailureDate: '2026-04-10' }
+    { subject: 'ADAS Front Radar Camera Calibration Error', distributor: 'Apex Auto Retail Group (Berlin)', department: 'QA-16949', Lead: 'Ravi Verma', status: 'Pending', TargetDate: '2026-04-25', FailureDate: '2026-04-20' },
+    { subject: 'Turbocharger Boost Pressure Sensor Fluctuation', distributor: 'EuroStar Motors Ltd. (London)', department: 'QA-16949', Lead: 'Sneha Patel', status: 'Process', TargetDate: '2026-04-22', FailureDate: '2026-04-18' },
+    { subject: '7-Speed Dual-Clutch Shudder on Low Speed', distributor: 'Metro Auto Distribution (Los Angeles)', department: 'MFG-TCF', Lead: 'Kiran Rao', status: 'Process', TargetDate: '2026-04-30', FailureDate: '2026-04-21' },
+    { subject: 'High Voltage Traction Battery Fast-Charging Drop', distributor: 'Siam Premier Motors Co. (Bangkok)', department: 'RND-PWR', Lead: 'Arjun Sharma', status: 'Hold', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
+    { subject: 'Electronic Power Steering (EPS) Assist Sensor Loss', distributor: 'Bosphorus Auto Sales (Istanbul)', department: 'QA-16949', Lead: 'Rajesh Kumar', status: 'Closed', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
+    { subject: 'Brake Pedal Sponginess and ABS Warning Light', distributor: 'Alliance Auto France SAS (Paris)', department: 'MFG-TCF', Lead: 'Amit Singh', status: 'Pending', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
+    { subject: 'HVAC Dual-Zone Climate Compressor Noise', distributor: 'Himalaya Motors Pvt. Ltd. (Kathmandu)', department: 'SQA-VND', Lead: 'Vikram Joshi', status: 'Hold', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
+    { subject: 'Infotainment Wireless CarPlay / Telematics Error', distributor: 'Cape Town Automotive Hub', department: 'RND-EES', Lead: 'Pooja Reddy', status: 'Process', TargetDate: '2026-04-15', FailureDate: '2026-04-10' },
+    { subject: 'Panoramic Sunroof Drain Channel Ingress Noise', distributor: 'Metro Auto Distribution (Los Angeles)', department: 'MFG-TCF', Lead: 'Sunil Nair', status: 'Closed', TargetDate: '2026-04-15', FailureDate: '2026-04-10' }
   ];
 
   lists: Status[] = ['Pending', 'Process', 'Hold', 'Closed'];
@@ -85,6 +87,8 @@ export class KanbanComponent implements OnInit, OnDestroy {
         id: index + 1,
         subject: item.subject,
         LawFirm: item.distributor,
+        distributor: item.distributor,
+        department: item.department,
         createdBy: item.Lead,
         assignedTo: item.Lead,
         createdDate: item.FailureDate,

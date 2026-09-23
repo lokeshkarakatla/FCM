@@ -35,23 +35,15 @@ export class AFueltypeComponent  {
    constructor(private router: Router, private dialog: MatDialog) { }
 
 
-     tableList =[
-      { fuelType: 'Petrol', modelName: 'Verna EV 1.50', status: 'Active' },
-      { fuelType: 'Diesel', modelName: 'Lamborghini', status: 'Active' },
-      { fuelType: 'CNG', modelName: 'Ferrari', status: 'Active' },
-      { fuelType: 'Petrol', modelName: 'Hyundai', status: 'Active' },
-      { fuelType: 'Diesel', modelName: 'Toyota Camry', status: 'Active' },
-      { fuelType: 'Petrol', modelName: 'Corvette', status: 'Active' },
-      { fuelType: 'Solar', modelName: 'Corvette', status: 'Active' },
-      { fuelType: 'CNG', modelName: 'Toyota Camry', status: 'Active' },
-      { fuelType: 'CNG', modelName: 'Hyundai', status: 'Active' },
-      { fuelType: 'Solar', modelName: 'Ferrari', status: 'Active' },
-      { fuelType: 'Petrol', modelName: 'Lamborghini', status: 'Active' },
-      { fuelType: 'Solar', modelName: 'Lexus', status: 'Active' },
-      { fuelType: 'Electric', modelName: 'Mahindra XUV700', status: 'Active' },
-      { fuelType: 'Diesel', modelName: 'Toyota Fortuner', status: 'Active' },
-      { fuelType: 'Petrol', modelName: 'Hyundai Creta', status: 'Active' }
-
+    tableList = [
+      { fuelType: 'Diesel (BS-VI CRDi with SCR)', modelName: 'Toyota Fortuner 4x4', status: 'Active' },
+      { fuelType: 'Strong Hybrid Electric (SHEV)', modelName: 'Toyota Camry Hybrid', status: 'Active' },
+      { fuelType: 'Petrol (Turbo GDi)', modelName: 'Hyundai Creta SX', status: 'Active' },
+      { fuelType: 'Petrol (1.5L Turbocharged)', modelName: 'Hyundai Verna Turbo', status: 'Active' },
+      { fuelType: 'Diesel (2.2L mHawk CRDi)', modelName: 'Mahindra XUV700 AX7', status: 'Active' },
+      { fuelType: 'Diesel (2.0L Kryotec Turbo)', modelName: 'Tata Safari Dark Edition', status: 'Active' },
+      { fuelType: 'Battery Electric (40.5 kWh BEV)', modelName: 'Tata Nexon EV Max', status: 'Active' },
+      { fuelType: 'Petrol (1.5L i-VTEC Flex-Ready)', modelName: 'Honda Elevate ZX', status: 'Active' }
     ];
 
     // Function to get status text

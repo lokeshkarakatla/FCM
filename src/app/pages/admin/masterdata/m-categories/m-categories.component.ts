@@ -23,12 +23,16 @@ export class MCategoriesComponent  {
       constructor(private router: Router, private dialog: MatDialog) { }
 
 
-      tableList = [
-        { stageName: 'Product Quality', stageCode: 'EM', status: 'Active' },
-        { stageName: 'Manager', stageCode: 'I-115', status: 'Active' },
-        { stageName: 'RnD', stageCode: 'PNT', status: 'Active' },
-
-      ];
+       tableList = [
+         { stageName: 'ADAS, Radar & Safety Vision Sensors', stageCode: 'CAT-ADAS', status: 'Active' },
+         { stageName: 'Engine, Turbocharger & Fuel Injection', stageCode: 'CAT-ENG', status: 'Active' },
+         { stageName: 'Automatic Transmission & Dual-Clutch (DCT)', stageCode: 'CAT-TRN', status: 'Active' },
+         { stageName: 'High Voltage Battery & BMS (EV)', stageCode: 'CAT-EVB', status: 'Active' },
+         { stageName: 'Infotainment, Digital Cluster & Telematics', stageCode: 'CAT-INF', status: 'Active' },
+         { stageName: 'HVAC, Dual-Zone AC & Compressor', stageCode: 'CAT-HVAC', status: 'Active' },
+         { stageName: 'Suspension, Steering & ABS / ESP', stageCode: 'CAT-CHS', status: 'Active' },
+         { stageName: 'Body Panel Fitment, Paint & NVH', stageCode: 'CAT-NVH', status: 'Active' }
+       ];
 
       // Function to get status text
       getStatusText(status: boolean): string {

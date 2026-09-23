@@ -1,7 +1,7 @@
 <div class="custom-modal-wrapper">
   <div class="modal-header-custom">
     <h2 class="modal-title-text">
-      <span *ngIf="!data">Add</span><span *ngIf="data">Edit</span> Action Item
+      {{ data?.isEdit ? 'Edit CAPA' : 'Add CAPA' }}
     </h2>
     <button type="button" class="modal-close-icon btn btn-link p-0 text-white" (click)="close()">
       <mat-icon>close</mat-icon>
@@ -85,6 +85,15 @@
         </label>
         <div class="col-sm-9">
           <input type="date" class="form-control bac" [(ngModel)]="dateDue" name="dateDue" />
+        </div>
+      </div>
+
+      <div class="row align-items-center mb-3">
+        <label class="col-sm-3 control-label">
+          <b style="color: #1e293b; font-weight: 600;">Date Resolved :</b>
+        </label>
+        <div class="col-sm-9">
+          <input type="date" class="form-control bac" [(ngModel)]="dateResolved" name="dateResolved" />
         </div>
       </div>
 

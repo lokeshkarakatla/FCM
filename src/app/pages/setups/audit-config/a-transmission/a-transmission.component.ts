@@ -35,23 +35,16 @@ export class ATransmissionComponent {
   constructor(private router: Router, private dialog: MatDialog) { }
 
 
-    tableList =[
-      { transmissionName: 'Speed manual transmission', transmissionCode: 'Q', model: 'Verna EV 1.50', status: 'Active' },
-      { transmissionName: 'Direct Shift Gearbox', transmissionCode: '2', model: 'Corvette', status: 'Active' },
-      { transmissionName: 'Intelligent Manual Transmission', transmissionCode: '1', model: 'Toyota Camry', status: 'Active' },
-      { transmissionName: 'Torque Converter Gearbox', transmissionCode: '7', model: 'Hyundai', status: 'Active' },
-      { transmissionName: 'Tiptronic Transmission', transmissionCode: 'T', model: 'Ferrari', status: 'Active' },
-      { transmissionName: 'Automated manual transmission', transmissionCode: 'a', model: 'Lamborghini', status: 'Active' },
-      { transmissionName: 'Manual Transmission', transmissionCode: '5', model: 'Lexus', status: 'Active' },
-      { transmissionName: 'Continuously Variable Transmission', transmissionCode: '4', model: 'Mahindra XUV700', status: 'Active' },
-      { transmissionName: 'Torque converter transmissions', transmissionCode: '3', model: 'Toyota Fortuner', status: 'Active' },
-      { transmissionName: 'Dual-Clutch Transmission', transmissionCode: '2', model: 'Hyundai Creta', status: 'Active' },
-      { transmissionName: 'DCT Automatic', transmissionCode: '1', model: 'Tata Nexon', status: 'Active' },
-      { transmissionName: 'Four-Strock Engine', transmissionCode: '7', model: 'Ruby', status: 'Active' },
-      { transmissionName: 'speed Ricardo transmission', transmissionCode: '7', model: 'Valkyrie', status: 'Active' },
-      { transmissionName: 'Tiptronic transmission', transmissionCode: 'b', model: 'BMW', status: 'Active' },
-      { transmissionName: 'Speed Four stroock Manual', transmissionCode: 'z', model: 'Honda City', status: 'Active' }
-   ];
+    tableList = [
+      { transmissionName: '6-Speed Torque Converter Automatic with Sequential Shift', transmissionCode: 'TRN-6AT', model: 'Toyota Fortuner 4x4', status: 'Active', IsActive: true },
+      { transmissionName: 'Electronic Continuously Variable Transmission (e-CVT)', transmissionCode: 'TRN-ECVT', model: 'Toyota Camry Hybrid', status: 'Active', IsActive: true },
+      { transmissionName: '7-Speed Dual-Clutch Transmission (7-DCT)', transmissionCode: 'TRN-7DCT', model: 'Hyundai Creta SX', status: 'Active', IsActive: true },
+      { transmissionName: '6-Speed Intelligent Manual Transmission (6-iMT)', transmissionCode: 'TRN-6MT', model: 'Hyundai Verna Turbo', status: 'Active', IsActive: true },
+      { transmissionName: '6-Speed Aisin Torque Converter with AWD Lock', transmissionCode: 'TRN-AWD6', model: 'Mahindra XUV700 AX7', status: 'Active', IsActive: true },
+      { transmissionName: '6-Speed Hydra-Matic Automatic Transmission', transmissionCode: 'TRN-6HAT', model: 'Tata Safari Dark Edition', status: 'Active', IsActive: true },
+      { transmissionName: 'Single-Speed Direct Reduction EV Transmission', transmissionCode: 'TRN-EV1S', model: 'Tata Nexon EV Max', status: 'Active', IsActive: true },
+      { transmissionName: 'Advanced Continuous Variable Transmission (CVT)', transmissionCode: 'TRN-CVT', model: 'Honda Elevate ZX', status: 'Active', IsActive: true }
+    ];
 
    // Function to get status text
    getStatusText(status: boolean): string {

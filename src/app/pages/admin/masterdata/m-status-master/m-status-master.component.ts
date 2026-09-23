@@ -24,12 +24,11 @@ export class MStatusMasterComponent  {
 
 
      tableList = [
-       { stageName: 'Done', stageCode: 'EM', status: 'Active' },
-       { stageName: 'Pending', stageCode: 'I-115', status: 'Active' },
-       { stageName: 'WIP', stageCode: 'PNT', status: 'Active' },
-       { stageName: 'Closed', stageCode: 'RM', status: 'Active' },
-       { stageName: 'Open', stageCode: 'LS', status: 'Active' },
-
+       { stageName: 'Open', stageCode: 'OPN', status: 'Active' },
+       { stageName: 'Pending', stageCode: 'PND', status: 'Active' },
+       { stageName: 'WIP', stageCode: 'WIP', status: 'Active' },
+       { stageName: 'Hold', stageCode: 'HLD', status: 'Active' },
+       { stageName: 'Closed', stageCode: 'CLS', status: 'Active' }
      ];
 
      // Function to get status text

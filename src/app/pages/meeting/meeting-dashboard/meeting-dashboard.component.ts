@@ -25,6 +25,7 @@ export interface MeetingComplaint {
   description: string;
   category: string;
   country?: string;
+  department?: string;
   dealer?: string;
   severity: 'High' | 'Moderate' | 'Low';
   status: 'Pending' | 'Overdue';
@@ -216,6 +217,7 @@ export class MeetingDashboardComponent implements OnInit {
       description: 'Parts are not properly aligned before being fastened, creating a risk of structural weakness or functional failure.',
       category: 'India',
       country: 'India',
+      department: 'Production',
       dealer: 'Mumbai Central',
       severity: 'High',
       status: 'Pending',
@@ -241,6 +243,7 @@ export class MeetingDashboardComponent implements OnInit {
       description: 'Traces of foreign particulate matter were discovered inside the material drums during routine batch sampling.',
       category: 'India',
       country: 'India',
+      department: 'QA',
       dealer: 'Mumbai Central',
       severity: 'High',
       status: 'Pending',
@@ -265,6 +268,7 @@ export class MeetingDashboardComponent implements OnInit {
       description: 'The shipment arrived from the supplier without the mandatory Certificate of Analysis documentation.',
       category: 'India',
       country: 'India',
+      department: 'Incoming Inspection',
       dealer: 'Delhi Motors',
       severity: 'High',
       status: 'Pending',
@@ -289,6 +293,7 @@ export class MeetingDashboardComponent implements OnInit {
       description: 'Raw material packaging was found torn or crushed upon delivery, increasing the risk of contamination.',
       category: 'India',
       country: 'India',
+      department: 'Warehouse',
       dealer: 'Bangalore Auto',
       severity: 'High',
       status: 'Overdue',
@@ -313,6 +318,7 @@ export class MeetingDashboardComponent implements OnInit {
       description: 'Optical alignment sensors showing intermittent +/- 2mm offset deviation during continuous cycle run.',
       category: 'Germany',
       country: 'Germany',
+      department: 'Maintenance',
       dealer: 'Munich Auto',
       severity: 'Moderate',
       status: 'Pending',
@@ -337,6 +343,7 @@ export class MeetingDashboardComponent implements OnInit {
       description: 'Secondary line pump pressure fluctuating outside 120-140 bar tolerance band during shift handover.',
       category: 'Germany',
       country: 'Germany',
+      department: 'Production',
       dealer: 'Berlin Motors',
       severity: 'Moderate',
       status: 'Pending',
@@ -361,6 +368,7 @@ export class MeetingDashboardComponent implements OnInit {
       description: 'Thermal transfer printed barcodes showing 4% scanner rejection rate at warehouse inbound gate.',
       category: 'United States',
       country: 'United States',
+      department: 'Logistics',
       dealer: 'Chicago Fleet',
       severity: 'Low',
       status: 'Pending',
@@ -386,6 +394,7 @@ export class MeetingDashboardComponent implements OnInit {
       description: 'Dust cover clips on tier-3 storage bins showing cosmetic micro-cracks without functional impairment.',
       category: 'Thailand',
       country: 'Thailand',
+      department: 'Warehouse',
       dealer: 'Bangkok Central',
       severity: 'Low',
       status: 'Pending',
@@ -416,8 +425,8 @@ export class MeetingDashboardComponent implements OnInit {
       severity: 'Low',
       dateInitiated: '2026-08-01',
       dateDue: '2026-08-11',
-      dateResolved: 'N/A',
-      resolved: false,
+      dateResolved: '2026-08-10',
+      resolved: true,
       tat: '10 Days'
     },
     {
@@ -429,8 +438,8 @@ export class MeetingDashboardComponent implements OnInit {
       severity: 'Medium',
       dateInitiated: '2026-08-04',
       dateDue: '2026-08-12',
-      dateResolved: 'N/A',
-      resolved: false,
+      dateResolved: '2026-08-11',
+      resolved: true,
       tat: '8 Days'
     },
     {
@@ -442,8 +451,8 @@ export class MeetingDashboardComponent implements OnInit {
       severity: 'High',
       dateInitiated: '2026-08-06',
       dateDue: '2026-08-12',
-      dateResolved: 'N/A',
-      resolved: false,
+      dateResolved: '2026-08-12',
+      resolved: true,
       tat: '6 Days'
     },
     {
@@ -468,8 +477,8 @@ export class MeetingDashboardComponent implements OnInit {
       severity: 'Medium',
       dateInitiated: '2026-08-08',
       dateDue: '2026-08-16',
-      dateResolved: 'N/A',
-      resolved: false,
+      dateResolved: '2026-08-15',
+      resolved: true,
       tat: '8 Days'
     }
   ];
@@ -792,8 +801,9 @@ export class MeetingDashboardComponent implements OnInit {
         observationRef: item.ref,
         subject: item.subject,
         category: 'Quality Assurance',
-        severity: item.severity === 'High' ? 'High' : (item.severity === 'Moderate' ? 'Medium' : 'Low')
-      } : null
+        severity: item.severity === 'High' ? 'High' : (item.severity === 'Moderate' ? 'Medium' : 'Low'),
+        isEdit: false
+      } : { isEdit: false }
     });
 
     dialogRef.afterClosed().subscribe(newCapa => {
@@ -808,7 +818,7 @@ export class MeetingDashboardComponent implements OnInit {
           dateInitiated: newCapa.dateInitiated,
           dateDue: newCapa.dateDue,
           dateResolved: newCapa.dateResolved,
-          resolved: false,
+          resolved: newCapa.resolved,
           tat: newCapa.tat
         });
         if (item) {
@@ -823,11 +833,56 @@ export class MeetingDashboardComponent implements OnInit {
     });
   }
 
+  openEditCapa(capa: MeetingCapa): void {
+    const dialogRef = this.dialog.open(AddItemCapaDialogComponent, {
+      width: '780px',
+      maxWidth: '92vw',
+      maxHeight: '90vh',
+      data: {
+        observationRef: capa.observationRef,
+        subject: capa.subject,
+        category: capa.category,
+        function: capa.function,
+        severity: capa.severity,
+        dateInitiated: capa.dateInitiated,
+        dateDue: capa.dateDue,
+        dateResolved: capa.dateResolved,
+        tat: capa.tat,
+        isEdit: true
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(updatedCapa => {
+      if (updatedCapa) {
+        capa.subject = updatedCapa.subject;
+        capa.category = updatedCapa.category;
+        capa.function = updatedCapa.function;
+        capa.observationRef = updatedCapa.observationRef;
+        capa.severity = updatedCapa.severity;
+        capa.dateInitiated = updatedCapa.dateInitiated;
+        capa.dateDue = updatedCapa.dateDue;
+        capa.dateResolved = updatedCapa.dateResolved;
+        capa.resolved = updatedCapa.resolved;
+        capa.tat = updatedCapa.tat;
+      }
+    });
+  }
+
   deleteCapa(item: MeetingCapa): void {
     this.capaList = this.capaList.filter(c => c !== item);
     const comp = this.complaintsData.find(c => c.ref === item.observationRef);
     if (comp) {
       comp.capaCount = this.capaList.filter(c => c.observationRef === comp.ref).length;
+    }
+  }
+
+  onMeetingCapaResolvedToggle(capa: MeetingCapa): void {
+    if (capa.resolved) {
+      if (!capa.dateResolved || capa.dateResolved === 'N/A') {
+        capa.dateResolved = new Date().toISOString().split('T')[0];
+      }
+    } else {
+      capa.dateResolved = 'N/A';
     }
   }
 

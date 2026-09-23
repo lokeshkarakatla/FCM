@@ -86,13 +86,26 @@
 }
 
 .kanban-card {
-    padding: 8px;
+    padding: 10px;
     margin-bottom: 10px;
     background: white;
-    border: 2px solid #87CEFA;
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #bfdbfe;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
     width: 100%;
+    white-space: normal;
+    word-break: break-word;
+    box-sizing: border-box;
+}
+
+.card-title-row {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1e293b;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.35;
+    margin-bottom: 6px;
 }
 
 .card-header {
@@ -226,19 +239,27 @@
 .card-info {
     display: flex;
     align-items: center;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    white-space: normal;
 }
 
 .info-item {
     display: flex;
     align-items: center;
-    gap: 3px;
+    gap: 4px;
     margin: 0;
-    color: gray;
+    color: #64748b;
     font-size: 12px;
+    white-space: normal;
+    word-break: break-word;
 
     mat-icon {
-        font-size: 18px;
+        font-size: 16px;
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        color: #94a3b8;
     }
 }
 

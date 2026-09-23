@@ -49,18 +49,19 @@ export class PrtsDRolesComponent implements OnInit {
   ]
 
 
+  canUpdate: boolean = true;
   filterToggle: boolean = false;
 
   values1 = [
-    { stepcode: 'D1', stepname: "Process", checklist: '5', status: true },
-    { stepcode: 'D2', stepname: "Tools", checklist: '5', status: true },
-    { stepcode: 'D3a', stepname: "Production", checklist: '5', status: true },
-    { stepcode: 'D3b', stepname: "SQM", checklist: '5', status: true },
-    { stepcode: 'D4a', stepname: "Internal Quality Control", checklist: 'NA', status: true },
-    { stepcode: 'D4b', stepname: "Supplier Part Quality", checklist: 'NA', status: true },
-    { stepcode: 'D5', stepname: "Process ENG", checklist: 'NA', status: true },
-    { stepcode: 'D6', stepname: "Product ENG", checklist: 'NA', status: true },
-    { stepcode: 'D7', stepname: "CFT", checklist: 'NA', status: true },
+    { stepcode: 'D1', stepname: "Process", checklist: '5', status: true, IsActive: true },
+    { stepcode: 'D2', stepname: "Tools", checklist: '5', status: true, IsActive: true },
+    { stepcode: 'D3a', stepname: "Production", checklist: '5', status: true, IsActive: true },
+    { stepcode: 'D3b', stepname: "SQM", checklist: '5', status: true, IsActive: true },
+    { stepcode: 'D4a', stepname: "Internal Quality Control", checklist: 'NA', status: true, IsActive: true },
+    { stepcode: 'D4b', stepname: "Supplier Part Quality", checklist: 'NA', status: true, IsActive: true },
+    { stepcode: 'D5', stepname: "Process ENG", checklist: 'NA', status: true, IsActive: true },
+    { stepcode: 'D6', stepname: "Product ENG", checklist: 'NA', status: true, IsActive: true },
+    { stepcode: 'D7', stepname: "CFT", checklist: 'NA', status: true, IsActive: true },
 
   ]
   statusOptions = [
@@ -75,7 +76,7 @@ export class PrtsDRolesComponent implements OnInit {
     //this.alertService.createAlert('Successfully saved.', 1);
   }
 
-  public addmodule(item:any) {
+  public addmodule(item?: any) {
     this.dialog.open(AddPrtsRolesComponent, {
       data: item,
       width: "600px",
@@ -83,7 +84,7 @@ export class PrtsDRolesComponent implements OnInit {
     })
   }
 
-  public adddesc(item:any) {
+  public adddesc(item?: any) {
     this.dialog.open(AddPrtsDescriptionComponent, {
       data: item,
       width: "600px",
@@ -91,7 +92,7 @@ export class PrtsDRolesComponent implements OnInit {
     })
   }
 
-  public addchecklist(item:any) {
+  public addchecklist(item?: any) {
     this.dialog.open(AddPrtsPillarComponent, {
       data: item,
       width: "580px",
@@ -99,7 +100,7 @@ export class PrtsDRolesComponent implements OnInit {
     })
   }
 
-  public adddocument(item:any) {
+  public adddocument(item?: any) {
     this.dialog.open(AddPrtsDocumentComponent, {
       data: item,
       width: "620px",
@@ -127,7 +128,7 @@ export class PrtsDRolesComponent implements OnInit {
    Confirmation(item: any) {
        let dialogRef = this.dialog.open(StatusConfirmationDialogComponent, {
          width: 'auto',
-         data: { TractorStatusId: item.TractorStatusId, title: 'Change Status', content: 'Are you sure you want to Change the Status ?' }
+         data: { StatusId: item.stepcode, title: 'Change Status', content: 'Are you sure you want to Change the Status ?' }
        });
 
      }

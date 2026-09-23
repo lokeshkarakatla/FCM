@@ -257,36 +257,23 @@
 
       <!-- RIGHT SIDE: COMPLAINTS TABLE CONTENT -->
       <div class="col-md-10 col-sm-9">
-
-        <!-- Top Action Buttons -->
-        <div class="mb-3 d-flex justify-content-end gap-2">
-
-          <button mat-raised-button color="primary" (click)="openAddObservation()">
-            <mat-icon>add</mat-icon> Add Complaint
-          </button>
-        </div>
-
         <!-- Table Responsive -->
         <div class="table-responsive">
           <table class="table table-bordered table-hover align-middle main-grid-table">
             <thead class="table-dark">
               <tr>
                 <th class="text-center" width="70">Actions</th>
-                <th class="text-center" width="90">Serial</th>
+                <th class="text-center" width="100">Reference No</th>
                 <th>Subject</th>
                 <th>Description</th>
-                <th class="text-center" width="80">Chronic</th>
-                <th class="text-center" width="70">Demerit</th>
-                <th class="text-center" width="60">Notes</th>
-                <th class="text-center" width="80">Comments</th>
-                <th class="text-center" width="60">Docs</th>
+                <th class="text-center" width="100">Department</th>
+                <th class="text-center" width="90">Country</th>
+                <th class="text-center" width="90">Severity</th>
                 <th class="text-center" width="80">CAPA</th>
+                <th class="text-center" width="90">Status</th>
                 <th class="text-center" width="95">Reviewed</th>
-                <th class="text-center" width="70">Initiated</th>
-                <th class="text-center" width="70">Resolved</th>
                 <th class="text-center" width="80">TAT</th>
-                <th class="text-center" width="95">Date logged</th>
-                <th class="text-center" width="95">Date Resolved</th>
+                <th class="text-center" width="105">Date Logged</th>
               </tr>
             </thead>
             <tbody>
@@ -300,7 +287,7 @@
                     matTooltip="Delete Complaint"></i>
                 </td>
 
-                <!-- Serial -->
+                <!-- Reference No -->
                 <td class="text-center ref-cell" [class.text-danger]="item.severity === 'High'">
                   <b>{{ item.ref }}</b>
                 </td>
@@ -315,28 +302,18 @@
                   {{ item.description }}
                 </td>
 
-                <!-- Chronic -->
+                <!-- Department -->
+                <td class="text-center">{{ item.department || '—' }}</td>
+
+                <!-- Country -->
+                <td class="text-center">{{ item.country || '—' }}</td>
+
+                <!-- Severity -->
                 <td class="text-center">
-                  <mat-checkbox [(ngModel)]="item.chronic"></mat-checkbox>
-                </td>
-
-                <!-- Demerit -->
-                <td class="text-center">{{ item.demerit }}</td>
-
-                <!-- Notes -->
-                <td class="text-center">
-                  <a class="link-view" (click)="openNotes(item)"><u>view</u></a>
-                </td>
-
-                <!-- Comments (Double status circles) -->
-                <td class="text-center pointer" (click)="openRemarks(item)">
-                  <span class="status-circle" [ngClass]="item.auditeeCompleted ? 'green' : 'grey'"></span>
-                  <span class="status-circle" [ngClass]="item.auditorCompleted ? 'green' : 'grey'"></span>
-                </td>
-
-                <!-- Docs -->
-                <td class="text-center">
-                  <a class="link-view"><u>view</u></a>
+                  <span class="badge"
+                    [ngClass]="item.severity === 'High' ? 'bg-danger' : (item.severity === 'Moderate' ? 'bg-warning text-dark' : 'bg-success')">
+                    {{ item.severity }}
+                  </span>
                 </td>
 
                 <!-- CAPA (Click to open / add CAPA) -->
@@ -352,7 +329,15 @@
                   </div>
                 </td>
 
-                <!-- Reviewed (Checkbox opens 10-pill next review popup per wireframe) -->
+                <!-- Status -->
+                <td class="text-center">
+                  <span class="badge"
+                    [ngClass]="item.status === 'Overdue' ? 'bg-danger' : 'bg-warning text-dark'">
+                    {{ item.status }}
+                  </span>
+                </td>
+
+                <!-- Reviewed (Checkbox opens next review popup) -->
                 <td class="text-center review-cell">
                   <div class="d-flex flex-column align-items-center">
                     <mat-checkbox [checked]="item.reviewed" (change)="onToggleReviewed(item, $event)"
@@ -370,29 +355,16 @@
                   </div>
                 </td>
 
-                <!-- Initiated -->
-                <td class="text-center">
-                  <mat-checkbox [(ngModel)]="item.initiated"></mat-checkbox>
-                </td>
-
-                <!-- Resolved -->
-                <td class="text-center">
-                  <mat-checkbox [(ngModel)]="item.resolved"></mat-checkbox>
-                </td>
-
                 <!-- TAT -->
                 <td class="text-center">{{ item.tat }}</td>
 
-                <!-- Date logged -->
+                <!-- Date Logged -->
                 <td class="text-center">{{ item.dateLogged }}</td>
-
-                <!-- Date Resolved -->
-                <td class="text-center">{{ item.dateResolved }}</td>
 
               </tr>
 
               <tr *ngIf="filteredComplaints.length === 0">
-                <td colspan="16" class="text-center text-muted py-4">
+                <td colspan="12" class="text-center text-muted py-4">
                   No complaints match the selected status / severity filters.
                 </td>
               </tr>
@@ -421,7 +393,7 @@
       </div>
 
       <button mat-raised-button color="primary" (click)="openAddItemCapa()">
-        <mat-icon>add</mat-icon> Add Item
+        <mat-icon>add</mat-icon> Add CAPA
       </button>
     </div>
 
@@ -446,8 +418,8 @@
         <tbody>
           <tr *ngFor="let capa of capaList">
             <td class="text-center">
-              <i class="fa fa-edit text-primary me-2 pointer"></i>
-              <i class="fa fa-trash text-danger pointer" (click)="deleteCapa(capa)"></i>
+              <i class="fa fa-edit text-primary me-2 pointer" (click)="openEditCapa(capa)" matTooltip="Edit CAPA"></i>
+              <i class="fa fa-trash text-danger pointer" (click)="deleteCapa(capa)" matTooltip="Delete CAPA"></i>
             </td>
 
             <td class="fw-semibold">{{ capa.subject }}</td>
@@ -467,7 +439,7 @@
             <td class="text-center">{{ capa.dateResolved }}</td>
 
             <td class="text-center">
-              <mat-checkbox [(ngModel)]="capa.resolved"></mat-checkbox>
+              <mat-checkbox [(ngModel)]="capa.resolved" (change)="onMeetingCapaResolvedToggle(capa)"></mat-checkbox>
             </td>
 
             <td class="text-center">{{ capa.tat }}</td>

@@ -44,7 +44,11 @@
           </div>
           <div class="form-group full-span">
             <label>Author Department:</label>
-            <input type="text" class="form-control" placeholder="Enter the author's department">
+            <mat-select class="form-control" [(value)]="selectedAuthorDept">
+              <mat-option *ngFor="let dept of authorDepartments" [value]="dept">
+                {{ dept }}
+              </mat-option>
+            </mat-select>
           </div>
         </div>
       </div>
@@ -52,52 +56,42 @@
       <div class="form-card">
         <h3>Project Information</h3>
         <div class="form-grid">
-          <!-- <div class="form-group full-span"> -->
-          <!-- <label>New Project</label> -->
-          <!-- <div class="checkbox-group">
-              <mat-checkbox>Yes</mat-checkbox>
-              <mat-checkbox [checked]="true">No</mat-checkbox>
-            </div> -->
-          <!-- </div> -->
-          <!-- <div class="form-group full-span">
-            <label>Project Code/Name:</label>
-            <input type="text" class="form-control" placeholder="Enter Project Code/Name">
-          </div> -->
           <div class="form-group">
             <label>Model:</label>
-            <input type="text" class="form-control" placeholder="Enter Model">
+            <mat-select class="form-control" [(value)]="selectedModel">
+              <mat-option *ngFor="let model of models" [value]="model">
+                {{ model }}
+              </mat-option>
+            </mat-select>
           </div>
           <div class="form-group">
             <label>Variant:</label>
-            <input type="text" class="form-control" placeholder="Enter Variant">
+            <mat-select class="form-control" [(value)]="selectedVariant">
+              <mat-option *ngFor="let variant of variants" [value]="variant">
+                {{ variant }}
+              </mat-option>
+            </mat-select>
           </div>
           <div class="form-group">
             <label>Issue Severity:</label>
-            <input type="text" class="form-control" placeholder="e.g., High, Medium, Low">
+            <mat-select class="form-control" [(value)]="selectedSeverity">
+              <mat-option *ngFor="let severity of severities" [value]="severity">
+                {{ severity }}
+              </mat-option>
+            </mat-select>
           </div>
           <div class="form-group">
             <label>Category:</label>
-            <input type="text" class="form-control" placeholder="Enter Category">
+            <mat-select class="form-control" [(value)]="selectedCategory">
+              <mat-option *ngFor="let category of categories" [value]="category">
+                {{ category }}
+              </mat-option>
+            </mat-select>
           </div>
           <div class="form-group">
             <mat-checkbox class="report-issue-checkbox" (change)="repeted($event)">Repeat Issue</mat-checkbox>
           </div>
 
-          <!-- <div class="form-group full-span" *ngIf="isRepeted">
-            <label>Enter PRTS Reference :</label>
-            <div>
-              <mat-select class="form-control" placeholder="Enter PRTS Reference">
-                <mat-option value="MCH-101">CNC Lathe Machine</mat-option>
-                <mat-option value="MCH-102">Hydraulic Press</mat-option>
-                <mat-option value="MCH-103">Injection Molding Machine</mat-option>
-                <mat-option value="MCH-104">Welding Robot</mat-option>
-                <mat-option value="MCH-105">Packaging Line 3</mat-option>
-              </mat-select>
-            </div>
-          </div> -->
-
-
-          <!-- urururu -->
           <div class="form-group full-span" *ngIf="isRepeted">
             <label>Enter PRTS Reference :</label>
 
@@ -117,32 +111,8 @@
 
             </mat-select>
           </div>
-          <!-- urururu -->
-
-
         </div>
       </div>
-
-      <!-- <div class="form-card">
-        <h3>Assignment Details</h3>
-        <div class="assignment-header">
-          <label class="assignment-label">Assigned to:</label>
-        </div>
-        <div class="assignment-row">
-          <mat-select class="form-control" placeholder="Select User">
-            <mat-option value="1">Admin (Quality Assurance)</mat-option>
-            <mat-option value="2">Ayush (Supply Chain)</mat-option>
-          </mat-select>
-          <div class="assignment-header">
-            <label class="assignment-label">Containment Assigned:</label>
-          </div>
-          <mat-select class="form-control" placeholder="Select user">
-            <mat-option value="1">Ayush (Customer Service)</mat-option>
-            <mat-option value="2">Admin (R & D)</mat-option>
-          </mat-select>
-        </div>
-       
-      </div> -->
 
       <div class="form-card">
         <h3>Assignment Details</h3>
@@ -155,14 +125,16 @@
 
         <!-- Inputs -->
         <div class="assignment-row">
-          <mat-select class="form-control" placeholder="Assigned User">
-            <mat-option value="1">Tejaswi (Quality Assurance)</mat-option>
-            <mat-option value="2">Ayush (Supply Chain)</mat-option>
+          <mat-select class="form-control" placeholder="Assigned User" [(value)]="selectedAssignedUser">
+            <mat-option *ngFor="let user of assignedUsers" [value]="user">
+              {{ user }}
+            </mat-option>
           </mat-select>
 
-          <mat-select class="form-control" placeholder="Containment User">
-            <mat-option value="1">Ayush (Customer Service)</mat-option>
-            <mat-option value="2">Roshan (R & D)</mat-option>
+          <mat-select class="form-control" placeholder="Containment User" [(value)]="selectedContainmentUser">
+            <mat-option *ngFor="let user of containmentUsers" [value]="user">
+              {{ user }}
+            </mat-option>
           </mat-select>
         </div>
       </div>
@@ -174,31 +146,31 @@
         <div class="analysis-grid">
           <div class="form-group">
             <label>1. What:</label>
-            <textarea class="form-control" rows="3" placeholder="What happened?"></textarea>
+            <textarea class="form-control" rows="3" placeholder="What is the physical failure symptom & Diagnostic Trouble Code (DTC)?"></textarea>
           </div>
           <div class="form-group">
             <label>2. Where:</label>
-            <textarea class="form-control" rows="3" placeholder="Where did it occur?"></textarea>
+            <textarea class="form-control" rows="3" placeholder="Where did it occur? (Plant gate, dealership, chassis/powertrain location)"></textarea>
           </div>
           <div class="form-group">
             <label>3. When:</label>
-            <textarea class="form-control" rows="3" placeholder="When did it happen?"></textarea>
+            <textarea class="form-control" rows="3" placeholder="When did it happen? (Mileage/km, date, ambient temperature)"></textarea>
           </div>
           <div class="form-group">
             <label>4. Who:</label>
-            <textarea class="form-control" rows="3" placeholder="Who was involved?"></textarea>
+            <textarea class="form-control" rows="3" placeholder="Who detected it? (PDI inspector, dealer technician, customer)"></textarea>
           </div>
           <div class="form-group">
             <label>5. Why:</label>
-            <textarea class="form-control" rows="3" placeholder="Why did it happen?"></textarea>
+            <textarea class="form-control" rows="3" placeholder="Why is it abnormal? (Engineering standard or tolerance violated)"></textarea>
           </div>
           <div class="form-group">
             <label>6. How:</label>
-            <textarea class="form-control" rows="3" placeholder="What is the impact/extent?"></textarea>
+            <textarea class="form-control" rows="3" placeholder="How did the failure manifest? (Warning light, NVH noise/vibration, fluid leak)"></textarea>
           </div>
           <div class="form-group">
-            <label>7. How Much:</label>
-            <textarea class="form-control" rows="3" placeholder="What is the impact/extent?"></textarea>
+            <label>7. How Much / Many:</label>
+            <textarea class="form-control" rows="3" placeholder="How many units affected? (Batch size, estimated warranty claim cost)"></textarea>
           </div>
         </div>
       </div>
@@ -211,7 +183,7 @@
       <mat-icon>cancel</mat-icon>
       Close
     </button>
-    <button mat-raised-button type="button" class="save" color="primary" style="margin-right: 5px;">
+    <button mat-raised-button type="button" class="save" color="primary" (click)="save()" style="margin-right: 5px;">
       <mat-icon>save</mat-icon> Save
     </button>
   </div>

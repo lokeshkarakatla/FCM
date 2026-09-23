@@ -38,16 +38,14 @@ export class MDepartmentsComponent {
   constructor(private router: Router, private dialog: MatDialog) { }
 
   tableList = [
-    { agency: 'HD', code: '=', head: 'Tejaswi', IsActive: true },
-    { agency: 'Test', code: 'test', head: 'Roshan', IsActive: true },
-    { agency: 'Manufacture', code: 'mfg', head: 'Raj', IsActive: true },
-    { agency: 'HR Department', code: 'HR100', head: 'Sai', IsActive: true },
-    { agency: 'IT Department', code: 'IT-DEPT', head: 'Karthik', IsActive: true },
-    { agency: 'Painting Department', code: 'PD', head: 'Ravi', IsActive: false },
-    { agency: 'Component-Shop', code: 'C-Shop', head: 'Nikhil', IsActive: true },
-    { agency: 'Assembly line', code: 'A-Line', head: 'Hritik', IsActive: false },
-    { agency: 'Paint Shop', code: 'P-Shop', head: 'Shiv', IsActive: true },
-    { agency: 'Body Shop', code: 'BS', head: 'Chandana', IsActive: false }
+    { agency: 'Automotive Quality Assurance & IATF 16949', code: 'QA-16949', head: 'Rajesh Sharma', IsActive: true },
+    { agency: 'Field Engineering & Dealer Technical Service', code: 'FES-DLR', head: 'Vikram Singh', IsActive: true },
+    { agency: 'Powertrain R&D & Calibration', code: 'RND-PWR', head: 'Dr. K. Patel', IsActive: true },
+    { agency: 'Electrical, Electronics & ADAS Software', code: 'RND-EES', head: 'Amitabh Sen', IsActive: true },
+    { agency: 'Trim, Chassis & Final Assembly (TCF)', code: 'MFG-TCF', head: 'Gurpreet Singh', IsActive: true },
+    { agency: 'Supplier Quality Management (SQM)', code: 'SQA-VND', head: 'Sunil Verma', IsActive: true },
+    { agency: 'Paint Shop & Cathodic Electrodeposition (CED)', code: 'PNT-CED', head: 'Ravi Teja', IsActive: true },
+    { agency: 'Vehicle Homologation & Safety Compliance', code: 'SAF-HOM', head: 'Manoj Kumar', IsActive: true }
   ];
 
   public addmodule(id: any) {

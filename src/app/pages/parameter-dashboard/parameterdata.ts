@@ -22,16 +22,17 @@ export class parameterdata {
             { fuel_type: 'Petrol', demerit: "90%", issues: 20 },
             { fuel_type: 'Diesel', demerit: "85%", issues: 7 },
             { fuel_type: 'EV', demerit: "95%", issues: 11 },
-
+            { fuel_type: 'Strong Hybrid', demerit: "98%", issues: 6 },
         ]
         return values;
     }
     static model() {
         let values = [
-            { model: 'Hector', demerit: "89%", issues: 20 },
-            { model: 'Astor', demerit: "97%", issues: 7 },
-            { model: 'Gloster', demerit: "90%", issues: 11 },
-            { model: 'EV', demerit: "98%", issues: 13 },
+            { model: 'Toyota Fortuner 4x4', demerit: "89%", issues: 20 },
+            { model: 'Hyundai Creta SX', demerit: "97%", issues: 7 },
+            { model: 'Mahindra XUV700 AX7', demerit: "90%", issues: 11 },
+            { model: 'Tata Nexon EV Max', demerit: "98%", issues: 13 },
+            { model: 'Toyota Camry Hybrid', demerit: "96%", issues: 6 },
         ]
         return values;
     }
@@ -46,12 +47,11 @@ export class parameterdata {
     }
     static variant() {
         let values = [
-            { variant: 'VDI', demerit: "89%", issues: 20 },
-            { variant: 'SXI', demerit: "85%", issues: 7 },
-            { variant: 'SXI(o)', demerit: "90%", issues: 11 },
-            { variant: 'LDI', demerit: "97%", issues: 9 },
-
-
+            { variant: '2.8L 4x4 AT', demerit: "89%", issues: 20 },
+            { variant: '1.5L Turbo DCT', demerit: "85%", issues: 7 },
+            { variant: 'AX7L AWD Diesel', demerit: "90%", issues: 11 },
+            { variant: 'Empowered Plus LR', demerit: "97%", issues: 9 },
+            { variant: '2.5L Hybrid e-CVT', demerit: "96%", issues: 6 },
         ]
         return values;
     }

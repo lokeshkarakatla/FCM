@@ -31,6 +31,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { PrtsIssueStatusComponent } from './prts-issue-status/prts-issue-status.component';
 import { PrtsIssueNewComponent } from './prts-issue-new/prts-issue-new.component';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { PrtsUserManualComponent } from './prts-user-manual/prts-user-manual.component';
 // import { NgxChartsModule } from '@swimlane/ngx-charts';
 const routes: Routes = [
   { path: "", redirectTo: "newissue", pathMatch: "full" },
@@ -90,6 +91,12 @@ const routes: Routes = [
 
   },
   {
+    path: "user-manual",
+    component: PrtsUserManualComponent,
+    pathMatch: "full",
+    data: { breadcrumb: 'User Manual', description: '7D Problem Solving SOP & User Manual', hideBreadcrumb: true }
+  },
+  {
     path: "prtssetup",
     component: PrtsSetupComponent,
     loadChildren: () =>
@@ -113,7 +120,8 @@ const routes: Routes = [
     AddPrtsDocumentComponent,
     AddPrtsRolesComponent,
     AddPrtsPillarComponent,
-    PrtsIssueNewComponent
+    PrtsIssueNewComponent,
+    PrtsUserManualComponent
   ],
   imports: [
     MatSelectModule,
