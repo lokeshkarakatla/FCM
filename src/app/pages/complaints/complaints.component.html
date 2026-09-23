@@ -8,6 +8,10 @@
             <label for="maskInactiveSwitch"></label>
         </div>
 
+        <button mat-raised-button class="pull-right margin-right-10 dark-btn" (click)="openGridColumnsDialog()">
+            <mat-icon>view_column</mat-icon> Grid Columns
+        </button>
+
         <button mat-raised-button class="pull-right margin-right-10 dark-btn" (click)="filterToggle = !filterToggle">
             <mat-icon>filter_list</mat-icon> Filter
         </button>
@@ -146,73 +150,78 @@
 
                 <thead class="tbl-head">
                     <tr>
-                        <th>Action</th>
-                        <th>Reference No</th>
-                        <th>Subject</th>
-                        <th class="problem-statement-header">Description</th>
-                        <th>Department</th>
-                        <th>Severity</th>
-                        <th class="text-center">CAPA</th>
-                        <th class="text-center">Steps</th>
-                        <th>Progress</th>
-                        <th class="nowrap">Country</th>
-                        <th class="status-col text-center">Status</th>
-                        <th>Responsibility</th>
-                        <th>Complaint Date</th>
-                        <th class="text-center">Due Date</th>
+                        <th *ngFor="let col of visibleColumns; let colIdx = index"
+                            [ngStyle]="getHeaderStyle(col, colIdx)"
+                            [ngClass]="{'text-center': col.key === 'action' || col.key === 'capa' || col.key === 'steps' || col.key === 'progress' || col.key === 'status' || col.key === 'country' || col.key === 'dueDate'}">
+                            {{ col.label }}
+                        </th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    <tr *ngFor="let applicant of complaintsData; let i = index">
+                    <tr *ngFor="let applicant of complaintsData; let rowIdx = index">
+                        <td *ngFor="let col of visibleColumns; let colIdx = index"
+                            [ngStyle]="getCellStyle(col, colIdx)"
+                            [ngClass]="{'text-center': col.key === 'action' || col.key === 'capa' || col.key === 'steps' || col.key === 'progress' || col.key === 'status' || col.key === 'country' || col.key === 'dueDate'}">
 
+                            <ng-container [ngSwitch]="col.key">
 
-                        <td class="nowrap">
-                            <a matTooltip="Edit Complaint" (click)="goToAddComplaint()">
-                                <i class="fa fa-edit"></i>
-                            </a>
-                            <a matTooltip="Delete Complaint" (click)="deleteConfirmation(applicant)">
-                                <i class="fa fa-trash red"></i>
-                            </a>
+                                <span *ngSwitchCase="'action'" class="nowrap">
+                                    <a matTooltip="Edit Complaint" (click)="goToAddComplaint()">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a matTooltip="Delete Complaint" (click)="deleteConfirmation(applicant)">
+                                        <i class="fa fa-trash red"></i>
+                                    </a>
+                                </span>
+
+                                <span *ngSwitchCase="'referenceNumber'" (click)="gotoReferenceNumber()">
+                                    <a class="link">{{ applicant.referenceNumber }}</a>
+                                </span>
+
+                                <span *ngSwitchCase="'subject'" class="nowrap" [matTooltip]="applicant.subject">
+                                    {{ applicant.subject }}
+                                </span>
+
+                                <span *ngSwitchCase="'capa'" class="capa-badge link" (click)="openCAPA()">
+                                    2
+                                </span>
+
+                                <span *ngSwitchCase="'steps'" class="steps-link" (click)="gotoupdate()">
+                                    {{ applicant.steps }}
+                                </span>
+
+                                <span *ngSwitchCase="'progress'" [matTooltip]="applicant.range + '%'">
+                                    <input type="range" [min]="0" [max]="100" [value]="applicant.range"
+                                        [ngStyle]="getRangeStyle(applicant.range, rowIdx)" (mousedown)="$event.preventDefault()"
+                                        (touchstart)="$event.preventDefault()">
+                                </span>
+
+                                <span *ngSwitchCase="'status'">
+                                    <span class="status-badge" [ngClass]="getStatusClass(applicant.status)">
+                                        {{ applicant.status }}
+                                    </span>
+                                </span>
+
+                                <span *ngSwitchCase="'severity'">{{ applicant.criticality }}</span>
+
+                                <span *ngSwitchCase="'department'">{{ applicant.department }}</span>
+
+                                <div *ngSwitchCase="'description'" class="problem-statement">
+                                    {{ applicant.problemSubject }}
+                                </div>
+
+                                <span *ngSwitchCase="'country'">{{ applicant.country }}</span>
+
+                                <span *ngSwitchCase="'responsibility'">{{ applicant.Lead }}</span>
+
+                                <span *ngSwitchCase="'complaintDate'">{{ applicant.FailureDate }}</span>
+
+                                <span *ngSwitchCase="'dueDate'">{{ applicant.ExpectedFinishDate }}</span>
+
+                            </ng-container>
+
                         </td>
-
-                        <td (click)="gotoReferenceNumber()">
-                            <a class="link">
-                                {{ applicant.referenceNumber }}
-                            </a>
-                        </td>
-
-                        <td class="nowrap">{{ applicant.subject }}</td>
-                        <td class="problem-statement">{{ applicant.problemSubject }}</td>
-                        <td>{{ applicant.department }}</td>
-                        <td>{{ applicant.criticality }}</td>
-
-                        <td class="text-center link" (click)="openCAPA()">2</td>
-                        <td class="switchToggle text-center" (click)="gotoupdate()">
-                            {{ applicant.steps }}
-                        </td>
-
-                        <td [matTooltip]="applicant.range + '%'">
-                            <input type="range" [min]="0" [max]="100" [value]="applicant.range"
-                                [ngStyle]="getRangeStyle(applicant.range, i)" (mousedown)="$event.preventDefault()"
-                                (touchstart)="$event.preventDefault()">
-                        </td>
-
-                        <td class="text-center">{{ applicant.country }}</td>
-
-                        <td class="status-col">
-                            <select class="form-select status-select">
-                                <option [selected]="applicant.status === 'Pending'">Pending</option>
-                                <option [selected]="applicant.status === 'Process'">Process</option>
-                                <option [selected]="applicant.status === 'Hold'">Hold</option>
-                                <option [selected]="applicant.status === 'Closed'">Closed</option>
-                            </select>
-                        </td>
-
-                        <td>{{ applicant.Lead }}</td>
-                        <td>{{ applicant.FailureDate }}</td>
-                        <td class="text-center">{{ applicant.ExpectedFinishDate }}</td>
-
                     </tr>
                 </tbody>
 

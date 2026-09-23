@@ -1,0 +1,85 @@
+<div class="custom-modal-wrapper">
+  <div class="modal-header-custom">
+    <h2 class="modal-title-text">
+      {{ data ? 'Edit Spare Part' : 'Add FOC Spare Replacement' }}
+    </h2>
+    <button type="button" class="modal-close-icon" (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div mat-dialog-content class="modal-body-custom">
+    <form class="form-horizontal">
+
+      <div class="row align-items-center mb-3">
+        <label class="col-sm-3 control-label">
+          Part No <span class="text-danger">*</span> :
+        </label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" placeholder="e.g. PRT-4091"
+                 [(ngModel)]="partNo" name="partNo" required autofocus />
+        </div>
+      </div>
+
+      <div class="row align-items-center mb-3">
+        <label class="col-sm-3 control-label">
+          Part Name <span class="text-danger">*</span> :
+        </label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" placeholder="e.g. Wiring Harness Sub-Assembly"
+                 [(ngModel)]="partName" name="partName" required />
+        </div>
+      </div>
+
+      <div class="row align-items-center mb-3">
+        <label class="col-sm-3 control-label">
+          Quantity :
+        </label>
+        <div class="col-sm-9">
+          <input type="number" min="1" class="form-control" [(ngModel)]="qty" name="qty" (input)="updateCost()" />
+        </div>
+      </div>
+
+      <div class="row align-items-center mb-3">
+        <label class="col-sm-3 control-label">
+          Unit Rate (₹) :
+        </label>
+        <div class="col-sm-9">
+          <input type="number" min="0" class="form-control" [(ngModel)]="unitRate" name="unitRate" (input)="updateCost()" />
+        </div>
+      </div>
+
+      <div class="row align-items-center mb-3">
+        <label class="col-sm-3 control-label">
+          Total Cost (₹) :
+        </label>
+        <div class="col-sm-9">
+          <input type="number" class="form-control bg-light" [(ngModel)]="cost" name="cost" readonly />
+        </div>
+      </div>
+
+      <div class="row align-items-center mb-3">
+        <label class="col-sm-3 control-label">
+          Status :
+        </label>
+        <div class="col-sm-9">
+          <mat-select class="form-control" [(ngModel)]="status" name="spareStatus">
+            <mat-option value="Replaced">Replaced</mat-option>
+            <mat-option value="Dispatched">Dispatched</mat-option>
+            <mat-option value="Pending Approval">Pending Approval</mat-option>
+          </mat-select>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+  <div class="modal-footer-custom">
+    <button mat-button class="btn-cancel-modal" (click)="close()">
+      <mat-icon>cancel</mat-icon> Cancel
+    </button>
+    <button mat-raised-button class="btn-save-modal" (click)="save()" [disabled]="!partNo || !partName">
+      <mat-icon>save</mat-icon> {{ data ? 'Update' : 'Save' }}
+    </button>
+  </div>
+</div>

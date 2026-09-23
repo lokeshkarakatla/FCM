@@ -126,11 +126,8 @@
 
     <!-- Bottom Action Buttons -->
     <div class="d-flex justify-content-end align-items-center gap-3 mt-4 mb-4">
-      <button mat-stroked-button color="primary" (click)="saveSummary()">
-        <mat-icon>save</mat-icon> Save Summary
-      </button>
-      <button mat-raised-button color="primary" (click)="saveAndNext()">
-        Save & Next <mat-icon>arrow_forward</mat-icon>
+      <button mat-raised-button color="primary" class="save-btn" (click)="saveSummary()">
+        <mat-icon class="btn-icon">save</mat-icon> Save
       </button>
     </div>
 

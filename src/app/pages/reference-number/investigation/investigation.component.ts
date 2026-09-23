@@ -16,4 +16,9 @@ export class InvestigationComponent {
   investigationDate: string = '';
   routingDecision: string = '';
   remarks: string = '';
+
+  save(): void {
+    console.log('Investigation data saved successfully');
+  }
 }
+

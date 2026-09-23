@@ -1,0 +1,69 @@
+<div class="custom-modal-wrapper">
+  <div class="modal-header-custom">
+    <h2 class="modal-title-text">
+      {{ data ? 'Edit Team Recognition' : 'Add Team Recognition' }}
+    </h2>
+    <button type="button" class="modal-close-icon" (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div mat-dialog-content class="modal-body-custom">
+    <form class="form-horizontal">
+
+      <div class="row align-items-center mb-3">
+        <label class="col-sm-3 control-label">
+          Team Member <span class="text-danger">*</span> :
+        </label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" placeholder="e.g. Ramesh Patel"
+                 [(ngModel)]="name" name="memberName" required autofocus />
+        </div>
+      </div>
+
+      <div class="row align-items-center mb-3">
+        <label class="col-sm-3 control-label">
+          Department & Role :
+        </label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" placeholder="e.g. Quality Engineer / Line Supervisor"
+                 [(ngModel)]="role" name="memberRole" />
+        </div>
+      </div>
+
+      <div class="row align-items-center mb-3">
+        <label class="col-sm-3 control-label">
+          Key Contribution <span class="text-danger">*</span> :
+        </label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" placeholder="e.g. Identified connector pin misalignment on Line B"
+                 [(ngModel)]="contribution" name="contrib" required />
+        </div>
+      </div>
+
+      <div class="row align-items-center mb-3">
+        <label class="col-sm-3 control-label">
+          Award / Recognition :
+        </label>
+        <div class="col-sm-9">
+          <mat-select class="form-control" [(ngModel)]="award" name="awardName">
+            <mat-option value="Zero Defect Champion">🏆 Zero Defect Champion</mat-option>
+            <mat-option value="Spot Excellence Award">🌟 Spot Excellence Award</mat-option>
+            <mat-option value="Speedy Resolution Award">⚡ Speedy Resolution Award</mat-option>
+            <mat-option value="Innovation in Quality">💡 Innovation in Quality</mat-option>
+          </mat-select>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+  <div class="modal-footer-custom">
+    <button mat-button class="btn-cancel-modal" (click)="close()">
+      <mat-icon>cancel</mat-icon> Cancel
+    </button>
+    <button mat-raised-button class="btn-save-modal" (click)="save()" [disabled]="!name || !contribution">
+      <mat-icon>save</mat-icon> {{ data ? 'Update' : 'Save' }}
+    </button>
+  </div>
+</div>

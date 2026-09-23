@@ -1,46 +1,217 @@
-<div style="width: 59%;">
+<div class="documents-page-wrapper">
 
-    <div style="margin-bottom: 30px; margin-top: 50px; margin-right: 15px;">
-        <button mat-raised-button color="primary" class="pull-right" (click)="openDocument(null)">
-            <mat-icon>person_add</mat-icon> Add Document
+  <!-- Top Title & Subtitle (Image 1 reference) -->
+  <div class="page-title-block">
+    <h2 class="page-title">Documents</h2>
+    <p class="page-subtitle">Store and manage project documents.</p>
+  </div>
+
+  <!-- Subject & Actions Bar (Image 1 reference) -->
+  <div class="action-bar-row">
+    <h3 class="subject-heading">{{ subject || 'Global fleet of connected vehicles' }}</h3>
+
+    <div class="action-buttons-group">
+      <!-- Segmented View Toggle -->
+      <div class="view-toggle-group">
+        <button type="button" class="toggle-btn" [class.active]="activeView === 'grid'" (click)="setView('grid')">
+          <mat-icon class="btn-icon-sm">grid_on</mat-icon>
+          <span>Grid View</span>
         </button>
+        <button type="button" class="toggle-btn" [class.active]="activeView === 'card'" (click)="setView('card')">
+          <mat-icon class="btn-icon-sm">view_module</mat-icon>
+          <span>Card View</span>
+        </button>
+      </div>
+
+      <!-- Add Document Button -->
+      <button type="button" class="btn-action-primary" (click)="uploaddoc()">
+        <mat-icon class="btn-icon-sm">add</mat-icon>
+        <span>Add Document</span>
+      </button>
+
+      <!-- Filter Button -->
+      <button type="button" class="btn-action-dark" (click)="filterToggle = !filterToggle">
+        <mat-icon class="btn-icon-sm">filter_list</mat-icon>
+        <span>Filter</span>
+      </button>
+
+      <!-- Back Button -->
+      <button type="button" class="btn-action-back" (click)="goBack()">
+        <mat-icon class="btn-icon-sm">arrow_back</mat-icon>
+        <span>Back</span>
+      </button>
     </div>
+  </div>
 
-    <div class="col-sm-12" style="margin-top: 10px;">
-        <div class="table-responsive" id="grid-table-container" style="width: 99.5%; margin-left: 6px;">
-            <table class="table  table-bordered table-hover">
+  <!-- Toggleable Filter Card -->
+  <mat-card *ngIf="filterToggle" class="app-filter-panel mb-4">
+    <mat-card-content>
+      <div class="app-filter-grid">
+        <div class="app-filter-fields">
+          <div class="app-filter-field">
+            <label for="docKeyword">Keyword:</label>
+            <mat-form-field appearance="outline" class="app-filter-control">
+              <input matInput id="docKeyword" [(ngModel)]="filterKeyword" (input)="applyDocFilter()"
+                placeholder="Search Keyword">
+            </mat-form-field>
+          </div>
 
-                <thead class="tbl-head">
-                    <tr>
-                        <th>Date</th>
-                        <th>Doc Title</th>
-                        <th class="text-center">View</th>
-                        <th class="text-center">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let item of tableData">
-                        <td>{{ item.date }}</td>
-                        <td>{{ item.subject }}</td>
-                        <td class="text-center">
-                            <a matTooltip="View Document" (click)="openDocument(item)">
-                                <i class="fa fa-eye"></i>
-                            </a>
-                        </td>
-                        <td class="text-center" style="white-space:nowrap">
-                            <a matTooltip="Edit Document" (click)="openDocument(null)">
-                                <i class="fa fa-edit"></i>
-                            </a>
-                            <a matTooltip="Delete Document" (click)="deleteConfirmation(applicant)">
-                                <i class="fa fa-trash red"></i>
-                            </a>
-                        </td>
-
-                    </tr>
-                </tbody>
-            </table>
+          <div class="app-filter-field">
+            <label for="docCategory">Category:</label>
+            <mat-form-field appearance="outline" class="app-filter-control">
+              <mat-select id="docCategory" [(value)]="selectedCategory" (selectionChange)="applyDocFilter()"
+                placeholder="Select Category">
+                <mat-option [value]="null">All Categories</mat-option>
+                <mat-option *ngFor="let cat of categories" [value]="cat">{{ cat }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
         </div>
+
+        <div class="app-filter-actions">
+          <button type="button" class="btn-action-primary" (click)="applyDocFilter()">
+            <mat-icon class="btn-icon-sm">search</mat-icon>
+            <span>Search</span>
+          </button>
+          <button type="button" class="btn-action-default" (click)="clearDocFilter()">
+            <mat-icon class="btn-icon-sm">settings_backup_restore</mat-icon>
+            <span>Clear</span>
+          </button>
+        </div>
+
+        <div class="app-filter-toggle">
+          <button type="button" class="app-icon-btn" aria-label="Collapse filter" (click)="filterToggle = false">
+            <mat-icon>keyboard_double_arrow_up</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- ============ CARD VIEW ============ -->
+  <div *ngIf="activeView === 'card'" class="grid-container mb-4">
+    <!-- Add Document Record Card -->
+    <mat-card class="add-doc-card" (click)="uploaddoc()">
+      <mat-icon class="add-doc-icon">note_add</mat-icon>
+      <span class="add-doc-text">Add Document Record</span>
+    </mat-card>
+
+    <!-- Document Cards -->
+    <mat-card *ngFor="let doc of filteredDataSource" class="doc-card" (click)="onCardClick(doc)">
+      <div class="card-actions" (click)="$event.stopPropagation()">
+        <button type="button" class="table-action-button view" matTooltip="View PDF" (click)="viewPdf(doc)">
+          <i class="fa fa-eye"></i>
+        </button>
+        <button type="button" class="table-action-button edit" matTooltip="Edit Document" (click)="editDocument(doc, $event)">
+          <i class="fa fa-edit"></i>
+        </button>
+        <button type="button" class="table-action-button delete" matTooltip="Delete Document" (click)="deleteDocument(doc, $event)">
+          <i class="fa fa-trash"></i>
+        </button>
+      </div>
+
+      <div class="card-body">
+        <mat-icon class="doc-file-icon">description</mat-icon>
+        <div class="doc-card-title" [title]="doc.documentTitle">{{ doc.documentTitle }}</div>
+        <div class="doc-card-subtitle">{{ doc.documentType }} &bull; {{ doc.category }}</div>
+        <div class="doc-card-date">{{ doc.uploadedDate }}</div>
+      </div>
+    </mat-card>
+
+    <div *ngIf="filteredDataSource.length === 0" class="no-records-card">
+      No documents found match the selected filters.
+    </div>
+  </div>
+
+  <!-- ============ GRID / TABLE VIEW (Image 1 reference) ============ -->
+  <div *ngIf="activeView === 'grid'" class="table-section">
+    <div class="table-responsive">
+      <table class="table app-table">
+        <thead class="tbl-head">
+          <tr>
+            <th class="text-center" style="width: 75px;">Actions</th>
+            <th class="text-start" style="min-width: 140px;">Document Type</th>
+            <th class="text-start" style="min-width: 180px;">Document Title</th>
+            <th class="text-start" style="min-width: 250px;">Description</th>
+            <th class="text-center" style="width: 80px;">PDF</th>
+            <th class="text-center" style="min-width: 150px;">Uploaded Date</th>
+            <th class="text-start" style="min-width: 140px;">Uploaded By</th>
+            <th class="text-center" style="width: 80px;">Remarks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let element of paginatedDocuments">
+            <!-- Actions -->
+            <td class="text-center">
+              <div class="table-actions">
+                <a class="action-icon edit-icon" matTooltip="Edit Document" (click)="editDocument(element, $event)">
+                  <i class="fa fa-edit"></i>
+                </a>
+                <a class="action-icon delete-icon" matTooltip="Delete Document" (click)="deleteDocument(element, $event)">
+                  <i class="fa fa-trash"></i>
+                </a>
+              </div>
+            </td>
+
+            <!-- Document Type (Bold like Image 1) -->
+            <td class="text-start doc-type-cell">
+              <b>{{ element.documentType }}</b>
+            </td>
+
+            <!-- Document Title -->
+            <td class="text-start doc-title-cell">
+              {{ element.documentTitle }}
+            </td>
+
+            <!-- Description -->
+            <td class="text-start doc-desc-cell">
+              {{ element.description || element.context }}
+            </td>
+
+            <!-- PDF (Eye + Download) -->
+            <td class="text-center">
+              <div class="pdf-actions">
+                <a class="pdf-icon view-pdf" matTooltip="View PDF" (click)="viewPdf(element)">
+                  <i class="fa fa-eye"></i>
+                </a>
+                <a class="pdf-icon download-pdf" matTooltip="Download PDF" (click)="downloadPdf(element)">
+                  <i class="fa fa-download"></i>
+                </a>
+              </div>
+            </td>
+
+            <!-- Uploaded Date -->
+            <td class="text-center date-cell">
+              {{ element.uploadedDate }}
+            </td>
+
+            <!-- Uploaded By -->
+            <td class="text-start">
+              <div class="user-cell">
+                <i class="fa fa-user user-icon"></i>
+                <span>{{ element.uploadedBy }}</span>
+              </div>
+            </td>
+
+            <!-- Remarks -->
+            <td class="text-center">
+              <i class="fa fa-info-circle info-icon" [matTooltip]="element.remarks || 'No remarks'"></i>
+            </td>
+          </tr>
+
+          <tr *ngIf="paginatedDocuments.length === 0">
+            <td colspan="8" class="text-center py-4 text-muted">
+              No documents found match the selected filters.
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
+    <!-- Paginator -->
+    <mat-paginator [length]="filteredDataSource.length" [pageSize]="pageSize" [pageIndex]="currentPage"
+      [pageSizeOptions]="[5, 10, 20, 50]" (page)="handlePageEvent($event)" [showFirstLastButtons]="true">
+    </mat-paginator>
+  </div>
 
 </div>

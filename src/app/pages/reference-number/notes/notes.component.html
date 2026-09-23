@@ -1,78 +1,215 @@
-<div class="ms-3 " style="width: 58%; margin-top: 50px;">
+<div class="notes-page-wrapper">
 
-  <div class="container-fluid mt-3">
+  <!-- Top Title & Subtitle (Image 4 reference) -->
+  <div class="page-title-block">
+    <h2 class="page-title">Notes</h2>
+    <p class="page-subtitle">Capture and organize project notes.</p>
+  </div>
 
-    <form id="step-3" class="content">
+  <!-- Subject & Back Button Bar (Image 4 reference) -->
+  <div class="action-bar-row">
+    <h3 class="subject-heading">{{ subject || 'Global fleet of connected vehicles' }}</h3>
 
-      <!-- Top Bar -->
-      <div class="d-flex justify-content-end mb-3">
-        <button mat-raised-button color="primary" (click)="openNotes(null)">
-          <mat-icon>person_add</mat-icon> Add Notes
-        </button>
+    <div class="action-buttons-group">
+      <button type="button" class="btn-action-back" (click)="goBack()">
+        <mat-icon class="btn-icon-sm">arrow_back</mat-icon>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ============ ADD NOTE CARD (Image 2 & 4 reference) ============ -->
+  <div class="add-note-card">
+    <div class="add-note-header">
+      <h5 class="add-note-title">Add Note</h5>
+    </div>
+
+    <div class="add-note-body">
+      <div class="add-note-form-bar">
+        <!-- Select Tag -->
+        <div class="tag-field-wrapper">
+          <mat-select [(value)]="selectedTag" placeholder="Select Tag*" class="form-control custom-tag-select">
+            <mat-option *ngFor="let tag of availableTags" [value]="tag">{{ tag }}</mat-option>
+          </mat-select>
+        </div>
+
+        <!-- Enter Text -->
+        <div class="text-field-wrapper">
+          <input type="text" [(ngModel)]="noteText" (keyup.enter)="addNote()" placeholder="Enter text*"
+            class="form-control custom-text-input">
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="note-bar-buttons">
+          <button type="button" class="btn-tool" matTooltip="Attach Document" (click)="uploaddoc(null)">
+            <mat-icon class="tool-icon">attach_file</mat-icon>
+          </button>
+
+          <button type="button" class="btn-tool" matTooltip="Clear Form" (click)="clearForm()">
+            <mat-icon class="tool-icon">refresh</mat-icon>
+          </button>
+
+          <button type="button" class="btn-send" (click)="addNote()" [disabled]="!selectedTag || !noteText.trim()"
+            [class.active]="selectedTag && noteText.trim()">
+            <mat-icon class="send-icon">send</mat-icon>
+            <span>Send</span>
+          </button>
+        </div>
       </div>
 
-      <!-- Table Wrapper -->
-      <div class="table-wrapper">
+      <!-- Attached Document Chip -->
+      <div *ngIf="attachedDocument" class="attachment-pill">
+        <mat-icon class="pill-icon">attach_file</mat-icon>
+        <span>Attached: <strong>{{ attachedDocument }}</strong></span>
+        <mat-icon class="remove-att ms-2" (click)="attachedDocument = ''" matTooltip="Remove attachment">close</mat-icon>
+      </div>
+    </div>
+  </div>
 
-        <table class="table table-bordered table-hover mb-0">
+  <!-- ============ AI OVERVIEW SUMMARY (Image 4 reference) ============ -->
+  <div class="ai-overview-box">
+    <div class="ai-header">
+      <mat-icon class="ai-icon">auto_awesome</mat-icon>
+      <span class="ai-title">AI Overview Summary</span>
+    </div>
+    <p class="ai-text">
+      Project notes indicate steady progress across Formulation and Analytical streams for <em>{{ subject || 'Global fleet of connected vehicles' }}</em>. Key active raw material qualifications are complete with two validated DMF suppliers. No critical analytical deviations or stability flags were detected in recent laboratory intervals.
+    </p>
+  </div>
 
-          <!-- Header -->
-          <thead class="tbl-head">
-            <tr>
-              <th>Date</th>
-              <th>Notes</th>
-              <th class="text-center">Status</th>
-              <th class="text-center">Actions</th>
-            </tr>
-          </thead>
-
-          <!-- Body -->
-          <tbody>
-
-            <tr *ngFor="let applicant of notes; trackBy: trackById">
-              <td>{{ applicant.date }}</td>
-              <td>{{ applicant.description }}</td>
-
-              <td class="text-center">
-                <mat-chip
-                  class="status-chip"
-                  [ngClass]="applicant.status === 'Active' ? 'active-chip' : 'inactive-chip'"
-                  (click)="Confirmation(applicant)">
-                  {{ applicant.status }}
-                </mat-chip>
-              </td>
-
-              <td class="text-center action-icons">
-                <a matTooltip="Edit Note" (click)="openNotes(applicant)">
-                  <i class="fa fa-edit"></i>
+  <!-- ============ NOTES TABLE VIEW (Image 4 reference: Dark #3f3f3f header) ============ -->
+  <div class="table-section">
+    <div class="table-responsive">
+      <table class="table app-table">
+        <thead class="tbl-head">
+          <tr>
+            <th class="text-center" style="width: 75px;">Actions</th>
+            <th class="text-center" style="width: 140px;">Date</th>
+            <th class="text-start" style="min-width: 160px;">Posted By</th>
+            <th class="text-start" style="min-width: 320px;">Description</th>
+            <th class="text-center" style="width: 100px;">Document</th>
+            <th class="text-center" style="width: 150px;">Tags</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let element of paginatedNotes">
+            <!-- Actions -->
+            <td class="text-center">
+              <div class="table-actions">
+                <a class="action-icon edit-icon" matTooltip="Edit Note" (click)="editNote(element)">
+                  <mat-icon>edit</mat-icon>
                 </a>
-
-                <a matTooltip="Delete Note" (click)="deleteConfirmation(applicant)">
-                  <i class="fa fa-trash red"></i>
+                <a class="action-icon delete-icon" matTooltip="Delete Note" (click)="deleteNote(element)">
+                  <mat-icon>delete</mat-icon>
                 </a>
-              </td>
-            </tr>
+              </div>
+            </td>
 
-            <!-- Empty -->
-            <tr *ngIf="notes.length === 0">
-              <td colspan="4" class="text-center">No notes available</td>
-            </tr>
+            <!-- Date -->
+            <td class="text-center date-cell">
+              {{ element.date }}
+            </td>
 
-          </tbody>
+            <!-- Posted By (User Icon + Bold Name) -->
+            <td class="text-start">
+              <div class="user-cell">
+                <mat-icon class="user-icon">person</mat-icon>
+                <span class="user-name"><b>{{ element.postedBy }}</b></span>
+              </div>
+            </td>
 
-        </table>
+            <!-- Description -->
+            <td class="text-start note-desc-cell">
+              {{ element.message }}
+            </td>
 
-        <!-- Paginator -->
-        <mat-paginator
-          [length]="totalSize"
-          [pageSize]="5"
-          [pageSizeOptions]="[5, 10, 25, 50, 100]"
-          showFirstLastButtons>
-        </mat-paginator>
+            <!-- Document -->
+            <td class="text-center">
+              <div *ngIf="element.document" class="pdf-actions">
+                <a class="pdf-icon view-pdf" matTooltip="View PDF" (click)="viewPdf(element.document)">
+                  <mat-icon>visibility</mat-icon>
+                </a>
+                <a class="pdf-icon download-pdf" matTooltip="Download PDF" (click)="downloadPdf(element.document)">
+                  <mat-icon>download</mat-icon>
+                </a>
+              </div>
+              <span *ngIf="!element.document" class="text-muted">—</span>
+            </td>
 
+            <!-- Tags (Outlined Badge like Image 4) -->
+            <td class="text-center">
+              <span class="tag-badge">{{ element.tags }}</span>
+            </td>
+          </tr>
+
+          <tr *ngIf="notesList.length === 0">
+            <td colspan="6" class="text-center py-4 text-muted">
+              No notes available.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Paginator -->
+    <mat-paginator [length]="notesList.length" [pageSize]="pageSize" [pageIndex]="currentPage"
+      [pageSizeOptions]="[5, 10, 20, 50]" (page)="handlePageEvent($event)" [showFirstLastButtons]="true">
+    </mat-paginator>
+  </div>
+
+</div>
+
+<!-- ============ EDIT NOTE TEMPLATE DIALOG ============ -->
+<ng-template #editNoteDialog>
+  <div class="NewHeader">
+    <h1 mat-dialog-title style="color: white; margin: 0; text-align: center; font-size: 18px; font-weight: 600;">
+      Edit Note
+    </h1>
+  </div>
+
+  <div mat-dialog-content class="custom-dialog-content pt-3" style="padding: 20px 25px;">
+    <form class="layout-container" style="display: flex; flex-direction: column; gap: 16px; width: 100%; box-sizing: border-box;">
+
+      <!-- Select Tag Row -->
+      <div class="row align-items-center" style="display: flex; align-items: center; width: 100%;">
+        <div class="col-sm-4 text-end" style="padding-right: 12px;">
+          <label class="control-label" style="font-weight: 600; font-size: 13px; margin: 0; white-space: nowrap;">
+            Select Tag <span style="color: red;">*</span> :
+          </label>
+        </div>
+        <div class="col-sm-8">
+          <mat-select [(value)]="editSelectedTag" placeholder="Select Tag*" class="form-control custom-tag-select"
+            style="line-height: 24px; height: 38px; padding: 4px 10px; border: 1px solid #cbd5e1; border-radius: 4px; background-color: #ffffff; width: 100%;">
+            <mat-option *ngFor="let tag of availableTags" [value]="tag">{{ tag }}</mat-option>
+          </mat-select>
+        </div>
+      </div>
+
+      <!-- Description Row -->
+      <div class="row" style="display: flex; align-items: flex-start; width: 100%;">
+        <div class="col-sm-4 text-end" style="padding-top: 6px; padding-right: 12px;">
+          <label class="control-label" style="font-weight: 600; font-size: 13px; margin: 0; white-space: nowrap;">
+            Description <span style="color: red;">*</span> :
+          </label>
+        </div>
+        <div class="col-sm-8">
+          <textarea [(ngModel)]="editNoteText" name="editNoteText" placeholder="Enter text*" class="form-control"
+            rows="4"
+            style="border: 1px solid #cbd5e1; border-radius: 4px; padding: 8px 12px; width: 100%; background-color: #ffffff; resize: vertical; font-size: 13.5px;"></textarea>
+        </div>
       </div>
 
     </form>
-
   </div>
-</div>
+
+  <mat-dialog-actions style="display: flex; justify-content: flex-end; gap: 10px; border-top: 1px solid #cbd5e1; margin-top: 0; padding: 15px 25px; width: 100%; box-sizing: border-box; background: white;">
+    <button mat-raised-button type="button" (click)="closeEditDialog()"
+      style="background-color: #e5e7eb; color: #374151;">
+      <mat-icon>cancel</mat-icon> Close
+    </button>
+    <button mat-raised-button color="primary" type="button" (click)="saveEditDialog()"
+      [disabled]="!editSelectedTag || !editNoteText.trim()">
+      <mat-icon>save</mat-icon> Save
+    </button>
+  </mat-dialog-actions>
+</ng-template>

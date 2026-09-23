@@ -1,0 +1,101 @@
+<div class="custom-modal-wrapper">
+  <div class="modal-header-custom">
+    <h2 class="modal-title-text">
+      {{ data ? 'Edit Supplier Action' : 'Add Supplier Action' }}
+    </h2>
+    <button type="button" class="modal-close-icon" (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div mat-dialog-content class="modal-body-custom">
+    <form class="form-horizontal">
+
+      <div class="row align-items-center mb-3">
+        <label class="col-sm-3 control-label">
+          Supplier <span class="text-danger">*</span> :
+        </label>
+        <div class="col-sm-9">
+          <mat-select class="form-control" [(ngModel)]="supplier" name="supplierName">
+            <mat-option value="Bosch Automotive">Bosch Automotive</mat-option>
+            <mat-option value="Denso India">Denso India</mat-option>
+            <mat-option value="Mando Corporation">Mando Corporation</mat-option>
+            <mat-option value="Valeo Thermal Systems">Valeo Thermal Systems</mat-option>
+          </mat-select>
+        </div>
+      </div>
+
+      <div class="row align-items-center mb-3">
+        <label class="col-sm-3 control-label">
+          Component :
+        </label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" placeholder="e.g. ECU Wiring Harness / Fuel Pump"
+                 [(ngModel)]="component" name="compName" />
+        </div>
+      </div>
+
+      <div class="row align-items-center mb-3">
+        <label class="col-sm-3 control-label">
+          Action Required <span class="text-danger">*</span> :
+        </label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" placeholder="e.g. Update crimping tool spec and calibration"
+                 [(ngModel)]="action" name="actionReq" required autofocus />
+        </div>
+      </div>
+
+      <div class="row align-items-center mb-3">
+        <label class="col-sm-3 control-label">
+          Deadline :
+        </label>
+        <div class="col-sm-9">
+          <input type="date" class="form-control" [(ngModel)]="deadline" name="dlDate" />
+        </div>
+      </div>
+
+      <div class="row align-items-center mb-3">
+        <label class="col-sm-3 control-label">
+          Date Completed :
+        </label>
+        <div class="col-sm-9">
+          <input type="date" class="form-control" [(ngModel)]="dateCompleted" name="compDate" />
+        </div>
+      </div>
+
+      <div class="row align-items-center mb-3">
+        <label class="col-sm-3 control-label">
+          Status :
+        </label>
+        <div class="col-sm-9">
+          <mat-select class="form-control" [(ngModel)]="status" name="supStatus">
+            <mat-option value="Open">Open</mat-option>
+            <mat-option value="In Progress">In Progress</mat-option>
+            <mat-option value="Completed">Completed</mat-option>
+          </mat-select>
+        </div>
+      </div>
+
+      <div class="row align-items-center mb-3">
+        <label class="col-sm-3 control-label">
+          Done :
+        </label>
+        <div class="col-sm-9">
+          <mat-checkbox [(ngModel)]="done" name="supDone" color="primary">
+            Mark as completed
+          </mat-checkbox>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+  <div class="modal-footer-custom">
+    <button mat-button class="btn-cancel-modal" (click)="close()">
+      <mat-icon>cancel</mat-icon> Cancel
+    </button>
+    <button mat-raised-button class="btn-save-modal" (click)="save()" [disabled]="!action">
+      <mat-icon>save</mat-icon> {{ data ? 'Update' : 'Save' }}
+    </button>
+  </div>
+</div>

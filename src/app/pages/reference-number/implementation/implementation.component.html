@@ -7,29 +7,32 @@
 
     <div class="mt-3">
       <div class="d-flex justify-content-between align-items-center mb-2">
-        <h5 class="table-title">Implementation Milestones</h5>
-        <button mat-raised-button color="primary" class="btn-sm"><mat-icon>add</mat-icon> Add Milestone</button>
+        <h5 class="table-title">Implementation Activities</h5>
+        <button mat-raised-button color="primary" class="btn-sm" (click)="openActivityDialog()">
+          <mat-icon class="btn-icon">add</mat-icon> Add Activity
+        </button>
       </div>
       <div class="table-responsive">
         <table class="table table-bordered table-hover">
           <thead class="tbl-head">
             <tr>
-              <th>#</th>
-              <th>Milestone</th>
+              <th>Activity</th>
+              <th>Department</th>
               <th>Responsible</th>
               <th class="text-center">Target Date</th>
-              <th class="text-center">Actual Date</th>
+              <th class="text-center">Completion Date</th>
               <th class="text-center">Status</th>
+              <th class="text-center">Done</th>
               <th class="text-center">Actions</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let m of milestones">
-              <td>{{ m.id }}</td>
-              <td>{{ m.milestone }}</td>
+            <tr *ngFor="let m of activities">
+              <td>{{ m.activity }}</td>
+              <td>{{ m.department || 'Manufacturing' }}</td>
               <td>{{ m.responsible }}</td>
               <td class="text-center">{{ m.targetDate }}</td>
-              <td class="text-center">{{ m.actualDate || '-' }}</td>
+              <td class="text-center">{{ m.completionDate || '-' }}</td>
               <td class="text-center">
                 <span class="status-badge"
                   [ngClass]="{'badge-success': m.status==='Completed', 'badge-warning': m.status==='In Progress', 'badge-default': m.status==='Pending'}">
@@ -37,8 +40,11 @@
                 </span>
               </td>
               <td class="text-center">
-                <a matTooltip="Edit"><i class="fa fa-edit"></i></a>
-                <a matTooltip="Delete"><i class="fa fa-trash red"></i></a>
+                <mat-checkbox [checked]="m.done" (change)="toggleDone(m)" color="primary"></mat-checkbox>
+              </td>
+              <td class="text-center">
+                <a matTooltip="Edit" class="action-btn-link" (click)="openActivityDialog(m)"><i class="fa fa-edit"></i></a>
+                <a matTooltip="Delete" class="action-btn-link" (click)="deleteActivity(m)"><i class="fa fa-trash red"></i></a>
               </td>
             </tr>
           </tbody>
@@ -47,12 +53,14 @@
     </div>
 
     <div class="row mt-3">
-      <div class="col-md-8">
+      <div class="col-12">
         <label class="form-label"><b>Implementation Notes:</b></label>
         <textarea rows="3" class="form-control" placeholder="Notes..." [(ngModel)]="remarks"></textarea>
       </div>
-      <div class="col-md-4 d-flex align-items-end justify-content-end">
-        <button mat-raised-button color="primary"><mat-icon>save</mat-icon> Save & Next</button>
+      <div class="col-12 d-flex justify-content-end mt-3">
+        <button mat-raised-button color="primary" class="save-btn" (click)="save()">
+          <mat-icon class="btn-icon">save</mat-icon> Save
+        </button>
       </div>
     </div>
   </div>

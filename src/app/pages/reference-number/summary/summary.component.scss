@@ -44,16 +44,17 @@
     height: 16px;
     width: 16px;
     color: #2e7d32;
+    margin-top: 5px;
   }
 }
 
 .summary-top-card {
-  background: #ffffff;
+  background: transparent;
   border: 1px solid #cfd8dc;
   border-left: 4px solid #1976d2;
   border-radius: 8px;
   padding: 18px 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  box-shadow: none;
 }
 
 .meta-field {
@@ -102,11 +103,11 @@
 }
 
 .form-card {
-  background: #ffffff;
+  background: transparent;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   padding: 16px 20px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+  box-shadow: none;
 
   .card-icon {
     font-size: 20px;
@@ -140,3 +141,41 @@
     }
   }
 }
+
+.save-btn {
+  height: 38px !important;
+  min-height: 38px !important;
+  line-height: normal !important;
+  padding: 0 22px !important;
+  border-radius: 4px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
+
+  ::ng-deep .mat-button-wrapper {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100% !important;
+    line-height: normal !important;
+  }
+}
+
+.btn-icon {
+  margin-right: 8px !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  font-size: 18px !important;
+  width: 18px !important;
+  height: 18px !important;
+  line-height: 18px !important;
+  vertical-align: middle !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+

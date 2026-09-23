@@ -32,16 +32,18 @@
     <div class="mt-4">
       <div class="d-flex justify-content-between align-items-center mb-2">
         <h5 class="table-title">Monitoring Records</h5>
-        <button mat-raised-button color="primary" class="btn-sm"><mat-icon>add</mat-icon> Add Record</button>
+        <button mat-raised-button color="primary" class="btn-sm" (click)="openRecordDialog()">
+          <mat-icon class="btn-icon">add</mat-icon> Add Record
+        </button>
       </div>
       <div class="table-responsive">
         <table class="table table-bordered table-hover">
           <thead class="tbl-head">
             <tr>
               <th class="text-center">Date</th>
-              <th>Metric</th>
-              <th class="text-center">Value</th>
-              <th class="text-center">Target</th>
+              <th>Validation Summary</th>
+              <th>Document</th>
+              <th>Monitored By</th>
               <th class="text-center">Status</th>
               <th class="text-center">Actions</th>
             </tr>
@@ -49,15 +51,22 @@
           <tbody>
             <tr *ngFor="let r of records">
               <td class="text-center">{{ r.date }}</td>
-              <td>{{ r.metric }}</td>
-              <td class="text-center">{{ r.value }}</td>
-              <td class="text-center">{{ r.target }}</td>
+              <td>{{ r.summary }}</td>
+              <td>
+                <span class="d-inline-flex align-items-center gap-1 text-primary">
+                  <mat-icon style="font-size: 16px; width: 16px; height: 16px;">description</mat-icon>
+                  {{ r.documentName || 'Audit_Log.pdf' }}
+                </span>
+              </td>
+              <td>{{ r.monitoredBy }}</td>
               <td class="text-center">
-                <span class="status-badge badge-success">{{ r.status }}</span>
+                <span class="status-badge" [ngClass]="r.status === 'Pass' ? 'badge-success' : 'badge-fail'">
+                  {{ r.status }}
+                </span>
               </td>
               <td class="text-center">
-                <a matTooltip="Edit"><i class="fa fa-edit"></i></a>
-                <a matTooltip="Delete"><i class="fa fa-trash red"></i></a>
+                <a matTooltip="Edit" class="action-btn-link" (click)="openRecordDialog(r)"><i class="fa fa-edit"></i></a>
+                <a matTooltip="Delete" class="action-btn-link" (click)="deleteRecord(r)"><i class="fa fa-trash red"></i></a>
               </td>
             </tr>
           </tbody>
@@ -66,12 +75,14 @@
     </div>
 
     <div class="row mt-3">
-      <div class="col-md-8">
+      <div class="col-12">
         <label class="form-label"><b>Monitoring Observations:</b></label>
         <textarea rows="3" class="form-control" placeholder="Observations..." [(ngModel)]="remarks"></textarea>
       </div>
-      <div class="col-md-4 d-flex align-items-end justify-content-end">
-        <button mat-raised-button color="primary"><mat-icon>save</mat-icon> Save & Next</button>
+      <div class="col-12 d-flex justify-content-end mt-3">
+        <button mat-raised-button color="primary" class="save-btn" (click)="save()">
+          <mat-icon class="btn-icon">save</mat-icon> Save
+        </button>
       </div>
     </div>
   </div>

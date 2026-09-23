@@ -17,4 +17,9 @@ export class VerificationComponent {
     { item: 'Stakeholders informed', checked: false },
   ];
   remarks: string = '';
+
+  save(): void {
+    console.log('Verification data saved successfully');
+  }
 }
+

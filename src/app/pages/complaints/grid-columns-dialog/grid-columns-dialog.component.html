@@ -1,0 +1,96 @@
+<div class="grid-columns-modal">
+
+  <!-- Header matching Image 2 -->
+  <div class="modal-header-custom">
+    <div>
+      <h2 class="dialog-title">Manage Grid Columns</h2>
+      <p class="dialog-subtitle">Select, reorder, or freeze columns to customize your view.</p>
+    </div>
+    <button mat-icon-button class="close-btn" (click)="cancel()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div class="dialog-body-custom">
+    <div class="panels-grid">
+
+      <!-- LEFT PANEL: AVAILABLE COLUMNS -->
+      <div class="panel-box">
+        <div class="panel-header">
+          <span class="panel-title">AVAILABLE COLUMNS</span>
+        </div>
+
+        <div class="search-box">
+          <mat-icon class="search-icon">search</mat-icon>
+          <input type="text" [(ngModel)]="searchText" placeholder="Search columns..." class="search-input" />
+        </div>
+
+        <div class="available-list">
+          <div class="available-item" *ngFor="let col of filteredAvailableColumns" (click)="toggleColumn(col)">
+            <mat-checkbox [checked]="isColumnSelected(col)" (click)="$event.stopPropagation()" (change)="toggleColumn(col)" color="primary">
+              <span class="col-name">{{ col.label }}</span>
+            </mat-checkbox>
+          </div>
+
+          <div *ngIf="filteredAvailableColumns.length === 0" class="empty-state">
+            No matching columns found.
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT PANEL: SELECTED (N) -->
+      <div class="panel-box">
+        <div class="panel-header">
+          <span class="panel-title">SELECTED ({{ selectedColumns.length }})</span>
+          <div class="freeze-dropdown-wrapper">
+            <label class="freeze-label">Freeze first:</label>
+            <select class="freeze-select" [ngModel]="freezeCount" (ngModelChange)="onFreezeCountChange($event)">
+              <option *ngFor="let opt of freezeOptions" [value]="opt">{{ opt }}</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Freeze Status Banner -->
+        <div class="freeze-status-banner" [ngClass]="freezeCount > 0 ? 'banner-active' : 'banner-empty'">
+          <span *ngIf="freezeCount === 0">No columns are frozen</span>
+          <span *ngIf="freezeCount > 0" class="freeze-banner-text">
+            <mat-icon class="freeze-icon">push_pin</mat-icon>
+            First {{ freezeCount }} column{{ freezeCount > 1 ? 's are' : ' is' }} frozen
+          </span>
+        </div>
+
+        <!-- Reorderable Selected List -->
+        <div cdkDropList (cdkDropListDropped)="dropSelected($event)" class="selected-drop-list">
+          <div class="selected-item" *ngFor="let col of selectedColumns; let i = index" cdkDrag>
+            <div class="item-left">
+              <div class="drag-handle-wrapper" cdkDragHandle matTooltip="Drag to reorder">
+                <mat-icon class="drag-handle">drag_indicator</mat-icon>
+              </div>
+              <span class="item-label">{{ col.label }}</span>
+              <span *ngIf="i < freezeCount" class="badge-frozen">Frozen</span>
+            </div>
+            <button type="button" class="btn-remove" (click)="removeSelected(i)" matTooltip="Hide column">
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+
+          <div *ngIf="selectedColumns.length === 0" class="empty-state">
+            No columns selected. Check columns from the left panel.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer matching Image 2 -->
+  <div class="dialog-footer-custom">
+    <button mat-button class="btn-cancel" (click)="cancel()">
+      Cancel
+    </button>
+    <button mat-raised-button class="btn-apply" (click)="apply()">
+      Apply Changes
+    </button>
+  </div>
+
+</div>

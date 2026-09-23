@@ -6,12 +6,32 @@
       <p class="section-subtitle">Track parts being returned from dealer/field to the factory for analysis.</p>
     </div>
 
-    <!-- Dispatch Table -->
-    <div class="mt-3">
+    <!-- Dispatch Info (Non-repeating per transcript) -->
+    <div class="row g-4 mt-2">
+      <div class="col-md-3">
+        <label class="form-label"><b>From (Dealer):</b></label>
+        <input type="text" class="form-control" [(ngModel)]="fromDealer">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label"><b>To (Factory):</b></label>
+        <input type="text" class="form-control" [(ngModel)]="toFactory">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label"><b>Tracking No:</b></label>
+        <input type="text" class="form-control" [(ngModel)]="trackingNo">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label"><b>Dispatch Date:</b></label>
+        <input type="date" class="form-control" [(ngModel)]="dispatchDate">
+      </div>
+    </div>
+
+    <!-- Parts Table (part number, part name, remarks, actions) -->
+    <div class="mt-4">
       <div class="d-flex justify-content-between align-items-center mb-2">
         <h5 class="table-title">Dispatched Parts</h5>
-        <button mat-raised-button color="primary" class="btn-sm">
-          <mat-icon>add</mat-icon> Add Dispatch
+        <button mat-raised-button color="primary" class="btn-sm" (click)="openDispatchDialog()">
+          <mat-icon class="btn-icon">add</mat-icon> Add Part
         </button>
       </div>
       <div class="table-responsive">
@@ -20,30 +40,18 @@
             <tr>
               <th>Part No</th>
               <th>Part Name</th>
-              <th class="text-center">Dispatch Date</th>
-              <th>Tracking No</th>
-              <th>From (Dealer)</th>
-              <th>To (Factory)</th>
-              <th class="text-center">Status</th>
+              <th>Remarks</th>
               <th class="text-center">Actions</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let d of dispatches">
-              <td>{{ d.partNo }}</td>
-              <td>{{ d.partName }}</td>
-              <td class="text-center">{{ d.dispatchDate }}</td>
-              <td>{{ d.trackingNo }}</td>
-              <td>{{ d.fromDealer }}</td>
-              <td>{{ d.toFactory }}</td>
+            <tr *ngFor="let p of parts">
+              <td>{{ p.partNo }}</td>
+              <td>{{ p.partName }}</td>
+              <td>{{ p.remarks || '-' }}</td>
               <td class="text-center">
-                <span class="status-badge" [ngClass]="d.status === 'Received' ? 'badge-success' : 'badge-info'">
-                  {{ d.status }}
-                </span>
-              </td>
-              <td class="text-center">
-                <a matTooltip="Edit"><i class="fa fa-edit"></i></a>
-                <a matTooltip="Delete"><i class="fa fa-trash red"></i></a>
+                <a matTooltip="Edit" class="action-btn-link" (click)="openDispatchDialog(p)"><i class="fa fa-edit"></i></a>
+                <a matTooltip="Delete" class="action-btn-link" (click)="deletePart(p)"><i class="fa fa-trash red"></i></a>
               </td>
             </tr>
           </tbody>
@@ -52,12 +60,14 @@
     </div>
 
     <div class="row mt-4">
-      <div class="col-md-8">
+      <div class="col-12">
         <label class="form-label"><b>Dispatch Remarks:</b></label>
         <textarea rows="3" class="form-control" placeholder="Additional dispatch notes..." [(ngModel)]="remarks"></textarea>
       </div>
-      <div class="col-md-4 d-flex align-items-end justify-content-end">
-        <button mat-raised-button color="primary"><mat-icon>save</mat-icon> Save & Next</button>
+      <div class="col-12 d-flex justify-content-end mt-3">
+        <button mat-raised-button color="primary" class="save-btn" (click)="save()">
+          <mat-icon class="btn-icon">save</mat-icon> Save
+        </button>
       </div>
     </div>
   </div>

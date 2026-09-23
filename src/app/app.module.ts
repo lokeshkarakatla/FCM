@@ -94,6 +94,7 @@ import { AddItemCapaDialogComponent } from './pages/meeting/dialogs/add-item-cap
 import { PublishMeetingDialogComponent } from './pages/meeting/dialogs/publish-meeting-dialog/publish-meeting-dialog.component';
 import { MeetingCapaDialogComponent } from './pages/meeting/dialogs/meeting-capa-dialog/meeting-capa-dialog.component';
 import { ReferenceNumberComponent } from './pages/reference-number/reference-number.component';
+import { GridColumnsDialogComponent } from './pages/complaints/grid-columns-dialog/grid-columns-dialog.component';
 import { AddtractorsComponent } from './addtractors/addtractors.component';
 import { AddtestsComponent } from './addtests/addtests.component';
 import { MSectionsComponent } from './pages/admin/masterdata/m-sections/m-sections.component';
@@ -205,6 +206,7 @@ DragulaModule.forRoot()
     ComplaintsComponent,
     ComplaintsLayoutComponent,
     AddComplaintComponent,
+    GridColumnsDialogComponent,
     CapaComponent,
     AddCapaComponent,
     AttendanceComponent,

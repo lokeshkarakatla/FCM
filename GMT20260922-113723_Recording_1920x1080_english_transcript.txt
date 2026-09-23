@@ -1,0 +1,292 @@
+=== VIDEO TRANSCRIPTION & ENGLISH TRANSLATION ===
+Source File: GMT20260922-113723_Recording_1920x1080.mp4
+Detected Base Language: en
+Target Output Language: English (Hindi speech translated)
+Duration: 2210.8s (36:50)
+
+=== FULL TRANSCRIPT (ENGLISH) ===
+
+Okay, so you know where to see my screen. So this is H.C. Have you shared on this? You shared a new one? No, okay. Slap it. You are not sure. Okay, so open containing folder. Okay. You don't see. Find it. Shift the meat. So basically. Okay. I have this secreted, there is a little much better now. Somebody tried my best education, but I am deeply concerned about it. Next secret is by technical review, contentment, supplier actions, So now let's review it more carefully. So let us first see this one. Okay, so first suggestion that I have is that we test-vested the departments, put proper departments and the departments can be to the right and this progress should be where the department is and now the main thing in the complaint is whether it is closed or open. So active and archive is different. So that we have again active and archive but closed. You cannot close it like this. It has to be formally closed. That means the status will be like a pill, like a read-only thing. Not something you adjust from or drop-down. And therefore the status will be like this. So do you see how this is approved and approved and approved as such? What's happening is that this screen, the look that is very good. The second screen should be in the same way. The meetings are also good. The department is also fine. And one is also good. Now I am a little scared to see this radar. When I am going inside a complaint and first of all I need to add this progress. And the status of the complaint should be like this. And the description of the complaint has been written. Like this is the step. Now you have to middle the steps. This should be aligned. So the steps progress should be aligned. So these things are very clearly visible. And status is again like a pill on these. So these things, Kappa, steps, progress, status, they should be right after subject only. And this description can come later. See where it is also an important column that there also be whatever is important should be to the left. So that's that. Then here you are given a concept of filter, but I need a concept of grid columns. So that will then give us the ability to adjust the columns here. And also things will scroll like three spins or a concept implement or not. So that's here. Now if I come inside. See, this is too close, right? This event next and I am going to be sticking out here. So this is what I was going to do. This is what you have. That line. You see how this is appearing. This much space and how these buttons are. This is for team. That is how your buttons should be appearing. So. And this you have put it as Q square. Something should be just to see this rpm. Similarly here also it can be FCMEs. And. So now that they are based info. And see how this is sticking here. So this is what's happening is that you have made this. You have made it. Now you see that you have made it. Can you see some difference in the quality of the design? So try to emulate this. And Harsha can also help you when he comes tomorrow. But just try to emulate this type that we have in rpm. Now, if you are looking at base info, this form is all right. Here you will have a little bit of space. Yeah. And there's no concept of save and next. Just save is enough. You can call it update also. And then you go to somebody. So here. Reviewed it. And do that estimated ETA. And priority. Okay. That's fine. And you have root cause analysis. Development permanent saving is not saving next. And here you have saved somebody. Saved next. Just save is enough. Just save button. Save our update. Time line. This is beautiful. Investigation. So here we're saying complaint classification and routing decision. Complaint type investigated by investigation date initial findings. Okay. Very good. Routing decision goes to factory levels. Volunteer claim required field is patch required. Very good. Routing decision. Now close the dealer level escalated to factory. Requires further analysis. Very good. Remox. Yeah. International remarks. Okay. Cool. Save and next. Not save and next. Just save. And this is warranty claim. Not claim but claims. Volunteer claim. Volunteer claim. Volunteer. Just call it. Yeah, warranty claim is okay. Raj. Now here you're saying add spill. Add service. Volunteer reference claim date. Volunteer expiry. Services required remarks. Okay. And you put save and next. Over here. So you can do a little bit more space like this. this and give us, say, a button out here and yeah, so it's really nice and you can make a rich text area or yeah, and very similar to, yeah, it's a small, very similar to, you're giving me meetings also, so I'll show you, you see this, how big and nice, published, see it's a little, it's a sign of involvement, say and prove over, but yeah, it's really good, it's a closure, you have got, it's a big size, it's really good, that'll be good. Now it's got a rich text area, it's really good, and yeah, it's a back button, it's a great thing to do. This may have maybe a black color back button, the black, these buttons are black, but those are great, always, and get standard size on it, yeah, so that's investigation, warranty claim, field dispatch, so add dispatch, if you're the case me, now add a copy pop energy, so free of cost, spare replacements, so now if I have to do this and then there are these services, right, that means you need to maintain a spare parts master and you need to maintain a job code, or you need to maintain a job code master, okay, so where would you maintain that? Now because it's here, so spare parts master and job code master can be right here in this, so just add spare parts master, spare parts and job codes, so spare parts may be right here that you say spare part names, spare part code, unit rate, and remox, that's it, so it's great, so now you have to add right here, so now it's said that when you come here in your monitor, and you lock here, so you are basically with a search selecting the spare part, specifying the quantity, and you have to add it, so now it is coming from a master and the unit rate is there, so now you have quantity, unit rate and cost, quantity unit rate total, quantity unit rate total, so fair, yeah, but total cost, is there some total of these costs, yeah, but total cost, yeah, so that's it, now here we have total cost, total service cost, total space cost, yes sir, remox didn't do that, remox is available, you got it, yeah, okay, now we have field dispatch, so field dispatch, you are dispatching some parts and that will not get driven by parts master, you'll be able to enter freely, so you can say part number, part name, yeah, let's say you have to dispatch, dispatched it, this is tracking info, right, up in the remox with the over here, so now the area level of tracking info is not there, the tracking info will not be here, right, from dealer, Mumbai center less than you there, so how should I say this, you have a list of parts, and those parts are like part number, part name, and remox, and actions, they are small graded, you have these columns like from dealer, to factory, that's it, that means this information like from dealer, to factory, this doesn't repeat, and even tracking number doesn't repeat by part, the part that you have a small graded, or you can get the remox separately, dispatched it be for extra that, where I don't do that part, it's like this is a bunch of parts, you send it on this date, the such and such tracking number, from this dealer to factory, with these remox, and it's more information, that's it, I don't want to do it, okay, technical review, very good, this is very nice, this is very nice, review details, technical review, you have to do it, so, okay, and containment required, yes, supplier component issue, so all of that, these tabs will be available, and this is good, for now, this is good, and the only comment I have this, it's sort of having, like dubbing, dubbing, this is very good, this is very good, but this is the inside of it, it's very nice, because it's very good, it's very good, so now this is containment, again this should be bigger, and this should be a safe button below it, and here you have bought containment actions, and who's responsible for it, so responsible, you can say department and role, instead of responsible, say department and role, what is the action to be taken, that's good, no need for this one, two, three, four, serial number, yeah, this is kind of really one, two, three, four, so this containment may one, two, three, four, these are with the target date, and then a status, and so target date status, and you can say done, it done, column, have checkboxes are done, so done is important, and you edit, I have a date completed and done, you can do it here, you can also do it here, and so on, this is like recall, recall required, checkbox is so far, it's looking good, so containment by person responsible, affected batches, containment date, containment by, so this is not making sense, basically a bunch of actions, that's it, and already you have responsibility, the containment by, that's not it, and target date is so far, so it's pretty good, and recall required, up new already, so here in investigation, technical review, but if you want to put recall required, then that you put under technical review, not under containment, containment is like your set containment is required over here, right, containment is required, so I'll just put a set of containment actions, and a certain user in a certain department will be responsible for each action, and for every action you can tag it as done, and supplier action, so supplier corrective action, the supplier can now get, that should be searchable, and so this is, you are assuming here that it's only one supplier, but it need not be, this could option, so add action may have this thing, you select a supplier, you select a component, you select a supplier, and then basically action required, and then you set a date, and after that, you are able to tag it as done, and so that means date completed, be aware, accordingly, your edit will be as done, and then you need to do it, and then you need to do it as done, clear, so this is the case, so this is yes, you have that app, add that app, and then you have a space, and you see here, it's going wrong, you can enter it, and implementation, again 1, 2, 3, 4, I don't need, and you add a milestone, is not a milestone that you are adding, you are basically adding a certain action, so add activity is better, add activity, and this is not milestone, this is activity, and somebody is responsible for it, but it is department, and then responsible, that person belongs to a, we have a target date, and you have an action, this is completion date, and you have status, out here, right, so status can be fine, but you should have a done column, very explicitly, you are able to market as done, and implementation notes, you have no problem, you have to save, it should come down, this is the observation, then you have verification, so verification checklist is not there, did verified by, right, so now you see verification method, you have to allow, process audit, document review, field validation, or her verification method check list, so that means in masters I should have verification master, so they are, I am able to specify the checklist for each one of the verification methods, so then how am I going to do it, you have verification methods and verification checklist, two masters, so verification methods is just a simple list that you manage, and for verification is almost like lookup options, where you select verification method and enter checklist items, and then in exactly like lookup options, right, where you select a code and you have options, here you select a verification method and you have options, so now that you say, your verification method changes, the verification checklist also changes, now you have column up quality, Lumbaya or Chota, so here you just call the process as verification, and then it says verification method, you select from a drop down and verification checklist will change, as per the verification method, so that is how it will come, monitoring, so yeah, this is good, start date and date monitored by the monitored bykilya department, and select role, so after the end date will be select department and then monitored by, so here you can add records, you can add as many records, and it is very difficult to specify a value and a target because then there are a lot of values and targets, that becomes complicated, so it is better to upload a document, so we say date and notice not metric, it is summary date validation summary document and status and actions, there is no value and target, so we have verified our year mark, and we have documented our entire analysis, and what is the status, so status is better, it is basically pass or fail, instead of you know aim control and all that, just pass or fail, and above columns can also be given, status is either pass or fail, so two columns pass fail, pass green have failed red, so monitoring observation, so this person is responsible and they have done it, and here you have basically monitored for certain period of time, so that's okay, that's as per company guidelines, the imbar 5 bar, so that's good then, and prevention, so preventive measures, these are the, this go 1, 2, 3, 4 data, preventive measures type owner, so it's in department and owner, which will be department, target data, here we have done and a date completed, so all these things will be a part of the edit, so make sure that the add and the add data are properly done, and each of prevention notes are here, so it's a little big and the save button comes with all, and yeah you have taken preventive measures, and then you have got recognition, so team lead recognition date, team contributions recognition, not really, not so much like this, let's just put one simple block for recognition, so there'll be department, personnel, complements, that's, so if you have a summary of multiple people's recognition, but generally I would say it is better, if you give me recognition instead of this complicated thing, I'm going to go recognition again, sorry about that, that works better, so simple, but like location at great work, so recognition is simple, don't make it like grid, and closure, closure is beautiful, our closure documents generate AD report, all this will get combined into a single AD report, and there'll be a close complaint, that's good, and you have a download AD report with the download, or a little bit of a distance, and closed complaint is a good activity, so it's actually green in color, it's not a red thing, it's a closed complaint, and you have download report over here, download PDF for something, and you're able to generate, so that's it, so that's nice, and documents, so, dog, dog title, view, actions, so here, so, you have dog type, again this alignment and everything, so this is a very ganda, look here, documents, like this, looks good right, so like this, see how the back buttons come, so you can emulate it, so I style it, and so all the 30 had over here, so documents come in here, go to the nodes, so, how it comes on this place, these nodes, same as nodes, so, you can emulate it, or the FCM will come here, you have to do all this, your monitor will be very good, meetings are already very good, kapa is good, kanban is good, now only this radar is a little less good, and grid is very good, so, we have to do a little bit of work, as far as these are concerned, but if you come here, we'll do it here, so, we'll work a little bit to make it better, tomorrow, harsha will come, they'll give you further inputs, but right now once you take care of these, then the only thing that we'll have to work on, the radar, they can see a little bit, right, align things, and all that, so, this is a little bit, yes, screen format, we'll have to do it, and yeah, right now, I feel like telling you, they're land on this, but it looks much better, compared to this, yeah, and but if you see here, see when you are on projects, when you are on dashboard, it lands better, slightly better only, not much better, but this looks good, if it looks like this, it looks better, yeah, so, we'll be able to do it, so, otherwise, I think it's good progress, I like to, meetings, it looks good, and it looks really good, and in the monitor, you've worked a lot, like, each one of these are designing something and making it relevant, I have not given inputs, but you've made your own sub-serves, so, that's really good, so, you did harsha, I'll be with this, you did it on your own, so, this is like a prompting and all that, a little bit of research, but then prompt has to come from you, so, this is really good, it's almost like saying, we are building a field complaint monitoring application, and so, we have this section for investigation, but can I have there? So, I say, look at it, what is nice, it's really good, using AI to speed it up, so, so, we'll close it at such a time, it will take us about six to ten minutes to reach the post-square, so, otherwise, it's good luck, I'm happy with that, so, like, the radar is on its left, as well as the airline here, so, this radar, so, that's it, Okay, let's go. Now, this is post-square, so my wife is coming. Harsh, Shali? Yes, that's okay. I was only saying that there were some card documents, federal bank, so I asked the driver to leave at 600 o'clock. Let's go. This is not true, it's not true. I was set up with the driver at 600 o'clock, so I said, okay. I didn't want to get any extra card documents, so I asked the driver to leave at the same time. We will do the shalling, hopefully, today I'll do it. After that, we'll do 4-5 meetings. Okay. So, we are going to sit down, we are going to do all the work, now we will take care of it.
+
+=== TIMESTAMPED TRANSCRIPT ===
+
+[00:00 -> 00:29] Okay, so you know where to see my screen.
+[00:29 -> 00:35] So this is H.C. Have you shared on this?
+[00:35 -> 00:37] You shared a new one?
+[00:37 -> 00:41] No, okay.
+[00:41 -> 00:44] Slap it.
+[00:45 -> 01:02] You are not sure.
+[01:02 -> 01:10] Okay, so open containing folder.
+[01:10 -> 01:15] Okay.
+[01:41 -> 01:52] You don't see.
+[01:52 -> 02:02] Find it.
+[02:02 -> 02:07] Shift the meat.
+[02:33 -> 02:58] So basically.
+[02:58 -> 03:03] Okay.
+[03:28 -> 03:54] I have this secreted, there is a little much better now.
+[03:54 -> 04:09] Somebody tried my best education, but I am deeply concerned about it.
+[04:09 -> 04:18] Next secret is by technical review, contentment, supplier actions,
+[04:48 -> 05:15] So now let's review it more carefully.
+[05:15 -> 05:25] So let us first see this one. Okay, so first suggestion
+[05:25 -> 05:40] that I have is that we test-vested the departments, put proper departments and
+[05:40 -> 06:08] the departments can be to the right and this progress should be where the department is and
+[06:08 -> 06:19] now the main thing in the complaint is whether it is closed or open. So active and archive is different. So that we have
+[06:20 -> 06:31] again active and archive but closed.
+[06:31 -> 06:39] You cannot close it like this. It has to be formally closed. That means the status will be like a pill, like a read-only thing.
+[06:39 -> 06:49] Not something you adjust from or drop-down. And therefore the status will be like this.
+[06:49 -> 07:12] So do you see how this is approved and approved and approved as such?
+[07:19 -> 07:38] What's happening is that this screen, the look that is very good.
+[07:38 -> 07:44] The second screen should be in the same way. The meetings are also good.
+[07:44 -> 07:57] The department is also fine. And one is also good. Now I am a little scared to see this radar.
+[07:58 -> 08:07] When I am going inside a complaint and first of all I need to add this progress.
+[08:07 -> 08:15] And the status of the complaint should be like this.
+[08:16 -> 08:20] And the description of the complaint has been written.
+[08:20 -> 08:25] Like this is the step. Now you have to middle the steps.
+[08:25 -> 08:33] This should be aligned. So the steps progress should be aligned.
+[08:34 -> 08:39] So these things are very clearly visible. And status is again like a pill on these.
+[08:39 -> 08:46] So these things, Kappa, steps, progress, status, they should be right after subject only.
+[08:46 -> 08:51] And this description can come later.
+[08:51 -> 08:57] See where it is also an important column that there also be whatever is important should be to the left.
+[08:57 -> 09:03] So that's that. Then here you are given a concept of filter, but I need a concept of grid columns.
+[09:03 -> 09:08] So that will then give us the ability to adjust the columns here.
+[09:08 -> 09:14] And also things will scroll like three spins or a concept implement or not.
+[09:14 -> 09:23] So that's here. Now if I come inside.
+[09:23 -> 09:28] See, this is too close, right? This event next and I am going to be sticking out here.
+[09:28 -> 09:32] So this is what I was going to do.
+[09:32 -> 09:40] This is what you have.
+[09:40 -> 09:43] That line.
+[09:43 -> 09:45] You see how this is appearing.
+[09:45 -> 09:48] This much space and how these buttons are.
+[09:48 -> 09:53] This is for team. That is how your buttons should be appearing.
+[09:53 -> 09:56] So.
+[09:56 -> 09:59] And this you have put it as Q square.
+[09:59 -> 10:07] Something should be just to see this rpm. Similarly here also it can be FCMEs.
+[10:07 -> 10:10] And.
+[10:10 -> 10:15] So now that they are based info.
+[10:15 -> 10:17] And see how this is sticking here.
+[10:17 -> 10:21] So this is what's happening is that you have made this.
+[10:21 -> 10:23] You have made it.
+[10:23 -> 10:25] Now you see that you have made it.
+[10:25 -> 10:31] Can you see some difference in the quality of the design?
+[10:31 -> 10:35] So try to emulate this.
+[10:35 -> 10:38] And Harsha can also help you when he comes tomorrow.
+[10:38 -> 10:44] But just try to emulate this type that we have in rpm.
+[10:44 -> 10:47] Now, if you are looking at base info, this form is all right.
+[10:47 -> 10:49] Here you will have a little bit of space.
+[10:49 -> 10:50] Yeah.
+[10:50 -> 10:53] And there's no concept of save and next.
+[10:53 -> 10:54] Just save is enough.
+[10:54 -> 10:57] You can call it update also.
+[10:57 -> 11:00] And then you go to somebody.
+[11:00 -> 11:05] So here.
+[11:05 -> 11:06] Reviewed it.
+[11:06 -> 11:12] And do that estimated ETA.
+[11:12 -> 11:17] And priority.
+[11:17 -> 11:18] Okay.
+[11:18 -> 11:19] That's fine.
+[11:19 -> 11:23] And you have root cause analysis.
+[11:23 -> 11:26] Development permanent saving is not saving next.
+[11:26 -> 11:28] And here you have saved somebody.
+[11:28 -> 11:29] Saved next.
+[11:29 -> 11:30] Just save is enough.
+[11:30 -> 11:31] Just save button.
+[11:31 -> 11:33] Save our update.
+[11:36 -> 11:37] Time line.
+[11:37 -> 11:39] This is beautiful.
+[11:39 -> 11:41] Investigation.
+[11:41 -> 11:46] So here we're saying complaint classification and routing decision.
+[11:46 -> 11:52] Complaint type investigated by investigation date initial findings.
+[11:52 -> 11:55] Okay.
+[11:55 -> 11:56] Very good.
+[11:56 -> 11:59] Routing decision goes to factory levels.
+[11:59 -> 12:02] Volunteer claim required field is patch required.
+[12:02 -> 12:03] Very good.
+[12:03 -> 12:05] Routing decision.
+[12:05 -> 12:09] Now close the dealer level escalated to factory.
+[12:09 -> 12:10] Requires further analysis.
+[12:10 -> 12:12] Very good.
+[12:12 -> 12:13] Remox.
+[12:13 -> 12:14] Yeah.
+[12:14 -> 12:15] International remarks.
+[12:15 -> 12:16] Okay.
+[12:16 -> 12:19] Cool.
+[12:19 -> 12:20] Save and next.
+[12:20 -> 12:21] Not save and next.
+[12:21 -> 12:22] Just save.
+[12:22 -> 12:24] And this is warranty claim.
+[12:24 -> 12:25] Not claim but claims.
+[12:25 -> 12:27] Volunteer claim.
+[12:27 -> 12:30] Volunteer claim.
+[12:31 -> 12:33] Volunteer.
+[12:33 -> 12:36] Just call it.
+[12:36 -> 12:38] Yeah, warranty claim is okay.
+[12:38 -> 12:39] Raj.
+[12:39 -> 12:41] Now here you're saying add spill.
+[12:41 -> 12:43] Add service.
+[12:43 -> 12:45] Volunteer reference claim date.
+[12:45 -> 12:47] Volunteer expiry.
+[12:47 -> 12:50] Services required remarks.
+[12:50 -> 12:51] Okay.
+[12:51 -> 12:53] And you put save and next.
+[12:53 -> 12:54] Over here.
+[12:54 -> 12:59] So you can do a little bit more space like this.
+[12:59 -> 13:09] this and give us, say, a button out here and yeah, so it's really nice and you can make
+[13:09 -> 13:24] a rich text area or yeah, and very similar to, yeah, it's a small, very similar to,
+[13:24 -> 13:33] you're giving me meetings also, so I'll show you, you see this, how big and nice, published,
+[13:33 -> 13:40] see it's a little, it's a sign of involvement, say and prove over, but yeah, it's really good,
+[13:40 -> 13:45] it's a closure, you have got, it's a big size, it's really good, that'll be good. Now
+[13:45 -> 13:50] it's got a rich text area, it's really good, and yeah, it's a back button, it's a great
+[13:50 -> 13:57] thing to do. This may have maybe a black color back button, the black, these buttons are black,
+[13:57 -> 14:08] but those are great, always, and get standard size on it, yeah, so that's investigation,
+[14:08 -> 14:23] warranty claim, field dispatch, so add dispatch, if you're the case me, now add a copy
+[14:23 -> 14:38] pop energy, so free of cost, spare replacements, so now if I have to do this and then there are
+[14:38 -> 14:45] these services, right, that means you need to maintain a spare parts master and you need to maintain
+[14:45 -> 14:58] a job code, or you need to maintain a job code master, okay, so where would you maintain that?
+[15:01 -> 15:09] Now because it's here, so spare parts master and job code master can be right here in this,
+[15:09 -> 15:18] so just add spare parts master, spare parts and job codes, so spare parts may be right here that you say
+[15:21 -> 15:36] spare part names, spare part code, unit rate, and remox, that's it, so it's great,
+[15:36 -> 15:42] so now you have to add right here, so now it's said that when you come here in your monitor,
+[15:43 -> 15:50] and you lock here, so you are basically with a search selecting the spare part,
+[15:50 -> 15:58] specifying the quantity, and you have to add it, so now it is coming from a master and the unit rate
+[15:58 -> 16:06] is there, so now you have quantity, unit rate and cost, quantity unit rate total, quantity unit rate total,
+[16:06 -> 16:20] so fair, yeah, but total cost, is there some total of these costs, yeah, but total cost, yeah,
+[16:20 -> 16:49] so that's it, now here we have total cost, total service cost, total space cost,
+[16:50 -> 16:58] yes sir, remox didn't do that, remox is available, you got it, yeah,
+[16:58 -> 17:11] okay, now we have field dispatch, so field dispatch, you are dispatching some parts and that will not
+[17:11 -> 17:17] get driven by parts master, you'll be able to enter freely, so you can say part number, part name,
+[17:17 -> 17:24] yeah, let's say you have to dispatch, dispatched it, this is tracking info, right, up in the remox with the
+[17:24 -> 17:31] over here, so now the area level of tracking info is not there, the tracking info will not be here,
+[17:31 -> 17:40] right, from dealer, Mumbai center less than you there, so how should I say this, you have a list of parts,
+[17:40 -> 17:50] and those parts are like part number, part name, and remox, and actions, they are small
+[17:50 -> 18:09] graded, you have these columns like from dealer, to factory, that's it, that means this information
+[18:09 -> 18:14] like from dealer, to factory, this doesn't repeat, and even tracking number doesn't repeat by part,
+[18:14 -> 18:18] the part that you have a small graded, or you can get the remox separately, dispatched it
+[18:18 -> 18:24] be for extra that, where I don't do that part, it's like this is a bunch of parts, you send it on this
+[18:24 -> 18:29] date, the such and such tracking number, from this dealer to factory, with these remox, and it's
+[18:30 -> 18:38] more information, that's it, I don't want to do it, okay, technical review,
+[18:44 -> 18:49] very good, this is very nice, this is very nice, review details, technical review, you have to do it,
+[18:50 -> 19:01] so, okay, and containment required, yes, supplier component issue, so all of that,
+[19:01 -> 19:13] these tabs will be available, and this is good, for now, this is good, and the only comment I have
+[19:13 -> 19:20] this, it's sort of having, like dubbing, dubbing, this is very good, this is very good,
+[19:20 -> 19:26] but this is the inside of it, it's very nice, because it's very good, it's very good,
+[19:30 -> 19:35] so now this is containment, again this should be bigger, and this should be a safe button below it,
+[19:36 -> 19:42] and here you have bought containment actions, and who's responsible for it, so responsible, you can say
+[19:42 -> 19:48] department and role, instead of responsible, say department and role, what is the action to be taken,
+[19:48 -> 19:54] that's good, no need for this one, two, three, four, serial number, yeah, this is kind of really
+[19:54 -> 19:59] one, two, three, four, so this containment may one, two, three, four, these are with the target date,
+[20:00 -> 20:15] and then a status, and so target date status, and you can say done, it done,
+[20:16 -> 20:22] column, have checkboxes are done, so done is important, and you edit, I have
+[20:23 -> 20:31] a date completed and done, you can do it here, you can also do it here, and so on,
+[20:31 -> 20:38] this is like recall, recall required, checkbox is so far, it's looking good, so
+[20:38 -> 20:52] containment by person responsible, affected batches, containment date, containment by,
+[20:53 -> 21:01] so this is not making sense, basically a bunch of actions, that's it, and already you have
+[21:01 -> 21:07] responsibility, the containment by, that's not it, and target date is so far, so it's pretty good,
+[21:07 -> 21:13] and recall required, up new already, so here in investigation,
+[21:17 -> 21:26] technical review, but if you want to put recall required, then that you put under technical review,
+[21:27 -> 21:32] not under containment, containment is like your set containment is required over here,
+[21:32 -> 21:41] right, containment is required, so I'll just put a set of containment actions, and a certain user
+[21:41 -> 21:45] in a certain department will be responsible for each action, and for every action you can tag it as done,
+[21:46 -> 21:56] and supplier action, so supplier corrective action, the supplier can now get, that should be
+[21:56 -> 22:11] searchable, and so this is, you are assuming here that it's only one supplier, but it need not be,
+[22:11 -> 22:17] this could option, so add action may have this thing, you select a supplier, you select a component,
+[22:18 -> 22:27] you select a supplier, and then basically action required, and then you set a date, and after that,
+[22:27 -> 22:37] you are able to tag it as done, and so that means date completed, be aware, accordingly,
+[22:37 -> 22:41] your edit will be as done, and then you need to do it, and then you need to do it as done,
+[22:42 -> 22:50] clear, so this is the case, so this is yes, you have that app, add that app, and then you have a space,
+[22:50 -> 23:00] and you see here, it's going wrong, you can enter it, and implementation,
+[23:01 -> 23:10] again 1, 2, 3, 4, I don't need, and you add a milestone,
+[23:10 -> 23:25] is not a milestone that you are adding, you are basically adding a certain action,
+[23:27 -> 23:35] so add activity is better, add activity, and this is not milestone, this is activity,
+[23:35 -> 23:41] and somebody is responsible for it, but it is department, and then responsible, that person belongs to
+[23:41 -> 23:46] a, we have a target date, and you have an action, this is completion date, and you have status,
+[23:46 -> 23:55] out here, right, so status can be fine, but you should have a done column, very explicitly,
+[23:55 -> 23:58] you are able to market as done, and implementation notes, you have no problem, you have to save,
+[23:58 -> 24:07] it should come down, this is the observation, then you have verification, so verification checklist
+[24:07 -> 24:11] is not there, did verified by,
+[24:11 -> 24:40] right, so now you see verification method, you have to allow, process audit, document review,
+[24:40 -> 24:45] field validation, or her verification method check list, so that means in masters I should have
+[24:46 -> 24:53] verification master, so they are, I am able to specify the checklist for each one of the verification
+[24:53 -> 24:59] methods, so then how am I going to do it, you have verification methods and verification checklist,
+[24:59 -> 25:06] two masters, so verification methods is just a simple list that you manage, and for verification
+[25:07 -> 25:14] is almost like lookup options, where you select verification method and enter checklist items,
+[25:14 -> 25:19] and then in exactly like lookup options, right, where you select a code and you have options,
+[25:19 -> 25:25] here you select a verification method and you have options, so now that you say, your verification method
+[25:25 -> 25:30] changes, the verification checklist also changes, now you have column up quality,
+[25:31 -> 25:41] Lumbaya or Chota, so here you just call the process as verification, and then it says verification method,
+[25:41 -> 25:46] you select from a drop down and verification checklist will change, as per the verification method,
+[25:47 -> 25:50] so that is how it will come, monitoring, so
+[25:51 -> 26:00] yeah, this is good, start date and date monitored by the monitored bykilya department,
+[26:01 -> 26:07] and select role, so after the end date will be select department and then monitored by,
+[26:07 -> 26:12] so here you can add records, you can add as many records, and
+[26:15 -> 26:19] it is very difficult to specify a value and a target because then there are a lot of values and
+[26:19 -> 26:28] targets, that becomes complicated, so it is better to upload a document, so we say date and
+[26:28 -> 26:51] notice not metric, it is summary date validation summary document and status and actions,
+[26:52 -> 26:59] there is no value and target, so we have verified our year mark, and we have
+[26:59 -> 27:11] documented our entire analysis, and what is the status, so status is better, it is basically pass or fail,
+[27:11 -> 27:17] instead of you know aim control and all that, just pass or fail, and above columns can also be given,
+[27:18 -> 27:24] status is either pass or fail, so two columns pass fail, pass green have failed red, so
+[27:25 -> 27:33] monitoring observation, so this person is responsible and they have done it, and
+[27:34 -> 27:43] here you have basically monitored for certain period of time, so that's okay, that's as per company guidelines,
+[27:43 -> 27:51] the imbar 5 bar, so that's good then, and prevention, so preventive measures, these are the,
+[27:51 -> 27:58] this go 1, 2, 3, 4 data, preventive measures type owner, so it's in department and owner, which
+[27:58 -> 28:10] will be department, target data, here we have done and a date completed, so all these things will be a part
+[28:10 -> 28:15] of the edit, so make sure that the add and the add data are properly done, and each of prevention
+[28:15 -> 28:20] notes are here, so it's a little big and the save button comes with all, and yeah you have taken preventive
+[28:20 -> 28:30] measures, and then you have got recognition, so team lead recognition date, team contributions recognition,
+[28:31 -> 28:43] not really, not so much like this, let's just put one simple block for recognition,
+[28:43 -> 28:59] so there'll be department, personnel,
+[28:59 -> 29:15] complements, that's, so if you have a summary of multiple people's recognition, but generally I would
+[29:15 -> 29:20] say it is better, if you give me recognition instead of this complicated thing, I'm going to go
+[29:20 -> 29:32] recognition again, sorry about that, that works better, so simple, but like location at great work,
+[29:50 -> 29:59] so recognition is simple, don't make it like grid, and closure, closure is beautiful,
+[29:59 -> 30:08] our closure documents generate AD report, all this will get combined into a single AD report, and
+[30:08 -> 30:21] there'll be a close complaint, that's good, and you have a download AD report with the download,
+[30:21 -> 30:26] or a little bit of a distance, and closed complaint is a good activity, so it's actually green in
+[30:26 -> 30:32] color, it's not a red thing, it's a closed complaint, and you have download report over here,
+[30:32 -> 30:40] download PDF for something, and you're able to generate, so that's it, so that's nice, and documents,
+[30:41 -> 30:47] so, dog, dog title, view, actions,
+[30:57 -> 30:58] so here,
+[30:58 -> 31:11] so, you have dog type, again this alignment and everything, so this is a very
+[31:11 -> 31:24] ganda, look here, documents, like this, looks good right, so like this,
+[31:24 -> 31:28] see how the back buttons come, so you can emulate it, so I style it, and
+[31:31 -> 31:36] so all the 30 had over here, so documents come in here, go to the nodes,
+[31:36 -> 31:41] so, how it comes on this place, these nodes, same as nodes,
+[31:43 -> 31:52] so, you can emulate it, or the FCM will come here, you have to do all this, your monitor will be
+[31:52 -> 32:01] very good, meetings are already very good, kapa is good, kanban is good, now only this radar is a little less
+[32:01 -> 32:17] good, and grid is very good, so, we have to do a little bit of work, as far as these are concerned,
+[32:18 -> 32:26] but if you come here, we'll do it here, so, we'll work a little bit to make it better,
+[32:26 -> 32:30] tomorrow, harsha will come, they'll give you further inputs, but right now once you take care of these,
+[32:31 -> 32:37] then the only thing that we'll have to work on, the radar, they can see a little bit, right,
+[32:38 -> 32:43] align things, and all that, so, this is a little bit, yes, screen format, we'll have to do it,
+[32:44 -> 32:54] and yeah, right now, I feel like telling you, they're land on this,
+[32:55 -> 33:02] but it looks much better, compared to this, yeah, and but if you see here,
+[33:03 -> 33:07] see when you are on projects, when you are on dashboard,
+[33:11 -> 33:16] it lands better, slightly better only, not much better, but this looks good,
+[33:16 -> 33:22] if it looks like this, it looks better, yeah, so,
+[33:28 -> 33:37] we'll be able to do it, so, otherwise, I think it's good progress,
+[33:37 -> 33:42] I like to, meetings, it looks good, and it looks really good,
+[33:42 -> 33:51] and in the monitor, you've worked a lot, like, each one of these are designing something and making it relevant,
+[33:51 -> 33:56] I have not given inputs, but you've made your own sub-serves, so, that's really good,
+[33:56 -> 34:02] so, you did harsha, I'll be with this, you did it on your own, so, this is like a prompting and all that,
+[34:03 -> 34:07] a little bit of research, but then prompt has to come from you, so, this is really good,
+[34:08 -> 34:12] it's almost like saying, we are building a field complaint monitoring application,
+[34:13 -> 34:18] and so, we have this section for investigation, but can I have there?
+[34:18 -> 34:26] So, I say, look at it, what is nice, it's really good, using AI to speed it up,
+[34:27 -> 34:27] so,
+[34:32 -> 34:37] so, we'll close it at such a time, it will take us about six to ten minutes to reach the post-square,
+[34:38 -> 34:41] so, otherwise, it's good luck, I'm happy with that,
+[34:41 -> 34:44] so, like, the radar is on its left, as well as the airline here,
+[34:46 -> 34:48] so, this radar, so, that's it,
+[34:48 -> 34:50] Okay, let's go.
+[34:50 -> 34:54] Now, this is post-square, so my wife is coming.
+[34:54 -> 34:57] Harsh, Shali?
+[35:01 -> 35:02] Yes, that's okay.
+[35:02 -> 35:11] I was only saying that there were some card documents, federal bank, so I asked the driver to leave at 600 o'clock.
+[35:11 -> 35:14] Let's go.
+[35:14 -> 35:19] This is not true, it's not true.
+[35:19 -> 35:25] I was set up with the driver at 600 o'clock, so I said, okay.
+[35:25 -> 35:30] I didn't want to get any extra card documents, so I asked the driver to leave at the same time.
+[35:33 -> 35:35] We will do the shalling, hopefully, today I'll do it.
+[35:35 -> 35:40] After that, we'll do 4-5 meetings.
+[35:40 -> 35:42] Okay.
+[36:12 -> 36:40] So, we are going to sit down, we are going to do all the work, now we will take care of it.

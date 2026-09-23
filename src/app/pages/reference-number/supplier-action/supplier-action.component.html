@@ -27,32 +27,40 @@
     <div class="mt-4">
       <div class="d-flex justify-content-between align-items-center mb-2">
         <h5 class="table-title">Supplier Corrective Actions</h5>
-        <button mat-raised-button color="primary" class="btn-sm"><mat-icon>add</mat-icon> Add Action</button>
+        <button mat-raised-button color="primary" class="btn-sm" (click)="openActionDialog()">
+          <mat-icon class="btn-icon">add</mat-icon> Add Action
+        </button>
       </div>
       <div class="table-responsive">
         <table class="table table-bordered table-hover">
           <thead class="tbl-head">
             <tr>
-              <th>#</th>
               <th>Action Required</th>
               <th>Supplier</th>
+              <th>Component</th>
               <th class="text-center">Deadline</th>
+              <th class="text-center">Date Completed</th>
               <th class="text-center">Status</th>
+              <th class="text-center">Done</th>
               <th class="text-center">Actions</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let a of actions">
-              <td>{{ a.id }}</td>
               <td>{{ a.action }}</td>
               <td>{{ a.supplier }}</td>
+              <td>{{ a.component || '-' }}</td>
               <td class="text-center">{{ a.deadline }}</td>
+              <td class="text-center">{{ a.dateCompleted || '-' }}</td>
               <td class="text-center">
                 <span class="status-badge" [ngClass]="a.status === 'Completed' ? 'badge-success' : 'badge-open'">{{ a.status }}</span>
               </td>
               <td class="text-center">
-                <a matTooltip="Edit"><i class="fa fa-edit"></i></a>
-                <a matTooltip="Delete"><i class="fa fa-trash red"></i></a>
+                <mat-checkbox [checked]="a.done" (change)="toggleDone(a)" color="primary"></mat-checkbox>
+              </td>
+              <td class="text-center">
+                <a matTooltip="Edit" class="action-btn-link" (click)="openActionDialog(a)"><i class="fa fa-edit"></i></a>
+                <a matTooltip="Delete" class="action-btn-link" (click)="deleteAction(a)"><i class="fa fa-trash red"></i></a>
               </td>
             </tr>
           </tbody>
@@ -61,12 +69,14 @@
     </div>
 
     <div class="row mt-3">
-      <div class="col-md-8">
+      <div class="col-12">
         <label class="form-label"><b>Remarks:</b></label>
         <textarea rows="3" class="form-control" placeholder="Supplier action remarks..." [(ngModel)]="remarks"></textarea>
       </div>
-      <div class="col-md-4 d-flex align-items-end justify-content-end">
-        <button mat-raised-button color="primary"><mat-icon>save</mat-icon> Save & Next</button>
+      <div class="col-12 d-flex justify-content-end mt-3">
+        <button mat-raised-button color="primary" class="save-btn" (click)="save()">
+          <mat-icon class="btn-icon">save</mat-icon> Save
+        </button>
       </div>
     </div>
   </div>
