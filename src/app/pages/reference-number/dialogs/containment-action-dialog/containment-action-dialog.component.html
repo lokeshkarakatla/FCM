@@ -1,0 +1,92 @@
+<div class="custom-modal-wrapper">
+  <div class="modal-header-custom">
+    <h2 class="modal-title-text">
+      {{ data ? 'Edit Containment Action' : 'Add Containment Action' }}
+    </h2>
+    <button type="button" class="modal-close-icon" (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div mat-dialog-content class="modal-body-custom">
+    <form class="form-horizontal">
+
+      <div class="row align-items-center mb-3">
+        <label class="col-sm-3 control-label">
+          Action Required <span class="text-danger">*</span> :
+        </label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" placeholder="e.g. Halt production line B for inspection"
+                 [(ngModel)]="action" name="actionText" required autofocus />
+        </div>
+      </div>
+
+      <div class="row align-items-center mb-3">
+        <label class="col-sm-3 control-label">
+          Department :
+        </label>
+        <div class="col-sm-9">
+          <mat-select class="form-control" [(ngModel)]="department" name="dept">
+            <mat-option value="Production">Production</mat-option>
+            <mat-option value="Quality Assurance">Quality Assurance</mat-option>
+            <mat-option value="Warehouse / Logistics">Warehouse / Logistics</mat-option>
+            <mat-option value="Engineering">Engineering</mat-option>
+          </mat-select>
+        </div>
+      </div>
+
+      <div class="row align-items-center mb-3">
+        <label class="col-sm-3 control-label">
+          Responsible Person :
+        </label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" placeholder="e.g. Production Manager / John Doe"
+                 [(ngModel)]="responsible" name="respPerson" />
+        </div>
+      </div>
+
+      <div class="row align-items-center mb-3">
+        <label class="col-sm-3 control-label">
+          Target Date :
+        </label>
+        <div class="col-sm-9">
+          <input type="date" class="form-control" [(ngModel)]="targetDate" name="targetDt" />
+        </div>
+      </div>
+
+      <div class="row align-items-center mb-3">
+        <label class="col-sm-3 control-label">
+          Status :
+        </label>
+        <div class="col-sm-9">
+          <mat-select class="form-control" [(ngModel)]="status" name="actStatus">
+            <mat-option value="In Progress">In Progress</mat-option>
+            <mat-option value="Completed">Completed</mat-option>
+            <mat-option value="Pending">Pending</mat-option>
+          </mat-select>
+        </div>
+      </div>
+
+      <div class="row align-items-center mb-3">
+        <label class="col-sm-3 control-label">
+          Done :
+        </label>
+        <div class="col-sm-9">
+          <mat-checkbox [(ngModel)]="done" name="doneCheckbox" color="primary">
+            Mark as completed
+          </mat-checkbox>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+  <div class="modal-footer-custom">
+    <button mat-button class="btn-cancel-modal" (click)="close()">
+      <mat-icon>cancel</mat-icon> Cancel
+    </button>
+    <button mat-raised-button class="btn-save-modal" (click)="save()" [disabled]="!action">
+      <mat-icon>save</mat-icon> {{ data ? 'Update' : 'Save' }}
+    </button>
+  </div>
+</div>

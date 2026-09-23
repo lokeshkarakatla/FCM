@@ -14,5 +14,11 @@ export class TechnicalReviewComponent {
   manufacturingDefect: boolean = false;
   supplierComponent: boolean = false;
   containmentRequired: boolean = false;
+  recallRequired: boolean = false;
   recommendations: string = '';
+
+  save(): void {
+    console.log('Technical review data saved successfully');
+  }
 }
+

@@ -26,18 +26,62 @@
 .mat-raised-button,
 .mat-flat-button,
 .mat-stroked-button {
+  min-height: 36px;
+  line-height: 36px;
+
   .mat-button-wrapper {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
     vertical-align: middle !important;
-    line-height: 1 !important;
+    line-height: inherit !important;
 
     mat-icon {
       vertical-align: middle !important;
     }
   }
 }
+
+/* ── Standard Save Button with generous padding and vertical balance (like Image 2) ── */
+button.mat-raised-button.save-btn,
+button.save-btn,
+.save-btn {
+  height: 38px !important;
+  min-height: 38px !important;
+  line-height: normal !important;
+  padding: 0 22px !important;
+  border-radius: 4px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.2px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
+
+  .mat-button-wrapper {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100% !important;
+    line-height: normal !important;
+
+    mat-icon, i, .btn-icon {
+      margin-right: 8px !important;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+      font-size: 18px !important;
+      width: 18px !important;
+      height: 18px !important;
+      line-height: 18px !important;
+      vertical-align: middle !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+  }
+}
+
 
 .go-btn {
   display: inline-flex !important;
@@ -59,6 +103,24 @@
     }
   }
 }
+
+// Global button icon spacing to prevent icons touching button text
+button.mat-raised-button,
+button.mat-flat-button,
+button.mat-stroked-button {
+  .mat-button-wrapper {
+    mat-icon:first-child:not(:only-child) {
+      margin-right: 6px !important;
+    }
+    mat-icon:last-child:not(:only-child) {
+      margin-left: 6px !important;
+    }
+    i:first-child:not(:only-child) {
+      margin-right: 6px !important;
+    }
+  }
+}
+
 
 .breadtitle {
   margin-left: 6px;
@@ -511,3 +573,31 @@ bs-daterangepicker-container {
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* ── Inner screen complaint dialog gaps ── */
+.custom-modal-wrapper {
+  .modal-body-custom.mat-dialog-content {
+    margin: 0 !important;
+    padding: 24px 36px 16px 36px !important;
+    box-sizing: border-box !important;
+
+    .row {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+
+    .col-sm-3, .col-sm-4 {
+      padding-left: 0 !important;
+      padding-right: 14px !important;
+    }
+
+    .col-sm-9, .col-sm-8 {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+  }
+
+  .modal-footer-custom {
+    padding: 14px 36px !important;
+  }
+}

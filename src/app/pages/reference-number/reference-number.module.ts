@@ -18,8 +18,12 @@ import { DocumentsComponent } from './documents/documents.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddNotesComponent } from './base-info/add-notes/add-notes.component';
 import { AddDocumentComponent } from './documents/add-document/add-document.component';
+import { UploadDocumentsComponent } from './notes/upload-documents/upload-documents.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { NotesComponent } from './notes/notes.component';
 import { TimelineComponent } from './timeline/timeline.component';
 
@@ -38,6 +42,17 @@ import { MonitoringComponent } from './monitoring/monitoring.component';
 import { PreventionComponent } from './prevention/prevention.component';
 import { RecognitionComponent } from './recognition/recognition.component';
 import { ClosureComponent } from './closure/closure.component';
+
+// 8D Action Dialogs
+import { ContainmentActionDialogComponent } from './dialogs/containment-action-dialog/containment-action-dialog.component';
+import { SupplierActionDialogComponent } from './dialogs/supplier-action-dialog/supplier-action-dialog.component';
+import { ActivityDialogComponent } from './dialogs/activity-dialog/activity-dialog.component';
+import { SpareDialogComponent } from './dialogs/spare-dialog/spare-dialog.component';
+import { ServiceDialogComponent } from './dialogs/service-dialog/service-dialog.component';
+import { DispatchDialogComponent } from './dialogs/dispatch-dialog/dispatch-dialog.component';
+import { MonitoringDialogComponent } from './dialogs/monitoring-dialog/monitoring-dialog.component';
+import { PreventionDialogComponent } from './dialogs/prevention-dialog/prevention-dialog.component';
+import { RecognitionDialogComponent } from './dialogs/recognition-dialog/recognition-dialog.component';
 
 
 
@@ -194,6 +209,29 @@ const routes: Routes = [
     PreventionComponent,
     RecognitionComponent,
     ClosureComponent,
+    // 8D Action Dialogs
+    ContainmentActionDialogComponent,
+    SupplierActionDialogComponent,
+    ActivityDialogComponent,
+    SpareDialogComponent,
+    ServiceDialogComponent,
+    DispatchDialogComponent,
+    MonitoringDialogComponent,
+    PreventionDialogComponent,
+    RecognitionDialogComponent,
+    UploadDocumentsComponent,
+  ],
+  entryComponents: [
+    ContainmentActionDialogComponent,
+    SupplierActionDialogComponent,
+    ActivityDialogComponent,
+    SpareDialogComponent,
+    ServiceDialogComponent,
+    DispatchDialogComponent,
+    MonitoringDialogComponent,
+    PreventionDialogComponent,
+    RecognitionDialogComponent,
+    UploadDocumentsComponent,
   ],
   imports: [
     CommonModule,
@@ -210,8 +248,10 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatSelectModule,
     FormsModule,
-    MatCheckboxModule
-
+    MatCheckboxModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule
   ]
 })
 export class ReferenceModule { }

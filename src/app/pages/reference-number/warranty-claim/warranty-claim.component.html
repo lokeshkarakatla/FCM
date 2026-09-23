@@ -32,8 +32,8 @@
     <div class="mt-4">
       <div class="d-flex justify-content-between align-items-center mb-2">
         <h5 class="table-title">Free of Cost (FOC) Spare Replacements</h5>
-        <button mat-raised-button color="primary" class="btn-sm">
-          <mat-icon>add</mat-icon> Add Spare
+        <button mat-raised-button color="primary" class="btn-sm" (click)="openSpareDialog()">
+          <mat-icon class="btn-icon">add</mat-icon> Add Spare
         </button>
       </div>
       <div class="table-responsive">
@@ -60,8 +60,8 @@
                 </span>
               </td>
               <td class="text-center">
-                <a matTooltip="Edit"><i class="fa fa-edit"></i></a>
-                <a matTooltip="Delete"><i class="fa fa-trash red"></i></a>
+                <a matTooltip="Edit" class="action-btn-link" (click)="openSpareDialog(spare)"><i class="fa fa-edit"></i></a>
+                <a matTooltip="Delete" class="action-btn-link" (click)="deleteSpare(spare)"><i class="fa fa-trash red"></i></a>
               </td>
             </tr>
           </tbody>
@@ -73,8 +73,8 @@
     <div class="mt-4">
       <div class="d-flex justify-content-between align-items-center mb-2">
         <h5 class="table-title">Services Provided</h5>
-        <button mat-raised-button color="primary" class="btn-sm">
-          <mat-icon>add</mat-icon> Add Service
+        <button mat-raised-button color="primary" class="btn-sm" (click)="openServiceDialog()">
+          <mat-icon class="btn-icon">add</mat-icon> Add Service
         </button>
       </div>
       <div class="table-responsive">
@@ -99,8 +99,8 @@
                 <span class="status-badge badge-success">{{ svc.status }}</span>
               </td>
               <td class="text-center">
-                <a matTooltip="Edit"><i class="fa fa-edit"></i></a>
-                <a matTooltip="Delete"><i class="fa fa-trash red"></i></a>
+                <a matTooltip="Edit" class="action-btn-link" (click)="openServiceDialog(svc)"><i class="fa fa-edit"></i></a>
+                <a matTooltip="Delete" class="action-btn-link" (click)="deleteService(svc)"><i class="fa fa-trash red"></i></a>
               </td>
             </tr>
           </tbody>
@@ -110,13 +110,13 @@
 
     <!-- Remarks -->
     <div class="row mt-4">
-      <div class="col-md-8">
+      <div class="col-12">
         <label class="form-label"><b>Remarks:</b></label>
         <textarea rows="3" class="form-control" placeholder="Warranty claim remarks..." [(ngModel)]="remarks"></textarea>
       </div>
-      <div class="col-md-4 d-flex align-items-end justify-content-end">
-        <button mat-raised-button color="primary">
-          <mat-icon>save</mat-icon> Save & Next
+      <div class="col-12 d-flex justify-content-end mt-3">
+        <button mat-raised-button color="primary" class="save-btn" (click)="save()">
+          <mat-icon class="btn-icon">save</mat-icon> Save
         </button>
       </div>
     </div>

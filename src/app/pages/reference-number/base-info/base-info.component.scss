@@ -27,10 +27,12 @@ form {
 }
 
 .base-info-wrapper {
-  max-width: 1180px;
-  margin-left: 20px;   /* aligns with Base Info button */
-  padding-right: 10px;
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  padding-right: 15px;
   padding-bottom: 60px; /* Ensures ample space below Save & Next button */
+  box-sizing: border-box;
 }
 
 .form-control,
@@ -41,3 +43,17 @@ form {
 textarea.form-control {
   resize: none;
 }
+
+.save-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.btn-icon {
+  margin-right: 6px !important;
+  font-size: 18px !important;
+  width: 18px !important;
+  height: 18px !important;
+  line-height: 18px !important;
+  vertical-align: middle !important;
+}

@@ -1,6 +1,6 @@
 /* ===== Complaint Reference Header ===== */
 .complaint-ref-header {
-  padding: 10px 20px;
+  padding: 10px 24px;
   background: #fafafa;
   border-bottom: 1px solid #e0e0e0;
 
@@ -34,7 +34,7 @@
 .complaint-content {
   flex: 1;
   overflow: visible;
-  padding: 0 16px 80px 16px;
+  padding: 0 24px 80px 24px;
   min-width: 0;
   box-sizing: border-box;
 }
@@ -163,3 +163,25 @@
   width: 52px;
   min-width: 52px;
 }
+
+/* Global button icon spacing for reference-number screens */
+::ng-deep {
+  .complaint-content {
+    button.mat-raised-button,
+    button.mat-flat-button,
+    button.mat-stroked-button {
+      .mat-button-wrapper {
+        mat-icon:first-child:not(:only-child) {
+          margin-right: 6px !important;
+        }
+        mat-icon:last-child:not(:only-child) {
+          margin-left: 6px !important;
+        }
+        i:first-child:not(:only-child) {
+          margin-right: 6px !important;
+        }
+      }
+    }
+  }
+}
+

@@ -5,7 +5,7 @@
     <div class="row g-4">
 
       <!-- Left Section -->
-      <div class="col-md-5">
+      <div class="col-md-6 col-lg-6">
 
         <div class="mb-3 important">
           <label class="add-member-label"><b>Reference:</b></label>
@@ -62,7 +62,7 @@
       </div>
 
       <!-- Right Section -->
-      <div class="col-md-3">
+      <div class="col-md-6 col-lg-6">
 
         <div class="mb-3">
           <label><b>Country:</b></label>
@@ -154,10 +154,9 @@
         <div class="text-end mt-4">
           <button mat-raised-button
             color="primary"
+            class="save-btn"
             (click)="onSaveAndNext()">
-
-            <i class="fas fa-save"></i> Save & Next
-
+            <mat-icon class="btn-icon">save</mat-icon> Save
           </button>
         </div>
 

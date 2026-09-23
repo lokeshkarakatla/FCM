@@ -15,3 +15,16 @@
 }
 .red { color: #e53935; margin-left: 8px; }
 .btn-sm { height: 36px; font-size: 13px; }
+.action-btn-link { cursor: pointer; text-decoration: none; }
+.save-btn, .btn-sm {
+  display: inline-flex !important;
+  align-items: center !important;
+}
+.btn-icon {
+  margin-right: 6px !important;
+  font-size: 18px !important;
+  width: 18px !important;
+  height: 18px !important;
+  line-height: 18px !important;
+  vertical-align: middle !important;
+}

@@ -111,45 +111,165 @@
   }
 }
 
-// Table styles
+// Table styles with Sticky Header & Freeze Panes
 .table-container {
   margin-top: 10px;
 
   #grid-table-container {
     margin-left: -6px;
+    max-height: 640px;
+    overflow-x: auto;
+    overflow-y: auto;
+    position: relative;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    background: #ffffff;
+    scroll-behavior: smooth;
+
+    &::-webkit-scrollbar {
+      height: 8px;
+      width: 8px;
+    }
+    &::-webkit-scrollbar-track {
+      background: #f8fafc;
+      border-radius: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+      &:hover {
+        background: #94a3b8;
+      }
+    }
   }
 
   table {
-    th {
-      white-space: nowrap;
-      min-width: 80px;
+    border-collapse: separate; // Required for sticky border rendering in WebKit/Blink
+    border-spacing: 0;
+    width: 100%;
+    margin-bottom: 0;
+
+    thead.tbl-head {
+      th {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background-color: #37474f !important;
+        color: #ffffff !important;
+        white-space: nowrap;
+        min-width: 80px;
+        border-top: none;
+        border-bottom: 2px solid #263238;
+      }
+    }
+
+    tbody tr:hover td {
+      background-color: #f1f5f9 !important;
     }
 
     td {
       white-space: nowrap;
       min-width: 80px;
-      vertical-align: middle;
+      vertical-align: middle !important;
+      border-color: #eceff1;
+    }
+
+    // Centered columns (CAPA, Steps, Progress, Status per transcript lines 44-46)
+    .col-capa,
+    .col-steps,
+    .col-progress,
+    .status-col {
+      text-align: center !important;
+      vertical-align: middle !important;
+    }
+
+    .steps-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #1565c0;
+      background-color: #f0f7ff;
+      border: 1px solid #d0e4ff;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: #e1effe;
+        border-color: #1565c0;
+        text-decoration: underline;
+      }
+    }
+
+    .capa-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #1565c0;
+      background-color: #e8f0fe;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #d2e3fc;
+      }
     }
 
     td.problem-statement {
       white-space: normal;
       word-break: break-word;
       max-width: 430px;
+      min-width: 280px;
     }
 
     th.problem-statement-header {
-      min-width: 430px;
+      min-width: 280px;
+      max-width: 430px;
     }
 
     .text-center {
-      text-align: center;
+      text-align: center !important;
+      vertical-align: middle !important;
     }
+  }
+}
 
-    .switchToggle {
-      text-align: center;
-      color: blue;
-      cursor: pointer;
-    }
+// Status Badges (Read-only Pill per client request)
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+
+  &.status-closed {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #a5d6a7;
+  }
+  &.status-process {
+    background-color: #e3f2fd;
+    color: #1565c0;
+    border: 1px solid #90caf9;
+  }
+  &.status-hold {
+    background-color: #fff3e0;
+    color: #e65100;
+    border: 1px solid #ffcc80;
+  }
+  &.status-pending {
+    background-color: #fbe9e7;
+    color: #d84315;
+    border: 1px solid #ffab91;
   }
 }
 
@@ -198,31 +318,44 @@ input[type="range"] {
 }
 
 
-/* Make Status column wider */
-/* Make Status column wider */
+/* Status Column & Pill Badges */
 .status-col {
-  width: 100px;       /* adjust as needed */
-  min-width: 100px;   /* prevents shrinking */
+  width: 120px;
+  min-width: 120px;
+  text-align: center;
 }
 
-.status-select {
-  width: 100%;        /* dropdown fills the cell */
-  min-width: 100px;   /* ensures options are visible */
-}
+.status-pill {
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 12px;
+  letter-spacing: 0.3px;
+  text-align: center;
+  white-space: nowrap;
 
-
-.status-select {
-  width: 100%;
-  min-width: 100px;
-  font-size: 15px;   // select box text size
-  
-
-  option {
-    font-size: 16px; // dropdown option text size
+  &.status-pending {
+    background-color: #fff3e0;
+    color: #e65100;
+    border: 1px solid #ffe0b2;
   }
-}
 
+  &.status-process {
+    background-color: #e3f2fd;
+    color: #1565c0;
+    border: 1px solid #bbdefb;
+  }
 
-select.status-select option {
-  font-size: 14px;
+  &.status-closed {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+  }
+
+  &.status-hold {
+    background-color: #f5f5f5;
+    color: #616161;
+    border: 1px solid #e0e0e0;
+  }
 }
