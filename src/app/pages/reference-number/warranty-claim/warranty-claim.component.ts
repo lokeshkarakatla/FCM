@@ -21,8 +21,20 @@ export class WarrantyClaimComponent {
   ];
 
   services = [
-    { serviceId: 'SRV-001', description: 'Brake System Inspection and Calibration', date: '2024-09-10', technician: 'John Doe', status: 'Completed' },
+    { serviceId: 'SRV-001', jobCode: 'SRV-001', description: 'Brake System Inspection and Calibration', qty: 1, unitRate: 850, cost: 850, date: '2024-09-10', technician: 'John Doe', status: 'Completed' },
   ];
+
+  getTotalSpareCost(): number {
+    return this.spares.reduce((sum, item) => sum + (Number(item.cost) || 0), 0);
+  }
+
+  getTotalServiceCost(): number {
+    return this.services.reduce((sum, item) => sum + (Number(item.cost) || 0), 0);
+  }
+
+  getTotalClaimCost(): number {
+    return this.getTotalSpareCost() + this.getTotalServiceCost();
+  }
 
   constructor(public dialog: MatDialog) {}
 

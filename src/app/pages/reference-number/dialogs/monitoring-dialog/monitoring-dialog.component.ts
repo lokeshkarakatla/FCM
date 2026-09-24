@@ -11,7 +11,15 @@ export class MonitoringDialogComponent implements OnInit {
   date: string = '';
   summary: string = '';
   documentName: string = '';
-  monitoredBy: string = 'Quality Department (Lead Auditor)';
+  monitoredBy: string = 'QA Auditor';
+  department: string = 'Quality Assurance';
+  departments: string[] = [
+    'Quality Assurance',
+    'Field Quality Engineering',
+    'Plant Manufacturing',
+    'R&D / Design Engineering',
+    'Service & Aftersales'
+  ];
   status: string = 'Pass';
 
   constructor(
@@ -24,7 +32,8 @@ export class MonitoringDialogComponent implements OnInit {
       this.date = this.data.date || '';
       this.summary = this.data.summary || this.data.metric || '';
       this.documentName = this.data.documentName || '';
-      this.monitoredBy = this.data.monitoredBy || 'Quality Department (Lead Auditor)';
+      this.department = this.data.department || 'Quality Assurance';
+      this.monitoredBy = this.data.monitoredBy || 'QA Auditor';
       this.status = this.data.status || 'Pass';
     }
   }
@@ -57,6 +66,7 @@ export class MonitoringDialogComponent implements OnInit {
       date: this.date,
       summary: this.summary,
       documentName: this.documentName,
+      department: this.department,
       monitoredBy: this.monitoredBy,
       status: this.status
     });

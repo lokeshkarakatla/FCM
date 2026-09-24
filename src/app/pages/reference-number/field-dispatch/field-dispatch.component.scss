@@ -27,3 +27,78 @@
   line-height: 18px !important;
   vertical-align: middle !important;
 }
+
+/* Dispatch Info Card (Labels above Dispatch Remarks) */
+.dispatch-info-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+
+  .info-card-header {
+    background: #f8fafc;
+    padding: 8px 16px;
+    border-bottom: 1px solid #e2e8f0;
+
+    .info-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+
+      .info-icon {
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+        color: #4e342e;
+      }
+    }
+  }
+
+  .info-card-body {
+    background: #ffffff;
+  }
+
+  .info-group {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+
+    .info-label {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .info-value {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #1e293b;
+
+      &.tracking-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        color: #0369a1;
+        font-family: monospace;
+        font-size: 13px;
+        background: #f0f9ff;
+        border: 1px solid #bae6fd;
+        padding: 2px 8px;
+        border-radius: 4px;
+        width: fit-content;
+
+        .trk-tag {
+          font-size: 14px;
+          width: 14px;
+          height: 14px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,107 @@
+<!-- Add, filter (Matching Master Data Grid Structure) -->
+<div class="col-sm-10 mt-4" style="margin-left: -4px;">
+    <button mat-raised-button color="primary"
+        class="pull-right margin-right-5 mt-3" (click)="openAddEditDialog(null)">
+        <mat-icon>add</mat-icon> Add Job Code
+    </button>
+    <button mat-raised-button style="background-color: black; color: white;" class="pull-right margin-right-10 mt-3"
+        (click)="filterToggle = !filterToggle">
+        <mat-icon>filter_list</mat-icon> Filter
+    </button>
+</div>
+
+<!-- Filter Toggle Card -->
+<div class="col-sm-10" fxLayout="row wrap" *ngIf="filterToggle" style="margin-bottom: 10px">
+    <div fxFlex="100" class="flex-p w-100 margins">
+        <mat-card class="filter" style="width: 99%; margin-left: 14px; margin-bottom: -20px;">
+            <mat-card-content>
+                <div class="row">
+                    <div class="col-6 row">
+                        <div class="col-3 mt-1">
+                            <b style="margin-left: -3px;">Keyword:</b>
+                        </div>
+                        <div class="col-9">
+                            <input class="form-control" [(ngModel)]="searchKeyword" placeholder="Search Job Code, Service Name, Description...">
+                        </div>
+                    </div>
+
+                    <div class="col-6 row">
+                        <div class="col-3 mt-1">
+                            <b>Status:</b>
+                        </div>
+                        <div class="col-9">
+                            <mat-select [(ngModel)]="statusFilter" placeholder="Select Status" class="form-control">
+                                <mat-option value="all">All</mat-option>
+                                <mat-option value="active">Active</mat-option>
+                                <mat-option value="inactive">Inactive</mat-option>
+                            </mat-select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12" style="margin-top: 10px;">
+                    <a (click)="filterToggle = !filterToggle" class="pull-right"
+                        style="font-size: 25px; cursor: pointer; margin-left: 5px;">
+                        <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                    </a>
+                    <button mat-raised-button class="pull-right" (click)="clearFilter()"
+                        style="background-color:#37474f; color:#fff !important; margin-left:10px;">
+                        <mat-icon>settings_backup_restore</mat-icon> Clear
+                    </button>
+                    <button mat-raised-button color="primary" (click)="applyFilter()" class="pull-right btn-primary"
+                        style="margin-left: 10px;">
+                        <mat-icon>search</mat-icon> Search
+                    </button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+
+<!-- Table View: Job Codes Master Grid -->
+<div class="col-sm-10 mt-4" style="margin-left:-5px;">
+    <div id="grid-table-container" class="table-responsive" style="margin-left: 25px;">
+        <table matSort id="example2" class="table table-bordered table-hover">
+            <thead class="tbl-head">
+                <tr>
+                    <th style="width: 140px;">Job Code</th>
+                    <th>Service Name</th>
+                    <th>Description</th>
+                    <th class="text-end" style="width: 140px;">Labor Rate (₹)</th>
+                    <th class="text-center" style="width: 100px;">Status</th>
+                    <th class="text-center" style="width: 112px !important;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of paginatedList">
+                    <td><strong>{{item.jobCode}}</strong></td>
+                    <td>{{item.serviceName}}</td>
+                    <td>{{item.description || '—'}}</td>
+                    <td class="text-end fw-semibold">₹{{item.unitRate | number:'1.2-2'}}</td>
+                    <td class="text-center" style="text-align: center !important;">
+                        <a (click)="toggleStatus(item)" style="cursor: pointer;">
+                            <span *ngIf="item.status === 'Active'" style="color: blue;">Active</span>
+                            <span *ngIf="item.status !== 'Active'" style="color: red;">Inactive</span>
+                        </a>
+                    </td>
+                    <td class="text-center editDel">
+                        <a style="cursor: pointer; margin-right: 10px;" matTooltip="Edit" (click)="openAddEditDialog(item)">
+                            <i class="fa fa-edit" style="color: cornflowerblue"></i>
+                        </a>
+                        <a style="cursor: pointer;" matTooltip="Delete" (click)="deleteJob(item)">
+                            <i class="fa fa-trash red" style="color: red;"></i>
+                        </a>
+                    </td>
+                </tr>
+                <tr *ngIf="paginatedList == null || paginatedList.length == 0">
+                    <td colspan="6" class="text-center">No job codes available</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- PAGINATION CONTENT -->
+        <mat-paginator class="col-sm-12" [length]="filteredList.length" [pageIndex]="pageIndex" [pageSize]="pageSize"
+            [pageSizeOptions]="[5, 10, 20, 50, 100]" (page)="onPageChange($event)" showFirstLastButtons>
+        </mat-paginator>
+    </div>
+</div>

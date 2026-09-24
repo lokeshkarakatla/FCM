@@ -24,11 +24,17 @@
 
     <!-- FOC Spares Table -->
     <div class="mt-4">
-      <div class="d-flex justify-content-between align-items-center mb-2">
-        <h5 class="table-title">Free of Cost (FOC) Spare Replacements</h5>
-        <button mat-raised-button color="primary" class="btn-sm" (click)="openSpareDialog()">
-          <mat-icon class="btn-icon">add</mat-icon> Add Spare
-        </button>
+      <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+        <h5 class="table-title m-0">Free of Cost (FOC) Spare Replacements</h5>
+        <!-- Matching Image 2 Red Arrow Location: Total of Cost Label -->
+        <div class="d-flex align-items-center gap-3">
+          <span  style="font-size: 13px; font-weight: 600;">
+            Total Spare Cost: <span class="text-primary ms-1">₹{{ getTotalSpareCost() | number:'1.2-2' }}</span>
+          </span>
+          <button mat-raised-button color="primary" class="btn-sm" (click)="openSpareDialog()">
+            <mat-icon class="btn-icon">add</mat-icon> Add Spare
+          </button>
+        </div>
       </div>
       <div class="table-responsive">
         <table class="table table-bordered table-hover">
@@ -36,18 +42,20 @@
             <tr>
               <th>Part No</th>
               <th>Part Name</th>
-              <th class="text-center">Qty</th>
-              <th class="text-center">Cost (₹)</th>
-              <th class="text-center">Status</th>
-              <th class="text-center">Actions</th>
+              <th class="text-center" style="width: 90px;">Qty</th>
+              <th class="text-end" style="width: 140px;">Unit Rate (₹)</th>
+              <th class="text-end" style="width: 140px;">Cost (₹)</th>
+              <th class="text-center" style="width: 120px;">Status</th>
+              <th class="text-center" style="width: 100px;">Actions</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let spare of spares">
-              <td>{{ spare.partNo }}</td>
+              <td><strong>{{ spare.partNo }}</strong></td>
               <td>{{ spare.partName }}</td>
               <td class="text-center">{{ spare.qty }}</td>
-              <td class="text-center">{{ spare.cost }}</td>
+              <td class="text-end">{{ spare.unitRate | number:'1.2-2' }}</td>
+              <td class="text-end fw-bold text-dark">₹{{ spare.cost | number:'1.2-2' }}</td>
               <td class="text-center">
                 <span class="status-badge" [ngClass]="spare.status === 'Replaced' ? 'badge-success' : 'badge-warning'">
                   {{ spare.status }}
@@ -65,28 +73,39 @@
 
     <!-- Services Table -->
     <div class="mt-4">
-      <div class="d-flex justify-content-between align-items-center mb-2">
-        <h5 class="table-title">Services Provided</h5>
-        <button mat-raised-button color="primary" class="btn-sm" (click)="openServiceDialog()">
-          <mat-icon class="btn-icon">add</mat-icon> Add Service
-        </button>
+      <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+        <h5 class="table-title m-0">Services Provided</h5>
+        <div class="d-flex align-items-center gap-3">
+          <span  style="font-size: 13px; font-weight: 600;">
+            Total Service Cost: <span class="text-primary ms-1">₹{{ getTotalServiceCost() | number:'1.2-2' }}</span>
+          </span>
+          <button mat-raised-button color="primary" class="btn-sm" (click)="openServiceDialog()">
+            <mat-icon class="btn-icon">add</mat-icon> Add Service
+          </button>
+        </div>
       </div>
       <div class="table-responsive">
         <table class="table table-bordered table-hover">
           <thead class="tbl-head">
             <tr>
-              <th>Service ID</th>
+              <th>Job Code</th>
               <th>Description</th>
-              <th class="text-center">Date</th>
+              <th class="text-center" style="width: 90px;">Qty</th>
+              <th class="text-end" style="width: 140px;">Unit Rate (₹)</th>
+              <th class="text-end" style="width: 140px;">Cost (₹)</th>
+              <th class="text-center" style="width: 120px;">Date</th>
               <th>Technician</th>
-              <th class="text-center">Status</th>
-              <th class="text-center">Actions</th>
+              <th class="text-center" style="width: 120px;">Status</th>
+              <th class="text-center" style="width: 100px;">Actions</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let svc of services">
-              <td>{{ svc.serviceId }}</td>
+              <td><strong>{{ svc.jobCode || svc.serviceId }}</strong></td>
               <td>{{ svc.description }}</td>
+              <td class="text-center">{{ svc.qty || 1 }}</td>
+              <td class="text-end">{{ (svc.unitRate || 850) | number:'1.2-2' }}</td>
+              <td class="text-end fw-bold text-dark">₹{{ (svc.cost || ((svc.qty || 1) * (svc.unitRate || 850))) | number:'1.2-2' }}</td>
               <td class="text-center">{{ svc.date }}</td>
               <td>{{ svc.technician }}</td>
               <td class="text-center">

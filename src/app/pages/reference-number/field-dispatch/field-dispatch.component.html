@@ -1,27 +1,8 @@
 <div class="section-wrapper mt-3">
   <div class="container-fluid px-4">
-    <!-- Dispatch Info (Non-repeating per transcript) -->
-    <div class="row g-4 mt-1">
-      <div class="col-md-3">
-        <label class="form-label"><b>From (Dealer):</b></label>
-        <input type="text" class="form-control" [(ngModel)]="fromDealer">
-      </div>
-      <div class="col-md-3">
-        <label class="form-label"><b>To (Factory):</b></label>
-        <input type="text" class="form-control" [(ngModel)]="toFactory">
-      </div>
-      <div class="col-md-3">
-        <label class="form-label"><b>Tracking No:</b></label>
-        <input type="text" class="form-control" [(ngModel)]="trackingNo">
-      </div>
-      <div class="col-md-3">
-        <label class="form-label"><b>Dispatch Date:</b></label>
-        <input type="date" class="form-control" [(ngModel)]="dispatchDate">
-      </div>
-    </div>
 
     <!-- Parts Table (part number, part name, remarks, actions) -->
-    <div class="mt-4">
+    <div class="parts-section">
       <div class="d-flex justify-content-between align-items-center mb-2">
         <h5 class="table-title">Dispatched Parts</h5>
         <button mat-raised-button color="primary" class="btn-sm" (click)="openDispatchDialog()">
@@ -32,15 +13,15 @@
         <table class="table table-bordered table-hover">
           <thead class="tbl-head">
             <tr>
-              <th>Part No</th>
-              <th>Part Name</th>
+              <th style="width: 140px;">Part No</th>
+              <th style="width: 280px;">Part Name</th>
               <th>Remarks</th>
-              <th class="text-center">Actions</th>
+              <th class="text-center" style="width: 100px;">Actions</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let p of parts">
-              <td>{{ p.partNo }}</td>
+              <td class="fw-semibold">{{ p.partNo }}</td>
               <td>{{ p.partName }}</td>
               <td>{{ p.remarks || '-' }}</td>
               <td class="text-center">
@@ -48,11 +29,56 @@
                 <a matTooltip="Delete" class="action-btn-link" (click)="deletePart(p)"><i class="fa fa-trash red"></i></a>
               </td>
             </tr>
+            <tr *ngIf="parts.length === 0">
+              <td colspan="4" class="text-center text-muted py-3">No dispatched parts added yet.</td>
+            </tr>
           </tbody>
         </table>
       </div>
     </div>
 
+    <!-- Consignment / Dispatch Information (Informational Labels shown above Dispatch Remarks) -->
+    <div class="dispatch-info-card mt-4">
+      <div class="info-card-header">
+        <div class="info-title">
+          <mat-icon class="info-icon">local_shipping</mat-icon>
+          <span>Consignment Information</span>
+        </div>
+      </div>
+
+      <!-- Display as Informational Labels (Read-only Values) -->
+      <div class="row g-3 p-3 info-card-body">
+        <div class="col-md-3 col-sm-6">
+          <div class="info-group">
+            <span class="info-label">From (Dealer):</span>
+            <span class="info-value">{{ fromDealer || '-' }}</span>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="info-group">
+            <span class="info-label">To (Factory):</span>
+            <span class="info-value">{{ toFactory || '-' }}</span>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="info-group">
+            <span class="info-label">Tracking No:</span>
+            <span class="info-value ">
+              
+              {{ trackingNo || '-' }}
+            </span>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="info-group">
+            <span class="info-label">Dispatch Date:</span>
+            <span class="info-value">{{ (dispatchDate | date:'dd/MM/yyyy') || dispatchDate || '-' }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dispatch Remarks -->
     <div class="row mt-4">
       <div class="col-12">
         <label class="form-label"><b>Dispatch Remarks:</b></label>
