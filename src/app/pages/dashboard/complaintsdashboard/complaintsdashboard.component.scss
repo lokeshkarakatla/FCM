@@ -133,31 +133,31 @@
       &.badge-blue {
         background: #2563eb;
         padding-top: 7px;
-        box-shadow: 0 4px 10px -1px rgba(37, 99, 235, 0.4);
+        
       }
 
       &.badge-rose {
         background: #e11d48;
         padding-top: 7px;
-        box-shadow: 0 4px 10px -1px rgba(225, 29, 72, 0.4);
+        
       }
 
       &.badge-amber {
         background: #ea580c;
         padding-top: 7px;
-        box-shadow: 0 4px 10px -1px rgba(234, 88, 12, 0.4);
+        
       }
 
       &.badge-indigo {
         background: #6366f1;
         padding-top: 7px;
-        box-shadow: 0 4px 10px -1px rgba(99, 102, 241, 0.4);
+        
       }
 
       &.badge-emerald {
         background: #059669;
         padding-top: 7px;
-        box-shadow: 0 4px 10px -1px rgba(5, 150, 105, 0.4);
+        
       }
     }
 
@@ -268,11 +268,11 @@
         margin-top: 1px;
       }
 
-      &.arrow-blue { background: #eff6ff; color: #2563eb; }
-      &.arrow-rose { background: #fff1f2; color: #e11d48; }
-      &.arrow-amber { background: #fffbeb; color: #ea580c; }
-      &.arrow-indigo { background: #f5f3ff; color: #6366f1; }
-      &.arrow-emerald { background: #ecfdf5; color: #059669; }
+      &.arrow-blue {  color: #2563eb; }
+      &.arrow-rose {  color: #e11d48; }
+      &.arrow-amber { color: #ea580c; }
+      &.arrow-indigo { color: #6366f1; }
+      &.arrow-emerald {  color: #059669; }
     }
   }
 
