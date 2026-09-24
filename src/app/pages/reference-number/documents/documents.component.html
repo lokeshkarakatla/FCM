@@ -1,15 +1,7 @@
-<div class="documents-page-wrapper">
+<div class="documents-page-wrapper mt-3">
 
-  <!-- Top Title & Subtitle (Image 1 reference) -->
-  <div class="page-title-block">
-    <h2 class="page-title">Documents</h2>
-    <p class="page-subtitle">Store and manage project documents.</p>
-  </div>
-
-  <!-- Subject & Actions Bar (Image 1 reference) -->
-  <div class="action-bar-row">
-    <h3 class="subject-heading">{{ subject || 'Global fleet of connected vehicles' }}</h3>
-
+  <!-- Actions Bar -->
+  <div class="action-bar-row d-flex justify-content-end mb-3">
     <div class="action-buttons-group">
       <!-- Segmented View Toggle -->
       <div class="view-toggle-group">
@@ -33,12 +25,6 @@
       <button type="button" class="btn-action-dark" (click)="filterToggle = !filterToggle">
         <mat-icon class="btn-icon-sm">filter_list</mat-icon>
         <span>Filter</span>
-      </button>
-
-      <!-- Back Button -->
-      <button type="button" class="btn-action-back" (click)="goBack()">
-        <mat-icon class="btn-icon-sm">arrow_back</mat-icon>
-        <span>Back</span>
       </button>
     </div>
   </div>

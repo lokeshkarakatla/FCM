@@ -1,1 +1,42 @@
-@import "../ref-dialog-common.scss";
+:host {
+  display: block;
+  width: 100%;
+}
+
+.NewHeader {
+  background-color: #286ba5;
+  padding: 15px 20px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+
+  h1 {
+    color: #ffffff !important;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
+
+.control-label {
+  font-size: 13px;
+  color: #334155;
+  white-space: nowrap !important;
+}
+
+.custom-dialog-content {
+  overflow-x: hidden;
+}
+
+.pdf-upload-dropzone {
+  &.dragging {
+    background-color: #f0fdf4 !important;
+    border-color: #16a34a !important;
+  }
+}
+
+.app-btn-primary {
+  background-color: #1976d2 !important;
+  color: white !important;
+  border: none;
+}
+

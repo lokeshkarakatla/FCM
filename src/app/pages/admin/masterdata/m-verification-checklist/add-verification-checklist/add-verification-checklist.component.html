@@ -1,0 +1,61 @@
+<div class="col-sm-12 p-0" style="max-width: 100%; box-sizing: border-box;">
+  <div class="NewHeader">
+    <h1 style="color: white; margin-top: 5px;" mat-dialog-title>
+      {{ data?.item ? 'Update' : 'Add' }} Verification Checklist Item
+    </h1>
+  </div>
+
+  <div mat-dialog-content class="pt-3">
+    <form [formGroup]="checklistForm" class="form-horizontal">
+      <div class="form-group row mb-3">
+        <label class="control-label col-sm-4 text-end pt-1">
+          <b>Verification Method:</b> <span class="text-danger">*</span>
+        </label>
+        <div class="col-sm-8">
+          <mat-select class="form-control" formControlName="methodId" placeholder="Select Verification Method" required>
+            <mat-option *ngFor="let m of methods" [value]="m.id">
+              {{ m.name }}
+            </mat-option>
+          </mat-select>
+          <div *ngIf="checklistForm.get('methodId')?.invalid && checklistForm.get('methodId')?.touched" class="text-danger small mt-1">
+            Verification Method is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row mb-3">
+        <label class="control-label col-sm-4 text-end pt-1">
+          <b>Checklist Item Description:</b> <span class="text-danger">*</span>
+        </label>
+        <div class="col-sm-8">
+          <textarea rows="3" class="form-control" formControlName="item" placeholder="Enter Checklist Item Description" required></textarea>
+          <div *ngIf="checklistForm.get('item')?.invalid && checklistForm.get('item')?.touched" class="text-danger small mt-1">
+            Checklist Item Description is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row mb-3">
+        <label class="control-label col-sm-4 text-end pt-1">
+          <b>Status:</b>
+        </label>
+        <div class="col-sm-8">
+          <mat-select class="form-control" formControlName="status">
+            <mat-option [value]="true">Active</mat-option>
+            <mat-option [value]="false">Inactive</mat-option>
+          </mat-select>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <mat-dialog-actions align="end" class="px-3 pb-3">
+    <button mat-raised-button color="primary" [disabled]="checklistForm.invalid" (click)="save()">
+      <mat-icon style="font-size: 20px;" class="mt-1">save</mat-icon>
+      <span style="margin-left: 5px;">{{ data?.item ? 'Update' : 'Save' }}</span>
+    </button>
+    <button mat-raised-button style="background-color: lightgray; color: red;" class="ms-2" (click)="close()">
+      <mat-icon>cancel</mat-icon> Close
+    </button>
+  </mat-dialog-actions>
+</div>

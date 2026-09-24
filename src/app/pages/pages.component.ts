@@ -42,6 +42,7 @@ export class PagesComponent implements OnInit {
     '/app/prtsonepager',
     '/app/setups',
     '/app/setups/setup-masterdata',
+    '/app/complaints/reference-number',
     // '/base-info',
     // '/alert',
     // '/updates',

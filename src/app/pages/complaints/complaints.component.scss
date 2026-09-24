@@ -1,5 +1,11 @@
+:host {
+  display: block;
+}
+
 // Container
 .col-lg-12 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
   overflow: hidden;
 }
 
@@ -73,7 +79,7 @@
   justify-content: flex-end;
   align-items: center;
   gap: 10px;
-  margin: 2px 15px 4px 15px;
+  margin: 2px 0 10px 0;
 
   button {
     &.primary-btn mat-icon {
@@ -89,11 +95,13 @@
 
 // Filter section
 .filter-wrapper {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
   margin-bottom: -3px;
 
   .filter-card {
-    width: 101.5%;
-    margin-left: -15px;
+    width: 100%;
+    margin-left: 0;
   }
 
   .newMarginClass {
@@ -113,10 +121,12 @@
 
 // Table styles with Sticky Header & Freeze Panes
 .table-container {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
   margin-top: 10px;
 
   #grid-table-container {
-    margin-left: -6px;
+    margin-left: 0 !important;
     max-height: 640px;
     overflow-x: auto;
     overflow-y: auto;

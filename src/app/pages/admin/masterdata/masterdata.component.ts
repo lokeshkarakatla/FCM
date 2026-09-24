@@ -7,12 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MasterdataComponent implements OnInit {
 
-  activeTab: string = 'Models';
-
   tabs = [
+    'Verification Methods', 'Verification Checklist',
     'Models', 'Variants', 'Plant', 'Color', 'Transmission',
     'Fuel Type', 'Stages', 'Engine Type', 'Drive Type', 'Drive Grade', 'Vehicle Type'
   ];
+
+  activeTab: string = 'Verification Methods';
 
   modelsData = [
     { name: 'Fortuner', code: ')', status: 'Inactive' },

@@ -1,11 +1,20 @@
-<!-- Complaint Reference Header -->
-<div class="complaint-ref-header">
-  <p>
-    <span class="ref-label">Ref No:</span>
-    <span class="ref-value">FIELD/2024/09/3</span>
-    <span class="ref-label">Subject:</span>
-    <span class="ref-value">Global fleet of connected vehicles</span>
-  </p>
+<!-- Unified Reference Header: combines title, icon, ref info in bracket, subtitle & back button into one header -->
+<div class="reference-unified-header">
+  <div class="header-main-content">
+    <div class="header-title-bar">
+      <h2 class="header-title">
+        <mat-icon class="header-icon" [style.color]="currentNavItem.iconColor">{{ currentNavItem.icon }}</mat-icon>
+        <span class="header-title-text">{{ currentNavItem.label }}({{ refNo }})</span>
+      </h2>
+    </div>
+    <p class="header-subtitle" *ngIf="currentNavItem.subtitle">{{ currentNavItem.subtitle }}</p>
+  </div>
+
+  <div class="header-actions">
+    <button mat-raised-button class="ref-back-btn" (click)="goBack()">
+      <mat-icon class="btn-icon">arrow_back</mat-icon> Back
+    </button>
+  </div>
 </div>
 
 <!-- Main Layout: Content + Right Sidenav -->

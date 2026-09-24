@@ -1,11 +1,6 @@
-<div class="section-wrapper mt-4">
+<div class="section-wrapper mt-3">
   <div class="container-fluid px-4">
-    <div class="section-title-bar">
-      <h3><mat-icon class="title-icon">shield</mat-icon> Containment</h3>
-      <p class="section-subtitle">Immediate actions to contain the problem and prevent spread to other products.</p>
-    </div>
-
-    <div class="mt-4">
+    <div class="mt-2">
       <div class="d-flex justify-content-between align-items-center mb-2">
         <h5 class="table-title">Containment Actions</h5>
         <button mat-raised-button color="primary" class="btn-sm" (click)="openActionDialog()">
@@ -18,7 +13,7 @@
             <tr>
               <th>Action Required</th>
               <th>Department</th>
-              <th>Responsible</th>
+              <th>Role</th>
               <th class="text-center">Target Date</th>
               <th class="text-center">Date Completed</th>
               <th class="text-center">Status</th>
@@ -34,14 +29,17 @@
               <td class="text-center">{{ a.targetDate }}</td>
               <td class="text-center">{{ a.completionDate || '-' }}</td>
               <td class="text-center">
-                <span class="status-badge" [ngClass]="a.status === 'Completed' ? 'badge-success' : 'badge-warning'">{{ a.status }}</span>
+                <span class="status-badge" [ngClass]="a.status === 'Completed' ? 'badge-success' : 'badge-warning'">{{
+                  a.status }}</span>
               </td>
               <td class="text-center">
                 <mat-checkbox [checked]="a.done" (change)="toggleDone(a)" color="primary"></mat-checkbox>
               </td>
               <td class="text-center">
-                <a matTooltip="Edit" class="action-btn-link" (click)="openActionDialog(a)"><i class="fa fa-edit"></i></a>
-                <a matTooltip="Delete" class="action-btn-link" (click)="deleteAction(a)"><i class="fa fa-trash red"></i></a>
+                <a matTooltip="Edit" class="action-btn-link" (click)="openActionDialog(a)"><i
+                    class="fa fa-edit"></i></a>
+                <a matTooltip="Delete" class="action-btn-link" (click)="deleteAction(a)"><i
+                    class="fa fa-trash red"></i></a>
               </td>
             </tr>
           </tbody>

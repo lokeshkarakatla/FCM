@@ -1,7 +1,7 @@
 form {
-  background-color: white;
-  padding: 20px;
-  border-radius: 5px;
+  background-color: transparent;
+  padding: 10px 0;
+  border-radius: 0;
 }
 
 /* Inputs */
@@ -28,10 +28,11 @@ form {
 
 .base-info-wrapper {
   width: 100%;
-  max-width: 100%;
+  max-width: 950px;
   margin-left: 0;
   padding-right: 15px;
-  padding-bottom: 60px; /* Ensures ample space below Save & Next button */
+  padding-bottom: 60px;
+  /* Ensures ample space below Save & Next button */
   box-sizing: border-box;
 }
 
@@ -56,4 +57,4 @@ textarea.form-control {
   height: 18px !important;
   line-height: 18px !important;
   vertical-align: middle !important;
-}
+}

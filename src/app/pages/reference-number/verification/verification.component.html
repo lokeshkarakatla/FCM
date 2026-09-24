@@ -1,31 +1,21 @@
-<div class="section-wrapper mt-4">
+<div class="section-wrapper mt-3">
   <div class="container-fluid px-4">
-    <div class="section-title-bar">
-      <h3><mat-icon class="title-icon">verified</mat-icon> Verification</h3>
-      <p class="section-subtitle">Confirm that the implemented corrective actions have resolved the problem.</p>
-    </div>
-
-    <div class="row g-4 mt-2">
+    <div class="row g-4 mt-1">
+      <!-- Left Card: Verification Details -->
       <div class="col-md-6">
         <div class="form-card">
           <h5 class="card-section-title">Verification Details</h5>
+          
           <div class="mb-3">
             <label class="form-label"><b>Verified By:</b></label>
             <input type="text" class="form-control" placeholder="Enter verifier name" [(ngModel)]="verifiedBy">
           </div>
+
           <div class="mb-3">
             <label class="form-label"><b>Verification Date:</b></label>
             <input type="date" class="form-control" [(ngModel)]="verificationDate">
           </div>
-          <div class="mb-3">
-            <label class="form-label"><b>Verification Method:</b></label>
-            <mat-select placeholder="Select Method" class="form-control" [(ngModel)]="verificationMethod">
-              <mat-option value="testing">Testing / Inspection</mat-option>
-              <mat-option value="audit">Process Audit</mat-option>
-              <mat-option value="review">Document Review</mat-option>
-              <mat-option value="field">Field Validation</mat-option>
-            </mat-select>
-          </div>
+
           <div class="mb-3">
             <label class="form-label"><b>Result:</b></label>
             <mat-select placeholder="Select Result" class="form-control" [(ngModel)]="result">
@@ -34,6 +24,7 @@
               <mat-option value="partial">Partial — Needs Monitoring</mat-option>
             </mat-select>
           </div>
+
           <div class="mb-3">
             <label class="form-label"><b>Remarks:</b></label>
             <textarea rows="3" class="form-control" placeholder="Verification notes..." [(ngModel)]="remarks"></textarea>
@@ -41,15 +32,35 @@
         </div>
       </div>
 
+      <!-- Right Card: Dynamic Verification Checklist -->
       <div class="col-md-6">
         <div class="form-card">
+          <!-- Verification Method Dropdown on Top of Verification Checklist -->
+          <div class="mb-3">
+            <label class="form-label"><b>Verification Method:</b></label>
+            <mat-select placeholder="Select Method" class="form-control" [(ngModel)]="verificationMethod" (selectionChange)="onMethodChange($event.value)">
+              <mat-option *ngFor="let m of methods" [value]="m.id">
+                {{ m.name }}
+              </mat-option>
+            </mat-select>
+          </div>
+
           <h5 class="card-section-title">Verification Checklist</h5>
+
           <div class="checklist">
             <div class="checklist-item" *ngFor="let c of checklist">
-              <mat-checkbox [(ngModel)]="c.checked">{{ c.item }}</mat-checkbox>
+              <mat-checkbox [(ngModel)]="c.checked" color="primary">
+                {{ c.item }}
+              </mat-checkbox>
+            </div>
+
+            <div *ngIf="checklist.length === 0" class="text-muted text-center py-4">
+              <mat-icon class="d-block mb-2 text-secondary" style="font-size: 32px; width: 32px; height: 32px; margin: 0 auto;">assignment_late</mat-icon>
+              <span>No checklist items configured for this method.</span>
             </div>
           </div>
         </div>
+
         <div class="text-end mt-3">
           <button mat-raised-button color="primary" class="save-btn" (click)="save()">
             <mat-icon class="btn-icon">save</mat-icon> Save
