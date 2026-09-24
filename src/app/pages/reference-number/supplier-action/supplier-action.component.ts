@@ -18,6 +18,9 @@ export class SupplierActionComponent {
   actions = [
     { id: 1, action: 'Replace faulty batch of brake sensors', supplier: 'Bosch Automotive', component: 'ECU Wiring Harness', deadline: '2024-09-25', dateCompleted: '', status: 'Open', done: false },
     { id: 2, action: 'Provide material test certificates', supplier: 'Denso India', component: 'Brake Sensor Assembly', deadline: '2024-09-20', dateCompleted: '2024-09-19', status: 'Completed', done: true },
+    { id: 3, action: 'Submit 8D root cause analysis and 5-Why Ishikawa report', supplier: 'Bosch Automotive', component: 'ECU Wiring Harness', deadline: '2024-09-28', dateCompleted: '', status: 'In Progress', done: false },
+    { id: 4, action: 'Recalibrate automated terminal crimping station #3', supplier: 'Yazaki Harness Systems', component: 'Wiring Harness Section A', deadline: '2024-09-22', dateCompleted: '2024-09-21', status: 'Completed', done: true },
+    { id: 5, action: 'Ship 150 pre-screened replacement units for dealer buffer stock', supplier: 'Continental AG', component: 'High Pressure Sensor', deadline: '2024-10-02', dateCompleted: '', status: 'Open', done: false }
   ];
   remarks: string = '';
 

@@ -16,7 +16,10 @@ export class FieldDispatchComponent {
 
   parts = [
     { partNo: 'FD-001', partName: 'Engine Control Module (ECM)', remarks: 'Intermittent failure reported under load' },
-    { partNo: 'FD-002', partName: 'Wiring Harness Section A', remarks: 'Suspected insulation pinch defect' }
+    { partNo: 'FD-002', partName: 'Wiring Harness Section A', remarks: 'Suspected insulation pinch defect' },
+    { partNo: 'FD-003', partName: 'Fuel Pressure Sensor (High Pressure)', remarks: 'Erratic pressure spikes observed in freeze frame' },
+    { partNo: 'FD-004', partName: 'Throttle Position Actuator', remarks: 'Internal gear wear causing sluggish acceleration' },
+    { partNo: 'FD-005', partName: 'Oxygen Sensor (Upstream)', remarks: 'Intermittent signal voltage loss and heater fault' }
   ];
   remarks: string = '';
 
