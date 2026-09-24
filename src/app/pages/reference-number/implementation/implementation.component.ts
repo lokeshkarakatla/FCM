@@ -12,6 +12,9 @@ export class ImplementationComponent {
     { id: 1, activity: 'Updated design specification document', department: 'Engineering / Design', responsible: 'Design Lead', targetDate: '2024-09-20', completionDate: '2024-09-19', status: 'Completed', done: true },
     { id: 2, activity: 'Tooling modification for revised component', department: 'Manufacturing', responsible: 'Tooling Manager', targetDate: '2024-09-25', completionDate: '', status: 'In Progress', done: false },
     { id: 3, activity: 'First sample production run', department: 'Production', responsible: 'Production Supervisor', targetDate: '2024-10-01', completionDate: '', status: 'Pending', done: false },
+    { id: 4, activity: 'Update Control Plan (CP) & Process FMEA documentation', department: 'Manufacturing Engineering', responsible: 'Process Engineer', targetDate: '2024-09-22', completionDate: '2024-09-21', status: 'Completed', done: true },
+    { id: 5, activity: 'Assembly line operator training on revised wiring clip SOP', department: 'Training & Development', responsible: 'Assembly Line Trainer', targetDate: '2024-10-05', completionDate: '', status: 'Pending', done: false },
+    { id: 6, activity: 'PPAP Level 3 customer submission and sign-off', department: 'Quality Assurance', responsible: 'SQA Lead', targetDate: '2024-10-10', completionDate: '', status: 'Pending', done: false }
   ];
   remarks: string = '';
 
