@@ -28,3 +28,62 @@
   vertical-align: middle !important;
 }
 
+.table {
+  th, td {
+    vertical-align: middle !important;
+  }
+  th.text-center, td.text-center {
+    text-align: center !important;
+  }
+}
+
+.doc-view-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  gap: 6px;
+  color: #0284c7;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  vertical-align: middle;
+  cursor: pointer;
+  text-align: center;
+
+  &:hover {
+    color: #0369a1;
+    text-decoration: underline;
+
+    .doc-view-icon {
+      color: #0369a1;
+    }
+  }
+
+  .doc-view-icon {
+    font-size: 16px !important;
+    width: 16px !important;
+    height: 16px !important;
+    line-height: 16px !important;
+    color: #0284c7;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    vertical-align: middle !important;
+    flex-shrink: 0;
+  }
+
+  .doc-view-label {
+    display: inline-flex;
+    align-items: center;
+    line-height: 16px;
+    height: 16px;
+    font-size: 13px;
+    font-weight: 500;
+    vertical-align: middle;
+  }
+}
+

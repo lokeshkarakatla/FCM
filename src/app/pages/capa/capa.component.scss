@@ -62,8 +62,14 @@
   margin-left: 10px;
 }
 
+:host {
+  display: block;
+}
+
 /* Layout */
 .main-container {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
   overflow: hidden;
 }
 
@@ -72,7 +78,7 @@
   justify-content: flex-end;
   align-items: center;
   gap: 10px;
-  margin: 2px 15px 4px 15px;
+  margin: 2px 0 10px 0;
 }
 
 /* Buttons */
@@ -88,12 +94,14 @@
 
 /* Filter */
 .filter-section {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
   margin-bottom: -5px;
 }
 
 .filter-card {
-  width: 101.5%;
-  margin-left: -15px;
+  width: 100% !important;
+  margin-left: 0 !important;
 }
 
 .newMarginClass {
@@ -102,7 +110,13 @@
 
 /* Table */
 .table-wrapper {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
   margin-top: 0px;
+
+  #grid-table-container {
+    margin-left: 0 !important;
+  }
 }
 
 #grid-table-container table {

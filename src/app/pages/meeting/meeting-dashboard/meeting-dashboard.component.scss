@@ -1,12 +1,12 @@
 .meeting-dashboard-page {
-  padding: 16px 20px 40px 20px;
-  background-color: #fcfcfc;
+  padding: 16px 0 40px 0;
+  background-color: transparent;
 }
 
 /* ── Top Header Banner ── */
 .meeting-top-banner {
   background: transparent;
-  padding: 12px 18px;
+  padding: 6px 0 12px 0;
   border-radius: 8px;
   box-shadow: none;
 
@@ -14,6 +14,36 @@
     font-size: 20px;
     font-weight: 700;
     color: #1e293b;
+  }
+
+  .back-btn {
+    background-color: #50636D !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 13px;
+    border: 1px solid #50636D !important;
+    border-radius: 4px;
+    height: 36px;
+    padding: 0 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: #405058 !important;
+      color: #ffffff !important;
+    }
+
+    mat-icon {
+      color: #ffffff !important;
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+      line-height: 18px;
+      margin: 0;
+      vertical-align: middle;
+    }
   }
 
   .meta-tag {
@@ -458,9 +488,9 @@
 /* ── Filters Panel (STATUS & SEVERITY) ── */
 .filters-panel {
   background: transparent;
-  padding: 12px 18px;
+  padding: 8px 0;
   border-radius: 8px;
-  border: 1px solid #e2e8f0;
+  border: none;
   box-shadow: none;
 
   .filter-header-label {

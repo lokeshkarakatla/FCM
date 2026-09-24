@@ -23,10 +23,32 @@ export class MonitoringDialogComponent implements OnInit {
     if (this.data) {
       this.date = this.data.date || '';
       this.summary = this.data.summary || this.data.metric || '';
-      this.documentName = this.data.documentName || 'Validation_Run_Report.pdf';
+      this.documentName = this.data.documentName || '';
       this.monitoredBy = this.data.monitoredBy || 'Quality Department (Lead Auditor)';
       this.status = this.data.status || 'Pass';
     }
+  }
+
+  isDragging: boolean = false;
+
+  onFileDropped(event: DragEvent): void {
+    event.preventDefault();
+    this.isDragging = false;
+    if (event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files.length > 0) {
+      const file = event.dataTransfer.files[0];
+      this.documentName = file.name;
+    }
+  }
+
+  onFileSelected(event: any): void {
+    const file = event.target.files && event.target.files[0];
+    if (file) {
+      this.documentName = file.name;
+    }
+  }
+
+  removeDocument(): void {
+    this.documentName = '';
   }
 
   save(): void {

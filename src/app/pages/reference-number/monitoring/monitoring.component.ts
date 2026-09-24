@@ -25,7 +25,9 @@ export class MonitoringComponent {
 
   openRecordDialog(record?: any): void {
     const dialogRef = this.dialog.open(MonitoringDialogComponent, {
-      width: '600px',
+      height: 'auto',
+      width: '850px',
+      maxWidth: '95vw',
       data: record ? { ...record } : null
     });
 
@@ -48,6 +50,11 @@ export class MonitoringComponent {
     if (idx !== -1) {
       this.records.splice(idx, 1);
     }
+  }
+
+  viewDocument(record: any): void {
+    const docName = record?.documentName || 'Document.pdf';
+    alert('Viewing document: ' + docName);
   }
 
   save(): void {

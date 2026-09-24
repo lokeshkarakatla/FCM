@@ -21,6 +21,7 @@ export const verticalMenuItems = [
   new Menu(404, 'Preferences', '/app/admin/settings', null, 'settings_applications', null, false, 4),
   new Menu(405, 'Event Log', '/app/admin/event-log', null, 'engineering', null, false, 4),
   new Menu(406, 'Escalation Matrix', '/app/admin/escalation', null, 'mail_outline', null, false, 4),
+  new Menu(407, 'Verification Master', '/app/admin/masterdata', null, 'fact_check', null, false, 4),
   // new Menu(406, 'Kanban Setup', '/app/admin/kanban-setup', null, 'panorama_fish_eye', null, false, 4),y
   //new Menu(407, 'Event Log', '/app/admin/event-log', null, 'engineering', null, false, 4),
   // new Menu(408, 'Credentials', '/app/admin/credentials',null,'engineering',null,false,4)
@@ -57,7 +58,8 @@ export const horizontalMenuItems = [
   new Menu(403, 'Lookup Options', '/app/admin/lookups', null, 'search', null, false, 4),
   new Menu(404, 'Preferences', '/app/admin/settings', null, 'settings_applications', null, false, 4),
   new Menu(405, 'Event Log', '/app/admin/event-log', null, 'engineering', null, false, 4),
-  new Menu(406, 'Escalation Matrix', '/app/admin/escalation', null, 'mail_outline', null, false, 4)
+  new Menu(406, 'Escalation Matrix', '/app/admin/escalation', null, 'mail_outline', null, false, 4),
+  new Menu(407, 'Verification Master', '/app/admin/masterdata', null, 'fact_check', null, false, 4)
 ];
 
 export const clientMenuItems = [

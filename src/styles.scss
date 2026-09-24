@@ -601,3 +601,27 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     padding: 14px 36px !important;
   }
 }
+
+/* ── Unified Back Button Styling across all screens ── */
+button.back-btn,
+button.ref-back-btn,
+button.page-back-btn,
+button.custom-back-btn,
+.back-btn,
+.ref-back-btn,
+.page-back-btn,
+.custom-back-btn,
+.btn-grey.back-btn {
+  background-color: #50636D !important;
+  color: #ffffff !important;
+  border-color: #50636D !important;
+
+  &:hover {
+    background-color: #405058 !important;
+    color: #ffffff !important;
+  }
+
+  mat-icon, i, .btn-icon {
+    color: #ffffff !important;
+  }
+}

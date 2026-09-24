@@ -1,11 +1,6 @@
-<div class="section-wrapper mt-4">
+<div class="section-wrapper mt-3">
   <div class="container-fluid px-4">
-    <div class="section-title-bar">
-      <h3><mat-icon class="title-icon">task_alt</mat-icon> Closure</h3>
-      <p class="section-subtitle">Close the complaint with final remarks and generate the closure report.</p>
-    </div>
-
-    <div class="row g-4 mt-2">
+    <div class="row g-4 mt-1">
       <div class="col-md-6">
         <div class="form-card">
           <h5 class="card-section-title">Closure Details</h5>
@@ -76,14 +71,18 @@
 
         <div class="form-card mt-3">
           <h5 class="card-section-title">Auto-Generated Report</h5>
-          <p class="report-desc">Generate a comprehensive 8D closure report combining all sections (Investigation through Recognition).</p>
-          <button mat-raised-button color="accent" class="action-btn-row">
-            <mat-icon class="btn-icon">picture_as_pdf</mat-icon> Download 8D Report (PDF)
+          <p class="report-desc">Generate a comprehensive 8D closure report combining all sections (Investigation
+            through Recognition).</p>
+          <button mat-raised-button color="accent" class="action-btn-row" (click)="generate8DReport()">
+            <mat-icon class="btn-icon">auto_awesome</mat-icon> Generate 8D Report
           </button>
         </div>
 
-        <div class="text-end mt-3">
-          <button mat-raised-button class="btn-close-complaint">
+        <div class="text-end mt-3 d-flex justify-content-end align-items-center" style="gap: 12px;">
+          <button mat-raised-button color="primary" class="btn-download-pdf" (click)="downloadPdf()">
+            <mat-icon class="btn-icon">picture_as_pdf</mat-icon> Download PDF
+          </button>
+          <button mat-raised-button class="btn-close-complaint" (click)="closeComplaint()">
             <mat-icon class="btn-icon">check_circle</mat-icon> Close Complaint
           </button>
         </div>

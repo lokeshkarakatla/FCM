@@ -50,9 +50,15 @@ import { ADrivetypeComponent } from '../audit-config/a-drivetype/a-drivetype.com
 import { ADrivegradeComponent } from '../audit-config/a-drivegrade/a-drivegrade.component';
 import { AVehicletypeComponent } from '../audit-config/a-vehicletype/a-vehicletype.component';
 
+import { VerificationMasterModule } from '../../admin/masterdata/verification-master.module';
+import { MVerificationMethodsComponent } from '../../admin/masterdata/m-verification-methods/m-verification-methods.component';
+import { MVerificationChecklistComponent } from '../../admin/masterdata/m-verification-checklist/m-verification-checklist.component';
+
 export const routes: Routes = [
   { path: "", redirectTo: "status-master", pathMatch: "full" },
   { path: 'status-master', component: MStatusMasterComponent, data: { breadcrumb: 'Status Master', description: 'List of agencies are managed here.' }},
+  { path: 'verification-methods', component: MVerificationMethodsComponent, data: { breadcrumb: 'Verification Methods', description: 'List of verification methods are managed here.' }},
+  { path: 'verification-checklist', component: MVerificationChecklistComponent, data: { breadcrumb: 'Verification Checklist', description: 'Verification checklist relationship mapping is managed here.' }},
   { path: 'models', component: AuditModelComponent, data: { breadcrumb: 'Models', description: 'List of vehicle models are managed here.' }},
   { path: 'variants', component: AVariantComponent, data: { breadcrumb: 'Variants', description: 'List of variants are managed here.' }},
   { path: 'plants', component: APlantComponent, data: { breadcrumb: 'Plant', description: 'List of plants are managed here.' }},
@@ -110,7 +116,8 @@ export const routes: Routes = [
     MatPaginatorModule,
     MatCardModule,
     MatSelectModule,
-    AuditConfigModule
+    AuditConfigModule,
+    VerificationMasterModule
   ],
 
 })

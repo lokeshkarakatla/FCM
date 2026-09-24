@@ -23,6 +23,9 @@ import { DistributorComponent } from './masterdata/distributor/distributor.compo
 import { AddDistributorComponent } from './masterdata/distributor/add-distributor/add-distributor.component';
 import { MDepartmentsComponent } from './masterdata/m-departments/m-departments.component';
 import { MdataDeptsComponent } from '../setups/test-master-data/mdata-depts/mdata-depts.component';
+import { VerificationMasterModule } from './masterdata/verification-master.module';
+import { MVerificationMethodsComponent } from './masterdata/m-verification-methods/m-verification-methods.component';
+import { MVerificationChecklistComponent } from './masterdata/m-verification-checklist/m-verification-checklist.component';
   // for mat-raised-button and button features
 
 
@@ -87,6 +90,24 @@ const routes: Routes = [
     component: CredentialsComponent,
     pathMatch: "full",
     data: { breadcrumb: 'Credentials', description: "This page is used to view Credentials" }
+  },
+  {
+    path: 'masterdata',
+    component: MasterdataComponent,
+    pathMatch: "full",
+    data: { breadcrumb: 'Master Data', description: "Manage application master data" }
+  },
+  {
+    path: 'verification-methods',
+    component: MVerificationMethodsComponent,
+    pathMatch: "full",
+    data: { breadcrumb: 'Verification Methods', description: "Manage verification methods" }
+  },
+  {
+    path: 'verification-checklist',
+    component: MVerificationChecklistComponent,
+    pathMatch: "full",
+    data: { breadcrumb: 'Verification Checklist', description: "Assign checklist items to verification methods" }
   }
 
 ];
@@ -114,7 +135,8 @@ const routes: Routes = [
     MatPaginatorModule,
     MatCardModule,
     MatSelectModule,
-     FormsModule
+    FormsModule,
+    VerificationMasterModule
   ],
   // entryComponents: [],
   providers: [DragulaService]

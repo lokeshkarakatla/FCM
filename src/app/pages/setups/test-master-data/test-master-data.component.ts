@@ -19,6 +19,8 @@ export class TestMasterDataComponent implements OnInit {
 
   navItems: NavItem[] = [
     { link: 'status-master', name: 'Status Master', icon: 'toggle_on' },
+    { link: 'verification-methods', name: 'Verification Methods', icon: 'fact_check' },
+    { link: 'verification-checklist', name: 'Verification Checklist', icon: 'checklist' },
     { link: 'models', name: 'Models', icon: 'directions_car' },
     { link: 'variants', name: 'Variants', icon: 'style' },
     { link: 'plants', name: 'Plants', icon: 'factory' },

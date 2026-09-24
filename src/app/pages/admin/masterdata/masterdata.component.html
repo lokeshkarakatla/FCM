@@ -3,49 +3,58 @@
 
   <!-- Master Data Tabs Group (Matching img3) -->
   <div class="tabs-bar">
-    <button 
-      *ngFor="let tab of tabs" 
-      class="tab-btn" 
-      [class.active]="activeTab === tab"
-      (click)="selectTab(tab)">
+    <button *ngFor="let tab of tabs" class="tab-btn" [class.active]="activeTab === tab" (click)="selectTab(tab)">
       {{ tab }}
     </button>
   </div>
 
-  <!-- Action Header -->
-  <div class="table-actions-header">
-    <button mat-raised-button class="filter-btn">
-      <mat-icon>filter_list</mat-icon> Filter
-    </button>
-    <button mat-raised-button color="primary" class="add-btn">
-      <mat-icon>add</mat-icon> Add Vehicle {{ activeTab.slice(0, -1) }}
-    </button>
+  <!-- Verification Methods Master View -->
+  <div *ngIf="activeTab === 'Verification Methods'">
+    <app-m-verification-methods></app-m-verification-methods>
   </div>
 
-  <!-- Table View (Matching img3) -->
-  <div class="table-responsive master-table-card">
-    <table class="table table-bordered table-hover m-0">
-      <thead>
-        <tr>
-          <th>Vehicle Model</th>
-          <th>Vehicle Model Code</th>
-          <th class="text-center">Status</th>
-          <th class="text-center">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of modelsData">
-          <td class="font-weight-bold">{{ item.name }}</td>
-          <td>{{ item.code }}</td>
-          <td class="text-center">
-            <span class="status-inactive">{{ item.status }}</span>
-          </td>
-          <td class="text-center actions-col">
-            <mat-icon class="action-icon edit-icon" matTooltip="Edit">edit_note</mat-icon>
-            <mat-icon class="action-icon delete-icon" matTooltip="Delete">delete</mat-icon>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <!-- Verification Checklist Master View -->
+  <div *ngIf="activeTab === 'Verification Checklist'">
+    <app-m-verification-checklist></app-m-verification-checklist>
+  </div>
+
+  <!-- Default Vehicle Models Table View for other tabs -->
+  <div *ngIf="activeTab !== 'Verification Methods' && activeTab !== 'Verification Checklist'">
+    <!-- Action Header -->
+    <div class="table-actions-header">
+      <button mat-raised-button class="filter-btn">
+        <mat-icon>filter_list</mat-icon> Filter
+      </button>
+      <button mat-raised-button color="primary" class="add-btn">
+        <mat-icon>add</mat-icon> Add Vehicle {{ activeTab.slice(0, -1) }}
+      </button>
+    </div>
+
+    <!-- Table View -->
+    <div class="table-responsive master-table-card">
+      <table class="table table-bordered table-hover m-0">
+        <thead>
+          <tr>
+            <th>Vehicle {{ activeTab.slice(0, -1) }}</th>
+            <th>Code</th>
+            <th class="text-center">Status</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of modelsData">
+            <td class="font-weight-bold">{{ item.name }}</td>
+            <td>{{ item.code }}</td>
+            <td class="text-center">
+              <span class="status-inactive">{{ item.status }}</span>
+            </td>
+            <td class="text-center actions-col">
+              <mat-icon class="action-icon edit-icon" matTooltip="Edit">edit_note</mat-icon>
+              <mat-icon class="action-icon delete-icon" matTooltip="Delete">delete</mat-icon>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
