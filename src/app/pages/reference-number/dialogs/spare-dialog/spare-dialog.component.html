@@ -16,8 +16,16 @@
           Part No <span class="text-danger">*</span> :
         </label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" placeholder="e.g. PRT-4091"
-                 [(ngModel)]="partNo" name="partNo" required autofocus />
+          <mat-select class="form-control" [(ngModel)]="partNo" name="partNo"
+                      placeholder="Select Part from Master"
+                      (selectionChange)="onMasterPartChange($event.value)" required>
+            <mat-option *ngFor="let item of masterParts" [value]="item.partNo">
+              <strong>{{ item.partNo }}</strong> - {{ item.partName }}
+            </mat-option>
+            <mat-option *ngIf="partNo && !isMasterPart(partNo)" [value]="partNo">
+              <strong>{{ partNo }}</strong> (Custom)
+            </mat-option>
+          </mat-select>
         </div>
       </div>
 
@@ -26,14 +34,14 @@
           Part Name <span class="text-danger">*</span> :
         </label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" placeholder="e.g. Wiring Harness Sub-Assembly"
+          <input type="text" class="form-control" placeholder="e.g. Brake Pad Assembly"
                  [(ngModel)]="partName" name="partName" required />
         </div>
       </div>
 
       <div class="row align-items-center mb-3">
         <label class="col-sm-3 control-label">
-          Quantity :
+          Quantity <span class="text-danger">*</span> :
         </label>
         <div class="col-sm-9">
           <input type="number" min="1" class="form-control" [(ngModel)]="qty" name="qty" (input)="updateCost()" />
@@ -42,7 +50,7 @@
 
       <div class="row align-items-center mb-3">
         <label class="col-sm-3 control-label">
-          Unit Rate (₹) :
+          Unit Rate (₹) <span class="text-danger">*</span> :
         </label>
         <div class="col-sm-9">
           <input type="number" min="0" class="form-control" [(ngModel)]="unitRate" name="unitRate" (input)="updateCost()" />
@@ -51,7 +59,7 @@
 
       <div class="row align-items-center mb-3">
         <label class="col-sm-3 control-label">
-          Total Cost (₹) :
+          Cost (₹) :
         </label>
         <div class="col-sm-9">
           <input type="number" class="form-control bg-light" [(ngModel)]="cost" name="cost" readonly />

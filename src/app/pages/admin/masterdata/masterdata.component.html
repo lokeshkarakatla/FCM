@@ -18,8 +18,176 @@
     <app-m-verification-checklist></app-m-verification-checklist>
   </div>
 
+  <!-- Spare Parts Master View -->
+  <div *ngIf="activeTab === 'Spare Parts'">
+    <!-- Action Header -->
+    <div class="table-actions-header">
+      <button mat-raised-button class="filter-btn" (click)="spareFilterToggle = !spareFilterToggle">
+        <mat-icon>filter_list</mat-icon> Filter
+      </button>
+      <button mat-raised-button color="primary" class="add-btn" (click)="addSparePrompt()">
+        <mat-icon>add</mat-icon> Add Spare Part
+      </button>
+    </div>
+
+    <!-- Filter Card -->
+    <div class="col-12 mb-3" *ngIf="spareFilterToggle">
+      <mat-card class="filter p-3" style="background: #e6e6e6 !important;">
+        <div class="row align-items-center">
+          <div class="col-sm-5 row">
+            <div class="col-sm-3 newMarginClass"><b>Keyword:</b></div>
+            <div class="col-sm-9">
+              <input class="form-control" [(ngModel)]="spareKeyword" placeholder="Search Part No, Name..." (keyup.enter)="applySpareFilter()">
+            </div>
+          </div>
+          <div class="col-sm-4 row">
+            <div class="col-sm-3 newMarginClass"><b>Status:</b></div>
+            <div class="col-sm-9">
+              <mat-select [(ngModel)]="spareStatusFilter" class="form-control" (selectionChange)="applySpareFilter()">
+                <mat-option value="all">All</mat-option>
+                <mat-option value="active">Active</mat-option>
+                <mat-option value="inactive">Inactive</mat-option>
+              </mat-select>
+            </div>
+          </div>
+          <div class="col-sm-3 d-flex justify-content-end align-items-center gap-2">
+            <button mat-raised-button color="primary" (click)="applySpareFilter()">
+              <mat-icon>search</mat-icon> Search
+            </button>
+            <button mat-raised-button class="btn-default" (click)="clearSpareFilter()">
+              <mat-icon>settings_backup_restore</mat-icon> Clear
+            </button>
+            <a (click)="spareFilterToggle = false" class="toggle-icon ms-2" style="cursor: pointer; font-size: 20px;">
+              <i class="fa fa-angle-double-up"></i>
+            </a>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+    <!-- Table View -->
+    <div class="table-responsive master-table-card">
+      <table class="table table-bordered table-hover m-0">
+        <thead>
+          <tr>
+            <th style="width: 130px;">Part No</th>
+            <th>Spare Part Name</th>
+            <th style="width: 140px;" class="text-end">Unit Rate (₹)</th>
+            <th>Remarks / Description</th>
+            <th style="width: 110px;" class="text-center">Status</th>
+            <th style="width: 110px;" class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of filteredSpares">
+            <td><strong>{{ item.partNo }}</strong></td>
+            <td class="font-weight-bold text-dark">{{ item.partName }}</td>
+            <td class="text-end fw-bold text-primary">₹{{ item.unitRate | number:'1.2-2' }}</td>
+            <td class="text-muted">{{ item.remarks }}</td>
+            <td class="text-center">
+              <span [class.text-success]="item.status === 'Active'" [class.text-danger]="item.status === 'Inactive'" class="fw-bold">
+                {{ item.status }}
+              </span>
+            </td>
+            <td class="text-center actions-col">
+              <mat-icon class="action-icon edit-icon" matTooltip="Edit" (click)="editSparePrompt(item)">edit_note</mat-icon>
+              <mat-icon class="action-icon delete-icon" matTooltip="Delete" (click)="deleteSpare(item.id)">delete</mat-icon>
+            </td>
+          </tr>
+          <tr *ngIf="filteredSpares.length === 0">
+            <td colspan="6" class="text-center text-muted p-4">No Spare Parts found matching criteria.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Job Codes Master View -->
+  <div *ngIf="activeTab === 'Job Codes'">
+    <!-- Action Header -->
+    <div class="table-actions-header">
+      <button mat-raised-button class="filter-btn" (click)="jobFilterToggle = !jobFilterToggle">
+        <mat-icon>filter_list</mat-icon> Filter
+      </button>
+      <button mat-raised-button color="primary" class="add-btn" (click)="addJobPrompt()">
+        <mat-icon>add</mat-icon> Add Job Code
+      </button>
+    </div>
+
+    <!-- Filter Card -->
+    <div class="col-12 mb-3" *ngIf="jobFilterToggle">
+      <mat-card class="filter p-3" style="background: #e6e6e6 !important;">
+        <div class="row align-items-center">
+          <div class="col-sm-5 row">
+            <div class="col-sm-3 newMarginClass"><b>Keyword:</b></div>
+            <div class="col-sm-9">
+              <input class="form-control" [(ngModel)]="jobKeyword" placeholder="Search Job Code, Service..." (keyup.enter)="applyJobFilter()">
+            </div>
+          </div>
+          <div class="col-sm-4 row">
+            <div class="col-sm-3 newMarginClass"><b>Status:</b></div>
+            <div class="col-sm-9">
+              <mat-select [(ngModel)]="jobStatusFilter" class="form-control" (selectionChange)="applyJobFilter()">
+                <mat-option value="all">All</mat-option>
+                <mat-option value="active">Active</mat-option>
+                <mat-option value="inactive">Inactive</mat-option>
+              </mat-select>
+            </div>
+          </div>
+          <div class="col-sm-3 d-flex justify-content-end align-items-center gap-2">
+            <button mat-raised-button color="primary" (click)="applyJobFilter()">
+              <mat-icon>search</mat-icon> Search
+            </button>
+            <button mat-raised-button class="btn-default" (click)="clearJobFilter()">
+              <mat-icon>settings_backup_restore</mat-icon> Clear
+            </button>
+            <a (click)="jobFilterToggle = false" class="toggle-icon ms-2" style="cursor: pointer; font-size: 20px;">
+              <i class="fa fa-angle-double-up"></i>
+            </a>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+    <!-- Table View -->
+    <div class="table-responsive master-table-card">
+      <table class="table table-bordered table-hover m-0">
+        <thead>
+          <tr>
+            <th style="width: 130px;">Job Code</th>
+            <th>Service / Operation Name</th>
+            <th>Description</th>
+            <th style="width: 150px;" class="text-end">Standard Rate (₹)</th>
+            <th style="width: 110px;" class="text-center">Status</th>
+            <th style="width: 110px;" class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of filteredJobCodes">
+            <td><strong>{{ item.jobCode }}</strong></td>
+            <td class="font-weight-bold text-dark">{{ item.serviceName }}</td>
+            <td class="text-muted">{{ item.description }}</td>
+            <td class="text-end fw-bold text-primary">₹{{ item.unitRate | number:'1.2-2' }}</td>
+            <td class="text-center">
+              <span [class.text-success]="item.status === 'Active'" [class.text-danger]="item.status === 'Inactive'" class="fw-bold">
+                {{ item.status }}
+              </span>
+            </td>
+            <td class="text-center actions-col">
+              <mat-icon class="action-icon edit-icon" matTooltip="Edit" (click)="editJobPrompt(item)">edit_note</mat-icon>
+              <mat-icon class="action-icon delete-icon" matTooltip="Delete" (click)="deleteJobCode(item.id)">delete</mat-icon>
+            </td>
+          </tr>
+          <tr *ngIf="filteredJobCodes.length === 0">
+            <td colspan="6" class="text-center text-muted p-4">No Job Codes found matching criteria.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
   <!-- Default Vehicle Models Table View for other tabs -->
-  <div *ngIf="activeTab !== 'Verification Methods' && activeTab !== 'Verification Checklist'">
+  <div *ngIf="activeTab !== 'Verification Methods' && activeTab !== 'Verification Checklist' && activeTab !== 'Spare Parts' && activeTab !== 'Job Codes'">
     <!-- Action Header -->
     <div class="table-actions-header">
       <button mat-raised-button class="filter-btn">

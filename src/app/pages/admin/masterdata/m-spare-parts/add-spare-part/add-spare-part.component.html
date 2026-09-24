@@ -1,0 +1,78 @@
+<div class="col-sm-12 p-0" style="max-width: 100%; box-sizing: border-box;">
+  <div class="NewHeader">
+    <h1 style="color: white; margin-top: 5px;" mat-dialog-title>
+      {{ data ? 'Update' : 'Add' }} Spare Part
+    </h1>
+  </div>
+
+  <div mat-dialog-content class="pt-3">
+    <form [formGroup]="spareForm" class="form-horizontal">
+      <div class="form-group row mb-3">
+        <label class="control-label col-sm-4 text-end pt-1">
+          <b>Part No:</b> <span class="text-danger">*</span>
+        </label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="partNo" placeholder="e.g. SP-001" required autofocus>
+          <div *ngIf="spareForm.get('partNo')?.invalid && spareForm.get('partNo')?.touched" class="text-danger small mt-1">
+            Part Number is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row mb-3">
+        <label class="control-label col-sm-4 text-end pt-1">
+          <b>Part Name:</b> <span class="text-danger">*</span>
+        </label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="partName" placeholder="e.g. Brake Pad Assembly" required>
+          <div *ngIf="spareForm.get('partName')?.invalid && spareForm.get('partName')?.touched" class="text-danger small mt-1">
+            Part Name is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row mb-3">
+        <label class="control-label col-sm-4 text-end pt-1">
+          <b>Unit Rate (₹):</b> <span class="text-danger">*</span>
+        </label>
+        <div class="col-sm-8">
+          <input type="number" min="0" class="form-control" formControlName="unitRate" placeholder="e.g. 600" required>
+          <div *ngIf="spareForm.get('unitRate')?.invalid && spareForm.get('unitRate')?.touched" class="text-danger small mt-1">
+            Valid Unit Rate is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row mb-3">
+        <label class="control-label col-sm-4 text-end pt-1">
+          <b>Remarks:</b>
+        </label>
+        <div class="col-sm-8">
+          <textarea rows="3" class="form-control" formControlName="remarks" placeholder="Technical specifications or OEM notes..."></textarea>
+        </div>
+      </div>
+
+      <div class="form-group row mb-3">
+        <label class="control-label col-sm-4 text-end pt-1">
+          <b>Status:</b>
+        </label>
+        <div class="col-sm-8">
+          <mat-select class="form-control" formControlName="status">
+            <mat-option value="Active">Active</mat-option>
+            <mat-option value="Inactive">Inactive</mat-option>
+          </mat-select>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <mat-dialog-actions align="end" class="px-3 pb-3">
+    <button mat-raised-button color="primary" [disabled]="spareForm.invalid" (click)="save()">
+      <mat-icon style="font-size: 20px;" class="mt-1">save</mat-icon>
+      <span style="margin-left: 5px;">{{ data ? 'Update' : 'Save' }}</span>
+    </button>
+    <button mat-raised-button style="background-color: lightgray; color: red;" class="ms-2" (click)="close()">
+      <mat-icon>cancel</mat-icon> Close
+    </button>
+  </mat-dialog-actions>
+</div>

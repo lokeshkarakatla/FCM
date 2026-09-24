@@ -1,7 +1,7 @@
 <div class="custom-modal-wrapper">
   <div class="modal-header-custom">
     <h2 class="modal-title-text">
-      {{ data ? 'Edit Dispatched Part' : 'Add Field Dispatch' }}
+      {{ data ? 'Edit Dispatched Part' : 'Add Dispatched Part' }}
     </h2>
     <button type="button" class="modal-close-icon" (click)="close()">
       <mat-icon>close</mat-icon>
@@ -16,7 +16,7 @@
           Part Number <span class="text-danger">*</span> :
         </label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" placeholder="e.g. FDP-8801"
+          <input type="text" class="form-control" placeholder="e.g. FD-001"
                  [(ngModel)]="partNumber" name="partNo" required autofocus />
         </div>
       </div>
@@ -26,58 +26,8 @@
           Part Name <span class="text-danger">*</span> :
         </label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" placeholder="e.g. Fuel Injection Sensor"
+          <input type="text" class="form-control" placeholder="e.g. Engine Control Module (ECM)"
                  [(ngModel)]="partName" name="partName" required />
-        </div>
-      </div>
-
-      <div class="row align-items-center mb-3">
-        <label class="col-sm-3 control-label">
-          Tracking No :
-        </label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" placeholder="e.g. TRK-990812-IN"
-                 [(ngModel)]="trackingNumber" name="trkNo" />
-        </div>
-      </div>
-
-      <div class="row align-items-center mb-3">
-        <label class="col-sm-3 control-label">
-          Dispatch Date :
-        </label>
-        <div class="col-sm-9">
-          <input type="date" class="form-control" [(ngModel)]="dispatchDate" name="dispDate" />
-        </div>
-      </div>
-
-      <div class="row align-items-center mb-3">
-        <label class="col-sm-3 control-label">
-          From (Dealer) :
-        </label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" [(ngModel)]="from" name="dispFrom" />
-        </div>
-      </div>
-
-      <div class="row align-items-center mb-3">
-        <label class="col-sm-3 control-label">
-          To (Factory) :
-        </label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" [(ngModel)]="to" name="dispTo" />
-        </div>
-      </div>
-
-      <div class="row align-items-center mb-3">
-        <label class="col-sm-3 control-label">
-          Status :
-        </label>
-        <div class="col-sm-9">
-          <mat-select class="form-control" [(ngModel)]="status" name="dispStatus">
-            <mat-option value="Dispatched">Dispatched</mat-option>
-            <mat-option value="In Transit">In Transit</mat-option>
-            <mat-option value="Delivered">Delivered</mat-option>
-          </mat-select>
         </div>
       </div>
 
@@ -86,7 +36,7 @@
           Remarks :
         </label>
         <div class="col-sm-9">
-          <textarea rows="2" class="form-control" placeholder="Special handling notes..."
+          <textarea rows="2" class="form-control" placeholder="Failure symptoms or defect notes..."
                     [(ngModel)]="remarks" name="dispRemarks"></textarea>
         </div>
       </div>
