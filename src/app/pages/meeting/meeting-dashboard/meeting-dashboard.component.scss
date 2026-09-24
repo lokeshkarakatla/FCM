@@ -43,6 +43,7 @@
       line-height: 18px;
       margin: 0;
       vertical-align: middle;
+      margin-top: 7px;
     }
   }
 
@@ -71,27 +72,6 @@
     &.attendance-tag {
       background: #e0f2fe;
       color: #0369a1;
-    }
-  }
-
-  .back-btn {
-    background-color: #1e293b !important;
-    color: #ffffff !important;
-    font-weight: 500;
-    border-radius: 6px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-
-    mat-icon {
-      font-size: 18px;
-      height: 18px;
-      width: 18px;
-      line-height: 18px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 1px;
     }
   }
 }
