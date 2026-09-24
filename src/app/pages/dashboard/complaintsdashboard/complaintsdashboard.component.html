@@ -1,201 +1,949 @@
-<div class="page-wrapper">
-  <!-- Executive KPI Summary Cards -->
-  <div class="kpi-cards-grid">
-    <div class="kpi-card" (click)="navigate()">
-      <div class="kpi-icon-box blue">
-        <mat-icon>assignment</mat-icon>
+<div class="radar-page-wrapper">
+
+
+  <!-- ================= 5 EXECUTIVE ANALYTICS KPI SUMMARY CARDS ================= -->
+  <div class="kpi-metrics-grid">
+
+    <!-- Card 1: Total Field Complaints -->
+    <div class="kpi-card card-blue" (click)="navigateToMonitor()" matTooltip="View all field complaints">
+      <div class="kpi-card-header">
+        <div class="kpi-icon-badge badge-blue">
+          <mat-icon>assignment</mat-icon>
+        </div>
+        <span class="kpi-trend-pill pill-blue">Fleet Quality</span>
       </div>
-      <div class="kpi-info">
-        <span class="kpi-value">{{ modelTotals?.total || 101 }}</span>
-        <span class="kpi-label">Total Complaints</span>
+
+      <div class="kpi-card-middle">
+        <div class="kpi-card-info">
+          <div class="kpi-metric-val">{{ totalComplaintsCount }}</div>
+          <div class="kpi-metric-title">Total Field Complaints</div>
+          <div class="kpi-metric-sub">
+            <span class="pulse-dot dot-blue"></span>
+            {{ openCount }} Active &bull; {{ closedCount }} Closed
+          </div>
+        </div>
+        <div class="kpi-arrow-btn arrow-blue">
+          <mat-icon>arrow_forward</mat-icon>
+        </div>
+      </div>
+
+      <div class="kpi-wave-wrap">
+        <svg viewBox="0 0 200 48" preserveAspectRatio="none" class="kpi-wave-svg">
+          <defs>
+            <linearGradient id="waveGradBlue" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.32"/>
+              <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.0"/>
+            </linearGradient>
+          </defs>
+          <path d="M 0 38 C 25 38, 45 28, 70 30 C 100 32, 120 38, 145 32 C 165 26, 180 16, 194 10 L 194 48 L 0 48 Z" fill="url(#waveGradBlue)" />
+          <path d="M 0 38 C 25 38, 45 28, 70 30 C 100 32, 120 38, 145 32 C 165 26, 180 16, 194 10" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linecap="round" />
+          <circle cx="194" cy="10" r="3.5" fill="#2563eb" />
+        </svg>
       </div>
     </div>
-    <div class="kpi-card" (click)="navigate()">
-      <div class="kpi-icon-box orange">
-        <mat-icon>pending_actions</mat-icon>
+
+    <!-- Card 2: Critical / High Triage -->
+    <div class="kpi-card card-rose" (click)="navigateToMonitor({ severity: 'Critical' })" matTooltip="View critical & high complaints">
+      <div class="kpi-card-header">
+        <div class="kpi-icon-badge badge-rose">
+          <mat-icon>warning_amber</mat-icon>
+        </div>
+        <span class="kpi-trend-pill pill-rose">Urgent Triage</span>
       </div>
-      <div class="kpi-info">
-        <span class="kpi-value">{{ modelTotals?.pending || 41 }}</span>
-        <span class="kpi-label">Pending Triage / RCA</span>
+
+      <div class="kpi-card-middle">
+        <div class="kpi-card-info">
+          <div class="kpi-metric-val text-rose">{{ criticalHighCount }}</div>
+          <div class="kpi-metric-title">Critical & High Priority</div>
+          <div class="kpi-metric-sub text-rose-sub">
+            <span class="pulse-dot dot-rose"></span>
+            Immediate action required
+          </div>
+        </div>
+        <div class="kpi-arrow-btn arrow-rose">
+          <mat-icon>arrow_forward</mat-icon>
+        </div>
+      </div>
+
+      <div class="kpi-wave-wrap">
+        <svg viewBox="0 0 200 48" preserveAspectRatio="none" class="kpi-wave-svg">
+          <defs>
+            <linearGradient id="waveGradRose" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ef4444" stop-opacity="0.32"/>
+              <stop offset="100%" stop-color="#ef4444" stop-opacity="0.0"/>
+            </linearGradient>
+          </defs>
+          <path d="M 0 36 C 25 36, 45 22, 70 24 C 95 26, 115 36, 140 32 C 160 28, 178 16, 194 10 L 194 48 L 0 48 Z" fill="url(#waveGradRose)" />
+          <path d="M 0 36 C 25 36, 45 22, 70 24 C 95 26, 115 36, 140 32 C 160 28, 178 16, 194 10" fill="none" stroke="#e11d48" stroke-width="2.4" stroke-linecap="round" />
+          <circle cx="194" cy="10" r="3.5" fill="#e11d48" />
+        </svg>
       </div>
     </div>
-    <div class="kpi-card" (click)="navigate()">
-      <div class="kpi-icon-box purple">
-        <mat-icon>design_services</mat-icon>
+
+    <!-- Card 3: Active Containment & CAPA -->
+    <div class="kpi-card card-amber" (click)="navigateToMonitor({ status: 'Under Containment' })" matTooltip="View complaints in containment">
+      <div class="kpi-card-header">
+        <div class="kpi-icon-badge badge-amber">
+          <mat-icon>shield</mat-icon>
+        </div>
+        <span class="kpi-trend-pill pill-amber">D3/D5 Active</span>
       </div>
-      <div class="kpi-info">
-        <span class="kpi-value">{{ modelTotals?.design || 14 }}</span>
-        <span class="kpi-label">Under Design Fix</span>
+
+      <div class="kpi-card-middle">
+        <div class="kpi-card-info">
+          <div class="kpi-metric-val text-amber">{{ underContainmentCount }}</div>
+          <div class="kpi-metric-title">In Containment / CAPA</div>
+          <div class="kpi-metric-sub">
+            <span class="pulse-dot dot-amber"></span>
+            D3/D5 active containment
+          </div>
+        </div>
+        <div class="kpi-arrow-btn arrow-amber">
+          <mat-icon>arrow_forward</mat-icon>
+        </div>
+      </div>
+
+      <div class="kpi-wave-wrap">
+        <svg viewBox="0 0 200 48" preserveAspectRatio="none" class="kpi-wave-svg">
+          <defs>
+            <linearGradient id="waveGradAmber" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.32"/>
+              <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.0"/>
+            </linearGradient>
+          </defs>
+          <path d="M 0 36 C 25 36, 45 24, 70 26 C 95 28, 115 38, 140 34 C 160 28, 178 16, 194 10 L 194 48 L 0 48 Z" fill="url(#waveGradAmber)" />
+          <path d="M 0 36 C 25 36, 45 24, 70 26 C 95 28, 115 38, 140 34 C 160 28, 178 16, 194 10" fill="none" stroke="#ea580c" stroke-width="2.4" stroke-linecap="round" />
+          <circle cx="194" cy="10" r="3.5" fill="#ea580c" />
+        </svg>
       </div>
     </div>
-    <div class="kpi-card" (click)="navigate()">
-      <div class="kpi-icon-box green">
-        <mat-icon>check_circle</mat-icon>
+
+    <!-- Card 4: Mean Time to Resolution -->
+    <div class="kpi-card card-indigo" (click)="setActiveTab('ageing')" matTooltip="Analyze resolution velocity">
+      <div class="kpi-card-header">
+        <div class="kpi-icon-badge badge-indigo">
+          <mat-icon>speed</mat-icon>
+        </div>
+        <span class="kpi-trend-pill pill-indigo">Target: 18d</span>
       </div>
-      <div class="kpi-info">
-        <span class="kpi-value">{{ modelTotals?.implement || 13 }}</span>
-        <span class="kpi-label">Field Implementation</span>
+
+      <div class="kpi-card-middle">
+        <div class="kpi-card-info">
+          <div class="kpi-metric-val">{{ avgResolutionDays }} <span class="unit">Days</span></div>
+          <div class="kpi-metric-title">Resolution SLA Velocity</div>
+          <div class="kpi-metric-sub">
+            <span class="pulse-dot dot-indigo"></span>
+            Benchmark: 18 days SLA
+          </div>
+        </div>
+        <div class="kpi-arrow-btn arrow-indigo">
+          <mat-icon>arrow_forward</mat-icon>
+        </div>
+      </div>
+
+      <div class="kpi-wave-wrap">
+        <svg viewBox="0 0 200 48" preserveAspectRatio="none" class="kpi-wave-svg">
+          <defs>
+            <linearGradient id="waveGradIndigo" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#6366f1" stop-opacity="0.32"/>
+              <stop offset="100%" stop-color="#6366f1" stop-opacity="0.0"/>
+            </linearGradient>
+          </defs>
+          <path d="M 0 36 C 25 36, 45 22, 70 24 C 95 26, 115 36, 140 32 C 160 28, 178 16, 194 10 L 194 48 L 0 48 Z" fill="url(#waveGradIndigo)" />
+          <path d="M 0 36 C 25 36, 45 22, 70 24 C 95 26, 115 36, 140 32 C 160 28, 178 16, 194 10" fill="none" stroke="#6366f1" stroke-width="2.4" stroke-linecap="round" />
+          <circle cx="194" cy="10" r="3.5" fill="#6366f1" />
+        </svg>
       </div>
     </div>
+
+    <!-- Card 5: Warranty Financial Exposure -->
+    <div class="kpi-card card-emerald" (click)="setActiveTab('country')" matTooltip="Inspect warranty claims breakdown">
+      <div class="kpi-card-header">
+        <div class="kpi-icon-badge badge-emerald">
+          <mat-icon>attach_money</mat-icon>
+        </div>
+        <span class="kpi-trend-pill pill-emerald">Fleet Claims</span>
+      </div>
+
+      <div class="kpi-card-middle">
+        <div class="kpi-card-info">
+          <div class="kpi-metric-val text-emerald">${{ totalWarrantyCost | number:'1.0-0' }}</div>
+          <div class="kpi-metric-title">Warranty Cost Burden</div>
+          <div class="kpi-metric-sub">
+            <span class="pulse-dot dot-emerald"></span>
+            Fleet claims total
+          </div>
+        </div>
+        <div class="kpi-arrow-btn arrow-emerald">
+          <mat-icon>arrow_forward</mat-icon>
+        </div>
+      </div>
+
+      <div class="kpi-wave-wrap">
+        <svg viewBox="0 0 200 48" preserveAspectRatio="none" class="kpi-wave-svg">
+          <defs>
+            <linearGradient id="waveGradEmerald" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#10b981" stop-opacity="0.32"/>
+              <stop offset="100%" stop-color="#10b981" stop-opacity="0.0"/>
+            </linearGradient>
+          </defs>
+          <path d="M 0 36 C 25 36, 45 24, 70 26 C 95 28, 115 38, 140 34 C 160 28, 178 16, 194 10 L 194 48 L 0 48 Z" fill="url(#waveGradEmerald)" />
+          <path d="M 0 36 C 25 36, 45 24, 70 26 C 95 28, 115 38, 140 34 C 160 28, 178 16, 194 10" fill="none" stroke="#10b981" stroke-width="2.4" stroke-linecap="round" />
+          <circle cx="194" cy="10" r="3.5" fill="#10b981" />
+        </svg>
+      </div>
+    </div>
+
   </div>
 
-  <div class="dashboard-controls">
-    <div class="dash-btn-group">
-      <button *ngFor="let dash of dashboards" class="dash-btn" [class.active]="activeDistribution === dash.key"
-        (click)="setActiveDistribution(dash.key)">
-        {{ dash.title }}
+  <!-- ================= MODERN EXECUTIVE NAVIGATION TABS ================= -->
+  <div class="radar-nav-toolbar">
+    <div class="strategic-tabs-segmented">
+      <button type="button" class="nav-tab-pill" [class.active]="activeTab === 'radar'" (click)="setActiveTab('radar')">
+        <mat-icon class="nav-tab-icon">radar</mat-icon>
+        <span>Field Risk Radar</span>
+      </button>
+
+      <button type="button" class="nav-tab-pill" [class.active]="activeTab === 'model'" (click)="setActiveTab('model')">
+        <mat-icon class="nav-tab-icon">agriculture</mat-icon>
+        <span>Model & Subsystems</span>
+      </button>
+
+      <button type="button" class="nav-tab-pill" [class.active]="activeTab === 'country'" (click)="setActiveTab('country')">
+        <mat-icon class="nav-tab-icon">public</mat-icon>
+        <span>Geospatial & Markets</span>
+      </button>
+
+      <button type="button" class="nav-tab-pill" [class.active]="activeTab === 'pipeline8d'" (click)="setActiveTab('pipeline8d')">
+        <mat-icon class="nav-tab-icon">timeline</mat-icon>
+        <span>8D Stage Flow</span>
+      </button>
+
+      <button type="button" class="nav-tab-pill" [class.active]="activeTab === 'ageing'" (click)="setActiveTab('ageing')">
+        <mat-icon class="nav-tab-icon">hourglass_bottom</mat-icon>
+        <span>Ageing & SLA</span>
       </button>
     </div>
 
-    <div class="right-controls">
-      <div class="pills">
-        <ul class="nav nav-pills">
-          <li [class.active]="currentView === 'graph'" (click)="setView('graph')">
-            <a mat-raised-button>
-              <mat-icon>bar_chart</mat-icon> Graph
-            </a>
-          </li>
-          <li [class.active]="currentView === 'grid'" (click)="setView('grid')">
-            <a mat-raised-button>
-              <mat-icon>grid_on</mat-icon> Grid
-            </a>
-          </li>
-        </ul>
+    <div class="toolbar-right-actions">
+      <!-- Filter Button (Matching Image 1 snapshot) -->
+      <button type="button" 
+              class="btn-filter-toggle" 
+              [class.is-active]="isFilterOpen" 
+              (click)="toggleFilter()"
+              matTooltip="Toggle search & filter panel">
+        <mat-icon class="filter-btn-icon">filter_list</mat-icon>
+        <span>Filter</span>
+        <span *ngIf="getActiveFilterCount() > 0" class="filter-count-badge">{{ getActiveFilterCount() }}</span>
+      </button>
+
+      <!-- View Mode Segmented Switch -->
+      <div class="view-mode-segmented">
+        <button type="button" class="view-toggle-pill" [class.active]="currentView === 'charts'" (click)="setView('charts')">
+          <mat-icon class="view-toggle-icon">bar_chart</mat-icon>
+          <span>Visual Analytics</span>
+        </button>
+        <button type="button" class="view-toggle-pill" [class.active]="currentView === 'grid'" (click)="setView('grid')">
+          <mat-icon class="view-toggle-icon">table_chart</mat-icon>
+          <span>Data Matrix</span>
+        </button>
       </div>
     </div>
   </div>
 
-  <div class="dashboard-content">
-    <div [ngSwitch]="activeDistribution">
+  <!-- ================= STANDARD COLLAPSIBLE FILTER SECTION (MATCHING COMPLAINTS / CAPA SNAPSHOT) ================= -->
+  <div class="col-lg-12 filter-wrapper" fxLayout="row wrap" *ngIf="isFilterOpen">
+    <div fxFlex="100" class="flex-p w-100">
+      <form (ngSubmit)="applyFilters()">
+        <mat-card class="filter filter-card">
+          <mat-card-content>
+            <div class="row col-lg-12 col-sm-12">
 
-      <div *ngSwitchCase="'model'" class="content-section">
-        <h3>Model Wise Distribution</h3>
-        <div *ngIf="currentView === 'grid'" class="table-section">
-          <table class="table table-bordered table-hover text-center">
-            <thead class="tbl-head">
-              <tr>
-                <th>Model</th>
-                <th>Pending</th>
-                <th>Design</th>
-                <th>Implement</th>
-                <th>Others</th>
-                <th>Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of values">
-                <td>{{item.category}}</td>
-                <td><a (click)="navigate()" style="color: blue">{{item.c}}</a></td>
-                <td><a (click)="navigate()" style="color: blue">{{item.r2}}</a></td>
-                <td><a (click)="navigate()" style="color: blue">{{item.r1}}</a></td>
-                <td><a (click)="navigate()" style="color: blue">{{item.o}}</a></td>
-                <td><a (click)="navigate()" style="color: blue">{{item.total}}</a></td>
-              </tr>
-            </tbody>
-            <tfoot class="tbl-head">
-              <tr>
-                <th>Grand Total</th>
-                <th>{{modelTotals.pending}}</th>
-                <th>{{modelTotals.design}}</th>
-                <th>{{modelTotals.implement}}</th>
-                <th>{{modelTotals.others}}</th>
-                <th>{{modelTotals.total}}</th>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
-        <div *ngIf="currentView === 'graph'" class="chart-section">
-          <div class="chart-filters">
-            <div class="btn-group">
-              <button *ngFor="let cat of ['Distribution', 'Pending', 'Design', 'Implement', 'Others', 'Total']"
-                (click)="setModelCategory(cat)" [class.active]="selectedModelCategory === cat">
-                {{ cat }}
-              </button>
+              <div class="col-sm-4 row me-2 mt-3">
+                <div class="col-sm-3 newMarginClass"><b>Keyword:</b></div>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" placeholder="Enter Keyword" [(ngModel)]="searchKeyword" name="keyword" (keyup.enter)="applyFilters()" />
+                </div>
+              </div>
+
+              <div class="col-sm-4 row me-2 mt-3">
+                <div class="col-sm-3 newMarginClass"><b>Role:</b></div>
+                <div class="col-sm-9">
+                  <mat-select placeholder="Select Role" class="form-control" [(ngModel)]="selectedLead" name="lead" (selectionChange)="applyFilters()">
+                    <mat-option value="ALL">All Roles</mat-option>
+                    <mat-option *ngFor="let l of leadOptions" [value]="l" [hidden]="l === 'ALL'">{{ l }}</mat-option>
+                  </mat-select>
+                </div>
+              </div>
+
+              <div class="col-sm-4 row me-2 mt-3">
+                <div class="col-sm-3 newMarginClass"><b>Department:</b></div>
+                <div class="col-sm-9">
+                  <mat-select placeholder="Select Department" class="form-control" [(ngModel)]="selectedDepartment" name="department" (selectionChange)="applyFilters()">
+                    <mat-option value="ALL">All Departments</mat-option>
+                    <mat-option *ngFor="let dept of departmentOptions" [value]="dept" [hidden]="dept === 'ALL'">{{ dept }}</mat-option>
+                  </mat-select>
+                </div>
+              </div>
+
+              <div class="col-sm-4 row me-2 mt-3">
+                <div class="col-sm-3 newMarginClass"><b>Status:</b></div>
+                <div class="col-sm-9">
+                  <mat-select placeholder="Select Status" class="form-control" [(ngModel)]="selectedStatus" name="status" (selectionChange)="applyFilters()">
+                    <mat-option value="ALL">All Statuses</mat-option>
+                    <mat-option *ngFor="let s of statusOptions" [value]="s" [hidden]="s === 'ALL'">{{ s }}</mat-option>
+                  </mat-select>
+                </div>
+              </div>
+
+              <div class="col-sm-4 row me-2 mt-3">
+                <div class="col-sm-3 newMarginClass"><b>From Date:</b></div>
+                <div class="col-sm-9">
+                  <input type="date" class="form-control" [(ngModel)]="fromDate" name="fromDate" (change)="applyFilters()" />
+                </div>
+              </div>
+
+              <div class="col-sm-4 row me-2 mt-3">
+                <div class="col-sm-3 newMarginClass"><b>To Date:</b></div>
+                <div class="col-sm-9">
+                  <input type="date" class="form-control" [(ngModel)]="toDate" name="toDate" (change)="applyFilters()" />
+                </div>
+              </div>
+
+              <div class="col-sm-4 row me-2 mt-3">
+                <div class="col-sm-3 newMarginClass"><b>Model:</b></div>
+                <div class="col-sm-9">
+                  <mat-select placeholder="Select Model" class="form-control" [(ngModel)]="selectedModel" name="model" (selectionChange)="applyFilters()">
+                    <mat-option value="ALL">All Models</mat-option>
+                    <mat-option *ngFor="let m of modelOptions" [value]="m" [hidden]="m === 'ALL'">{{ m }}</mat-option>
+                  </mat-select>
+                </div>
+              </div>
+
+              <div class="col-sm-4 row me-2 mt-3">
+                <div class="col-sm-3 newMarginClass"><b>Country:</b></div>
+                <div class="col-sm-9">
+                  <mat-select placeholder="Select Country" class="form-control" [(ngModel)]="selectedCountry" name="country" (selectionChange)="applyFilters()">
+                    <mat-option value="ALL">All Countries</mat-option>
+                    <mat-option *ngFor="let c of countryOptions" [value]="c" [hidden]="c === 'ALL'">{{ c }}</mat-option>
+                  </mat-select>
+                </div>
+              </div>
+
+              <div class="col-sm-4 row me-2 mt-3">
+                <div class="col-sm-3 newMarginClass"><b>Distributor:</b></div>
+                <div class="col-sm-9">
+                  <mat-select placeholder="Select Distributor" class="form-control" [(ngModel)]="selectedDistributor" name="distributor" (selectionChange)="applyFilters()">
+                    <mat-option value="ALL">All Distributors</mat-option>
+                    <mat-option *ngFor="let d of distributorOptions" [value]="d" [hidden]="d === 'ALL'">{{ d }}</mat-option>
+                  </mat-select>
+                </div>
+              </div>
+
+              <div class="col-sm-4 row me-2 mt-3">
+                <div class="col-sm-3 newMarginClass"><b>Criticality:</b></div>
+                <div class="col-sm-9">
+                  <mat-select placeholder="Select Criticality" class="form-control" [(ngModel)]="selectedSeverity" name="criticality" (selectionChange)="applyFilters()">
+                    <mat-option value="ALL">All Criticality Levels</mat-option>
+                    <mat-option *ngFor="let sev of severityOptions" [value]="sev" [hidden]="sev === 'ALL'">{{ sev }}</mat-option>
+                  </mat-select>
+                </div>
+              </div>
+
+              <div class="col-sm-4 row me-2 mt-3">
+                <div class="col-sm-3 newMarginClass"><b>Subsystem:</b></div>
+                <div class="col-sm-9">
+                  <mat-select placeholder="Select Subsystem" class="form-control" [(ngModel)]="selectedSubsystem" name="subsystem" (selectionChange)="applyFilters()">
+                    <mat-option value="ALL">All Subsystems</mat-option>
+                    <mat-option *ngFor="let sub of subsystemOptions" [value]="sub" [hidden]="sub === 'ALL'">{{ sub }}</mat-option>
+                  </mat-select>
+                </div>
+              </div>
+
+              <div class="col-sm-12 pull-right mt-3 filter-actions">
+                <a (click)="toggleFilter()" class="pull-right toggle-icon" matTooltip="Collapse Filter">
+                  <i class="fa fa-angle-double-up"></i>
+                </a>
+
+                <button type="button" mat-raised-button class="pull-right btn-default margin-right-10"
+                  (click)="resetFilters()">
+                  <mat-icon>settings_backup_restore</mat-icon> Clear
+                </button>
+
+                <button type="submit" mat-raised-button color="primary" class="pull-right margin-right-10">
+                  <mat-icon>search</mat-icon> Search
+                </button>
+              </div>
+
             </div>
-          </div>
-          <div *ngIf="!isModelPieChartMode()" id="modelBarContainer"></div>
-          <div *ngIf="isModelPieChartMode()" id="modelPieContainer"></div>
-        </div>
-      </div>
-
-      <div *ngSwitchCase="'country'" class="content-section">
-        <h3>Country Wise Distribution</h3>
-        <div *ngIf="currentView === 'grid'" class="table-section">
-          <table class="table table-bordered table-hover">
-            <thead class="tbl-head">
-              <tr>
-                <th>Country</th>
-                <th>Pending</th>
-                <th>Design</th>
-                <th>Implement</th>
-                <th>Others</th>
-                <th>Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of values1">
-                <td>{{item.category}}</td>
-                <td><a (click)="navigate()" style="color: blue">{{item.c}}</a></td>
-                <td><a (click)="navigate()" style="color: blue">{{item.r2}}</a></td>
-                <td><a (click)="navigate()" style="color: blue">{{item.r1}}</a></td>
-                <td><a (click)="navigate()" style="color: blue">{{item.o}}</a></td>
-                <td><a (click)="navigate()" style="color: blue">{{item.total}}</a></td>
-              </tr>
-            </tbody>
-            <tfoot class="tbl-head">
-              <tr>
-                <th>Grand Total</th>
-                <th>{{countryTotals.pending}}</th>
-                <th>{{countryTotals.design}}</th>
-                <th>{{countryTotals.implement}}</th>
-                <th>{{countryTotals.others}}</th>
-                <th>{{countryTotals.total}}</th>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
-        <div *ngIf="currentView === 'graph'" class="chart-section">
-          <div class="chart-filters">
-            <div class="btn-group">
-              <button *ngFor="let cat of ['Distribution', 'Pending', 'Design', 'Implement', 'Others', 'Total']"
-                (click)="setCountryCategory(cat)" [class.active]="selectedCountryCategory === cat">
-                {{ cat }}
-              </button>
-            </div>
-          </div>
-          <div *ngIf="!isCountryPieChartMode()" id="countryBarContainer"></div>
-          <div *ngIf="isCountryPieChartMode()" id="countryPieContainer"></div>
-        </div>
-      </div>
-
-      <div *ngSwitchCase="'ageing'" class="content-section">
-        <h3>Ageing Analysis</h3>
-        <div *ngIf="currentView === 'grid'" class="table-section">
-          <table class="table table-bordered table-hover">
-            <thead class="tbl-head">
-              <tr>
-                <th>Period</th>
-                <th>Issues</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of values2">
-                <td>{{item.period}}</td>
-                <td><a (click)="navigate()" style="color: blue">{{item.issues}}</a></td>
-              </tr>
-            </tbody>
-            <tfoot class="tbl-head">
-              <tr>
-                <th>Total</th>
-                <th>{{ageingTotal}}</th>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
-        <div *ngIf="currentView === 'graph'" class="chart-section">
-          <div id="ageingPieContainer"></div>
-        </div>
-      </div>
+          </mat-card-content>
+        </mat-card>
+      </form>
     </div>
   </div>
+
+  <!-- ================= TAB CONTENT PANELS ================= -->
+  <div class="radar-content-card">
+
+    <!-- ──────────────── TAB 1: FIELD RISK RADAR (POWERBI EXECUTIVE ANALYTICS) ──────────────── -->
+    <div *ngIf="activeTab === 'radar'" class="tab-pane-fade">
+
+      <!-- Visual Charts Mode (PowerBI Quad-Layout) -->
+      <div *ngIf="currentView === 'charts'">
+        <!-- Row 1: Primary Quality Radar & 8D Discipline Analytics -->
+        <div class="bi-charts-row">
+          <!-- Spiderweb Radar Container (Expanded) -->
+          <div class="chart-panel-box primary-radar">
+            <div class="panel-header">
+              <div>
+                <h4 class="panel-title">Multi-Dimensional Quality Risk Radar</h4>
+                <p class="panel-desc">Spiderweb telemetry comparing 6 strategic risk dimensions vs baseline</p>
+              </div>
+              <span class="badge-status-subtle">Fleet Quality Telemetry</span>
+            </div>
+            <div id="fieldRiskRadarContainer" class="highcharts-box bi-canvas"></div>
+          </div>
+
+          <!-- 8D Stage Flow Container (Expanded Full-Height) -->
+          <div class="chart-panel-box primary-stage">
+            <div class="panel-header">
+              <div>
+                <h4 class="panel-title">8D Lifecycle Stage Distribution</h4>
+                <p class="panel-desc">Volume of field complaints active across D1 through D8 disciplines</p>
+              </div>
+              <span class="badge-status-subtle">Containment Telemetry</span>
+            </div>
+            <div id="stageMiniChartContainer" class="highcharts-box bi-canvas"></div>
+          </div>
+        </div>
+
+        <!-- Row 2: Secondary Visual Analytics (PowerBI Quad-Layout) -->
+        <div class="bi-charts-row mt-3">
+          <!-- Subsystem Failure Clustering by Model -->
+          <div class="chart-panel-box">
+            <div class="panel-header">
+              <div>
+                <h4 class="panel-title">Model-wise Failure Subsystem Distribution</h4>
+                <p class="panel-desc">Subsystem defect clustering across tractor models</p>
+              </div>
+              <span class="badge-status-subtle">Subsystem Telemetry</span>
+            </div>
+            <div id="radarSubsystemBarContainer" class="highcharts-box secondary-canvas"></div>
+          </div>
+
+          <!-- Geospatial Fleet Exposure & Resolution Status -->
+          <div class="chart-panel-box">
+            <div class="panel-header">
+              <div>
+                <h4 class="panel-title">Geospatial Fleet Exposure & Resolution Status</h4>
+                <p class="panel-desc">Active complaints and resolution status by global market</p>
+              </div>
+              <span class="badge-status-subtle">Market Telemetry</span>
+            </div>
+            <div id="radarMarketBarContainer" class="highcharts-box secondary-canvas"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data Matrix Mode (Active Fleet Investigations & Quality Matrix) -->
+      <div *ngIf="currentView === 'grid'" class="table-responsive matrix-table-wrap">
+        <table class="table app-table">
+          <thead>
+            <tr>
+              <th style="width: 140px;">Ref No.</th>
+              <th>Subject & Description</th>
+              <th style="width: 140px;">Model</th>
+              <th style="width: 110px;">Market</th>
+              <th style="width: 130px;">Subsystem</th>
+              <th style="width: 100px;" class="text-center">Severity</th>
+              <th style="width: 150px;">8D Stage</th>
+              <th style="width: 130px;" class="text-center">Status</th>
+              <th style="width: 110px;" class="text-end">Warranty</th>
+              <th style="width: 100px;" class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of filteredComplaints" class="clickable-row" (click)="navigateToComplaint(item.referenceNumber)">
+              <td><span class="ref-link">{{ item.referenceNumber }}</span></td>
+              <td>
+                <div class="fw-bold text-dark">{{ item.subject }}</div>
+                <small class="text-muted">{{ item.distributor }} &bull; Logged {{ item.dateLogged }}</small>
+              </td>
+              <td><span class="model-badge">{{ item.model }}</span></td>
+              <td>{{ item.country }}</td>
+              <td><span class="subsystem-pill">{{ item.subsystem }}</span></td>
+              <td class="text-center">
+                <span class="badge-pill" [ngClass]="item.severity.toLowerCase()">{{ item.severity }}</span>
+              </td>
+              <td><span class="stage-chip">{{ item.stageLabel }}</span></td>
+              <td class="text-center">
+                <span class="status-badge" [ngClass]="item.status === 'Closed' ? 'closed' : (item.status === 'Under Containment' ? 'containment' : 'active')">
+                  {{ item.status }}
+                </span>
+              </td>
+              <td class="text-end font-monospace fw-bold">${{ item.warrantyCost | number:'1.0-0' }}</td>
+              <td class="text-center">
+                <div class="table-actions">
+                  <mat-icon class="action-icon edit-icon" matTooltip="Edit" (click)="$event.stopPropagation(); editComplaint(item)">edit_note</mat-icon>
+                  <mat-icon class="action-icon delete-icon" matTooltip="Delete" (click)="$event.stopPropagation(); deleteComplaint(item)">delete</mat-icon>
+                </div>
+              </td>
+            </tr>
+            <tr *ngIf="filteredComplaints.length === 0">
+              <td colspan="10" class="text-center py-4 text-muted">
+                <mat-icon class="d-block mx-auto mb-2" style="font-size: 32px; height: 32px; width: 32px; color: #94a3b8;">inbox</mat-icon>
+                No field complaints found matching the active filters.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- ──────────────── TAB 2: MODEL & SUBSYSTEMS ──────────────── -->
+    <div *ngIf="activeTab === 'model'" class="tab-pane-fade">
+
+      <!-- Visual Charts Mode (PowerBI Quad-Layout) -->
+      <div *ngIf="currentView === 'charts'">
+        <div class="bi-charts-row">
+          <!-- Chart 1: Failure Subsystems Distribution -->
+          <div class="chart-panel-box">
+            <div class="panel-header">
+              <div>
+                <h4 class="panel-title">Model-wise Failure Subsystem Distribution</h4>
+                <p class="panel-desc">Defect clustering across vehicle assemblies and functional subsystems</p>
+              </div>
+              <span class="badge-status-subtle">Subsystem Telemetry</span>
+            </div>
+            <div id="modelStackedBarContainer" class="highcharts-box bi-canvas"></div>
+          </div>
+
+          <!-- Chart 2: Product Line Defect Share -->
+          <div class="chart-panel-box">
+            <div class="panel-header">
+              <div>
+                <h4 class="panel-title">Fleet Complaint Share by Product Line</h4>
+                <p class="panel-desc">Proportional defect distribution across active tractor model lines</p>
+              </div>
+              <span class="badge-status-subtle">Volume Telemetry</span>
+            </div>
+            <div id="modelDonutContainer" class="highcharts-box bi-canvas"></div>
+          </div>
+        </div>
+
+        <div class="bi-charts-row mt-3">
+          <!-- Chart 3: Severity Concentration per Model -->
+          <div class="chart-panel-box">
+            <div class="panel-header">
+              <div>
+                <h4 class="panel-title">Severity Concentration by Tractor Model</h4>
+                <p class="panel-desc">Distribution of Critical, High, Medium, and Low defects per model line</p>
+              </div>
+              <span class="badge-status-subtle">Severity Breakdown</span>
+            </div>
+            <div id="modelSeverityBarContainer" class="highcharts-box secondary-canvas"></div>
+          </div>
+
+          <!-- Chart 4: Warranty Claim Exposure per Model -->
+          <div class="chart-panel-box">
+            <div class="panel-header">
+              <div>
+                <h4 class="panel-title">Warranty Claim Financial Exposure by Model</h4>
+                <p class="panel-desc">Cumulative warranty claim financial burden ($ USD) across product lines</p>
+              </div>
+              <span class="badge-status-subtle">Warranty Cost</span>
+            </div>
+            <div id="modelWarrantyBarContainer" class="highcharts-box secondary-canvas"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data Matrix Mode -->
+      <div *ngIf="currentView === 'grid'" class="table-responsive matrix-table-wrap">
+        <table class="table app-table">
+          <thead>
+            <tr>
+              <th>Vehicle Model Line</th>
+              <th class="text-center" style="width: 90px;">Total</th>
+              <th class="text-center" style="width: 100px;">Critical</th>
+              <th class="text-center" style="width: 100px;">High</th>
+              <th class="text-center" style="width: 100px;">Medium</th>
+              <th class="text-center" style="width: 100px;">Low</th>
+              <th>Dominant Failure Subsystems</th>
+              <th class="text-end" style="width: 140px;">Warranty Burden</th>
+              <th class="text-center" style="width: 100px;">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let m of modelSummaries">
+              <td><strong>{{ m.name }}</strong></td>
+              <td class="text-center">
+                <span class="count-pill-dark">{{ m.total }}</span>
+              </td>
+              <td class="text-center text-danger font-weight-bold">{{ m.critical }}</td>
+              <td class="text-center text-warning font-weight-bold">{{ m.high }}</td>
+              <td class="text-center text-primary">{{ m.medium }}</td>
+              <td class="text-center text-muted">{{ m.low }}</td>
+              <td>
+                <div class="d-flex flex-wrap gap-1">
+                  <span *ngFor="let sub of m.subsystems | keyvalue" class="tag-subtle">
+                    {{ sub.key }}: {{ sub.value }}
+                  </span>
+                </div>
+              </td>
+              <td class="text-end font-monospace font-weight-bold">
+                ${{ m.warrantyCost | number:'1.0-0' }}
+              </td>
+              <td class="text-center">
+                <button type="button" class="btn-table-drill" (click)="navigateToMonitor({ model: m.name })" matTooltip="Drilldown complaints in monitor">
+                  <mat-icon>launch</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- ──────────────── TAB 3: GEOSPATIAL & MARKETS ──────────────── -->
+    <div *ngIf="activeTab === 'country'" class="tab-pane-fade">
+
+      <!-- Visual Charts Mode (PowerBI Quad-Layout) -->
+      <div *ngIf="currentView === 'charts'">
+        <div class="bi-charts-row">
+          <!-- Chart 1: Regional Volume & Resolution Status -->
+          <div class="chart-panel-box">
+            <div class="panel-header">
+              <div>
+                <h4 class="panel-title">Regional Complaint Volume & Resolution Status</h4>
+                <p class="panel-desc">Active open backlog vs resolved investigations across international distributors</p>
+              </div>
+              <span class="badge-status-subtle">Regional Backlog</span>
+            </div>
+            <div id="countryBarContainer" class="highcharts-box bi-canvas"></div>
+          </div>
+
+          <!-- Chart 2: Warranty Financial Exposure -->
+          <div class="chart-panel-box">
+            <div class="panel-header">
+              <div>
+                <h4 class="panel-title">Warranty Financial Exposure by Country</h4>
+                <p class="panel-desc">Distribution of fleet warranty claim costs across international markets</p>
+              </div>
+              <span class="badge-status-subtle">Global Claims</span>
+            </div>
+            <div id="countryWarrantyPieContainer" class="highcharts-box bi-canvas"></div>
+          </div>
+        </div>
+
+        <div class="bi-charts-row mt-3">
+          <!-- Chart 3: MTTR SLA Velocity by Market -->
+          <div class="chart-panel-box">
+            <div class="panel-header">
+              <div>
+                <h4 class="panel-title">Mean Resolution Velocity (MTTR) by Market</h4>
+                <p class="panel-desc">Average resolution days vs target 18-day global SLA benchmark</p>
+              </div>
+              <span class="badge-status-subtle">SLA Velocity</span>
+            </div>
+            <div id="countrySlaBarContainer" class="highcharts-box secondary-canvas"></div>
+          </div>
+
+          <!-- Chart 4: Subsystem Failure Clustering by Market -->
+          <div class="chart-panel-box">
+            <div class="panel-header">
+              <div>
+                <h4 class="panel-title">Subsystem Failure Clustering Across Markets</h4>
+                <p class="panel-desc">Dominant failure modes across varying operational and climatic conditions</p>
+              </div>
+              <span class="badge-status-subtle">Failure Modes</span>
+            </div>
+            <div id="countrySubsystemBarContainer" class="highcharts-box secondary-canvas"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data Matrix Mode -->
+      <div *ngIf="currentView === 'grid'" class="table-responsive matrix-table-wrap">
+        <table class="table app-table">
+          <thead>
+            <tr>
+              <th>Country / Market</th>
+              <th>Primary Distributor</th>
+              <th class="text-center" style="width: 100px;">Total Issues</th>
+              <th class="text-center" style="width: 100px;">Critical</th>
+              <th class="text-center" style="width: 100px;">Active</th>
+              <th class="text-center" style="width: 100px;">Resolved</th>
+              <th class="text-end" style="width: 150px;">Warranty Claims</th>
+              <th class="text-center" style="width: 100px;">Monitor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let c of countrySummaries">
+              <td><strong>{{ c.name }}</strong></td>
+              <td>{{ c.distributor }}</td>
+              <td class="text-center">
+                <span class="count-pill-dark">{{ c.total }}</span>
+              </td>
+              <td class="text-center text-danger font-weight-bold">{{ c.critical }}</td>
+              <td class="text-center">
+                <span class="badge-pill inprogress">{{ c.open }}</span>
+              </td>
+              <td class="text-center">
+                <span class="badge-pill closed">{{ c.resolved }}</span>
+              </td>
+              <td class="text-end font-monospace font-weight-bold">
+                ${{ c.warrantyCost | number:'1.0-0' }}
+              </td>
+              <td class="text-center">
+                <button type="button" class="btn-table-drill" (click)="navigateToMonitor({ country: c.name })" matTooltip="View in monitor grid">
+                  <mat-icon>launch</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- ──────────────── TAB 4: 8D STAGE FLOW PIPELINE ──────────────── -->
+    <div *ngIf="activeTab === 'pipeline8d'" class="tab-pane-fade">
+
+      <!-- Visual Charts Mode (PowerBI Layout) -->
+      <div *ngIf="currentView === 'charts'">
+        <!-- Milestone Metric Overview Cards -->
+        <div class="stages-summary-cards mb-3">
+          <div class="stage-metric-box">
+            <span class="stage-code">D1-D2</span>
+            <span class="stage-count">{{ (pipelineCounts['D1'] || 0) + (pipelineCounts['D2'] || 0) }}</span>
+            <span class="stage-sub">Triage & Scope</span>
+          </div>
+          <div class="stage-metric-box active">
+            <span class="stage-code">D3 Containment</span>
+            <span class="stage-count">{{ pipelineCounts['D3'] || 0 }}</span>
+            <span class="stage-sub">Interim Actions</span>
+          </div>
+          <div class="stage-metric-box warning">
+            <span class="stage-code">D4-D5 RCA & PCA</span>
+            <span class="stage-count">{{ (pipelineCounts['D4'] || 0) + (pipelineCounts['D5'] || 0) }}</span>
+            <span class="stage-sub">Root Cause Fixes</span>
+          </div>
+          <div class="stage-metric-box">
+            <span class="stage-code">D6 Validation</span>
+            <span class="stage-count">{{ pipelineCounts['D6'] || 0 }}</span>
+            <span class="stage-sub">Field Testing</span>
+          </div>
+          <div class="stage-metric-box success">
+            <span class="stage-code">D7-D8 Closure</span>
+            <span class="stage-count">{{ (pipelineCounts['D7'] || 0) + (pipelineCounts['D8'] || 0) }}</span>
+            <span class="stage-sub">Standardized & Closed</span>
+          </div>
+        </div>
+
+        <div class="bi-charts-row">
+          <!-- Chart 1: 8D Lifecycle Pipeline Volume -->
+          <div class="chart-panel-box">
+            <div class="panel-header">
+              <div>
+                <h4 class="panel-title">End-to-End 8D Lifecycle Pipeline Velocity</h4>
+                <p class="panel-desc">Active complaint volume progressing from D1 team formation to D8 institutional closure</p>
+              </div>
+              <span class="badge-status-subtle">Pipeline WIP</span>
+            </div>
+            <div id="funnel8dContainer" class="highcharts-box bi-canvas"></div>
+          </div>
+
+          <!-- Chart 2: Stage Dwell Latency & Bottleneck Analysis -->
+          <div class="chart-panel-box">
+            <div class="panel-header">
+              <div>
+                <h4 class="panel-title">Discipline Dwell Latency & Bottleneck Telemetry</h4>
+                <p class="panel-desc">Average cycle days spent per 8D discipline step vs 5-day SLA target</p>
+              </div>
+              <span class="badge-status-subtle">Bottleneck Analysis</span>
+            </div>
+            <div id="stageDwell8dContainer" class="highcharts-box bi-canvas"></div>
+          </div>
+        </div>
+
+        <div class="bi-charts-row mt-3">
+          <!-- Chart 3: Department Workload Allocation -->
+          <div class="chart-panel-box">
+            <div class="panel-header">
+              <div>
+                <h4 class="panel-title">Engineering Department Investigation Allocation</h4>
+                <p class="panel-desc">Complaint assignment and investigation workload distributed across engineering divisions</p>
+              </div>
+              <span class="badge-status-subtle">Workload Distribution</span>
+            </div>
+            <div id="dept8dContainer" class="highcharts-box secondary-canvas"></div>
+          </div>
+
+          <!-- Chart 4: Containment vs Recurrence Prevention Compliance -->
+          <div class="chart-panel-box">
+            <div class="panel-header">
+              <div>
+                <h4 class="panel-title">Containment Effectiveness vs Recurrence Prevention</h4>
+                <p class="panel-desc">Execution compliance for D3 Interim Containment and D7 Permanent Prevention</p>
+              </div>
+              <span class="badge-status-subtle">CAPA Governance</span>
+            </div>
+            <div id="containment8dContainer" class="highcharts-box secondary-canvas"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data Matrix Mode -->
+      <div *ngIf="currentView === 'grid'" class="table-responsive matrix-table-wrap">
+        <table class="table app-table">
+          <thead>
+            <tr>
+              <th style="width: 140px;">Ref No.</th>
+              <th>Subject</th>
+              <th style="width: 150px;">Model</th>
+              <th style="width: 140px;">8D Discipline</th>
+              <th style="width: 130px;">Responsible Dept</th>
+              <th style="width: 110px;" class="text-center">Age</th>
+              <th style="width: 120px;" class="text-center">Severity</th>
+              <th style="width: 120px;" class="text-center">Status</th>
+              <th style="width: 100px;" class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of filteredComplaints" class="clickable-row" (click)="navigateToComplaint(item.referenceNumber)">
+              <td><span class="ref-link">{{ item.referenceNumber }}</span></td>
+              <td><strong>{{ item.subject }}</strong></td>
+              <td><span class="model-badge">{{ item.model }}</span></td>
+              <td><span class="stage-chip">{{ item.stageLabel }}</span></td>
+              <td>{{ item.department }}</td>
+              <td class="text-center font-monospace">{{ item.ageDays }}d</td>
+              <td class="text-center">
+                <span class="badge-pill" [ngClass]="item.severity.toLowerCase()">{{ item.severity }}</span>
+              </td>
+              <td class="text-center">
+                <span class="status-badge" [ngClass]="item.status === 'Closed' ? 'closed' : 'active'">{{ item.status }}</span>
+              </td>
+              <td class="text-center">
+                <div class="table-actions">
+                  <mat-icon class="action-icon edit-icon" matTooltip="Edit" (click)="$event.stopPropagation(); editComplaint(item)">edit_note</mat-icon>
+                  <mat-icon class="action-icon delete-icon" matTooltip="Delete" (click)="$event.stopPropagation(); deleteComplaint(item)">delete</mat-icon>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- ──────────────── TAB 5: AGEING & SLA HEALTH ──────────────── -->
+    <div *ngIf="activeTab === 'ageing'" class="tab-pane-fade">
+
+      <!-- Visual Charts Mode (PowerBI Quad-Layout) -->
+      <div *ngIf="currentView === 'charts'">
+        <div class="bi-charts-row">
+          <!-- Chart 1: Ageing Tier Distribution -->
+          <div class="chart-panel-box">
+            <div class="panel-header">
+              <div>
+                <h4 class="panel-title">Complaint Ageing Distribution Across SLA Tiers</h4>
+                <p class="panel-desc">Active field investigations categorized into standard aging brackets</p>
+              </div>
+              <span class="badge-status-subtle">Ageing Tiers</span>
+            </div>
+            <div id="ageingBarContainer" class="highcharts-box bi-canvas"></div>
+          </div>
+
+          <!-- Chart 2: SLA Compliance Ratio -->
+          <div class="chart-panel-box">
+            <div class="panel-header">
+              <div>
+                <h4 class="panel-title">Fleet SLA Compliance & Risk Exposure Ratio</h4>
+                <p class="panel-desc">Proportion of investigations within SLA, nearing breach, or breached</p>
+              </div>
+              <span class="badge-status-subtle">SLA Health</span>
+            </div>
+            <div id="ageingDonutContainer" class="highcharts-box bi-canvas"></div>
+          </div>
+        </div>
+
+        <div class="bi-charts-row mt-3">
+          <!-- Chart 3: MTTR by Severity Level -->
+          <div class="chart-panel-box">
+            <div class="panel-header">
+              <div>
+                <h4 class="panel-title">Mean Time to Resolution (MTTR) by Severity</h4>
+                <p class="panel-desc">Actual resolution cycle time (days) benchmarked against the 18-day SLA</p>
+              </div>
+              <span class="badge-status-subtle">MTTR Telemetry</span>
+            </div>
+            <div id="ageingMttrContainer" class="highcharts-box secondary-canvas"></div>
+          </div>
+
+          <!-- Chart 4: Executive Escalation Risk Trajectory -->
+          <div class="chart-panel-box">
+            <div class="panel-header">
+              <div>
+                <h4 class="panel-title">Management Escalation Risk Trajectory</h4>
+                <p class="panel-desc">Nonlinear risk multiplier trajectory as complaints exceed threshold ages</p>
+              </div>
+              <span class="badge-status-subtle">Risk Escalation</span>
+            </div>
+            <div id="ageingEscalationContainer" class="highcharts-box secondary-canvas"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data Matrix Mode -->
+      <div *ngIf="currentView === 'grid'" class="table-responsive matrix-table-wrap">
+        <table class="table app-table">
+          <thead>
+            <tr>
+              <th>Ageing Tier</th>
+              <th>Health SLA Status</th>
+              <th class="text-center" style="width: 120px;">Issue Count</th>
+              <th class="text-center" style="width: 120px;">Percentage</th>
+              <th>Recommended Operational Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>0-15 Days (Fresh Triage)</strong></td>
+              <td><span class="badge-pill closed">Within SLA (Healthy)</span></td>
+              <td class="text-center font-weight-bold">{{ ageingCounts['0-15 Days'] }}</td>
+              <td class="text-center font-monospace">{{ (ageingCounts['0-15 Days'] / (totalComplaintsCount || 1) * 100) | number:'1.0-1' }}%</td>
+              <td class="text-muted">Standard D1 team formation and D2 problem classification in progress.</td>
+            </tr>
+            <tr>
+              <td><strong>16-30 Days (Active 8D)</strong></td>
+              <td><span class="badge-pill closed">Normal Velocity</span></td>
+              <td class="text-center font-weight-bold">{{ ageingCounts['16-30 Days'] }}</td>
+              <td class="text-center font-monospace">{{ (ageingCounts['16-30 Days'] / (totalComplaintsCount || 1) * 100) | number:'1.0-1' }}%</td>
+              <td class="text-muted">D3 containment in place, D4 root cause validation undergoing lab testing.</td>
+            </tr>
+            <tr>
+              <td><strong>31-60 Days (Attention Needed)</strong></td>
+              <td><span class="badge-pill inprogress">SLA Warning Window</span></td>
+              <td class="text-center font-weight-bold text-amber">{{ ageingCounts['31-60 Days'] }}</td>
+              <td class="text-center font-monospace">{{ (ageingCounts['31-60 Days'] / (totalComplaintsCount || 1) * 100) | number:'1.0-1' }}%</td>
+              <td><strong class="text-warning">Expedite PCA permanent actions</strong> and supplier component reviews.</td>
+            </tr>
+            <tr>
+              <td><strong>60+ Days (Critical Aging)</strong></td>
+              <td><span class="badge-pill critical">SLA Breached (Escalated)</span></td>
+              <td class="text-center font-weight-bold text-danger">{{ ageingCounts['60+ Days'] }}</td>
+              <td class="text-center font-monospace">{{ (ageingCounts['60+ Days'] / (totalComplaintsCount || 1) * 100) | number:'1.0-1' }}%</td>
+              <td><strong class="text-danger">Escalated to Head of Quality & R&D</strong> for immediate closure disposition.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+
 </div>
