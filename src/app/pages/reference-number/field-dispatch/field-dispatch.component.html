@@ -46,33 +46,30 @@
         </div>
       </div>
 
-      <!-- Display as Informational Labels (Read-only Values) -->
+      <!-- Editable Consignment Information Inputs -->
       <div class="row g-3 p-3 info-card-body">
         <div class="col-md-3 col-sm-6">
           <div class="info-group">
-            <span class="info-label">From (Dealer):</span>
-            <span class="info-value">{{ fromDealer || '-' }}</span>
+            <label class="info-label" for="fromDealer">From (Dealer):</label>
+            <input type="text" id="fromDealer" class="form-control" placeholder="Enter From (Dealer)" [(ngModel)]="fromDealer">
           </div>
         </div>
         <div class="col-md-3 col-sm-6">
           <div class="info-group">
-            <span class="info-label">To (Factory):</span>
-            <span class="info-value">{{ toFactory || '-' }}</span>
+            <label class="info-label" for="toFactory">To (Factory):</label>
+            <input type="text" id="toFactory" class="form-control" placeholder="Enter To (Factory)" [(ngModel)]="toFactory">
           </div>
         </div>
         <div class="col-md-3 col-sm-6">
           <div class="info-group">
-            <span class="info-label">Tracking No:</span>
-            <span class="info-value ">
-              
-              {{ trackingNo || '-' }}
-            </span>
+            <label class="info-label" for="trackingNo">Tracking No:</label>
+            <input type="text" id="trackingNo" class="form-control" placeholder="Enter Tracking No" [(ngModel)]="trackingNo">
           </div>
         </div>
         <div class="col-md-3 col-sm-6">
           <div class="info-group">
-            <span class="info-label">Dispatch Date:</span>
-            <span class="info-value">{{ (dispatchDate | date:'dd/MM/yyyy') || dispatchDate || '-' }}</span>
+            <label class="info-label" for="dispatchDate">Dispatch Date:</label>
+            <input type="date" id="dispatchDate" class="form-control" [(ngModel)]="dispatchDate">
           </div>
         </div>
       </div>

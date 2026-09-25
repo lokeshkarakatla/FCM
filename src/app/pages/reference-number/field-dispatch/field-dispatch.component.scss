@@ -65,7 +65,7 @@
   .info-group {
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 4px;
 
     .info-label {
       font-size: 11.5px;
@@ -73,31 +73,21 @@
       color: #64748b;
       text-transform: uppercase;
       letter-spacing: 0.4px;
+      margin-bottom: 2px;
     }
 
-    .info-value {
+    .form-control {
       font-size: 13.5px;
-      font-weight: 600;
       color: #1e293b;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      padding: 6px 10px;
+      height: 36px;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
-      &.tracking-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-        color: #0369a1;
-        font-family: monospace;
-        font-size: 13px;
-        background: #f0f9ff;
-        border: 1px solid #bae6fd;
-        padding: 2px 8px;
-        border-radius: 4px;
-        width: fit-content;
-
-        .trk-tag {
-          font-size: 14px;
-          width: 14px;
-          height: 14px;
-        }
+      &:focus {
+        border-color: #3f51b5;
+        box-shadow: 0 0 0 2px rgba(63, 81, 181, 0.15);
       }
     }
   }
