@@ -79,6 +79,7 @@ import { ComplaintsLayoutComponent } from './pages/complaints/complaints-layout/
 import { AddComplaintComponent } from './pages/complaints/add-complaint/add-complaint.component';
 import { CapaComponent } from './pages/capa/capa.component';
 import { AddCapaComponent } from './pages/capa/add-capa/add-capa.component';
+import { RiskRatingDialogComponent } from './pages/capa/risk-rating-dialog/risk-rating-dialog.component';
 import { AttendanceComponent } from './pages/attendance/attendance.component';
 import { MeetingComponent } from './pages/meeting/meeting.component';
 
@@ -209,6 +210,7 @@ DragulaModule.forRoot()
     GridColumnsDialogComponent,
     CapaComponent,
     AddCapaComponent,
+    RiskRatingDialogComponent,
     AttendanceComponent,
     MeetingComponent,
     AddMeetingPageComponent,

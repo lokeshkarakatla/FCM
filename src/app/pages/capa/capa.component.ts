@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AddCapaComponent } from './add-capa/add-capa.component';
+import { RiskRatingDialogComponent } from './risk-rating-dialog/risk-rating-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from 'src/app/shared/confirmation-dialog/confirmation-dialog.component';
 import { AddComplaintComponent } from '../complaints/add-complaint/add-complaint.component';
@@ -41,7 +42,16 @@ export class CapaComponent implements OnInit {
       done: true,
       status: "Closed",
       meetingRef: '(Meet/2025/10/01)',
-      actions: { edit: true, delete: true }
+      actions: { edit: true, delete: true },
+      riskRating: 3.7,
+      riskParameters: {
+        severity: 4,
+        fieldOccurrence: 4,
+        detectionLatency: 3,
+        containmentDelay: 4,
+        warrantyCostBurden: 3,
+        supplierDefectRate: 4
+      }
     },
     {
       title: "(FIELD/2024/09/2) - Hyundai Creta SX - 7-Speed Dual-Clutch Transmission Shudder",
@@ -55,7 +65,16 @@ export class CapaComponent implements OnInit {
       done: true,
       status: "Closed",
       meetingRef: '(Meet/2025/10/02)',
-      actions: { edit: true, delete: true }
+      actions: { edit: true, delete: true },
+      riskRating: 3.5,
+      riskParameters: {
+        severity: 4,
+        fieldOccurrence: 3,
+        detectionLatency: 4,
+        containmentDelay: 3,
+        warrantyCostBurden: 4,
+        supplierDefectRate: 3
+      }
     },
     {
       title: "(FIELD/2024/09/3) - Mahindra XUV700 AX7 - Infotainment Twin Screen Blackout",
@@ -69,7 +88,16 @@ export class CapaComponent implements OnInit {
       done: true,
       status: "Closed",
       meetingRef: '(Meet/2025/10/03)',
-      actions: { edit: true, delete: true }
+      actions: { edit: true, delete: true },
+      riskRating: 2.8,
+      riskParameters: {
+        severity: 3,
+        fieldOccurrence: 2,
+        detectionLatency: 4,
+        containmentDelay: 3,
+        warrantyCostBurden: 2,
+        supplierDefectRate: 3
+      }
     },
     {
       title: "(FIELD/2024/09/4) - Tata Nexon EV Max - High Voltage Traction Battery Slow Charging",
@@ -83,7 +111,16 @@ export class CapaComponent implements OnInit {
       done: true,
       status: "Closed",
       meetingRef: '(Meet/2025/10/04)',
-      actions: { edit: true, delete: true }
+      actions: { edit: true, delete: true },
+      riskRating: 4.3,
+      riskParameters: {
+        severity: 5,
+        fieldOccurrence: 4,
+        detectionLatency: 4,
+        containmentDelay: 4,
+        warrantyCostBurden: 5,
+        supplierDefectRate: 4
+      }
     },
     {
       title: "(FIELD/2024/09/5) - Toyota Camry Hybrid - e-CVT Power Split Inverter Error",
@@ -97,7 +134,16 @@ export class CapaComponent implements OnInit {
       done: true,
       status: "Closed",
       meetingRef: '(Meet/2025/10/05)',
-      actions: { edit: true, delete: true }
+      actions: { edit: true, delete: true },
+      riskRating: 3.5,
+      riskParameters: {
+        severity: 4,
+        fieldOccurrence: 3,
+        detectionLatency: 3,
+        containmentDelay: 3,
+        warrantyCostBurden: 4,
+        supplierDefectRate: 4
+      }
     },
     {
       title: "(FIELD/2024/09/6) - Tata Safari Dark Edition - Panoramic Sunroof Drain Water Ingress",
@@ -111,7 +157,16 @@ export class CapaComponent implements OnInit {
       done: true,
       status: "Closed",
       meetingRef: '(Meet/2025/10/06)',
-      actions: { edit: true, delete: true }
+      actions: { edit: true, delete: true },
+      riskRating: 2.2,
+      riskParameters: {
+        severity: 2,
+        fieldOccurrence: 3,
+        detectionLatency: 2,
+        containmentDelay: 2,
+        warrantyCostBurden: 2,
+        supplierDefectRate: 2
+      }
     },
     {
       title: "(FIELD/2024/09/7) - Hyundai Verna Turbo - Turbocharger Wastegate Actuator Rattle",
@@ -125,7 +180,16 @@ export class CapaComponent implements OnInit {
       done: true,
       status: "Closed",
       meetingRef: '(Meet/2025/10/07)',
-      actions: { edit: true, delete: true }
+      actions: { edit: true, delete: true },
+      riskRating: 3.2,
+      riskParameters: {
+        severity: 3,
+        fieldOccurrence: 3,
+        detectionLatency: 3,
+        containmentDelay: 3,
+        warrantyCostBurden: 3,
+        supplierDefectRate: 4
+      }
     },
     {
       title: "(FIELD/2024/09/8) - Honda Elevate ZX - Electronic Power Steering Assist Fluctuation",
@@ -139,7 +203,16 @@ export class CapaComponent implements OnInit {
       done: true,
       status: "Closed",
       meetingRef: '(Meet/2025/10/08)',
-      actions: { edit: true, delete: true }
+      actions: { edit: true, delete: true },
+      riskRating: 2.8,
+      riskParameters: {
+        severity: 4,
+        fieldOccurrence: 2,
+        detectionLatency: 3,
+        containmentDelay: 3,
+        warrantyCostBurden: 3,
+        supplierDefectRate: 2
+      }
     }
   ];
 
@@ -202,7 +275,7 @@ export class CapaComponent implements OnInit {
   public openCAPA(item: any) {
     let dialogRef = this.dialog.open(AddCapaComponent, {
       data: item,
-      width: '780px',
+      width: '850px',
       maxWidth: '92vw',
       maxHeight: '90vh',
     });
@@ -227,6 +300,24 @@ export class CapaComponent implements OnInit {
         }
       }
     });
+  }
+
+  public openRiskRatingDialog(item: any): void {
+    this.dialog.open(RiskRatingDialogComponent, {
+      data: item,
+      width: '920px',
+      maxWidth: '95vw',
+      maxHeight: '92vh',
+      panelClass: 'risk-rating-dialog-container'
+    });
+  }
+
+  public getRiskBadgeClass(rating: any): string {
+    const num = Number(rating);
+    if (num >= 4.0) return 'badge-risk-critical';
+    if (num >= 3.0) return 'badge-risk-high';
+    if (num >= 2.0) return 'badge-risk-medium';
+    return 'badge-risk-low';
   }
 
   onDoneToggle(item: any) {

@@ -11,6 +11,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BaseInfoComponent } from './base-info/base-info.component';
+import { TeamComponent } from './team/team.component';
 import { SummaryComponent } from './summary/summary.component';
 import { UpdatesComponent } from './updates/updates.component';
 import { CapaaaComponent } from './capaaa/capaaa.component';
@@ -24,6 +25,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
 import { NotesComponent } from './notes/notes.component';
 import { TimelineComponent } from './timeline/timeline.component';
 
@@ -42,6 +44,13 @@ import { MonitoringComponent } from './monitoring/monitoring.component';
 import { PreventionComponent } from './prevention/prevention.component';
 import { RecognitionComponent } from './recognition/recognition.component';
 import { ClosureComponent } from './closure/closure.component';
+import { EvaluationComponent } from './evaluation/evaluation.component';
+import { AuditComponent } from './evaluation/audit/audit.component';
+import { FiveWTwoHComponent } from './evaluation/five-w-two-h/five-w-two-h.component';
+import { FishboneComponent } from './evaluation/fishbone/fishbone.component';
+import { FmeaComponent } from './evaluation/fmea/fmea.component';
+import { GuidelinesComponent } from './evaluation/guidelines/guidelines.component';
+import { RcaComponent } from './rca/rca.component';
 
 // 8D Action Dialogs
 import { ContainmentActionDialogComponent } from './dialogs/containment-action-dialog/containment-action-dialog.component';
@@ -53,6 +62,7 @@ import { DispatchDialogComponent } from './dialogs/dispatch-dialog/dispatch-dial
 import { MonitoringDialogComponent } from './dialogs/monitoring-dialog/monitoring-dialog.component';
 import { PreventionDialogComponent } from './dialogs/prevention-dialog/prevention-dialog.component';
 import { RecognitionDialogComponent } from './dialogs/recognition-dialog/recognition-dialog.component';
+import { AddCauseDialogComponent } from './dialogs/add-cause-dialog/add-cause-dialog.component';
 
 
 
@@ -64,6 +74,12 @@ const routes: Routes = [
     component: BaseInfoComponent,
     pathMatch: "full",
     data: { breadcrumb: 'Base Info' }
+  },
+  {
+    path: "team",
+    component: TeamComponent,
+    pathMatch: "full",
+    data: { breadcrumb: 'Team' }
   },
   {
     path: "summary",
@@ -95,10 +111,28 @@ const routes: Routes = [
     data: { breadcrumb: 'Field Dispatch' }
   },
   {
+    path: "evaluation",
+    component: EvaluationComponent,
+    children: [
+      { path: "", redirectTo: "audit", pathMatch: "full" },
+      { path: "audit", component: AuditComponent, data: { breadcrumb: 'Audit' } },
+      { path: "5w2h", component: FiveWTwoHComponent, data: { breadcrumb: '5W2H' } },
+      { path: "fishbone", component: FishboneComponent, data: { breadcrumb: 'Fishbone' } },
+      { path: "fmea", component: FmeaComponent, data: { breadcrumb: 'FMEA' } },
+      { path: "guidelines", component: GuidelinesComponent, data: { breadcrumb: 'Guidelines' } },
+    ]
+  },
+  {
     path: "technical-review",
     component: TechnicalReviewComponent,
     pathMatch: "full",
-    data: { breadcrumb: 'Technical Review' }
+    data: { breadcrumb: 'Technical Review (D4)' }
+  },
+  {
+    path: "rca",
+    component: RcaComponent,
+    pathMatch: "full",
+    data: { breadcrumb: 'RCA (D4)' }
   },
   {
     path: "containment",
@@ -188,6 +222,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     BaseInfoComponent,
+    TeamComponent,
     SummaryComponent,
     UpdatesComponent,
     CapaaaComponent,
@@ -209,6 +244,13 @@ const routes: Routes = [
     PreventionComponent,
     RecognitionComponent,
     ClosureComponent,
+    EvaluationComponent,
+    AuditComponent,
+    FiveWTwoHComponent,
+    FishboneComponent,
+    FmeaComponent,
+    GuidelinesComponent,
+    RcaComponent,
     // 8D Action Dialogs
     ContainmentActionDialogComponent,
     SupplierActionDialogComponent,
@@ -219,6 +261,7 @@ const routes: Routes = [
     MonitoringDialogComponent,
     PreventionDialogComponent,
     RecognitionDialogComponent,
+    AddCauseDialogComponent,
     UploadDocumentsComponent,
   ],
   entryComponents: [
@@ -231,6 +274,7 @@ const routes: Routes = [
     MonitoringDialogComponent,
     PreventionDialogComponent,
     RecognitionDialogComponent,
+    AddCauseDialogComponent,
     UploadDocumentsComponent,
   ],
   imports: [
@@ -251,7 +295,8 @@ const routes: Routes = [
     MatCheckboxModule,
     MatTableModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatRadioModule
   ]
 })
 export class ReferenceModule { }

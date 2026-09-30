@@ -1,0 +1,133 @@
+<div class="five-w-two-h-page mt-2">
+  <div class="row g-4">
+
+    <!-- LEFT COLUMN: 5W2H Analysis (from img2) -->
+    <div class="col-lg-6 col-md-12">
+      <div class="analysis-card">
+        <h3 class="card-heading">5W2H Analysis</h3>
+        <div class="analysis-grid">
+
+          <div class="form-group mb-3">
+            <label class="item-label">1. What:</label>
+            <textarea class="form-control" rows="2"
+              placeholder="What is the physical failure symptom & Diagnostic Trouble Code (DTC)?"
+              [(ngModel)]="what"></textarea>
+          </div>
+
+          <div class="form-group mb-3">
+            <label class="item-label">2. Where:</label>
+            <textarea class="form-control" rows="2"
+              placeholder="Where did it occur? (Plant gate, dealership, chassis/powertrain location)"
+              [(ngModel)]="where"></textarea>
+          </div>
+
+          <div class="form-group mb-3">
+            <label class="item-label">3. When:</label>
+            <textarea class="form-control" rows="2"
+              placeholder="When did it happen? (Mileage/km, date, ambient temperature)"
+              [(ngModel)]="when"></textarea>
+          </div>
+
+          <div class="form-group mb-3">
+            <label class="item-label">4. Who:</label>
+            <textarea class="form-control" rows="2"
+              placeholder="Who detected it? (PDI inspector, dealer technician, customer)"
+              [(ngModel)]="who"></textarea>
+          </div>
+
+          <div class="form-group mb-3">
+            <label class="item-label">5. Why:</label>
+            <textarea class="form-control" rows="2"
+              placeholder="Why is it abnormal? (Engineering standard or tolerance violated)"
+              [(ngModel)]="why"></textarea>
+          </div>
+
+          <div class="form-group mb-3">
+            <label class="item-label">6. How:</label>
+            <textarea class="form-control" rows="2"
+              placeholder="How did the failure manifest? (Warning light, NVH noise/vibration, fluid leak)"
+              [(ngModel)]="how"></textarea>
+          </div>
+
+          <div class="form-group mb-2">
+            <label class="item-label">7. How Much / Many:</label>
+            <textarea class="form-control" rows="2"
+              placeholder="How many units affected? (Batch size, estimated warranty claim cost)"
+              [(ngModel)]="howMuch"></textarea>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN: Cascading WHY Analysis & Root Cause Analysis (from img3) -->
+    <div class="col-lg-6 col-md-12">
+      <div class="analysis-card d-flex flex-column justify-content-between h-100">
+
+        <div>
+          <!-- Cascading WHY Analysis Section -->
+          <div class="why-analysis-container mb-4">
+            <div class="form-group row align-items-center mb-2"
+              *ngFor="let item of lookupNameDetails.controls; let i = index;">
+
+              <!-- Label on first row, empty space for subsequent rows to align -->
+              <div class="col-sm-4" *ngIf="i === 0">
+                <label class="col-form-label fw-bold" style="color: #333; font-size: 13px; white-space: nowrap;">
+                  Cascading WHY Analysis : <span class="text-danger">*</span>
+                </label>
+              </div>
+              <div class="col-sm-4" *ngIf="i !== 0"></div>
+
+              <!-- Input for checklist item -->
+              <div class="col-sm-7">
+                <input type="text" class="form-control" placeholder="Enter Checklist Items"
+                  [formControl]="item.get('LookupName')">
+              </div>
+
+              <!-- Action Icons -->
+              <div class="col-sm-1 d-flex align-items-center" style="gap: 8px; padding-left: 4px;">
+                <a *ngIf="lookupNameDetails.controls.length > 1" (click)="fnLookupDeleteItemModal(i)"
+                  style="cursor: pointer;" title="Delete item">
+                  <i class="fa fa-trash text-danger" style="font-size: 15px;"></i>
+                </a>
+                <a *ngIf="i === 0" (click)="addNewInputField()" style="cursor: pointer;" title="Add Why item">
+                  <i class="fa fa-plus text-primary" style="font-size: 15px;"></i>
+                </a>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Root Cause Analysis Section -->
+          <div class="root-cause-container mt-4 pt-3" style="border-top: 1px solid #edf2f7;">
+            <label class="form-label fw-bold mb-2" style="color: #333; font-size: 13px;">
+              Root Cause Analysis :
+            </label>
+            <textarea class="form-control" style="height: 195px; resize: vertical;"
+              placeholder="Enter Root Cause Analysis" [(ngModel)]="rootCause" required></textarea>
+          </div>
+        </div>
+
+        <!-- Save Button Section -->
+        <div class="mt-4 pt-2">
+          <div class="d-flex justify-content-end align-items-center">
+            <button mat-raised-button type="button"
+              style="color: #fff; background-color: #3262a8; min-width: 100px; padding: 0 20px;"
+              (click)="save()">
+              <mat-icon style="margin-right: 4px; font-size: 18px; width: 18px; height: 18px; line-height: 18px;">save</mat-icon>
+              Save
+            </button>
+          </div>
+
+          <div *ngIf="isSaved" class="alert alert-success mt-3 py-2 px-3 d-flex align-items-center"
+            style="font-size: 13px;">
+            <mat-icon style="font-size: 18px; width: 18px; height: 18px; margin-right: 6px;">check_circle</mat-icon>
+            Analysis saved successfully!
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

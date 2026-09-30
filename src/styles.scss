@@ -66,7 +66,9 @@ button.save-btn,
     height: 100% !important;
     line-height: normal !important;
 
-    mat-icon, i, .btn-icon {
+    mat-icon,
+    i,
+    .btn-icon {
       margin-right: 8px !important;
       margin-top: 0 !important;
       margin-bottom: 0 !important;
@@ -112,9 +114,11 @@ button.mat-stroked-button {
     mat-icon:first-child:not(:only-child) {
       margin-right: 6px !important;
     }
+
     mat-icon:last-child:not(:only-child) {
       margin-left: 6px !important;
     }
+
     i:first-child:not(:only-child) {
       margin-right: 6px !important;
     }
@@ -162,6 +166,10 @@ a:active {
 }
 
 .rounded {
+  border-radius: 4px !important;
+}
+
+.rounded-circle {
   border-radius: 50% !important;
 }
 
@@ -432,7 +440,7 @@ label.form-control-label {
   background: linear-gradient(rgba(21, 18, 18, 0.5), rgba(25, 17, 17, 0.5)),
     url('https://c4.wallpaperflare.com/wallpaper/331/963/678/vehicles-mg-hs-car-compact-car-crossover-car-hd-wallpaper-preview.jpg');
   background-position: center;
-  background-repeat: no-repeat; 
+  background-repeat: no-repeat;
   background-size: cover;
 }
 
@@ -564,15 +572,24 @@ bs-daterangepicker-container {
   //   content: "\e000  ";
   // }
 }
-.m-t-20{
+
+.m-t-20 {
   margin-top: 20px;
 }
 
-.bac{
+.bac {
   background-color: #fefec4;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 /* ── Inner screen complaint dialog gaps ── */
 .custom-modal-wrapper {
@@ -586,12 +603,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
       margin-right: 0 !important;
     }
 
-    .col-sm-3, .col-sm-4 {
+    .col-sm-3,
+    .col-sm-4 {
       padding-left: 0 !important;
       padding-right: 14px !important;
     }
 
-    .col-sm-9, .col-sm-8 {
+    .col-sm-9,
+    .col-sm-8 {
       padding-left: 0 !important;
       padding-right: 0 !important;
     }
@@ -621,7 +640,9 @@ button.custom-back-btn,
     color: #ffffff !important;
   }
 
-  mat-icon, i, .btn-icon {
+  mat-icon,
+  i,
+  .btn-icon {
     color: #ffffff !important;
   }
 }

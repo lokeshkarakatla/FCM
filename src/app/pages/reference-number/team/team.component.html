@@ -1,0 +1,127 @@
+<div class="team-container mt-3 mb-4">
+
+  <!-- Transfer Layout (Image 2) -->
+  <div class="transfer-layout">
+
+    <!-- Left Box: Available Members -->
+    <div class="list-panel">
+      <div class="panel-header">
+        <div class="d-flex align-items-center gap-2">
+          <span class="panel-title">Available Members</span>
+        </div>
+        <span class="count-badge">{{ availableMembers.length }}</span>
+      </div>
+
+      <!-- Quick Search Filter -->
+      <div class="search-filter-box">
+        <mat-icon class="search-icon">search</mat-icon>
+        <input type="text"
+               class="search-input"
+               placeholder="Search available members..."
+               [(ngModel)]="availableSearch" />
+        <button *ngIf="availableSearch" class="btn-clear-search" (click)="availableSearch = ''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+
+      <!-- Member List -->
+      <div class="list-content">
+        <div class="list-item"
+             *ngFor="let member of filteredAvailable"
+             [class.selected]="isAvailableSelected(member)"
+             (click)="toggleSelection(member, selectedAvailable)">
+          <input type="checkbox"
+                 class="member-checkbox"
+                 [checked]="isAvailableSelected(member)"
+                 (click)="$event.stopPropagation(); toggleSelection(member, selectedAvailable)" />
+          <div class="avatar">{{ getInitials(member) }}</div>
+          <span class="member-name">{{ member }}</span>
+        </div>
+
+        <div *ngIf="filteredAvailable.length === 0" class="empty-state">
+          {{ availableSearch ? 'No matching members found.' : 'No available members.' }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Center Action Controls (Add / Remove) -->
+    <div class="action-controls">
+      <button mat-flat-button
+              class="action-btn add-btn"
+              (click)="addMembers()"
+              [disabled]="!selectedAvailable.length">
+        <span>Add</span>
+        <mat-icon class="btn-chevron">chevron_right</mat-icon>
+      </button>
+
+      <button mat-flat-button
+              class="action-btn remove-btn"
+              (click)="removeMembers()"
+              [disabled]="!selectedAssigned.length">
+        <mat-icon class="btn-chevron">chevron_left</mat-icon>
+        <span>Remove</span>
+      </button>
+    </div>
+
+    <!-- Right Box: Assigned Team -->
+    <div class="list-panel">
+      <div class="panel-header assigned-header">
+        <div class="d-flex align-items-center gap-2">
+          <span class="panel-title">Assigned Team</span>
+        </div>
+        <span class="count-badge assigned-badge">{{ assignedMembers.length }}</span>
+      </div>
+
+      <!-- Quick Search Filter -->
+      <div class="search-filter-box">
+        <mat-icon class="search-icon">search</mat-icon>
+        <input type="text"
+               class="search-input"
+               placeholder="Search assigned team..."
+               [(ngModel)]="assignedSearch" />
+        <button *ngIf="assignedSearch" class="btn-clear-search" (click)="assignedSearch = ''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+
+      <!-- Member List -->
+      <div class="list-content">
+        <div class="list-item"
+             *ngFor="let member of filteredAssigned"
+             [class.selected]="isAssignedSelected(member)"
+             (click)="toggleSelection(member, selectedAssigned)">
+          <input type="checkbox"
+                 class="member-checkbox"
+                 [checked]="isAssignedSelected(member)"
+                 (click)="$event.stopPropagation(); toggleSelection(member, selectedAssigned)" />
+          <div class="avatar assigned-avatar">{{ getInitials(member) }}</div>
+          <span class="member-name">{{ member }}</span>
+        </div>
+
+        <div *ngIf="filteredAssigned.length === 0" class="empty-state">
+          {{ assignedSearch ? 'No matching members found.' : 'No members assigned yet.' }}
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Save Bar -->
+  <div class="team-footer-actions mt-3 d-flex align-items-center justify-content-between">
+    <div class="team-summary-text text-muted">
+      Total Assigned: <b class="text-dark">{{ assignedMembers.length }}</b> members in cross-functional resolution team.
+    </div>
+
+    <div class="d-flex align-items-center gap-2">
+      <span *ngIf="savedSuccess" class="text-success fw-bold d-inline-flex align-items-center gap-1">
+        <mat-icon style="font-size: 18px; width: 18px; height: 18px;">check_circle</mat-icon>
+        Team assignment updated!
+      </span>
+
+      <button mat-raised-button color="primary" class="save-team-btn" (click)="save()">
+        <mat-icon class="me-1">save</mat-icon> Save Changes
+      </button>
+    </div>
+  </div>
+
+</div>

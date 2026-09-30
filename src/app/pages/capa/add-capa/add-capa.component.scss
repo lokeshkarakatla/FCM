@@ -18,3 +18,131 @@
     content: none !important;
   }
 }
+
+/* Risk Assessment Section */
+.risk-section-wrapper {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.risk-section-header {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+
+  .risk-section-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1e293b;
+  }
+}
+
+.param-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0 !important;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: #cbd5e1 !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  }
+
+  .param-card-name {
+    font-size: 12px;
+    color: #1e293b;
+  }
+
+  .param-card-desc {
+    font-size: 11px;
+    line-height: 1.3;
+    min-height: 28px;
+  }
+
+  .btn-rating-choice {
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    border: 1px solid #cbd5e1;
+    background: #f8fafc;
+    color: #475569;
+    font-weight: 700;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background: #e2e8f0;
+      border-color: #94a3b8;
+    }
+
+    &.active-1 {
+      background-color: #10b981 !important;
+      border-color: #059669 !important;
+      color: #ffffff !important;
+    }
+
+    &.active-2 {
+      background-color: #0ea5e9 !important;
+      border-color: #0284c7 !important;
+      color: #ffffff !important;
+    }
+
+    &.active-3 {
+      background-color: #eab308 !important;
+      border-color: #ca8a04 !important;
+      color: #ffffff !important;
+    }
+
+    &.active-4 {
+      background-color: #f97316 !important;
+      border-color: #ea580c !important;
+      color: #ffffff !important;
+    }
+
+    &.active-5 {
+      background-color: #ef4444 !important;
+      border-color: #dc2626 !important;
+      color: #ffffff !important;
+    }
+  }
+
+  .rating-hint {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+}
+
+/* Badges */
+.badge-risk-critical {
+  background-color: #fee2e2 !important;
+  color: #b91c1c !important;
+  border: 1px solid #fca5a5;
+  font-weight: 600;
+}
+
+.badge-risk-high {
+  background-color: #ffedd5 !important;
+  color: #c2410c !important;
+  border: 1px solid #fdba74;
+  font-weight: 600;
+}
+
+.badge-risk-medium {
+  background-color: #fef9c3 !important;
+  color: #a16207 !important;
+  border: 1px solid #fde047;
+  font-weight: 600;
+}
+
+.badge-risk-low {
+  background-color: #dcfce7 !important;
+  color: #15803d !important;
+  border: 1px solid #86efac;
+  font-weight: 600;
+}

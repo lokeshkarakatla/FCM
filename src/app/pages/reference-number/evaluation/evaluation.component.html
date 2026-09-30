@@ -1,0 +1,33 @@
+<div style="display: flex; gap: 10px; padding: 20px 0 25px 0;" class="mt-2">
+  <button style="font-weight: bold; border-radius: 5px;"
+          [ngClass]="{ 'active-tab': activeTab === 'audit' }"
+          (click)="setTab('audit')">
+    Audit
+  </button>
+
+  <button style="font-weight: bold; border-radius: 5px;"
+          [ngClass]="{ 'active-tab': activeTab === '5w2h' }"
+          (click)="setTab('5w2h')">
+    5W2H
+  </button>
+
+  <button style="font-weight: bold; border-radius: 5px;"
+          [ngClass]="{ 'active-tab': activeTab === 'fishbone' }"
+          (click)="setTab('fishbone')">
+    Fishbone
+  </button>
+
+  <button style="font-weight: bold; border-radius: 5px;"
+          [ngClass]="{ 'active-tab': activeTab === 'fmea' }"
+          (click)="setTab('fmea')">
+    FMEA
+  </button>
+
+  <button style="font-weight: bold; border-radius: 5px;"
+          [ngClass]="{ 'active-tab': activeTab === 'guidelines' }"
+          (click)="setTab('guidelines')">
+    Guidelines
+  </button>
+</div>
+
+<router-outlet></router-outlet>

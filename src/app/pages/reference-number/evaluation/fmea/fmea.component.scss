@@ -1,0 +1,557 @@
+.fmea-container {
+  padding-bottom: 40px;
+}
+
+.section-heading {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .heading-icon {
+    font-size: 22px;
+    width: 22px;
+    height: 22px;
+    color: #0f4c6e;
+  }
+}
+
+.btn-icon {
+  font-size: 17px !important;
+  width: 17px !important;
+  height: 17px !important;
+  line-height: 17px !important;
+  margin-right: 4px !important;
+}
+
+/* ========================================================================= */
+/* RECORD SELECTOR PILLS                                                     */
+/* ========================================================================= */
+.record-selector-bar {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+
+  .record-tab-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 5px;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+
+    &:hover {
+      border-color: #0f4c6e;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    &.active {
+      background: #0f4c6e;
+      border-color: #0f4c6e;
+      color: #ffffff;
+
+      .rec-id {
+        background: rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+      }
+
+      .rec-name {
+        color: #ffffff;
+      }
+    }
+
+    .rec-id {
+      font-size: 10px;
+      font-weight: 800;
+      background: #e2e8f0;
+      color: #475569;
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+
+    .rec-name {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    .rec-badge {
+      font-size: 9.5px;
+      font-weight: 700;
+      padding: 1px 5px;
+      border-radius: 3px;
+
+      &.badge-danger {
+        background: #fee2e2;
+        color: #dc2626;
+      }
+
+      &.badge-warning {
+        background: #fef3c7;
+        color: #d97706;
+      }
+    }
+
+    .rec-del {
+      font-size: 14px;
+      color: #94a3b8;
+      margin-left: 2px;
+
+      &:hover {
+        color: #dc2626;
+      }
+    }
+  }
+}
+
+/* ========================================================================= */
+/* 3-COLUMN TABLE FORMAT (IMG2)                                              */
+/* ========================================================================= */
+.fmea-eval-table-card,
+.fmea-graph-sidebar,
+.table-responsive,
+.record-selector-bar {
+  border-radius: 6px !important;
+}
+
+.table-responsive {
+  overflow-x: auto !important;
+  border-radius: 6px !important;
+}
+
+.fmea-eval-table-card {
+  border-radius: 6px !important;
+  overflow: hidden;
+}
+
+.fmea-matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  .fmea-tbl-header {
+    background-color: #0f4c6e;
+    color: #ffffff;
+
+    th {
+      padding: 10px 12px;
+      font-size: 12.5px;
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      vertical-align: middle;
+      letter-spacing: 0.3px;
+    }
+
+    .col-subject { width: 23%; }
+    .col-questions { width: 44%; }
+    .col-eval { width: 33%; }
+  }
+
+  tbody tr {
+    transition: background 0.15s ease;
+
+    &:nth-child(even) {
+      background-color: #f8fafc;
+    }
+
+    &:hover {
+      background-color: #f1f5f9;
+    }
+  }
+
+  td {
+    padding: 8px 12px;
+    vertical-align: middle;
+    border: 1px solid #e2e8f0;
+  }
+
+  .td-subject {
+    font-size: 12px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.3;
+  }
+
+  .td-question {
+    font-size: 11.5px;
+    color: #475569;
+    line-height: 1.35;
+  }
+
+  .td-eval {
+    font-size: 12px;
+  }
+
+  /* Shaded divider between Evaluation and Recommended Actions (img2) */
+  .fmea-divider-row {
+    td {
+      height: 12px;
+      padding: 0;
+      background: #e2e8f0;
+      border-top: 1px solid #cbd5e1;
+      border-bottom: 1px solid #cbd5e1;
+    }
+  }
+
+  .rpn-highlight-row {
+    background-color: #fff7ed !important;
+  }
+
+  .eval-text-input {
+    font-size: 12px;
+    border-color: #cbd5e1;
+    padding: 4px 8px;
+    background-color: #ffffff;
+
+    &:focus {
+      border-color: #0f4c6e;
+      box-shadow: 0 0 0 2px rgba(15, 76, 110, 0.15);
+    }
+  }
+
+  .eval-num-input {
+    width: 60px;
+    font-size: 13px;
+    border-color: #cbd5e1;
+    padding: 4px 6px;
+  }
+
+  /* Green-bordered action boxes (matching img2 exactly!) */
+  .btn-img2-add {
+    background-color: #0f4c6e;
+    color: #ffffff;
+    font-size: 10.5px;
+    font-weight: 800;
+    padding: 3px 12px;
+    border-radius: 3px;
+    border: none;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+
+    &:hover {
+      background-color: #0b3852;
+    }
+  }
+
+  .action-green-box {
+    background: #ffffff;
+    border: 2px solid #22c55e;
+    border-radius: 4px;
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 40px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+
+    .action-input {
+      border: none;
+      outline: none;
+      width: 100%;
+      font-size: 12px;
+      color: #0f172a;
+      background: transparent;
+
+      &::placeholder {
+        color: #94a3b8;
+      }
+    }
+
+    .btn-del-action {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 16px;
+      line-height: 1;
+      padding: 0 2px;
+      cursor: pointer;
+
+      &:hover {
+        color: #dc2626;
+      }
+    }
+  }
+}
+
+/* Crisp RPN Badges */
+.rpn-box-badge {
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 800;
+  display: inline-block;
+
+  &.rpn-red {
+    background: #fee2e2;
+    color: #dc2626;
+    border: 1px solid #fca5a5;
+  }
+
+  &.rpn-amber {
+    background: #fef3c7;
+    color: #d97706;
+    border: 1px solid #fde68a;
+  }
+
+  &.rpn-green {
+    background: #dcfce7;
+    color: #16a34a;
+    border: 1px solid #86efac;
+  }
+}
+
+/* ========================================================================= */
+/* DUAL 10x10 RISK MATRICES (GRAPHS IN IMG2)                                 */
+/* ========================================================================= */
+.fmea-graph-sidebar {
+  border-radius: 8px;
+
+  .matrix-graph-block {
+    background: #ffffff;
+  }
+
+  .matrix-block-title {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #0f172a;
+  }
+
+  .risk-matrix-outer {
+    display: flex;
+    align-items: stretch;
+    gap: 4px;
+    justify-content: center;
+  }
+
+  .axis-y-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+
+    .axis-title-y {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-size: 9.5px;
+      font-weight: 800;
+      color: #475569;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  .grid-table-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5px;
+  }
+
+  .grid-row-10 {
+    display: flex;
+    align-items: center;
+    gap: 1.5px;
+
+    .tick-y {
+      width: 16px;
+      font-size: 9px;
+      font-weight: 700;
+      color: #64748b;
+      text-align: right;
+      padding-right: 3px;
+      flex-shrink: 0;
+    }
+
+    .grid-cell-10 {
+      width: 22px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 1px;
+      transition: transform 0.12s ease;
+
+      &:hover {
+        transform: scale(1.22);
+        z-index: 5;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+      }
+
+      &.cell-acceptable {
+        background-color: #22c55e; /* Vibrant Green */
+      }
+
+      &.cell-consideration {
+        background-color: #facc15; /* Vibrant Yellow */
+      }
+
+      &.cell-corrective {
+        background-color: #ef4444; /* Vibrant Red */
+      }
+    }
+
+    .active-marker-black {
+      width: 14px;
+      height: 14px;
+      background-color: #000000;
+      border-radius: 2px;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+      animation: pulseMarker 1.8s infinite;
+    }
+  }
+
+  .axis-x-row {
+    margin-top: 2px;
+
+    .tick-x {
+      width: 22px;
+      font-size: 9px;
+      font-weight: 700;
+      color: #64748b;
+      text-align: center;
+    }
+
+    .axis-title-x {
+      font-size: 9.5px;
+      font-weight: 800;
+      color: #475569;
+      margin-left: 6px;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  /* Legend below Graph 1 (img2 format) */
+  .matrix-legend-box {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-left: 20px;
+
+    .legend-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+
+      .legend-chip {
+        width: 12px;
+        height: 12px;
+        border-radius: 2px;
+        flex-shrink: 0;
+      }
+
+      .legend-txt {
+        font-size: 11px;
+        font-weight: 600;
+        color: #334155;
+      }
+    }
+  }
+
+  /* Downward arrow transition in img2 */
+  .downward-arrow-box {
+    .downward-arrow-svg {
+      display: inline-block;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+    }
+  }
+}
+
+@keyframes pulseMarker {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+/* ========================================================================= */
+/* COMPLETE FMEA MASTER PROCESS REGISTER (IMG3 DIRECT FIDELITY)               */
+/* ========================================================================= */
+.master-fmea-table {
+  font-size: 12px;
+  border-collapse: collapse;
+
+  .thead-teal-img3 {
+    background-color: #008080;
+    color: #ffffff;
+
+    th {
+      background-color: #008080;
+      color: #ffffff;
+      padding: 8px 6px;
+      font-size: 11.5px;
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      vertical-align: middle;
+      line-height: 1.25;
+    }
+
+    .th-num { width: 55px; }
+    .th-rpn { width: 60px; }
+  }
+
+  /* Questions row from img3 */
+  .tr-questions-img3 {
+    background-color: #fef9c3;
+
+    .q-cell {
+      background-color: #fef9c3;
+      font-size: 10px;
+      color: #334155;
+      padding: 6px 5px;
+      line-height: 1.25;
+      vertical-align: top;
+      border: 1px solid #cbd5e1;
+    }
+  }
+
+  .master-data-row {
+    background-color: #f0fdf4;
+    cursor: pointer;
+    transition: all 0.15s ease;
+
+    td {
+      padding: 7px 6px;
+      vertical-align: middle;
+      border: 1px solid #cbd5e1;
+      line-height: 1.25;
+    }
+
+    &:hover {
+      background-color: #dcfce7;
+    }
+
+    &.row-selected {
+      background-color: #eff6ff !important;
+      outline: 2px solid #2563eb;
+    }
+  }
+
+  .rpn-table-pill {
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 700;
+    display: inline-block;
+
+    &.rpn-red {
+      background: #fee2e2;
+      color: #dc2626;
+      border: 1px solid #fca5a5;
+    }
+
+    &.rpn-amber {
+      background: #fef3c7;
+      color: #d97706;
+      border: 1px solid #fde68a;
+    }
+
+    &.rpn-green {
+      background: #dcfce7;
+      color: #16a34a;
+      border: 1px solid #86efac;
+    }
+  }
+}

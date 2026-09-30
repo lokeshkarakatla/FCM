@@ -1,0 +1,219 @@
+<div class="section-wrapper mt-3">
+  <div class="container-fluid px-4">
+
+    <!-- Primary RCA Header Card -->
+    <div class="form-card mb-4">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label"><b>Problem Statement (Issue Under Investigation):</b></label>
+          <textarea rows="2" class="form-control" [(ngModel)]="problemStatement" placeholder="State the observed failure mode..."></textarea>
+        </div>
+        <div class="col-md-6">
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label class="form-label"><b>Primary RCA Method:</b></label>
+              <mat-select class="form-control" [(ngModel)]="rcaMethod">
+                <mat-option value="5-Why Analysis">5-Why Analysis</mat-option>
+                <mat-option value="Ishikawa (Fishbone) Diagram">Ishikawa (Fishbone) Diagram</mat-option>
+                <mat-option value="Fault Tree Analysis (FTA)">Fault Tree Analysis (FTA)</mat-option>
+                <mat-option value="Is / Is Not Matrix">Is / Is Not Matrix</mat-option>
+              </mat-select>
+            </div>
+            <div class="col-sm-6">
+              <label class="form-label"><b>RCA Status:</b></label>
+              <mat-select class="form-control" [(ngModel)]="rcaStatus">
+                <mat-option value="In Progress">In Progress</mat-option>
+                <mat-option value="Root Cause Identified">Root Cause Identified</mat-option>
+                <mat-option value="Verified">Verified by Engineering</mat-option>
+                <mat-option value="Pending CAPA">Pending CAPA</mat-option>
+              </mat-select>
+            </div>
+            <div class="col-sm-6">
+              <label class="form-label"><b>RCA Lead / Owner:</b></label>
+              <input type="text" class="form-control" [(ngModel)]="rcaLead" placeholder="Lead Engineer Name">
+            </div>
+            <div class="col-sm-6">
+              <label class="form-label"><b>Target Date:</b></label>
+              <input type="date" class="form-control" [(ngModel)]="targetDate">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5-Why Analysis Section -->
+    <div class="form-card mb-4">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="card-section-title m-0">
+          <mat-icon class="title-inline-icon">account_tree</mat-icon> 5-Why Root Cause Drilldown
+        </h5>
+        <button mat-stroked-button color="primary" class="btn-sm" (click)="addWhyStep()">
+          <mat-icon class="btn-icon">add</mat-icon> Add Why Step
+        </button>
+      </div>
+
+      <div class="why-stepper">
+        <div *ngFor="let why of whySteps; let i = index; let last = last" class="why-step-row" [class.is-root]="last && i >= 4">
+          <div class="why-badge">
+            <span *ngIf="!(last && i >= 4)">Why {{ why.step }}</span>
+            <span *ngIf="last && i >= 4" class="root-badge">Root Cause</span>
+          </div>
+
+          <div class="why-content-box">
+            <div class="why-question mb-1">
+              <input type="text" class="form-control form-control-sm fw-semibold" [(ngModel)]="why.question" placeholder="Why question...">
+            </div>
+            <div class="why-answer">
+              <textarea rows="2" class="form-control" [(ngModel)]="why.answer" placeholder="Finding or direct cause statement..."></textarea>
+            </div>
+          </div>
+
+          <div class="why-action">
+            <button mat-icon-button color="warn" (click)="removeWhyStep(i)" [disabled]="whySteps.length <= 1" matTooltip="Remove Step">
+              <mat-icon>delete_outline</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ishikawa (Fishbone) 6M Analysis Section -->
+    <div class="form-card mb-4">
+      <h5 class="card-section-title">
+        <mat-icon class="title-inline-icon">hub</mat-icon> Ishikawa (Fishbone) 6M Contributing Factors
+      </h5>
+
+      <!-- Category Filter Pills -->
+      <div class="six-m-nav mb-3">
+        <button *ngFor="let cat of sixMCategories"
+                type="button"
+                class="category-btn"
+                [class.active]="active6MCategory === cat"
+                (click)="active6MCategory = cat">
+          {{ cat }}
+          <span class="count-badge">
+            {{ (fishboneCauses | slice:0).filter ? (fishboneCauses | slice:0).filter : 0 }}
+          </span>
+        </button>
+      </div>
+
+      <!-- Add New Factor Input for current Category -->
+      <div class="row g-2 mb-3">
+        <div class="col-md-9 col-sm-8">
+          <input type="text" class="form-control" placeholder="Add contributing factor for {{ active6MCategory }}..." [(ngModel)]="newFactorText" (keyup.enter)="addFishboneFactor()">
+        </div>
+        <div class="col-md-3 col-sm-4 d-grid">
+          <button mat-raised-button color="primary" class="btn-sm" (click)="addFishboneFactor()">
+            <mat-icon class="btn-icon">add</mat-icon> Add {{ active6MCategory }} Factor
+          </button>
+        </div>
+      </div>
+
+      <!-- Table of Factors for Active Category -->
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle">
+          <thead class="tbl-head">
+            <tr>
+              <th style="width: 120px;">Category</th>
+              <th>Contributing Factor Description</th>
+              <th class="text-center" style="width: 140px;">Root Cause?</th>
+              <th class="text-center" style="width: 160px;">Verification Status</th>
+              <th class="text-center" style="width: 80px;">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cause of getFilteredFishboneCauses()">
+              <td><span class="badge category-tag">{{ cause.category }}</span></td>
+              <td>{{ cause.factor }}</td>
+              <td class="text-center">
+                <mat-checkbox [(ngModel)]="cause.isRootCause" color="primary"></mat-checkbox>
+              </td>
+              <td class="text-center">
+                <span class="status-badge"
+                      [ngClass]="cause.status === 'Verified Root Cause' ? 'badge-danger' : (cause.status === 'Ruled Out' ? 'badge-muted' : 'badge-warning')">
+                  {{ cause.status }}
+                </span>
+              </td>
+              <td class="text-center">
+                <a matTooltip="Delete" class="action-btn-link" (click)="deleteFishboneFactor(cause)">
+                  <i class="fa fa-trash red"></i>
+                </a>
+              </td>
+            </tr>
+            <tr *ngIf="getFilteredFishboneCauses().length === 0">
+              <td colspan="5" class="text-center text-muted py-3">
+                No contributing factors logged under {{ active6MCategory }} yet.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Root Cause Confirmation & Validation Section -->
+    <div class="form-card mb-4">
+      <h5 class="card-section-title">
+        <mat-icon class="title-inline-icon">verified</mat-icon> Root Cause Confirmation & Engineering Validation
+      </h5>
+
+      <div class="row g-3">
+        <div class="col-md-8">
+          <label class="form-label"><b>Confirmed Root Cause Statement:</b></label>
+          <textarea rows="3" class="form-control fw-semibold" [(ngModel)]="rootCauseStatement" placeholder="Final verified root cause statement..."></textarea>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label"><b>Root Cause Category:</b></label>
+          <mat-select class="form-control mb-3" [(ngModel)]="rcaCategory">
+            <mat-option value="Manufacturing Process">Manufacturing Process</mat-option>
+            <mat-option value="Design Defect">Design Defect</mat-option>
+            <mat-option value="Supplier Quality">Supplier Quality</mat-option>
+            <mat-option value="Assembly Standard">Assembly Standard</mat-option>
+            <mat-option value="Operational Environment">Operational Environment</mat-option>
+          </mat-select>
+
+          <div class="toggle-row mt-2">
+            <label class="form-label m-0"><b>Root Cause Fully Verified?</b></label>
+            <div class="switchToggle">
+              <input type="checkbox" id="rcaVerified" [(ngModel)]="rootCauseVerified">
+              <label for="rcaVerified"></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label"><b>Validation Method:</b></label>
+          <input type="text" class="form-control" [(ngModel)]="validationMethod" placeholder="e.g. Profilometer testing, bench dynamometer simulation...">
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label"><b>RCA Evidence Document / Report:</b></label>
+          <div class="input-group">
+            <input type="text" class="form-control" [(ngModel)]="rcaDocumentName" placeholder="Document filename...">
+            <button mat-stroked-button color="primary" type="button" class="btn-sm">
+              <mat-icon class="btn-icon">upload_file</mat-icon> Attach
+            </button>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <label class="form-label"><b>Validation Remarks & Lab Findings:</b></label>
+          <textarea rows="2" class="form-control" [(ngModel)]="validationRemarks" placeholder="Enter findings confirming this is the true root cause..."></textarea>
+        </div>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="d-flex justify-content-between align-items-center mt-4 pt-2 border-top">
+        <div>
+          <span *ngIf="isSaved" class="text-success fw-bold d-inline-flex align-items-center gap-1">
+            <mat-icon style="font-size: 18px; width: 18px; height: 18px;">check_circle</mat-icon>
+            Root Cause Analysis data saved successfully!
+          </span>
+        </div>
+        <button mat-raised-button color="primary" class="save-btn" (click)="save()">
+          <mat-icon class="btn-icon">save</mat-icon> Save RCA
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>

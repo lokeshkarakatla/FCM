@@ -1,0 +1,137 @@
+<div class="custom-modal-wrapper">
+  <!-- Header -->
+  <div class="modal-header-custom">
+    <h2 class="modal-title-text">
+      <mat-icon class="me-2 header-icon">speed</mat-icon>
+      Risk Rating Breakdown
+    </h2>
+    <button type="button" class="modal-close-icon btn btn-link p-0 text-white" (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <!-- Body Content -->
+  <div mat-dialog-content class="modal-body-custom">
+
+    <!-- Complaint Info Header Banner -->
+    <div class="risk-meta-banner mb-3">
+      <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+        <div class="meta-item-group">
+          <div class="meta-sub-label">Complaint Reference</div>
+          <div class="meta-title">{{ complaintTitle }}</div>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <div class="meta-pill">
+            <mat-icon class="meta-pill-icon">business</mat-icon>
+            <span class="meta-pill-text">{{ department }}</span>
+          </div>
+          <div class="meta-pill">
+            <mat-icon class="meta-pill-icon">person</mat-icon>
+            <span class="meta-pill-text">{{ role }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="meta-subject mt-2">
+        <b>Subject:</b> {{ subject }}
+      </div>
+    </div>
+
+    <!-- Summary KPI Cards -->
+    <div class="row g-2 mb-3">
+      <!-- Average Score -->
+      <div class="col-sm-4">
+        <div class="kpi-card text-center">
+          <div class="kpi-label">Average Risk Rating</div>
+          <div class="kpi-val-row">
+            <span class="kpi-big-num">{{ averageRating }}</span>
+            <span class="kpi-max">/ 5.0</span>
+          </div>
+          <div>
+            <span class="badge" [ngClass]="getOverallRiskBadgeClass()">
+              {{ getOverallRiskTitle() }}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Highest Risk Parameter -->
+      <div class="col-sm-4" *ngIf="getHighestRiskParameter() as highest">
+        <div class="kpi-card">
+          <div class="kpi-label">Primary Risk Driver</div>
+          <div class="highest-name">{{ highest.name }}</div>
+          <div class="d-flex align-items-center gap-2 mt-1">
+            <span class="badge" [ngClass]="highest.colorClass">
+              Rating: {{ highest.rating }} / 5
+            </span>
+            <small class="text-muted">{{ highest.levelLabel }}</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Evaluation Scope -->
+      <div class="col-sm-4">
+        <div class="kpi-card">
+          <div class="kpi-label">Evaluation Vectors</div>
+          <div class="vectors-count">6 of 6 Evaluated</div>
+          <small class="text-muted">Standard ISO / FCM Risk Matrix</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Parameter Ratings Section (3 per row / 3 per side, radar removed) -->
+    <div class="card border shadow-none mb-2">
+      <div class="card-header bg-white py-2 px-3 border-bottom d-flex align-items-center justify-content-between">
+        <span class="fw-bold text-dark" style="font-size: 13px;">
+          <mat-icon class="mini-icon me-1 text-primary">format_list_bulleted</mat-icon>
+          Parameter Ratings (1 to 5)
+        </span>
+        <small class="text-muted">Scale: 1 (Lowest) → 5 (Critical)</small>
+      </div>
+
+      <div class="card-body p-3">
+        <div class="row g-3">
+          <div class="col-md-4 col-sm-6" *ngFor="let param of parameters">
+            <div class="param-card p-3 rounded">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <div class="d-flex align-items-center gap-2 text-truncate me-1">
+                  <mat-icon class="param-icon">{{ param.icon }}</mat-icon>
+                  <span class="param-name fw-semibold text-truncate" [title]="param.name">{{ param.name }}</span>
+                </div>
+                <span class="param-rating-badge" [ngClass]="param.colorClass">
+                  {{ param.rating }} / 5
+                </span>
+              </div>
+
+              <div class="param-desc text-muted mb-2">
+                {{ param.description }}
+              </div>
+
+              <!-- 5 Segmented Indicator Blocks -->
+              <div class="d-flex align-items-center justify-content-between pt-2 border-top">
+                <div class="rating-blocks-container">
+                  <div *ngFor="let step of [1, 2, 3, 4, 5]"
+                       class="rating-block"
+                       [class.filled]="step <= param.rating"
+                       [ngClass]="step <= param.rating ? param.colorClass : 'rating-block-empty'">
+                    {{ step }}
+                  </div>
+                </div>
+                <span class="param-level-text" [ngClass]="param.colorClass">
+                  {{ param.levelLabel }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Actions -->
+  <mat-dialog-actions align="end" class="modal-actions-custom">
+    <button mat-raised-button class="btn-default" (click)="close()">
+      <mat-icon class="btn-icon">close</mat-icon><span class="btn-label">Close</span>
+    </button>
+  </mat-dialog-actions>
+</div>

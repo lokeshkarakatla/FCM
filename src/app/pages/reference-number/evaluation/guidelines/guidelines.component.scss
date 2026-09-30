@@ -1,0 +1,1249 @@
+.guidelines-page {
+  padding-bottom: 50px;
+}
+
+/* ========================================================================= */
+/* HERO BANNER & VIEW SWITCHER (IMG1 REFINEMENTS)                           */
+/* ========================================================================= */
+
+.guidelines-hero-banner {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  position: relative;
+  overflow: hidden;
+  border-left: 5px solid #dc2626;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(220, 38, 38, 0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-tag-badge {
+    background: rgba(220, 38, 38, 0.25);
+    color: #fca5a5;
+    border: 1px solid rgba(220, 38, 38, 0.4);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 11px;
+    border-radius: 20px;
+    letter-spacing: 0.8px;
+    display: inline-flex;
+    align-items: center;
+
+    .hero-shield-icon {
+      stroke: #fca5a5;
+      margin-right: 5px;
+    }
+  }
+
+  .hero-iso-pill {
+    font-size: 11.5px;
+    color: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.08);
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    letter-spacing: 0.3px;
+    font-weight: 500;
+  }
+
+  .hero-title {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+  }
+
+  .hero-subtitle {
+    font-size: 13px;
+    opacity: 0.88;
+  }
+}
+
+/* Segmented Control Pill Container (Perfect alignment of text and logo/icon) */
+.view-switcher-pill-container {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  padding: 4px;
+  gap: 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+
+  .view-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 38px;
+    padding: 0 18px;
+    border-radius: 20px;
+    border: none;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+    line-height: 1;
+
+    .btn-svg-icon {
+      width: 16px;
+      height: 16px;
+      stroke: rgba(255, 255, 255, 0.75);
+      transition: stroke 0.2s ease, transform 0.2s ease;
+      display: inline-block;
+      vertical-align: middle;
+      flex-shrink: 0;
+    }
+
+    .btn-text {
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+      letter-spacing: 0.2px;
+    }
+
+    &:hover:not(.active) {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+
+      .btn-svg-icon {
+        stroke: #ffffff;
+      }
+    }
+
+    &.active {
+      background: #ffffff;
+      color: #0f172a;
+      font-weight: 700;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.22), 0 1px 2px rgba(0, 0, 0, 0.12);
+
+      .btn-svg-icon {
+        stroke: #dc2626; /* Crimson brand accent */
+      }
+    }
+  }
+}
+
+
+/* ========================================================================= */
+/* PART 1: FMEA POSTER & INFOGRAPHIC STYLES (IMG2)                          */
+/* ========================================================================= */
+
+.info-card {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.card-badge-header {
+  background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 8px 14px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 2px solid #7f1d1d;
+
+  .badge-number {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-size: 10.5px;
+    padding: 2px 7px;
+    border-radius: 12px;
+    font-weight: 800;
+  }
+}
+
+.card-content-body {
+  padding: 16px;
+  flex: 1;
+}
+
+.desc-text {
+  font-size: 12.5px;
+  color: #334155;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.example-highlight {
+  font-size: 12px;
+  padding: 6px 10px;
+  background-color: #f8fafc;
+  border-radius: 4px;
+  border-left: 3px solid #dc2626;
+}
+
+/* 4 Pillars in Card 1 (Enlarged icons & typography, no subtitles) */
+.pillar-box {
+  border-radius: 8px;
+  padding: 18px 10px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  }
+
+  .pillar-icon {
+    font-size: 36px !important;
+    width: 36px !important;
+    height: 36px !important;
+    margin-bottom: 8px;
+  }
+
+  .pillar-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  &.pillar-blue {
+    background-color: #eff6ff;
+    border: 1px solid #bfdbfe;
+    color: #1e40af;
+    .pillar-icon { color: #2563eb; }
+  }
+
+  &.pillar-red {
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+    .pillar-icon { color: #dc2626; }
+  }
+
+  &.pillar-amber {
+    background-color: #fffbeb;
+    border: 1px solid #fde68a;
+    color: #92400e;
+    .pillar-icon { color: #d97706; }
+  }
+
+  &.pillar-green {
+    background-color: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    color: #065f46;
+    .pillar-icon { color: #059669; }
+  }
+}
+
+/* Types of FMEA Cards (Refined larger icons and typography) */
+.type-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #cbd5e1;
+  margin-bottom: 10px;
+  transition: all 0.2s ease;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &:hover {
+    background: #ffffff;
+    border-color: #cbd5e1;
+    transform: translateX(3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  &.type-design {
+    border-left-color: #2563eb;
+    .type-icon-box { background: #2563eb; color: #fff; }
+    .type-badge { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+  }
+  &.type-process {
+    border-left-color: #16a34a;
+    .type-icon-box { background: #16a34a; color: #fff; }
+    .type-badge { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
+  }
+  &.type-system {
+    border-left-color: #0f172a;
+    .type-icon-box { background: #0f172a; color: #fff; }
+    .type-badge { background: #f8fafc; color: #334155; border: 1px solid #cbd5e1; }
+  }
+
+  .type-icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    mat-icon,
+    svg {
+      font-size: 22px;
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+    }
+  }
+
+  .type-info {
+    flex: 1;
+
+    .type-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3px;
+    }
+
+    .type-code {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    .type-badge {
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .type-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #334155;
+      margin-bottom: 1px;
+    }
+
+    .type-focus {
+      font-size: 11.5px;
+      color: #64748b;
+      line-height: 1.3;
+    }
+  }
+}
+
+/* CAD Schematic Visual */
+.component-visual-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+/* Failure Effect Avatar */
+/* Failure Effect Avatar Box */
+.avatar-effect-circle {
+  position: relative;
+  width: 54px;
+  height: 54px;
+  border-radius: 8px; /* Clean rectangular geometry, NO ovals! */
+  background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+  border: 1px solid #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .effect-user-icon {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+    color: #334155;
+  }
+
+  .effect-cross-icon {
+    position: absolute;
+    bottom: -4px;
+    right: -4px;
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    color: #dc2626;
+    background: #ffffff;
+    border-radius: 4px;
+  }
+}
+
+/* Failure Cause Icon Boxes */
+.cause-icon-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 6px; /* Clean square box, NO ovals! */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Severity & Occurrence Scales */
+.scale-list li {
+  padding: 2.5px 0;
+  color: #334155;
+  display: flex;
+  align-items: center;
+}
+
+/* RPN Formula Hero Display */
+.rpn-formula-display {
+  font-size: 15px;
+  letter-spacing: 0.5px;
+
+  .formula-label {
+    font-weight: 800;
+    color: #f8fafc;
+  }
+
+  .rpn-score-val {
+    font-size: 20px;
+    font-weight: 800;
+    padding: 2px 10px;
+    border-radius: 6px;
+    display: inline-block;
+
+    &.risk-high { background-color: #ef4444; color: #fff; }
+    &.risk-medium { background-color: #f59e0b; color: #fff; }
+    &.risk-low { background-color: #22c55e; color: #fff; }
+  }
+}
+
+.rpn-action-alert {
+  font-size: 11.5px;
+  font-weight: 600;
+
+  &.risk-high { background-color: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+  &.risk-medium { background-color: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+  &.risk-low { background-color: #dcfce7; color: #166534; border: 1px solid #86efac; }
+}
+
+/* Card 10: Enlarged 2D Heatmap Grid (Zero Wasted Space) */
+.risk-concept-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.heatmap-wrapper {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  width: 100%;
+}
+
+.y-axis-title-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .y-axis-title {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 11px;
+    font-weight: 800;
+    color: #475569;
+    letter-spacing: 0.5px;
+  }
+}
+
+.heatmap-grid {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  .matrix-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+  }
+
+  .matrix-axis-label {
+    width: 50px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 4px;
+    flex-shrink: 0;
+  }
+
+  .matrix-cell {
+    flex: 1;
+    min-height: 48px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+    &:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 2;
+    }
+
+    .cell-level {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      line-height: 1.2;
+    }
+
+    .cell-sub {
+      font-size: 8.5px;
+      font-weight: 600;
+      opacity: 0.9;
+      line-height: 1.1;
+      margin-top: 1px;
+    }
+
+    &.cell-high {
+      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+      color: #ffffff;
+      border: 1px solid #b91c1c;
+    }
+
+    &.cell-med {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: #ffffff;
+      border: 1px solid #b45309;
+    }
+
+    &.cell-low {
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+      color: #ffffff;
+      border: 1px solid #15803d;
+    }
+  }
+
+  .matrix-col-labels-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+    margin-top: 2px;
+
+    .matrix-axis-spacer {
+      width: 50px;
+      flex-shrink: 0;
+    }
+
+    .matrix-col-label {
+      flex: 1;
+      font-size: 11px;
+      font-weight: 700;
+      color: #64748b;
+      text-align: center;
+    }
+  }
+
+  .x-axis-title {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 800;
+    color: #475569;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+  }
+}
+
+/* Horizontal Legend Bar underneath Matrix (Full Width) */
+.risk-legend-bar {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #e2e8f0;
+
+  .risk-legend-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 6px 4px;
+    text-align: center;
+    transition: all 0.15s ease;
+
+    &:hover {
+      background: #ffffff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    }
+
+    .legend-title {
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .legend-action {
+      font-size: 8.5px;
+      color: #64748b;
+      display: block;
+      line-height: 1.15;
+      margin-top: 1px;
+    }
+
+    &.legend-red {
+      border-top: 3px solid #dc2626;
+      .legend-title { color: #dc2626; }
+    }
+
+    &.legend-amber {
+      border-top: 3px solid #d97706;
+      .legend-title { color: #d97706; }
+    }
+
+    &.legend-green {
+      border-top: 3px solid #16a34a;
+      .legend-title { color: #16a34a; }
+    }
+  }
+}
+
+.legend-swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  vertical-align: middle;
+}
+
+/* PFMEA Table & Metric Headers (No horizontal scroll on desktop) */
+.pfmea-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+
+  @media (min-width: 1200px) {
+    overflow-x: visible;
+  }
+}
+
+.pfmea-fit-table {
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+  font-size: 11.5px;
+
+  th, td {
+    padding: 8px 6px !important;
+    vertical-align: middle !important;
+    line-height: 1.25 !important;
+    white-space: normal !important;
+  }
+
+  .col-step { width: 7.5%; }
+  .col-mode { width: 9.5%; }
+  .col-effect { width: 10.5%; }
+  .col-s { width: 5.5%; text-align: center; }
+  .col-cause { width: 10.5%; }
+  .col-o { width: 5.5%; text-align: center; }
+  .col-controls { width: 9.5%; }
+  .col-d { width: 5.5%; text-align: center; }
+  .col-rpn { width: 5%; text-align: center; }
+  .col-action { width: 12%; }
+  .col-resp { width: 8%; }
+  .col-taken { width: 11%; }
+  .col-rev-rpn { width: 5.5%; text-align: center; }
+}
+
+.tbl-head-pfmea {
+  background: #0f172a;
+  color: #ffffff;
+
+  th {
+    padding: 9px 6px;
+    font-weight: 700;
+    border: none;
+    font-size: 11px;
+    letter-spacing: 0.2px;
+    vertical-align: middle;
+
+    &.th-metric-s {
+      background: #7f1d1d !important; /* Deep crimson for Severity (S) */
+      color: #fef2f2 !important;
+      border-left: 1px solid rgba(255, 255, 255, 0.15);
+      border-right: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    &.th-metric-o {
+      background: #1e3a8a !important; /* Deep royal blue for Occurrence (O) */
+      color: #eff6ff !important;
+      border-left: 1px solid rgba(255, 255, 255, 0.15);
+      border-right: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    &.th-metric-d {
+      background: #064e3b !important; /* Deep emerald for Detection (D) */
+      color: #ecfdf5 !important;
+      border-left: 1px solid rgba(255, 255, 255, 0.15);
+      border-right: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    &.th-metric-rpn {
+      background: #1e293b !important;
+      color: #ffffff !important;
+      border-left: 1px solid rgba(255, 255, 255, 0.15);
+      border-right: 1px solid rgba(255, 255, 255, 0.15);
+    }
+  }
+}
+
+/* Crisp Rectangular Badges (No Ovals!) */
+.badge-rpn-box,
+.badge-rpn-pill {
+  padding: 3px 6px;
+  border-radius: 4px; /* Crisp rectangular badge, NO ovals! */
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-block;
+  min-width: 34px;
+  text-align: center;
+
+  &.rpn-box-high,
+  &.rpn-pill-high { background-color: #fee2e2; color: #dc2626; border: 1px solid #fca5a5; }
+  &.rpn-box-med,
+  &.rpn-pill-med { background-color: #fef3c7; color: #d97706; border: 1px solid #fde68a; }
+  &.rpn-box-low,
+  &.rpn-pill-low { background-color: #dcfce7; color: #16a34a; border: 1px solid #86efac; }
+}
+
+.badge-reduction-box {
+  padding: 3px 6px;
+  border-radius: 4px; /* Crisp rectangular badge, NO ovals! */
+  font-size: 11px;
+  font-weight: 700;
+  background-color: #ecfdf5;
+  color: #15803d;
+  border: 1px solid #86efac;
+  display: inline-block;
+}
+
+/* Card 11: Recommended Actions Clean Grid */
+.action-clean-grid {
+  .action-item-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 3px solid #cbd5e1;
+    border-radius: 4px; /* Rectangular, NO ovals! */
+    transition: all 0.15s ease;
+
+    &.action-border-red { border-left-color: #dc2626; }
+    &.action-border-blue { border-left-color: #2563eb; }
+    &.action-border-amber { border-left-color: #d97706; }
+    &.action-border-green { border-left-color: #16a34a; }
+    &.action-border-cyan { border-left-color: #0284c7; }
+    &.action-border-slate { border-left-color: #334155; }
+
+    &:hover {
+      background: #ffffff;
+      border-color: #cbd5e1;
+      transform: translateX(2px);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    }
+
+    .action-icon-box {
+      width: 26px;
+      height: 26px;
+      border-radius: 4px; /* Crisp square, NO ovals! */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .action-text {
+      font-size: 12px;
+      color: #334155;
+      line-height: 1.35;
+    }
+  }
+}
+
+/* Card 14: Manufacturing Process Clean Rectangular Grid (Compact, fits in col-lg-5 without scroll) */
+.process-sequence-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3px;
+  width: 100%;
+  overflow: hidden !important; /* Zero scrollbar! */
+  padding: 2px 0;
+
+  .seq-step-card {
+    flex: 1;
+    min-width: 0; /* Fully responsive, zero horizontal overflow */
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    padding: 6px 2px;
+    text-align: center;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: #ffffff;
+      border-color: #cbd5e1;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    &.highlight {
+      background: #f0fdf4;
+      border-color: #86efac;
+    }
+
+    .seq-step-badge {
+      font-size: 7.5px;
+      font-weight: 800;
+      color: #64748b;
+      background: #e2e8f0;
+      padding: 1px 3px;
+      border-radius: 2px;
+      display: inline-block;
+      margin-bottom: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.1px;
+      white-space: nowrap;
+
+      &.badge-qa {
+        background: #16a34a;
+        color: #ffffff;
+      }
+    }
+
+    .seq-step-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 4px;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1e293b;
+      margin: 0 auto 3px auto;
+
+      mat-icon {
+        font-size: 13px;
+        width: 13px;
+        height: 13px;
+        line-height: 13px;
+      }
+    }
+
+    .seq-step-name {
+      font-size: 9px;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.15;
+      margin-bottom: 1px;
+      white-space: normal;
+      word-break: break-word;
+    }
+
+    .seq-step-spec {
+      font-size: 7.5px;
+      color: #64748b;
+      display: block;
+      line-height: 1.1;
+      white-space: normal;
+      word-break: break-word;
+    }
+  }
+
+  .seq-step-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    flex-shrink: 0;
+    padding: 0 1px;
+
+    mat-icon {
+      font-size: 12px;
+      width: 12px;
+      height: 12px;
+      line-height: 12px;
+    }
+  }
+}
+
+/* Card 15: Benefits Clean Rectangular Grid (NO Ovals!) */
+.benefits-clean-grid {
+  .benefit-item-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 3px solid #16a34a; /* Emerald green accent */
+    border-radius: 4px; /* Crisp rectangular card, NO ovals! */
+    transition: all 0.15s ease;
+
+    &:hover {
+      background: #ffffff;
+      border-color: #cbd5e1;
+      transform: translateX(2px);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    }
+
+    .benefit-icon-box {
+      width: 26px;
+      height: 26px;
+      border-radius: 4px; /* Crisp square, NO ovals! */
+      background: #ecfdf5;
+      color: #16a34a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .benefit-text {
+      font-size: 12px;
+      color: #334155;
+      line-height: 1.35;
+    }
+  }
+}
+
+
+/* ========================================================================= */
+/* PART 2: FLOWCHART STYLES (IMG3)                                          */
+/* ========================================================================= */
+
+.flowchart-section {
+  border-radius: 10px;
+}
+
+.flowchart-main-title {
+  font-size: 26px;
+  font-weight: 900;
+  color: #0f172a;
+  letter-spacing: -0.5px;
+}
+
+/* 6 Phase Stepper Header */
+.flowchart-phase-stepper {
+  .phase-step-pill {
+    padding: 6px 12px;
+    border-radius: 4px; /* Clean rectangular phase step, NO ovals! */
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+
+    .phase-step-num {
+      width: 18px;
+      height: 18px;
+      border-radius: 3px;
+      background: rgba(0, 0, 0, 0.18);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10.5px;
+      font-weight: 800;
+    }
+  }
+
+  .phase-chevron {
+    color: #94a3b8;
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* 4 Column Flowchart Grid */
+.flowchart-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.flow-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Column Stage Headers */
+.col-stage-header {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background-color: #f8fafc;
+
+  .col-stage-title {
+    font-size: 12px;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: 0.5px;
+  }
+
+  .col-stage-sub {
+    font-size: 11px;
+    color: #64748b;
+  }
+}
+
+/* Node Boxes */
+.flow-box-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flow-node-box {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid #0f172a;
+  border-radius: 4px;
+  font-size: 11.5px;
+  text-align: left;
+  line-height: 1.35;
+  color: #0f172a;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .node-step-badge {
+    font-size: 9.5px;
+    font-weight: 800;
+    background: rgba(0, 0, 0, 0.15);
+    padding: 1px 6px;
+    border-radius: 10px;
+    text-transform: uppercase;
+  }
+
+  .node-phase-tag {
+    font-size: 9.5px;
+    font-weight: 600;
+    opacity: 0.8;
+  }
+
+  .node-text {
+    font-weight: 600;
+    margin-top: 3px;
+  }
+}
+
+/* Decision Diamond Cards */
+.flow-diamond-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 6px 0;
+}
+
+.flow-diamond-container {
+  width: 100%;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: 2px dashed #0f172a;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .diamond-content {
+    text-align: center;
+
+    .flow-step-tag {
+      font-size: 9.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      background: rgba(0, 0, 0, 0.15);
+      display: inline-block;
+      padding: 1px 8px;
+      border-radius: 10px;
+      margin-bottom: 4px;
+    }
+
+    .diamond-text {
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.35;
+      color: #0f172a;
+    }
+  }
+}
+
+/* Connectors / Down Arrows */
+.flow-arrow-down {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 4px 0;
+  color: #0f172a;
+
+  .arrow-label {
+    font-size: 10.5px;
+    font-weight: 800;
+    color: #0f172a;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 0 6px;
+    margin-bottom: -4px;
+    z-index: 1;
+  }
+
+  .arrow-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+  }
+}
+
+/* Transition to next column */
+.transition-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background-color: #f1f5f9;
+  border: 1.5px dashed #475569;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #1e293b;
+  transition: all 0.2s ease;
+
+  mat-icon {
+    font-size: 15px;
+    width: 15px;
+    height: 15px;
+  }
+
+  &:hover {
+    background-color: #0f172a;
+    color: #ffffff;
+    border-color: #0f172a;
+  }
+}
+
+/* Exact Phase Colors Matching img3 */
+.phase-preliminary {
+  background-color: #df7c38 !important; /* Rust / Terracotta */
+}
+
+.phase-planning {
+  background-color: #f59e0b !important; /* Warm Amber / Orange */
+}
+
+.phase-cause_effect {
+  background-color: #60a5fa !important; /* Steel / Sky Blue */
+}
+
+.phase-ranking {
+  background-color: #93c5fd !important; /* Light Ice Blue */
+}
+
+.phase-implementation {
+  background-color: #bef264 !important; /* Soft Lime / Yellow-Green */
+}
+
+.phase-sustaining {
+  background-color: #a3b899 !important; /* Sage / Olive Green */
+}
+
+/* Flowchart Legend */
+.flowchart-legend {
+  .legend-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 24px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: #334155;
+
+    .legend-box {
+      width: 22px;
+      height: 18px;
+      border: 1.5px solid #0f172a;
+      border-radius: 3px;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+  }
+}
