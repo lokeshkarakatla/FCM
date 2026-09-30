@@ -120,6 +120,7 @@
                         <th>Department</th>
                         <th>Subject</th>
                         <th>Description</th>
+                        <th class="nowrap text-center" width="115" style="min-width: 115px;">Risk Rating</th>
                         <th class="nowrap text-center" width="105">Due Date</th>
                         <th class="nowrap text-center" width="105">ETA Date</th>
                         <th class="nowrap text-center" width="115">Completed Date</th>
@@ -162,6 +163,11 @@
                         <td>{{ item.department }}</td>
                         <td class="fw-semibold">{{ item.issue }}</td>
                         <td>{{ item.details }}</td>
+                        <td class="nowrap text-center">
+                            <a class="clickable" (click)="openRiskRatingDialog(item)">
+                                {{ item.riskRating || '3.5' }} / 5
+                            </a>
+                        </td>
                         <td class="nowrap red-due-date text-center">{{ item.date }}</td>
                         <td class="nowrap text-center">{{ item.eta || '-' }}</td>
                         <td class="nowrap text-center">{{ item.completedDate || '-' }}</td>

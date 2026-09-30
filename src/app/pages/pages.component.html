@@ -81,8 +81,10 @@
         </div>
 
         <div id="main-content" class="inner-sidenav-content transition-2"
-            [class.with-page-header]="showBreadcrumb || showBackBtn" perfectScrollbar (psScrollY)="onPsScrollY($event)">
-            <div [class.has-footer]="settings.hasFooter">
+            [class.with-page-header]="showBreadcrumb || showBackBtn"
+            [class.reference-screen-mode]="isReferenceRoute"
+            perfectScrollbar (psScrollY)="onPsScrollY($event)">
+            <div [class.has-footer]="settings.hasFooter" [class.h-100]="isReferenceRoute">
                 <router-outlet></router-outlet>
             </div>
         </div>

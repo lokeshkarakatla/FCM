@@ -49,6 +49,8 @@ export interface CountryAgg {
   warrantyCost: number;
   resolved: number;
   open: number;
+  active: number;
+  overdue: number;
 }
 
 @Component({
@@ -107,7 +109,7 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
       stageLabel: 'D3 Containment',
       status: 'Under Containment',
       ageDays: 14,
-      warrantyCost: 4200,
+      warrantyCost: 45000,
       department: 'R&D',
       distributor: 'Siam Agri Tech',
       dateLogged: '2026-09-08'
@@ -124,7 +126,7 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
       stageLabel: 'D4 Root Cause (RCA)',
       status: 'In Progress',
       ageDays: 22,
-      warrantyCost: 6800,
+      warrantyCost: 52000,
       department: 'Manufacturing',
       distributor: 'Siam Agri Tech',
       dateLogged: '2026-08-31'
@@ -141,7 +143,7 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
       stageLabel: 'D5 Permanent Action (PCA)',
       status: 'CAPA Active',
       ageDays: 38,
-      warrantyCost: 5400,
+      warrantyCost: 55000,
       department: 'Quality',
       distributor: 'Golan Tractors',
       dateLogged: '2026-08-15'
@@ -155,10 +157,10 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
       subsystem: 'Steering',
       severity: 'Medium',
       stage8d: 'D6',
-      stageLabel: 'D6 Verification',
+      stageLabel: 'D6 QA',
       status: 'In Progress',
       ageDays: 18,
-      warrantyCost: 2100,
+      warrantyCost: 20000,
       department: 'R&D',
       distributor: 'AgriKraft GmbH',
       dateLogged: '2026-09-04'
@@ -172,10 +174,10 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
       subsystem: 'Electrical',
       severity: 'High',
       stage8d: 'D2',
-      stageLabel: 'D2 Problem Definition',
+      stageLabel: 'D2 RCM',
       status: 'Open',
       ageDays: 9,
-      warrantyCost: 1800,
+      warrantyCost: 15000,
       department: 'Supplier Sourcing',
       distributor: 'Himalayan Farm Equip',
       dateLogged: '2026-09-13'
@@ -192,7 +194,7 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
       stageLabel: 'D3 Containment',
       status: 'Under Containment',
       ageDays: 27,
-      warrantyCost: 7100,
+      warrantyCost: 48000,
       department: 'Manufacturing',
       distributor: 'Golan Tractors',
       dateLogged: '2026-08-26'
@@ -209,7 +211,7 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
       stageLabel: 'D4 Root Cause (RCA)',
       status: 'CAPA Active',
       ageDays: 45,
-      warrantyCost: 8900,
+      warrantyCost: 75000,
       department: 'Quality',
       distributor: 'Atlas Motors',
       dateLogged: '2026-08-08'
@@ -226,7 +228,7 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
       stageLabel: 'D7 Recurrence Prevention',
       status: 'In Progress',
       ageDays: 52,
-      warrantyCost: 3100,
+      warrantyCost: 45000,
       department: 'R&D',
       distributor: 'Pyrenees Fleet',
       dateLogged: '2026-08-01'
@@ -243,7 +245,7 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
       stageLabel: 'D8 Closed',
       status: 'Closed',
       ageDays: 68,
-      warrantyCost: 4600,
+      warrantyCost: 45000,
       department: 'Supplier Sourcing',
       distributor: 'Siam Agri Tech',
       dateLogged: '2026-07-16'
@@ -260,7 +262,7 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
       stageLabel: 'D8 Closed',
       status: 'Closed',
       ageDays: 75,
-      warrantyCost: 850,
+      warrantyCost: 10000,
       department: 'Quality',
       distributor: 'AgriNord SARL',
       dateLogged: '2026-07-09'
@@ -277,7 +279,7 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
       stageLabel: 'D4 Root Cause (RCA)',
       status: 'In Progress',
       ageDays: 31,
-      warrantyCost: 3900,
+      warrantyCost: 40000,
       department: 'Manufacturing',
       distributor: 'Siam Agri Tech',
       dateLogged: '2026-08-22'
@@ -294,7 +296,7 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
       stageLabel: 'D5 Permanent Action (PCA)',
       status: 'CAPA Active',
       ageDays: 24,
-      warrantyCost: 1950,
+      warrantyCost: 22000,
       department: 'Supplier Sourcing',
       distributor: 'Atlas Motors',
       dateLogged: '2026-08-29'
@@ -317,7 +319,10 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
 
   // Aggregated models and countries
   modelSummaries: ModelAgg[] = [];
+  productLineSummaries: { name: string; count: number; percentage: number; models: string[] }[] = [];
   countrySummaries: CountryAgg[] = [];
+  subsystemViewMode: 'model' | 'module' = 'model';
+  donutGrouping: 'model' | 'productLine' = 'model';
   pipelineCounts: { [key: string]: number } = {};
   ageingCounts = {
     '0-15 Days': 0,
@@ -333,14 +338,14 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
     public dialog: MatDialog,
     private router: Router,
     private cdr: ChangeDetectorRef
-  ) {}
+  ) { }
 
   private resizeListener = () => {
     Highcharts.charts.forEach(chart => {
       if (chart) {
         try {
           chart.reflow();
-        } catch (e) {}
+        } catch (e) { }
       }
     });
   };
@@ -550,6 +555,28 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
     });
     this.modelSummaries = Array.from(modelMap.values()).sort((a, b) => b.total - a.total);
 
+    // Compute Product Line (group of models) Aggregates
+    const productLineMap = new Map<string, { name: string; count: number; models: string[] }>();
+    list.forEach(c => {
+      const plName = this.getModelProductLine(c.model);
+      if (!productLineMap.has(plName)) {
+        productLineMap.set(plName, { name: plName, count: 0, models: [] });
+      }
+      const plAgg = productLineMap.get(plName)!;
+      plAgg.count += 1;
+      if (!plAgg.models.includes(c.model)) {
+        plAgg.models.push(c.model);
+      }
+    });
+    this.productLineSummaries = Array.from(productLineMap.values())
+      .map(pl => ({
+        name: pl.name,
+        count: pl.count,
+        percentage: list.length > 0 ? (pl.count / list.length) * 100 : 0,
+        models: pl.models
+      }))
+      .sort((a, b) => b.count - a.count);
+
     // Compute Country Aggregates
     const countryMap = new Map<string, CountryAgg>();
     list.forEach(c => {
@@ -561,15 +588,25 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
           critical: 0,
           warrantyCost: 0,
           resolved: 0,
-          open: 0
+          open: 0,
+          active: 0,
+          overdue: 0
         });
       }
       const agg = countryMap.get(c.country)!;
       agg.total += 1;
       agg.warrantyCost += c.warrantyCost;
       if (c.severity === 'Critical') agg.critical += 1;
-      if (c.status === 'Closed') agg.resolved += 1;
-      else agg.open += 1;
+      if (c.status === 'Closed') {
+        agg.resolved += 1;
+      } else {
+        agg.open += 1;
+        if (c.ageDays > 30) {
+          agg.overdue += 1;
+        } else {
+          agg.active += 1;
+        }
+      }
     });
     this.countrySummaries = Array.from(countryMap.values()).sort((a, b) => b.total - a.total);
 
@@ -608,6 +645,25 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
     this.renderActiveChartsWithDelay();
   }
 
+  getModelProductLine(model: string): string {
+    if (model.includes('NT')) return 'Solis NT Series';
+    if (model.includes('26')) return 'Solis Compact Series';
+    if (model.includes('50 RX') || model.includes('RX')) return 'Solis RX Series';
+    if (model.includes('75')) return 'Solis S-Series';
+    return 'Other Series';
+  }
+
+  setSubsystemViewMode(mode: 'model' | 'module'): void {
+    this.subsystemViewMode = mode;
+    this.renderRadarSubsystemChart();
+    this.renderModelStackedBarChart();
+  }
+
+  setDonutGrouping(mode: 'model' | 'productLine'): void {
+    this.donutGrouping = mode;
+    this.renderModelDonutChart();
+  }
+
   renderActiveChartsWithDelay(): void {
     setTimeout(() => {
       if (this.currentView === 'charts') {
@@ -627,10 +683,8 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
           this.renderCountrySlaChart();
           this.renderCountrySubsystemChart();
         } else if (this.activeTab === 'pipeline8d') {
-          this.render8dFunnelChart();
           this.render8dDwellChart();
           this.render8dDeptChart();
-          this.render8dContainmentChart();
         } else if (this.activeTab === 'ageing') {
           this.renderAgeingBarChart();
           this.renderAgeingDonutChart();
@@ -644,7 +698,7 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
             if (chart) {
               try {
                 chart.reflow();
-              } catch (e) {}
+              } catch (e) { }
             }
           });
         }, 80);
@@ -687,12 +741,12 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
       },
       xAxis: {
         categories: [
-          'Severity Impact',
-          'Field Occurrence Rate',
+          'Severity',
+          'Field Occurrence Volume',
           'Detection Latency',
-          'Containment Speed',
+          'Containment Delay',
           'Warranty Cost Burden',
-          'Supplier Defect Index'
+          'Supplier Defect Rate'
         ],
         tickmarkPlacement: 'on',
         lineWidth: 0,
@@ -721,7 +775,7 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
       },
       series: [
         {
-          name: this.selectedModel === 'ALL' ? 'Fleet Quality Telemetry' : this.selectedModel,
+          name: this.selectedModel === 'ALL' ? 'Fleet Quality Profile' : this.selectedModel,
           type: 'area',
           data: [severityScore, occurrenceScore, detectionDelayScore, containmentVelocityScore, warrantyBurdenScore, supplierRiskScore],
           pointPlacement: 'on',
@@ -766,7 +820,7 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
       subtitle: { text: undefined },
       credits: { enabled: false },
       xAxis: {
-        categories: ['D1 Team', 'D2 Problem', 'D3 Containment', 'D4 RCA', 'D5 PCA', 'D6 Validation', 'D7 Prevention', 'D8 Closure'],
+        categories: ['D0 Plan', 'D1 Team', 'D2 RCM', 'D3 Containment', 'D4 RCA', 'D5 PCA', 'D6 QA', 'D7 Prevention', 'D8 Recognition'],
         labels: { style: { fontSize: '11px', fontWeight: '600', color: '#475569' } }
       },
       yAxis: {
@@ -781,7 +835,7 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
         column: {
           borderRadius: 4,
           colorByPoint: true,
-          colors: ['#6366f1', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4', '#10b981', '#059669'],
+          colors: ['#6366f1', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4', '#10b981', '#059669', '#0ea5e9'],
           dataLabels: {
             enabled: true,
             style: { fontWeight: '700', fontSize: '11px', color: '#0f172a' }
@@ -792,6 +846,7 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
         type: 'column',
         name: 'Complaints',
         data: [
+          this.pipelineCounts['D0'] || 4,
           this.pipelineCounts['D1'] || 2,
           this.pipelineCounts['D2'] || 3,
           this.pipelineCounts['D3'] || 4,
@@ -805,59 +860,137 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
     });
   }
 
+  private buildSubsystemBarOptions(): Highcharts.Options {
+    if (this.subsystemViewMode === 'model') {
+      const categories = this.modelSummaries.map(m => m.name);
+      const subsystemList = ['Hydraulics', 'Transmission', 'Thermal & Engine', 'Electrical', 'Steering', 'Braking', 'Chassis & Frame'];
+      const subsystemColors: { [key: string]: string } = {
+        'Hydraulics': '#0288d1',
+        'Transmission': '#8b5cf6',
+        'Thermal & Engine': '#ef4444',
+        'Electrical': '#f59e0b',
+        'Steering': '#10b981',
+        'Braking': '#ec4899',
+        'Chassis & Frame': '#64748b'
+      };
+
+      const series = subsystemList.map(sub => ({
+        name: sub,
+        type: 'column',
+        color: subsystemColors[sub] || '#94a3b8',
+        data: categories.map(modelName => {
+          const m = this.modelSummaries.find(item => item.name === modelName);
+          return m && m.subsystems[sub] ? m.subsystems[sub] : 0;
+        })
+      }));
+
+      return {
+        chart: {
+          type: 'column',
+          backgroundColor: 'transparent',
+          style: { fontFamily: 'Roboto, -apple-system, BlinkMacSystemFont, sans-serif' }
+        },
+        title: { text: undefined },
+        subtitle: { text: undefined },
+        credits: { enabled: false },
+        xAxis: {
+          categories: categories,
+          labels: { style: { fontSize: '11px', fontWeight: '600', color: '#334155' } }
+        },
+        yAxis: {
+          min: 0,
+          title: { text: 'Complaint Count', style: { color: '#64748b', fontSize: '11px' } },
+          stackLabels: {
+            enabled: true,
+            style: { fontWeight: '700', fontSize: '11px', color: '#0f172a' }
+          },
+          gridLineDashStyle: 'Dash',
+          gridLineColor: '#e2e8f0'
+        },
+        legend: {
+          align: 'center',
+          verticalAlign: 'bottom',
+          layout: 'horizontal',
+          itemStyle: { fontSize: '11px', color: '#334155' }
+        },
+        tooltip: {
+          shared: true,
+          headerFormat: '<span style="font-size: 12px; font-weight: 700;">{point.key}</span> (Total: <b>{point.total}</b>)<br/>',
+          pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: <b>{point.y}</b><br/>'
+        },
+        plotOptions: {
+          column: {
+            stacking: 'normal',
+            borderRadius: 3
+          }
+        },
+        series: series as any
+      };
+    } else {
+      const modulesList = ['Thermal & Engine', 'Electrical', 'Transmission', 'Hydraulics', 'Steering', 'Braking', 'Chassis & Frame'];
+      const modelNames = this.modelSummaries.map(m => m.name);
+      const modelColors = ['#0288d1', '#f59e0b', '#8b5cf6', '#10b981', '#64748b', '#ef4444', '#06b6d4'];
+
+      const series = modelNames.map((modelName, idx) => {
+        const modelObj = this.modelSummaries.find(m => m.name === modelName);
+        return {
+          name: modelName,
+          type: 'column',
+          data: modulesList.map(mod => (modelObj && modelObj.subsystems[mod]) ? modelObj.subsystems[mod] : 0),
+          color: modelColors[idx % modelColors.length]
+        };
+      });
+
+      return {
+        chart: {
+          type: 'column',
+          backgroundColor: 'transparent',
+          style: { fontFamily: 'Roboto, -apple-system, BlinkMacSystemFont, sans-serif' }
+        },
+        title: { text: undefined },
+        subtitle: { text: undefined },
+        credits: { enabled: false },
+        xAxis: {
+          categories: modulesList,
+          labels: { style: { fontSize: '11px', fontWeight: '600', color: '#334155' } }
+        },
+        yAxis: {
+          min: 0,
+          title: { text: 'Complaint Count', style: { color: '#64748b', fontSize: '11px' } },
+          stackLabels: {
+            enabled: true,
+            style: { fontWeight: '700', fontSize: '11px', color: '#0f172a' }
+          },
+          gridLineDashStyle: 'Dash',
+          gridLineColor: '#e2e8f0'
+        },
+        legend: {
+          align: 'center',
+          verticalAlign: 'bottom',
+          layout: 'horizontal',
+          itemStyle: { fontSize: '11px', color: '#334155' }
+        },
+        tooltip: {
+          shared: true,
+          headerFormat: '<span style="font-size: 12px; font-weight: 700;">{point.key}</span> (Total: <b>{point.total}</b>)<br/>',
+          pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: <b>{point.y}</b><br/>'
+        },
+        plotOptions: {
+          column: {
+            stacking: 'normal',
+            borderRadius: 3
+          }
+        },
+        series: series as any
+      };
+    }
+  }
+
   // 3. Radar Secondary Chart: Subsystems Breakdown
   renderRadarSubsystemChart(): void {
     const container = document.getElementById('radarSubsystemBarContainer');
     if (!container) return;
-
-    const categories = this.modelSummaries.map(m => m.name);
-    const subsystemsList = ['Hydraulics', 'Transmission', 'Thermal & Engine', 'Electrical', 'Steering', 'Braking', 'Chassis & Frame'];
-    const colors = ['#0288d1', '#6366f1', '#ef4444', '#f59e0b', '#10b981', '#8b5cf6', '#64748b'];
-
-    const series = subsystemsList.map((sub, idx) => ({
-      name: sub,
-      data: this.modelSummaries.map(m => m.subsystems[sub] || 0),
-      color: colors[idx % colors.length]
-    }));
-
-    Highcharts.chart('radarSubsystemBarContainer', {
-      chart: {
-        type: 'column',
-        backgroundColor: 'transparent',
-        style: { fontFamily: 'Roboto, -apple-system, BlinkMacSystemFont, sans-serif' }
-      },
-      title: { text: undefined },
-      subtitle: { text: undefined },
-      credits: { enabled: false },
-      xAxis: {
-        categories: categories,
-        labels: { style: { fontSize: '11px', fontWeight: '600', color: '#334155' } }
-      },
-      yAxis: {
-        min: 0,
-        title: { text: 'Subsystem Complaints', style: { color: '#64748b', fontSize: '11px' } },
-        stackLabels: { enabled: true, style: { fontWeight: '700', color: '#1e293b' } },
-        gridLineDashStyle: 'Dash',
-        gridLineColor: '#e2e8f0'
-      },
-      legend: {
-        align: 'center',
-        verticalAlign: 'bottom',
-        layout: 'horizontal',
-        itemStyle: { fontSize: '11px', color: '#334155' }
-      },
-      tooltip: {
-        shared: true,
-        headerFormat: '<b>{point.x}</b><br/>'
-      },
-      plotOptions: {
-        column: {
-          stacking: 'normal',
-          borderRadius: 2
-        }
-      },
-      series: series as any
-    });
+    Highcharts.chart('radarSubsystemBarContainer', this.buildSubsystemBarOptions());
   }
 
   // 4. Radar Secondary Chart: Market Exposure & Resolution
@@ -866,7 +999,8 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
     if (!container) return;
 
     const categories = this.countrySummaries.map(c => c.name);
-    const openData = this.countrySummaries.map(c => c.open);
+    const activeData = this.countrySummaries.map(c => c.active);
+    const overdueData = this.countrySummaries.map(c => c.overdue);
     const resolvedData = this.countrySummaries.map(c => c.resolved);
 
     Highcharts.chart('radarMarketBarContainer', {
@@ -893,6 +1027,11 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
         verticalAlign: 'bottom',
         itemStyle: { fontSize: '11px', color: '#334155' }
       },
+      tooltip: {
+        shared: true,
+        headerFormat: '<span style="font-size: 12px; font-weight: 700;">{point.key}</span><br/>',
+        pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: <b>{point.y}</b><br/>'
+      },
       plotOptions: {
         bar: {
           stacking: 'normal',
@@ -900,7 +1039,8 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
         }
       },
       series: [
-        { name: 'Active Complaints', data: openData, color: '#f59e0b', type: 'bar' },
+        { name: 'Overdue', data: overdueData, color: '#ef4444', type: 'bar' },
+        { name: 'Active Complaints', data: activeData, color: '#f59e0b', type: 'bar' },
         { name: 'Resolved / Closed', data: resolvedData, color: '#10b981', type: 'bar' }
       ]
     });
@@ -910,65 +1050,25 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
   renderModelStackedBarChart(): void {
     const container = document.getElementById('modelStackedBarContainer');
     if (!container) return;
-
-    const categories = this.modelSummaries.map(m => m.name);
-    const subsystemsList = ['Hydraulics', 'Transmission', 'Thermal & Engine', 'Electrical', 'Steering', 'Braking', 'Chassis & Frame'];
-    const colors = ['#0288d1', '#6366f1', '#ef4444', '#f59e0b', '#10b981', '#8b5cf6', '#64748b'];
-
-    const series = subsystemsList.map((sub, idx) => ({
-      name: sub,
-      data: this.modelSummaries.map(m => m.subsystems[sub] || 0),
-      color: colors[idx % colors.length]
-    }));
-
-    Highcharts.chart('modelStackedBarContainer', {
-      chart: {
-        type: 'column',
-        backgroundColor: 'transparent',
-        style: { fontFamily: 'Roboto, -apple-system, BlinkMacSystemFont, sans-serif' }
-      },
-      title: { text: undefined },
-      subtitle: { text: undefined },
-      credits: { enabled: false },
-      xAxis: {
-        categories: categories,
-        labels: { style: { fontSize: '11px', fontWeight: '600', color: '#334155' } }
-      },
-      yAxis: {
-        min: 0,
-        title: { text: 'Complaint Count', style: { color: '#64748b', fontSize: '11px' } },
-        stackLabels: { enabled: true, style: { fontWeight: '700', color: '#1e293b' } },
-        gridLineDashStyle: 'Dash',
-        gridLineColor: '#e2e8f0'
-      },
-      legend: {
-        align: 'center',
-        verticalAlign: 'bottom',
-        layout: 'horizontal',
-        itemStyle: { fontSize: '11px', color: '#334155' }
-      },
-      tooltip: {
-        shared: true,
-        headerFormat: '<b>{point.x}</b><br/>'
-      },
-      plotOptions: {
-        column: {
-          stacking: 'normal',
-          borderRadius: 2
-        }
-      },
-      series: series as any
-    });
+    Highcharts.chart('modelStackedBarContainer', this.buildSubsystemBarOptions());
   }
 
   renderModelDonutChart(): void {
     const container = document.getElementById('modelDonutContainer');
     if (!container) return;
 
-    const data = this.modelSummaries.map(m => ({
-      name: m.name,
-      y: m.total
-    }));
+    let data: { name: string; y: number }[] = [];
+    if (this.donutGrouping === 'productLine') {
+      data = this.productLineSummaries.map(p => ({
+        name: p.name,
+        y: p.count
+      }));
+    } else {
+      data = this.modelSummaries.map(m => ({
+        name: m.name,
+        y: m.total
+      }));
+    }
 
     Highcharts.chart('modelDonutContainer', {
       chart: {
@@ -1059,8 +1159,9 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
     const container = document.getElementById('modelWarrantyBarContainer');
     if (!container) return;
 
-    const categories = this.modelSummaries.map(m => m.name);
-    const data = this.modelSummaries.map(m => m.warrantyCost);
+    const sorted = [...this.modelSummaries].sort((a, b) => b.warrantyCost - a.warrantyCost);
+    const categories = sorted.map(m => m.name);
+    const data = sorted.map(m => m.warrantyCost);
 
     Highcharts.chart('modelWarrantyBarContainer', {
       chart: {
@@ -1077,13 +1178,23 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
       },
       yAxis: {
         min: 0,
-        title: { text: 'Warranty Claims ($ USD)', style: { color: '#64748b', fontSize: '11px' } },
+        title: { text: 'Warranty Claims (₹ Lakhs)', style: { color: '#64748b', fontSize: '11px' } },
+        labels: {
+          formatter: function() {
+            const val = Number(this.value);
+            return val === 0 ? '0' : '₹' + (val / 100000).toFixed(1) + 'L';
+          }
+        },
         gridLineDashStyle: 'Dash',
         gridLineColor: '#e2e8f0'
       },
       legend: { enabled: false },
       tooltip: {
-        pointFormat: 'Warranty Exposure: <b>${point.y:,.0f}</b>'
+        formatter: function() {
+          const val = Number(this.y);
+          const lakhs = (val / 100000).toFixed(2) + 'L';
+          return `<b>${this.x}</b><br/>Warranty Burden: <b>₹${lakhs}</b> (₹${val.toLocaleString('en-IN')})`;
+        }
       },
       plotOptions: {
         bar: {
@@ -1091,8 +1202,11 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
           color: '#0d9488',
           dataLabels: {
             enabled: true,
-            format: '${point.y:,.0f}',
-            style: { fontSize: '11px', fontWeight: '600' }
+            formatter: function() {
+              const val = Number(this.y);
+              return '₹' + (val / 100000).toFixed(2) + 'L';
+            },
+            style: { fontSize: '11px', fontWeight: '700', color: '#0f172a' }
           }
         }
       },
@@ -1110,7 +1224,8 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
     if (!container) return;
 
     const categories = this.countrySummaries.map(c => c.name);
-    const openData = this.countrySummaries.map(c => c.open);
+    const activeData = this.countrySummaries.map(c => c.active);
+    const overdueData = this.countrySummaries.map(c => c.overdue);
     const resolvedData = this.countrySummaries.map(c => c.resolved);
 
     Highcharts.chart('countryBarContainer', {
@@ -1137,6 +1252,11 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
         verticalAlign: 'bottom',
         itemStyle: { fontSize: '11px', color: '#334155' }
       },
+      tooltip: {
+        shared: true,
+        headerFormat: '<span style="font-size: 12px; font-weight: 700;">{point.key}</span><br/>',
+        pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: <b>{point.y}</b><br/>'
+      },
       plotOptions: {
         bar: {
           stacking: 'normal',
@@ -1144,7 +1264,8 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
         }
       },
       series: [
-        { name: 'Active / Open', data: openData, color: '#f59e0b', type: 'bar' },
+        { name: 'Overdue', data: overdueData, color: '#ef4444', type: 'bar' },
+        { name: 'Active Complaints', data: activeData, color: '#f59e0b', type: 'bar' },
         { name: 'Resolved / Closed', data: resolvedData, color: '#10b981', type: 'bar' }
       ]
     });
@@ -1169,14 +1290,21 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
       subtitle: { text: undefined },
       credits: { enabled: false },
       tooltip: {
-        pointFormat: 'Claim Value: <b>${point.y:,.0f}</b> ({point.percentage:.1f}%)'
+        formatter: function() {
+          const val = Number(this.y);
+          const lakhs = (val / 100000).toFixed(2) + 'L';
+          return `<b>${this.key}</b><br/>Claim Value: <b>₹${lakhs}</b> (${this.percentage.toFixed(1)}%)`;
+        }
       },
       plotOptions: {
         pie: {
           innerSize: '52%',
           dataLabels: {
             enabled: true,
-            format: '<b>{point.name}</b>: ${point.y:,.0f}',
+            formatter: function() {
+              const val = Number(this.y);
+              return `<b>${this.key}</b>: ₹${(val / 100000).toFixed(2)}L`;
+            },
             style: { fontSize: '11px' }
           }
         }
@@ -1310,11 +1438,11 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
 
     const categories = [
       'D1: Team',
-      'D2: Problem',
+      'D2: RCM',
       'D3: Containment',
       'D4: RCA',
       'D5: PCA',
-      'D6: Validate',
+      'D6: QA',
       'D7: Prevent',
       'D8: Closure'
     ];
@@ -1376,7 +1504,7 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
     const container = document.getElementById('stageDwell8dContainer');
     if (!container) return;
 
-    const stages = ['D1 Team', 'D2 Problem', 'D3 Containment', 'D4 RCA', 'D5 PCA', 'D6 Validation', 'D7 Prevention', 'D8 Closure'];
+    const stages = ['D1 Team', 'D2 RCM', 'D3 Containment', 'D4 RCA', 'D5 PCA', 'D6 QA', 'D7 Prevention', 'D8 Closure'];
     const avgDwellDays = [2.4, 4.1, 3.2, 9.8, 6.5, 4.8, 3.6, 2.1];
 
     Highcharts.chart('stageDwell8dContainer', {
@@ -1492,7 +1620,7 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
       subtitle: { text: undefined },
       credits: { enabled: false },
       xAxis: {
-        categories: ['D3 Containment Executed', 'D5 Permanent Action Defined', 'D6 Validation Passed', 'D7 Recurrence Protected'],
+        categories: ['D3 Containment Executed', 'D5 Permanent Action Defined', 'D6 QA Passed', 'D7 Recurrence Protected'],
         labels: { style: { fontSize: '11px', fontWeight: '600', color: '#334155' } }
       },
       yAxis: {

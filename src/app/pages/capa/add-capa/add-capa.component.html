@@ -114,6 +114,57 @@
         </div>
       </div>
 
+      <!-- Risk Assessment Parameters Section (Image 2 Parameters) -->
+      <div class="risk-section-wrapper mb-2 mt-4">
+        <div class="risk-section-header d-flex align-items-center justify-content-between p-2 rounded mb-3">
+          <div class="d-flex align-items-center gap-2">
+            <mat-icon class="text-primary" style="font-size: 20px; width: 20px; height: 20px;">speed</mat-icon>
+            <span class="risk-section-title">Risk Assessment Parameters</span>
+            <span class="badge bg-secondary text-white" style="font-size: 11px;">1 to 5 Rating Scale</span>
+          </div>
+
+          <div class="d-flex align-items-center gap-2">
+            <span class="text-muted" style="font-size: 12px; font-weight: 600;">Average Risk:</span>
+            <span class="badge" [ngClass]="getRiskBadgeClass(averageRiskRating)" style="font-size: 13px; padding: 4px 8px;">
+              {{ averageRiskRating }} / 5.0 ({{ getRiskLevel(averageRiskRating) }})
+            </span>
+          </div>
+        </div>
+
+        <div class="row g-2">
+          <div class="col-md-6" *ngFor="let param of riskParameterList">
+            <div class="param-card p-2 rounded border">
+              <div class="d-flex align-items-center justify-content-between mb-1">
+                <span class="param-card-name fw-bold">{{ param.name }}</span>
+                <span class="param-selected-label badge" [ngClass]="getRiskBadgeClass(riskParams[param.key])">
+                  {{ getRatingLabel(riskParams[param.key]) }}
+                </span>
+              </div>
+              <div class="param-card-desc text-muted mb-2">
+                {{ param.desc }}
+              </div>
+              <div class="d-flex align-items-center gap-1">
+                <button *ngFor="let val of [1, 2, 3, 4, 5]"
+                        type="button"
+                        class="btn-rating-choice"
+                        [class.active]="riskParams[param.key] === val"
+                        [class.active-1]="riskParams[param.key] === 1 && val === 1"
+                        [class.active-2]="riskParams[param.key] === 2 && val === 2"
+                        [class.active-3]="riskParams[param.key] === 3 && val === 3"
+                        [class.active-4]="riskParams[param.key] === 4 && val === 4"
+                        [class.active-5]="riskParams[param.key] === 5 && val === 5"
+                        (click)="setRating(param.key, val)">
+                  {{ val }}
+                </button>
+                <span class="ms-auto rating-hint text-muted">
+                  {{ val === 1 ? 'Min' : (val === 5 ? 'Max' : '') }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </form>
   </div>
 

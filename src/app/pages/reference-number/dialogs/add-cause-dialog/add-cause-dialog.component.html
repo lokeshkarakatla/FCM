@@ -1,0 +1,55 @@
+<div class="NewHeader" style="background-color:#286ba5 !important; height: 50px;">
+  <h1 class="mat-dialog-title" mat-dialog-title id="mat-dialog-title-cause">
+    Add Cause
+  </h1>
+</div>
+
+<div class="mat-dialog-content" mat-dialog-content>
+  <form class="form-horizontal" novalidate>
+    <div class="form-group row align-items-center mb-3">
+      <label class="col-lg-4 col-sm-4 control-label">Enter Short Code:</label>
+      <div class="col-lg-8 col-sm-8">
+        <textarea type="text" class="form-control" style="height: 50px;" placeholder="Enter Short Code"
+          [(ngModel)]="shortCode" name="shortCode" required></textarea>
+      </div>
+    </div>
+
+    <div class="form-group row align-items-center mb-3">
+      <label class="col-lg-4 col-sm-4 control-label">Enter Possible Cause:</label>
+      <div class="col-lg-8 col-sm-8">
+        <textarea type="text" class="form-control" style="height: 50px;" placeholder="Enter Possible Cause"
+          [(ngModel)]="possibleCause" name="possibleCause" required></textarea>
+      </div>
+    </div>
+
+    <div class="form-group row align-items-center mb-3">
+      <label class="col-lg-4 col-sm-4 control-label">Issue Category:</label>
+      <div class="col-lg-8 col-sm-8">
+        <mat-form-field appearance="fill" style="width: 100%;">
+          <mat-label>Select Issue Category</mat-label>
+          <mat-select [(ngModel)]="selectedCategory" name="issuecategory" required>
+            <mat-option value="man">Man</mat-option>
+            <mat-option value="material">Material</mat-option>
+            <mat-option value="machines">Machines</mat-option>
+            <mat-option value="methods">Methods</mat-option>
+            <mat-option value="environment">Environment</mat-option>
+            <mat-option value="supply">Supply Exception</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer-wrapper">
+  <mat-dialog-actions align="end" style="margin-right: 15px; margin-bottom: 10px; display: flex; justify-content: flex-end; gap: 10px;">
+    <button mat-raised-button color="primary" class="add-hover" type="button"
+      style="background-color: #286ba5; color: white;" (click)="save()">
+      <mat-icon>save</mat-icon>&nbsp;Save
+    </button>
+    <button mat-raised-button class="add-hover pull-right" type="button"
+      style="background-color: #dcdfe0; color: #333;" (click)="close()">
+      <mat-icon>cancel</mat-icon>&nbsp;Cancel
+    </button>
+  </mat-dialog-actions>
+</div>

@@ -94,6 +94,34 @@ $page-header-bar-height: 56px;
     min-height: calc(100% - (#{$toolbar-height} + #{$page-header-bar-height} + #{$inner-sidenav-content-padding}*2));
   }
 
+  /* Reference Number layout: flush 100% height container with independent column scrolling */
+  &.reference-screen-mode {
+    padding: 0 !important;
+    overflow: hidden !important;
+
+    > div {
+      height: 100% !important;
+      min-height: 100% !important;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+
+      > app-reference-number {
+        height: 100% !important;
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+        overflow: hidden;
+      }
+    }
+
+    ::ng-deep .ps__rail-y,
+    ::ng-deep .ps__rail-x {
+      display: none !important;
+    }
+  }
+
   .has-footer{
     min-height: calc(100% - (45px + #{$footer-height}));
   }

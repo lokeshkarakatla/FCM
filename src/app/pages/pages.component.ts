@@ -22,6 +22,7 @@ import { AddComplaintComponent } from './complaints/add-complaint/add-complaint.
 export class PagesComponent implements OnInit {
   showBreadcrumb = true;
   showBackBtn = false;
+  isReferenceRoute = false;
   @ViewChild('sidenav') sidenav: any;
   @ViewChild('backToTop') backToTop: any;
   @ViewChild('notifMenuTrigger') notifMenuTrigger!: MatMenuTrigger;
@@ -43,25 +44,6 @@ export class PagesComponent implements OnInit {
     '/app/setups',
     '/app/setups/setup-masterdata',
     '/app/complaints/reference-number',
-    // '/base-info',
-    // '/alert',
-    // '/updates',
-    // '/mitigation',
-    // '/document',
-    // '/grid-view',
-    // '/calenders',
-    // '/moniter',
-    // '/action-grid-calender/grid-meet',
-    // '/d1',
-    // '/d2',
-    // '/d3',
-    // '/d3-b',
-    // '/d4',
-    // '/d4-b',
-    // '/d5',
-    // '/d6',
-    // '/d7',
-    // '/closure'
   ];
 
   constructor(
@@ -79,6 +61,8 @@ export class PagesComponent implements OnInit {
     const checkUrl = (url: string) => {
       const path = url.split('?')[0];
       this.showBreadcrumb = !this.hiddenRoutes.some(route => path.startsWith(route));
+      this.isReferenceRoute = path.startsWith('/app/complaints/reference-number');
+      this.cdr.markForCheck();
     };
 
     checkUrl(this.router.url);

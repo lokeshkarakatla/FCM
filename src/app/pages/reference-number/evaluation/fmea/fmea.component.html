@@ -1,0 +1,495 @@
+<div class="fmea-container mt-2">
+
+  <!-- ========================================================================= -->
+  <!-- ACTION BAR & RECORD SELECTOR                                              -->
+  <!-- ========================================================================= -->
+  <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+    <div>
+      <h5 class="section-heading m-0">
+        <mat-icon class="heading-icon">assignment_late</mat-icon> Failure Mode and Effects Analysis (FMEA)
+      </h5>
+      <small class="text-muted">Process risk evaluation matrix, mitigation tracking, and dual 10&times;10 risk priority graphs.</small>
+    </div>
+
+    <div class="d-flex gap-2 align-items-center flex-wrap">
+      <div class="btn-group btn-group-sm" role="group">
+        <button type="button" class="btn btn-outline-secondary" [class.active]="viewMode === 'both'" (click)="viewMode = 'both'">Both Views</button>
+        <button type="button" class="btn btn-outline-secondary" [class.active]="viewMode === 'matrix'" (click)="viewMode = 'matrix'">Matrix &amp; Graph</button>
+        <button type="button" class="btn btn-outline-secondary" [class.active]="viewMode === 'table'" (click)="viewMode = 'table'">Master Register</button>
+      </div>
+
+      <button mat-stroked-button color="primary" class="btn-sm" (click)="addRecord()">
+        <mat-icon class="btn-icon">add</mat-icon> Add Failure Mode
+      </button>
+
+      <button mat-raised-button style="color: #fff; background-color: #0f4c6e;" (click)="save()">
+        <mat-icon class="btn-icon">save</mat-icon> Save FMEA
+      </button>
+    </div>
+  </div>
+
+  <!-- Saved Notification Toast -->
+  <div *ngIf="isSaved" class="alert alert-success alert-dismissible py-2 px-3 shadow-sm d-flex align-items-center gap-2 mb-3">
+    <mat-icon style="color: #16a34a;">check_circle</mat-icon>
+    <strong>FMEA Data Saved Successfully!</strong> Matrix evaluations, mitigation actions, and recalculated RPN ratings have been updated.
+  </div>
+
+  <!-- Record Selection Pills -->
+  <div class="record-selector-bar mb-3 p-2 bg-light border d-flex gap-2 align-items-center overflow-auto">
+    <span class="fw-bold text-muted px-2" style="font-size: 11.5px; white-space: nowrap;">SELECT ITEM:</span>
+    <button type="button"
+            class="record-tab-btn"
+            *ngFor="let rec of records; let i = index"
+            [class.active]="selectedRecordIndex === i"
+            (click)="selectRecord(i)">
+      <span class="rec-id">#{{ rec.id }}</span>
+      <span class="rec-name">{{ rec.processStep }} - {{ rec.failureMode }}</span>
+      <span class="rec-badge" [ngClass]="rec.rpn >= 200 ? 'badge-danger' : 'badge-warning'">RPN {{ rec.rpn }} &rarr; {{ rec.revisedRpn }}</span>
+      <span class="rec-del" *ngIf="records.length > 1" (click)="deleteRecord(i, $event)" title="Delete">&times;</span>
+    </button>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MAIN SECTION: TABLE & GRAPHS LIKE IMG2                                     -->
+  <!-- ========================================================================= -->
+  <div class="row g-3 mb-4" *ngIf="viewMode === 'both' || viewMode === 'matrix'">
+
+    <!-- LEFT COLUMN: 3-Column Table (img2 format) -->
+    <div class="col-xl-8 col-lg-7">
+      <div class="fmea-eval-table-card shadow-sm border bg-white">
+        <table class="table table-bordered m-0 fmea-matrix-table">
+          <thead>
+            <tr class="fmea-tbl-header">
+              <th class="col-subject">Steps / Subject</th>
+              <th class="col-questions">Questions / Description</th>
+              <th class="col-eval">Evaluation / Rating</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 1. Process Step / Input -->
+            <tr>
+              <td class="td-subject">Process Step / Input</td>
+              <td class="td-question">{{ questions.processStep }}</td>
+              <td class="td-eval">
+                <input type="text" class="form-control form-control-sm eval-text-input fw-semibold"
+                       [(ngModel)]="selectedRecord.processStep"
+                       placeholder="e.g. Sealing/ temperature">
+              </td>
+            </tr>
+
+            <!-- 2. Potential Failure Modes -->
+            <tr>
+              <td class="td-subject">Potential Failure Modes</td>
+              <td class="td-question">{{ questions.failureMode }}</td>
+              <td class="td-eval">
+                <input type="text" class="form-control form-control-sm eval-text-input text-danger fw-bold"
+                       [(ngModel)]="selectedRecord.failureMode"
+                       placeholder="e.g. Temp. too high">
+              </td>
+            </tr>
+
+            <!-- 3. Potential Failure Effects -->
+            <tr>
+              <td class="td-subject">Potential Failure Effects</td>
+              <td class="td-question">{{ questions.failureEffect }}</td>
+              <td class="td-eval">
+                <input type="text" class="form-control form-control-sm eval-text-input"
+                       [(ngModel)]="selectedRecord.failureEffect"
+                       placeholder="e.g. Burned blister pack">
+              </td>
+            </tr>
+
+            <!-- 4. Severity (S) -->
+            <tr>
+              <td class="td-subject">Severity (S)</td>
+              <td class="td-question">{{ questions.severity }}</td>
+              <td class="td-eval">
+                <div class="d-flex align-items-center gap-2">
+                  <input type="number" min="1" max="10" class="form-control form-control-sm eval-num-input text-center fw-bold"
+                         [(ngModel)]="selectedRecord.severity"
+                         (ngModelChange)="onFieldChange()">
+                  <span class="badge bg-danger-subtle text-danger border border-danger-subtle px-2 py-1">Score: {{ selectedRecord.severity }}/10</span>
+                </div>
+              </td>
+            </tr>
+
+            <!-- 5. Potential Causes -->
+            <tr>
+              <td class="td-subject">Potential Causes</td>
+              <td class="td-question">{{ questions.potentialCause }}</td>
+              <td class="td-eval">
+                <input type="text" class="form-control form-control-sm eval-text-input"
+                       [(ngModel)]="selectedRecord.potentialCause"
+                       placeholder="e.g. Wrong setting">
+              </td>
+            </tr>
+
+            <!-- 6. Occurrence (O) -->
+            <tr>
+              <td class="td-subject">Occurrence (O)</td>
+              <td class="td-question">{{ questions.occurrence }}</td>
+              <td class="td-eval">
+                <div class="d-flex align-items-center gap-2">
+                  <input type="number" min="1" max="10" class="form-control form-control-sm eval-num-input text-center fw-bold"
+                         [(ngModel)]="selectedRecord.occurrence"
+                         (ngModelChange)="onFieldChange()">
+                  <span class="badge bg-warning-subtle text-dark border border-warning-subtle px-2 py-1">Score: {{ selectedRecord.occurrence }}/10</span>
+                </div>
+              </td>
+            </tr>
+
+            <!-- 7. Current Controls -->
+            <tr>
+              <td class="td-subject">Current Controls</td>
+              <td class="td-question">{{ questions.currentControls }}</td>
+              <td class="td-eval">
+                <input type="text" class="form-control form-control-sm eval-text-input"
+                       [(ngModel)]="selectedRecord.currentControls"
+                       placeholder="e.g. Verification of batch record">
+              </td>
+            </tr>
+
+            <!-- 8. Detection (D) -->
+            <tr>
+              <td class="td-subject">Detection (D)</td>
+              <td class="td-question">{{ questions.detection }}</td>
+              <td class="td-eval">
+                <div class="d-flex align-items-center gap-2">
+                  <input type="number" min="1" max="10" class="form-control form-control-sm eval-num-input text-center fw-bold"
+                         [(ngModel)]="selectedRecord.detection"
+                         (ngModelChange)="onFieldChange()">
+                  <span class="badge bg-info-subtle text-dark border border-info-subtle px-2 py-1">Score: {{ selectedRecord.detection }}/10</span>
+                </div>
+              </td>
+            </tr>
+
+            <!-- 9. Initial RPN -->
+            <tr class="rpn-highlight-row">
+              <td class="td-subject fw-bold text-dark">Initial RPN</td>
+              <td class="td-question text-muted">{{ questions.rpn }}</td>
+              <td class="td-eval">
+                <div class="d-flex align-items-center gap-2">
+                  <span class="rpn-box-badge" [ngClass]="selectedRecord.rpn >= 200 ? 'rpn-red' : (selectedRecord.rpn >= 100 ? 'rpn-amber' : 'rpn-green')">
+                    {{ selectedRecord.rpn }}
+                  </span>
+                  <span class="badge bg-danger rounded-1" *ngIf="selectedRecord.rpn >= 200">Need Corrective Action</span>
+                  <span class="badge bg-warning text-dark rounded-1" *ngIf="selectedRecord.rpn >= 100 && selectedRecord.rpn < 200">Consideration</span>
+                  <span class="badge bg-success rounded-1" *ngIf="selectedRecord.rpn < 100">Acceptable</span>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Section Divider Bar (Shaded separator row like img2) -->
+            <tr class="fmea-divider-row">
+              <td colspan="3"></td>
+            </tr>
+
+            <!-- 10. Recommended Actions (With ADD button and Green Bordered Cards from img2) -->
+            <tr class="action-section-row">
+              <td class="td-subject td-actions-subject">Recommended Actions</td>
+              <td class="td-question">{{ questions.recommendedActions }}</td>
+              <td class="td-eval">
+                <div class="d-flex justify-content-end mb-2">
+                  <button type="button" class="btn-img2-add" (click)="addRecommendedAction()">ADD</button>
+                </div>
+                <div class="action-green-box mb-2" *ngFor="let act of selectedRecord.recommendedActions; let idx = index">
+                  <input type="text" class="action-input"
+                         [(ngModel)]="selectedRecord.recommendedActions[idx]"
+                         placeholder="Enter recommended action...">
+                  <button type="button" class="btn-del-action" (click)="removeRecommendedAction(idx)" *ngIf="selectedRecord.recommendedActions.length > 1" title="Remove action">&times;</button>
+                </div>
+              </td>
+            </tr>
+
+            <!-- 11. Responsibility -->
+            <tr>
+              <td class="td-subject">Responsibility</td>
+              <td class="td-question">{{ questions.responsibility }}</td>
+              <td class="td-eval">
+                <input type="text" class="form-control form-control-sm eval-text-input fw-semibold"
+                       [(ngModel)]="selectedRecord.responsibility"
+                       placeholder="e.g. M. Peña">
+              </td>
+            </tr>
+
+            <!-- 12. Actions Taken -->
+            <tr>
+              <td class="td-subject">Actions Taken</td>
+              <td class="td-question">{{ questions.actionsTaken }}</td>
+              <td class="td-eval">
+                <input type="text" class="form-control form-control-sm eval-text-input"
+                       [(ngModel)]="selectedRecord.actionTaken"
+                       placeholder="e.g. Temperature device implemented (8/11)">
+              </td>
+            </tr>
+
+            <!-- 13. Revised Severity (S) -->
+            <tr>
+              <td class="td-subject">Revised Severity (S)</td>
+              <td class="td-question">{{ questions.revisedSeverity }}</td>
+              <td class="td-eval">
+                <div class="d-flex align-items-center gap-2">
+                  <input type="number" min="1" max="10" class="form-control form-control-sm eval-num-input text-center fw-bold"
+                         [(ngModel)]="selectedRecord.revisedSeverity"
+                         (ngModelChange)="onFieldChange()">
+                  <span class="badge bg-secondary-subtle text-dark border px-2 py-1">Score: {{ selectedRecord.revisedSeverity }}/10</span>
+                </div>
+              </td>
+            </tr>
+
+            <!-- 14. Revised Occurrence (O) -->
+            <tr>
+              <td class="td-subject">Revised Occurrence (O)</td>
+              <td class="td-question">{{ questions.revisedOccurrence }}</td>
+              <td class="td-eval">
+                <div class="d-flex align-items-center gap-2">
+                  <input type="number" min="1" max="10" class="form-control form-control-sm eval-num-input text-center fw-bold"
+                         [(ngModel)]="selectedRecord.revisedOccurrence"
+                         (ngModelChange)="onFieldChange()">
+                  <span class="badge bg-secondary-subtle text-dark border px-2 py-1">Score: {{ selectedRecord.revisedOccurrence }}/10</span>
+                </div>
+              </td>
+            </tr>
+
+            <!-- 15. Revised Detection (D) -->
+            <tr>
+              <td class="td-subject">Revised Detection (D)</td>
+              <td class="td-question">{{ questions.revisedDetection }}</td>
+              <td class="td-eval">
+                <div class="d-flex align-items-center gap-2">
+                  <input type="number" min="1" max="10" class="form-control form-control-sm eval-num-input text-center fw-bold"
+                         [(ngModel)]="selectedRecord.revisedDetection"
+                         (ngModelChange)="onFieldChange()">
+                  <span class="badge bg-secondary-subtle text-dark border px-2 py-1">Score: {{ selectedRecord.revisedDetection }}/10</span>
+                </div>
+              </td>
+            </tr>
+
+            <!-- 16. Revised RPN -->
+            <tr class="rpn-highlight-row bg-success-subtle">
+              <td class="td-subject fw-bold text-success">Revised RPN</td>
+              <td class="td-question text-muted">{{ questions.revisedRpn }}</td>
+              <td class="td-eval">
+                <div class="d-flex align-items-center gap-2">
+                  <span class="rpn-box-badge rpn-green">
+                    {{ selectedRecord.revisedRpn }}
+                  </span>
+                  <span class="badge bg-success rounded-1">Acceptable (< 100)</span>
+                  <small class="text-success fw-bold">Risk Reduction: {{ ((selectedRecord.rpn - selectedRecord.revisedRpn) / selectedRecord.rpn * 100) | number:'1.0-0' }}%</small>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN: Dual 10x10 Risk Priority Graphs (img2 format) -->
+    <div class="col-xl-4 col-lg-5">
+      <div class="fmea-graph-sidebar p-3 bg-white border shadow-sm">
+
+        <!-- GRAPH 1: Pre-Mitigation Risk Status -->
+        <div class="matrix-graph-block">
+          <div class="d-flex justify-content-between align-items-center mb-1">
+            <span class="matrix-block-title">Initial Risk Priority</span>
+            <span class="badge bg-danger rounded-1" style="font-size: 11px;">S:{{selectedRecord.severity}} &times; O:{{selectedRecord.occurrence}}</span>
+          </div>
+          <small class="text-muted d-block mb-2" style="font-size: 11px;">Click cells to position or adjust values</small>
+
+          <!-- 10x10 Risk Matrix (Graph 1) -->
+          <div class="risk-matrix-outer">
+            <div class="axis-y-container">
+              <span class="axis-title-y">Severity</span>
+            </div>
+
+            <div class="grid-table-wrapper">
+              <div class="grid-row-10" *ngFor="let s of severityLevels">
+                <span class="tick-y">{{ s }}</span>
+                <div class="grid-cell-10"
+                     *ngFor="let o of occurrenceLevels"
+                     [ngClass]="getCellClass(s, o)"
+                     (click)="setInitialCoord(s, o)"
+                     [title]="'Severity: ' + s + ', Occurrence: ' + o">
+                  <div class="active-marker-black" *ngIf="isInitialMarker(s, o)"></div>
+                </div>
+              </div>
+
+              <!-- X-Axis ticks -->
+              <div class="grid-row-10 axis-x-row">
+                <span class="tick-y"></span>
+                <span class="tick-x" *ngFor="let o of occurrenceLevels">{{ o }}</span>
+                <span class="axis-title-x">Occurrence</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Legend below Graph 1 (as in img2) -->
+          <div class="matrix-legend-box mt-2">
+            <div class="legend-row">
+              <span class="legend-chip bg-success"></span>
+              <span class="legend-txt">Acceptable</span>
+            </div>
+            <div class="legend-row">
+              <span class="legend-chip bg-warning"></span>
+              <span class="legend-txt">Consideration</span>
+            </div>
+            <div class="legend-row">
+              <span class="legend-chip bg-danger"></span>
+              <span class="legend-txt">Need Corrective Action</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Downward Arrow Transition (as in img2) -->
+        <div class="downward-arrow-box text-center my-3">
+          <svg class="downward-arrow-svg" viewBox="0 0 24 36" width="28" height="38">
+            <path d="M10 2h4v18h5l-7 12-7-12h5V2z" fill="#000000"/>
+          </svg>
+          <div class="arrow-caption text-muted fw-bold" style="font-size: 10px; letter-spacing: 0.5px;">ACTION IMPLEMENTATION</div>
+        </div>
+
+        <!-- GRAPH 2: Post-Mitigation Risk Status -->
+        <div class="matrix-graph-block">
+          <div class="d-flex justify-content-between align-items-center mb-1">
+            <span class="matrix-block-title">Post-Mitigation Risk</span>
+            <span class="badge bg-success rounded-1" style="font-size: 11px;">S:{{selectedRecord.revisedSeverity}} &times; O:{{selectedRecord.revisedOccurrence}}</span>
+          </div>
+          <small class="text-muted d-block mb-2" style="font-size: 11px;">Verification after corrective actions</small>
+
+          <!-- 10x10 Risk Matrix (Graph 2) -->
+          <div class="risk-matrix-outer">
+            <div class="axis-y-container">
+              <span class="axis-title-y">Severity</span>
+            </div>
+
+            <div class="grid-table-wrapper">
+              <div class="grid-row-10" *ngFor="let s of severityLevels">
+                <span class="tick-y">{{ s }}</span>
+                <div class="grid-cell-10"
+                     *ngFor="let o of occurrenceLevels"
+                     [ngClass]="getCellClass(s, o)"
+                     (click)="setRevisedCoord(s, o)"
+                     [title]="'Revised Severity: ' + s + ', Occurrence: ' + o">
+                  <div class="active-marker-black" *ngIf="isRevisedMarker(s, o)"></div>
+                </div>
+              </div>
+
+              <!-- X-Axis ticks -->
+              <div class="grid-row-10 axis-x-row">
+                <span class="tick-y"></span>
+                <span class="tick-x" *ngFor="let o of occurrenceLevels">{{ o }}</span>
+                <span class="axis-title-x">Occurrence</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-2 text-center">
+            <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-1.5 fw-bold" style="font-size: 11.5px;">
+              <mat-icon style="font-size: 15px; width: 15px; height: 15px; vertical-align: middle;">check_circle</mat-icon>
+              Acceptable Residual Risk Verified
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- COMPLETE FMEA MASTER PROCESS REGISTER (IMG3 DIRECT FIDELITY)               -->
+  <!-- ========================================================================= -->
+  <div class="master-fmea-section mt-4 mb-4" *ngIf="viewMode === 'both' || viewMode === 'table'">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <h6 class="fw-bold text-dark m-0" style="font-size: 14px;">
+        <mat-icon style="font-size: 18px; width: 18px; height: 18px; vertical-align: middle; color: #0f766e;">table_chart</mat-icon>
+        FMEA Master Process Register (img3 Source Data)
+      </h6>
+      <span class="badge bg-light text-muted border">4 Active Process Step Evaluations</span>
+    </div>
+
+    <div class="table-responsive border bg-white shadow-sm">
+      <table class="table table-bordered table-hover align-middle m-0 master-fmea-table">
+        <!-- Main Teal Header matching img3 -->
+        <thead class="thead-teal-img3">
+          <tr>
+            <th class="th-step">Process step/input</th>
+            <th class="th-mode">Potential failure mode</th>
+            <th class="th-effect">Potential failure effects</th>
+            <th class="th-num text-center">Severity</th>
+            <th class="th-cause">Potential causes</th>
+            <th class="th-num text-center">Occurrence</th>
+            <th class="th-controls">Current controls</th>
+            <th class="th-num text-center">Detection</th>
+            <th class="th-rpn text-center">RPN</th>
+            <th class="th-action">Actions recommended</th>
+            <th class="th-resp">Responsibility</th>
+            <th class="th-taken">Actions taken</th>
+            <th class="th-num text-center">Severity</th>
+            <th class="th-num text-center">Occurence</th>
+            <th class="th-num text-center">Detection</th>
+            <th class="th-rpn text-center">RPN</th>
+          </tr>
+
+          <!-- Question Row matching img3 Row 1 -->
+          <tr class="tr-questions-img3">
+            <td class="q-cell">{{ questions.processStep }}</td>
+            <td class="q-cell">{{ questions.failureMode }}</td>
+            <td class="q-cell">{{ questions.failureEffect }}</td>
+            <td class="q-cell text-center">{{ questions.severity }}</td>
+            <td class="q-cell">{{ questions.potentialCause }}</td>
+            <td class="q-cell text-center">{{ questions.occurrence }}</td>
+            <td class="q-cell">{{ questions.currentControls }}</td>
+            <td class="q-cell text-center">{{ questions.detection }}</td>
+            <td class="q-cell text-center">-</td>
+            <td class="q-cell">{{ questions.recommendedActions }}</td>
+            <td class="q-cell">{{ questions.responsibility }}</td>
+            <td class="q-cell">{{ questions.actionsTaken }}</td>
+            <td class="q-cell text-center">-</td>
+            <td class="q-cell text-center">-</td>
+            <td class="q-cell text-center">-</td>
+            <td class="q-cell text-center">-</td>
+          </tr>
+        </thead>
+
+        <!-- Data Rows matching img3 -->
+        <tbody>
+          <tr *ngFor="let row of records; let idx = index"
+              [class.row-selected]="selectedRecordIndex === idx"
+              (click)="selectRecord(idx)"
+              class="master-data-row"
+              title="Click to view/edit in Matrix &amp; Graph above">
+            <td class="fw-semibold">{{ row.processStep }}</td>
+            <td class="text-danger fw-semibold">{{ row.failureMode }}</td>
+            <td>{{ row.failureEffect }}</td>
+            <td class="text-center fw-bold bg-danger-subtle text-danger">{{ row.severity }}</td>
+            <td>{{ row.potentialCause }}</td>
+            <td class="text-center fw-bold bg-warning-subtle text-dark">{{ row.occurrence }}</td>
+            <td>{{ row.currentControls }}</td>
+            <td class="text-center fw-bold bg-info-subtle text-dark">{{ row.detection }}</td>
+            <td class="text-center fw-bold rpn-cell">
+              <span class="rpn-table-pill" [ngClass]="row.rpn >= 200 ? 'rpn-red' : 'rpn-amber'">{{ row.rpn }}</span>
+            </td>
+            <td>
+              <div *ngFor="let a of row.recommendedActions">{{ a }}</div>
+            </td>
+            <td class="fw-semibold">{{ row.responsibility }}</td>
+            <td>{{ row.actionTaken }}</td>
+            <td class="text-center fw-bold">{{ row.revisedSeverity }}</td>
+            <td class="text-center fw-bold">{{ row.revisedOccurrence }}</td>
+            <td class="text-center fw-bold">{{ row.revisedDetection }}</td>
+            <td class="text-center fw-bold rpn-cell">
+              <span class="rpn-table-pill rpn-green">{{ row.revisedRpn }}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Footnotes matching img3 -->
+    <div class="fmea-footnotes mt-2 text-muted" style="font-size: 11px;">
+      <div><strong>RPN</strong> = risk priority number</div>
+      <div><strong>SOP</strong> = standard operating procedure</div>
+    </div>
+  </div>
+
+</div>

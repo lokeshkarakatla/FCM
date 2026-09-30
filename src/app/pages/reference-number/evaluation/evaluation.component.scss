@@ -1,0 +1,22 @@
+button:not([mat-raised-button]) {
+  background-color: white;
+  border: none;
+  padding: 10px 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 13px;
+  color: #333;
+  transition: all 0.15s ease;
+
+  &:hover {
+    background-color: #f8fafc;
+  }
+}
+
+.active-tab:not([mat-raised-button]) {
+  background-color: #546e7a !important;
+  color: white !important;
+  font-weight: bold !important;
+}
