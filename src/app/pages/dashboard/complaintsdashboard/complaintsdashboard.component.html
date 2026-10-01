@@ -448,24 +448,14 @@
 
         <!-- Row 2: Secondary Visual Analytics (PowerBI Quad-Layout) -->
         <div class="bi-charts-row mt-3">
-          <!-- Subsystem Failure Clustering by Model -->
+          <!-- Subsystem Failure Clustering by Model (Model-wise Only) -->
           <div class="chart-panel-box">
             <div class="panel-header">
               <div>
-                <h4 class="panel-title">{{ subsystemViewMode === 'model' ? 'Model-wise Failure Subsystem Distribution' :
-                  'Module-wise Failure Distribution' }}</h4>
-                <p class="panel-desc">{{ subsystemViewMode === 'model' ? 'Subsystem defect clustering across tractor
-                  models' : 'Defect clustering across functional vehicle modules, split by tractor model' }}</p>
+                <h4 class="panel-title">Model-wise Failure Subsystem Distribution</h4>
+                <p class="panel-desc">Subsystem defect clustering across tractor models</p>
               </div>
-              <div class="d-flex align-items-center gap-2">
-                <div class="chart-mode-pill-group">
-                  <button type="button" class="mode-pill-btn" [class.active]="subsystemViewMode === 'model'"
-                    (click)="setSubsystemViewMode('model')">Model-wise</button>
-                  <button type="button" class="mode-pill-btn" [class.active]="subsystemViewMode === 'module'"
-                    (click)="setSubsystemViewMode('module')">Module-wise</button>
-                </div>
-                <span class="badge-status-subtle">Subsystem Distribution</span>
-              </div>
+              <span class="badge-status-subtle">Subsystem Distribution</span>
             </div>
             <div id="radarSubsystemBarContainer" class="highcharts-box secondary-canvas"></div>
           </div>
@@ -552,25 +542,14 @@
       <!-- Visual Charts Mode (PowerBI Quad-Layout) -->
       <div *ngIf="currentView === 'charts'">
         <div class="bi-charts-row">
-          <!-- Chart 1: Failure Subsystems Distribution -->
+          <!-- Chart 1: Failure Subsystems Distribution (Module-wise Only) -->
           <div class="chart-panel-box">
             <div class="panel-header">
               <div>
-                <h4 class="panel-title">{{ subsystemViewMode === 'model' ? 'Model-wise Failure Subsystem Distribution' :
-                  'Module-wise Failure Distribution' }}</h4>
-                <p class="panel-desc">{{ subsystemViewMode === 'model' ? 'Defect clustering across vehicle assemblies
-                  and functional subsystems' : 'Defect clustering across functional vehicle modules, split by tractor
-                  model' }}</p>
+                <h4 class="panel-title">Module-wise Failure Distribution</h4>
+                <p class="panel-desc">Defect clustering across functional vehicle modules, split by tractor model</p>
               </div>
-              <div class="d-flex align-items-center gap-2">
-                <div class="chart-mode-pill-group">
-                  <button type="button" class="mode-pill-btn" [class.active]="subsystemViewMode === 'model'"
-                    (click)="setSubsystemViewMode('model')">Model-wise</button>
-                  <button type="button" class="mode-pill-btn" [class.active]="subsystemViewMode === 'module'"
-                    (click)="setSubsystemViewMode('module')">Module-wise</button>
-                </div>
-                <span class="badge-status-subtle">Subsystem Distribution</span>
-              </div>
+              <span class="badge-status-subtle">Module Breakdown</span>
             </div>
             <div id="modelStackedBarContainer" class="highcharts-box bi-canvas"></div>
           </div>
@@ -819,56 +798,28 @@
         </div>
 
         <div class="bi-charts-row">
-          <!-- Chart 1: 8D Lifecycle Pipeline Volume -->
+          <!-- Chart 1 (Formerly Chart 2): Stage Dwell Latency & Bottleneck Analysis -->
           <div class="chart-panel-box">
             <div class="panel-header">
               <div>
-                <h4 class="panel-title">End-to-End 8D Lifecycle Pipeline Velocity</h4>
-                <p class="panel-desc">Active complaint volume progressing from D1 team formation to D8 institutional
-                  closure</p>
-              </div>
-              <span class="badge-status-subtle">Pipeline WIP</span>
-            </div>
-            <div id="funnel8dContainer" class="highcharts-box bi-canvas"></div>
-          </div>
-
-          <!-- Chart 2: Stage Dwell Latency & Bottleneck Analysis -->
-          <div class="chart-panel-box">
-            <div class="panel-header">
-              <div>
-                <h4 class="panel-title">Discipline Dwell Latency & Bottleneck Analysis</h4>
+                <h4 class="panel-title">Discipline Dwell Latency &amp; Bottleneck Analysis</h4>
                 <p class="panel-desc">Average cycle days spent per 8D discipline step vs 5-day SLA target</p>
               </div>
               <span class="badge-status-subtle">Bottleneck Analysis</span>
             </div>
             <div id="stageDwell8dContainer" class="highcharts-box bi-canvas"></div>
           </div>
-        </div>
 
-        <div class="bi-charts-row mt-3">
-          <!-- Chart 3: Department Workload Allocation -->
+          <!-- Chart 2 (Formerly Chart 3): Department Workload Allocation -->
           <div class="chart-panel-box">
             <div class="panel-header">
               <div>
                 <h4 class="panel-title">Engineering Department Investigation Allocation</h4>
-                <p class="panel-desc">Complaint assignment and investigation workload distributed across engineering
-                  divisions</p>
+                <p class="panel-desc">Complaint assignment and investigation workload distributed across engineering divisions</p>
               </div>
               <span class="badge-status-subtle">Workload Distribution</span>
             </div>
-            <div id="dept8dContainer" class="highcharts-box secondary-canvas"></div>
-          </div>
-
-          <!-- Chart 4: Containment vs Recurrence Prevention Compliance -->
-          <div class="chart-panel-box">
-            <div class="panel-header">
-              <div>
-                <h4 class="panel-title">Containment Effectiveness vs Recurrence Prevention</h4>
-                <p class="panel-desc">Execution compliance for D3 Interim Containment and D7 Permanent Prevention</p>
-              </div>
-              <span class="badge-status-subtle">CAPA Governance</span>
-            </div>
-            <div id="containment8dContainer" class="highcharts-box secondary-canvas"></div>
+            <div id="dept8dContainer" class="highcharts-box bi-canvas"></div>
           </div>
         </div>
       </div>

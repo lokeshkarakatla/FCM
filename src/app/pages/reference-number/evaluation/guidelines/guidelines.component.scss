@@ -191,11 +191,31 @@
 }
 
 .example-highlight {
-  font-size: 12px;
-  padding: 6px 10px;
+  font-size: 14px;
+  padding: 8px 14px;
   background-color: #f8fafc;
-  border-radius: 4px;
-  border-left: 3px solid #dc2626;
+  border-radius: 6px;
+  border-left: 4px solid #dc2626;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  line-height: 1.4;
+
+  .example-badge {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+
+  .example-text {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #0f172a;
+  }
 }
 
 /* 4 Pillars in Card 1 (Enlarged icons & typography, no subtitles) */
@@ -360,14 +380,28 @@
 .component-visual-box {
   background: #f8fafc;
   border: 1px solid #e2e8f0;
+
+  .cad-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 18px; /* Plenty of breathing room on the sides */
+    letter-spacing: 0.8px;
+    border-radius: 4px;
+  }
+
+  .cad-status-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 4px;
+  }
 }
 
-/* Failure Effect Avatar */
 /* Failure Effect Avatar Box */
 .avatar-effect-circle {
   position: relative;
-  width: 54px;
-  height: 54px;
+  width: 58px;
+  height: 58px;
   border-radius: 8px; /* Clean rectangular geometry, NO ovals! */
   background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
   border: 1px solid #94a3b8;
@@ -376,9 +410,9 @@
   justify-content: center;
 
   .effect-user-icon {
-    font-size: 32px;
-    width: 32px;
-    height: 32px;
+    font-size: 34px;
+    width: 34px;
+    height: 34px;
     color: #334155;
   }
 
@@ -386,37 +420,154 @@
     position: absolute;
     bottom: -4px;
     right: -4px;
-    font-size: 18px;
-    width: 18px;
-    height: 18px;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
     color: #dc2626;
     background: #ffffff;
     border-radius: 4px;
   }
 }
 
-/* Failure Cause Icon Boxes */
-.cause-icon-circle {
-  width: 34px;
-  height: 34px;
-  border-radius: 6px; /* Clean square box, NO ovals! */
+/* Failure Effect Tag Items (Card 04) - Perfectly aligned icons and text */
+.effect-tag-item {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 6px;
+  width: 100%;
+  line-height: 1;
 
-  mat-icon {
-    font-size: 18px;
-    width: 18px;
-    height: 18px;
+  .effect-tag-icon {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .effect-tag-label {
+    display: inline-block;
+    line-height: 1.2;
+  }
+
+  &.tag-danger {
+    background-color: #fef2f2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+    .effect-tag-icon { color: #dc2626; }
+  }
+
+  &.tag-warning {
+    background-color: #fffbeb;
+    color: #92400e;
+    border: 1px solid #fde68a;
+    .effect-tag-icon { color: #d97706; }
   }
 }
 
-/* Severity & Occurrence Scales */
-.scale-list li {
-  padding: 2.5px 0;
-  color: #334155;
+/* Failure Cause Icon Boxes (Card 05) */
+.cause-icon-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+
+  mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Failure Cause Tag Items (Card 05 - 3rd marked ones with increased size and aligned icons) */
+.cause-tag-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  font-size: 13.5px; /* Increased size */
+  font-weight: 600;
+  border-radius: 6px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  line-height: 1;
+
+  .cause-tag-icon {
+    font-size: 17px;
+    width: 17px;
+    height: 17px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .cause-tag-label {
+    display: inline-block;
+    line-height: 1.2;
+  }
+
+  &.tag-spindle {
+    color: #b91c1c;
+    border-color: #fca5a5;
+    .cause-tag-icon { color: #dc2626; }
+  }
+
+  &.tag-torque {
+    color: #1d4ed8;
+    border-color: #bfdbfe;
+    .cause-tag-icon { color: #2563eb; }
+  }
+
+  &.tag-operator {
+    color: #1e293b;
+    border-color: #cbd5e1;
+    .cause-tag-icon { color: #475569; }
+  }
+}
+
+/* Rating Badges in Cards 06, 07, 08 - Prominent & clean */
+.card-rating-badge {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  padding: 5px 14px !important;
+  border-radius: 6px !important;
+  letter-spacing: 0.4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Severity & Occurrence Scales (Card 06, 07, 08) - Moved down with generous spacing */
+.scale-list li {
+  padding: 5px 0; /* was 2.5px */
+  font-size: 12.5px; /* was 11.5px */
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  line-height: 1.3;
+
+  .badge {
+    min-width: 34px;
+    text-align: center;
+    padding: 3.5px 6px;
+    font-size: 11.5px;
+    font-weight: 700;
+    border-radius: 4px;
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
 }
 
 /* RPN Formula Hero Display */
@@ -449,6 +600,109 @@
   &.risk-high { background-color: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
   &.risk-medium { background-color: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
   &.risk-low { background-color: #dcfce7; color: #166534; border: 1px solid #86efac; }
+}
+
+/* Card 09: Slider Labels - Increased Size (img1) */
+.rpn-sliders-box {
+  .rpn-slider-label {
+    font-size: 13.5px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 0.2px;
+
+    .rpn-val-pill {
+      font-size: 14.5px;
+      font-weight: 800;
+      padding: 1px 8px;
+      border-radius: 4px;
+      background: rgba(15, 23, 42, 0.08);
+      min-width: 24px;
+      text-align: center;
+      display: inline-block;
+    }
+  }
+}
+
+/* Card 12: Poka-Yoke Tags - Increased Size (img2) */
+.poka-tags {
+  gap: 8px !important;
+  margin-bottom: 12px !important;
+
+  .poka-badge {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    padding: 7px 14px !important;
+    border-radius: 6px !important;
+    background: #ffffff !important;
+    color: #1e293b !important;
+    border: 1px solid #cbd5e1 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    line-height: 1.2 !important;
+    transition: all 0.15s ease !important;
+
+    &:hover {
+      background: #f8fafc !important;
+      border-color: #94a3b8 !important;
+      transform: translateY(-1px) !important;
+    }
+  }
+}
+
+/* Card 13: Table Cell Alignment - Process Step & Action Taken (img3) */
+.step-cell-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+
+  .step-cell-icon {
+    font-size: 17px;
+    width: 17px;
+    height: 17px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #2563eb;
+    flex-shrink: 0;
+  }
+
+  .step-cell-text {
+    font-size: 12px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1;
+  }
+}
+
+.action-taken-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  text-align: left;
+
+  .action-taken-icon {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #16a34a;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .action-taken-text {
+    font-size: 11.5px;
+    color: #1e293b;
+    line-height: 1.35;
+    flex: 1;
+    display: block;
+  }
 }
 
 /* Card 10: Enlarged 2D Heatmap Grid (Zero Wasted Space) */
@@ -1170,20 +1424,32 @@
 .transition-pill {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
-  padding: 6px 14px;
+  padding: 5px 14px;
   background-color: #f1f5f9;
   border: 1.5px dashed #475569;
   border-radius: 20px;
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 700;
   color: #1e293b;
+  line-height: 1;
   transition: all 0.2s ease;
 
+  span {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+  }
+
   mat-icon {
-    font-size: 15px;
-    width: 15px;
-    height: 15px;
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &:hover {

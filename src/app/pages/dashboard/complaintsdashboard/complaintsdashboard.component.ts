@@ -860,8 +860,9 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
     });
   }
 
-  private buildSubsystemBarOptions(): Highcharts.Options {
-    if (this.subsystemViewMode === 'model') {
+  private buildSubsystemBarOptions(forceMode?: 'model' | 'module'): Highcharts.Options {
+    const mode = forceMode || this.subsystemViewMode;
+    if (mode === 'model') {
       const categories = this.modelSummaries.map(m => m.name);
       const subsystemList = ['Hydraulics', 'Transmission', 'Thermal & Engine', 'Electrical', 'Steering', 'Braking', 'Chassis & Frame'];
       const subsystemColors: { [key: string]: string } = {
@@ -986,11 +987,11 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
     }
   }
 
-  // 3. Radar Secondary Chart: Subsystems Breakdown
+  // 3. Radar Secondary Chart: Subsystems Breakdown (Model-wise Only)
   renderRadarSubsystemChart(): void {
     const container = document.getElementById('radarSubsystemBarContainer');
     if (!container) return;
-    Highcharts.chart('radarSubsystemBarContainer', this.buildSubsystemBarOptions());
+    Highcharts.chart('radarSubsystemBarContainer', this.buildSubsystemBarOptions('model'));
   }
 
   // 4. Radar Secondary Chart: Market Exposure & Resolution
@@ -1046,11 +1047,11 @@ export class ComplaintsdashboardComponent implements OnInit, AfterViewInit, OnDe
     });
   }
 
-  // 2. Model & Subsystem Intelligence Charts
+  // 2. Model & Subsystem Intelligence Charts (Module-wise Only)
   renderModelStackedBarChart(): void {
     const container = document.getElementById('modelStackedBarContainer');
     if (!container) return;
-    Highcharts.chart('modelStackedBarContainer', this.buildSubsystemBarOptions());
+    Highcharts.chart('modelStackedBarContainer', this.buildSubsystemBarOptions('module'));
   }
 
   renderModelDonutChart(): void {

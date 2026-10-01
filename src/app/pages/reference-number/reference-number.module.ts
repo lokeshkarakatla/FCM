@@ -50,6 +50,7 @@ import { FiveWTwoHComponent } from './evaluation/five-w-two-h/five-w-two-h.compo
 import { FishboneComponent } from './evaluation/fishbone/fishbone.component';
 import { FmeaComponent } from './evaluation/fmea/fmea.component';
 import { GuidelinesComponent } from './evaluation/guidelines/guidelines.component';
+import { FlowchartComponent } from './evaluation/flowchart/flowchart.component';
 import { RcaComponent } from './rca/rca.component';
 
 // 8D Action Dialogs
@@ -120,6 +121,8 @@ const routes: Routes = [
       { path: "fishbone", component: FishboneComponent, data: { breadcrumb: 'Fishbone' } },
       { path: "fmea", component: FmeaComponent, data: { breadcrumb: 'FMEA' } },
       { path: "guidelines", component: GuidelinesComponent, data: { breadcrumb: 'Guidelines' } },
+      { path: "flowchart", component: FlowchartComponent, data: { breadcrumb: 'Flowchart' } },
+      { path: "flowchat", redirectTo: "flowchart" },
     ]
   },
   {
@@ -250,6 +253,7 @@ const routes: Routes = [
     FishboneComponent,
     FmeaComponent,
     GuidelinesComponent,
+    FlowchartComponent,
     RcaComponent,
     // 8D Action Dialogs
     ContainmentActionDialogComponent,

@@ -28,6 +28,12 @@
           (click)="setTab('guidelines')">
     Guidelines
   </button>
+
+  <button style="font-weight: bold; border-radius: 5px;"
+          [ngClass]="{ 'active-tab': activeTab === 'flowchart' }"
+          (click)="setTab('flowchart')">
+    Flowchart
+  </button>
 </div>
 
 <router-outlet></router-outlet>

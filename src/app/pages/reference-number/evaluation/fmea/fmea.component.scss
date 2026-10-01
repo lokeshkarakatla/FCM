@@ -1,5 +1,5 @@
 .fmea-container {
-  padding-bottom: 40px;
+  padding-bottom: 30px;
 }
 
 .section-heading {
@@ -18,6 +18,16 @@
   }
 }
 
+.save-fmea-btn {
+  background-color: #0f4c6e !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 13px;
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 4px;
+}
+
 .btn-icon {
   font-size: 17px !important;
   width: 17px !important;
@@ -27,531 +37,604 @@
 }
 
 /* ========================================================================= */
-/* RECORD SELECTOR PILLS                                                     */
+/* DUAL 10x10 RISK MATRICES CARD CONTAINER                                   */
 /* ========================================================================= */
-.record-selector-bar {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
+.fmea-matrices-card {
+  border-radius: 8px !important;
+  background-color: #ffffff;
+}
 
-  .record-tab-btn {
-    display: inline-flex;
+.matrix-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px !important;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    border-color: #cbd5e1;
+  }
+
+  .matrix-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.2px;
+  }
+}
+
+/* 10x10 Grid Layout */
+.risk-matrix-outer {
+  display: flex;
+  align-items: stretch;
+  gap: 6px;
+  justify-content: center;
+}
+
+.axis-y-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+
+  .axis-title-y {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 11px;
+    font-weight: 800;
+    color: #475569;
+    letter-spacing: 0.6px;
+  }
+}
+
+.grid-table-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.grid-row-10 {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+
+  .tick-y {
+    width: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #64748b;
+    text-align: right;
+    padding-right: 5px;
+    flex-shrink: 0;
+  }
+
+  .grid-cell-10 {
+    width: 28px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: default !important;
+    border-radius: 2px;
+    user-select: none;
+
+    &.cell-acceptable {
+      background-color: #22c55e; /* Vibrant Green */
+    }
+
+    &.cell-consideration {
+      background-color: #facc15; /* Vibrant Yellow */
+    }
+
+    &.cell-corrective {
+      background-color: #ef4444; /* Vibrant Red */
+    }
+  }
+
+  .active-marker-black {
+    width: 16px;
+    height: 16px;
+    background-color: #000000;
+    border-radius: 2px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+    animation: pulseMarker 1.8s infinite;
+  }
+}
+
+.axis-x-row {
+  margin-top: 3px;
+
+  .tick-x {
+    width: 28px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #64748b;
+    text-align: center;
+  }
+
+  .axis-title-x {
+    font-size: 11px;
+    font-weight: 800;
+    color: #475569;
+    margin-left: 8px;
+    letter-spacing: 0.6px;
+  }
+}
+
+/* Legend below Graph 1 (img2 format) */
+.matrix-legend-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 8px;
+  flex-wrap: wrap;
+
+  .legend-row {
+    display: flex;
     align-items: center;
     gap: 6px;
-    padding: 6px 12px;
-    border-radius: 5px;
-    border: 1px solid #cbd5e1;
-    background: #ffffff;
-    cursor: pointer;
-    transition: all 0.15s ease;
-    white-space: nowrap;
 
-    &:hover {
-      border-color: #0f4c6e;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    .legend-chip {
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
+      flex-shrink: 0;
     }
 
-    &.active {
-      background: #0f4c6e;
-      border-color: #0f4c6e;
-      color: #ffffff;
-
-      .rec-id {
-        background: rgba(255, 255, 255, 0.2);
-        color: #ffffff;
-      }
-
-      .rec-name {
-        color: #ffffff;
-      }
-    }
-
-    .rec-id {
-      font-size: 10px;
-      font-weight: 800;
-      background: #e2e8f0;
-      color: #475569;
-      padding: 1px 5px;
-      border-radius: 3px;
-    }
-
-    .rec-name {
-      font-size: 11.5px;
+    .legend-txt {
+      font-size: 11px;
       font-weight: 600;
       color: #334155;
     }
-
-    .rec-badge {
-      font-size: 9.5px;
-      font-weight: 700;
-      padding: 1px 5px;
-      border-radius: 3px;
-
-      &.badge-danger {
-        background: #fee2e2;
-        color: #dc2626;
-      }
-
-      &.badge-warning {
-        background: #fef3c7;
-        color: #d97706;
-      }
-    }
-
-    .rec-del {
-      font-size: 14px;
-      color: #94a3b8;
-      margin-left: 2px;
-
-      &:hover {
-        color: #dc2626;
-      }
-    }
   }
 }
 
-/* ========================================================================= */
-/* 3-COLUMN TABLE FORMAT (IMG2)                                              */
-/* ========================================================================= */
-.fmea-eval-table-card,
-.fmea-graph-sidebar,
-.table-responsive,
-.record-selector-bar {
-  border-radius: 6px !important;
-}
-
-.table-responsive {
-  overflow-x: auto !important;
-  border-radius: 6px !important;
-}
-
-.fmea-eval-table-card {
-  border-radius: 6px !important;
-  overflow: hidden;
-}
-
-.fmea-matrix-table {
-  width: 100%;
-  border-collapse: collapse;
-
-  .fmea-tbl-header {
-    background-color: #0f4c6e;
-    color: #ffffff;
-
-    th {
-      padding: 10px 12px;
-      font-size: 12.5px;
-      font-weight: 700;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      vertical-align: middle;
-      letter-spacing: 0.3px;
-    }
-
-    .col-subject { width: 23%; }
-    .col-questions { width: 44%; }
-    .col-eval { width: 33%; }
-  }
-
-  tbody tr {
-    transition: background 0.15s ease;
-
-    &:nth-child(even) {
-      background-color: #f8fafc;
-    }
-
-    &:hover {
-      background-color: #f1f5f9;
-    }
-  }
-
-  td {
-    padding: 8px 12px;
-    vertical-align: middle;
-    border: 1px solid #e2e8f0;
-  }
-
-  .td-subject {
-    font-size: 12px;
+/* Metrics Display Bar */
+.matrix-metrics-bar {
+  .metric-lbl {
+    font-size: 11px;
     font-weight: 700;
-    color: #0f172a;
-    line-height: 1.3;
-  }
-
-  .td-question {
-    font-size: 11.5px;
     color: #475569;
-    line-height: 1.35;
+    margin-bottom: 4px;
+    letter-spacing: 0.2px;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  .td-eval {
-    font-size: 12px;
+  .metric-val-pill {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1e293b;
+    background: #ffffff;
+    border: 1px solid #5d5d5d !important;
+    border-radius: 4px;
+    padding: 4px 10px;
+    height: 36px;
+    line-height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
   }
 
-  /* Shaded divider between Evaluation and Recommended Actions (img2) */
-  .fmea-divider-row {
-    td {
-      height: 12px;
-      padding: 0;
-      background: #e2e8f0;
-      border-top: 1px solid #cbd5e1;
-      border-bottom: 1px solid #cbd5e1;
-    }
-  }
-
-  .rpn-highlight-row {
-    background-color: #fff7ed !important;
-  }
-
-  .eval-text-input {
-    font-size: 12px;
-    border-color: #cbd5e1;
-    padding: 4px 8px;
-    background-color: #ffffff;
+  input.form-control-sm {
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 4px !important;
+    border: 1px solid #5d5d5d !important;
 
     &:focus {
       border-color: #0f4c6e;
       box-shadow: 0 0 0 2px rgba(15, 76, 110, 0.15);
     }
   }
+}
 
-  .eval-num-input {
-    width: 60px;
-    font-size: 13px;
-    border-color: #cbd5e1;
-    padding: 4px 6px;
-  }
-
-  /* Green-bordered action boxes (matching img2 exactly!) */
-  .btn-img2-add {
-    background-color: #0f4c6e;
-    color: #ffffff;
-    font-size: 10.5px;
-    font-weight: 800;
-    padding: 3px 12px;
-    border-radius: 3px;
-    border: none;
-    letter-spacing: 0.5px;
-    cursor: pointer;
-    transition: background 0.15s ease;
+/* Action Transition Arrow in Center */
+.action-transition-flow {
+  .transition-icon-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50% !important;
+    background: #e0f2fe;
+    border: 1px solid #bae6fd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
 
     &:hover {
-      background-color: #0b3852;
+      transform: scale(1.08);
+      background: #bae6fd;
     }
   }
 
-  .action-green-box {
-    background: #ffffff;
-    border: 2px solid #22c55e;
-    border-radius: 4px;
-    padding: 6px 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    min-height: 40px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
-
-    .action-input {
-      border: none;
-      outline: none;
-      width: 100%;
-      font-size: 12px;
-      color: #0f172a;
-      background: transparent;
-
-      &::placeholder {
-        color: #94a3b8;
-      }
-    }
-
-    .btn-del-action {
-      background: transparent;
-      border: none;
-      color: #94a3b8;
-      font-size: 16px;
-      line-height: 1;
-      padding: 0 2px;
-      cursor: pointer;
-
-      &:hover {
-        color: #dc2626;
-      }
-    }
-  }
-}
-
-/* Crisp RPN Badges */
-.rpn-box-badge {
-  padding: 3px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 800;
-  display: inline-block;
-
-  &.rpn-red {
-    background: #fee2e2;
-    color: #dc2626;
-    border: 1px solid #fca5a5;
+  .transition-arrow-svg {
+    filter: drop-shadow(0 2px 4px rgba(15, 76, 110, 0.2));
   }
 
-  &.rpn-amber {
-    background: #fef3c7;
-    color: #d97706;
-    border: 1px solid #fde68a;
-  }
-
-  &.rpn-green {
-    background: #dcfce7;
-    color: #16a34a;
-    border: 1px solid #86efac;
-  }
-}
-
-/* ========================================================================= */
-/* DUAL 10x10 RISK MATRICES (GRAPHS IN IMG2)                                 */
-/* ========================================================================= */
-.fmea-graph-sidebar {
-  border-radius: 8px;
-
-  .matrix-graph-block {
-    background: #ffffff;
-  }
-
-  .matrix-block-title {
-    font-size: 12.5px;
+  .transition-pill-badge {
+    font-size: 10px;
     font-weight: 800;
-    color: #0f172a;
-  }
-
-  .risk-matrix-outer {
-    display: flex;
-    align-items: stretch;
-    gap: 4px;
-    justify-content: center;
-  }
-
-  .axis-y-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 14px;
-
-    .axis-title-y {
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      font-size: 9.5px;
-      font-weight: 800;
-      color: #475569;
-      letter-spacing: 0.5px;
-    }
-  }
-
-  .grid-table-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5px;
-  }
-
-  .grid-row-10 {
-    display: flex;
-    align-items: center;
-    gap: 1.5px;
-
-    .tick-y {
-      width: 16px;
-      font-size: 9px;
-      font-weight: 700;
-      color: #64748b;
-      text-align: right;
-      padding-right: 3px;
-      flex-shrink: 0;
-    }
-
-    .grid-cell-10 {
-      width: 22px;
-      height: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      border-radius: 1px;
-      transition: transform 0.12s ease;
-
-      &:hover {
-        transform: scale(1.22);
-        z-index: 5;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-      }
-
-      &.cell-acceptable {
-        background-color: #22c55e; /* Vibrant Green */
-      }
-
-      &.cell-consideration {
-        background-color: #facc15; /* Vibrant Yellow */
-      }
-
-      &.cell-corrective {
-        background-color: #ef4444; /* Vibrant Red */
-      }
-    }
-
-    .active-marker-black {
-      width: 14px;
-      height: 14px;
-      background-color: #000000;
-      border-radius: 2px;
-      box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
-      animation: pulseMarker 1.8s infinite;
-    }
-  }
-
-  .axis-x-row {
-    margin-top: 2px;
-
-    .tick-x {
-      width: 22px;
-      font-size: 9px;
-      font-weight: 700;
-      color: #64748b;
-      text-align: center;
-    }
-
-    .axis-title-x {
-      font-size: 9.5px;
-      font-weight: 800;
-      color: #475569;
-      margin-left: 6px;
-      letter-spacing: 0.5px;
-    }
-  }
-
-  /* Legend below Graph 1 (img2 format) */
-  .matrix-legend-box {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    margin-left: 20px;
-
-    .legend-row {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-
-      .legend-chip {
-        width: 12px;
-        height: 12px;
-        border-radius: 2px;
-        flex-shrink: 0;
-      }
-
-      .legend-txt {
-        font-size: 11px;
-        font-weight: 600;
-        color: #334155;
-      }
-    }
-  }
-
-  /* Downward arrow transition in img2 */
-  .downward-arrow-box {
-    .downward-arrow-svg {
-      display: inline-block;
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
-    }
+    color: #0369a1;
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    padding: 2px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    display: inline-block;
   }
 }
 
 @keyframes pulseMarker {
   0% { transform: scale(1); }
-  50% { transform: scale(1.12); }
+  50% { transform: scale(1.15); }
   100% { transform: scale(1); }
 }
 
 /* ========================================================================= */
-/* COMPLETE FMEA MASTER PROCESS REGISTER (IMG3 DIRECT FIDELITY)               */
+/* 2. THREE-COLUMN EVALUATION REGISTER TABLE (BELOW GRAPHS)                  */
 /* ========================================================================= */
-.master-fmea-table {
-  font-size: 12px;
-  border-collapse: collapse;
+.fmea-eval-table-card {
+  background: #ffffff;
+  border: 1px solid #94a3b8 !important; /* Visible, crisp table card border */
+  border-radius: 6px !important;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
 
-  .thead-teal-img3 {
-    background-color: #008080;
-    color: #ffffff;
+.fmea-matrix-table {
+  width: 100%;
+  border-collapse: collapse !important;
+  border: 1px solid #94a3b8 !important; /* Highly visible grid lines */
+  margin: 0;
 
-    th {
-      background-color: #008080;
-      color: #ffffff;
-      padding: 8px 6px;
-      font-size: 11.5px;
-      font-weight: 700;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      vertical-align: middle;
-      line-height: 1.25;
+  thead {
+    tr.fmea-tbl-header {
+      background-color: #0f4c6e !important; /* Oceanic Teal matching FCM & img2 */
+
+      th {
+        background-color: #0f4c6e !important;
+        color: #ffffff !important;
+        font-size: 13.5px;
+        font-weight: 700;
+        padding: 12px 18px;
+        letter-spacing: 0.3px;
+        border: 1px solid #082d42 !important;
+        vertical-align: middle;
+      }
     }
-
-    .th-num { width: 55px; }
-    .th-rpn { width: 60px; }
   }
 
-  /* Questions row from img3 */
-  .tr-questions-img3 {
-    background-color: #fef9c3;
+  .col-step {
+    width: 15%;
+    min-width: 150px;
+  }
 
-    .q-cell {
-      background-color: #fef9c3;
-      font-size: 10px;
-      color: #334155;
-      padding: 6px 5px;
-      line-height: 1.25;
+  .col-question {
+    width: 28%;
+    min-width: 240px;
+  }
+
+  .col-eval {
+    width: 57%;
+    min-width: 480px;
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid #94a3b8 !important;
+      transition: background-color 0.15s ease;
+
+      &:nth-child(even) {
+        background-color: #f8fafc;
+      }
+
+      &:nth-child(odd) {
+        background-color: #ffffff;
+      }
+
+      &:hover {
+        background-color: #f1f5f9;
+      }
+    }
+
+    td {
+      padding: 11px 16px;
       vertical-align: top;
-      border: 1px solid #cbd5e1;
+      border: 1px solid #94a3b8 !important; /* PROMINENT, CLEARLY VISIBLE CELL GRID LINES */
+      font-size: 13px;
+    }
+
+    .td-subject {
+      font-weight: 700;
+      color: #0f172a;
+      white-space: nowrap;
+      padding-top: 14px;
+      background-color: #f8fafc;
+    }
+
+    .td-question {
+      font-weight: 500;
+      color: #334155;
+      line-height: 1.5;
+      padding-top: 14px;
+    }
+
+    .td-eval {
+      padding: 10px 16px;
     }
   }
 
-  .master-data-row {
-    background-color: #f0fdf4;
+  /* Shaded Divider Row (img2 signature divider bar) */
+  tr.fmea-divider-row {
+    background-color: #cbd5e1 !important;
+    height: 14px;
+    line-height: 14px;
+
+    td {
+      background-color: #cbd5e1 !important;
+      border: 1px solid #94a3b8 !important;
+      padding: 0;
+      height: 14px;
+      font-size: 0;
+    }
+  }
+
+  /* RPN Highlight Row */
+  tr.rpn-highlight-row {
+    background-color: #f8fafc;
+
+    .rpn-box-badge {
+      display: inline-block;
+      font-size: 15px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 4px;
+      text-align: center;
+      min-width: 46px;
+
+      &.rpn-red {
+        background-color: #ef4444;
+        color: #ffffff;
+      }
+
+      &.rpn-amber {
+        background-color: #f59e0b;
+        color: #000000;
+      }
+
+      &.rpn-green {
+        background-color: #22c55e;
+        color: #ffffff;
+      }
+    }
+  }
+
+  /* Recommended Actions Cell */
+  .btn-img2-add {
+    background-color: #0f4c6e;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 16px;
+    box-shadow: 0 1px 2px rgba(15, 76, 110, 0.25);
     cursor: pointer;
     transition: all 0.15s ease;
 
-    td {
-      padding: 7px 6px;
-      vertical-align: middle;
-      border: 1px solid #cbd5e1;
-      line-height: 1.25;
-    }
-
     &:hover {
-      background-color: #dcfce7;
-    }
-
-    &.row-selected {
-      background-color: #eff6ff !important;
-      outline: 2px solid #2563eb;
+      background-color: #0a354d;
+      transform: translateY(-1px);
     }
   }
 
-  .rpn-table-pill {
-    padding: 2px 6px;
-    border-radius: 3px;
-    font-size: 11px;
+  .action-green-box {
+    border: 1px solid #5d5d5d !important; /* Exact form-control border matching Process step/input */
+    border-radius: 4px !important;
+    background-color: #ffffff;
+    padding: 6px 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    box-shadow: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+    &:focus-within {
+      border-color: #0f4c6e !important;
+      box-shadow: 0 0 0 2px rgba(15, 76, 110, 0.15) !important;
+    }
+
+    .action-input {
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+      width: 100%;
+      font-size: 13px;
+      font-weight: 400; /* Regular weight, no bold */
+      color: #1e293b;   /* Uniform color, no colors */
+      background: transparent;
+      padding: 0;
+
+      &::placeholder {
+        color: #94a3b8;
+        font-style: italic;
+      }
+    }
+
+    .action-textarea {
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+      width: 100%;
+      font-size: 13px;
+      font-weight: 400; /* Regular weight, no bold */
+      color: #1e293b;   /* Uniform color, no colors */
+      background: transparent;
+      padding: 0;
+      min-height: 42px;
+      line-height: 1.45;
+      resize: vertical;
+
+      &::placeholder {
+        color: #94a3b8;
+        font-style: italic;
+      }
+    }
+
+    .btn-del-action {
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      padding: 0 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      margin-top: 3px;
+
+      .fa-trash {
+        font-size: 15px;
+        color: #ef4444 !important; /* Vibrant red trash icon matching img2 */
+        cursor: pointer;
+        transition: transform 0.15s ease, color 0.15s ease;
+
+        &:hover {
+          transform: scale(1.18);
+          color: #dc2626 !important;
+        }
+      }
+    }
+  }
+
+  /* Form Inputs inside Evaluation Column */
+  .eval-text-input {
+    font-size: 13px;
+    font-weight: 400;
+    border: 1px solid #5d5d5d !important; /* Exact form-control border matching Process step/input */
+    border-radius: 4px !important;
+    padding: 6px 12px;
+    background-color: #ffffff;
+    color: #1e293b;
+    transition: all 0.15s ease;
+
+    &:focus {
+      border-color: #0f4c6e !important;
+      box-shadow: 0 0 0 2px rgba(15, 76, 110, 0.15) !important;
+      outline: none;
+    }
+  }
+
+  /* Readonly field for RPM (no colors, neutral styling) */
+  .eval-readonly-input {
+    background-color: #f8fafc !important;
+    color: #0f172a !important;
+    font-weight: 600 !important;
+    cursor: default !important;
+    border: 1px solid #5d5d5d !important;
+
+    &:focus {
+      border-color: #5d5d5d !important;
+      box-shadow: none !important;
+    }
+  }
+
+  .eval-select {
+    font-size: 13px;
+    font-weight: 400;
+    color: #1e293b;
+    border: 1px solid #5d5d5d !important; /* Exact form-control border matching Process step/input */
+    border-radius: 4px !important;
+    background-color: #ffffff;
+    padding: 6px 12px;
+    width: 100%;
+    cursor: pointer;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+    &:focus {
+      border-color: #0f4c6e !important;
+      box-shadow: 0 0 0 2px rgba(15, 76, 110, 0.15) !important;
+      outline: none;
+    }
+
+    option {
+      font-size: 13px;
+      color: #1e293b;
+      padding: 4px 8px;
+    }
+  }
+
+  .eval-textarea {
+    font-size: 13px;
+    border: 1px solid #5d5d5d !important; /* Exact form-control border matching Process step/input */
+    border-radius: 4px !important;
+    padding: 6px 12px;
+    background-color: #ffffff;
+    color: #1e293b;
+    width: 100%;
+    min-height: 48px;
+    line-height: 1.45;
+    resize: vertical;
+    transition: all 0.15s ease;
+
+    &:focus {
+      border-color: #0f4c6e !important;
+      box-shadow: 0 0 0 2px rgba(15, 76, 110, 0.15) !important;
+      outline: none;
+    }
+  }
+
+  .eval-num-input {
+    width: 68px;
+    font-size: 13.5px;
     font-weight: 700;
-    display: inline-block;
+    border-radius: 4px !important;
+    border: 1px solid #5d5d5d !important; /* Exact form-control border matching Process step/input */
 
-    &.rpn-red {
-      background: #fee2e2;
-      color: #dc2626;
-      border: 1px solid #fca5a5;
-    }
-
-    &.rpn-amber {
-      background: #fef3c7;
-      color: #d97706;
-      border: 1px solid #fde68a;
-    }
-
-    &.rpn-green {
-      background: #dcfce7;
-      color: #16a34a;
-      border: 1px solid #86efac;
+    &:focus {
+      border-color: #0f4c6e !important;
+      box-shadow: 0 0 0 2px rgba(15, 76, 110, 0.15) !important;
+      outline: none;
     }
   }
 }
+
+/* ========================================================================= */
+/* 3. BOTTOM SAVE ACTION (MATCHING IMG3 PRIMARY BLUE MAT-BUTTON)             */
+/* ========================================================================= */
+.save-btn-img3 {
+  background-color: #0d6efd !important; /* Primary blue matching img3 */
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  font-size: 13.5px !important;
+  height: 38px !important;
+  padding: 0 22px !important;
+  border-radius: 4px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  box-shadow: 0 2px 5px rgba(13, 110, 253, 0.3) !important;
+  transition: all 0.18s ease !important;
+
+  &:hover {
+    background-color: #0b5ed7 !important;
+    box-shadow: 0 4px 10px rgba(13, 110, 253, 0.4) !important;
+    transform: translateY(-1px);
+  }
+
+  .btn-icon {
+    font-size: 18px !important;
+    width: 18px !important;
+    height: 18px !important;
+    line-height: 18px !important;
+    margin-right: 6px !important;
+    vertical-align: middle !important;
+  }
+}
+

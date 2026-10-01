@@ -1,25 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-export interface FmeaRecord {
-  id: number;
-  processStep: string;
-  failureMode: string;
-  failureEffect: string;
-  severity: number;
-  potentialCause: string;
-  occurrence: number;
-  currentControls: string;
-  detection: number;
-  rpn: number;
-  recommendedActions: string[];
-  responsibility: string;
-  actionTaken: string;
-  revisedSeverity: number;
-  revisedOccurrence: number;
-  revisedDetection: number;
-  revisedRpn: number;
-}
-
 @Component({
   selector: 'app-eval-fmea',
   templateUrl: './fmea.component.html',
@@ -27,99 +7,133 @@ export interface FmeaRecord {
 })
 export class FmeaComponent implements OnInit {
 
-  // All 4 real dataset records from img3
-  records: FmeaRecord[] = [
-    {
-      id: 1,
-      processStep: 'Sealing/ temperature',
-      failureMode: 'Temp. too high',
-      failureEffect: 'Burned blister pack',
-      severity: 10,
-      potentialCause: 'Wrong setting',
-      occurrence: 6,
-      currentControls: 'Verification of batch record',
-      detection: 7,
-      rpn: 420,
-      recommendedActions: [
-        'Provide infrared temperature device to operator',
-        'Implement automated thermocouple interlock (SOP-402)'
-      ],
-      responsibility: 'M. Peña',
-      actionTaken: 'Temperature device implemented (8/11)',
-      revisedSeverity: 3, // Plotted in Acceptable green zone as in img2 Graph 2
-      revisedOccurrence: 2,
-      revisedDetection: 2,
-      revisedRpn: 80
-    },
-    {
-      id: 2,
-      processStep: 'Sealing/ temperature',
-      failureMode: 'Temp. too high',
-      failureEffect: 'Blister pack not sealed completely',
-      severity: 9,
-      potentialCause: 'Wrong setting',
-      occurrence: 6,
-      currentControls: 'Verification of batch record',
-      detection: 7,
-      rpn: 378,
-      recommendedActions: [
-        'Provide infrared temperature device to operator'
-      ],
-      responsibility: 'M. Peña',
-      actionTaken: 'Temperature device implemented (8/11)',
-      revisedSeverity: 3,
-      revisedOccurrence: 2,
-      revisedDetection: 2,
-      revisedRpn: 72
-    },
-    {
-      id: 3,
-      processStep: 'Sealing/ press time',
-      failureMode: 'Too much time',
-      failureEffect: 'Burned blister pack',
-      severity: 10,
-      potentialCause: 'Machine not set properly',
-      occurrence: 5,
-      currentControls: 'Verification of batch record',
-      detection: 7,
-      rpn: 350,
-      recommendedActions: [
-        'Provide a visual display to see time elapsed'
-      ],
-      responsibility: 'J. Rodriguez',
-      actionTaken: 'Visual display implemented (10/11)',
-      revisedSeverity: 3,
-      revisedOccurrence: 2,
-      revisedDetection: 2,
-      revisedRpn: 60
-    },
-    {
-      id: 4,
-      processStep: 'Sealing/ press time',
-      failureMode: 'Not enough time',
-      failureEffect: 'Blister pack not sealed completely',
-      severity: 9,
-      potentialCause: 'Machine not set properly',
-      occurrence: 5,
-      currentControls: 'Verification of batch record',
-      detection: 7,
-      rpn: 315,
-      recommendedActions: [
-        'Provide a visual display to see time elapsed'
-      ],
-      responsibility: 'J. Rodriguez',
-      actionTaken: 'Visual display implemented',
-      revisedSeverity: 3,
-      revisedOccurrence: 2,
-      revisedDetection: 2,
-      revisedRpn: 54
-    }
+  // Process and Failure Details (Populated from img1 with expanded realistic FMEA data)
+  processStep: string = 'Sealing/ temperature & dwell time control';
+  failureModes: string[] = [
+    'Temp. too high',
+    'Temperature variations beyond ±5°C tolerance',
+    'Non-uniform heat distribution across upper and lower sealing jaws',
+    'Delayed thermal recovery after high-speed foil feeding cycle'
+  ];
+  failureEffects: string[] = [
+    'Burned blister pack',
+    'Blister pack not sealed completely',
+    'Micro-channel leakage causing loss of sterile barrier packaging',
+    'Deformed blister cavity profile leading to customer visual complaints'
+  ];
+  severity: number | null = 10;
+  potentialCauses: string[] = [
+    'Wrong setting',
+    'Machine not set properly',
+    'PID temperature controller calibration drift over operating hours',
+    'Heater cartridge degradation and uneven resistive heating'
+  ];
+  occurrence: number | null = 6;
+  currentControls: string[] = [
+    'Verification of batch record',
+    'Periodic manual temperature check (SOP-402)',
+    'Inline automated visual seal width inspection camera system',
+    'Pre-shift blister vacuum chamber dye penetration test'
+  ];
+  detection: number | null = 7;
+
+  // Rating Options from img2 (Detection), img3 (Severity), img4 (Occurrence)
+  severityOptions = [
+    { value: 10, label: 'Dangerous without warning' },
+    { value: 9, label: 'Dangerous with warning' },
+    { value: 8, label: 'Very high' },
+    { value: 7, label: 'High' },
+    { value: 6, label: 'Moderate' },
+    { value: 5, label: 'Low' },
+    { value: 4, label: 'Very low' },
+    { value: 3, label: 'Minor' },
+    { value: 2, label: 'Very minor' },
+    { value: 1, label: 'None' }
   ];
 
-  selectedRecordIndex: number = 0;
-  selectedRecord: FmeaRecord = this.records[0];
+  occurrenceOptions = [
+    { value: 10, label: 'Very High: Failure is almost inevitable.' },
+    { value: 9, label: 'High: Failures occur almost as often as not.' },
+    { value: 8, label: 'High: Repeated failures.' },
+    { value: 7, label: 'High: Failures occur often.' },
+    { value: 6, label: 'Moderately High: Frequent failures.' },
+    { value: 5, label: 'Moderate: Occasional failures.' },
+    { value: 4, label: 'Moderately Low: Infrequent failures.' },
+    { value: 3, label: 'Low: Relatively few failures.' },
+    { value: 2, label: 'Low: Failures are few and far between.' },
+    { value: 1, label: 'Remote: Failure is unlikely.' }
+  ];
 
-  // Row questions from img3 Row 1
+  detectionOptions = [
+    { value: 10, label: 'Absolute Uncertainty' },
+    { value: 9, label: 'Very Remote' },
+    { value: 8, label: 'Remote' },
+    { value: 7, label: 'Very Low' },
+    { value: 6, label: 'Low' },
+    { value: 5, label: 'Moderately' },
+    { value: 4, label: 'Moderately High' },
+    { value: 3, label: 'High' },
+    { value: 2, label: 'Very High' },
+    { value: 1, label: 'Almost Certain' }
+  ];
+
+  get rpn(): number | null {
+    if (this.severity !== null && this.occurrence !== null && this.detection !== null) {
+      return Number(this.severity) * Number(this.occurrence) * Number(this.detection);
+    }
+    return null;
+  }
+
+  // Mitigation and Post-Action Details (Populated from img1 with expanded realistic FMEA data)
+  recommendedActions: string[] = [
+    'Provide infrared temperature device to operator',
+    'Provide a visual display to see time elapsed',
+    'Install automated interlock cutoff switch for out-of-spec temperature deviations',
+    'Establish bi-weekly preventive maintenance calibration schedule for heating elements'
+  ];
+
+  // Responsibility: Department and Role dropdowns
+  selectedDepartment: string = 'Quality Assurance';
+  selectedRole: string = 'Process Engineer';
+
+  departmentOptions: string[] = [
+    'Quality Assurance',
+    'Production / Operations',
+    'Packaging & Sealing',
+    'Engineering & Maintenance',
+    'R&D / Process Development',
+    'Testing & Validation',
+    'Supply Chain & SQA'
+  ];
+
+  roleOptions: string[] = [
+    'Process Engineer',
+    'Quality Lead / Specialist',
+    'Production Supervisor',
+    'Maintenance Engineer',
+    'Packaging Specialist',
+    'Line Lead / Operator',
+    'Plant Quality Manager',
+    'Validation Specialist'
+  ];
+
+  responsibility: string = 'Quality Assurance - Process Engineer';
+  revisedSeverity: number | null = 3;
+  revisedOccurrence: number | null = 2;
+  revisedDetection: number | null = 2;
+
+  get revisedRpn(): number | null {
+    if (this.revisedSeverity !== null && this.revisedOccurrence !== null && this.revisedDetection !== null) {
+      return Number(this.revisedSeverity) * Number(this.revisedOccurrence) * Number(this.revisedDetection);
+    }
+    return null;
+  }
+
+  // 10x10 matrix axis levels
+  severityLevels: number[] = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+  occurrenceLevels: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+  // Questions from Img2 (RPN and Revised items are blank in Img2; Actions Taken removed)
   questions = {
     processStep: 'What is the process step/input under investigation?',
     failureMode: 'In what ways does the key input go wrong?',
@@ -129,96 +143,18 @@ export class FmeaComponent implements OnInit {
     occurrence: 'How often does cause of failure mode occur?',
     currentControls: 'What are the existing controls and procedures (inspection and test) that prevent the cause of the failure mode? Should include an SOP number.',
     detection: 'How well can you detect cause or failure mode?',
-    rpn: 'RPN = Severity × Occurrence × Detection (1 - 1000)',
+    rpn: '',
     recommendedActions: 'What are the actions for reducing the occurrences of the Cause or improving detection?',
     responsibility: "Who's responsible for the recommended action?",
-    actionsTaken: 'What are the completed actions taken with the recalculated RPN? Be sure to include completion month/year.',
-    revisedSeverity: 'How severe is the effect after implementing corrective actions?',
-    revisedOccurrence: 'How often does cause occur after implementing corrective actions?',
-    revisedDetection: 'How well can you detect after implementing corrective actions?',
-    revisedRpn: 'Recalculated Risk Priority Number (Target < 100)'
+    revisedSeverity: '',
+    revisedOccurrence: '',
+    revisedDetection: '',
+    revisedRpn: ''
   };
 
-  // 10x10 matrix axis levels
-  severityLevels: number[] = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
-  occurrenceLevels: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
   isSaved: boolean = false;
-  viewMode: 'both' | 'matrix' | 'table' = 'both';
 
-  ngOnInit(): void {
-    this.recalculateAll();
-  }
-
-  selectRecord(index: number): void {
-    this.selectedRecordIndex = index;
-    this.selectedRecord = this.records[this.selectedRecordIndex];
-  }
-
-  recalculateAll(): void {
-    this.records.forEach(rec => this.calculateRpn(rec));
-  }
-
-  calculateRpn(record: FmeaRecord): void {
-    record.rpn = (record.severity || 1) * (record.occurrence || 1) * (record.detection || 1);
-    record.revisedRpn = (record.revisedSeverity || 1) * (record.revisedOccurrence || 1) * (record.revisedDetection || 1);
-  }
-
-  onFieldChange(): void {
-    this.calculateRpn(this.selectedRecord);
-  }
-
-  addRecommendedAction(): void {
-    if (!this.selectedRecord.recommendedActions) {
-      this.selectedRecord.recommendedActions = [];
-    }
-    this.selectedRecord.recommendedActions.push('');
-  }
-
-  removeRecommendedAction(index: number): void {
-    if (this.selectedRecord.recommendedActions.length > 1) {
-      this.selectedRecord.recommendedActions.splice(index, 1);
-    }
-  }
-
-  addRecord(): void {
-    const newId = this.records.length + 1;
-    const newRec: FmeaRecord = {
-      id: newId,
-      processStep: 'Sealing/ new station',
-      failureMode: 'Process parameter drift',
-      failureEffect: 'Quality threshold escape',
-      severity: 8,
-      potentialCause: 'Wear & calibration drift',
-      occurrence: 5,
-      currentControls: 'Visual inspection sampling',
-      detection: 6,
-      rpn: 240,
-      recommendedActions: [
-        'Install digital telemetry sensor with alarm threshold'
-      ],
-      responsibility: 'Quality Eng',
-      actionTaken: 'Interlock mechanism scheduled',
-      revisedSeverity: 3,
-      revisedOccurrence: 2,
-      revisedDetection: 2,
-      revisedRpn: 12
-    };
-    this.records.push(newRec);
-    this.selectedRecordIndex = this.records.length - 1;
-    this.selectedRecord = this.records[this.selectedRecordIndex];
-  }
-
-  deleteRecord(index: number, event: Event): void {
-    event.stopPropagation();
-    if (this.records.length > 1) {
-      this.records.splice(index, 1);
-      if (this.selectedRecordIndex >= this.records.length) {
-        this.selectedRecordIndex = this.records.length - 1;
-      }
-      this.selectedRecord = this.records[this.selectedRecordIndex];
-    }
-  }
+  ngOnInit(): void {}
 
   save(): void {
     this.isSaved = true;
@@ -227,7 +163,27 @@ export class FmeaComponent implements OnInit {
     }, 3000);
   }
 
-  // Risk matrix color classification (matching img2 exactly)
+  addEntry(list: string[]): void {
+    if (list) {
+      list.push('');
+    }
+  }
+
+  removeEntry(list: string[], index: number): void {
+    if (list && list.length > 1) {
+      list.splice(index, 1);
+    }
+  }
+
+  addRecommendedAction(): void {
+    this.addEntry(this.recommendedActions);
+  }
+
+  removeRecommendedAction(index: number): void {
+    this.removeEntry(this.recommendedActions, index);
+  }
+
+  // Risk matrix color classification (matching img2):
   // Green (Acceptable): sum <= 8
   // Yellow (Consideration): sum 9 to 10
   // Red (Need Corrective Action): sum >= 11
@@ -243,22 +199,20 @@ export class FmeaComponent implements OnInit {
   }
 
   isInitialMarker(sev: number, occ: number): boolean {
-    return this.selectedRecord.severity === sev && this.selectedRecord.occurrence === occ;
+    return this.severity !== null && this.occurrence !== null && this.severity === sev && this.occurrence === occ;
   }
 
   isRevisedMarker(sev: number, occ: number): boolean {
-    return this.selectedRecord.revisedSeverity === sev && this.selectedRecord.revisedOccurrence === occ;
+    return this.revisedSeverity !== null && this.revisedOccurrence !== null && this.revisedSeverity === sev && this.revisedOccurrence === occ;
   }
 
   setInitialCoord(sev: number, occ: number): void {
-    this.selectedRecord.severity = sev;
-    this.selectedRecord.occurrence = occ;
-    this.calculateRpn(this.selectedRecord);
+    this.severity = sev;
+    this.occurrence = occ;
   }
 
   setRevisedCoord(sev: number, occ: number): void {
-    this.selectedRecord.revisedSeverity = sev;
-    this.selectedRecord.revisedOccurrence = occ;
-    this.calculateRpn(this.selectedRecord);
+    this.revisedSeverity = sev;
+    this.revisedOccurrence = occ;
   }
 }

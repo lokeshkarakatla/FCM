@@ -1,58 +1,9 @@
 <div class="guidelines-page mt-2">
 
   <!-- ========================================================================= -->
-  <!-- HERO HEADER & NAVIGATION BAR                                              -->
+  <!-- FMEA POSTER & INFOGRAPHIC                                                 -->
   <!-- ========================================================================= -->
-  <div class="guidelines-hero-banner p-4 mb-4 rounded-3 text-white shadow-sm">
-    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
-      <!-- Left: Header info & title -->
-      <div class="hero-left-content">
-        <h2 class="hero-title m-0">FMEA Guidelines &amp; Execution Framework (D4)</h2>
-        <p class="hero-subtitle m-0 mt-1 text-light">
-          Complete engineering reference infographic, quantitative risk assessment matrices, and 34-step approach flowchart.
-        </p>
-      </div>
-
-      <!-- Right: Perfectly Aligned View Switcher Pills (Text & Logo) -->
-      <div class="view-switcher-pill-container" role="tablist" aria-label="Guidelines View Selector">
-        <button type="button" class="view-btn" [class.active]="activeView === 'all'" (click)="setView('all')">
-          <svg class="btn-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
-            <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
-            <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
-            <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
-          </svg>
-          <span class="btn-text">All Sections</span>
-        </button>
-
-        <button type="button" class="view-btn" [class.active]="activeView === 'infographic'" (click)="setView('infographic')">
-          <svg class="btn-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="18" height="18" rx="2.5"></rect>
-            <line x1="3" y1="9" x2="21" y2="9"></line>
-            <line x1="9" y1="21" x2="9" y2="9"></line>
-          </svg>
-          <span class="btn-text">Infographic Poster</span>
-        </button>
-
-        <button type="button" class="view-btn" [class.active]="activeView === 'flowchart'" (click)="setView('flowchart')">
-          <svg class="btn-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="9" y="3" width="6" height="5" rx="1"></rect>
-            <rect x="3" y="16" width="6" height="5" rx="1"></rect>
-            <rect x="15" y="16" width="6" height="5" rx="1"></rect>
-            <path d="M12 8v4"></path>
-            <path d="M6 16v-2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"></path>
-          </svg>
-          <span class="btn-text">Approach Flowchart</span>
-        </button>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- ========================================================================= -->
-  <!-- PART 1: FMEA POSTER & INFOGRAPHIC (MATCHING IMG2)                        -->
-  <!-- ========================================================================= -->
-  <div class="fmea-infographic-wrapper mb-5" *ngIf="activeView === 'all' || activeView === 'infographic'">
+  <div class="fmea-infographic-wrapper mb-4">
 
     <!-- ROW 1: 1. Overview | 2. Types of FMEA | 3. Failure Mode -->
     <div class="row g-3 mb-3">
@@ -174,18 +125,18 @@
                 The specific physical or functional way in which a process or product could potentially fail to satisfy specifications.
               </p>
               <div class="example-highlight mb-3">
-                <span class="badge bg-danger me-1">Example:</span>
-                <strong class="text-dark">Hole size out of tolerance</strong>
+                <span class="badge bg-danger example-badge">Example:</span>
+                <span class="example-text">Hole size out of tolerance</span>
               </div>
             </div>
 
             <!-- CAD Schematics Visual Box -->
             <div class="component-visual-box text-center p-3 bg-light border rounded">
-              <div class="d-flex justify-content-between align-items-center mb-1">
-                <span class="badge bg-dark px-2 py-1" style="font-size: 9px; letter-spacing: 0.5px;">CAD SCHEMATIC</span>
-                <span class="badge bg-danger-subtle text-danger border border-danger-subtle" style="font-size: 10px;">OUT OF SPEC</span>
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="badge bg-dark cad-badge">CAD SCHEMATIC</span>
+                <span class="badge bg-danger-subtle text-danger border border-danger-subtle cad-status-badge">OUT OF SPEC</span>
               </div>
-              <svg width="220" height="95" viewBox="0 0 240 100" style="display: block; margin: 0 auto;">
+              <svg viewBox="0 0 340 120" style="width: 100%; max-width: 340px; display: block; margin: 0 auto;">
                 <defs>
                   <pattern id="diagHatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
                     <line x1="0" y1="0" x2="0" y2="8" stroke="#cbd5e1" stroke-width="1.5"/>
@@ -195,18 +146,27 @@
                   </marker>
                 </defs>
                 <!-- Part Body -->
-                <rect x="20" y="12" width="200" height="72" rx="10" fill="url(#diagHatch)" stroke="#475569" stroke-width="2.5"/>
+                <rect x="15" y="24" width="310" height="68" rx="8" fill="url(#diagHatch)" stroke="#334155" stroke-width="2.2"/>
+                
                 <!-- In-Spec Left Bore -->
-                <circle cx="70" cy="48" r="20" fill="#ffffff" stroke="#334155" stroke-width="2"/>
-                <circle cx="70" cy="48" r="9" fill="#f8fafc" stroke="#64748b" stroke-width="1"/>
-                <text x="70" y="52" font-size="9" font-weight="bold" fill="#16a34a" text-anchor="middle">PASS</text>
+                <circle cx="85" cy="58" r="22" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+                <circle cx="85" cy="58" r="14" fill="#dcfce7" stroke="#16a34a" stroke-width="1.8"/>
+                <text x="85" y="62" font-size="10.5" font-weight="800" fill="#15803d" text-anchor="middle">PASS</text>
+                <!-- Left Dimension Callout -->
+                <rect x="40" y="2" width="90" height="18" rx="3" fill="#ffffff" stroke="#16a34a" stroke-width="1.2"/>
+                <text x="85" y="15" font-size="9.5" font-weight="700" fill="#15803d" text-anchor="middle">Ø 25.00 mm (Spec)</text>
+                <line x1="85" y1="20" x2="85" y2="36" stroke="#16a34a" stroke-width="1.2" stroke-dasharray="2,2"/>
+
                 <!-- Out-of-Spec Right Bore -->
-                <circle cx="165" cy="48" r="26" fill="#fef2f2" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="4,3"/>
-                <circle cx="165" cy="48" r="11" fill="#fee2e2" stroke="#ef4444" stroke-width="1"/>
-                <!-- Dimension Callout Line -->
-                <path d="M 215 22 L 182 38" stroke="#dc2626" stroke-width="2" marker-end="url(#arrowRedCallout)"/>
-                <text x="215" y="18" font-size="9.5" font-weight="bold" fill="#dc2626" text-anchor="end">Ø 25.42 mm (Oversize)</text>
-                <text x="120" y="93" font-size="9.5" font-weight="bold" fill="#475569" text-anchor="middle">Engine Cylinder Flange Bore</text>
+                <circle cx="255" cy="58" r="27" fill="#fef2f2" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="5,3"/>
+                <circle cx="255" cy="58" r="15" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+                <text x="255" y="62" font-size="10.5" font-weight="800" fill="#dc2626" text-anchor="middle">FAIL</text>
+                <!-- Right Dimension Callout (Clear, No Overlap) -->
+                <rect x="180" y="2" width="150" height="19" rx="4" fill="#ffffff" stroke="#dc2626" stroke-width="1.5"/>
+                <text x="255" y="16" font-size="10.5" font-weight="800" fill="#dc2626" text-anchor="middle">Ø 25.42 mm (Oversize)</text>
+                <line x1="255" y1="21" x2="255" y2="31" stroke="#dc2626" stroke-width="2" marker-end="url(#arrowRedCallout)"/>
+
+                <text x="170" y="112" font-size="10.5" font-weight="700" fill="#475569" text-anchor="middle">Engine Cylinder Flange Bore</text>
               </svg>
             </div>
           </div>
@@ -229,28 +189,28 @@
                 The immediate and downstream impact of the failure mode on the customer, environment, or subsequent process operation.
               </p>
               <div class="example-highlight mb-3">
-                <span class="badge bg-secondary me-1">Example:</span>
-                <span class="text-dark">Improper fit, oil leakage, noise, customer complaint</span>
+                <span class="badge bg-danger example-badge">Example:</span>
+                <span class="example-text">Improper fit, oil leakage, noise, customer complaint</span>
               </div>
             </div>
-            <div class="d-flex align-items-center justify-content-between p-3 bg-light rounded border">
-              <div class="avatar-effect-circle">
+            <div class="d-flex align-items-center justify-content-between p-3 bg-light rounded border gap-3">
+              <div class="avatar-effect-circle flex-shrink-0">
                 <mat-icon class="effect-user-icon">person</mat-icon>
                 <mat-icon class="effect-cross-icon">cancel</mat-icon>
               </div>
-              <div class="effect-tags d-flex flex-column gap-1">
-                <span class="badge bg-danger-subtle text-danger border border-danger-subtle text-start">
-                  <mat-icon style="font-size: 13px; width: 13px; height: 13px; vertical-align: middle; margin-right: 3px;">warning</mat-icon>
-                  Oil Leakage at Seam
-                </span>
-                <span class="badge bg-danger-subtle text-danger border border-danger-subtle text-start">
-                  <mat-icon style="font-size: 13px; width: 13px; height: 13px; vertical-align: middle; margin-right: 3px;">warning</mat-icon>
-                  Improper Seating Fit
-                </span>
-                <span class="badge bg-warning-subtle text-dark border border-warning-subtle text-start">
-                  <mat-icon style="font-size: 13px; width: 13px; height: 13px; vertical-align: middle; margin-right: 3px;">report_problem</mat-icon>
-                  NVH Noise &amp; Vibration
-                </span>
+              <div class="effect-tags d-flex flex-column gap-2 flex-grow-1">
+                <div class="effect-tag-item tag-danger">
+                  <mat-icon class="effect-tag-icon">warning</mat-icon>
+                  <span class="effect-tag-label">Oil Leakage at Seam</span>
+                </div>
+                <div class="effect-tag-item tag-danger">
+                  <mat-icon class="effect-tag-icon">warning</mat-icon>
+                  <span class="effect-tag-label">Improper Seating Fit</span>
+                </div>
+                <div class="effect-tag-item tag-warning">
+                  <mat-icon class="effect-tag-icon">report_problem</mat-icon>
+                  <span class="effect-tag-label">NVH Noise &amp; Vibration</span>
+                </div>
               </div>
             </div>
           </div>
@@ -269,20 +229,29 @@
                 The specific root mechanism, human error, or process deviation that triggers the failure mode.
               </p>
               <div class="example-highlight mb-3">
-                <span class="badge bg-secondary me-1">Example:</span>
-                <span class="text-dark">Tool wear, wrong setting, material hardness variation</span>
+                <span class="badge bg-danger example-badge">Example:</span>
+                <span class="example-text">Tool wear, wrong setting, material hardness variation</span>
               </div>
             </div>
-            <div class="d-flex align-items-center justify-content-between p-3 bg-light rounded border">
-              <div class="cause-icons-wrapper d-flex align-items-center gap-2">
-                <div class="cause-icon-circle bg-dark text-white"><mat-icon>settings</mat-icon></div>
-                <div class="cause-icon-circle bg-primary text-white"><mat-icon>build</mat-icon></div>
-                <div class="cause-icon-circle bg-danger text-white"><mat-icon>warning</mat-icon></div>
+            <div class="d-flex align-items-center justify-content-between p-3 bg-light rounded border gap-3">
+              <div class="cause-icons-wrapper d-flex align-items-center gap-2 flex-shrink-0">
+                <div class="cause-icon-circle bg-dark text-white" title="Machine Setting"><mat-icon>settings</mat-icon></div>
+                <div class="cause-icon-circle bg-primary text-white" title="Tooling Calibration"><mat-icon>build</mat-icon></div>
+                <div class="cause-icon-circle bg-danger text-white" title="Process Deviation"><mat-icon>warning</mat-icon></div>
               </div>
-              <div class="cause-tags d-flex flex-column gap-1" style="font-size: 11.5px;">
-                <span class="badge bg-white text-danger border text-start">⚙️ Spindle Tool Wear</span>
-                <span class="badge bg-white text-primary border text-start">🔧 Torque Calibration Drift</span>
-                <span class="badge bg-white text-dark border text-start">📋 Operator Sequence Skip</span>
+              <div class="cause-tags d-flex flex-column gap-2 flex-grow-1">
+                <div class="cause-tag-item tag-spindle">
+                  <mat-icon class="cause-tag-icon">settings</mat-icon>
+                  <span class="cause-tag-label">Spindle Tool Wear</span>
+                </div>
+                <div class="cause-tag-item tag-torque">
+                  <mat-icon class="cause-tag-icon">build</mat-icon>
+                  <span class="cause-tag-label">Torque Calibration Drift</span>
+                </div>
+                <div class="cause-tag-item tag-operator">
+                  <mat-icon class="cause-tag-icon">assignment_late</mat-icon>
+                  <span class="cause-tag-label">Operator Sequence Skip</span>
+                </div>
               </div>
             </div>
           </div>
@@ -295,19 +264,19 @@
           <div class="card-badge-header">
             <span class="badge-number">06</span> SEVERITY (S)
           </div>
-          <div class="card-content-body">
-            <div class="d-flex justify-content-between align-items-center mb-2">
-              <span class="fw-semibold text-dark" style="font-size: 13px;">Customer &amp; Safety Impact Scale</span>
-              <span class="badge bg-danger">Rating: 1 - 10</span>
+          <div class="card-content-body d-flex flex-column justify-content-between">
+            <div class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
+              <span class="fw-bold text-dark" style="font-size: 13.5px;">Customer &amp; Safety Impact Scale</span>
+              <span class="badge bg-danger card-rating-badge">Rating: 1 - 10</span>
             </div>
-            <div class="row align-items-center">
+            <div class="row align-items-center mt-3 pt-2">
               <div class="col-6">
-                <ul class="scale-list list-unstyled m-0" style="font-size: 11.5px;">
-                  <li><span class="badge bg-secondary me-1">1</span> No Effect (Imperceptible)</li>
-                  <li><span class="badge bg-info text-white me-1">2-3</span> Minor Effect (Annoyance)</li>
-                  <li><span class="badge bg-warning text-dark me-1">4-6</span> Moderate (Secondary Loss)</li>
-                  <li><span class="badge bg-danger text-white me-1">7-8</span> High Effect (Primary Loss)</li>
-                  <li><span class="badge bg-danger text-white me-1">9-10</span> Hazardous / Regulatory</li>
+                <ul class="scale-list list-unstyled m-0">
+                  <li><span class="badge bg-secondary">1</span> No Effect (Imperceptible)</li>
+                  <li><span class="badge bg-info text-white">2-3</span> Minor Effect (Annoyance)</li>
+                  <li><span class="badge bg-warning text-dark">4-6</span> Moderate (Secondary Loss)</li>
+                  <li><span class="badge bg-danger text-white">7-8</span> High Effect (Primary Loss)</li>
+                  <li><span class="badge bg-danger text-white">9-10</span> Hazardous / Regulatory</li>
                 </ul>
               </div>
               <div class="col-6 text-center">
@@ -344,33 +313,38 @@
           <div class="card-badge-header">
             <span class="badge-number">07</span> OCCURRENCE (O)
           </div>
-          <div class="card-content-body">
-            <div class="d-flex justify-content-between align-items-center mb-2">
-              <span class="fw-semibold text-dark" style="font-size: 13px;">Failure Frequency Likelihood</span>
-              <span class="badge bg-primary">Rating: 1 - 10</span>
+          <div class="card-content-body d-flex flex-column justify-content-between">
+            <div class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
+              <span class="fw-bold text-dark" style="font-size: 13.5px;">Failure Frequency Likelihood</span>
+              <span class="badge bg-primary card-rating-badge">Rating: 1 - 10</span>
             </div>
-            <div class="row align-items-center">
+            <div class="row align-items-center mt-3 pt-2">
               <div class="col-6">
-                <ul class="scale-list list-unstyled m-0" style="font-size: 11.5px;">
-                  <li><span class="badge bg-success me-1">1</span> Remote (&lt; 1 in 1.5M)</li>
-                  <li><span class="badge bg-info text-white me-1">2-3</span> Low (1 in 150,000)</li>
-                  <li><span class="badge bg-warning text-dark me-1">4-6</span> Moderate (1 in 2,000)</li>
-                  <li><span class="badge bg-danger text-white me-1">7-8</span> High (1 in 50)</li>
-                  <li><span class="badge bg-danger text-white me-1">9-10</span> Very High (&ge; 1 in 10)</li>
+                <ul class="scale-list list-unstyled m-0">
+                  <li><span class="badge bg-success">1</span> Remote (&lt; 1 in 1.5M)</li>
+                  <li><span class="badge bg-info text-white">2-3</span> Low (1 in 150,000)</li>
+                  <li><span class="badge bg-warning text-dark">4-6</span> Moderate (1 in 2,000)</li>
+                  <li><span class="badge bg-danger text-white">7-8</span> High (1 in 50)</li>
+                  <li><span class="badge bg-danger text-white">9-10</span> Very High (&ge; 1 in 10)</li>
                 </ul>
               </div>
               <div class="col-6 text-center">
-                <!-- SVG Spectrum Bar Chart for Occurrence -->
-                <svg width="125" height="95" viewBox="0 0 130 100">
-                  <path d="M 20 85 A 45 45 0 1 1 110 85" fill="none" stroke="#f1f5f9" stroke-width="12" stroke-linecap="round"/>
-                  <path d="M 20 85 A 45 45 0 0 1 90 24" fill="none" stroke="#3b82f6" stroke-width="12" stroke-linecap="round"/>
-                  <!-- Level Bars -->
-                  <rect x="38" y="60" width="8" height="25" fill="#22c55e" rx="2"/>
-                  <rect x="50" y="48" width="8" height="37" fill="#84cc16" rx="2"/>
-                  <rect x="62" y="38" width="8" height="47" fill="#f59e0b" rx="2"/>
-                  <rect x="74" y="28" width="8" height="57" fill="#ef4444" rx="2"/>
-                  <rect x="86" y="20" width="8" height="65" fill="#b91c1c" rx="2"/>
-                  <text x="65" y="98" font-size="13" font-weight="bold" fill="#0f172a" text-anchor="middle">O</text>
+                <!-- SVG Speedometer Dial for Occurrence -->
+                <svg width="145" height="95" viewBox="0 0 150 100">
+                  <path d="M 20 85 A 55 55 0 0 1 130 85" fill="none" stroke="#e2e8f0" stroke-width="16" stroke-linecap="round"/>
+                  <!-- Green arc (1-3) -->
+                  <path d="M 20 85 A 55 55 0 0 1 45 42" fill="none" stroke="#22c55e" stroke-width="16"/>
+                  <!-- Amber arc (4-6) -->
+                  <path d="M 45 42 A 55 55 0 0 1 105 42" fill="none" stroke="#f59e0b" stroke-width="16"/>
+                  <!-- Red arc (7-10) -->
+                  <path d="M 105 42 A 55 55 0 0 1 130 85" fill="none" stroke="#ef4444" stroke-width="16"/>
+                  <!-- Needle pointer at ~6 -->
+                  <line x1="75" y1="85" x2="92" y2="38" stroke="#0f172a" stroke-width="3.5" stroke-linecap="round"/>
+                  <circle cx="75" cy="85" r="7" fill="#0f172a"/>
+                  <circle cx="75" cy="85" r="3" fill="#ffffff"/>
+                  <text x="18" y="97" font-size="10" font-weight="bold" fill="#64748b">1</text>
+                  <text x="132" y="97" font-size="10" font-weight="bold" fill="#ef4444" text-anchor="end">10</text>
+                  <text x="75" y="75" font-size="14" font-weight="800" fill="#0f172a" text-anchor="middle">O</text>
                 </svg>
               </div>
             </div>
@@ -384,34 +358,39 @@
           <div class="card-badge-header">
             <span class="badge-number">08</span> DETECTION (D)
           </div>
-          <div class="card-content-body">
-            <div class="d-flex justify-content-between align-items-center mb-2">
-              <span class="fw-semibold text-dark" style="font-size: 13px;">Inspection &amp; Escape Likelihood</span>
-              <span class="badge bg-success">Rating: 1 - 10</span>
+          <div class="card-content-body d-flex flex-column justify-content-between">
+            <div class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
+              <span class="fw-bold text-dark" style="font-size: 13.5px;">Inspection &amp; Escape Likelihood</span>
+              <span class="badge bg-success card-rating-badge">Rating: 1 - 10</span>
             </div>
-            <div class="row align-items-center">
+            <div class="row align-items-center mt-3 pt-2">
               <div class="col-6">
-                <ul class="scale-list list-unstyled m-0" style="font-size: 11.5px;">
-                  <li><span class="badge bg-success me-1">1</span> Poka-Yoke / Sensor Proofed</li>
-                  <li><span class="badge bg-info text-white me-1">2-3</span> Automated Inline CMM</li>
-                  <li><span class="badge bg-warning text-dark me-1">4-6</span> Gauge / Manual Test</li>
-                  <li><span class="badge bg-danger text-white me-1">7-8</span> Visual Post-Process</li>
-                  <li><span class="badge bg-danger text-white me-1">9-10</span> Undetectable Inline</li>
+                <ul class="scale-list list-unstyled m-0">
+                  <li><span class="badge bg-success">1</span> Poka-Yoke / Sensor Proofed</li>
+                  <li><span class="badge bg-info text-white">2-3</span> Automated Inline CMM</li>
+                  <li><span class="badge bg-warning text-dark">4-6</span> Gauge / Manual Test</li>
+                  <li><span class="badge bg-danger text-white">7-8</span> Visual Post-Process</li>
+                  <li><span class="badge bg-danger text-white">9-10</span> Undetectable Inline</li>
                 </ul>
               </div>
               <div class="col-6 text-center">
-                <!-- Radar HUD Inspection Graphic -->
-                <div class="radar-box d-inline-flex align-items-center justify-content-center p-3 bg-light rounded-circle border shadow-sm">
-                  <svg width="65" height="65" viewBox="0 0 80 80">
-                    <circle cx="40" cy="40" r="36" fill="none" stroke="#cbd5e1" stroke-width="2"/>
-                    <circle cx="40" cy="40" r="24" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3,3"/>
-                    <circle cx="40" cy="40" r="12" fill="none" stroke="#0284c7" stroke-width="1.5"/>
-                    <line x1="40" y1="4" x2="40" y2="76" stroke="#94a3b8" stroke-width="1"/>
-                    <line x1="4" y1="40" x2="76" y2="40" stroke="#94a3b8" stroke-width="1"/>
-                    <circle cx="52" cy="28" r="4" fill="#ef4444"/>
-                    <circle cx="40" cy="40" r="3" fill="#0284c7"/>
-                  </svg>
-                </div>
+                <!-- SVG Speedometer Dial for Detection -->
+                <svg width="145" height="95" viewBox="0 0 150 100">
+                  <path d="M 20 85 A 55 55 0 0 1 130 85" fill="none" stroke="#e2e8f0" stroke-width="16" stroke-linecap="round"/>
+                  <!-- Green arc (1-3) -->
+                  <path d="M 20 85 A 55 55 0 0 1 45 42" fill="none" stroke="#22c55e" stroke-width="16"/>
+                  <!-- Amber arc (4-6) -->
+                  <path d="M 45 42 A 55 55 0 0 1 105 42" fill="none" stroke="#f59e0b" stroke-width="16"/>
+                  <!-- Red arc (7-10) -->
+                  <path d="M 105 42 A 55 55 0 0 1 130 85" fill="none" stroke="#ef4444" stroke-width="16"/>
+                  <!-- Needle pointer at ~5 -->
+                  <line x1="75" y1="85" x2="75" y2="35" stroke="#0f172a" stroke-width="3.5" stroke-linecap="round"/>
+                  <circle cx="75" cy="85" r="7" fill="#0f172a"/>
+                  <circle cx="75" cy="85" r="3" fill="#ffffff"/>
+                  <text x="18" y="97" font-size="10" font-weight="bold" fill="#64748b">1</text>
+                  <text x="132" y="97" font-size="10" font-weight="bold" fill="#ef4444" text-anchor="end">10</text>
+                  <text x="75" y="75" font-size="14" font-weight="800" fill="#0f172a" text-anchor="middle">D</text>
+                </svg>
               </div>
             </div>
           </div>
@@ -434,18 +413,24 @@
             </div>
 
             <!-- Interactive Sliders for Instant Testing -->
-            <div class="rpn-sliders-box bg-light p-2 rounded border">
-              <div class="d-flex align-items-center justify-content-between mb-1">
-                <small class="fw-bold text-danger">Severity (S): {{ calcS }}</small>
-                <input type="range" class="form-range form-range-sm w-50" min="1" max="10" [(ngModel)]="calcS">
+            <div class="rpn-sliders-box bg-light p-3 rounded border">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <span class="rpn-slider-label text-danger">
+                  Severity (S): <strong class="rpn-val-pill">{{ calcS }}</strong>
+                </span>
+                <input type="range" class="form-range w-50" min="1" max="10" [(ngModel)]="calcS">
               </div>
-              <div class="d-flex align-items-center justify-content-between mb-1">
-                <small class="fw-bold text-primary">Occurrence (O): {{ calcO }}</small>
-                <input type="range" class="form-range form-range-sm w-50" min="1" max="10" [(ngModel)]="calcO">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <span class="rpn-slider-label text-primary">
+                  Occurrence (O): <strong class="rpn-val-pill">{{ calcO }}</strong>
+                </span>
+                <input type="range" class="form-range w-50" min="1" max="10" [(ngModel)]="calcO">
               </div>
               <div class="d-flex align-items-center justify-content-between">
-                <small class="fw-bold text-success">Detection (D): {{ calcD }}</small>
-                <input type="range" class="form-range form-range-sm w-50" min="1" max="10" [(ngModel)]="calcD">
+                <span class="rpn-slider-label text-success">
+                  Detection (D): <strong class="rpn-val-pill">{{ calcD }}</strong>
+                </span>
+                <input type="range" class="form-range w-50" min="1" max="10" [(ngModel)]="calcD">
               </div>
             </div>
 
@@ -663,12 +648,12 @@
               <p class="desc-text mb-2">
                 Mechanical and electrical <strong>mistake-proofing mechanisms</strong> designed to make defect generation impossible.
               </p>
-              <div class="poka-tags d-flex flex-wrap gap-1 mb-2">
-                <span class="badge bg-light text-dark border rounded-1">Guide Pins</span>
-                <span class="badge bg-light text-dark border rounded-1">Photoelectric Sensors</span>
-                <span class="badge bg-light text-dark border rounded-1">Torque Interlocks</span>
-                <span class="badge bg-light text-dark border rounded-1">Go / No-Go Gauges</span>
-                <span class="badge bg-light text-dark border rounded-1">Vision AOI</span>
+              <div class="poka-tags d-flex flex-wrap gap-2 mb-3">
+                <span class="badge poka-badge">Guide Pins</span>
+                <span class="badge poka-badge">Photoelectric Sensors</span>
+                <span class="badge poka-badge">Torque Interlocks</span>
+                <span class="badge poka-badge">Go / No-Go Gauges</span>
+                <span class="badge poka-badge">Vision AOI</span>
               </div>
             </div>
 
@@ -708,20 +693,7 @@
             <span class="badge bg-white text-danger fw-bold rounded-1" style="font-size: 11px;">IATF 16949 FORMAT</span>
           </div>
 
-          <!-- Clear Metric Definitions Bar (S, O, D and RPN) -->
-          <div class="metrics-ribbon-bar px-3 py-2 bg-light border-bottom d-flex align-items-center justify-content-between flex-wrap gap-2 text-dark">
-            <div class="d-flex align-items-center gap-3 flex-wrap" style="font-size: 11.5px;">
-              <span class="badge bg-secondary text-white px-2 py-1 rounded-1" style="font-size: 10px; letter-spacing: 0.5px;">METRIC GUIDE</span>
-              <span><strong class="text-danger">Severity (S):</strong> Effect seriousness (1-10)</span>
-              <span class="text-muted d-none d-md-inline">•</span>
-              <span><strong class="text-primary">Occurrence (O):</strong> Failure frequency (1-10)</span>
-              <span class="text-muted d-none d-md-inline">•</span>
-              <span><strong class="text-success">Detection (D):</strong> Escape likelihood (1-10)</span>
-            </div>
-            <div class="fw-bold px-2 py-0.5 bg-white border rounded-1 shadow-sm" style="font-size: 11px;">
-              RPN = <span class="text-danger">S</span> &times; <span class="text-primary">O</span> &times; <span class="text-success">D</span> <small class="text-muted">(1 - 1000)</small>
-            </div>
-          </div>
+
 
           <div class="card-content-body p-0">
             <div class="pfmea-table-wrapper">
@@ -756,8 +728,10 @@
                 <tbody>
                   <tr *ngFor="let row of pfmeaTable">
                     <td class="fw-bold col-step">
-                      <mat-icon style="font-size: 15px; width: 15px; height: 15px; vertical-align: middle; margin-right: 3px; color: #2563eb;">{{ row.icon }}</mat-icon>
-                      {{ row.processStep }}
+                      <div class="step-cell-wrapper">
+                        <mat-icon class="step-cell-icon">{{ row.icon }}</mat-icon>
+                        <span class="step-cell-text">{{ row.processStep }}</span>
+                      </div>
                     </td>
                     <td class="fw-semibold text-danger col-mode">{{ row.failureMode }}</td>
                     <td class="col-effect">{{ row.effect }}</td>
@@ -777,8 +751,10 @@
                       <small class="text-muted">{{ row.targetDate }}</small>
                     </td>
                     <td class="col-taken">
-                      <mat-icon style="font-size: 14px; width: 14px; height: 14px; vertical-align: middle; color: #16a34a;">check</mat-icon>
-                      {{ row.actionTaken }}
+                      <div class="action-taken-wrapper">
+                        <mat-icon class="action-taken-icon">check</mat-icon>
+                        <span class="action-taken-text">{{ row.actionTaken }}</span>
+                      </div>
                     </td>
                     <td class="text-center fw-bold col-rev-rpn">
                       <span class="badge-rpn-box rpn-box-low">{{ row.newRpn }}</span>
@@ -1005,229 +981,6 @@
   </div>
 
 
-  <!-- ========================================================================= -->
-  <!-- PART 2: NEW FMEA APPROACH FLOWCHART (MATCHING IMG3)                      -->
-  <!-- ========================================================================= -->
-  <div class="flowchart-section card border p-4 bg-white shadow-sm"
-       *ngIf="activeView === 'all' || activeView === 'flowchart'">
 
-    <!-- Flowchart Heading (Clean header without print button) -->
-    <div class="border-bottom pb-3 mb-4">
-      <div class="d-flex align-items-center gap-2 mb-1">
-        <span class="badge bg-dark px-2 py-1" style="font-size: 11px;">CROSS-FUNCTIONAL WORKFLOW</span>
-        <span class="text-muted" style="font-size: 12px;">34 Sequential Steps Across 6 Execution Phases</span>
-      </div>
-      <h3 class="flowchart-main-title m-0">New FMEA approach flowchart</h3>
-      <p class="text-muted m-0 mt-1" style="font-size: 13px;">
-        Standardized cross-functional execution methodology from initial business necessity through team formation, SOD consensus scoring, and sustaining live database.
-      </p>
-    </div>
-
-    <!-- 6 Phase Pipeline Stepper Header -->
-    <div class="flowchart-phase-stepper mb-4 d-flex justify-content-between align-items-center flex-wrap gap-1 p-2 rounded bg-light border">
-      <div class="phase-step-pill phase-preliminary">
-        <span class="phase-step-num">1</span> Preliminary
-      </div>
-      <mat-icon class="phase-chevron">east</mat-icon>
-      <div class="phase-step-pill phase-planning">
-        <span class="phase-step-num">2</span> Planning
-      </div>
-      <mat-icon class="phase-chevron">east</mat-icon>
-      <div class="phase-step-pill phase-cause_effect">
-        <span class="phase-step-num">3</span> Cause &amp; Effect
-      </div>
-      <mat-icon class="phase-chevron">east</mat-icon>
-      <div class="phase-step-pill phase-ranking">
-        <span class="phase-step-num">4</span> Ranking
-      </div>
-      <mat-icon class="phase-chevron">east</mat-icon>
-      <div class="phase-step-pill phase-implementation">
-        <span class="phase-step-num">5</span> Implementation
-      </div>
-      <mat-icon class="phase-chevron">east</mat-icon>
-      <div class="phase-step-pill phase-sustaining">
-        <span class="phase-step-num">6</span> Sustaining
-      </div>
-    </div>
-
-    <!-- 4-Column Flowchart Canvas -->
-    <div class="flowchart-grid">
-
-      <!-- COLUMN 1: Preliminary Phase -->
-      <div class="flow-column">
-        <div class="col-stage-header stage-preliminary mb-3 text-center">
-          <div class="col-stage-title">STAGE 1: SCOPING</div>
-          <small class="col-stage-sub">Preliminary Phase</small>
-        </div>
-
-        <ng-container *ngFor="let node of flowchartCol1; let i = index">
-
-          <!-- Diamond Decision Node -->
-          <div class="flow-diamond-wrapper" *ngIf="node.type === 'diamond'">
-            <div class="flow-diamond-container phase-{{ node.phase }}">
-              <div class="diamond-content">
-                <div class="flow-step-tag">Step {{ node.stepNum }}</div>
-                <div class="diamond-text">{{ node.text }}</div>
-              </div>
-            </div>
-            <div class="flow-arrow-down" *ngIf="node.yesLabel">
-              <span class="arrow-label">yes</span>
-              <mat-icon class="arrow-icon">arrow_downward</mat-icon>
-            </div>
-          </div>
-
-          <!-- Standard Box Node -->
-          <div class="flow-box-wrapper" *ngIf="node.type === 'box'">
-            <div class="flow-node-box phase-{{ node.phase }}">
-              <div class="d-flex justify-content-between align-items-center mb-1">
-                <span class="node-step-badge">Step {{ node.stepNum }}</span>
-                <span class="node-phase-tag">{{ node.phaseName }}</span>
-              </div>
-              <div class="node-text">{{ node.text }}</div>
-            </div>
-            <div class="flow-arrow-down" *ngIf="i < flowchartCol1.length - 1">
-              <mat-icon class="arrow-icon">arrow_downward</mat-icon>
-            </div>
-          </div>
-
-        </ng-container>
-
-        <!-- Column Connector to Column 2 -->
-        <div class="col-transition-arrow text-center mt-3">
-          <div class="transition-pill">
-            <span>Proceed to Col 2</span>
-            <mat-icon>east</mat-icon>
-          </div>
-        </div>
-      </div>
-
-
-      <!-- COLUMN 2: Planning, Cause & Effect, Ranking -->
-      <div class="flow-column">
-        <div class="col-stage-header stage-planning mb-3 text-center">
-          <div class="col-stage-title">STAGE 2: ANALYSIS</div>
-          <small class="col-stage-sub">Planning &amp; Cause Mapping</small>
-        </div>
-
-        <ng-container *ngFor="let node of flowchartCol2; let i = index">
-
-          <div class="flow-box-wrapper">
-            <div class="flow-node-box phase-{{ node.phase }}">
-              <div class="d-flex justify-content-between align-items-center mb-1">
-                <span class="node-step-badge">Step {{ node.stepNum }}</span>
-                <span class="node-phase-tag">{{ node.phaseName }}</span>
-              </div>
-              <div class="node-text">{{ node.text }}</div>
-            </div>
-            <div class="flow-arrow-down" *ngIf="i < flowchartCol2.length - 1">
-              <mat-icon class="arrow-icon">arrow_downward</mat-icon>
-            </div>
-          </div>
-
-        </ng-container>
-
-        <!-- Column Connector to Column 3 -->
-        <div class="col-transition-arrow text-center mt-3">
-          <div class="transition-pill">
-            <span>Proceed to Col 3</span>
-            <mat-icon>east</mat-icon>
-          </div>
-        </div>
-      </div>
-
-
-      <!-- COLUMN 3: Ranking Phase, Implementation -->
-      <div class="flow-column">
-        <div class="col-stage-header stage-ranking mb-3 text-center">
-          <div class="col-stage-title">STAGE 3: SOD RANKING</div>
-          <small class="col-stage-sub">Consensus &amp; RPN Prioritization</small>
-        </div>
-
-        <ng-container *ngFor="let node of flowchartCol3; let i = index">
-
-          <div class="flow-box-wrapper">
-            <div class="flow-node-box phase-{{ node.phase }}">
-              <div class="d-flex justify-content-between align-items-center mb-1">
-                <span class="node-step-badge">Step {{ node.stepNum }}</span>
-                <span class="node-phase-tag">{{ node.phaseName }}</span>
-              </div>
-              <div class="node-text">{{ node.text }}</div>
-            </div>
-            <div class="flow-arrow-down" *ngIf="i < flowchartCol3.length - 1">
-              <mat-icon class="arrow-icon">arrow_downward</mat-icon>
-            </div>
-          </div>
-
-        </ng-container>
-
-        <!-- Column Connector to Column 4 -->
-        <div class="col-transition-arrow text-center mt-3">
-          <div class="transition-pill">
-            <span>Proceed to Col 4</span>
-            <mat-icon>east</mat-icon>
-          </div>
-        </div>
-      </div>
-
-
-      <!-- COLUMN 4: Implementation Phase, Sustaining Phase -->
-      <div class="flow-column">
-        <div class="col-stage-header stage-sustaining mb-3 text-center">
-          <div class="col-stage-title">STAGE 4: ACTION &amp; AUDIT</div>
-          <small class="col-stage-sub">Mitigation &amp; Knowledge Base</small>
-        </div>
-
-        <ng-container *ngFor="let node of flowchartCol4; let i = index">
-
-          <div class="flow-box-wrapper">
-            <div class="flow-node-box phase-{{ node.phase }}">
-              <div class="d-flex justify-content-between align-items-center mb-1">
-                <span class="node-step-badge">Step {{ node.stepNum }}</span>
-                <span class="node-phase-tag">{{ node.phaseName }}</span>
-              </div>
-              <div class="node-text">{{ node.text }}</div>
-            </div>
-            <div class="flow-arrow-down" *ngIf="i < flowchartCol4.length - 1">
-              <mat-icon class="arrow-icon">arrow_downward</mat-icon>
-            </div>
-          </div>
-
-        </ng-container>
-      </div>
-
-    </div>
-
-
-    <!-- Flowchart Phase Legend (from img3) -->
-    <div class="flowchart-legend mt-4 pt-3 border-top">
-      <div class="legend-grid">
-        <div class="legend-item">
-          <span class="legend-box phase-preliminary"></span>
-          <span><strong>Preliminary Phase:</strong> Business necessity, FMEA ownership &amp; scoping</span>
-        </div>
-        <div class="legend-item">
-          <span class="legend-box phase-planning"></span>
-          <span><strong>Planning Phase:</strong> Team familiarization &amp; blitz logistics</span>
-        </div>
-        <div class="legend-item">
-          <span class="legend-box phase-cause_effect"></span>
-          <span><strong>Cause &amp; Effect Phase:</strong> Functions, 5-Why cause mapping &amp; effects</span>
-        </div>
-        <div class="legend-item">
-          <span class="legend-box phase-ranking"></span>
-          <span><strong>Ranking Phase:</strong> NGT consensus, SOD scores &amp; RPN calculation</span>
-        </div>
-        <div class="legend-item">
-          <span class="legend-box phase-implementation"></span>
-          <span><strong>Implementation Phase:</strong> Mistake-proofing, redesign &amp; target verification</span>
-        </div>
-        <div class="legend-item">
-          <span class="legend-box phase-sustaining"></span>
-          <span><strong>Sustaining Phase:</strong> Live database &amp; periodic field failure updates</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
 
 </div>

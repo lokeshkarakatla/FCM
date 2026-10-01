@@ -37,6 +37,8 @@ export class EvaluationComponent implements OnInit {
       this.activeTab = 'fmea';
     } else if (url.includes('/guidelines')) {
       this.activeTab = 'guidelines';
+    } else if (url.includes('/flowchart') || url.includes('/flowchat')) {
+      this.activeTab = 'flowchart';
     } else {
       this.activeTab = 'audit';
     }
